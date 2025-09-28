@@ -1,0 +1,547 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JPax Media | Portfolio</title>
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="photos/jpaxmediawebicon.png">
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;800&display=swap" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Three.js for interactive background -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #0c0c0c;
+            cursor: none; /* Hide the default cursor */
+        }
+        .hero-bg {
+             position: relative;
+             background: linear-gradient(rgba(0,0,0,0.8), rgba(0,0,0,0.8)), url('photos/spacebackground.jpg');
+             background-size: cover;
+             background-position: center;
+             background-attachment: fixed;
+             overflow: hidden;
+        }
+        #interactive-bg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 1;
+        }
+        .hero-content {
+            position: relative;
+            z-index: 2;
+        }
+        .section-bg {
+            background-color: #111111;
+        }
+        /* Custom Cursor */
+        .cursor-dot, .cursor-outline {
+            pointer-events: none;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            border-radius: 50%;
+            opacity: 0;
+            transform: translate(-50%, -50%);
+            transition: opacity 0.3s ease-in-out, transform 0.1s linear;
+            z-index: 9999;
+        }
+        .cursor-dot {
+            width: 8px;
+            height: 8px;
+            background-color: #4ade80;
+        }
+        .cursor-outline {
+            width: 40px;
+            height: 40px;
+            border: 2px solid #4ade80;
+            transition: width 0.2s ease, height 0.2s ease, border 0.2s ease, transform 0.1s linear;
+        }
+        body:hover .cursor-dot, body:hover .cursor-outline {
+            opacity: 1;
+        }
+        .cursor-interact {
+            width: 60px;
+            height: 60px;
+            border: 3px solid #4ade80;
+        }
+        /* Scroll Reveal Animations */
+        .scroll-reveal {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.8s cubic-bezier(0.6, 0.2, 0.1, 1), transform 0.8s cubic-bezier(0.6, 0.2, 0.1, 1);
+        }
+        .scroll-reveal.is-visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        /* Neon Effects */
+        .text-glow {
+            text-shadow: 0 0 8px rgba(74, 222, 128, 0.8);
+        }
+        .card-glow {
+            transition: all 0.3s ease-in-out;
+        }
+        .card-glow:hover {
+            border-color: #4ade80;
+            box-shadow: 0 0 15px rgba(74, 222, 128, 0.5);
+            transform: translateY(-5px);
+        }
+        .button-glow {
+            transition: box-shadow 0.3s ease-in-out;
+        }
+        .button-glow:hover {
+             box-shadow: 0 0 10px rgba(74, 222, 128, 0.6), 0 0 20px rgba(74, 222, 128, 0.4);
+        }
+        .footer-icon:hover {
+            transform: scale(1.15);
+            filter: drop-shadow(0 0 8px rgba(74, 222, 128, 0.9));
+        }
+        .stat-card {
+            background-color: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            transition: all 0.3s ease;
+        }
+        .stat-card:hover {
+            background-color: rgba(74, 222, 128, 0.1);
+            border-color: rgba(74, 222, 128, 0.5);
+            transform: scale(1.05);
+        }
+        /* Video Player Styles */
+        .video-overlay {
+            transition: opacity 0.3s ease-in-out;
+        }
+        .video-container:hover .video-overlay {
+            background-color: rgba(0,0,0,0.7);
+        }
+        .video-overlay .play-icon {
+            transition: transform 0.3s ease, filter 0.3s ease;
+        }
+        .video-container:hover .play-icon {
+            transform: scale(1.1);
+            filter: drop-shadow(0 0 15px rgba(74, 222, 128, 1));
+        }
+        .mockup-bg {
+            background: linear-gradient(145deg, rgba(255,255,255,0.1), rgba(255,255,255,0));
+            border: 1px solid rgba(255,255,255,0.1);
+            backdrop-filter: blur(10px);
+        }
+    </style>
+</head>
+<body class="text-gray-200">
+    <!-- Custom Cursor -->
+    <div class="cursor-dot"></div>
+    <div class="cursor-outline"></div>
+
+    <!-- Header & Navigation -->
+    <header class="bg-black/80 backdrop-blur-sm sticky top-0 z-50">
+        <nav class="container mx-auto px-6 py-4 flex justify-between items-center">
+            <a href="index.html" class="text-2xl font-bold text-white">JPax Media</a>
+            <div class="hidden md:flex items-center space-x-8">
+                <a href="index.html" class="hoverable hover:text-green-400 transition-colors">Home</a>
+                <a href="index.html#services" class="hoverable hover:text-green-400 transition-colors">Services</a>
+                <a href="https://www.facebook.com/jpaxmedia/" target="_blank" aria-label="Facebook" class="hoverable text-gray-300 hover:text-green-400 text-xl transition-colors"><i class="fab fa-facebook"></i></a>
+                <a href="https://www.instagram.com/jpaxfilmz/" target="_blank" aria-label="Instagram" class="hoverable text-gray-300 hover:text-green-400 text-xl transition-colors"><i class="fab fa-instagram"></i></a>
+                <a href="index.html#contact" class="hoverable bg-green-500 hover:bg-green-600 text-white font-bold py-2 px-4 rounded-lg transition-colors button-glow">Contact</a>
+            </div>
+            <button id="mobile-menu-button" class="md:hidden text-2xl hoverable">
+                <i class="fas fa-bars"></i>
+            </button>
+        </nav>
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="hidden md:hidden bg-black/90">
+            <a href="index.html" class="block text-center py-3 hover:bg-green-500/20 transition-colors">Home</a>
+            <a href="index.html#services" class="block text-center py-3 hover:bg-green-500/20 transition-colors">Services</a>
+            <div class="flex justify-center py-3 space-x-6">
+                 <a href="https://www.facebook.com/jpaxmedia/" target="_blank" aria-label="Facebook" class="text-gray-300 hover:text-green-400 text-2xl transition-colors"><i class="fab fa-facebook"></i></a>
+                <a href="https://www.instagram.com/jpaxfilmz/" target="_blank" aria-label="Instagram" class="text-gray-300 hover:text-green-400 text-2xl transition-colors"><i class="fab fa-instagram"></i></a>
+            </div>
+            <a href="index.html#contact" class="block text-center py-4 bg-green-500 hover:bg-green-600 text-white font-bold transition-colors">Contact</a>
+        </div>
+    </header>
+
+    <main>
+        <!-- Hero Section -->
+        <section id="portfolio-home" class="hero-bg min-h-[60vh] flex items-center">
+            <canvas id="interactive-bg"></canvas>
+            <div class="hero-content container mx-auto px-6 text-center">
+                <h1 class="text-4xl md:text-6xl font-extrabold text-white leading-tight mb-4 text-glow">Our Portfolio</h1>
+                <p class="text-lg md:text-xl text-gray-300 max-w-3xl mx-auto">A showcase of AI-powered campaigns, creative work, and measurable results.</p>
+            </div>
+        </section>
+
+        <!-- Case Study Section -->
+        <section id="case-studies" class="py-20 overflow-hidden">
+            <div class="container mx-auto px-6">
+                <div class="text-center mb-16 scroll-reveal">
+                    <h2 class="text-3xl md:text-4xl font-bold text-white">Case Study: 30-Day Impact Report</h2>
+                    <p class="text-gray-400 mt-2">How we transformed a client's digital presence in one month.</p>
+                </div>
+
+                <!-- Main KPIs -->
+                <div class="bg-gray-900/50 rounded-2xl p-8 md:p-12 border border-gray-700 mb-16 shadow-2xl scroll-reveal">
+                    <h3 class="text-2xl font-bold text-center text-white mb-8">Overall Performance</h3>
+                    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 text-center">
+                        <div class="p-6 rounded-lg stat-card hoverable"><p class="text-4xl md:text-5xl font-extrabold text-green-400 text-glow" data-count="925">0%</p><p class="text-lg font-semibold text-white mt-2">Website Growth</p><p class="text-gray-400 text-sm">~200 to 2,051 visitors</p></div>
+                        <div class="p-6 rounded-lg stat-card hoverable"><p class="text-4xl md:text-5xl font-extrabold text-green-400 text-glow" data-count="3694">0</p><p class="text-lg font-semibold text-white mt-2">Total Pageviews</p><p class="text-gray-400 text-sm">4 GB bandwidth usage</p></div>
+                        <div class="p-6 rounded-lg stat-card hoverable"><p class="text-4xl md:text-5xl font-extrabold text-green-400 text-glow" data-count="42">0%</p><p class="text-lg font-semibold text-white mt-2">Conversion Rate</p><p class="text-gray-400 text-sm">10 bookings from 24 conversations</p></div>
+                        <div class="p-6 rounded-lg stat-card hoverable"><p class="text-4xl md:text-5xl font-extrabold text-green-400 text-glow" data-count="7100">0%</p><p class="text-lg font-semibold text-white mt-2">ROI Achievement</p><p class="text-gray-400 text-sm">$1 in ad spend generated ~$72</p></div>
+                    </div>
+                </div>
+
+                <!-- Detailed Breakdowns -->
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-12">
+                    <!-- Client Campaign Success -->
+                    <div class="bg-gray-800/50 p-8 rounded-xl shadow-lg border border-gray-700 scroll-reveal" style="transition-delay: 200ms;">
+                        <h3 class="text-2xl font-bold text-white mb-6 text-center"><i class="fas fa-rocket text-green-400 mr-2"></i>Client Campaign Success</h3>
+                        <ul class="space-y-4 text-lg">
+                            <li class="flex items-start"><i class="fas fa-dollar-sign text-green-400 mt-1 mr-4"></i><span>Total ad spend of <b class="text-white">$416.78</b> across 9 targeted ads.</span></li>
+                            <li class="flex items-start"><i class="fas fa-comments text-green-400 mt-1 mr-4"></i><span>Generated <b class="text-white">24 message conversations</b> at ~$17.36 each.</span></li>
+                            <li class="flex items-start"><i class="fas fa-calendar-check text-green-400 mt-1 mr-4"></i><span><b class="text-white">10 appointments booked</b> at an average cost of $41.60.</span></li>
+                            <li class="flex items-start"><i class="fas fa-handshake text-green-400 mt-1 mr-4"></i><span>Estimated 5 closed jobs (50% conversion).</span></li>
+                            <li class="flex items-start"><i class="fas fa-chart-line text-green-400 mt-1 mr-4"></i><span><b class="text-white">$30,000 potential new revenue</b> generated.</span></li>
+                        </ul>
+                    </div>
+                    <!-- Community Impact -->
+                    <div class="bg-gray-800/50 p-8 rounded-xl shadow-lg border border-gray-700 scroll-reveal" style="transition-delay: 400ms;">
+                        <h3 class="text-2xl font-bold text-white mb-6 text-center"><i class="fas fa-users text-green-400 mr-2"></i>Community Impact</h3>
+                         <ul class="space-y-4 text-lg">
+                            <li class="flex items-start"><i class="fas fa-guitar text-green-400 mt-1 mr-4"></i><span>Local band event campaign with just <b class="text-white">$80 investment</b> over 4 days.</span></li>
+                            <li class="flex items-start"><i class="fas fa-ticket-alt text-green-400 mt-1 mr-4"></i><span><b class="text-white">137 event responses</b> at only $0.58 each.</span></li>
+                            <li class="flex items-start"><i class="fas fa-eye text-green-400 mt-1 mr-4"></i><span><b class="text-white">10,279 views</b> reaching over 6,296 people.</span></li>
+                            <li class="flex items-start"><i class="fas fa-thumbs-up text-green-400 mt-1 mr-4"></i><span><b class="text-white">193 post engagements</b> and 145 link clicks.</span></li>
+                            <li class="flex items-start"><i class="fas fa-bullhorn text-green-400 mt-1 mr-4"></i><span>Achieved outstanding community engagement and reach.</span></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Website Projects Section -->
+        <section id="website-projects" class="section-bg py-20 overflow-hidden">
+            <div class="container mx-auto px-6">
+                <div class="text-center mb-16 scroll-reveal">
+                    <h2 class="text-3xl md:text-4xl font-bold text-white">Website & Branding Projects</h2>
+                    <p class="text-gray-400 mt-2">Crafting digital identities for growing businesses.</p>
+                </div>
+                
+                <!-- LuxeCraft Project -->
+                <div class="p-8 rounded-2xl border border-gray-800 bg-gray-900/30 mb-16 card-glow scroll-reveal">
+                    <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+                        <div class="order-2 lg:order-1">
+                             <h3 class="text-3xl font-bold text-white mb-4">LuxeCraft Construction</h3>
+                             <p class="text-gray-400 mb-6 leading-relaxed">We partnered with LuxeCraft to build a digital presence that reflects their commitment to skilled craftsmanship and top-tier framing expertise. The goal was to create a professional, trustworthy brand identity that appeals to both builders and homeowners, establishing them as a premier framing crew in the region.</p>
+                             <div class="space-y-4">
+                                <h4 class="text-xl font-semibold text-white">Project Highlights</h4>
+                                <ul class="list-none space-y-3 text-gray-400">
+                                    <li class="flex items-center"><i class="fas fa-check-circle text-green-400 mr-3"></i>Developed a strong, dependable brand identity.</li>
+                                    <li class="flex items-center"><i class="fas fa-check-circle text-green-400 mr-3"></i>Designed a modern, responsive website to showcase their portfolio.</li>
+                                    <li class="flex items-center"><i class="fas fa-check-circle text-green-400 mr-3"></i>Focused on clear calls-to-action for quote requests and project starts.</li>
+                                </ul>
+                                <a href="https://luxecraftconstruction.com/" target="_blank" class="hoverable inline-block mt-6 bg-green-500/10 border border-green-500 text-green-400 font-bold py-2 px-6 rounded-lg transition-all hover:bg-green-500/20 button-glow">Visit Website <i class="fas fa-external-link-alt ml-2 text-sm"></i></a>
+                            </div>
+                        </div>
+                        <div class="order-1 lg:order-2 p-4 mockup-bg rounded-lg">
+                             <img src="photos/luxe1.png" alt="LuxeCraft Construction website mockup" class="rounded-md shadow-2xl">
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Southern Pavers Project -->
+                <div class="p-8 rounded-2xl border border-gray-800 bg-gray-900/30 card-glow scroll-reveal">
+                    <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+                        <div class="p-4 mockup-bg rounded-lg">
+                            <img src="photos/sp.png" alt="Southern Pavers website mockup" class="rounded-md shadow-2xl">
+                        </div>
+                         <div>
+                             <h3 class="text-3xl font-bold text-white mb-4">Southern Pavers</h3>
+                             <p class="text-gray-400 mb-6 leading-relaxed">For Southern Pavers, our mission was to transform their digital storefront to match the beauty and function of their outdoor creations. We developed a comprehensive online strategy, including a new website, branding, and AI-powered content, to enhance their curb appeal and connect with homeowners looking for innovative hardscape designs.</p>
+                             <div class="space-y-4">
+                                <h4 class="text-xl font-semibold text-white">Project Highlights</h4>
+                                <ul class="list-none space-y-3 text-gray-400">
+                                    <li class="flex items-center"><i class="fas fa-check-circle text-green-400 mr-3"></i>Crafted a family-focused brand narrative around quality and trust.</li>
+                                    <li class="flex items-center"><i class="fas fa-check-circle text-green-400 mr-3"></i>Launched an SEO-optimized website with an AI-powered blog.</li>
+                                    <li class="flex items-center"><i class="fas fa-check-circle text-green-400 mr-3"></i>Introduced an "AI Outdoor Oasis Hub" to help users plan projects.</li>
+                                </ul>
+                                <a href="https://southernpaversscpro.com/" target="_blank" class="hoverable inline-block mt-6 bg-green-500/10 border border-green-500 text-green-400 font-bold py-2 px-6 rounded-lg transition-all hover:bg-green-500/20 button-glow">Visit Website <i class="fas fa-external-link-alt ml-2 text-sm"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Proposal Section -->
+        <section id="proposal-example" class="py-20 overflow-hidden">
+            <div class="container mx-auto px-6">
+                <div class="text-center mb-16 scroll-reveal">
+                    <h2 class="text-3xl md:text-4xl font-bold text-white">Client Proposals & Strategy</h2>
+                    <p class="text-gray-400 mt-2">Presenting clear, data-driven strategies for client success.</p>
+                </div>
+
+                <div class="p-8 rounded-2xl border border-gray-800 bg-gray-900/30 card-glow scroll-reveal">
+                    <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+                        <div class="p-4 mockup-bg rounded-lg">
+                            <img src="photos/jpaxproposal.png" alt="An attractive proposal for social media management" class="rounded-md shadow-2xl">
+                        </div>
+                         <div>
+                             <h3 class="text-3xl font-bold text-white mb-4">Social Media Management Proposal</h3>
+                             <p class="text-gray-400 mb-6 leading-relaxed">We craft clear, compelling, and visually attractive proposals to outline our data-driven strategies. This example for social media management was designed to not only detail the plan but also to reflect the quality and professionalism we bring to every project.</p>
+                             <div class="space-y-4">
+                                <h4 class="text-xl font-semibold text-white">Key Strategies</h4>
+                                <ul class="list-none space-y-3 text-gray-400">
+                                    <li class="flex items-center"><i class="fas fa-check-circle text-green-400 mr-3"></i>Consistent content strategy with 4-5 posts per week.</li>
+                                    <li class="flex items-center"><i class="fas fa-check-circle text-green-400 mr-3"></i>Engagement-focused content including behind-the-scenes, promotions, and interactive polls.</li>
+                                    <li class="flex items-center"><i class="fas fa-check-circle text-green-400 mr-3"></i>Targeted paid advertising campaigns to boost posts, gain likes, and promote events.</li>
+                                    <li class="flex items-center"><i class="fas fa-check-circle text-green-400 mr-3"></i>Monthly KPI reporting to track growth and optimize performance.</li>
+                                </ul>
+                                <a href="https://www.dropbox.com/scl/fi/gnt0zfqxy9zo4obp2p5ek/Proposal-for-Social-Media-Management-1.pdf?rlkey=y6z3fm5rk9cr16gcu944rcmbz&st=3goisfoa&dl=0" target="_blank" class="hoverable inline-block mt-6 bg-green-500/10 border border-green-500 text-green-400 font-bold py-2 px-6 rounded-lg transition-all hover:bg-green-500/20 button-glow">View Full Proposal <i class="fas fa-external-link-alt ml-2 text-sm"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Video Gallery Section -->
+        <section id="video-gallery" class="py-20 overflow-hidden section-bg">
+            <div class="container mx-auto px-6">
+                <div class="text-center mb-16 scroll-reveal">
+                    <h2 class="text-3xl md:text-4xl font-bold text-white">Video Portfolio</h2>
+                    <p class="text-gray-400 mt-2">Capturing stories through cinematic visuals.</p>
+                </div>
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 lg:gap-12">
+                     <!-- Video Item 1 -->
+                    <div class="scroll-reveal" style="transition-delay: 100ms;">
+                        <a href="https://www.youtube.com/shorts/qw2_grDRHuI" target="_blank" class="block hoverable">
+                            <div class="video-container relative aspect-video rounded-lg overflow-hidden border-2 border-gray-700 shadow-lg group">
+                                <img src="https://img.youtube.com/vi/qw2_grDRHuI/hqdefault.jpg" onerror="this.onerror=null;this.src='https://placehold.co/1920x1080/0c0c0c/1a1a1a';" alt="Basketball Edit: Ball is ART" class="w-full h-full object-cover">
+                                <div class="video-overlay absolute inset-0 bg-black/50 flex items-center justify-center">
+                                    <i class="fas fa-play text-white text-6xl text-glow play-icon"></i>
+                                </div>
+                            </div>
+                        </a>
+                        <h4 class="text-xl font-bold text-white mt-4">Basketball Edit: Ball is ART</h4>
+                        <p class="text-gray-400">A dynamic basketball highlights reel by JPax.</p>
+                    </div>
+                    <!-- Video Item 2 -->
+                    <div class="scroll-reveal" style="transition-delay: 200ms;">
+                        <a href="https://www.youtube.com/watch?v=ps1YPWkS5OE" target="_blank" class="block hoverable">
+                            <div class="video-container relative aspect-video rounded-lg overflow-hidden border-2 border-gray-700 shadow-lg group">
+                                <img src="https://img.youtube.com/vi/ps1YPWkS5OE/hqdefault.jpg" onerror="this.onerror=null;this.src='https://placehold.co/1920x1080/0c0c0c/1a1a1a';" alt="Aerial View of a Retaining Wall Construction Process" class="w-full h-full object-cover">
+                                <div class="video-overlay absolute inset-0 bg-black/50 flex items-center justify-center">
+                                    <i class="fas fa-play text-white text-6xl text-glow play-icon"></i>
+                                </div>
+                            </div>
+                        </a>
+                        <h4 class="text-xl font-bold text-white mt-4">Aerial View of Retaining Wall</h4>
+                        <p class="text-gray-400">Drone footage of a retaining wall construction process by Southern Pavers.</p>
+                    </div>
+                    <!-- Video Item 3 -->
+                    <div class="scroll-reveal" style="transition-delay: 300ms;">
+                        <a href="https://www.youtube.com/watch?v=epmf_ch7CT0" target="_blank" class="block hoverable">
+                            <div class="video-container relative aspect-video rounded-lg overflow-hidden border-2 border-gray-700 shadow-lg group">
+                                <img src="https://img.youtube.com/vi/epmf_ch7CT0/hqdefault.jpg" onerror="this.onerror=null;this.src='https://placehold.co/1920x1080/0c0c0c/1a1a1a';" alt="BACKYARD TRANSFORMATION: Retaining Wall Fence" class="w-full h-full object-cover">
+                                <div class="video-overlay absolute inset-0 bg-black/50 flex items-center justify-center">
+                                    <i class="fas fa-play text-white text-6xl text-glow play-icon"></i>
+                                </div>
+                            </div>
+                        </a>
+                        <h4 class="text-xl font-bold text-white mt-4">Backyard Transformation</h4>
+                        <p class="text-gray-400">Before and after of a backyard transformation with a retaining wall by Southern Pavers.</p>
+                    </div>
+                    <!-- Video Item 4 -->
+                    <div class="scroll-reveal" style="transition-delay: 100ms;">
+                        <a href="https://www.facebook.com/share/v/174cwXBuSS/" target="_blank" class="block hoverable">
+                            <div class="video-container relative aspect-video rounded-lg overflow-hidden border-2 border-gray-700 shadow-lg group">
+                                <img src="https://placehold.co/1920x1080/0c0c0c/1a1a1a" alt="Facebook Video 1 Thumbnail" class="w-full h-full object-cover">
+                                <div class="video-overlay absolute inset-0 bg-black/50 flex items-center justify-center">
+                                    <i class="fas fa-play text-white text-6xl text-glow play-icon"></i>
+                                </div>
+                            </div>
+                        </a>
+                        <h4 class="text-xl font-bold text-white mt-4">Facebook Video Example 1</h4>
+                        <p class="text-gray-400">Client work shared on Facebook.</p>
+                    </div>
+                    <!-- Video Item 5 -->
+                    <div class="scroll-reveal" style="transition-delay: 200ms;">
+                        <a href="https://www.facebook.com/share/v/1VBMywkx3z/" target="_blank" class="block hoverable">
+                            <div class="video-container relative aspect-video rounded-lg overflow-hidden border-2 border-gray-700 shadow-lg group">
+                                <img src="https://placehold.co/1920x1080/0c0c0c/1a1a1a" alt="Facebook Video 2 Thumbnail" class="w-full h-full object-cover">
+                                <div class="video-overlay absolute inset-0 bg-black/50 flex items-center justify-center">
+                                    <i class="fas fa-play text-white text-6xl text-glow play-icon"></i>
+                                </div>
+                            </div>
+                        </a>
+                        <h4 class="text-xl font-bold text-white mt-4">Facebook Video Example 2</h4>
+                        <p class="text-gray-400">Another client video from Facebook.</p>
+                    </div>
+                    <!-- Video Item 6 -->
+                    <div class="scroll-reveal" style="transition-delay: 300ms;">
+                        <a href="https://www.youtube.com/shorts/1YDq4C7sizg" target="_blank" class="block hoverable">
+                            <div class="video-container relative aspect-video rounded-lg overflow-hidden border-2 border-gray-700 shadow-lg group">
+                                <img src="https://img.youtube.com/vi/1YDq4C7sizg/hqdefault.jpg" onerror="this.onerror=null;this.src='https://placehold.co/1920x1080/0c0c0c/1a1a1a';" alt="A short sports edit" class="w-full h-full object-cover">
+                                <div class="video-overlay absolute inset-0 bg-black/50 flex items-center justify-center">
+                                    <i class="fas fa-play text-white text-6xl text-glow play-icon"></i>
+                                </div>
+                            </div>
+                        </a>
+                        <h4 class="text-xl font-bold text-white mt-4">Short Sports Edit</h4>
+                        <p class="text-gray-400">A quick sports highlight video by JPax.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+         <!-- CTA Section -->
+        <section id="cta" class="py-20">
+            <div class="container mx-auto px-6 text-center scroll-reveal">
+                <h2 class="text-3xl md:text-4xl font-bold text-white mb-4">Ready to Start Your Project?</h2>
+                <p class="text-lg text-gray-400 max-w-2xl mx-auto mb-8">Let's collaborate to bring your vision to life and drive real growth for your business.</p>
+                <a href="index.html#contact" class="hoverable inline-block bg-green-500 hover:bg-green-600 text-white font-bold py-3 px-8 rounded-full text-lg transition-transform hover:scale-105 button-glow">
+                    Get In Touch
+                </a>
+            </div>
+        </section>
+
+    </main>
+    
+    <!-- Footer -->
+    <footer class="bg-black py-6">
+        <div class="container mx-auto px-6 text-center text-gray-500">
+             <div class="social-links mb-4">
+                    <a href="https://www.facebook.com/jpaxmedia/" target="_blank" aria-label="Facebook" class="hoverable inline-block text-gray-400 hover:text-green-400 text-3xl mx-4 transition-all duration-300 footer-icon"><i class="fab fa-facebook"></i></a>
+                    <a href="https://www.instagram.com/jpaxfilmz/" target="_blank" aria-label="Instagram" class="hoverable inline-block text-gray-400 hover:text-green-400 text-3xl mx-4 transition-all duration-300 footer-icon"><i class="fab fa-instagram"></i></a>
+                    <a href="https://www.youtube.com/channel/UCl_NwAHPgf92bST4_AMZxyA" target="_blank" aria-label="YouTube" class="hoverable inline-block text-gray-400 hover:text-green-400 text-3xl mx-4 transition-all duration-300 footer-icon"><i class="fab fa-youtube"></i></a>
+                </div>
+            <p>&copy; 2025 JPax Media. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+
+            // --- Custom Cursor ---
+            const cursorDot = document.querySelector('.cursor-dot');
+            const cursorOutline = document.querySelector('.cursor-outline');
+            window.addEventListener('mousemove', (e) => {
+                const posX = e.clientX;
+                const posY = e.clientY;
+                cursorDot.style.left = `${posX}px`;
+                cursorDot.style.top = `${posY}px`;
+                cursorOutline.style.left = `${posX}px`;
+                cursorOutline.style.top = `${posY}px`;
+            });
+            const hoverables = document.querySelectorAll('.hoverable');
+            hoverables.forEach(el => {
+                el.addEventListener('mouseenter', () => {
+                    cursorOutline.classList.add('cursor-interact');
+                });
+                el.addEventListener('mouseleave', () => {
+                    cursorOutline.classList.remove('cursor-interact');
+                });
+            });
+
+            // --- Mobile Menu ---
+            const mobileMenuButton = document.getElementById('mobile-menu-button');
+            const mobileMenu = document.getElementById('mobile-menu');
+            mobileMenuButton.addEventListener('click', () => { mobileMenu.classList.toggle('hidden'); });
+            const mobileMenuLinks = mobileMenu.querySelectorAll('a');
+            mobileMenuLinks.forEach(link => { link.addEventListener('click', () => { mobileMenu.classList.add('hidden'); }); });
+
+            // --- Interactive Background ---
+            const canvas = document.getElementById('interactive-bg');
+            const heroSection = document.getElementById('portfolio-home');
+            if(canvas && heroSection) {
+                const scene = new THREE.Scene();
+                const camera = new THREE.PerspectiveCamera(75, heroSection.offsetWidth / heroSection.offsetHeight, 0.1, 1000);
+                const renderer = new THREE.WebGLRenderer({ canvas: canvas, alpha: true });
+                renderer.setSize(heroSection.offsetWidth, heroSection.offsetHeight);
+                const particlesCount = 3000;
+                const positions = new Float32Array(particlesCount * 3);
+                for (let i = 0; i < particlesCount * 3; i++) { positions[i] = (Math.random() - 0.5) * 10; }
+                const particlesGeometry = new THREE.BufferGeometry();
+                particlesGeometry.setAttribute('position', new THREE.BufferAttribute(positions, 3));
+                const particlesMaterial = new THREE.PointsMaterial({ color: 0x4ade80, size: 0.025, transparent: true, blending: THREE.AdditiveBlending });
+                const particleSystem = new THREE.Points(particlesGeometry, particlesMaterial);
+                scene.add(particleSystem);
+                camera.position.z = 5;
+                let mouseX = 0, mouseY = 0;
+                document.addEventListener('mousemove', (event) => {
+                    mouseX = (event.clientX / window.innerWidth) * 2 - 1;
+                    mouseY = -(event.clientY / window.innerHeight) * 2 + 1;
+                });
+                const clock = new THREE.Clock();
+                function animate() {
+                    requestAnimationFrame(animate);
+                    particleSystem.rotation.y = clock.getElapsedTime() * 0.1;
+                    camera.position.x += (mouseX * 0.5 - camera.position.x) * 0.05;
+                    camera.position.y += (mouseY * 0.5 - camera.position.y) * 0.05;
+                    camera.lookAt(scene.position);
+                    renderer.render(scene, camera);
+                }
+                animate();
+                window.addEventListener('resize', () => {
+                    camera.aspect = heroSection.offsetWidth / heroSection.offsetHeight;
+                    camera.updateProjectionMatrix();
+                    renderer.setSize(heroSection.offsetWidth, heroSection.offsetHeight);
+                });
+            }
+
+            // --- Scroll Animations ---
+            const scrollElements = document.querySelectorAll('.scroll-reveal');
+            const scrollObserver = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('is-visible');
+                        scrollObserver.unobserve(entry.target);
+                    }
+                });
+            }, { threshold: 0.1 });
+            scrollElements.forEach(el => { scrollObserver.observe(el); });
+
+            // --- Count-Up Animation ---
+            const countUpObserver = new IntersectionObserver((entries, observer) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        const counters = entry.target.querySelectorAll('[data-count]');
+                        counters.forEach(counter => {
+                            const target = +counter.getAttribute('data-count');
+                            const suffix = counter.innerText.slice(-1) === '%' ? '%' : '';
+                            counter.innerText = '0' + suffix;
+                            let current = 0;
+                            const increment = target / 100;
+                            const updateCount = () => {
+                                current += increment;
+                                if (current < target) {
+                                    counter.innerText = Math.ceil(current) + suffix;
+                                    requestAnimationFrame(updateCount);
+                                } else {
+                                    counter.innerText = target.toLocaleString() + suffix;
+                                }
+                            };
+                            requestAnimationFrame(updateCount);
+                        });
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, { threshold: 0.5 });
+            const statsSections = document.querySelectorAll('.stat-card');
+            statsSections.forEach(el => countUpObserver.observe(el.closest('.grid')));
+
+        });
+    </script>
+</body>
+</html>
+
