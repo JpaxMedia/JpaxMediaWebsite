@@ -1,0 +1,646 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JPax Media | AI-Powered Digital Agency</title>
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="/photos/jpaxmediawebicon.png">
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;800&display=swap" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Three.js for interactive background -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js" defer></script>
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #0c0c0c;
+        }
+        /* Custom cursor styles for devices that support hover */
+        @media (hover: hover) and (pointer: fine) {
+            body {
+                cursor: none; /* Hide the default cursor */
+            }
+            .cursor-dot, .cursor-outline {
+                pointer-events: none;
+                position: fixed;
+                top: 50%;
+                left: 50%;
+                border-radius: 50%;
+                opacity: 0;
+                transform: translate(-50%, -50%);
+                transition: opacity 0.3s ease-in-out, transform 0.1s linear;
+                z-index: 9999;
+            }
+            .cursor-dot {
+                width: 8px;
+                height: 8px;
+                background-color: #4ade80;
+            }
+            .cursor-outline {
+                width: 40px;
+                height: 40px;
+                border: 2px solid #4ade80;
+                transition: width 0.2s ease, height 0.2s ease, border 0.2s ease, transform 0.1s linear;
+            }
+            body:hover .cursor-dot, body:hover .cursor-outline {
+                opacity: 1;
+            }
+            .cursor-interact {
+                width: 60px;
+                height: 60px;
+                border: 3px solid #4ade80;
+            }
+        }
+        .hero-bg {
+             position: relative; /* Needed for the canvas positioning */
+             background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('/photos/spacebackground.jpg');
+             background-size: cover;
+             background-position: center;
+             background-attachment: fixed;
+             overflow: hidden; /* Hide canvas overflow */
+        }
+        #interactive-bg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 1;
+        }
+        .hero-content {
+            position: relative;
+            z-index: 2; /* Ensure content is above the canvas */
+        }
+        .section-bg {
+            background-color: #111111;
+        }
+        /* Scroll Reveal Animations */
+        .scroll-reveal {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.8s cubic-bezier(0.6, 0.2, 0.1, 1), transform 0.8s cubic-bezier(0.6, 0.2, 0.1, 1);
+        }
+        .scroll-reveal.is-visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        /* Neon Effects */
+        .text-glow {
+            text-shadow: 0 0 8px rgba(74, 222, 128, 0.8);
+        }
+        .card-glow {
+            transition: all 0.3s ease-in-out;
+        }
+        .card-glow:hover {
+            border-color: #4ade80;
+            box-shadow: 0 0 15px rgba(74, 222, 128, 0.5);
+            transform: translateY(-5px);
+        }
+        .button-glow {
+            transition: box-shadow 0.3s ease-in-out;
+        }
+        .button-glow:hover {
+             box-shadow: 0 0 10px rgba(74, 222, 128, 0.6), 0 0 20px rgba(74, 222, 128, 0.4);
+        }
+        .icon-glow {
+             filter: drop-shadow(0 0 5px rgba(74, 222, 128, 0.7));
+        }
+        .step-glow {
+            box-shadow: 0 0 12px rgba(74, 222, 128, 0.7);
+            transition: all 0.3s ease-in-out;
+        }
+        .process-step {
+            transition: transform 0.3s ease-in-out;
+        }
+        .process-step:hover {
+            transform: scale(1.05);
+        }
+        .process-step:hover .step-glow {
+            box-shadow: 0 0 20px rgba(74, 222, 128, 1);
+            transform: scale(1.1);
+        }
+        .footer-icon:hover, .logo-glow:hover {
+            transform: scale(1.1);
+            filter: drop-shadow(0 0 8px rgba(74, 222, 128, 0.9));
+        }
+        .footer-icon:hover {
+             transform: scale(1.15);
+        }
+        .stat-card {
+            background-color: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            transition: all 0.3s ease;
+        }
+        .stat-card:hover {
+            background-color: rgba(74, 222, 128, 0.1);
+            border-color: rgba(74, 222, 128, 0.5);
+            transform: scale(1.05);
+        }
+        .image-glow {
+             box-shadow: 0 0 20px rgba(74, 222, 128, 0.7);
+        }
+        /* Video Player Styles */
+        .video-overlay {
+            transition: opacity 0.3s ease-in-out;
+        }
+        .video-container:hover .video-overlay {
+            background-color: rgba(0,0,0,0.7);
+        }
+        .video-overlay .play-icon {
+            transition: transform 0.3s ease, filter 0.3s ease;
+        }
+        .video-container:hover .play-icon {
+            transform: scale(1.1);
+            filter: drop-shadow(0 0 15px rgba(74, 222, 128, 1));
+        }
+        /* Growth Animation */
+        @keyframes pulse-glow {
+            0%, 100% {
+                text-shadow: 0 0 8px rgba(74, 222, 128, 0.7);
+            }
+            50% {
+                text-shadow: 0 0 20px rgba(74, 222, 128, 1), 0 0 30px rgba(74, 222, 128, 0.7);
+            }
+        }
+        .animate-pulse-glow {
+            animation: pulse-glow 3s infinite ease-in-out;
+            transition: transform 0.3s ease;
+            display: inline-block; /* Ensures transform works correctly */
+        }
+        .animate-pulse-glow:hover {
+            transform: scale(1.05);
+        }
+    </style>
+</head>
+<body class="text-gray-200">
+    <!-- Custom Cursor -->
+    <div class="cursor-dot"></div>
+    <div class="cursor-outline"></div>
+
+    <!-- Header & Navigation -->
+    <header class="bg-black/80 backdrop-blur-sm sticky top-0 z-50">
+        <nav class="container mx-auto px-6 py-4 flex justify-between items-center">
+            <a href="#" class="hoverable">
+                <img src="/photos/jpaxlogowhite2.png" alt="JPax Media Logo" class="h-20 transition-all duration-300 logo-glow">
+            </a>
+            <div class="hidden md:flex items-center space-x-8">
+                <a href="#about" class="hoverable hover:text-green-400 transition-colors">About</a>
+                <a href="#services" class="hoverable hover:text-green-400 transition-colors">Services</a>
+                <a href="portfolio.html" class="hoverable hover:text-green-400 transition-colors">Portfolio</a>
+                <a href="https://www.facebook.com/jpaxmedia/" target="_blank" aria-label="Facebook" class="hoverable text-gray-300 hover:text-green-400 text-xl transition-colors"><i class="fab fa-facebook"></i></a>
+                <a href="https://www.instagram.com/jpaxfilmz/" target="_blank" aria-label="Instagram" class="hoverable text-gray-300 hover:text-green-400 text-xl transition-colors"><i class="fab fa-instagram"></i></a>
+                <a href="#contact" class="hoverable bg-green-500 hover:bg-green-600 text-white font-bold py-2 px-4 rounded-lg transition-colors button-glow">Contact</a>
+            </div>
+            <button id="mobile-menu-button" class="md:hidden text-2xl hoverable">
+                <i class="fas fa-bars"></i>
+            </button>
+        </nav>
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="hidden md:hidden bg-black/90">
+            <a href="#about" class="block text-center py-3 hover:bg-green-500/20 transition-colors">About</a>
+            <a href="#services" class="block text-center py-3 hover:bg-green-500/20 transition-colors">Services</a>
+            <a href="portfolio.html" class="block text-center py-3 hover:bg-green-500/20 transition-colors">Portfolio</a>
+            <div class="flex justify-center py-3 space-x-6">
+                 <a href="https://www.facebook.com/jpaxmedia/" target="_blank" aria-label="Facebook" class="text-gray-300 hover:text-green-400 text-2xl transition-colors"><i class="fab fa-facebook"></i></a>
+                <a href="https://www.instagram.com/jpaxfilmz/" target="_blank" aria-label="Instagram" class="text-gray-300 hover:text-green-400 text-2xl transition-colors"><i class="fab fa-instagram"></i></a>
+            </div>
+            <a href="#contact" class="block text-center py-4 bg-green-500 hover:bg-green-600 text-white font-bold transition-colors">Contact</a>
+        </div>
+    </header>
+
+    <main>
+        <!-- Hero Section -->
+        <section id="home" class="hero-bg min-h-[80vh] flex items-center">
+            <canvas id="interactive-bg"></canvas>
+            <div class="hero-content container mx-auto px-6 text-center">
+                <h1 class="text-4xl md:text-6xl font-extrabold text-white leading-tight mb-4 text-glow">AI-Powered Growth for Modern Brands</h1>
+                <p class="text-lg md:text-xl text-gray-300 max-w-3xl mx-auto mb-8">We merge creativity with artificial intelligence to deliver smarter content, targeted campaigns, and streamlined digital solutions that drive results.</p>
+                <a href="#contact" class="hoverable bg-green-500 hover:bg-green-600 text-white font-bold py-3 px-8 rounded-full text-lg transition-transform hover:scale-105 button-glow">Get Started</a>
+            </div>
+        </section>
+
+        <!-- About Section -->
+        <section id="about" class="py-20 overflow-hidden">
+            <div class="container mx-auto px-6">
+                <div class="text-center scroll-reveal">
+                    <h2 class="text-3xl md:text-4xl font-bold text-white mb-4">AI + Creativity = <span class="text-green-400 text-glow animate-pulse-glow">Growth</span></h2>
+                    <div class="max-w-4xl mx-auto bg-gray-800/50 p-8 rounded-xl shadow-lg border border-gray-700 mb-16">
+                        <p class="text-lg text-gray-300">
+                            JPax Media is a creative agency specializing in videography, social media management, Meta ads, and website creation — powered by AI-driven workflows. We help businesses grow faster with smarter content, targeted campaigns, and streamlined digital solutions that save time and drive measurable results.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- About Julian -->
+                <div class="flex flex-col md:flex-row items-center gap-12 max-w-6xl mx-auto scroll-reveal">
+                    <div class="md:w-1/3">
+                        <img src="/photos/jpaxcontactphoto.jpg" alt="Julian Johnson, founder of JPax Media" class="rounded-lg w-full object-cover shadow-lg aspect-square image-glow">
+                    </div>
+                    <div class="md:w-2/3 text-center md:text-left">
+                        <h3 class="text-3xl font-bold text-white mb-4">Meet The Founder</h3>
+                        <p class="text-gray-400 mb-4">
+                            Julian Johnson is the creator behind JPax Media, a creative studio built on the blend of storytelling and AI-powered technology.
+                        </p>
+                        <p class="text-gray-400 mb-4">
+                            Starting out in videography and editing, Julian worked with local businesses, sports programs, and entrepreneurs to capture their stories on camera. As digital marketing evolved, he leaned into AI — using it to streamline workflows, create content faster, and unlock new possibilities for social media, ads, websites, and branding.
+                        </p>
+                        <p class="text-gray-400">
+                            Outside of client projects, Julian is a hands-on creative: testing new gear, building designs, exploring drone videography, and experimenting with AI storytelling. He brings that same curiosity and energy into every project, with one goal — to help people and businesses grow online in smarter, more creative ways.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Services Section -->
+        <section id="services" class="section-bg py-20 overflow-hidden">
+            <div class="container mx-auto px-6">
+                <div class="text-center mb-12 scroll-reveal">
+                    <h2 class="text-3xl md:text-4xl font-bold text-white">Our Services</h2>
+                    <p class="text-gray-400 mt-2">AI-driven solutions designed for maximum impact.</p>
+                </div>
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+                    <!-- Service Item -->
+                    <div class="bg-gray-800 p-8 rounded-lg border border-gray-700 text-center flex flex-col card-glow hoverable scroll-reveal" style="transition-delay: 100ms;">
+                        <div class="text-green-400 text-4xl mb-4 icon-glow"><i class="fas fa-video"></i></div>
+                        <h3 class="text-2xl font-bold text-white mb-3">Videography</h3>
+                        <p class="text-gray-400">High-quality video production for events, real estate, and promotional content, enhanced with AI-assisted editing.</p>
+                    </div>
+                     <!-- Service Item -->
+                    <div class="bg-gray-800 p-8 rounded-lg border border-gray-700 text-center flex flex-col card-glow hoverable scroll-reveal" style="transition-delay: 200ms;">
+                        <div class="text-green-400 text-4xl mb-4 icon-glow"><i class="fas fa-share-alt"></i></div>
+                        <h3 class="text-2xl font-bold text-white mb-3">Social Media Management</h3>
+                        <p class="text-gray-400">We plan, create, and schedule content through AI-enhanced workflows — keeping your brand consistent and engaging.</p>
+                    </div>
+                    <!-- Service Item -->
+                    <div class="bg-gray-800 p-8 rounded-lg border border-gray-700 text-center flex flex-col card-glow hoverable scroll-reveal" style="transition-delay: 300ms;">
+                        <div class="text-green-400 text-4xl mb-4 icon-glow"><i class="fas fa-bullseye"></i></div>
+                        <h3 class="text-2xl font-bold text-white mb-3">AI-Driven Meta Ads</h3>
+                        <p class="text-gray-400">We design and manage highly targeted ad campaigns that drive real results, using AI to test creatives and optimize for growth.</p>
+                    </div>
+                    <!-- Service Item -->
+                    <div class="bg-gray-800 p-8 rounded-lg border border-gray-700 text-center flex flex-col card-glow hoverable scroll-reveal" style="transition-delay: 400ms;">
+                        <div class="text-green-400 text-4xl mb-4 icon-glow"><i class="fas fa-laptop-code"></i></div>
+                        <h3 class="text-2xl font-bold text-white mb-3">Website Design, SEO & Blogs</h3>
+                        <p class="text-gray-400">We build modern sites and use AI-powered SEO and blog creation to help you rank higher and attract traffic.</p>
+                    </div>
+                    <!-- Service Item -->
+                    <div class="bg-gray-800 p-8 rounded-lg border border-gray-700 text-center flex flex-col card-glow hoverable scroll-reveal" style="transition-delay: 100ms;">
+                        <div class="text-green-400 text-4xl mb-4 icon-glow"><i class="fas fa-robot"></i></div>
+                        <h3 class="text-2xl font-bold text-white mb-3">AI Creative Solutions</h3>
+                        <p class="text-gray-400">From AI-assisted video editing and branding to generative design and chatbots, we deliver unique, future-ready creative.</p>
+                    </div>
+                    <!-- Service Item -->
+                    <div class="bg-gray-800 p-8 rounded-lg border border-gray-700 text-center flex flex-col card-glow hoverable scroll-reveal" style="transition-delay: 200ms;">
+                        <div class="text-green-400 text-4xl mb-4 icon-glow"><i class="fas fa-file-signature"></i></div>
+                        <h3 class="text-2xl font-bold text-white mb-3">Proposal Development</h3>
+                        <p class="text-gray-400">Our AI workflows produce persuasive, branded proposals with tailored copy and polished designs to win clients.</p>
+                    </div>
+                    <!-- Service Item -->
+                    <div class="bg-gray-800 p-8 rounded-lg border border-gray-700 text-center flex flex-col card-glow hoverable scroll-reveal" style="transition-delay: 300ms;">
+                        <div class="text-green-400 text-4xl mb-4 icon-glow"><i class="fas fa-file-powerpoint"></i></div>
+                        <h3 class="text-2xl font-bold text-white mb-3">Presentations & Decks</h3>
+                        <p class="text-gray-400">We transform your ideas into stunning, professional presentations and pitch decks using AI-powered tools.</p>
+                    </div>
+                    <!-- Service Item -->
+                    <div class="bg-gray-800 p-8 rounded-lg border border-gray-700 text-center flex flex-col card-glow hoverable scroll-reveal" style="transition-delay: 400ms;">
+                        <div class="text-green-400 text-4xl mb-4 icon-glow"><i class="fas fa-chart-line"></i></div>
+                        <h3 class="text-2xl font-bold text-white mb-3">AI Strategy & Analytics</h3>
+                        <p class="text-gray-400">Our AI-driven analytics track performance, highlight what works, and guide strategy for confident business growth.</p>
+                    </div>
+                </div>
+
+                <!-- AI Efficiency Section -->
+                <div class="mt-16 text-center bg-gray-900/50 rounded-2xl p-8 md:p-12 border border-gray-700 shadow-2xl scroll-reveal">
+                    <h3 class="text-2xl md:text-3xl font-bold text-white mb-4"><i class="fas fa-bolt text-green-400 mr-2"></i>The AI Speed Advantage</h3>
+                    <p class="text-lg text-gray-300 max-w-3xl mx-auto">
+                        Our AI-powered workflow is our secret weapon. By automating complex tasks and supercharging our creative process, we deliver exceptional results in a fraction of the time it takes traditional agencies. Get your project to market faster and see a quicker return on your investment.
+                    </p>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- Portfolio Section -->
+        <section id="portfolio" class="py-20 overflow-hidden">
+            <div class="container mx-auto px-6">
+                <div class="text-center mb-16 scroll-reveal">
+                    <h2 class="text-3xl md:text-4xl font-bold text-white">Our Work & Impact</h2>
+                    <p class="text-gray-400 mt-2">Proven results from our AI-powered campaigns.</p>
+                </div>
+                
+                <!-- Featured Result -->
+                <div class="bg-gray-900/50 rounded-2xl p-8 md:p-12 border border-gray-700 mb-16 shadow-2xl scroll-reveal">
+                    <h3 class="text-2xl md:text-3xl font-bold text-center text-white mb-2">30-Day Impact Report</h3>
+                    <p class="text-gray-400 text-center max-w-3xl mx-auto mb-10">Transforming digital presence with AI-powered marketing campaigns that deliver measurable results.</p>
+                    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 text-center">
+                        <!-- Stat 1 -->
+                        <div class="p-6 rounded-lg stat-card hoverable">
+                            <p class="text-4xl md:text-5xl font-extrabold text-green-400 text-glow" data-count="925">0%</p>
+                            <p class="text-lg font-semibold text-white mt-2">Website Growth</p>
+                            <p class="text-gray-400 text-sm">~200 to 2,051 monthly visitors</p>
+                        </div>
+                        <!-- Stat 2 -->
+                        <div class="p-6 rounded-lg stat-card hoverable">
+                            <p class="text-4xl md:text-5xl font-extrabold text-green-400 text-glow" data-count="3694">0</p>
+                            <p class="text-lg font-semibold text-white mt-2">Total Pageviews</p>
+                            <p class="text-gray-400 text-sm">4 GB bandwidth usage</p>
+                        </div>
+                        <!-- Stat 3 -->
+                        <div class="p-6 rounded-lg stat-card hoverable">
+                            <p class="text-4xl md:text-5xl font-extrabold text-green-400 text-glow" data-count="42">0%</p>
+                            <p class="text-lg font-semibold text-white mt-2">Conversion Rate</p>
+                            <p class="text-gray-400 text-sm">10 bookings from 24 conversations</p>
+                        </div>
+                        <!-- Stat 4 -->
+                        <div class="p-6 rounded-lg stat-card hoverable">
+                            <p class="text-4xl md:text-5xl font-extrabold text-green-400 text-glow" data-count="7100">0%</p>
+                            <p class="text-lg font-semibold text-white mt-2">ROI Achievement</p>
+                            <p class="text-gray-400 text-sm">$1 in ad spend generated ~$72</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Video Showcase -->
+                <div class="text-center mb-10 scroll-reveal">
+                    <h3 class="text-2xl md:text-3xl font-bold text-white mb-2">
+                        <i class="fas fa-video text-green-400 mr-2"></i>Video Highlights
+                    </h3>
+                </div>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-12">
+                    <div class="scroll-reveal" style="transition-delay: 100ms;">
+                        <a href="https://www.youtube.com/shorts/qw2_grDRHuI" target="_blank" class="block hoverable">
+                            <div class="video-container relative aspect-video rounded-lg overflow-hidden border-2 border-gray-700 shadow-lg group">
+                                <img src="https://img.youtube.com/vi/qw2_grDRHuI/hqdefault.jpg" onerror="this.onerror=null;this.src='https://placehold.co/1920x1080/0c0c0c/1a1a1a';" alt="Basketball Edit: Ball is ART" class="w-full h-full object-cover">
+                                <div class="video-overlay absolute inset-0 bg-black/50 flex items-center justify-center">
+                                    <i class="fas fa-play text-white text-6xl text-glow play-icon"></i>
+                                </div>
+                            </div>
+                        </a>
+                        <h4 class="text-xl font-bold text-white mt-4">Basketball Edit: Ball is ART</h4>
+                        <p class="text-gray-400">A dynamic basketball highlights reel by JPax.</p>
+                    </div>
+                     <div class="scroll-reveal" style="transition-delay: 200ms;">
+                        <a href="https://www.youtube.com/watch?v=ps1YPWkS5OE" target="_blank" class="block hoverable">
+                            <div class="video-container relative aspect-video rounded-lg overflow-hidden border-2 border-gray-700 shadow-lg group">
+                                <img src="https://img.youtube.com/vi/ps1YPWkS5OE/hqdefault.jpg" onerror="this.onerror=null;this.src='https://placehold.co/1920x1080/0c0c0c/1a1a1a';" alt="Aerial View of a Retaining Wall Construction Process" class="w-full h-full object-cover">
+                                <div class="video-overlay absolute inset-0 bg-black/50 flex items-center justify-center">
+                                    <i class="fas fa-play text-white text-6xl text-glow play-icon"></i>
+                                </div>
+                            </div>
+                        </a>
+                        <h4 class="text-xl font-bold text-white mt-4">Aerial View of Retaining Wall</h4>
+                        <p class="text-gray-400">Drone footage of a retaining wall construction process by Southern Pavers.</p>
+                    </div>
+                </div>
+
+                <!-- View Full Portfolio Button -->
+                <div class="text-center mt-16 scroll-reveal">
+                    <a href="portfolio.html" class="hoverable inline-block bg-green-500 hover:bg-green-600 text-white font-bold py-3 px-8 rounded-full text-lg transition-transform hover:scale-105 button-glow">
+                        View Full Portfolio
+                    </a>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- Our Process Section -->
+        <section id="process" class="section-bg py-20 overflow-hidden">
+            <div class="container mx-auto px-6">
+                 <div class="text-center mb-12 scroll-reveal">
+                    <h2 class="text-3xl md:text-4xl font-bold text-white">Our AI-Powered Process</h2>
+                    <p class="text-gray-400 mt-2">A streamlined workflow for guaranteed results.</p>
+                </div>
+                <div class="relative">
+                    <!-- Connecting line -->
+                    <div class="hidden md:block absolute top-1/2 left-0 w-full h-0.5 bg-gray-700" style="transform: translateY(-50%);"></div>
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-12 relative">
+                        <!-- Step 1 -->
+                        <div class="text-center z-10 process-step hoverable scroll-reveal" style="transition-delay: 100ms;">
+                            <div class="bg-green-500 text-white w-16 h-16 rounded-full flex items-center justify-center text-2xl font-bold mx-auto mb-4 border-4 border-gray-800 step-glow">1</div>
+                            <h3 class="text-xl font-bold text-white mb-2">Discover & Strategize</h3>
+                            <p class="text-gray-400">We start by understanding your goals, then use AI tools to analyze your market and craft a winning strategy.</p>
+                        </div>
+                         <!-- Step 2 -->
+                        <div class="text-center z-10 process-step hoverable scroll-reveal" style="transition-delay: 200ms;">
+                            <div class="bg-green-500 text-white w-16 h-16 rounded-full flex items-center justify-center text-2xl font-bold mx-auto mb-4 border-4 border-gray-800 step-glow">2</div>
+                            <h3 class="text-xl font-bold text-white mb-2">AI-Powered Execution</h3>
+                            <p class="text-gray-400">Our team uses advanced AI workflows to create content, launch campaigns, and build your digital assets efficiently.</p>
+                        </div>
+                         <!-- Step 3 -->
+                        <div class="text-center z-10 process-step hoverable scroll-reveal" style="transition-delay: 300ms;">
+                            <div class="bg-green-500 text-white w-16 h-16 rounded-full flex items-center justify-center text-2xl font-bold mx-auto mb-4 border-4 border-gray-800 step-glow">3</div>
+                            <h3 class="text-xl font-bold text-white mb-2">Analyze & Scale</h3>
+                            <p class="text-gray-400">We continuously monitor performance with AI-driven analytics, providing insights to optimize and scale your growth.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact Section -->
+        <section id="contact" class="py-20 overflow-hidden">
+            <div class="container mx-auto px-6 text-center">
+                <div class="scroll-reveal">
+                    <h2 class="text-3xl md:text-4xl font-bold text-white">Let's Build Together</h2>
+                    <p class="text-gray-400 mt-2 mb-8 max-w-2xl mx-auto">Ready to accelerate your growth? Fill out the form below or email us at <a href="mailto:jpaxfilmz@gmail.com" class="hoverable text-green-400 hover:underline">jpaxfilmz@gmail.com</a>.</p>
+                </div>
+                
+                <!-- Netlify Form -->
+                <form name="contact" method="POST" data-netlify="true" class="max-w-xl mx-auto text-left scroll-reveal">
+                    <input type="hidden" name="form-name" value="contact" />
+                    <div class="mb-4">
+                        <label for="name" class="block text-gray-400 mb-2">Your Name</label>
+                        <input type="text" id="name" name="name" required class="hoverable w-full bg-gray-800 border border-gray-700 rounded-lg py-3 px-4 text-white focus:outline-none focus:border-green-500 focus:ring-1 focus:ring-green-500 transition-colors">
+                    </div>
+                    <div class="mb-4">
+                        <label for="email" class="block text-gray-400 mb-2">Your Email</label>
+                        <input type="email" id="email" name="email" required class="hoverable w-full bg-gray-800 border border-gray-700 rounded-lg py-3 px-4 text-white focus:outline-none focus:border-green-500 focus:ring-1 focus:ring-green-500 transition-colors">
+                    </div>
+                    <div class="mb-6">
+                        <label for="message" class="block text-gray-400 mb-2">Message</label>
+                        <textarea id="message" name="message" rows="5" required class="hoverable w-full bg-gray-800 border border-gray-700 rounded-lg py-3 px-4 text-white focus:outline-none focus:border-green-500 focus:ring-1 focus:ring-green-500 transition-colors"></textarea>
+                    </div>
+                    <div class="text-center">
+                        <button type="submit" class="hoverable bg-green-500 hover:bg-green-600 text-white font-bold py-3 px-8 rounded-full text-lg transition-transform hover:scale-105 button-glow">Send Message</button>
+                    </div>
+                </form>
+
+            </div>
+        </section>
+
+    </main>
+    
+    <!-- Footer -->
+    <footer class="bg-black py-6">
+        <div class="container mx-auto px-6 text-center text-gray-500">
+            <div class="mb-4">
+                <a href="#" class="hoverable inline-block">
+                    <img src="/photos/jpaxlogowhite2.png" alt="JPax Media Logo" class="h-28 transition-all duration-300 logo-glow">
+                </a>
+            </div>
+             <div class="social-links mb-4">
+                    <a href="https://www.facebook.com/jpaxmedia/" target="_blank" aria-label="Facebook" class="hoverable inline-block text-gray-400 hover:text-green-400 text-3xl mx-4 transition-all duration-300 footer-icon">
+                        <i class="fab fa-facebook"></i>
+                    </a>
+                    <a href="https://www.instagram.com/jpaxfilmz/" target="_blank" aria-label="Instagram" class="hoverable inline-block text-gray-400 hover:text-green-400 text-3xl mx-4 transition-all duration-300 footer-icon">
+                        <i class="fab fa-instagram"></i>
+                    </a>
+                    <a href="https://www.youtube.com/channel/UCl_NwAHPgf92bST4_AMZxyA" target="_blank" aria-label="YouTube" class="hoverable inline-block text-gray-400 hover:text-green-400 text-3xl mx-4 transition-all duration-300 footer-icon">
+                        <i class="fab fa-youtube"></i>
+                    </a>
+                </div>
+            <p>&copy; 2025 JPax Media. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+
+            // --- Custom Cursor ---
+            if (window.matchMedia('(hover: hover) and (pointer: fine)').matches) {
+                const cursorDot = document.querySelector('.cursor-dot');
+                const cursorOutline = document.querySelector('.cursor-outline');
+                window.addEventListener('mousemove', (e) => {
+                    const posX = e.clientX;
+                    const posY = e.clientY;
+                    cursorDot.style.left = `${posX}px`;
+                    cursorDot.style.top = `${posY}px`;
+                    cursorOutline.style.left = `${posX}px`;
+                    cursorOutline.style.top = `${posY}px`;
+                });
+                const hoverables = document.querySelectorAll('.hoverable');
+                hoverables.forEach(el => {
+                    el.addEventListener('mouseenter', () => {
+                        cursorOutline.classList.add('cursor-interact');
+                    });
+                    el.addEventListener('mouseleave', () => {
+                        cursorOutline.classList.remove('cursor-interact');
+                    });
+                });
+            }
+
+
+            // --- Mobile Menu ---
+            const mobileMenuButton = document.getElementById('mobile-menu-button');
+            const mobileMenu = document.getElementById('mobile-menu');
+            mobileMenuButton.addEventListener('click', () => {
+                mobileMenu.classList.toggle('hidden');
+            });
+            const mobileMenuLinks = mobileMenu.querySelectorAll('a');
+            mobileMenuLinks.forEach(link => {
+                link.addEventListener('click', () => {
+                    mobileMenu.classList.add('hidden');
+                });
+            });
+
+            // --- Interactive Background ---
+            const canvas = document.getElementById('interactive-bg');
+            const heroSection = document.getElementById('home');
+            if(canvas && heroSection) {
+                const scene = new THREE.Scene();
+                const camera = new THREE.PerspectiveCamera(75, heroSection.offsetWidth / heroSection.offsetHeight, 0.1, 1000);
+                const renderer = new THREE.WebGLRenderer({ canvas: canvas, alpha: true });
+                renderer.setSize(heroSection.offsetWidth, heroSection.offsetHeight);
+
+                const particlesCount = 5000;
+                const positions = new Float32Array(particlesCount * 3);
+                for (let i = 0; i < particlesCount * 3; i++) {
+                    positions[i] = (Math.random() - 0.5) * 10;
+                }
+                const particlesGeometry = new THREE.BufferGeometry();
+                particlesGeometry.setAttribute('position', new THREE.BufferAttribute(positions, 3));
+                const particlesMaterial = new THREE.PointsMaterial({
+                    color: 0x4ade80,
+                    size: 0.02,
+                    transparent: true,
+                    blending: THREE.AdditiveBlending
+                });
+                const particleSystem = new THREE.Points(particlesGeometry, particlesMaterial);
+                scene.add(particleSystem);
+                camera.position.z = 5;
+
+                let mouseX = 0;
+                let mouseY = 0;
+                document.addEventListener('mousemove', (event) => {
+                    mouseX = (event.clientX / window.innerWidth) * 2 - 1;
+                    mouseY = -(event.clientY / window.innerHeight) * 2 + 1;
+                });
+                
+                const clock = new THREE.Clock();
+                function animate() {
+                    requestAnimationFrame(animate);
+                    const elapsedTime = clock.getElapsedTime();
+                    particleSystem.rotation.y = elapsedTime * 0.1;
+                    camera.position.x += (mouseX * 0.5 - camera.position.x) * 0.05;
+                    camera.position.y += (mouseY * 0.5 - camera.position.y) * 0.05;
+                    camera.lookAt(scene.position);
+                    renderer.render(scene, camera);
+                }
+                animate();
+
+                window.addEventListener('resize', () => {
+                    camera.aspect = heroSection.offsetWidth / heroSection.offsetHeight;
+                    camera.updateProjectionMatrix();
+                    renderer.setSize(heroSection.offsetWidth, heroSection.offsetHeight);
+                });
+            }
+
+            // --- Scroll Animations ---
+            const scrollElements = document.querySelectorAll('.scroll-reveal');
+            const scrollObserver = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('is-visible');
+                        scrollObserver.unobserve(entry.target);
+                    }
+                });
+            }, { threshold: 0.1 });
+            scrollElements.forEach(el => {
+                scrollObserver.observe(el);
+            });
+
+            // --- Count-Up Animation ---
+            const countUpObserver = new IntersectionObserver((entries, observer) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        const counters = entry.target.querySelectorAll('[data-count]');
+                        counters.forEach(counter => {
+                            const target = +counter.getAttribute('data-count');
+                            const suffix = counter.innerText.slice(-1) === '%' ? '%' : '';
+                            counter.innerText = '0' + suffix;
+                            let current = 0;
+                            const increment = target / 100;
+
+                            const updateCount = () => {
+                                current += increment;
+                                if (current < target) {
+                                    counter.innerText = Math.ceil(current) + suffix;
+                                    requestAnimationFrame(updateCount);
+                                } else {
+                                    counter.innerText = target.toLocaleString() + suffix;
+                                }
+                            };
+                            requestAnimationFrame(updateCount);
+                        });
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, { threshold: 0.5 });
+            const statsSection = document.querySelector('.stat-card')?.closest('.grid');
+            if (statsSection) {
+                 countUpObserver.observe(statsSection);
+            }
+        });
+    </script>
+</body>
+</html>
+
+
+
