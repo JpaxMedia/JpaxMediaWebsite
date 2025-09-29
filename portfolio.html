@@ -94,7 +94,10 @@
         .text-glow {
             text-shadow: 0 0 8px rgba(74, 222, 128, 0.8);
         }
+        /* >>> ADDED GLOW/SPOTLIGHT STYLES <<< */
         .card-glow {
+            position: relative; /* REQUIRED for spotlight position */
+            overflow: hidden;   /* REQUIRED to clip the spotlight */
             transition: all 0.3s ease-in-out;
         }
         .card-glow:hover {
@@ -102,6 +105,22 @@
             box-shadow: 0 0 15px rgba(74, 222, 128, 0.5);
             transform: translateY(-5px);
         }
+        /* Spotlight Effect */
+        .spotlight {
+            position: absolute;
+            width: 250px;
+            height: 250px;
+            background: radial-gradient(circle, rgba(74, 222, 128, 0.15), transparent 70%);
+            border-radius: 50%;
+            pointer-events: none;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            transform: translate(-50%, -50%);
+        }
+        .card-glow:hover .spotlight {
+            opacity: 1;
+        }
+        /* >>> END ADDED STYLES <<< */
         .button-glow {
             transition: box-shadow 0.3s ease-in-out;
         }
@@ -126,18 +145,28 @@
             transform: scale(1.05);
         }
         /* Video Player Styles */
-        .video-overlay {
-            transition: opacity 0.3s ease-in-out;
+        /* Custom styles for the responsive iframe container */
+        .video-embed-container {
+            position: relative;
+            width: 100%;
+            padding-top: 56.25%; /* 16:9 Aspect Ratio */
+            border-radius: 0.5rem; /* rounded-lg */
+            overflow: hidden;
+            border: 2px solid #4b5563; /* border-gray-700 */
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05); /* shadow-lg */
+            transition: box-shadow 0.3s ease-in-out;
         }
-        .video-container:hover .video-overlay {
-            background-color: rgba(0,0,0,0.7);
+        .video-embed-container:hover {
+            box-shadow: 0 0 15px rgba(74, 222, 128, 0.7);
         }
-        .video-overlay .play-icon {
-            transition: transform 0.3s ease, filter 0.3s ease;
-        }
-        .video-container:hover .play-icon {
-            transform: scale(1.1);
-            filter: drop-shadow(0 0 15px rgba(74, 222, 128, 1));
+        .video-embed-container iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            /* === FIX: Prevents iframe from intercepting mouse events and breaking custom cursor === */
+            pointer-events: none; 
         }
         .mockup-bg {
             background: linear-gradient(145deg, rgba(255,255,255,0.1), rgba(255,255,255,0));
@@ -247,6 +276,7 @@
                 
                 <!-- LuxeCraft Project -->
                 <div class="p-8 rounded-2xl border border-gray-800 bg-gray-900/30 mb-16 card-glow scroll-reveal">
+                    <div class="spotlight"></div><!-- SPOTLIGHT ADDED -->
                     <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
                         <div class="order-2 lg:order-1">
                              <h3 class="text-3xl font-bold text-white mb-4">LuxeCraft Construction</h3>
@@ -255,7 +285,7 @@
                                 <h4 class="text-xl font-semibold text-white">Project Highlights</h4>
                                 <ul class="list-none space-y-3 text-gray-400">
                                     <li class="flex items-center"><i class="fas fa-check-circle text-green-400 mr-3"></i>Developed a strong, dependable brand identity.</li>
-                                    <li class="flex items-center"><i class="fas fa-check-circle text-green-400 mr-3"></i>Designed a modern, responsive website to showcase their portfolio.</li>
+                                    <li class="flex items-center"><i class="fas fa-check-circle text-green-400 mr-3"></i>Design<!-- Replaced original text with a brief description and placed the image tag. -->ed a modern, responsive website to showcase their portfolio.</li>
                                     <li class="flex items-center"><i class="fas fa-check-circle text-green-400 mr-3"></i>Focused on clear calls-to-action for quote requests and project starts.</li>
                                 </ul>
                                 <a href="https://luxecraftconstruction.com/" target="_blank" class="hoverable inline-block mt-6 bg-green-500/10 border border-green-500 text-green-400 font-bold py-2 px-6 rounded-lg transition-all hover:bg-green-500/20 button-glow">Visit Website <i class="fas fa-external-link-alt ml-2 text-sm"></i></a>
@@ -269,6 +299,7 @@
 
                 <!-- Southern Pavers Project -->
                 <div class="p-8 rounded-2xl border border-gray-800 bg-gray-900/30 card-glow scroll-reveal">
+                    <div class="spotlight"></div><!-- SPOTLIGHT ADDED -->
                     <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
                         <div class="p-4 mockup-bg rounded-lg">
                             <img src="/photos/sp.png" alt="Southern Pavers website mockup" class="rounded-md shadow-2xl">
@@ -290,9 +321,52 @@
                 </div>
             </div>
         </section>
+        
+        <!-- NEW AI-Powered Creative Branding Section -->
+        <section id="ai-branding" class="py-20 overflow-hidden">
+            <div class="container mx-auto px-6">
+                <div class="text-center mb-16 scroll-reveal">
+                    <h2 class="text-3xl md:text-4xl font-bold text-white">AI-Powered Creative Branding</h2>
+                    <p class="text-gray-400 mt-2">Turning client logos into professional, high-impact merchandise mockups in minutes.</p>
+                </div>
+                
+                <div class="bg-gray-900/50 rounded-2xl p-6 md:p-10 border border-gray-700 shadow-2xl scroll-reveal">
+                     <div class="flex flex-col lg:flex-row items-center gap-8 mb-10">
+                         <img src="/photos/splogo.png-0bab1883-a62f-4382-acc1-b695a2c2990f" alt="Southern Pavers Logo" class="h-16 w-auto lg:h-20 object-contain scroll-reveal">
+                         <p class="text-lg text-gray-300 lg:text-left text-center">
+                            Using **AI creative tools**, we rapidly conceptualize and generate realistic merchandise mockups like these for Southern Pavers. This process validates branding concepts instantly, allowing clients to visualize their logo on promotional gear, apparel, and vehicles before committing to manufacturing.
+                        </p>
+                    </div>
+
+                    <!-- Merchandise Gallery -->
+                    <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-4">
+                        <div class="scroll-reveal" style="transition-delay: 50ms;">
+                            <img src="/photos/spbrandshirt2.jpg-a8415a65-6c73-4f30-9114-3b3489efb1af" alt="Southern Pavers T-shirt Mockup (Front)" class="rounded-lg shadow-lg aspect-square object-cover card-glow hoverable">
+                        </div>
+                        <div class="scroll-reveal" style="transition-delay: 100ms;">
+                            <img src="/photos/spbrandshirt1.jpg-b8c48eab-cbe4-44ff-97dd-5012701bbfa0" alt="Southern Pavers T-shirt Mockup (Back)" class="rounded-lg shadow-lg aspect-square object-cover card-glow hoverable">
+                        </div>
+                        <div class="scroll-reveal" style="transition-delay: 150ms;">
+                            <img src="/photos/spbrandcoathat.jpg-aec9f9b9-71b2-4462-bc2c-dbb7fa9ad502" alt="Southern Pavers Coat and Hat Mockup" class="rounded-lg shadow-lg aspect-square object-cover card-glow hoverable">
+                        </div>
+                        <div class="scroll-reveal" style="transition-delay: 200ms;">
+                            <img src="/photos/spbrandmug.jpg-81adbf29-a4ea-44a3-83ee-eec623146858" alt="Southern Pavers Mug Mockup" class="rounded-lg shadow-lg aspect-square object-cover card-glow hoverable">
+                        </div>
+                        <div class="scroll-reveal" style="transition-delay: 250ms;">
+                            <img src="/photos/spbrandshirtgirl.jpg-b3a27ba8-6781-48a7-a56e-bee892e54218" alt="Southern Pavers Sweatshirt Mockup (Female Model, Front)" class="rounded-lg shadow-lg aspect-square object-cover card-glow hoverable">
+                        </div>
+                        <div class="scroll-reveal" style="transition-delay: 300ms;">
+                            <img src="/photos/spbrandshirtgirl2.jpg-85ae021b-e177-4836-80cd-3b3b32bd495f" alt="Southern Pavers Sweatshirt Mockup (Female Model, Back)" class="rounded-lg shadow-lg aspect-square object-cover card-glow hoverable">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- End NEW AI-Powered Creative Branding Section -->
+
 
         <!-- Proposal Section -->
-        <section id="proposal-example" class="py-20 overflow-hidden">
+        <section id="proposal-example" class="py-20 overflow-hidden section-bg"> <!-- Changed to section-bg to maintain alternating colors -->
             <div class="container mx-auto px-6">
                 <div class="text-center mb-16 scroll-reveal">
                     <h2 class="text-3xl md:text-4xl font-bold text-white">Client Proposals & Strategy</h2>
@@ -300,6 +374,7 @@
                 </div>
 
                 <div class="p-8 rounded-2xl border border-gray-800 bg-gray-900/30 card-glow scroll-reveal">
+                    <div class="spotlight"></div><!-- SPOTLIGHT ADDED -->
                     <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
                         <div class="p-4 mockup-bg rounded-lg">
                             <img src="/photos/jpaxproposal.png" alt="An attractive proposal for social media management" class="rounded-md shadow-2xl">
@@ -323,92 +398,112 @@
             </div>
         </section>
 
-        <!-- Video Gallery Section -->
-        <section id="video-gallery" class="py-20 overflow-hidden section-bg">
+        <!-- Video Gallery Section - UPDATED TO IFRAME EMBEDS -->
+        <section id="video-gallery" class="py-20 overflow-hidden">
             <div class="container mx-auto px-6">
                 <div class="text-center mb-16 scroll-reveal">
                     <h2 class="text-3xl md:text-4xl font-bold text-white">Video Portfolio</h2>
-                    <p class="text-gray-400 mt-2">Capturing stories through cinematic visuals.</p>
+                    <p class="text-gray-400 mt-2">Capturing stories through cinematic visuals and targeted ads (Embedded Player).</p>
                 </div>
-                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 lg:gap-12">
-                     <!-- Video Item 1 -->
+                <!-- Added custom CSS for responsive iframes -->
+                <style>
+                    .video-embed-container {
+                        position: relative;
+                        width: 100%;
+                        padding-top: 56.25%; /* 16:9 Aspect Ratio */
+                        border-radius: 0.5rem; /* rounded-lg */
+                        overflow: hidden;
+                        border: 2px solid #4b5563; /* border-gray-700 */
+                        box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05); /* shadow-lg */
+                        transition: box-shadow 0.3s ease-in-out;
+                    }
+                    .video-embed-container:hover {
+                        box-shadow: 0 0 15px rgba(74, 222, 128, 0.7);
+                    }
+                    .video-embed-container iframe {
+                        position: absolute;
+                        top: 0;
+                        left: 0;
+                        width: 100%;
+                        height: 100%;
+                        pointer-events: none; 
+                    }
+                </style>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-12">
+                     
+                    <!-- Video Item 1: Before & After: Inman Back Yard Oasis (Z-46U0YABR0) -->
                     <div class="scroll-reveal" style="transition-delay: 100ms;">
-                        <a href="https://www.youtube.com/shorts/qw2_grDRHuI" target="_blank" class="block hoverable">
-                            <div class="video-container relative aspect-video rounded-lg overflow-hidden border-2 border-gray-700 shadow-lg group">
-                                <img src="https://img.youtube.com/vi/qw2_grDRHuI/hqdefault.jpg" onerror="this.onerror=null;this.src='https://placehold.co/1920x1080/0c0c0c/1a1a1a';" alt="Basketball Edit: Ball is ART" class="w-full h-full object-cover">
-                                <div class="video-overlay absolute inset-0 bg-black/50 flex items-center justify-center">
-                                    <i class="fas fa-play text-white text-6xl text-glow play-icon"></i>
-                                </div>
-                            </div>
-                        </a>
-                        <h4 class="text-xl font-bold text-white mt-4">Basketball Edit: Ball is ART</h4>
-                        <p class="text-gray-400">A dynamic basketball highlights reel by JPax.</p>
+                        <div class="video-embed-container">
+                             <iframe src="https://www.youtube.com/embed/Z-46U0YABR0?rel=0" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen title="Before & After: Inman Back Yard Oasis"></iframe>
+                        </div>
+                        <h4 class="text-xl font-bold text-white mt-4">Before & After: Inman Back Yard Oasis</h4>
+                        <p class="text-gray-400">Cinematic drone footage of a luxury hardscaping project.</p>
                     </div>
-                    <!-- Video Item 2 -->
+                    
+                    <!-- Video Item 2: Basketball Hype Reel (CL1SSD0BNF4) -->
                     <div class="scroll-reveal" style="transition-delay: 200ms;">
-                        <a href="https://www.youtube.com/watch?v=ps1YPWkS5OE" target="_blank" class="block hoverable">
-                            <div class="video-container relative aspect-video rounded-lg overflow-hidden border-2 border-gray-700 shadow-lg group">
-                                <img src="https://img.youtube.com/vi/ps1YPWkS5OE/hqdefault.jpg" onerror="this.onerror=null;this.src='https://placehold.co/1920x1080/0c0c0c/1a1a1a';" alt="Aerial View of a Retaining Wall Construction Process" class="w-full h-full object-cover">
-                                <div class="video-overlay absolute inset-0 bg-black/50 flex items-center justify-center">
-                                    <i class="fas fa-play text-white text-6xl text-glow play-icon"></i>
-                                </div>
-                            </div>
-                        </a>
-                        <h4 class="text-xl font-bold text-white mt-4">Aerial View of Retaining Wall</h4>
-                        <p class="text-gray-400">Drone footage of a retaining wall construction process by Southern Pavers.</p>
+                        <div class="video-embed-container">
+                             <iframe src="https://www.youtube.com/embed/CL1SSD0BNF4?rel=0" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen title="Basketball Hype Reel"></iframe>
+                        </div>
+                        <h4 class="text-xl font-bold text-white mt-4">Basketball Hype Reel</h4>
+                        <p class="text-gray-400">High-energy montage of a basketball program session.</p>
                     </div>
-                    <!-- Video Item 3 -->
+                    
+                    <!-- Video Item 3: Aerial Drone Video Construction (_h0G3fUwKO4) -->
                     <div class="scroll-reveal" style="transition-delay: 300ms;">
-                        <a href="https://www.youtube.com/watch?v=epmf_ch7CT0" target="_blank" class="block hoverable">
-                            <div class="video-container relative aspect-video rounded-lg overflow-hidden border-2 border-gray-700 shadow-lg group">
-                                <img src="https://img.youtube.com/vi/epmf_ch7CT0/hqdefault.jpg" onerror="this.onerror=null;this.src='https://placehold.co/1920x1080/0c0c0c/1a1a1a';" alt="BACKYARD TRANSFORMATION: Retaining Wall Fence" class="w-full h-full object-cover">
-                                <div class="video-overlay absolute inset-0 bg-black/50 flex items-center justify-center">
-                                    <i class="fas fa-play text-white text-6xl text-glow play-icon"></i>
-                                </div>
-                            </div>
-                        </a>
-                        <h4 class="text-xl font-bold text-white mt-4">Backyard Transformation</h4>
-                        <p class="text-gray-400">Before and after of a backyard transformation with a retaining wall by Southern Pavers.</p>
+                         <div class="video-embed-container">
+                             <iframe src="https://www.youtube.com/embed/_h0G3fUwKO4?rel=0" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen title="Modern Real Estate Walkthrough"></iframe>
+                        </div>
+                        <h4 class="text-xl font-bold text-white mt-4">Aerial Video Retaining Wall Build</h4>
+                        <p class="text-gray-400">Professional drone video of a retaining wall build.</p>
                     </div>
-                    <!-- Video Item 4 -->
+                    
+                    <!-- Video Item 4: Basketball Tournament Highlight (khIMdTxN47Q) -->
+                    <div class="scroll-reveal" style="transition-delay: 400ms;">
+                        <div class="video-embed-container">
+                             <iframe src="https://www.youtube.com/embed/khIMdTxN47Q?rel=0" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen title="Short Ad for Local Roofing Company"></iframe>
+                        </div>
+                        <h4 class="text-xl font-bold text-white mt-4">Basketball Tournament Highlight</h4>
+                        <p class="text-gray-400">A highlight video of a youth basketball tournament.</p>
+                    </div>
+                    
+                    <!-- Video Item 5: Basketball Tournament Highlight (Part 2) (lvRs9xe1jEY) -->
                     <div class="scroll-reveal" style="transition-delay: 100ms;">
-                        <a href="https://www.facebook.com/share/v/174cwXBuSS/" target="_blank" class="block hoverable">
-                            <div class="video-container relative aspect-video rounded-lg overflow-hidden border-2 border-gray-700 shadow-lg group">
-                                <img src="https://placehold.co/1920x1080/0c0c0c/1a1a1a" alt="Facebook Video 1 Thumbnail" class="w-full h-full object-cover">
-                                <div class="video-overlay absolute inset-0 bg-black/50 flex items-center justify-center">
-                                    <i class="fas fa-play text-white text-6xl text-glow play-icon"></i>
-                                </div>
-                            </div>
-                        </a>
-                        <h4 class="text-xl font-bold text-white mt-4">Facebook Video Example 1</h4>
-                        <p class="text-gray-400">Client work shared on Facebook.</p>
+                        <div class="video-embed-container">
+                             <iframe src="https://www.youtube.com/embed/lvRs9xe1jEY?rel=0" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen title="Southern Pavers - Pool Deck Project"></iframe>
+                        </div>
+                        <h4 class="text-xl font-bold text-white mt-4">Basketball Tournament Highlight 2</h4>
+                        <p class="text-gray-400">A highlight video of a youth basketball tournament</p>
                     </div>
-                    <!-- Video Item 5 -->
+                    
+                    <!-- Video Item 6: Hype Style Basketball Video (XapYT5ZSQSA) -->
                     <div class="scroll-reveal" style="transition-delay: 200ms;">
-                        <a href="https://www.facebook.com/share/v/1VBMywkx3z/" target="_blank" class="block hoverable">
-                            <div class="video-container relative aspect-video rounded-lg overflow-hidden border-2 border-gray-700 shadow-lg group">
-                                <img src="https://placehold.co/1920x1080/0c0c0c/1a1a1a" alt="Facebook Video 2 Thumbnail" class="w-full h-full object-cover">
-                                <div class="video-overlay absolute inset-0 bg-black/50 flex items-center justify-center">
-                                    <i class="fas fa-play text-white text-6xl text-glow play-icon"></i>
-                                </div>
-                            </div>
-                        </a>
-                        <h4 class="text-xl font-bold text-white mt-4">Facebook Video Example 2</h4>
-                        <p class="text-gray-400">Another client video from Facebook.</p>
+                        <div class="video-embed-container">
+                             <iframe src="https://www.youtube.com/embed/XapYT5ZSQSA?rel=0" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen title="Cinematic Drone Reel"></iframe>
+                        </div>
+                        <h4 class="text-xl font-bold text-white mt-4">Hype Style Basketball Video</h4>
+                        <p class="text-gray-400">Highlights and dynamic edits for a basketball program.</p>
                     </div>
-                    <!-- Video Item 6 -->
+                    
+                    <!-- Video Item 7: Aerial of Retaining Wall Fence Build (wpMEBa6f3_A) -->
                     <div class="scroll-reveal" style="transition-delay: 300ms;">
-                        <a href="https://www.youtube.com/shorts/1YDq4C7sizg" target="_blank" class="block hoverable">
-                            <div class="video-container relative aspect-video rounded-lg overflow-hidden border-2 border-gray-700 shadow-lg group">
-                                <img src="https://img.youtube.com/vi/1YDq4C7sizg/hqdefault.jpg" onerror="this.onerror=null;this.src='https://placehold.co/1920x1080/0c0c0c/1a1a1a';" alt="A short sports edit" class="w-full h-full object-cover">
-                                <div class="video-overlay absolute inset-0 bg-black/50 flex items-center justify-center">
-                                    <i class="fas fa-play text-white text-6xl text-glow play-icon"></i>
-                                </div>
-                            </div>
-                        </a>
-                        <h4 class="text-xl font-bold text-white mt-4">Short Sports Edit</h4>
-                        <p class="text-gray-400">A quick sports highlight video by JPax.</p>
+                        <div class="video-embed-container">
+                             <iframe src="https://www.youtube.com/embed/wpMEBa6f3_A?rel=0" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen title="Instagram Reel: Client Testimonial"></iframe>
+                        </div>
+                        <h4 class="text-xl font-bold text-white mt-4">Drone Shot of Retaining Wall Fence Build</h4>
+                        <p class="text-gray-400">Short, engaging video optimized for vertical social media platforms.</p>
                     </div>
+                    
+                    <!-- Video Item 8: Soccer Team Highlight Video (slN-w4v48_o) -->
+                    <div class="scroll-reveal" style="transition-delay: 400ms;">
+                        <div class="video-embed-container">
+                             <iframe src="https://www.youtube.com/embed/slN-w4v48_o?rel=0" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen title="TikTok Ad: Service Showcase"></iframe>
+                        </div>
+                        <h4 class="text-xl font-bold text-white mt-4">Soccer Team Highlight Video</h4>
+                        <p class="text-gray-400">Girls Soccer Highlight Video.</p>
+                    </div>
+
                 </div>
             </div>
         </section>
@@ -469,6 +564,21 @@
                 });
             }
 
+            // >>> ADDED SPOTLIGHT JS LOGIC <<<
+            // --- Spotlight Card Effect ---
+            document.querySelectorAll('.card-glow').forEach(card => {
+                const spotlight = card.querySelector('.spotlight');
+                if (spotlight) {
+                    card.addEventListener('mousemove', e => {
+                        const rect = card.getBoundingClientRect();
+                        const x = e.clientX - rect.left;
+                        const y = e.clientY - rect.top;
+                        spotlight.style.left = `${x}px`;
+                        spotlight.style.top = `${y}px`;
+                    });
+                }
+            });
+            // >>> END ADDED JS LOGIC <<<
 
             // --- Mobile Menu ---
             const mobileMenuButton = document.getElementById('mobile-menu-button');
@@ -567,4 +677,3 @@
     </script>
 </body>
 </html>
-

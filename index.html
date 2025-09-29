@@ -17,9 +17,19 @@
     <!-- Three.js for interactive background -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js" defer></script>
     <style>
+        :root {
+            --mouse-x: 50%;
+            --mouse-y: 50%;
+        }
         body {
             font-family: 'Inter', sans-serif;
             background-color: #0c0c0c;
+            /* Dynamic background gradient */
+            background-image: radial-gradient(circle 800px at var(--mouse-x) var(--mouse-y), rgba(74, 222, 128, 0.05), transparent 40%);
+            background-repeat: no-repeat;
+            /* Page transition styles */
+            opacity: 0;
+            transition: opacity 0.4s ease-in-out;
         }
         /* Custom cursor styles for devices that support hover */
         @media (hover: hover) and (pointer: fine) {
@@ -95,12 +105,29 @@
             text-shadow: 0 0 8px rgba(74, 222, 128, 0.8);
         }
         .card-glow {
+            position: relative; /* For spotlight */
+            overflow: hidden;   /* For spotlight */
             transition: all 0.3s ease-in-out;
         }
         .card-glow:hover {
             border-color: #4ade80;
             box-shadow: 0 0 15px rgba(74, 222, 128, 0.5);
             transform: translateY(-5px);
+        }
+        /* Spotlight Effect */
+        .spotlight {
+            position: absolute;
+            width: 250px;
+            height: 250px;
+            background: radial-gradient(circle, rgba(74, 222, 128, 0.15), transparent 70%);
+            border-radius: 50%;
+            pointer-events: none;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            transform: translate(-50%, -50%);
+        }
+        .card-glow:hover .spotlight {
+            opacity: 1;
         }
         .button-glow {
             transition: box-shadow 0.3s ease-in-out;
@@ -186,7 +213,7 @@
     <!-- Header & Navigation -->
     <header class="bg-black/80 backdrop-blur-sm sticky top-0 z-50">
         <nav class="container mx-auto px-6 py-4 flex justify-between items-center">
-            <a href="#" class="hoverable">
+            <a href="index.html" class="hoverable">
                 <img src="/photos/jpaxlogowhite2.png" alt="JPax Media Logo" class="h-20 transition-all duration-300 logo-glow">
             </a>
             <div class="hidden md:flex items-center space-x-8">
@@ -195,6 +222,7 @@
                 <a href="portfolio.html" class="hoverable hover:text-green-400 transition-colors">Portfolio</a>
                 <a href="https://www.facebook.com/jpaxmedia/" target="_blank" aria-label="Facebook" class="hoverable text-gray-300 hover:text-green-400 text-xl transition-colors"><i class="fab fa-facebook"></i></a>
                 <a href="https://www.instagram.com/jpaxfilmz/" target="_blank" aria-label="Instagram" class="hoverable text-gray-300 hover:text-green-400 text-xl transition-colors"><i class="fab fa-instagram"></i></a>
+                <a href="https://www.youtube.com/channel/UCl_NwAHPgf92bST4_AMZxyA" target="_blank" aria-label="YouTube" class="hoverable text-gray-300 hover:text-green-400 text-xl transition-colors"><i class="fab fa-youtube"></i></a>
                 <a href="#contact" class="hoverable bg-green-500 hover:bg-green-600 text-white font-bold py-2 px-4 rounded-lg transition-colors button-glow">Contact</a>
             </div>
             <button id="mobile-menu-button" class="md:hidden text-2xl hoverable">
@@ -209,6 +237,7 @@
             <div class="flex justify-center py-3 space-x-6">
                  <a href="https://www.facebook.com/jpaxmedia/" target="_blank" aria-label="Facebook" class="text-gray-300 hover:text-green-400 text-2xl transition-colors"><i class="fab fa-facebook"></i></a>
                 <a href="https://www.instagram.com/jpaxfilmz/" target="_blank" aria-label="Instagram" class="text-gray-300 hover:text-green-400 text-2xl transition-colors"><i class="fab fa-instagram"></i></a>
+                <a href="https://www.youtube.com/channel/UCl_NwAHPgf92bST4_AMZxyA" target="_blank" aria-label="YouTube" class="text-gray-300 hover:text-green-400 text-2xl transition-colors"><i class="fab fa-youtube"></i></a>
             </div>
             <a href="#contact" class="block text-center py-4 bg-green-500 hover:bg-green-600 text-white font-bold transition-colors">Contact</a>
         </div>
@@ -219,7 +248,7 @@
         <section id="home" class="hero-bg min-h-[80vh] flex items-center">
             <canvas id="interactive-bg"></canvas>
             <div class="hero-content container mx-auto px-6 text-center">
-                <h1 class="text-4xl md:text-6xl font-extrabold text-white leading-tight mb-4 text-glow">AI-Powered Growth for Modern Brands</h1>
+                <h1 id="hero-headline" class="text-4xl md:text-6xl font-extrabold text-white leading-tight mb-4 text-glow min-h-[80px] md:min-h-[150px]">AI-Powered Growth for Modern Brands</h1>
                 <p class="text-lg md:text-xl text-gray-300 max-w-3xl mx-auto mb-8">We merge creativity with artificial intelligence to deliver smarter content, targeted campaigns, and streamlined digital solutions that drive results.</p>
                 <a href="#contact" class="hoverable bg-green-500 hover:bg-green-600 text-white font-bold py-3 px-8 rounded-full text-lg transition-transform hover:scale-105 button-glow">Get Started</a>
             </div>
@@ -268,48 +297,56 @@
                 <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
                     <!-- Service Item -->
                     <div class="bg-gray-800 p-8 rounded-lg border border-gray-700 text-center flex flex-col card-glow hoverable scroll-reveal" style="transition-delay: 100ms;">
+                        <div class="spotlight"></div>
                         <div class="text-green-400 text-4xl mb-4 icon-glow"><i class="fas fa-video"></i></div>
                         <h3 class="text-2xl font-bold text-white mb-3">Videography</h3>
                         <p class="text-gray-400">High-quality video production for events, real estate, and promotional content, enhanced with AI-assisted editing.</p>
                     </div>
                      <!-- Service Item -->
                     <div class="bg-gray-800 p-8 rounded-lg border border-gray-700 text-center flex flex-col card-glow hoverable scroll-reveal" style="transition-delay: 200ms;">
+                        <div class="spotlight"></div>
                         <div class="text-green-400 text-4xl mb-4 icon-glow"><i class="fas fa-share-alt"></i></div>
                         <h3 class="text-2xl font-bold text-white mb-3">Social Media Management</h3>
                         <p class="text-gray-400">We plan, create, and schedule content through AI-enhanced workflows — keeping your brand consistent and engaging.</p>
                     </div>
                     <!-- Service Item -->
                     <div class="bg-gray-800 p-8 rounded-lg border border-gray-700 text-center flex flex-col card-glow hoverable scroll-reveal" style="transition-delay: 300ms;">
+                        <div class="spotlight"></div>
                         <div class="text-green-400 text-4xl mb-4 icon-glow"><i class="fas fa-bullseye"></i></div>
                         <h3 class="text-2xl font-bold text-white mb-3">AI-Driven Meta Ads</h3>
                         <p class="text-gray-400">We design and manage highly targeted ad campaigns that drive real results, using AI to test creatives and optimize for growth.</p>
                     </div>
                     <!-- Service Item -->
                     <div class="bg-gray-800 p-8 rounded-lg border border-gray-700 text-center flex flex-col card-glow hoverable scroll-reveal" style="transition-delay: 400ms;">
+                        <div class="spotlight"></div>
                         <div class="text-green-400 text-4xl mb-4 icon-glow"><i class="fas fa-laptop-code"></i></div>
                         <h3 class="text-2xl font-bold text-white mb-3">Website Design, SEO & Blogs</h3>
                         <p class="text-gray-400">We build modern sites and use AI-powered SEO and blog creation to help you rank higher and attract traffic.</p>
                     </div>
                     <!-- Service Item -->
                     <div class="bg-gray-800 p-8 rounded-lg border border-gray-700 text-center flex flex-col card-glow hoverable scroll-reveal" style="transition-delay: 100ms;">
+                        <div class="spotlight"></div>
                         <div class="text-green-400 text-4xl mb-4 icon-glow"><i class="fas fa-robot"></i></div>
                         <h3 class="text-2xl font-bold text-white mb-3">AI Creative Solutions</h3>
-                        <p class="text-gray-400">From AI-assisted video editing and branding to generative design and chatbots, we deliver unique, future-ready creative.</p>
+                        <p class="text-gray-400">From AI-assisted video editing and creative branding to generative design and chatbots, we deliver unique, future-ready creative.</p>
                     </div>
                     <!-- Service Item -->
                     <div class="bg-gray-800 p-8 rounded-lg border border-gray-700 text-center flex flex-col card-glow hoverable scroll-reveal" style="transition-delay: 200ms;">
+                        <div class="spotlight"></div>
                         <div class="text-green-400 text-4xl mb-4 icon-glow"><i class="fas fa-file-signature"></i></div>
                         <h3 class="text-2xl font-bold text-white mb-3">Proposal Development</h3>
                         <p class="text-gray-400">Our AI workflows produce persuasive, branded proposals with tailored copy and polished designs to win clients.</p>
                     </div>
                     <!-- Service Item -->
                     <div class="bg-gray-800 p-8 rounded-lg border border-gray-700 text-center flex flex-col card-glow hoverable scroll-reveal" style="transition-delay: 300ms;">
+                        <div class="spotlight"></div>
                         <div class="text-green-400 text-4xl mb-4 icon-glow"><i class="fas fa-file-powerpoint"></i></div>
                         <h3 class="text-2xl font-bold text-white mb-3">Presentations & Decks</h3>
                         <p class="text-gray-400">We transform your ideas into stunning, professional presentations and pitch decks using AI-powered tools.</p>
                     </div>
                     <!-- Service Item -->
                     <div class="bg-gray-800 p-8 rounded-lg border border-gray-700 text-center flex flex-col card-glow hoverable scroll-reveal" style="transition-delay: 400ms;">
+                        <div class="spotlight"></div>
                         <div class="text-green-400 text-4xl mb-4 icon-glow"><i class="fas fa-chart-line"></i></div>
                         <h3 class="text-2xl font-bold text-white mb-3">AI Strategy & Analytics</h3>
                         <p class="text-gray-400">Our AI-driven analytics track performance, highlight what works, and guide strategy for confident business growth.</p>
@@ -367,7 +404,7 @@
                     </div>
                 </div>
 
-                <!-- Video Showcase -->
+                <!-- Video Showcase - UPDATED BLOCK -->
                 <div class="text-center mb-10 scroll-reveal">
                     <h3 class="text-2xl md:text-3xl font-bold text-white mb-2">
                         <i class="fas fa-video text-green-400 mr-2"></i>Video Highlights
@@ -375,28 +412,30 @@
                 </div>
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-12">
                     <div class="scroll-reveal" style="transition-delay: 100ms;">
-                        <a href="https://www.youtube.com/shorts/qw2_grDRHuI" target="_blank" class="block hoverable">
+                        <a href="https://youtu.be/Z-46U0YABR0" target="_blank" class="block hoverable">
                             <div class="video-container relative aspect-video rounded-lg overflow-hidden border-2 border-gray-700 shadow-lg group">
-                                <img src="https://img.youtube.com/vi/qw2_grDRHuI/hqdefault.jpg" onerror="this.onerror=null;this.src='https://placehold.co/1920x1080/0c0c0c/1a1a1a';" alt="Basketball Edit: Ball is ART" class="w-full h-full object-cover">
+                                <!-- Thumbnail logic updated to use video ID Z-46U0YABR0 -->
+                                <img src="https://img.youtube.com/vi/Z-46U0YABR0/maxresdefault.jpg" onerror="this.onerror=null;this.src='https://img.youtube.com/vi/Z-46U0YABR0/hqdefault.jpg';" alt="Before & After: Inman Back Yard Oasis" class="w-full h-full object-cover">
                                 <div class="video-overlay absolute inset-0 bg-black/50 flex items-center justify-center">
                                     <i class="fas fa-play text-white text-6xl text-glow play-icon"></i>
                                 </div>
                             </div>
                         </a>
-                        <h4 class="text-xl font-bold text-white mt-4">Basketball Edit: Ball is ART</h4>
-                        <p class="text-gray-400">A dynamic basketball highlights reel by JPax.</p>
+                        <h4 class="text-xl font-bold text-white mt-4">Before & After: Inman Back Yard Oasis</h4>
+                        <p class="text-gray-400">Cinematic backyard transformation featuring drone video.</p>
                     </div>
                      <div class="scroll-reveal" style="transition-delay: 200ms;">
-                        <a href="https://www.youtube.com/watch?v=ps1YPWkS5OE" target="_blank" class="block hoverable">
+                        <a href="https://youtu.be/CL1SSD0BNF4" target="_blank" class="block hoverable">
                             <div class="video-container relative aspect-video rounded-lg overflow-hidden border-2 border-gray-700 shadow-lg group">
-                                <img src="https://img.youtube.com/vi/ps1YPWkS5OE/hqdefault.jpg" onerror="this.onerror=null;this.src='https://placehold.co/1920x1080/0c0c0c/1a1a1a';" alt="Aerial View of a Retaining Wall Construction Process" class="w-full h-full object-cover">
+                                <!-- Thumbnail logic updated to use video ID CL1SSD0BNF4 -->
+                                <img src="https://img.youtube.com/vi/CL1SSD0BNF4/maxresdefault.jpg" onerror="this.onerror=null;this.src='https://img.youtube.com/vi/CL1SSD0BNF4/hqdefault.jpg';" alt="Dynamic Sports Hype Reel" class="w-full h-full object-cover">
                                 <div class="video-overlay absolute inset-0 bg-black/50 flex items-center justify-center">
                                     <i class="fas fa-play text-white text-6xl text-glow play-icon"></i>
                                 </div>
                             </div>
                         </a>
-                        <h4 class="text-xl font-bold text-white mt-4">Aerial View of Retaining Wall</h4>
-                        <p class="text-gray-400">Drone footage of a retaining wall construction process by Southern Pavers.</p>
+                        <h4 class="text-xl font-bold text-white mt-4">Dynamic Sports Hype Reel</h4>
+                        <p class="text-gray-400">High-energy basketball and sports highlights montage.</p>
                     </div>
                 </div>
 
@@ -503,6 +542,34 @@
     <script>
         document.addEventListener('DOMContentLoaded', () => {
 
+            // --- Dynamic Background Gradient ---
+            window.addEventListener('mousemove', e => {
+                // We add window.scrollY to the mouse Y position to ensure the gradient follows the cursor even when scrolled
+                document.body.style.setProperty('--mouse-y', `${e.clientY + window.scrollY}px`);
+                document.body.style.setProperty('--mouse-x', `${e.clientX}px`);
+            });
+
+            // --- Page Fade-In Transition ---
+            document.body.style.opacity = '1';
+
+            // --- Page Fade-Out Transition on Link Click ---
+            document.querySelectorAll('a').forEach(link => {
+                const href = link.getAttribute('href');
+                const target = link.getAttribute('target');
+
+                // Apply to internal, non-hash, non-target="_blank" links
+                if (href && !href.startsWith('#') && !href.startsWith('http') && target !== '_blank') {
+                    link.addEventListener('click', (e) => {
+                        e.preventDefault(); // Prevent instant navigation
+                        document.body.style.opacity = '0'; // Start fade out
+                        setTimeout(() => {
+                            window.location.href = href; // Navigate after fade out
+                        }, 400); // This duration should match the CSS transition time
+                    });
+                }
+            });
+
+
             // --- Custom Cursor ---
             if (window.matchMedia('(hover: hover) and (pointer: fine)').matches) {
                 const cursorDot = document.querySelector('.cursor-dot');
@@ -524,6 +591,56 @@
                         cursorOutline.classList.remove('cursor-interact');
                     });
                 });
+            }
+
+            // --- Spotlight Card Effect ---
+            document.querySelectorAll('.card-glow').forEach(card => {
+                const spotlight = card.querySelector('.spotlight');
+                if (spotlight) {
+                    card.addEventListener('mousemove', e => {
+                        const rect = card.getBoundingClientRect();
+                        const x = e.clientX - rect.left;
+                        const y = e.clientY - rect.top;
+                        spotlight.style.left = `${x}px`;
+                        spotlight.style.top = `${y}px`;
+                    });
+                }
+            });
+
+            // --- Text Scramble Effect ---
+            function scrambleText(element, originalText) {
+                const chars = '!<>-_\\/[]{}—=+*^?#________';
+                let frame = 0;
+                const frameRate = 2; // Speed of the scramble
+                const endFrame = originalText.length * frameRate * 1.5;
+
+                const animate = () => {
+                    let newText = '';
+                    for (let i = 0; i < originalText.length; i++) {
+                        const progress = (frame - i * frameRate) / (frameRate * 2);
+                        if (progress < 0) {
+                             newText += ' ';
+                        } else if (progress < 1) {
+                            const randomChar = chars[Math.floor(Math.random() * chars.length)];
+                            newText += randomChar;
+                        } else {
+                            newText += originalText[i];
+                        }
+                    }
+                    element.textContent = newText;
+                    if (frame < endFrame) {
+                        frame++;
+                        requestAnimationFrame(animate);
+                    }
+                };
+                setTimeout(animate, 100); // Start after a short delay
+            }
+            
+            const headline = document.getElementById('hero-headline');
+            if (headline) {
+                const originalText = headline.textContent;
+                headline.textContent = ''; // Clear text initially
+                scrambleText(headline, originalText);
             }
 
 
@@ -641,6 +758,4 @@
     </script>
 </body>
 </html>
-
-
 
