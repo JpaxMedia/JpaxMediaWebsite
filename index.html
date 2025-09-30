@@ -214,7 +214,7 @@
     <header class="bg-black/80 backdrop-blur-sm sticky top-0 z-50">
         <nav class="container mx-auto px-6 py-4 flex justify-between items-center">
             <a href="index.html" class="hoverable">
-                <img src="/photos/jpaxlogowhite2.png" alt="JPax Media Logo" class="h-20 transition-all duration-300 logo-glow">
+                <img src="jpaxlogokillerwhitefinal.png" alt="JPax Media Logo" class="h-20 transition-all duration-300 logo-glow">
             </a>
             <div class="hidden md:flex items-center space-x-8">
                 <a href="#about" class="hoverable hover:text-green-400 transition-colors">About</a>
@@ -268,8 +268,29 @@
 
                 <!-- About Julian -->
                 <div class="flex flex-col md:flex-row items-center gap-12 max-w-6xl mx-auto scroll-reveal">
-                    <div class="md:w-1/3">
-                        <img src="/photos/jpaxcontactphoto.jpg" alt="Julian Johnson, founder of JPax Media" class="rounded-lg w-full object-cover shadow-lg aspect-square image-glow">
+                    <div class="md:w-1/3 w-full relative">
+                        <div id="about-carousel" class="relative rounded-lg overflow-hidden shadow-lg image-glow aspect-square">
+                            <!-- Carousel Images -->
+                            <div class="carousel-item duration-700 ease-in-out">
+                                <img src="/photos/jpaxcontactphoto.jpg" alt="Julian Johnson, founder of JPax Media" class="absolute block w-full h-full object-cover top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2">
+                            </div>
+                            <div class="carousel-item duration-700 ease-in-out hidden">
+                                <img src="julianfront.png" alt="Julian Johnson with his camera" class="absolute block w-full h-full object-cover top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2">
+                            </div>
+                        </div>
+                        <!-- Carousel Controls -->
+                        <button type="button" id="carousel-prev" class="absolute top-0 left-0 z-30 flex items-center justify-center h-full px-4 cursor-pointer group focus:outline-none hoverable">
+                            <span class="inline-flex items-center justify-center w-10 h-10 rounded-full bg-white/30 group-hover:bg-white/50 group-focus:ring-4 group-focus:ring-white group-focus:outline-none">
+                                <svg class="w-4 h-4 text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 6 10"><path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 1 1 5l4 4"/></svg>
+                                <span class="sr-only">Previous</span>
+                            </span>
+                        </button>
+                        <button type="button" id="carousel-next" class="absolute top-0 right-0 z-30 flex items-center justify-center h-full px-4 cursor-pointer group focus:outline-none hoverable">
+                            <span class="inline-flex items-center justify-center w-10 h-10 rounded-full bg-white/30 group-hover:bg-white/50 group-focus:ring-4 group-focus:ring-white group-focus:outline-none">
+                                <svg class="w-4 h-4 text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 6 10"><path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 9 4-4-4-4"/></svg>
+                                <span class="sr-only">Next</span>
+                            </span>
+                        </button>
                     </div>
                     <div class="md:w-2/3 text-center md:text-left">
                         <h3 class="text-3xl font-bold text-white mb-4">Meet The Founder</h3>
@@ -521,7 +542,7 @@
         <div class="container mx-auto px-6 text-center text-gray-500">
             <div class="mb-4">
                 <a href="#" class="hoverable inline-block">
-                    <img src="/photos/jpaxlogowhite2.png" alt="JPax Media Logo" class="h-28 transition-all duration-300 logo-glow">
+                    <img src="jpaxlogokillerwhitefinal.png" alt="JPax Media Logo" class="h-28 transition-all duration-300 logo-glow">
                 </a>
             </div>
              <div class="social-links mb-4">
@@ -754,8 +775,32 @@
             if (statsSection) {
                  countUpObserver.observe(statsSection);
             }
+            
+            // --- About Section Carousel ---
+            const carousel = document.getElementById('about-carousel');
+            if (carousel) {
+                const items = carousel.querySelectorAll('.carousel-item');
+                const prevButton = document.getElementById('carousel-prev');
+                const nextButton = document.getElementById('carousel-next');
+                let currentIndex = 0;
+
+                function showSlide(index) {
+                    items.forEach((item, i) => {
+                        item.classList.toggle('hidden', i !== index);
+                    });
+                }
+
+                prevButton.addEventListener('click', () => {
+                    currentIndex = (currentIndex > 0) ? currentIndex - 1 : items.length - 1;
+                    showSlide(currentIndex);
+                });
+
+                nextButton.addEventListener('click', () => {
+                    currentIndex = (currentIndex < items.length - 1) ? currentIndex + 1 : 0;
+                    showSlide(currentIndex);
+                });
+            }
         });
     </script>
 </body>
 </html>
-
