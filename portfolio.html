@@ -143,7 +143,7 @@
             transform: scale(1.05);
         }
         /* Video Player Styles */
-        .video-embed-container {
+        .video-container {
             position: relative;
             width: 100%;
             padding-top: 56.25%; /* 16:9 Aspect Ratio */
@@ -152,18 +152,46 @@
             border: 2px solid #4b5563; /* border-gray-700 */
             box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05); /* shadow-lg */
             transition: box-shadow 0.3s ease-in-out, transform 0.3s ease-in-out;
+            cursor: pointer;
+            background-color: #000;
         }
-        .video-embed-container.card-glow:hover { /* Override transform for video containers */
+        .video-container.card-glow:hover { /* Override transform for video containers */
              transform: translateY(0);
              box-shadow: 0 0 15px rgba(74, 222, 128, 0.7);
         }
-        .video-embed-container iframe {
+        .video-container img {
             position: absolute;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
-            pointer-events: none; 
+            object-fit: cover;
+            transition: transform 0.3s ease;
+        }
+        .video-container:hover img {
+            transform: scale(1.05);
+        }
+        .video-play-button {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            color: white;
+            font-size: 4rem;
+            text-shadow: 0 0 15px rgba(0,0,0,0.7);
+            transition: transform 0.3s ease, filter 0.3s ease;
+            pointer-events: none;
+        }
+        .video-container:hover .video-play-button {
+             transform: translate(-50%, -50%) scale(1.1);
+             filter: drop-shadow(0 0 10px rgba(74, 222, 128, 1));
+        }
+        .video-container iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
         }
         .mockup-bg {
             background: linear-gradient(145deg, rgba(255,255,255,0.1), rgba(255,255,255,0));
@@ -292,7 +320,7 @@
                             </div>
                         </div>
                         <div class="order-1 lg:order-2 p-4 mockup-bg rounded-lg">
-                             <img src="/photos/luxe1.png" alt="LuxeCraft Construction website mockup" class="rounded-md shadow-2xl">
+                             <img src="/photos/luxe1.png" alt="LuxeCraft Construction website mockup" class="rounded-md shadow-2xl" loading="lazy">
                         </div>
                     </div>
                 </div>
@@ -302,7 +330,7 @@
                     <div class="spotlight"></div>
                     <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
                         <div class="p-4 mockup-bg rounded-lg">
-                            <img src="/photos/sp.png" alt="Southern Pavers website mockup" class="rounded-md shadow-2xl">
+                            <img src="/photos/sp.png" alt="Southern Pavers website mockup" class="rounded-md shadow-2xl" loading="lazy">
                         </div>
                          <div>
                              <h3 class="text-3xl font-bold text-white mb-4">Southern Pavers</h3>
@@ -341,22 +369,22 @@
                     <!-- Merchandise Gallery -->
                     <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-4">
                         <div class="scroll-reveal" style="transition-delay: 50ms;">
-                            <img src="/photos/spbrandshirt2.png" alt="Southern Pavers T-shirt Mockup (Front)" class="rounded-lg shadow-lg aspect-square object-cover card-glow hoverable">
+                            <img src="/photos/spbrandshirt2.png" alt="Southern Pavers T-shirt Mockup (Front)" class="rounded-lg shadow-lg aspect-square object-cover card-glow hoverable" loading="lazy">
                         </div>
                         <div class="scroll-reveal" style="transition-delay: 100ms;">
-                            <img src="/photos/spbrandshirt1.png" alt="Southern Pavers T-shirt Mockup (Back)" class="rounded-lg shadow-lg aspect-square object-cover card-glow hoverable">
+                            <img src="/photos/spbrandshirt1.png" alt="Southern Pavers T-shirt Mockup (Back)" class="rounded-lg shadow-lg aspect-square object-cover card-glow hoverable" loading="lazy">
                         </div>
                         <div class="scroll-reveal" style="transition-delay: 150ms;">
-                            <img src="/photos/spbrandcoathat.png" alt="Southern Pavers Coat and Hat Mockup" class="rounded-lg shadow-lg aspect-square object-cover card-glow hoverable">
+                            <img src="/photos/spbrandcoathat.png" alt="Southern Pavers Coat and Hat Mockup" class="rounded-lg shadow-lg aspect-square object-cover card-glow hoverable" loading="lazy">
                         </div>
                         <div class="scroll-reveal" style="transition-delay: 200ms;">
-                            <img src="/photos/spbrandmug.png" alt="Southern Pavers Mug Mockup" class="rounded-lg shadow-lg aspect-square object-cover card-glow hoverable">
+                            <img src="/photos/spbrandmug.png" alt="Southern Pavers Mug Mockup" class="rounded-lg shadow-lg aspect-square object-cover card-glow hoverable" loading="lazy">
                         </div>
                         <div class="scroll-reveal" style="transition-delay: 250ms;">
-                            <img src="/photos/spbrandshirtgirl.png" alt="Southern Pavers Sweatshirt Mockup (Female Model, Front)" class="rounded-lg shadow-lg aspect-square object-cover card-glow hoverable">
+                            <img src="/photos/spbrandshirtgirl.png" alt="Southern Pavers Sweatshirt Mockup (Female Model, Front)" class="rounded-lg shadow-lg aspect-square object-cover card-glow hoverable" loading="lazy">
                         </div>
                         <div class="scroll-reveal" style="transition-delay: 300ms;">
-                            <img src="/photos/spbrandshirtgirl2.png" alt="Southern Pavers Sweatshirt Mockup (Female Model, Back)" class="rounded-lg shadow-lg aspect-square object-cover card-glow hoverable">
+                            <img src="/photos/spbrandshirtgirl2.png" alt="Southern Pavers Sweatshirt Mockup (Female Model, Back)" class="rounded-lg shadow-lg aspect-square object-cover card-glow hoverable" loading="lazy">
                         </div>
                     </div>
                 </div>
@@ -377,7 +405,7 @@
                     <div class="spotlight"></div>
                     <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
                         <div class="p-4 mockup-bg rounded-lg">
-                            <img src="/photos/jpaxproposal.png" alt="An attractive proposal for social media management" class="rounded-md shadow-2xl">
+                            <img src="/photos/jpaxproposal.png" alt="An attractive proposal for social media management" class="rounded-md shadow-2xl" loading="lazy">
                         </div>
                          <div>
                              <h3 class="text-3xl font-bold text-white mb-4">Social Media Management Proposal</h3>
@@ -424,8 +452,8 @@
                             </div>
                         </div>
                         <div class="order-1 lg:order-2 p-4 mockup-bg rounded-lg space-y-6">
-                            <img src="/photos/Screenshot 2025-09-30 at 10.49.40 AM.png" alt="NovaFlow AI Pitch Deck Cover" class="rounded-md shadow-2xl">
-                            <img src="/photos/Screenshot 2025-09-30 at 10.49.49 AM.png" alt="NovaFlow AI Pitch Deck Problem Slide" class="rounded-md shadow-2xl">
+                            <img src="/photos/Screenshot 2025-09-30 at 10.49.40 AM.png" alt="NovaFlow AI Pitch Deck Cover" class="rounded-md shadow-2xl" loading="lazy">
+                            <img src="/photos/Screenshot 2025-09-30 at 10.49.49 AM.png" alt="NovaFlow AI Pitch Deck Problem Slide" class="rounded-md shadow-2xl" loading="lazy">
                         </div>
                     </div>
                 </div>
@@ -444,9 +472,10 @@
                      
                     <!-- Video Item 1 -->
                     <div class="scroll-reveal" style="transition-delay: 100ms;">
-                        <div class="video-embed-container card-glow">
+                        <div class="video-container card-glow" data-video-id="Z-46U0YABR0">
                              <div class="spotlight"></div>
-                             <iframe src="https://www.youtube.com/embed/Z-46U0YABR0?rel=0" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen title="Before & After: Inman Back Yard Oasis"></iframe>
+                             <img src="https://img.youtube.com/vi/Z-46U0YABR0/hqdefault.jpg" alt="Thumbnail for Before & After: Inman Back Yard Oasis" loading="lazy">
+                             <div class="video-play-button"><i class="fas fa-play"></i></div>
                         </div>
                         <h4 class="text-xl font-bold text-white mt-4">Before & After: Inman Back Yard Oasis</h4>
                         <p class="text-gray-400">Cinematic drone footage of a luxury hardscaping project.</p>
@@ -454,9 +483,10 @@
                     
                     <!-- Video Item 2 -->
                     <div class="scroll-reveal" style="transition-delay: 200ms;">
-                        <div class="video-embed-container card-glow">
+                        <div class="video-container card-glow" data-video-id="CL1SSD0BNF4">
                              <div class="spotlight"></div>
-                             <iframe src="https://www.youtube.com/embed/CL1SSD0BNF4?rel=0" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen title="Basketball Hype Reel"></iframe>
+                             <img src="https://img.youtube.com/vi/CL1SSD0BNF4/hqdefault.jpg" alt="Thumbnail for Basketball Hype Reel" loading="lazy">
+                             <div class="video-play-button"><i class="fas fa-play"></i></div>
                         </div>
                         <h4 class="text-xl font-bold text-white mt-4">Basketball Hype Reel</h4>
                         <p class="text-gray-400">High-energy montage of a basketball program session.</p>
@@ -464,9 +494,10 @@
                     
                     <!-- Video Item 3 -->
                     <div class="scroll-reveal" style="transition-delay: 300ms;">
-                         <div class="video-embed-container card-glow">
+                         <div class="video-container card-glow" data-video-id="_h0G3fUwKO4">
                              <div class="spotlight"></div>
-                             <iframe src="https://www.youtube.com/embed/_h0G3fUwKO4?rel=0" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen title="Modern Real Estate Walkthrough"></iframe>
+                             <img src="https://img.youtube.com/vi/_h0G3fUwKO4/hqdefault.jpg" alt="Thumbnail for Aerial Video Retaining Wall Build" loading="lazy">
+                             <div class="video-play-button"><i class="fas fa-play"></i></div>
                         </div>
                         <h4 class="text-xl font-bold text-white mt-4">Aerial Video Retaining Wall Build</h4>
                         <p class="text-gray-400">Professional drone video of a retaining wall build.</p>
@@ -474,9 +505,10 @@
                     
                     <!-- Video Item 4 -->
                     <div class="scroll-reveal" style="transition-delay: 400ms;">
-                        <div class="video-embed-container card-glow">
+                        <div class="video-container card-glow" data-video-id="khIMdTxN47Q">
                             <div class="spotlight"></div>
-                             <iframe src="https://www.youtube.com/embed/khIMdTxN47Q?rel=0" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen title="Short Ad for Local Roofing Company"></iframe>
+                            <img src="https://img.youtube.com/vi/khIMdTxN47Q/hqdefault.jpg" alt="Thumbnail for Basketball Tournament Highlight" loading="lazy">
+                            <div class="video-play-button"><i class="fas fa-play"></i></div>
                         </div>
                         <h4 class="text-xl font-bold text-white mt-4">Basketball Tournament Highlight</h4>
                         <p class="text-gray-400">A highlight video of a youth basketball tournament.</p>
@@ -484,9 +516,10 @@
                     
                     <!-- Video Item 5 -->
                     <div class="scroll-reveal" style="transition-delay: 100ms;">
-                        <div class="video-embed-container card-glow">
+                        <div class="video-container card-glow" data-video-id="lvRs9xe1jEY">
                             <div class="spotlight"></div>
-                             <iframe src="https://www.youtube.com/embed/lvRs9xe1jEY?rel=0" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen title="Southern Pavers - Pool Deck Project"></iframe>
+                            <img src="https://img.youtube.com/vi/lvRs9xe1jEY/hqdefault.jpg" alt="Thumbnail for Basketball Tournament Highlight 2" loading="lazy">
+                            <div class="video-play-button"><i class="fas fa-play"></i></div>
                         </div>
                         <h4 class="text-xl font-bold text-white mt-4">Basketball Tournament Highlight 2</h4>
                         <p class="text-gray-400">A highlight video of a youth basketball tournament</p>
@@ -494,9 +527,10 @@
                     
                     <!-- Video Item 6 -->
                     <div class="scroll-reveal" style="transition-delay: 200ms;">
-                        <div class="video-embed-container card-glow">
+                        <div class="video-container card-glow" data-video-id="XapYT5ZSQSA">
                              <div class="spotlight"></div>
-                             <iframe src="https://www.youtube.com/embed/XapYT5ZSQSA?rel=0" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen title="Cinematic Drone Reel"></iframe>
+                             <img src="https://img.youtube.com/vi/XapYT5ZSQSA/hqdefault.jpg" alt="Thumbnail for Hype Style Basketball Video" loading="lazy">
+                             <div class="video-play-button"><i class="fas fa-play"></i></div>
                         </div>
                         <h4 class="text-xl font-bold text-white mt-4">Hype Style Basketball Video</h4>
                         <p class="text-gray-400">Highlights and dynamic edits for a basketball program.</p>
@@ -504,9 +538,10 @@
                     
                     <!-- Video Item 7 -->
                     <div class="scroll-reveal" style="transition-delay: 300ms;">
-                        <div class="video-embed-container card-glow">
+                        <div class="video-container card-glow" data-video-id="wpMEBa6f3_A">
                              <div class="spotlight"></div>
-                             <iframe src="https://www.youtube.com/embed/wpMEBa6f3_A?rel=0" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen title="Instagram Reel: Client Testimonial"></iframe>
+                             <img src="https://img.youtube.com/vi/wpMEBa6f3_A/hqdefault.jpg" alt="Thumbnail for Drone Shot of Retaining Wall Fence Build" loading="lazy">
+                             <div class="video-play-button"><i class="fas fa-play"></i></div>
                         </div>
                         <h4 class="text-xl font-bold text-white mt-4">Drone Shot of Retaining Wall Fence Build</h4>
                         <p class="text-gray-400">Short, engaging video optimized for vertical social media platforms.</p>
@@ -514,9 +549,10 @@
                     
                     <!-- Video Item 8 -->
                     <div class="scroll-reveal" style="transition-delay: 400ms;">
-                        <div class="video-embed-container card-glow">
+                        <div class="video-container card-glow" data-video-id="slN-w4v48_o">
                              <div class="spotlight"></div>
-                             <iframe src="https://www.youtube.com/embed/slN-w4v48_o?rel=0" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen title="TikTok Ad: Service Showcase"></iframe>
+                             <img src="https://img.youtube.com/vi/slN-w4v48_o/hqdefault.jpg" alt="Thumbnail for Soccer Team Highlight Video" loading="lazy">
+                             <div class="video-play-button"><i class="fas fa-play"></i></div>
                         </div>
                         <h4 class="text-xl font-bold text-white mt-4">Soccer Team Highlight Video</h4>
                         <p class="text-gray-400">Girls Soccer Highlight Video.</p>
@@ -544,7 +580,7 @@
         <div class="container mx-auto px-6 text-center text-gray-500">
             <div class="mb-4">
                 <a href="index.html" class="hoverable inline-block">
-                    <img src="/photos/jpaxlogokillerwhitefinal.png" alt="JPax Media Logo" class="h-28 transition-all duration-300 logo-glow">
+                    <img src="/photos/jpaxlogokillerwhitefinal.png" alt="JPax Media Logo" class="h-28 transition-all duration-300 logo-glow" loading="lazy">
                 </a>
             </div>
              <div class="social-links mb-4">
@@ -613,11 +649,13 @@
             const canvas = document.getElementById('interactive-bg');
             const heroSection = document.getElementById('portfolio-home');
             if(canvas && heroSection) {
+                const isMobile = window.innerWidth < 768;
                 const scene = new THREE.Scene();
                 const camera = new THREE.PerspectiveCamera(75, heroSection.offsetWidth / heroSection.offsetHeight, 0.1, 1000);
                 const renderer = new THREE.WebGLRenderer({ canvas: canvas, alpha: true });
                 renderer.setSize(heroSection.offsetWidth, heroSection.offsetHeight);
-                const particlesCount = 3000;
+                // Adjust particle count for mobile vs desktop
+                const particlesCount = isMobile ? 1500 : 3000;
                 const positions = new Float32Array(particlesCount * 3);
                 for (let i = 0; i < particlesCount * 3; i++) { positions[i] = (Math.random() - 0.5) * 10; }
                 const particlesGeometry = new THREE.BufferGeometry();
@@ -689,9 +727,27 @@
             const statsSections = document.querySelectorAll('.stat-card');
             statsSections.forEach(el => countUpObserver.observe(el.closest('.grid')));
 
+            // --- Lazy Load Videos ---
+            const videoContainers = document.querySelectorAll('.video-container');
+            videoContainers.forEach(container => {
+                container.addEventListener('click', () => {
+                    const videoId = container.dataset.videoId;
+                    if (videoId) {
+                        const iframe = document.createElement('iframe');
+                        iframe.src = `https://www.youtube.com/embed/${videoId}?rel=0&autoplay=1`;
+                        iframe.frameborder = '0';
+                        iframe.allow = 'accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture';
+                        iframe.allowfullscreen = true;
+                        
+                        // Replace container content with the iframe
+                        container.innerHTML = '';
+                        container.appendChild(iframe);
+                    }
+                }, { once: true }); // Ensure the click listener only runs once
+            });
+
         });
     </script>
 </body>
 </html>
-
 
