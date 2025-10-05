@@ -198,6 +198,37 @@
             border: 1px solid rgba(255,255,255,0.1);
             backdrop-filter: blur(10px);
         }
+        
+        /* Styles for Nitro Energy Showcase */
+        .nitro-flavor-thumb {
+            cursor: pointer;
+            padding: 0.5rem;
+            border: 2px solid transparent;
+            border-radius: 0.5rem;
+            transition: all 0.3s ease;
+            background-color: rgba(255, 255, 255, 0.05);
+        }
+        .nitro-flavor-thumb:hover {
+            transform: scale(1.1);
+            border-color: #4ade80;
+        }
+        .nitro-flavor-thumb.active-flavor {
+            border-color: var(--flavor-color, #4ade80);
+            box-shadow: 0 0 15px var(--flavor-color, #4ade80);
+            transform: scale(1.1);
+        }
+        #nitro-showcase {
+            perspective: 1000px; /* For 3D effect on hover */
+            --flavor-color: #ff8c00; /* Default glow color */
+        }
+        #main-can-image {
+            transition: transform 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94), filter 0.4s ease, opacity 0.2s ease-in-out;
+            filter: drop-shadow(0 0 10px rgba(0,0,0,0.5));
+        }
+        #nitro-showcase:hover #main-can-image {
+            transform: scale(1.05) rotateY(10deg);
+            filter: drop-shadow(0 0 25px var(--flavor-color, #4ade80));
+        }
     </style>
 </head>
 <body class="text-gray-200">
@@ -347,6 +378,29 @@
                         </div>
                     </div>
                 </div>
+
+                <!-- Nitro Energy Project -->
+                <div class="p-8 mt-16 rounded-2xl border border-gray-800 bg-gray-900/30 card-glow scroll-reveal">
+                    <div class="spotlight"></div>
+                    <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+                        <div class="order-2 lg:order-1">
+                             <h3 class="text-3xl font-bold text-white mb-4">Nitro Energy</h3>
+                             <p class="text-gray-400 mb-6 leading-relaxed">We developed a high-octane digital presence for Nitro Energy, crafting a visually explosive website that captures the brand's intense energy. The site is designed to engage a younger audience with dynamic animations, bold typography, and a seamless user experience that mirrors the drink's powerful punch.</p>
+                             <div class="space-y-4">
+                                <h4 class="text-xl font-semibold text-white">Project Highlights</h4>
+                                <ul class="list-none space-y-3 text-gray-400">
+                                    <li class="flex items-center"><i class="fas fa-check-circle text-green-400 mr-3"></i>Developed a bold, energetic brand identity.</li>
+                                    <li class="flex items-center"><i class="fas fa-check-circle text-green-400 mr-3"></i>Designed an immersive, single-page website with dynamic scroll effects.</li>
+                                    <li class="flex items-center"><i class="fas fa-check-circle text-green-400 mr-3"></i>Focused on mobile-first design for an on-the-go audience.</li>
+                                </ul>
+                                <a href="https://nitroenergy.netlify.app/" target="_blank" class="hoverable inline-block mt-6 bg-green-500/10 border border-green-500 text-green-400 font-bold py-2 px-6 rounded-lg transition-all hover:bg-green-500/20 button-glow">Visit Website <i class="fas fa-external-link-alt ml-2 text-sm"></i></a>
+                            </div>
+                        </div>
+                        <div class="order-1 lg:order-2 p-4 mockup-bg rounded-lg">
+                             <img src="nitroweb2.png" alt="Nitro Energy website mockup" class="rounded-md shadow-2xl" loading="lazy">
+                        </div>
+                    </div>
+                </div>
             </div>
         </section>
         
@@ -388,6 +442,41 @@
                         </div>
                     </div>
                 </div>
+
+                <!-- Nitro Energy Branding Showcase -->
+                <div class="mt-16 bg-gray-900/50 rounded-2xl p-6 md:p-10 border border-gray-700 shadow-2xl scroll-reveal card-glow">
+                     <div class="spotlight"></div>
+                     <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-center">
+                        <!-- Left side: Interactive Can Display -->
+                        <div id="nitro-showcase" class="relative flex justify-center items-center h-96">
+                            <img src="nitroogtransparent.png" id="main-can-image" class="max-h-full h-auto absolute transition-all duration-500 ease-in-out transform" alt="Nitro Energy Drink Can - Original Flavor">
+                        </div>
+
+                        <!-- Right side: Description and Thumbnails -->
+                        <div class="text-center lg:text-left">
+                            <h4 class="text-2xl font-bold text-white mb-4">Nitro Energy: AI-Generated Branding</h4>
+                            <p class="text-gray-300 mb-6">
+                                Fusing AI with creative vision, we developed the entire Nitro Energy brand from the ground up. AI algorithms generated hundreds of design concepts, exploring unique color palettes, typography, and dynamic shapes. We then refined the top-performing concepts to create a brand that feels futuristic, energetic, and instantly iconic. The result is a product line where every can is a testament to AI-powered creativity.
+                            </p>
+                            <!-- Flavor Thumbnails -->
+                            <div class="flex space-x-2 sm:space-x-4 justify-center lg:justify-start">
+                                <div class="nitro-flavor-thumb active-flavor hoverable" data-image="nitroogtransparent.png" data-color="#ff8c00">
+                                    <img src="nitroogtransparent.png" alt="Nitro OG Flavor" class="w-16 h-16 object-contain">
+                                </div>
+                                <div class="nitro-flavor-thumb hoverable" data-image="nitropinktransparent.png" data-color="#ff00ff">
+                                    <img src="nitropinktransparent.png" alt="Nitro Dragonfruit Flavor" class="w-16 h-16 object-contain">
+                                </div>
+                                <div class="nitro-flavor-thumb hoverable" data-image="nitrogreentransparent.png" data-color="#39ff14">
+                                    <img src="nitrogreentransparent.png" alt="Nitro Lemon Lime Flavor" class="w-16 h-16 object-contain">
+                                </div>
+                                <div class="nitro-flavor-thumb hoverable" data-image="nitrobluetransparent.png" data-color="#00ffff">
+                                    <img src="nitrobluetransparent.png" alt="Nitro Turbo Tropical Flavor" class="w-16 h-16 object-contain">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
             </div>
         </section>
         <!-- End AI-Powered Creative Branding Section -->
@@ -746,6 +835,45 @@
                 }, { once: true }); // Ensure the click listener only runs once
             });
 
+            // --- Nitro Energy Can Selector ---
+            const flavorThumbs = document.querySelectorAll('.nitro-flavor-thumb');
+            const mainCanImage = document.getElementById('main-can-image');
+            const nitroShowcase = document.getElementById('nitro-showcase');
+
+            if (flavorThumbs.length > 0 && mainCanImage && nitroShowcase) {
+                flavorThumbs.forEach(thumb => {
+                    thumb.addEventListener('click', () => {
+                        // Debounce to prevent rapid clicking issues
+                        if (thumb.classList.contains('active-flavor')) return;
+
+                        flavorThumbs.forEach(t => t.classList.remove('active-flavor'));
+                        thumb.classList.add('active-flavor');
+                        
+                        const newImage = thumb.dataset.image;
+                        const newColor = thumb.dataset.color;
+
+                        // Fade out the current image
+                        mainCanImage.style.opacity = 0;
+                        
+                        setTimeout(() => {
+                            mainCanImage.src = newImage;
+                            nitroShowcase.style.setProperty('--flavor-color', newColor);
+                             // Fade in the new image
+                            mainCanImage.style.opacity = 1;
+                        }, 200); // Match this delay with opacity transition in CSS
+
+                        thumb.style.setProperty('--flavor-color', newColor);
+                    });
+                });
+
+                // Set initial glow color based on the active flavor
+                const initialFlavor = document.querySelector('.nitro-flavor-thumb.active-flavor');
+                if (initialFlavor) {
+                    const initialColor = initialFlavor.dataset.color;
+                    initialFlavor.style.setProperty('--flavor-color', initialColor);
+                    nitroShowcase.style.setProperty('--flavor-color', initialColor);
+                }
+            }
         });
     </script>
 </body>

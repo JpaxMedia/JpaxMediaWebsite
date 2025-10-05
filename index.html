@@ -27,8 +27,7 @@
             /* Dynamic background gradient */
             background-image: radial-gradient(circle 800px at var(--mouse-x) var(--mouse-y), rgba(74, 222, 128, 0.05), transparent 40%);
             background-repeat: no-repeat;
-            /* Page transition styles */
-            opacity: 0;
+            /* Page transition styles - REMOVED opacity: 0; to fix blank screen issue */
             transition: opacity 0.4s ease-in-out;
         }
         /* Custom cursor styles for devices that support hover */
@@ -425,7 +424,28 @@
                     </div>
                 </div>
 
-                <!-- Video Showcase - UPDATED BLOCK -->
+                <!-- Featured Project: Nitro Energy -->
+                <div class="bg-gray-900/50 rounded-2xl p-8 md:p-12 border border-gray-700 mb-16 shadow-2xl scroll-reveal card-glow">
+                    <div class="spotlight"></div>
+                    <h3 class="text-2xl md:text-3xl font-bold text-center text-white mb-10">Featured Project: AI-Powered Branding</h3>
+                    <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-center">
+                        <div class="order-2 lg:order-1 text-center lg:text-left">
+                            <h4 class="text-2xl font-bold text-white mb-4">Nitro Energy: Concept to Creation</h4>
+                            <p class="text-gray-300 mb-6">
+                                We fused creativity and artificial intelligence to build the Nitro Energy brand from scratch. By generating and refining hundreds of AI-driven concepts, we developed a futuristic and energetic brand identity that captures the essence of the digital realm.
+                            </p>
+                             <a href="portfolio.html#ai-branding" class="hoverable inline-block bg-green-500 hover:bg-green-600 text-white font-bold py-3 px-8 rounded-full text-lg transition-transform hover:scale-105 button-glow">
+                                Explore Our Branding Work
+                            </a>
+                        </div>
+                        <div class="order-1 lg:order-2">
+                            <img src="nitroweb3.jpg" alt="Nitro Energy branding showcase with a futuristic cityscape" class="rounded-lg shadow-xl w-full h-auto object-cover">
+                        </div>
+                    </div>
+                </div>
+
+
+                <!-- Video Showcase -->
                 <div class="text-center mb-10 scroll-reveal">
                     <h3 class="text-2xl md:text-3xl font-bold text-white mb-2">
                         <i class="fas fa-video text-green-400 mr-2"></i>Video Highlights
@@ -435,7 +455,6 @@
                     <div class="scroll-reveal" style="transition-delay: 100ms;">
                         <a href="https://youtu.be/Z-46U0YABR0" target="_blank" class="block hoverable">
                             <div class="video-container relative aspect-video rounded-lg overflow-hidden border-2 border-gray-700 shadow-lg group">
-                                <!-- Thumbnail logic updated to use video ID Z-46U0YABR0 -->
                                 <img src="https://img.youtube.com/vi/Z-46U0YABR0/maxresdefault.jpg" onerror="this.onerror=null;this.src='https://img.youtube.com/vi/Z-46U0YABR0/hqdefault.jpg';" alt="Before & After: Inman Back Yard Oasis" class="w-full h-full object-cover">
                                 <div class="video-overlay absolute inset-0 bg-black/50 flex items-center justify-center">
                                     <i class="fas fa-play text-white text-6xl text-glow play-icon"></i>
@@ -448,7 +467,6 @@
                      <div class="scroll-reveal" style="transition-delay: 200ms;">
                         <a href="https://youtu.be/CL1SSD0BNF4" target="_blank" class="block hoverable">
                             <div class="video-container relative aspect-video rounded-lg overflow-hidden border-2 border-gray-700 shadow-lg group">
-                                <!-- Thumbnail logic updated to use video ID CL1SSD0BNF4 -->
                                 <img src="https://img.youtube.com/vi/CL1SSD0BNF4/maxresdefault.jpg" onerror="this.onerror=null;this.src='https://img.youtube.com/vi/CL1SSD0BNF4/hqdefault.jpg';" alt="Dynamic Sports Hype Reel" class="w-full h-full object-cover">
                                 <div class="video-overlay absolute inset-0 bg-black/50 flex items-center justify-center">
                                     <i class="fas fa-play text-white text-6xl text-glow play-icon"></i>
@@ -569,9 +587,6 @@
                 document.body.style.setProperty('--mouse-y', `${e.clientY + window.scrollY}px`);
                 document.body.style.setProperty('--mouse-x', `${e.clientX}px`);
             });
-
-            // --- Page Fade-In Transition ---
-            document.body.style.opacity = '1';
 
             // --- Page Fade-Out Transition on Link Click ---
             document.querySelectorAll('a').forEach(link => {
