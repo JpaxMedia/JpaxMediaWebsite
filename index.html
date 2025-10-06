@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>JPax Media | AI-Powered Digital Agency</title>
     <!-- Favicon -->
-    <link rel="icon" type="image/png" href="/photos/jpaxmediawebicon.png">
+    <link rel="icon" type="image/png" href="photos/jpaxmediawebicon.png">
     <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
     <!-- Google Fonts -->
@@ -68,7 +68,7 @@
         }
         .hero-bg {
              position: relative; /* Needed for the canvas positioning */
-             background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('/photos/spacebackground.jpg');
+             background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('photos/spacebackground.jpg');
              background-size: cover;
              background-position: center;
              background-attachment: fixed;
@@ -213,7 +213,7 @@
     <header class="bg-black/80 backdrop-blur-sm sticky top-0 z-50">
         <nav class="container mx-auto px-6 py-4 flex justify-between items-center">
             <a href="index.html" class="hoverable">
-                <img src="/photos/jpaxlogokillerwhitefinal.png" alt="JPax Media Logo" class="h-20 transition-all duration-300 logo-glow">
+                <img src="photos/jpaxlogokillerwhitefinal.png" alt="JPax Media Logo" class="h-20 transition-all duration-300 logo-glow">
             </a>
             <div class="hidden md:flex items-center space-x-8">
                 <a href="#about" class="hoverable hover:text-green-400 transition-colors">About</a>
@@ -271,10 +271,10 @@
                         <div id="about-carousel" class="relative rounded-lg overflow-hidden shadow-lg image-glow aspect-square">
                             <!-- Carousel Images -->
                             <div class="carousel-item duration-700 ease-in-out">
-                                <img src="/photos/jpaxcontactphoto.jpg" alt="Julian Johnson, founder of JPax Media" class="absolute block w-full h-full object-cover top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2">
+                                <img src="photos/jpaxcontactphoto.jpg" alt="Julian Johnson, founder of JPax Media" class="absolute block w-full h-full object-cover top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2">
                             </div>
                             <div class="carousel-item duration-700 ease-in-out hidden">
-                                <img src="/photos/julianfront.png" alt="Julian Johnson with his camera" class="absolute block w-full h-full object-cover top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2">
+                                <img src="photos/julianfront.png" alt="Julian Johnson with his camera" class="absolute block w-full h-full object-cover top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2">
                             </div>
                         </div>
                         <!-- Carousel Controls -->
@@ -438,8 +438,12 @@
                                 Explore Our Branding Work
                             </a>
                         </div>
-                        <div class="order-1 lg:order-2">
-                            <img src="nitroweb3.jpg" alt="Nitro Energy branding showcase with a futuristic cityscape" class="rounded-lg shadow-xl w-full h-auto object-cover">
+                        <div id="nitro-carousel" class="relative order-1 lg:order-2 flex items-center justify-center h-80">
+                            <!-- Carousel Images -->
+                            <img src="photos/nitroogtransparent.png" alt="Original Nitro Flavor" class="nitro-carousel-item absolute max-h-80 object-contain transition-opacity duration-1000 ease-in-out opacity-100">
+                            <img src="photos/nitropinktransparent.png" alt="Dragonfruit Nitro Flavor" class="nitro-carousel-item absolute max-h-80 object-contain transition-opacity duration-1000 ease-in-out opacity-0">
+                            <img src="photos/nitrobluetransparent.png" alt="Turbo Tropical Nitro Flavor" class="nitro-carousel-item absolute max-h-80 object-contain transition-opacity duration-1000 ease-in-out opacity-0">
+                            <img src="photos/nitrogreentransparent.png" alt="Lemon Lime Nitro Flavor" class="nitro-carousel-item absolute max-h-80 object-contain transition-opacity duration-1000 ease-in-out opacity-0">
                         </div>
                     </div>
                 </div>
@@ -560,7 +564,7 @@
         <div class="container mx-auto px-6 text-center text-gray-500">
             <div class="mb-4">
                 <a href="#" class="hoverable inline-block">
-                    <img src="/photos/jpaxlogokillerwhitefinal.png" alt="JPax Media Logo" class="h-28 transition-all duration-300 logo-glow">
+                    <img src="photos/jpaxlogokillerwhitefinal.png" alt="JPax Media Logo" class="h-28 transition-all duration-300 logo-glow">
                 </a>
             </div>
              <div class="social-links mb-4">
@@ -814,6 +818,27 @@
                     currentIndex = (currentIndex < items.length - 1) ? currentIndex + 1 : 0;
                     showSlide(currentIndex);
                 });
+            }
+
+            // --- Nitro Can Auto Carousel ---
+            const nitroCarousel = document.getElementById('nitro-carousel');
+            if (nitroCarousel) {
+                const items = nitroCarousel.querySelectorAll('.nitro-carousel-item');
+                let currentIndex = 0;
+                const intervalTime = 3000; // 3 seconds between slides
+
+                setInterval(() => {
+                    // Fade out current image
+                    items[currentIndex].classList.remove('opacity-100');
+                    items[currentIndex].classList.add('opacity-0');
+
+                    // Move to the next image index, looping back to the start
+                    currentIndex = (currentIndex + 1) % items.length;
+
+                    // Fade in next image
+                    items[currentIndex].classList.remove('opacity-0');
+                    items[currentIndex].classList.add('opacity-100');
+                }, intervalTime);
             }
         });
     </script>
