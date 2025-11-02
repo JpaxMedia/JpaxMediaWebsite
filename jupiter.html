@@ -13,11 +13,11 @@
     <meta property="og:type" content="website">
     <meta property="og:title" content="Jupiter | Your Project Command Center">
     <meta property="og:description" content="Experience the future of client collaboration with Jupiter - your all-in-one project dashboard.">
-    <meta property="og:image" content="https://jpaxmedia.com/photos/jpaxmediawebicon.png">
+    <meta property="og:image" content="https://jpaxmedia.com/jpaxmedialogoOFFICIALFINALwhite.png">
     <meta property="og:url" content="https://jpaxmedia.com/jupiter">
     
     <!-- Favicon -->
-    <link rel="icon" type="image/png" href="photos/jpaxmediawebicon.png">
+    <link rel="icon" type="image/png" href="jpaxmedialogoOFFICIALFINALwhite.png">
     
     <!-- Preload Critical Assets -->
     <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js" as="script">
@@ -318,6 +318,214 @@
         .interactive-card:active {
             transform: scale(0.98);
         }
+
+        /* Enhanced Mobile Menu Styles */
+        .hamburger-icon {
+            width: 28px;
+            height: 24px;
+            position: relative;
+            cursor: pointer;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .hamburger-icon span {
+            display: block;
+            width: 100%;
+            height: 3px;
+            background: white;
+            border-radius: 2px;
+            transition: all 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+            transform-origin: center;
+        }
+
+        .hamburger-icon.active span:nth-child(1) {
+            transform: translateY(10.5px) rotate(45deg);
+        }
+
+        .hamburger-icon.active span:nth-child(2) {
+            opacity: 0;
+            transform: translateX(-20px);
+        }
+
+        .hamburger-icon.active span:nth-child(3) {
+            transform: translateY(-10.5px) rotate(-45deg);
+        }
+
+        .mobile-menu-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100vh;
+            background: linear-gradient(135deg, rgba(0, 0, 0, 0.98) 0%, rgba(20, 20, 30, 0.98) 100%);
+            backdrop-filter: blur(20px);
+            z-index: 40;
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.4s ease, visibility 0.4s ease;
+            overflow-y: auto;
+        }
+
+        .mobile-menu-overlay.active {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .mobile-menu-content {
+            padding: 100px 24px 40px;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .mobile-menu-header {
+            margin-bottom: 40px;
+            opacity: 0;
+            transform: translateY(-20px);
+            transition: all 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+            transition-delay: 0.1s;
+        }
+
+        .mobile-menu-overlay.active .mobile-menu-header {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .mobile-menu-nav {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+            margin-bottom: 40px;
+        }
+
+        .mobile-menu-link {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            padding: 20px;
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            border-radius: 16px;
+            text-decoration: none;
+            opacity: 0;
+            transform: translateX(-50px);
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .mobile-menu-link::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(34, 197, 94, 0.1), transparent);
+            transition: left 0.5s ease;
+        }
+
+        .mobile-menu-link:hover::before {
+            left: 100%;
+        }
+
+        .mobile-menu-overlay.active .mobile-menu-link {
+            opacity: 1;
+            transform: translateX(0);
+        }
+
+        .mobile-menu-link[data-index="0"] { transition-delay: 0.15s; }
+        .mobile-menu-link[data-index="1"] { transition-delay: 0.2s; }
+        .mobile-menu-link[data-index="2"] { transition-delay: 0.25s; }
+        .mobile-menu-link[data-index="3"] { transition-delay: 0.3s; }
+
+        .mobile-menu-link:active {
+            transform: scale(0.98);
+            background: rgba(34, 197, 94, 0.1);
+        }
+
+        .mobile-menu-link-number {
+            font-size: 14px;
+            font-weight: 700;
+            color: #22c55e;
+            opacity: 0.5;
+            min-width: 24px;
+        }
+
+        .mobile-menu-link-text {
+            flex: 1;
+            font-size: 24px;
+            font-weight: 700;
+            color: white;
+            transition: color 0.3s ease;
+        }
+
+        .mobile-menu-link:hover .mobile-menu-link-text {
+            color: #22c55e;
+        }
+
+        .mobile-menu-link-icon {
+            color: #22c55e;
+            font-size: 18px;
+            opacity: 0;
+            transform: translateX(-10px);
+            transition: all 0.3s ease;
+        }
+
+        .mobile-menu-link:hover .mobile-menu-link-icon {
+            opacity: 1;
+            transform: translateX(0);
+        }
+
+        .mobile-menu-footer {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: all 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+            transition-delay: 0.4s;
+        }
+
+        .mobile-menu-overlay.active .mobile-menu-footer {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .mobile-menu-cta {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            width: 100%;
+            padding: 18px 32px;
+            background: linear-gradient(135deg, #22c55e 0%, #16a34a 100%);
+            color: black;
+            font-weight: 700;
+            font-size: 18px;
+            border-radius: 50px;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 20px rgba(34, 197, 94, 0.3);
+            margin-bottom: 32px;
+        }
+
+        .mobile-menu-cta:active {
+            transform: scale(0.98);
+        }
+
+        .mobile-menu-social {
+            display: flex;
+            justify-content: center;
+            gap: 32px;
+            font-size: 24px;
+        }
+
+        @media (min-width: 768px) {
+            .mobile-menu-overlay {
+                display: none;
+            }
+        }
     </style>
 </head>
 <body class="text-gray-200">
@@ -329,7 +537,7 @@
     <header class="bg-black/80 backdrop-blur-sm sticky top-0 z-50">
         <nav class="container mx-auto px-6 py-4 flex justify-between items-center">
             <a href="index.html" class="hoverable">
-                <img src="photos/jpaxmediawebicon.png" alt="JPax Media Logo" onerror="this.style.display='none'" class="h-12 transition-all duration-300 logo-glow">
+                <img src="jpaxmedialogoOFFICIALFINALwhite.png" alt="JPax Media Logo" onerror="this.style.display='none'; this.nextElementSibling.style.marginLeft='0'" class="h-12 transition-all duration-300 logo-glow">
             </a>
             <div class="hidden md:flex items-center space-x-8">
                 <a href="index.html" class="hoverable hover:text-green-400 transition-colors">Home</a>
@@ -340,21 +548,57 @@
                 <a href="https://www.instagram.com/jpaxfilmz/" target="_blank" aria-label="Instagram" class="hoverable text-gray-300 hover:text-green-400 text-xl transition-colors"><i class="fab fa-instagram"></i></a>
                 <a href="index.html#contact" class="hoverable bg-green-500 hover:bg-green-600 text-white font-bold py-2 px-4 rounded-lg transition-colors button-glow">Contact</a>
             </div>
-            <button id="mobile-menu-button" class="md:hidden text-2xl hoverable">
-                <i class="fas fa-bars"></i>
+            <button id="mobile-menu-button" class="md:hidden text-white focus:outline-none z-50 relative hoverable">
+                <div class="hamburger-icon">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
             </button>
         </nav>
-        <!-- Mobile Menu -->
-        <div id="mobile-menu" class="hidden md:hidden bg-black/90">
-            <a href="index.html" class="block text-center py-3 hover:bg-green-500/20 transition-colors">Home</a>
-            <a href="index.html#services" class="block text-center py-3 hover:bg-green-500/20 transition-colors">Services</a>
-            <a href="portfolio.html" class="block text-center py-3 hover:bg-green-500/20 transition-colors">Portfolio</a>
-            <a href="jupiter.html" class="block text-center py-3 bg-green-500/20">Jupiter</a>
-            <div class="flex justify-center py-3 space-x-6">
-                <a href="https://www.facebook.com/jpaxmedia/" target="_blank" aria-label="Facebook" class="text-gray-300 hover:text-green-400 text-2xl transition-colors"><i class="fab fa-facebook"></i></a>
-                <a href="https://www.instagram.com/jpaxfilmz/" target="_blank" aria-label="Instagram" class="text-gray-300 hover:text-green-400 text-2xl transition-colors"><i class="fab fa-instagram"></i></a>
+        <!-- Mobile Menu Overlay -->
+        <div id="mobile-menu" class="mobile-menu-overlay">
+            <div class="mobile-menu-content">
+                <div class="mobile-menu-header">
+                    <span class="text-green-400 text-sm font-semibold uppercase tracking-wider">Navigation</span>
+                </div>
+                <nav class="mobile-menu-nav">
+                    <a href="index.html" class="mobile-menu-link" data-index="0">
+                        <span class="mobile-menu-link-number">01</span>
+                        <span class="mobile-menu-link-text">Home</span>
+                        <i class="fas fa-arrow-right mobile-menu-link-icon"></i>
+                    </a>
+                    <a href="index.html#services" class="mobile-menu-link" data-index="1">
+                        <span class="mobile-menu-link-number">02</span>
+                        <span class="mobile-menu-link-text">Services</span>
+                        <i class="fas fa-arrow-right mobile-menu-link-icon"></i>
+                    </a>
+                    <a href="portfolio.html" class="mobile-menu-link" data-index="2">
+                        <span class="mobile-menu-link-number">03</span>
+                        <span class="mobile-menu-link-text">Portfolio</span>
+                        <i class="fas fa-arrow-right mobile-menu-link-icon"></i>
+                    </a>
+                    <a href="jupiter.html" class="mobile-menu-link" data-index="3">
+                        <span class="mobile-menu-link-number">04</span>
+                        <span class="mobile-menu-link-text">Jupiter</span>
+                        <i class="fas fa-arrow-right mobile-menu-link-icon"></i>
+                    </a>
+                </nav>
+                <div class="mobile-menu-footer">
+                    <a href="index.html#contact" class="mobile-menu-cta">
+                        <span>Contact Us</span>
+                        <i class="fas fa-arrow-right ml-2"></i>
+                    </a>
+                    <div class="mobile-menu-social">
+                        <a href="https://www.facebook.com/jpaxmedia/" target="_blank" class="text-gray-400 hover:text-green-400 transition-colors">
+                            <i class="fab fa-facebook"></i>
+                        </a>
+                        <a href="https://www.instagram.com/jpaxfilmz/" target="_blank" class="text-gray-400 hover:text-green-400 transition-colors">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                    </div>
+                </div>
             </div>
-            <a href="index.html#contact" class="block text-center py-4 bg-green-500 hover:bg-green-600 text-white font-bold transition-colors">Contact</a>
         </div>
     </header>
 
@@ -821,28 +1065,45 @@
         </section>
     </main>
 
-    <!-- Footer -->
-    <footer class="bg-black/90 py-12">
+        <!-- Footer -->
+    <footer class="section-bg border-t border-green-500/20 py-12">
         <div class="container mx-auto px-6">
-            <div class="flex flex-col md:flex-row justify-between items-center">
-                <div class="mb-6 md:mb-0">
-                    <img src="photos/jpaxmediawebicon.png" alt="JPax Media Logo" onerror="this.style.display='none'" class="h-10 logo-glow mb-2">
-                    <p class="text-gray-400 text-sm">AI-Powered. Human-Crafted. Lightning-Fast.</p>
+            <div class="grid md:grid-cols-4 gap-8 mb-8">
+                <div>
+                    <h4 class="font-bold text-lg mb-4">JPax Media</h4>
+                    <p class="text-gray-400 text-sm">AI-accelerated. Human-directed. Lightning-fast.</p>
                 </div>
-                <div class="flex space-x-6">
-                    <a href="https://www.facebook.com/jpaxmedia/" target="_blank" aria-label="Facebook" class="hoverable text-gray-400 hover:text-green-400 text-2xl transition-all footer-icon">
-                        <i class="fab fa-facebook"></i>
-                    </a>
-                    <a href="https://www.instagram.com/jpaxfilmz/" target="_blank" aria-label="Instagram" class="hoverable text-gray-400 hover:text-green-400 text-2xl transition-all footer-icon">
-                        <i class="fab fa-instagram"></i>
-                    </a>
-                    <a href="https://www.youtube.com/channel/UCl_NwAHPgf92bST4_AMZxyA" target="_blank" aria-label="YouTube" class="hoverable text-gray-400 hover:text-green-400 text-2xl transition-all footer-icon">
-                        <i class="fab fa-youtube"></i>
-                    </a>
+                <div>
+                    <h4 class="font-bold text-lg mb-4">Services</h4>
+                    <ul class="space-y-2 text-sm">
+                        <li><a href="pricing.html#build" class="text-gray-400 hover:text-green-400 transition-colors">BUILD Services</a></li>
+                        <li><a href="pricing.html#rise" class="text-gray-400 hover:text-green-400 transition-colors">RISE Partnerships</a></li>
+                        <li><a href="portfolio.html" class="text-gray-400 hover:text-green-400 transition-colors">Portfolio</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="font-bold text-lg mb-4">Company</h4>
+                    <ul class="space-y-2 text-sm">
+                        <li><a href="portfolio.html" class="text-gray-400 hover:text-green-400 transition-colors">Case Studies</a></li>
+                        <li><a href="pricing.html" class="text-gray-400 hover:text-green-400 transition-colors">Pricing</a></li>
+                        <li><a href="quiz.html" class="text-gray-400 hover:text-green-400 transition-colors">Take Quiz</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="font-bold text-lg mb-4">Connect</h4>
+                    <div class="flex space-x-4 mb-4">
+                        <a href="https://www.facebook.com/jpaxmedia/" target="_blank" class="footer-icon text-2xl text-gray-400 hover:text-green-400 transition-all">
+                            <i class="fab fa-facebook"></i>
+                        </a>
+                        <a href="https://www.instagram.com/jpaxfilmz/" target="_blank" class="footer-icon text-2xl text-gray-400 hover:text-green-400 transition-all">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                    </div>
+                    <a href="mailto:info@jpaxmedia.com" class="text-gray-400 hover:text-green-400 transition-colors text-sm">info@jpaxmedia.com</a>
                 </div>
             </div>
-            <div class="border-t border-gray-800 mt-8 pt-8 text-center text-gray-500 text-sm">
-                <p>&copy; 2025 JPax Media. All rights reserved.</p>
+            <div class="border-t border-gray-800 pt-8 text-center text-gray-500 text-sm">
+                <p>&copy; 2025 JPax Media. All rights reserved. <span class="text-green-400">BUILD.</span> <span class="text-purple-400">RISE.</span> <span class="text-blue-400">SCALE.</span></p>
             </div>
         </div>
     </footer>
@@ -898,18 +1159,43 @@
                 }
             });
 
-            // --- Mobile Menu ---
+            // --- Enhanced Mobile Menu ---
             const mobileMenuButton = document.getElementById('mobile-menu-button');
             const mobileMenu = document.getElementById('mobile-menu');
             if (mobileMenuButton && mobileMenu) {
+                const hamburgerIcon = mobileMenuButton.querySelector('.hamburger-icon');
+                const body = document.body;
+                
                 mobileMenuButton.addEventListener('click', () => {
-                    mobileMenu.classList.toggle('hidden');
+                    const isActive = mobileMenu.classList.contains('active');
+                    
+                    if (!isActive) {
+                        mobileMenu.classList.add('active');
+                        hamburgerIcon.classList.add('active');
+                        body.style.overflow = 'hidden';
+                    } else {
+                        mobileMenu.classList.remove('active');
+                        hamburgerIcon.classList.remove('active');
+                        body.style.overflow = '';
+                    }
                 });
+                
                 const mobileMenuLinks = mobileMenu.querySelectorAll('a');
                 mobileMenuLinks.forEach(link => {
                     link.addEventListener('click', () => {
-                        mobileMenu.classList.add('hidden');
+                        mobileMenu.classList.remove('active');
+                        hamburgerIcon.classList.remove('active');
+                        body.style.overflow = '';
                     });
+                });
+
+                // Close menu when clicking outside
+                mobileMenu.addEventListener('click', (e) => {
+                    if (e.target === mobileMenu) {
+                        mobileMenu.classList.remove('active');
+                        hamburgerIcon.classList.remove('active');
+                        body.style.overflow = '';
+                    }
                 });
             }
 

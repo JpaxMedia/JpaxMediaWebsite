@@ -13,11 +13,11 @@
     <meta property="og:type" content="website">
     <meta property="og:title" content="Pricing - BUILD & RISE | JPax Media">
     <meta property="og:description" content="Transparent pricing. No surprises. No hidden fees.">
-    <meta property="og:image" content="https://jpaxmedia.com/photos/jpaxmediawebicon.png">
+    <meta property="og:image" content="https://jpaxmedia.com/jpaxmedialogoOFFICIALFINALwhite.png">
     <meta property="og:url" content="https://jpaxmedia.com/pricing.html">
     
     <!-- Favicon -->
-    <link rel="icon" type="image/png" href="photos/jpaxmediawebicon.png">
+    <link rel="icon" type="image/png" href="jpaxmedialogoOFFICIALFINALwhite.png">
     
     <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
@@ -153,6 +153,215 @@
         .popular-badge {
             animation: pulse-glow 2s ease-in-out infinite;
         }
+
+        /* Enhanced Mobile Menu Styles */
+        .hamburger-icon {
+            width: 28px;
+            height: 24px;
+            position: relative;
+            cursor: pointer;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .hamburger-icon span {
+            display: block;
+            width: 100%;
+            height: 3px;
+            background: white;
+            border-radius: 2px;
+            transition: all 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+            transform-origin: center;
+        }
+
+        .hamburger-icon.active span:nth-child(1) {
+            transform: translateY(10.5px) rotate(45deg);
+        }
+
+        .hamburger-icon.active span:nth-child(2) {
+            opacity: 0;
+            transform: translateX(-20px);
+        }
+
+        .hamburger-icon.active span:nth-child(3) {
+            transform: translateY(-10.5px) rotate(-45deg);
+        }
+
+        .mobile-menu-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100vh;
+            background: linear-gradient(135deg, rgba(0, 0, 0, 0.98) 0%, rgba(20, 20, 30, 0.98) 100%);
+            backdrop-filter: blur(20px);
+            z-index: 40;
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.4s ease, visibility 0.4s ease;
+            overflow-y: auto;
+        }
+
+        .mobile-menu-overlay.active {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .mobile-menu-content {
+            padding: 100px 24px 40px;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .mobile-menu-header {
+            margin-bottom: 40px;
+            opacity: 0;
+            transform: translateY(-20px);
+            transition: all 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+            transition-delay: 0.1s;
+        }
+
+        .mobile-menu-overlay.active .mobile-menu-header {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .mobile-menu-nav {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+            margin-bottom: 40px;
+        }
+
+        .mobile-menu-link {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            padding: 20px;
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            border-radius: 16px;
+            text-decoration: none;
+            opacity: 0;
+            transform: translateX(-50px);
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .mobile-menu-link::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(34, 197, 94, 0.1), transparent);
+            transition: left 0.5s ease;
+        }
+
+        .mobile-menu-link:hover::before {
+            left: 100%;
+        }
+
+        .mobile-menu-overlay.active .mobile-menu-link {
+            opacity: 1;
+            transform: translateX(0);
+        }
+
+        .mobile-menu-link[data-index="0"] { transition-delay: 0.15s; }
+        .mobile-menu-link[data-index="1"] { transition-delay: 0.2s; }
+        .mobile-menu-link[data-index="2"] { transition-delay: 0.25s; }
+        .mobile-menu-link[data-index="3"] { transition-delay: 0.3s; }
+        .mobile-menu-link[data-index="4"] { transition-delay: 0.35s; }
+
+        .mobile-menu-link:active {
+            transform: scale(0.98);
+            background: rgba(34, 197, 94, 0.1);
+        }
+
+        .mobile-menu-link-number {
+            font-size: 14px;
+            font-weight: 700;
+            color: #22c55e;
+            opacity: 0.5;
+            min-width: 24px;
+        }
+
+        .mobile-menu-link-text {
+            flex: 1;
+            font-size: 24px;
+            font-weight: 700;
+            color: white;
+            transition: color 0.3s ease;
+        }
+
+        .mobile-menu-link:hover .mobile-menu-link-text {
+            color: #22c55e;
+        }
+
+        .mobile-menu-link-icon {
+            color: #22c55e;
+            font-size: 18px;
+            opacity: 0;
+            transform: translateX(-10px);
+            transition: all 0.3s ease;
+        }
+
+        .mobile-menu-link:hover .mobile-menu-link-icon {
+            opacity: 1;
+            transform: translateX(0);
+        }
+
+        .mobile-menu-footer {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: all 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+            transition-delay: 0.4s;
+        }
+
+        .mobile-menu-overlay.active .mobile-menu-footer {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .mobile-menu-cta {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            width: 100%;
+            padding: 18px 32px;
+            background: linear-gradient(135deg, #22c55e 0%, #16a34a 100%);
+            color: black;
+            font-weight: 700;
+            font-size: 18px;
+            border-radius: 50px;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 20px rgba(34, 197, 94, 0.3);
+            margin-bottom: 32px;
+        }
+
+        .mobile-menu-cta:active {
+            transform: scale(0.98);
+        }
+
+        .mobile-menu-social {
+            display: flex;
+            justify-content: center;
+            gap: 32px;
+            font-size: 24px;
+        }
+
+        @media (min-width: 768px) {
+            .mobile-menu-overlay {
+                display: none;
+            }
+        }
     </style>
 </head>
 <body class="text-gray-200">
@@ -164,7 +373,7 @@
     <header class="bg-black/80 backdrop-blur-sm sticky top-0 z-50">
         <nav class="container mx-auto px-6 py-4 flex justify-between items-center">
             <a href="index.html" class="hoverable">
-                <img src="photos/jpaxmediawebicon.png" alt="JPax Media Logo" onerror="this.style.display='none'" class="h-12 transition-all duration-300 logo-glow">
+                <img src="jpaxmedialogoOFFICIALFINALwhite.png" alt="JPax Media Logo" onerror="this.style.display='none'; this.nextElementSibling.style.marginLeft='0'" class="h-12 transition-all duration-300 logo-glow">
             </a>
             <div class="hidden md:flex items-center space-x-8">
                 <a href="index.html" class="hoverable hover:text-green-400 transition-colors">Home</a>
@@ -176,36 +385,76 @@
                 <a href="https://www.instagram.com/jpaxfilmz/" target="_blank" aria-label="Instagram" class="hoverable text-gray-300 hover:text-green-400 text-xl transition-colors"><i class="fab fa-instagram"></i></a>
                 <a href="index.html#contact" class="hoverable bg-green-500 hover:bg-green-600 text-white font-bold py-2 px-4 rounded-lg transition-colors button-glow">Contact</a>
             </div>
-            <button id="mobile-menu-button" class="md:hidden text-2xl hoverable">
-                <i class="fas fa-bars"></i>
+            <button id="mobile-menu-button" class="md:hidden text-white focus:outline-none z-50 relative hoverable">
+                <div class="hamburger-icon">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
             </button>
         </nav>
-        <!-- Mobile Menu -->
-        <div id="mobile-menu" class="hidden md:hidden bg-black/90">
-            <a href="index.html" class="block text-center py-3 hover:bg-green-500/20 transition-colors">Home</a>
-            <a href="index.html#services" class="block text-center py-3 hover:bg-green-500/20 transition-colors">Services</a>
-            <a href="portfolio.html" class="block text-center py-3 hover:bg-green-500/20 transition-colors">Portfolio</a>
-            <a href="pricing.html" class="block text-center py-3 bg-green-500/20">Pricing</a>
-            <a href="jupiter.html" class="block text-center py-3 hover:bg-green-500/20 transition-colors">Jupiter</a>
-            <div class="flex justify-center py-3 space-x-6">
-                <a href="https://www.facebook.com/jpaxmedia/" target="_blank" aria-label="Facebook" class="text-gray-300 hover:text-green-400 text-2xl transition-colors"><i class="fab fa-facebook"></i></a>
-                <a href="https://www.instagram.com/jpaxfilmz/" target="_blank" aria-label="Instagram" class="text-gray-300 hover:text-green-400 text-2xl transition-colors"><i class="fab fa-instagram"></i></a>
+        <!-- Mobile Menu Overlay -->
+        <div id="mobile-menu" class="mobile-menu-overlay">
+            <div class="mobile-menu-content">
+                <div class="mobile-menu-header">
+                    <span class="text-green-400 text-sm font-semibold uppercase tracking-wider">Navigation</span>
+                </div>
+                <nav class="mobile-menu-nav">
+                    <a href="index.html" class="mobile-menu-link" data-index="0">
+                        <span class="mobile-menu-link-number">01</span>
+                        <span class="mobile-menu-link-text">Home</span>
+                        <i class="fas fa-arrow-right mobile-menu-link-icon"></i>
+                    </a>
+                    <a href="index.html#services" class="mobile-menu-link" data-index="1">
+                        <span class="mobile-menu-link-number">02</span>
+                        <span class="mobile-menu-link-text">Services</span>
+                        <i class="fas fa-arrow-right mobile-menu-link-icon"></i>
+                    </a>
+                    <a href="portfolio.html" class="mobile-menu-link" data-index="2">
+                        <span class="mobile-menu-link-number">03</span>
+                        <span class="mobile-menu-link-text">Portfolio</span>
+                        <i class="fas fa-arrow-right mobile-menu-link-icon"></i>
+                    </a>
+                    <a href="pricing.html" class="mobile-menu-link" data-index="3">
+                        <span class="mobile-menu-link-number">04</span>
+                        <span class="mobile-menu-link-text">Pricing</span>
+                        <i class="fas fa-arrow-right mobile-menu-link-icon"></i>
+                    </a>
+                    <a href="jupiter.html" class="mobile-menu-link" data-index="4">
+                        <span class="mobile-menu-link-number">05</span>
+                        <span class="mobile-menu-link-text">Jupiter</span>
+                        <i class="fas fa-arrow-right mobile-menu-link-icon"></i>
+                    </a>
+                </nav>
+                <div class="mobile-menu-footer">
+                    <a href="quiz.html" class="mobile-menu-cta">
+                        <span>Start Your Project</span>
+                        <i class="fas fa-arrow-right ml-2"></i>
+                    </a>
+                    <div class="mobile-menu-social">
+                        <a href="https://www.facebook.com/jpaxmedia/" target="_blank" class="text-gray-400 hover:text-green-400 transition-colors">
+                            <i class="fab fa-facebook"></i>
+                        </a>
+                        <a href="https://www.instagram.com/jpaxfilmz/" target="_blank" class="text-gray-400 hover:text-green-400 transition-colors">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                    </div>
+                </div>
             </div>
-            <a href="index.html#contact" class="block text-center py-4 bg-green-500 hover:bg-green-600 text-white font-bold transition-colors">Contact</a>
         </div>
     </header>
 
     <main>
         <!-- Hero Section -->
-        <section class="hero-bg py-20">
+        <section class="hero-bg py-24 md:py-32">
             <div class="container mx-auto px-6 text-center">
-                <h1 class="text-5xl md:text-6xl font-extrabold text-white leading-tight mb-6">
+                <h1 class="text-5xl md:text-7xl font-extrabold text-white leading-tight mb-8">
                     <span class="text-green-400 text-glow">BUILD.</span> <span class="text-purple-400">RISE.</span> <span class="text-blue-400">SCALE.</span>
                 </h1>
-                <p class="text-xl md:text-2xl text-gray-300 max-w-3xl mx-auto mb-8">
+                <p class="text-xl md:text-2xl text-gray-300 max-w-3xl mx-auto mb-6">
                     Transparent pricing. No hidden fees. No "contact us for a quote" games.
                 </p>
-                <p class="text-lg text-gray-400 max-w-2xl mx-auto mb-12">
+                <p class="text-lg md:text-xl text-gray-400 max-w-2xl mx-auto mb-12">
                     Everything you need to know is right here. Choose your path: BUILD something new, or RISE with ongoing growth.
                 </p>
                 <a href="quiz.html" class="hoverable inline-block bg-green-500 hover:bg-green-600 text-white font-bold py-4 px-8 rounded-full text-lg transition-all button-glow">
@@ -215,13 +464,13 @@
         </section>
 
         <!-- BUILD Section -->
-        <section class="py-20 bg-black/50">
+        <section class="py-24 md:py-32 bg-black/50">
             <div class="container mx-auto px-6">
                 <div class="text-center mb-16 scroll-reveal">
                     <div class="inline-block bg-green-500/20 border-2 border-green-400 rounded-full px-6 py-2 mb-6">
                         <span class="text-green-400 font-bold text-lg"><i class="fas fa-tools mr-2"></i>BUILD</span>
                     </div>
-                    <h2 class="text-4xl md:text-5xl font-bold text-white mb-4">
+                    <h2 class="text-4xl md:text-5xl font-bold text-white mb-6">
                         Launch Your Foundation
                     </h2>
                     <p class="text-xl text-gray-400 max-w-3xl mx-auto">
@@ -230,133 +479,133 @@
                 </div>
 
                 <!-- BUILD Services Grid -->
-                <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8 max-w-7xl mx-auto mb-12">
+                <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6 lg:gap-8 max-w-7xl mx-auto mb-12">
                     <!-- Website -->
-                    <div class="card-glow build-accent border-2 border-gray-700 rounded-xl p-6 hoverable">
+                    <div class="card-glow build-accent border-2 border-gray-700 rounded-xl p-6 lg:p-8 hoverable h-full flex flex-col">
                         <div class="spotlight"></div>
                         <div class="text-green-400 text-4xl mb-4">
                             <i class="fas fa-laptop-code"></i>
                         </div>
-                        <h3 class="text-2xl font-bold text-white mb-2">Websites</h3>
-                        <p class="text-gray-400 text-sm mb-4">Professional sites that convert</p>
-                        <div class="space-y-2 text-sm">
-                            <div class="flex justify-between">
+                        <h3 class="text-2xl md:text-3xl font-bold text-white mb-2">Websites</h3>
+                        <p class="text-gray-400 text-sm mb-6">Professional sites that convert</p>
+                        <div class="space-y-3 text-sm md:text-base flex-grow">
+                            <div class="flex justify-between items-center">
                                 <span class="text-gray-400">Launch</span>
                                 <span class="text-green-400 font-bold">$2.5K-$4.5K</span>
                             </div>
-                            <div class="flex justify-between">
+                            <div class="flex justify-between items-center">
                                 <span class="text-gray-400">Growth</span>
                                 <span class="text-green-400 font-bold">$5K-$8K</span>
                             </div>
-                            <div class="flex justify-between">
+                            <div class="flex justify-between items-center">
                                 <span class="text-gray-400">Accelerator</span>
                                 <span class="text-green-400 font-bold">$8K-$12K</span>
                             </div>
-                            <div class="flex justify-between">
+                            <div class="flex justify-between items-center">
                                 <span class="text-gray-400">Enterprise</span>
                                 <span class="text-green-400 font-bold">$12K+</span>
                             </div>
                         </div>
-                        <p class="text-gray-500 text-xs mt-4">3-14 days delivery</p>
+                        <p class="text-gray-500 text-xs mt-6">3-14 days delivery</p>
                     </div>
 
                     <!-- Branding -->
-                    <div class="card-glow build-accent border-2 border-gray-700 rounded-xl p-6 hoverable">
+                    <div class="card-glow build-accent border-2 border-gray-700 rounded-xl p-6 lg:p-8 hoverable h-full flex flex-col">
                         <div class="spotlight"></div>
                         <div class="text-green-400 text-4xl mb-4">
                             <i class="fas fa-palette"></i>
                         </div>
-                        <h3 class="text-2xl font-bold text-white mb-2">Branding</h3>
-                        <p class="text-gray-400 text-sm mb-4">Identity that stands out</p>
-                        <div class="space-y-2 text-sm">
-                            <div class="flex justify-between">
+                        <h3 class="text-2xl md:text-3xl font-bold text-white mb-2">Branding</h3>
+                        <p class="text-gray-400 text-sm mb-6">Identity that stands out</p>
+                        <div class="space-y-3 text-sm md:text-base flex-grow">
+                            <div class="flex justify-between items-center">
                                 <span class="text-gray-400">Starter</span>
                                 <span class="text-green-400 font-bold">$1.5K-$2.5K</span>
                             </div>
-                            <div class="flex justify-between">
+                            <div class="flex justify-between items-center">
                                 <span class="text-gray-400">Complete</span>
                                 <span class="text-green-400 font-bold">$2.5K-$4.5K</span>
                             </div>
-                            <div class="flex justify-between">
+                            <div class="flex justify-between items-center">
                                 <span class="text-gray-400">Systems</span>
                                 <span class="text-green-400 font-bold">$4.5K-$7K</span>
                             </div>
                         </div>
-                        <p class="text-gray-500 text-xs mt-4">2-10 days delivery</p>
+                        <p class="text-gray-500 text-xs mt-6">2-10 days delivery</p>
                     </div>
 
                     <!-- Apps -->
-                    <div class="card-glow build-accent border-2 border-gray-700 rounded-xl p-6 hoverable">
+                    <div class="card-glow build-accent border-2 border-gray-700 rounded-xl p-6 lg:p-8 hoverable h-full flex flex-col">
                         <div class="spotlight"></div>
                         <div class="text-green-400 text-4xl mb-4">
                             <i class="fas fa-mobile-alt"></i>
                         </div>
-                        <h3 class="text-2xl font-bold text-white mb-2">Apps</h3>
-                        <p class="text-gray-400 text-sm mb-4">Interactive experiences</p>
-                        <div class="space-y-2 text-sm">
-                            <div class="flex justify-between">
+                        <h3 class="text-2xl md:text-3xl font-bold text-white mb-2">Apps</h3>
+                        <p class="text-gray-400 text-sm mb-6">Interactive experiences</p>
+                        <div class="space-y-3 text-sm md:text-base flex-grow">
+                            <div class="flex justify-between items-center">
                                 <span class="text-gray-400">Web App</span>
                                 <span class="text-green-400 font-bold">$3K-$5K</span>
                             </div>
-                            <div class="flex justify-between">
+                            <div class="flex justify-between items-center">
                                 <span class="text-gray-400">Visualizer</span>
                                 <span class="text-green-400 font-bold">$6K-$9K</span>
                             </div>
-                            <div class="flex justify-between">
+                            <div class="flex justify-between items-center">
                                 <span class="text-gray-400">Platform</span>
                                 <span class="text-green-400 font-bold">$8K-$12K</span>
                             </div>
-                            <div class="flex justify-between">
+                            <div class="flex justify-between items-center">
                                 <span class="text-gray-400">Enterprise</span>
                                 <span class="text-green-400 font-bold">$15K+</span>
                             </div>
                         </div>
-                        <p class="text-gray-500 text-xs mt-4">7-30 days delivery</p>
+                        <p class="text-gray-500 text-xs mt-6">7-30 days delivery</p>
                     </div>
 
                     <!-- Video -->
-                    <div class="card-glow build-accent border-2 border-gray-700 rounded-xl p-6 hoverable">
+                    <div class="card-glow build-accent border-2 border-gray-700 rounded-xl p-6 lg:p-8 hoverable h-full flex flex-col">
                         <div class="spotlight"></div>
                         <div class="text-green-400 text-4xl mb-4">
                             <i class="fas fa-video"></i>
                         </div>
-                        <h3 class="text-2xl font-bold text-white mb-2">Video</h3>
-                        <p class="text-gray-400 text-sm mb-4">Content that converts</p>
-                        <div class="space-y-2 text-sm">
-                            <div class="flex justify-between">
+                        <h3 class="text-2xl md:text-3xl font-bold text-white mb-2">Video</h3>
+                        <p class="text-gray-400 text-sm mb-6">Content that converts</p>
+                        <div class="space-y-3 text-sm md:text-base flex-grow">
+                            <div class="flex justify-between items-center">
                                 <span class="text-gray-400">Single Ad</span>
                                 <span class="text-green-400 font-bold">$800-$1.4K</span>
                             </div>
-                            <div class="flex justify-between">
+                            <div class="flex justify-between items-center">
                                 <span class="text-gray-400">5-Bundle</span>
                                 <span class="text-green-400 font-bold">$2K-$4.5K</span>
                             </div>
-                            <div class="flex justify-between">
+                            <div class="flex justify-between items-center">
                                 <span class="text-gray-400">Story</span>
                                 <span class="text-green-400 font-bold">$3.5K-$7.5K</span>
                             </div>
                         </div>
-                        <p class="text-gray-500 text-xs mt-4">3-14 days delivery</p>
+                        <p class="text-gray-500 text-xs mt-6">3-14 days delivery</p>
                     </div>
                 </div>
 
                 <!-- BUILD What's Included -->
-                <div class="max-w-4xl mx-auto bg-gradient-to-br from-gray-900/80 to-gray-800/80 border-2 border-green-500/30 rounded-2xl p-8 scroll-reveal">
-                    <h3 class="text-2xl font-bold text-white mb-6 flex items-center">
+                <div class="max-w-4xl mx-auto bg-gradient-to-br from-gray-900/80 to-gray-800/80 border-2 border-green-500/30 rounded-2xl p-6 md:p-10 scroll-reveal">
+                    <h3 class="text-2xl md:text-3xl font-bold text-white mb-6 md:mb-8 flex items-center">
                         <i class="fas fa-check-circle text-green-400 mr-3"></i>
                         Every BUILD Project Includes:
                     </h3>
-                    <div class="grid md:grid-cols-2 gap-4">
+                    <div class="grid md:grid-cols-2 gap-4 md:gap-6">
                         <div class="flex items-start">
-                            <i class="fas fa-check text-green-400 mr-3 mt-1"></i>
+                            <i class="fas fa-check text-green-400 mr-3 mt-1 flex-shrink-0"></i>
                             <span class="text-gray-300">50% deposit, 50% at delivery</span>
                         </div>
                         <div class="flex items-start">
-                            <i class="fas fa-check text-green-400 mr-3 mt-1"></i>
+                            <i class="fas fa-check text-green-400 mr-3 mt-1 flex-shrink-0"></i>
                             <span class="text-gray-300">Jupiter dashboard access</span>
                         </div>
                         <div class="flex items-start">
-                            <i class="fas fa-check text-green-400 mr-3 mt-1"></i>
+                            <i class="fas fa-check text-green-400 mr-3 mt-1 flex-shrink-0"></i>
                             <span class="text-gray-300">2 revision rounds included</span>
                         </div>
                         <div class="flex items-start">
@@ -377,13 +626,13 @@
         </section>
 
         <!-- RISE Section -->
-        <section class="py-20 bg-gradient-to-b from-black/50 to-black/80">
+        <section class="py-24 md:py-32 bg-gradient-to-b from-black/50 to-black/80">
             <div class="container mx-auto px-6">
                 <div class="text-center mb-16 scroll-reveal">
                     <div class="inline-block bg-purple-500/20 border-2 border-purple-400 rounded-full px-6 py-2 mb-6">
                         <span class="text-purple-400 font-bold text-lg"><i class="fas fa-rocket mr-2"></i>RISE</span>
                     </div>
-                    <h2 class="text-4xl md:text-5xl font-bold text-white mb-4">
+                    <h2 class="text-4xl md:text-5xl font-bold text-white mb-6">
                         Scale With Ongoing Growth
                     </h2>
                     <p class="text-xl text-gray-400 max-w-3xl mx-auto">
@@ -392,137 +641,137 @@
                 </div>
 
                 <!-- RISE Tiers -->
-                <div class="grid md:grid-cols-4 gap-8 max-w-7xl mx-auto">
+                <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6 lg:gap-8 max-w-7xl mx-auto pt-6">
                     <!-- Starter -->
-                    <div class="card-glow rise-accent border-2 border-gray-700 rounded-xl p-6 hoverable">
+                    <div class="card-glow rise-accent border-2 border-gray-700 rounded-xl p-6 lg:p-8 hoverable h-full flex flex-col">
                         <div class="spotlight"></div>
-                        <h3 class="text-2xl font-bold text-white mb-2">Starter</h3>
-                        <div class="text-3xl font-bold text-purple-400 mb-4">$800-$1.2K</div>
-                        <p class="text-gray-400 text-sm mb-6">Per month</p>
-                        <ul class="space-y-3 text-sm">
+                        <h3 class="text-2xl md:text-3xl font-bold text-white mb-3">Starter</h3>
+                        <div class="text-3xl md:text-4xl font-bold text-purple-400 mb-2">$800-$1.2K</div>
+                        <p class="text-gray-400 text-sm mb-8">Per month</p>
+                        <ul class="space-y-4 text-sm md:text-base flex-grow">
                             <li class="flex items-start">
-                                <i class="fas fa-check-circle text-purple-400 mr-2 mt-1"></i>
+                                <i class="fas fa-check-circle text-purple-400 mr-3 mt-1 flex-shrink-0"></i>
                                 <span class="text-gray-300">1 platform</span>
                             </li>
                             <li class="flex items-start">
-                                <i class="fas fa-check-circle text-purple-400 mr-2 mt-1"></i>
+                                <i class="fas fa-check-circle text-purple-400 mr-3 mt-1 flex-shrink-0"></i>
                                 <span class="text-gray-300">10 posts/month</span>
                             </li>
                             <li class="flex items-start">
-                                <i class="fas fa-check-circle text-purple-400 mr-2 mt-1"></i>
+                                <i class="fas fa-check-circle text-purple-400 mr-3 mt-1 flex-shrink-0"></i>
                                 <span class="text-gray-300">1-2 ad campaigns</span>
                             </li>
                             <li class="flex items-start">
-                                <i class="fas fa-check-circle text-purple-400 mr-2 mt-1"></i>
+                                <i class="fas fa-check-circle text-purple-400 mr-3 mt-1 flex-shrink-0"></i>
                                 <span class="text-gray-300">Basic analytics</span>
                             </li>
                             <li class="flex items-start">
-                                <i class="fas fa-check-circle text-purple-400 mr-2 mt-1"></i>
+                                <i class="fas fa-check-circle text-purple-400 mr-3 mt-1 flex-shrink-0"></i>
                                 <span class="text-gray-300">Monthly review</span>
                             </li>
                         </ul>
                     </div>
 
                     <!-- Growth -->
-                    <div class="card-glow rise-accent border-2 border-purple-500 rounded-xl p-6 hoverable relative popular-badge">
-                        <div class="absolute -top-4 left-1/2 transform -translate-x-1/2">
-                            <span class="bg-purple-500 text-white text-xs font-bold px-4 py-1 rounded-full">POPULAR</span>
+                    <div class="card-glow rise-accent border-2 border-purple-500 rounded-xl p-6 lg:p-8 hoverable relative popular-badge h-full flex flex-col">
+                        <div class="absolute -top-3 left-1/2 transform -translate-x-1/2 z-10">
+                            <span class="bg-purple-500 text-white text-xs font-bold px-4 py-1.5 rounded-full shadow-lg">POPULAR</span>
                         </div>
                         <div class="spotlight"></div>
-                        <h3 class="text-2xl font-bold text-white mb-2">Growth</h3>
-                        <div class="text-3xl font-bold text-purple-400 mb-4">$1.5K-$2.5K</div>
-                        <p class="text-gray-400 text-sm mb-6">Per month</p>
-                        <ul class="space-y-3 text-sm">
+                        <h3 class="text-2xl md:text-3xl font-bold text-white mb-3 mt-2">Growth</h3>
+                        <div class="text-3xl md:text-4xl font-bold text-purple-400 mb-2">$1.5K-$2.5K</div>
+                        <p class="text-gray-400 text-sm mb-8">Per month</p>
+                        <ul class="space-y-4 text-sm md:text-base flex-grow">
                             <li class="flex items-start">
-                                <i class="fas fa-check-circle text-purple-400 mr-2 mt-1"></i>
+                                <i class="fas fa-check-circle text-purple-400 mr-3 mt-1 flex-shrink-0"></i>
                                 <span class="text-gray-300">2-3 platforms</span>
                             </li>
                             <li class="flex items-start">
-                                <i class="fas fa-check-circle text-purple-400 mr-2 mt-1"></i>
+                                <i class="fas fa-check-circle text-purple-400 mr-3 mt-1 flex-shrink-0"></i>
                                 <span class="text-gray-300">20-25 posts/month</span>
                             </li>
                             <li class="flex items-start">
-                                <i class="fas fa-check-circle text-purple-400 mr-2 mt-1"></i>
+                                <i class="fas fa-check-circle text-purple-400 mr-3 mt-1 flex-shrink-0"></i>
                                 <span class="text-gray-300">3 ad campaigns</span>
                             </li>
                             <li class="flex items-start">
-                                <i class="fas fa-check-circle text-purple-400 mr-2 mt-1"></i>
+                                <i class="fas fa-check-circle text-purple-400 mr-3 mt-1 flex-shrink-0"></i>
                                 <span class="text-gray-300">1 video/week</span>
                             </li>
                             <li class="flex items-start">
-                                <i class="fas fa-check-circle text-purple-400 mr-2 mt-1"></i>
+                                <i class="fas fa-check-circle text-purple-400 mr-3 mt-1 flex-shrink-0"></i>
                                 <span class="text-gray-300">Advanced analytics</span>
                             </li>
                             <li class="flex items-start">
-                                <i class="fas fa-check-circle text-purple-400 mr-2 mt-1"></i>
+                                <i class="fas fa-check-circle text-purple-400 mr-3 mt-1 flex-shrink-0"></i>
                                 <span class="text-gray-300">Monthly strategy session</span>
                             </li>
                         </ul>
                     </div>
 
                     <!-- Accelerator -->
-                    <div class="card-glow rise-accent border-2 border-gray-700 rounded-xl p-6 hoverable">
+                    <div class="card-glow rise-accent border-2 border-gray-700 rounded-xl p-6 lg:p-8 hoverable h-full flex flex-col">
                         <div class="spotlight"></div>
-                        <h3 class="text-2xl font-bold text-white mb-2">Accelerator</h3>
-                        <div class="text-3xl font-bold text-purple-400 mb-4">$2.5K-$3.5K</div>
-                        <p class="text-gray-400 text-sm mb-6">Per month</p>
-                        <ul class="space-y-3 text-sm">
+                        <h3 class="text-2xl md:text-3xl font-bold text-white mb-3">Accelerator</h3>
+                        <div class="text-3xl md:text-4xl font-bold text-purple-400 mb-2">$2.5K-$3.5K</div>
+                        <p class="text-gray-400 text-sm mb-8">Per month</p>
+                        <ul class="space-y-4 text-sm md:text-base flex-grow">
                             <li class="flex items-start">
-                                <i class="fas fa-check-circle text-purple-400 mr-2 mt-1"></i>
+                                <i class="fas fa-check-circle text-purple-400 mr-3 mt-1 flex-shrink-0"></i>
                                 <span class="text-gray-300">3-5 platforms</span>
                             </li>
                             <li class="flex items-start">
-                                <i class="fas fa-check-circle text-purple-400 mr-2 mt-1"></i>
+                                <i class="fas fa-check-circle text-purple-400 mr-3 mt-1 flex-shrink-0"></i>
                                 <span class="text-gray-300">4-5 ad campaigns</span>
                             </li>
                             <li class="flex items-start">
-                                <i class="fas fa-check-circle text-purple-400 mr-2 mt-1"></i>
+                                <i class="fas fa-check-circle text-purple-400 mr-3 mt-1 flex-shrink-0"></i>
                                 <span class="text-gray-300">5+ videos/month</span>
                             </li>
                             <li class="flex items-start">
-                                <i class="fas fa-check-circle text-purple-400 mr-2 mt-1"></i>
+                                <i class="fas fa-check-circle text-purple-400 mr-3 mt-1 flex-shrink-0"></i>
                                 <span class="text-gray-300">Custom dashboards</span>
                             </li>
                             <li class="flex items-start">
-                                <i class="fas fa-check-circle text-purple-400 mr-2 mt-1"></i>
+                                <i class="fas fa-check-circle text-purple-400 mr-3 mt-1 flex-shrink-0"></i>
                                 <span class="text-gray-300">Bi-weekly strategy</span>
                             </li>
                             <li class="flex items-start">
-                                <i class="fas fa-check-circle text-purple-400 mr-2 mt-1"></i>
+                                <i class="fas fa-check-circle text-purple-400 mr-3 mt-1 flex-shrink-0"></i>
                                 <span class="text-gray-300">Quarterly refresh</span>
                             </li>
                         </ul>
                     </div>
 
                     <!-- Enterprise -->
-                    <div class="card-glow rise-accent border-2 border-gray-700 rounded-xl p-6 hoverable">
+                    <div class="card-glow rise-accent border-2 border-gray-700 rounded-xl p-6 lg:p-8 hoverable h-full flex flex-col">
                         <div class="spotlight"></div>
-                        <h3 class="text-2xl font-bold text-white mb-2">Enterprise</h3>
-                        <div class="text-3xl font-bold text-purple-400 mb-4">$5K+</div>
-                        <p class="text-gray-400 text-sm mb-6">Per month</p>
-                        <ul class="space-y-3 text-sm">
+                        <h3 class="text-2xl md:text-3xl font-bold text-white mb-3">Enterprise</h3>
+                        <div class="text-3xl md:text-4xl font-bold text-purple-400 mb-2">$5K+</div>
+                        <p class="text-gray-400 text-sm mb-8">Per month</p>
+                        <ul class="space-y-4 text-sm md:text-base flex-grow">
                             <li class="flex items-start">
-                                <i class="fas fa-check-circle text-purple-400 mr-2 mt-1"></i>
+                                <i class="fas fa-check-circle text-purple-400 mr-3 mt-1 flex-shrink-0"></i>
                                 <span class="text-gray-300">Unlimited campaigns</span>
                             </li>
                             <li class="flex items-start">
-                                <i class="fas fa-check-circle text-purple-400 mr-2 mt-1"></i>
+                                <i class="fas fa-check-circle text-purple-400 mr-3 mt-1 flex-shrink-0"></i>
                                 <span class="text-gray-300">Custom AI dashboards</span>
                             </li>
                             <li class="flex items-start">
-                                <i class="fas fa-check-circle text-purple-400 mr-2 mt-1"></i>
+                                <i class="fas fa-check-circle text-purple-400 mr-3 mt-1 flex-shrink-0"></i>
                                 <span class="text-gray-300">Automation integration</span>
                             </li>
                             <li class="flex items-start">
-                                <i class="fas fa-check-circle text-purple-400 mr-2 mt-1"></i>
+                                <i class="fas fa-check-circle text-purple-400 mr-3 mt-1 flex-shrink-0"></i>
                                 <span class="text-gray-300">Dedicated management</span>
                             </li>
                             <li class="flex items-start">
-                                <i class="fas fa-check-circle text-purple-400 mr-2 mt-1"></i>
+                                <i class="fas fa-check-circle text-purple-400 mr-3 mt-1 flex-shrink-0"></i>
                                 <span class="text-gray-300">Priority support</span>
                             </li>
                             <li class="flex items-start">
-                                <i class="fas fa-check-circle text-purple-400 mr-2 mt-1"></i>
+                                <i class="fas fa-check-circle text-purple-400 mr-3 mt-1 flex-shrink-0"></i>
                                 <span class="text-gray-300">Weekly strategy</span>
                             </li>
                         </ul>
@@ -530,34 +779,34 @@
                 </div>
 
                 <!-- RISE Terms -->
-                <div class="max-w-4xl mx-auto mt-12 bg-gradient-to-br from-gray-900/80 to-gray-800/80 border-2 border-purple-500/30 rounded-2xl p-8 scroll-reveal">
-                    <h3 class="text-2xl font-bold text-white mb-6 flex items-center">
+                <div class="max-w-4xl mx-auto mt-12 bg-gradient-to-br from-gray-900/80 to-gray-800/80 border-2 border-purple-500/30 rounded-2xl p-6 md:p-10 scroll-reveal">
+                    <h3 class="text-2xl md:text-3xl font-bold text-white mb-6 md:mb-8 flex items-center">
                         <i class="fas fa-infinity text-purple-400 mr-3"></i>
                         Every RISE Partnership Includes:
                     </h3>
-                    <div class="grid md:grid-cols-2 gap-4">
+                    <div class="grid md:grid-cols-2 gap-4 md:gap-6">
                         <div class="flex items-start">
-                            <i class="fas fa-check text-purple-400 mr-3 mt-1"></i>
+                            <i class="fas fa-check text-purple-400 mr-3 mt-1 flex-shrink-0"></i>
                             <span class="text-gray-300">3-month minimum commitment</span>
                         </div>
                         <div class="flex items-start">
-                            <i class="fas fa-check text-purple-400 mr-3 mt-1"></i>
+                            <i class="fas fa-check text-purple-400 mr-3 mt-1 flex-shrink-0"></i>
                             <span class="text-gray-300">Full Jupiter dashboard</span>
                         </div>
                         <div class="flex items-start">
-                            <i class="fas fa-check text-purple-400 mr-3 mt-1"></i>
+                            <i class="fas fa-check text-purple-400 mr-3 mt-1 flex-shrink-0"></i>
                             <span class="text-gray-300">Monthly performance reports</span>
                         </div>
                         <div class="flex items-start">
-                            <i class="fas fa-check text-purple-400 mr-3 mt-1"></i>
+                            <i class="fas fa-check text-purple-400 mr-3 mt-1 flex-shrink-0"></i>
                             <span class="text-gray-300">Direct team messaging</span>
                         </div>
                         <div class="flex items-start">
-                            <i class="fas fa-check text-purple-400 mr-3 mt-1"></i>
+                            <i class="fas fa-check text-purple-400 mr-3 mt-1 flex-shrink-0"></i>
                             <span class="text-gray-300">First-month satisfaction guarantee</span>
                         </div>
                         <div class="flex items-start">
-                            <i class="fas fa-check text-purple-400 mr-3 mt-1"></i>
+                            <i class="fas fa-check text-purple-400 mr-3 mt-1 flex-shrink-0"></i>
                             <span class="text-gray-300">Cancel anytime after month 3</span>
                         </div>
                     </div>
@@ -566,9 +815,9 @@
         </section>
 
         <!-- CTA Section -->
-        <section class="py-20 bg-black/80">
+        <section class="py-24 md:py-32 bg-black/80">
             <div class="container mx-auto px-6">
-                <div class="max-w-4xl mx-auto text-center bg-gradient-to-br from-gray-900/80 to-gray-800/80 border-2 border-green-500/50 rounded-2xl p-12 scroll-reveal">
+                <div class="max-w-4xl mx-auto text-center bg-gradient-to-br from-gray-900/80 to-gray-800/80 border-2 border-green-500/50 rounded-2xl p-10 md:p-16 scroll-reveal">
                     <h2 class="text-4xl md:text-5xl font-bold text-white mb-6">
                         Not Sure Which Path?
                     </h2>
@@ -588,96 +837,45 @@
         </section>
     </main>
 
-    <!-- Footer -->
-    <footer class="relative bg-gradient-to-b from-black via-gray-900 to-black py-16 overflow-hidden">
-        <div class="absolute inset-0 opacity-20">
-            <div class="absolute top-10 left-10 w-40 h-40 bg-green-500 rounded-full filter blur-3xl animate-pulse"></div>
-            <div class="absolute bottom-20 right-20 w-60 h-60 bg-green-400 rounded-full filter blur-3xl animate-pulse" style="animation-delay: 1s;"></div>
-        </div>
-        
-        <div class="container mx-auto px-6 relative z-10">
-            <div class="grid grid-cols-1 md:grid-cols-4 gap-12 mb-12">
-                <div class="md:col-span-2">
-                    <a href="index.html" class="hoverable inline-block mb-4">
-                        <img src="photos/jpaxmediawebicon.png" alt="JPax Media Logo" onerror="this.style.display='none'" class="h-16 transition-all duration-300 logo-glow">
-                    </a>
-                    <p class="text-gray-400 text-lg mb-6 leading-relaxed max-w-md">
-                        AI-Powered. Human-Crafted. Lightning-Fast. BUILD your foundation. RISE with ongoing growth.
-                    </p>
-                    <div class="flex space-x-4">
-                        <a href="https://www.facebook.com/jpaxmedia/" target="_blank" aria-label="Facebook" class="hoverable w-12 h-12 bg-gray-800 rounded-full flex items-center justify-center text-gray-400 hover:text-green-400 hover:bg-gray-700 transition-all duration-300 footer-icon border border-gray-700 hover:border-green-400">
-                            <i class="fab fa-facebook text-xl"></i>
+        <!-- Footer -->
+    <footer class="section-bg border-t border-green-500/20 py-12">
+        <div class="container mx-auto px-6">
+            <div class="grid md:grid-cols-4 gap-8 mb-8">
+                <div>
+                    <h4 class="font-bold text-lg mb-4">JPax Media</h4>
+                    <p class="text-gray-400 text-sm">AI-accelerated. Human-directed. Lightning-fast.</p>
+                </div>
+                <div>
+                    <h4 class="font-bold text-lg mb-4">Services</h4>
+                    <ul class="space-y-2 text-sm">
+                        <li><a href="pricing.html#build" class="text-gray-400 hover:text-green-400 transition-colors">BUILD Services</a></li>
+                        <li><a href="pricing.html#rise" class="text-gray-400 hover:text-green-400 transition-colors">RISE Partnerships</a></li>
+                        <li><a href="portfolio.html" class="text-gray-400 hover:text-green-400 transition-colors">Portfolio</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="font-bold text-lg mb-4">Company</h4>
+                    <ul class="space-y-2 text-sm">
+                        <li><a href="portfolio.html" class="text-gray-400 hover:text-green-400 transition-colors">Case Studies</a></li>
+                        <li><a href="pricing.html" class="text-gray-400 hover:text-green-400 transition-colors">Pricing</a></li>
+                        <li><a href="quiz.html" class="text-gray-400 hover:text-green-400 transition-colors">Take Quiz</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="font-bold text-lg mb-4">Connect</h4>
+                    <div class="flex space-x-4 mb-4">
+                        <a href="https://www.facebook.com/jpaxmedia/" target="_blank" class="footer-icon text-2xl text-gray-400 hover:text-green-400 transition-all">
+                            <i class="fab fa-facebook"></i>
                         </a>
-                        <a href="https://www.instagram.com/jpaxfilmz/" target="_blank" aria-label="Instagram" class="hoverable w-12 h-12 bg-gray-800 rounded-full flex items-center justify-center text-gray-400 hover:text-green-400 hover:bg-gray-700 transition-all duration-300 footer-icon border border-gray-700 hover:border-green-400">
-                            <i class="fab fa-instagram text-xl"></i>
-                        </a>
-                        <a href="https://www.youtube.com/channel/UCl_NwAHPgf92bST4_AMZxyA" target="_blank" aria-label="YouTube" class="hoverable w-12 h-12 bg-gray-800 rounded-full flex items-center justify-center text-gray-400 hover:text-green-400 hover:bg-gray-700 transition-all duration-300 footer-icon border border-gray-700 hover:border-green-400">
-                            <i class="fab fa-youtube text-xl"></i>
+                        <a href="https://www.instagram.com/jpaxfilmz/" target="_blank" class="footer-icon text-2xl text-gray-400 hover:text-green-400 transition-all">
+                            <i class="fab fa-instagram"></i>
                         </a>
                     </div>
-                </div>
-                
-                <div>
-                    <h4 class="text-white font-bold text-lg mb-4 flex items-center">
-                        <span class="w-8 h-0.5 bg-green-400 mr-3"></span>
-                        Quick Links
-                    </h4>
-                    <ul class="space-y-3">
-                        <li><a href="index.html" class="hoverable text-gray-400 hover:text-green-400 transition-colors flex items-center group"><i class="fas fa-chevron-right text-xs mr-2 text-green-400 opacity-0 group-hover:opacity-100 transition-opacity"></i>Home</a></li>
-                        <li><a href="index.html#services" class="hoverable text-gray-400 hover:text-green-400 transition-colors flex items-center group"><i class="fas fa-chevron-right text-xs mr-2 text-green-400 opacity-0 group-hover:opacity-100 transition-opacity"></i>Services</a></li>
-                        <li><a href="portfolio.html" class="hoverable text-gray-400 hover:text-green-400 transition-colors flex items-center group"><i class="fas fa-chevron-right text-xs mr-2 text-green-400 opacity-0 group-hover:opacity-100 transition-opacity"></i>Portfolio</a></li>
-                        <li><a href="pricing.html" class="hoverable text-gray-400 hover:text-green-400 transition-colors flex items-center group"><i class="fas fa-chevron-right text-xs mr-2 text-green-400 opacity-0 group-hover:opacity-100 transition-opacity"></i>Pricing</a></li>
-                        <li><a href="jupiter.html" class="hoverable text-gray-400 hover:text-green-400 transition-colors flex items-center group"><i class="fas fa-chevron-right text-xs mr-2 text-green-400 opacity-0 group-hover:opacity-100 transition-opacity"></i>Jupiter</a></li>
-                    </ul>
-                </div>
-                
-                <div>
-                    <h4 class="text-white font-bold text-lg mb-4 flex items-center">
-                        <span class="w-8 h-0.5 bg-green-400 mr-3"></span>
-                        Get In Touch
-                    </h4>
-                    <ul class="space-y-3">
-                        <li>
-                            <a href="mailto:info@jpaxmedia.com" class="hoverable text-gray-400 hover:text-green-400 transition-colors flex items-center group">
-                                <i class="fas fa-envelope text-green-400 mr-3 group-hover:scale-110 transition-transform"></i>
-                                <span>info@jpaxmedia.com</span>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="tel:860-494-3090" class="hoverable text-gray-400 hover:text-green-400 transition-colors flex items-center group">
-                                <i class="fas fa-phone text-green-400 mr-3 group-hover:scale-110 transition-transform"></i>
-                                <span>860-494-3090</span>
-                            </a>
-                        </li>
-                        <li class="flex items-start">
-                            <i class="fas fa-map-marker-alt text-green-400 mr-3 mt-1"></i>
-                            <span class="text-gray-400">Hartford, Connecticut, USA</span>
-                        </li>
-                    </ul>
-                    
-                    <a href="index.html#contact" class="hoverable inline-block mt-6 bg-green-500 hover:bg-green-600 text-white font-bold py-3 px-6 rounded-lg transition-all button-glow text-sm">
-                        <i class="fas fa-paper-plane mr-2"></i>Start a Project
-                    </a>
+                    <a href="mailto:info@jpaxmedia.com" class="text-gray-400 hover:text-green-400 transition-colors text-sm">info@jpaxmedia.com</a>
                 </div>
             </div>
-            
-            <div class="border-t border-gray-800 mb-8"></div>
-            
-            <div class="flex flex-col md:flex-row justify-between items-center gap-4">
-                <p class="text-gray-500 text-sm">
-                    &copy; 2025 JPax Media. All rights reserved.
-                </p>
-                <div class="flex space-x-6 text-sm">
-                    <a href="#" class="hoverable text-gray-500 hover:text-green-400 transition-colors">Privacy Policy</a>
-                    <span class="text-gray-700">|</span>
-                    <a href="#" class="hoverable text-gray-500 hover:text-green-400 transition-colors">Terms of Service</a>
-                </div>
-            </div>
-            
-            <div class="text-center mt-8">
-                <p class="text-gray-600 text-xs">
-                    Built with <i class="fas fa-heart text-green-400 animate-pulse"></i> using AI-Powered Workflows
-                </p>
+            <div class="border-t border-gray-800 pt-8 text-center text-gray-500 text-sm">
+                <p>&copy; 2025 JPax Media. All rights reserved. <span class="text-green-400">BUILD.</span> <span class="text-purple-400">RISE.</span> <span class="text-blue-400">SCALE.</span></p>
             </div>
         </div>
     </footer>
@@ -733,18 +931,43 @@
                 }
             });
 
-            // Mobile Menu
+            // Enhanced Mobile Menu
             const mobileMenuButton = document.getElementById('mobile-menu-button');
             const mobileMenu = document.getElementById('mobile-menu');
             if (mobileMenuButton && mobileMenu) {
+                const hamburgerIcon = mobileMenuButton.querySelector('.hamburger-icon');
+                const body = document.body;
+                
                 mobileMenuButton.addEventListener('click', () => {
-                    mobileMenu.classList.toggle('hidden');
+                    const isActive = mobileMenu.classList.contains('active');
+                    
+                    if (!isActive) {
+                        mobileMenu.classList.add('active');
+                        hamburgerIcon.classList.add('active');
+                        body.style.overflow = 'hidden';
+                    } else {
+                        mobileMenu.classList.remove('active');
+                        hamburgerIcon.classList.remove('active');
+                        body.style.overflow = '';
+                    }
                 });
+                
                 const mobileMenuLinks = mobileMenu.querySelectorAll('a');
                 mobileMenuLinks.forEach(link => {
                     link.addEventListener('click', () => {
-                        mobileMenu.classList.add('hidden');
+                        mobileMenu.classList.remove('active');
+                        hamburgerIcon.classList.remove('active');
+                        body.style.overflow = '';
                     });
+                });
+
+                // Close menu when clicking outside
+                mobileMenu.addEventListener('click', (e) => {
+                    if (e.target === mobileMenu) {
+                        mobileMenu.classList.remove('active');
+                        hamburgerIcon.classList.remove('active');
+                        body.style.overflow = '';
+                    }
                 });
             }
 
