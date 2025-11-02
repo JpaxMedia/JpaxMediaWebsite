@@ -3,16 +3,16 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>JPax Media | Portfolio</title>
+    <title>JPax Media Portfolio | BUILD & RISE Success Stories</title>
     
     <!-- SEO Meta Tags -->
-    <meta name="description" content="View JPax Media's portfolio of video production, social media campaigns, and web design projects. See how we help brands grow with AI-powered creative solutions.">
-    <meta name="keywords" content="portfolio, video production, social media campaigns, web design examples, creative agency work, Connecticut">
+    <meta name="description" content="See how JPax Media helps businesses BUILD their digital foundation and RISE with ongoing growth. Real results, real numbers, complete transparency.">
+    <meta name="keywords" content="portfolio, case studies, BUILD RISE results, digital agency success stories, Southeast agency, Connecticut">
     
     <!-- Open Graph / Social Media -->
     <meta property="og:type" content="website">
-    <meta property="og:title" content="JPax Media | Portfolio">
-    <meta property="og:description" content="Explore our portfolio of creative projects powered by AI-driven workflows.">
+    <meta property="og:title" content="JPax Media Portfolio | Real Results">
+    <meta property="og:description" content="Explore our portfolio of BUILD projects and RISE partnerships. See the verified results that prove our methodology works.">
     <meta property="og:image" content="https://jpaxmedia.com/photos/jpaxmediawebicon.png">
     <meta property="og:url" content="https://jpaxmedia.com/portfolio.html">
     
@@ -27,20 +27,19 @@
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;800;900&display=swap" rel="stylesheet">
     <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <!-- Three.js for interactive background -->
+    <!-- Three.js -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js" defer></script>
     <style>
         body {
             font-family: 'Inter', sans-serif;
             background-color: #0c0c0c;
         }
-        /* Custom cursor styles for devices that support hover */
         @media (hover: hover) and (pointer: fine) {
             body {
-                cursor: none; /* Hide the default cursor */
+                cursor: none;
             }
             .cursor-dot, .cursor-outline {
                 pointer-events: none;
@@ -96,7 +95,6 @@
         .section-bg {
             background-color: #111111;
         }
-        /* Scroll Reveal Animations */
         .scroll-reveal {
             opacity: 0;
             transform: translateY(30px);
@@ -106,13 +104,18 @@
             opacity: 1;
             transform: translateY(0);
         }
-        /* Neon Effects */
         .text-glow {
             text-shadow: 0 0 8px rgba(74, 222, 128, 0.8);
         }
+        .text-build {
+            color: #4ade80;
+        }
+        .text-rise {
+            color: #c084fc;
+        }
         .card-glow {
-            position: relative; /* REQUIRED for spotlight position */
-            overflow: hidden;   /* REQUIRED to clip the spotlight */
+            position: relative;
+            overflow: hidden;
             transition: all 0.3s ease-in-out;
         }
         .card-glow:hover {
@@ -120,7 +123,6 @@
             box-shadow: 0 0 15px rgba(74, 222, 128, 0.5);
             transform: translateY(-5px);
         }
-        /* Spotlight Effect */
         .spotlight {
             position: absolute;
             width: 250px;
@@ -135,713 +137,478 @@
         .card-glow:hover .spotlight {
             opacity: 1;
         }
-        .button-glow {
-            transition: box-shadow 0.3s ease-in-out;
+        .framework-badge {
+            display: inline-block;
+            padding: 0.5rem 1rem;
+            border-radius: 9999px;
+            font-weight: 700;
+            font-size: 0.875rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
         }
-        .button-glow:hover {
-             box-shadow: 0 0 10px rgba(74, 222, 128, 0.6), 0 0 20px rgba(74, 222, 128, 0.4);
+        .badge-build {
+            background: rgba(74, 222, 128, 0.1);
+            border: 2px solid #4ade80;
+            color: #4ade80;
+        }
+        .badge-rise {
+            background: rgba(192, 132, 252, 0.1);
+            border: 2px solid #c084fc;
+            color: #c084fc;
         }
         .footer-icon:hover, .logo-glow:hover {
+            filter: drop-shadow(0 0 10px rgba(74, 222, 128, 0.8));
             transform: scale(1.1);
-            filter: drop-shadow(0 0 8px rgba(74, 222, 128, 0.9));
         }
-        .footer-icon:hover {
-            transform: scale(1.15);
-        }
-        /* Active Page Indicator */
-        .nav-active {
-            color: #4ade80;
-            border-bottom: 2px solid #4ade80;
-            padding-bottom: 2px;
-        }
-        .stat-card {
-            background-color: rgba(255, 255, 255, 0.05);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            transition: all 0.3s ease;
-        }
-        .stat-card:hover {
-            background-color: rgba(74, 222, 128, 0.1);
-            border-color: rgba(74, 222, 128, 0.5);
-            transform: scale(1.05);
-        }
-        /* Video Player Styles */
-        .video-container {
-            position: relative;
-            width: 100%;
-            padding-top: 56.25%; /* 16:9 Aspect Ratio */
-            border-radius: 0.5rem; /* rounded-lg */
-            overflow: hidden;
-            border: 2px solid #4b5563; /* border-gray-700 */
-            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05); /* shadow-lg */
-            transition: box-shadow 0.3s ease-in-out, transform 0.3s ease-in-out;
-            cursor: pointer;
-            background-color: #000;
-        }
-        .video-container.card-glow:hover { /* Override transform for video containers */
-             transform: translateY(0);
-             box-shadow: 0 0 15px rgba(74, 222, 128, 0.7);
-        }
-        .video-container img {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            transition: transform 0.3s ease;
-        }
-        .video-container:hover img {
-            transform: scale(1.05);
-        }
-        .video-play-button {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            color: white;
-            font-size: 4rem;
-            text-shadow: 0 0 15px rgba(0,0,0,0.7);
-            transition: transform 0.3s ease, filter 0.3s ease;
-            pointer-events: none;
-            animation: pulse-play 2s ease-in-out infinite;
-        }
-        @keyframes pulse-play {
-            0%, 100% { 
-                transform: translate(-50%, -50%) scale(1);
-                filter: drop-shadow(0 0 10px rgba(74, 222, 128, 0.5));
-            }
-            50% { 
-                transform: translate(-50%, -50%) scale(1.1);
-                filter: drop-shadow(0 0 20px rgba(74, 222, 128, 0.8));
-            }
-        }
-        .video-container:hover .video-play-button {
-             transform: translate(-50%, -50%) scale(1.2);
-             filter: drop-shadow(0 0 25px rgba(74, 222, 128, 1));
-             animation: none;
-        }
-        .video-container iframe {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-        }
-        .mockup-bg {
-            background: linear-gradient(145deg, rgba(255,255,255,0.1), rgba(255,255,255,0));
-            border: 1px solid rgba(255,255,255,0.1);
+        .metric-card {
+            background: rgba(17, 17, 17, 0.8);
+            border: 1px solid rgba(74, 222, 128, 0.2);
             backdrop-filter: blur(10px);
-        }
-        
-        /* Styles for Nitro Energy Showcase */
-        .nitro-flavor-thumb {
-            cursor: pointer;
-            padding: 0.5rem;
-            border: 2px solid transparent;
-            border-radius: 0.5rem;
-            transition: all 0.3s ease;
-            background-color: rgba(255, 255, 255, 0.05);
-        }
-        .nitro-flavor-thumb:hover {
-            transform: scale(1.1);
-            border-color: #4ade80;
-        }
-        .nitro-flavor-thumb.active-flavor {
-            border-color: var(--flavor-color, #4ade80);
-            box-shadow: 0 0 15px var(--flavor-color, #4ade80);
-            transform: scale(1.1);
-        }
-        #nitro-showcase {
-            perspective: 1000px; /* For 3D effect on hover */
-            --flavor-color: #ff8c00; /* Default glow color */
-        }
-        #main-can-image {
-            transition: transform 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94), filter 0.4s ease, opacity 0.2s ease-in-out;
-            filter: drop-shadow(0 0 10px rgba(0,0,0,0.5));
-        }
-        #nitro-showcase:hover #main-can-image {
-            transform: scale(1.05) rotateY(10deg);
-            filter: drop-shadow(0 0 25px var(--flavor-color, #4ade80));
         }
     </style>
 </head>
-<body class="text-gray-200">
+<body class="text-gray-100">
     <!-- Custom Cursor -->
     <div class="cursor-dot"></div>
     <div class="cursor-outline"></div>
 
-    <!-- Header & Navigation -->
-    <header class="bg-black/80 backdrop-blur-sm sticky top-0 z-50">
-        <nav class="container mx-auto px-6 py-4 flex justify-between items-center">
-            <a href="index.html" class="hoverable">
-                <!-- UPDATED Logo Source & Size (h-20 -> h-12) -->
-                <img src="jpaxmedialogoOFFICIALFINAL(white).png" alt="JPax Media Logo" class="h-12 transition-all duration-300 logo-glow">
-            </a>
-            <div class="hidden md:flex items-center space-x-8">
-                <a href="index.html" class="hoverable hover:text-green-400 transition-colors">Home</a>
-                <a href="index.html#services" class="hoverable hover:text-green-400 transition-colors">Services</a>
-                <a href="portfolio.html" class="hoverable hover:text-green-400 transition-colors nav-active">Portfolio</a>
-                <a href="jupiter.html" class="hoverable hover:text-green-400 transition-colors">Jupiter</a>
-                <a href="https://www.facebook.com/jpaxmedia/" target="_blank" aria-label="Facebook" class="hoverable text-gray-300 hover:text-green-400 text-xl transition-colors"><i class="fab fa-facebook"></i></a>
-                <a href="https://www.instagram.com/jpaxfilmz/" target="_blank" aria-label="Instagram" class="hoverable text-gray-300 hover:text-green-400 text-xl transition-colors"><i class="fab fa-instagram"></i></a>
-                <a href="index.html#contact" class="hoverable bg-green-500 hover:bg-green-600 text-white font-bold py-2 px-4 rounded-lg transition-colors button-glow">Contact</a>
+    <!-- Navigation -->
+    <nav class="fixed w-full z-50 bg-black/80 backdrop-blur-md border-b border-green-500/20">
+        <div class="container mx-auto px-6 py-4">
+            <div class="flex items-center justify-between">
+                <a href="index.html" class="flex items-center space-x-3 logo-glow transition-all duration-300">
+                    <img src="photos/jpaxmediawebicon.png" alt="JPax Media" class="h-10 w-auto">
+                    <span class="text-2xl font-bold text-white">JPax Media</span>
+                </a>
+                
+                <!-- Desktop Menu -->
+                <div class="hidden md:flex items-center space-x-8">
+                    <a href="index.html" class="text-gray-300 hover:text-green-400 transition-colors">Home</a>
+                    <a href="index.html#services" class="text-gray-300 hover:text-green-400 transition-colors">Services</a>
+                    <a href="index.html#how-it-works" class="text-gray-300 hover:text-green-400 transition-colors">Process</a>
+                    <a href="portfolio.html" class="text-green-400 transition-colors">Portfolio</a>
+                    <a href="pricing.html" class="bg-green-500 text-black px-6 py-2 rounded-full font-semibold hover:bg-green-400 transition-all">View Pricing</a>
+                </div>
+
+                <!-- Mobile Menu Button -->
+                <button id="mobile-menu-button" class="md:hidden text-white focus:outline-none">
+                    <i class="fas fa-bars text-2xl"></i>
+                </button>
             </div>
-            <button id="mobile-menu-button" class="md:hidden text-2xl hoverable">
-                <i class="fas fa-bars"></i>
-            </button>
-        </nav>
-        <!-- Mobile Menu -->
-        <div id="mobile-menu" class="hidden md:hidden bg-black/90">
-            <a href="index.html" class="block text-center py-3 hover:bg-green-500/20 transition-colors">Home</a>
-            <a href="index.html#services" class="block text-center py-3 hover:bg-green-500/20 transition-colors">Services</a>
-            <a href="portfolio.html" class="block text-center py-3 bg-green-500/20">Portfolio</a>
-            <a href="jupiter.html" class="block text-center py-3 hover:bg-green-500/20 transition-colors">Jupiter</a>
-            <div class="flex justify-center py-3 space-x-6">
-                 <a href="https://www.facebook.com/jpaxmedia/" target="_blank" aria-label="Facebook" class="text-gray-300 hover:text-green-400 text-2xl transition-colors"><i class="fab fa-facebook"></i></a>
-                <a href="https://www.instagram.com/jpaxfilmz/" target="_blank" aria-label="Instagram" class="text-gray-300 hover:text-green-400 text-2xl transition-colors"><i class="fab fa-instagram"></i></a>
+
+            <!-- Mobile Menu -->
+            <div id="mobile-menu" class="hidden md:hidden mt-4 pb-4 space-y-3">
+                <a href="index.html" class="block text-gray-300 hover:text-green-400 transition-colors">Home</a>
+                <a href="index.html#services" class="block text-gray-300 hover:text-green-400 transition-colors">Services</a>
+                <a href="index.html#how-it-works" class="block text-gray-300 hover:text-green-400 transition-colors">Process</a>
+                <a href="portfolio.html" class="block text-green-400 transition-colors">Portfolio</a>
+                <a href="pricing.html" class="block bg-green-500 text-black px-6 py-2 rounded-full font-semibold text-center hover:bg-green-400 transition-all">View Pricing</a>
             </div>
-            <a href="index.html#contact" class="block text-center py-4 bg-green-500 hover:bg-green-600 text-white font-bold transition-colors">Contact</a>
         </div>
-    </header>
+    </nav>
 
-    <main>
-        <!-- Hero Section -->
-        <section id="portfolio-home" class="hero-bg min-h-[60vh] flex items-center">
-            <canvas id="interactive-bg"></canvas>
-            <div class="hero-content container mx-auto px-6 text-center">
-                <h1 class="text-4xl md:text-6xl font-extrabold text-white leading-tight mb-4 text-glow">Our Portfolio</h1>
-                <p class="text-lg md:text-xl text-gray-300 max-w-3xl mx-auto">A showcase of AI-powered campaigns, creative work, and measurable results.</p>
+    <!-- Hero Section -->
+    <section class="hero-bg pt-32 pb-20 min-h-[50vh] flex items-center relative">
+        <canvas id="interactive-bg"></canvas>
+        <div class="container mx-auto px-6 hero-content">
+            <div class="max-w-4xl">
+                <h1 class="text-5xl md:text-6xl font-black mb-6 leading-tight">
+                    Real Work. Real Results. Real Numbers.
+                </h1>
+                <p class="text-xl md:text-2xl text-gray-300 mb-4">
+                    Every metric is verified. Every claim is documented. See how we help businesses <span class="text-build font-bold">BUILD</span> their foundation and <span class="text-rise font-bold">RISE</span> with ongoing growth.
+                </p>
             </div>
-        </section>
+        </div>
+    </section>
 
-        <!-- Case Study Section -->
-        <section id="case-studies" class="py-20 overflow-hidden">
-            <div class="container mx-auto px-6">
-                <div class="text-center mb-16 scroll-reveal">
-                    <h2 class="text-3xl md:text-4xl font-bold text-white">Case Study: 30-Day Impact Report</h2>
-                    <p class="text-gray-400 mt-2">How we transformed a client's digital presence in one month.</p>
+    <!-- Featured Case Study: Southern Pavers -->
+    <section class="py-20">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-12 scroll-reveal">
+                <div class="inline-block bg-green-500/10 border border-green-500/30 rounded-full px-6 py-2 mb-6">
+                    <span class="text-green-400 font-semibold uppercase text-sm">Featured Success Story</span>
                 </div>
-
-                <!-- Main KPIs -->
-                <div class="bg-gray-900/50 rounded-2xl p-8 md:p-12 border border-gray-700 mb-16 shadow-2xl scroll-reveal card-glow">
-                    <div class="spotlight"></div>
-                    <h3 class="text-2xl font-bold text-center text-white mb-8">Overall Performance</h3>
-                    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 text-center">
-                        <div class="p-6 rounded-lg stat-card hoverable"><p class="text-4xl md:text-5xl font-extrabold text-green-400 text-glow" data-count="925">0%</p><p class="text-lg font-semibold text-white mt-2">Website Growth</p><p class="text-gray-400 text-sm">~200 to 2,051 visitors</p></div>
-                        <div class="p-6 rounded-lg stat-card hoverable"><p class="text-4xl md:text-5xl font-extrabold text-green-400 text-glow" data-count="3694">0</p><p class="text-lg font-semibold text-white mt-2">Total Pageviews</p><p class="text-gray-400 text-sm">4 GB bandwidth usage</p></div>
-                        <div class="p-6 rounded-lg stat-card hoverable"><p class="text-4xl md:text-5xl font-extrabold text-green-400 text-glow" data-count="42">0%</p><p class="text-lg font-semibold text-white mt-2">Conversion Rate</p><p class="text-gray-400 text-sm">10 bookings from 24 conversations</p></div>
-                        <div class="p-6 rounded-lg stat-card hoverable"><p class="text-4xl md:text-5xl font-extrabold text-green-400 text-glow" data-count="7100">0%</p><p class="text-lg font-semibold text-white mt-2">ROI Achievement</p><p class="text-gray-400 text-sm">$1 in ad spend generated ~$72</p></div>
-                    </div>
-                </div>
-
-                <!-- Detailed Breakdowns -->
-                <div class="grid grid-cols-1 lg:grid-cols-2 gap-12">
-                    <!-- Client Campaign Success -->
-                    <div class="bg-gray-800/50 p-8 rounded-xl shadow-lg border border-gray-700 scroll-reveal card-glow" style="transition-delay: 200ms;">
-                        <div class="spotlight"></div>
-                        <h3 class="text-2xl font-bold text-white mb-6 text-center"><i class="fas fa-rocket text-green-400 mr-2"></i>Client Campaign Success</h3>
-                        <ul class="space-y-4 text-lg">
-                            <li class="flex items-start"><i class="fas fa-dollar-sign text-green-400 mt-1 mr-4"></i><span>Total ad spend of <b class="text-white">$416.78</b> across 9 targeted ads.</span></li>
-                            <li class="flex items-start"><i class="fas fa-comments text-green-400 mt-1 mr-4"></i><span>Generated <b class="text-white">24 message conversations</b> at ~$17.36 each.</span></li>
-                            <li class="flex items-start"><i class="fas fa-calendar-check text-green-400 mt-1 mr-4"></i><span><b class="text-white">10 appointments booked</b> at an average cost of $41.60.</span></li>
-                            <li class="flex items-start"><i class="fas fa-handshake text-green-400 mt-1 mr-4"></i><span>Estimated 5 closed jobs (50% conversion).</span></li>
-                            <li class="flex items-start"><i class="fas fa-chart-line text-green-400 mt-1 mr-4"></i><span><b class="text-white">$30,000 potential new revenue</b> generated.</span></li>
-                        </ul>
-                    </div>
-                    <!-- Community Impact -->
-                    <div class="bg-gray-800/50 p-8 rounded-xl shadow-lg border border-gray-700 scroll-reveal card-glow" style="transition-delay: 400ms;">
-                        <div class="spotlight"></div>
-                        <h3 class="text-2xl font-bold text-white mb-6 text-center"><i class="fas fa-users text-green-400 mr-2"></i>Community Impact</h3>
-                         <ul class="space-y-4 text-lg">
-                            <li class="flex items-start"><i class="fas fa-guitar text-green-400 mt-1 mr-4"></i><span>Local band event campaign with just <b class="text-white">$80 investment</b> over 4 days.</span></li>
-                            <li class="flex items-start"><i class="fas fa-ticket-alt text-green-400 mt-1 mr-4"></i><span><b class="text-white">137 event responses</b> at only $0.58 each.</span></li>
-                            <li class="flex items-start"><i class="fas fa-eye text-green-400 mt-1 mr-4"></i><span><b class="text-white">10,279 views</b> reaching over 6,296 people.</span></li>
-                            <li class="flex items-start"><i class="fas fa-thumbs-up text-green-400 mt-1 mr-4"></i><span><b class="text-white">193 post engagements</b> and 145 link clicks.</span></li>
-                            <li class="flex items-start"><i class="fas fa-bullhorn text-green-400 mt-1 mr-4"></i><span>Achieved outstanding community engagement and reach.</span></li>
-                        </ul>
-                    </div>
-                </div>
+                <h2 class="text-4xl md:text-5xl font-black mb-4">
+                    Southern Pavers: From Foundation to Growth
+                </h2>
+                <p class="text-xl text-gray-400 max-w-3xl mx-auto">Complete rebrand, custom visualizer app, and strategic audience building—delivering measurable ROI at every stage</p>
             </div>
-        </section>
 
-        <!-- Website Projects Section -->
-        <section id="website-projects" class="section-bg py-20 overflow-hidden">
-            <div class="container mx-auto px-6">
-                <div class="text-center mb-16 scroll-reveal">
-                    <h2 class="text-3xl md:text-4xl font-bold text-white">Website & Branding Projects</h2>
-                    <p class="text-gray-400 mt-2">Crafting digital identities for growing businesses.</p>
-                </div>
-                
-                <!-- LuxeCraft Project -->
-                <div class="p-8 rounded-2xl border border-gray-800 bg-gray-900/30 mb-16 card-glow scroll-reveal">
-                    <div class="spotlight"></div>
-                    <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-                        <div class="order-2 lg:order-1">
-                             <h3 class="text-3xl font-bold text-white mb-4">LuxeCraft Construction</h3>
-                             <p class="text-gray-400 mb-6 leading-relaxed">We partnered with LuxeCraft to build a digital presence that reflects their commitment to skilled craftsmanship and top-tier framing expertise. The goal was to create a professional, trustworthy brand identity that appeals to both builders and homeowners, establishing them as a premier framing crew in the region.</p>
-                             <div class="space-y-4">
-                                <h4 class="text-xl font-semibold text-white">Project Highlights</h4>
-                                <ul class="list-none space-y-3 text-gray-400">
-                                    <li class="flex items-center"><i class="fas fa-check-circle text-green-400 mr-3"></i>Developed a strong, dependable brand identity.</li>
-                                    <li class="flex items-center"><i class="fas fa-check-circle text-green-400 mr-3"></i>Designed a modern, responsive website to showcase their portfolio.</li>
-                                    <li class="flex items-center"><i class="fas fa-check-circle text-green-400 mr-3"></i>Focused on clear calls-to-action for quote requests and project starts.</li>
-                                </ul>
-                                <a href="https://luxecraftconstruction.com/" target="_blank" class="hoverable inline-block mt-6 bg-green-500/10 border border-green-500 text-green-400 font-bold py-2 px-6 rounded-lg transition-all hover:bg-green-500/20 button-glow">Visit Website <i class="fas fa-external-link-alt ml-2 text-sm"></i></a>
-                            </div>
+            <div class="max-w-6xl mx-auto">
+                <!-- Company Overview -->
+                <div class="bg-black/40 border border-gray-800 rounded-2xl p-8 md:p-12 mb-8 scroll-reveal">
+                    <div class="grid md:grid-cols-3 gap-6 mb-8">
+                        <div>
+                            <div class="text-sm text-gray-500 uppercase mb-2">Industry</div>
+                            <div class="text-xl font-bold">Outdoor Living & Landscaping</div>
                         </div>
-                        <div class="order-1 lg:order-2 p-4 mockup-bg rounded-lg">
-                             <img src="photos/luxe1.png" alt="LuxeCraft Construction website mockup" class="rounded-md shadow-2xl" loading="lazy">
+                        <div>
+                            <div class="text-sm text-gray-500 uppercase mb-2">Location</div>
+                            <div class="text-xl font-bold">Southeast Regional</div>
+                        </div>
+                        <div>
+                            <div class="text-sm text-gray-500 uppercase mb-2">Challenge</div>
+                            <div class="text-xl font-bold">Scale Digital Presence</div>
+                        </div>
+                    </div>
+                    <p class="text-gray-300 text-lg">
+                        Established landscaping business with steady local revenue wanted to modernize their brand identity, showcase their work interactively, and generate consistent qualified leads month-over-month.
+                    </p>
+                </div>
+
+                <!-- Phase 1: BUILD -->
+                <div class="bg-gradient-to-br from-green-900/20 to-black/40 border border-green-500/30 rounded-2xl p-8 md:p-12 mb-8 scroll-reveal">
+                    <div class="flex items-center justify-between mb-8">
+                        <div>
+                            <div class="framework-badge badge-build mb-4">PHASE 1: BUILD</div>
+                            <h3 class="text-3xl md:text-4xl font-black">Digital Foundation in 7 Days</h3>
+                        </div>
+                        <div class="text-right">
+                            <div class="text-sm text-gray-500 uppercase mb-2">Timeline</div>
+                            <div class="text-3xl font-black text-green-400">7 Days</div>
+                        </div>
+                    </div>
+
+                    <!-- Investment & Deliverables -->
+                    <div class="grid md:grid-cols-3 gap-6 mb-8">
+                        <div class="metric-card rounded-xl p-6">
+                            <div class="text-4xl font-black text-green-400 mb-2">$8,500</div>
+                            <div class="text-gray-400">Total Investment</div>
+                        </div>
+                        <div class="metric-card rounded-xl p-6">
+                            <div class="text-4xl font-black text-green-400 mb-2">3</div>
+                            <div class="text-gray-400">Major Deliverables</div>
+                        </div>
+                        <div class="metric-card rounded-xl p-6">
+                            <div class="text-4xl font-black text-green-400 mb-2">100%</div>
+                            <div class="text-gray-400">Client Satisfaction</div>
+                        </div>
+                    </div>
+
+                    <!-- Deliverables List -->
+                    <div class="space-y-6">
+                        <div class="border-l-4 border-green-500 pl-6">
+                            <h4 class="text-xl font-bold mb-2">Complete Brand Rebrand</h4>
+                            <p class="text-gray-400 mb-3">Professional visual identity with new logo, comprehensive color system, typography hierarchy, and brand guidelines for consistent application across all touchpoints.</p>
+                            <a href="https://southernpaversscpro.com/" target="_blank" class="text-green-400 hover:text-green-300 transition-colors">
+                                View Live Website <i class="fas fa-external-link-alt ml-1"></i>
+                            </a>
+                        </div>
+
+                        <div class="border-l-4 border-green-500 pl-6">
+                            <h4 class="text-xl font-bold mb-2">Custom Paver Visualizer App</h4>
+                            <p class="text-gray-400 mb-3">Interactive web application allowing customers to visualize different paver options in their actual space. Integrated lead capture and CRM automation increased conversion rates by an estimated 60%.</p>
+                            <a href="https://southernpaverssc.app/" target="_blank" class="text-green-400 hover:text-green-300 transition-colors">
+                                Try the Visualizer <i class="fas fa-external-link-alt ml-1"></i>
+                            </a>
+                        </div>
+
+                        <div class="border-l-4 border-green-500 pl-6">
+                            <h4 class="text-xl font-bold mb-2">Professional Website</h4>
+                            <p class="text-gray-400">Mobile-optimized, conversion-focused website with integrated visualizer, service showcase, portfolio gallery, and contact automation. Full ownership transferred to client.</p>
                         </div>
                     </div>
                 </div>
 
-                <!-- Southern Pavers Project -->
-                <div class="p-8 rounded-2xl border border-gray-800 bg-gray-900/30 card-glow scroll-reveal">
-                    <div class="spotlight"></div>
-                    <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-                        <div class="p-4 mockup-bg rounded-lg">
-                            <img src="photos/sp.png" alt="Southern Pavers website mockup" class="rounded-md shadow-2xl" loading="lazy">
+                <!-- Phase 2: RISE -->
+                <div class="bg-gradient-to-br from-purple-900/20 to-black/40 border border-purple-500/30 rounded-2xl p-8 md:p-12 mb-8 scroll-reveal">
+                    <div class="flex items-center justify-between mb-8">
+                        <div>
+                            <div class="framework-badge badge-rise mb-4">PHASE 2: RISE GROWTH PARTNERSHIP</div>
+                            <h3 class="text-3xl md:text-4xl font-black">Strategic Audience Building</h3>
                         </div>
-                         <div>
-                             <h3 class="text-3xl font-bold text-white mb-4">Southern Pavers</h3>
-                             <p class="text-gray-400 mb-6 leading-relaxed">For Southern Pavers, our mission was to transform their digital storefront to match the beauty and function of their outdoor creations. We developed a comprehensive online strategy, including a new website, branding, and AI-powered content, to enhance their curb appeal and connect with homeowners looking for innovative hardscape designs.</p>
-                             <div class="space-y-4">
-                                <h4 class="text-xl font-semibold text-white">Project Highlights</h4>
-                                <ul class="list-none space-y-3 text-gray-400">
-                                    <li class="flex items-center"><i class="fas fa-check-circle text-green-400 mr-3"></i>Crafted a family-focused brand narrative around quality and trust.</li>
-                                    <li class="flex items-center"><i class="fas fa-check-circle text-green-400 mr-3"></i>Launched an SEO-optimized website with an AI-powered blog.</li>
-                                    <li class="flex items-center"><i class="fas fa-check-circle text-green-400 mr-3"></i>Introduced an "AI Outdoor Oasis Hub" to help users plan projects.</li>
-                                </ul>
-                                <a href="https://southernpaversscpro.com/" target="_blank" class="hoverable inline-block mt-6 bg-green-500/10 border border-green-500 text-green-400 font-bold py-2 px-6 rounded-lg transition-all hover:bg-green-500/20 button-glow">Visit Website <i class="fas fa-external-link-alt ml-2 text-sm"></i></a>
-                            </div>
+                        <div class="text-right">
+                            <div class="text-sm text-gray-500 uppercase mb-2">Investment</div>
+                            <div class="text-3xl font-black text-purple-400">$2,000/mo</div>
                         </div>
                     </div>
-                </div>
 
-                <!-- Nitro Energy Project -->
-                <div class="p-8 mt-16 rounded-2xl border border-gray-800 bg-gray-900/30 card-glow scroll-reveal">
-                    <div class="spotlight"></div>
-                    <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-                        <div class="order-2 lg:order-1">
-                             <h3 class="text-3xl font-bold text-white mb-4">Nitro Energy</h3>
-                             <p class="text-gray-400 mb-6 leading-relaxed">We developed a high-octane digital presence for Nitro Energy, crafting a visually explosive website that captures the brand's intense energy. The site is designed to engage a younger audience with dynamic animations, bold typography, and a seamless user experience that mirrors the drink's powerful punch.</p>
-                             <div class="space-y-4">
-                                <h4 class="text-xl font-semibold text-white">Project Highlights</h4>
-                                <ul class="list-none space-y-3 text-gray-400">
-                                    <li class="flex items-center"><i class="fas fa-check-circle text-green-400 mr-3"></i>Developed a bold, energetic brand identity.</li>
-                                    <li class="flex items-center"><i class="fas fa-check-circle text-green-400 mr-3"></i>Designed an immersive, single-page website with dynamic scroll effects.</li>
-                                    <li class="flex items-center"><i class="fas fa-check-circle text-green-400 mr-3"></i>Focused on mobile-first design for an on-the-go audience.</li>
-                                </ul>
-                                <a href="https://nitroenergy.netlify.app/" target="_blank" class="hoverable inline-block mt-6 bg-green-500/10 border border-green-500 text-green-400 font-bold py-2 px-6 rounded-lg transition-all hover:bg-green-500/20 button-glow">Visit Website <i class="fas fa-external-link-alt ml-2 text-sm"></i></a>
-                            </div>
-                        </div>
-                        <div class="order-1 lg:order-2 p-4 mockup-bg rounded-lg">
-                             <img src="photos/nitroweb2.png" alt="Nitro Energy website mockup" class="rounded-md shadow-2xl" loading="lazy">
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-        
-        <!-- AI-Powered Creative Branding Section -->
-        <section id="ai-branding" class="py-20 overflow-hidden">
-            <div class="container mx-auto px-6">
-                <div class="text-center mb-16 scroll-reveal">
-                    <h2 class="text-3xl md:text-4xl font-bold text-white">AI-Powered Creative Branding</h2>
-                    <p class="text-gray-400 mt-2">Turning client logos into professional, high-impact merchandise mockups in minutes.</p>
-                </div>
-                
-                <div class="bg-gray-900/50 rounded-2xl p-6 md:p-10 border border-gray-700 shadow-2xl scroll-reveal card-glow">
-                     <div class="spotlight"></div>
-                     <div class="flex flex-col lg:flex-row items-center gap-8 mb-10">
-                         <p class="text-lg text-gray-300 lg:text-left text-center">
-                            Using AI creative tools, we rapidly conceptualize and generate realistic merchandise mockups like these for Southern Pavers. This process validates branding concepts instantly, allowing clients to visualize their logo on promotional gear, apparel, and vehicles before committing to manufacturing.
+                    <div class="bg-purple-500/10 border border-purple-500/30 rounded-xl p-6 mb-8">
+                        <h4 class="text-xl font-bold mb-4 text-purple-400">The Strategy</h4>
+                        <p class="text-gray-300 mb-4">
+                            Instead of expensive cold-traffic conversion campaigns ($1-5 per prospect), we focused on Phase 1: building qualified audiences at maximum efficiency. These warm audiences would then be retargeted with conversion messaging at <span class="font-bold text-white">60-70% lower cost</span> than traditional cold traffic acquisition.
+                        </p>
+                        <p class="text-gray-400 text-sm">
+                            Most agencies burn through ad budgets chasing immediate conversions. We build smart audience foundations first, then convert them efficiently. The result: sustainable lead generation that compounds month after month.
                         </p>
                     </div>
 
-                    <!-- Merchandise Gallery -->
-                    <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-4">
-                        <div class="scroll-reveal" style="transition-delay: 50ms;">
-                            <img src="photos/spbrandshirt2.png" alt="Southern Pavers T-shirt Mockup (Front)" class="rounded-lg shadow-lg aspect-square object-cover card-glow hoverable" loading="lazy">
-                        </div>
-                        <div class="scroll-reveal" style="transition-delay: 100ms;">
-                            <img src="photos/spbrandshirt1.png" alt="Southern Pavers T-shirt Mockup (Back)" class="rounded-lg shadow-lg aspect-square object-cover card-glow hoverable" loading="lazy">
-                        </div>
-                        <div class="scroll-reveal" style="transition-delay: 150ms;">
-                            <img src="photos/spbrandcoathat.png" alt="Southern Pavers Coat and Hat Mockup" class="rounded-lg shadow-lg aspect-square object-cover card-glow hoverable" loading="lazy">
-                        </div>
-                        <div class="scroll-reveal" style="transition-delay: 200ms;">
-                            <img src="photos/spbrandmug.png" alt="Southern Pavers Mug Mockup" class="rounded-lg shadow-lg aspect-square object-cover card-glow hoverable" loading="lazy">
-                        </div>
-                        <div class="scroll-reveal" style="transition-delay: 250ms;">
-                            <img src="photos/spbrandshirtgirl.png" alt="Southern Pavers Sweatshirt Mockup (Female Model, Front)" class="rounded-lg shadow-lg aspect-square object-cover card-glow hoverable" loading="lazy">
-                        </div>
-                        <div class="scroll-reveal" style="transition-delay: 300ms;">
-                            <img src="photos/spbrandshirtgirl2.png" alt="Southern Pavers Sweatshirt Mockup (Female Model, Back)" class="rounded-lg shadow-lg aspect-square object-cover card-glow hoverable" loading="lazy">
+                    <!-- Results Grid -->
+                    <div class="mb-8">
+                        <h4 class="text-2xl font-bold mb-6 text-center">First 30 Days Results (October 2025)</h4>
+                        <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+                            <div class="metric-card rounded-xl p-6">
+                                <div class="text-4xl font-black text-purple-400 mb-2">14,753</div>
+                                <div class="text-gray-400 mb-2">Qualified Prospects</div>
+                                <div class="text-sm text-green-400">+50% vs industry avg (8K-10K)</div>
+                            </div>
+                            <div class="metric-card rounded-xl p-6">
+                                <div class="text-4xl font-black text-purple-400 mb-2">1,046</div>
+                                <div class="text-gray-400 mb-2">Website Visitors</div>
+                                <div class="text-sm text-green-400">+30% higher intent (vs 600-800)</div>
+                            </div>
+                            <div class="metric-card rounded-xl p-6">
+                                <div class="text-4xl font-black text-purple-400 mb-2">$0.04</div>
+                                <div class="text-gray-400 mb-2">Cost Per Prospect</div>
+                                <div class="text-sm text-green-400">92-96% cheaper ($1-5 typical)</div>
+                            </div>
+                            <div class="metric-card rounded-xl p-6">
+                                <div class="text-4xl font-black text-purple-400 mb-2">15,632</div>
+                                <div class="text-gray-400 mb-2">Video Plays</div>
+                                <div class="text-sm text-green-400">200%+ higher (vs 3K-5K avg)</div>
+                            </div>
                         </div>
                     </div>
-                </div>
 
-                <!-- Nitro Energy Branding Showcase -->
-                <div class="mt-16 bg-gray-900/50 rounded-2xl p-6 md:p-10 border border-gray-700 shadow-2xl scroll-reveal card-glow">
-                     <div class="spotlight"></div>
-                     <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-center">
-                        <!-- Left side: Interactive Can Display -->
-                        <div id="nitro-showcase" class="relative flex justify-center items-center h-96">
-                            <img src="photos/nitroogtransparent.png" id="main-can-image" class="max-h-full h-auto absolute transition-all duration-500 ease-in-out transform" alt="Nitro Energy Drink Can - Original Flavor">
+                    <!-- Comparison Table -->
+                    <div class="bg-black/40 border border-purple-500/20 rounded-xl p-6 mb-8">
+                        <h4 class="text-xl font-bold mb-4">JPax Media vs Industry Standard</h4>
+                        <div class="overflow-x-auto">
+                            <table class="w-full text-left">
+                                <thead>
+                                    <tr class="border-b border-gray-800">
+                                        <th class="py-3 text-gray-400">Metric</th>
+                                        <th class="py-3 text-purple-400">JPax Result</th>
+                                        <th class="py-3 text-gray-400">Industry Avg</th>
+                                        <th class="py-3 text-green-400">Advantage</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr class="border-b border-gray-800/50">
+                                        <td class="py-4">Total Ad Spend</td>
+                                        <td class="py-4 font-bold">$611</td>
+                                        <td class="py-4">$2,000-3,000</td>
+                                        <td class="py-4 text-green-400">70% savings</td>
+                                    </tr>
+                                    <tr class="border-b border-gray-800/50">
+                                        <td class="py-4">Prospects Generated</td>
+                                        <td class="py-4 font-bold">14,753</td>
+                                        <td class="py-4">8,000-10,000</td>
+                                        <td class="py-4 text-green-400">+50% reach</td>
+                                    </tr>
+                                    <tr class="border-b border-gray-800/50">
+                                        <td class="py-4">Cost Per Prospect</td>
+                                        <td class="py-4 font-bold">$0.04</td>
+                                        <td class="py-4">$1.00-5.00</td>
+                                        <td class="py-4 text-green-400">96% cheaper</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="py-4">Retargeting Audience Value</td>
+                                        <td class="py-4 font-bold">$5K-10K+</td>
+                                        <td class="py-4">N/A</td>
+                                        <td class="py-4 text-green-400">Pure advantage</td>
+                                    </tr>
+                                </tbody>
+                            </table>
                         </div>
+                    </div>
 
-                        <!-- Right side: Description and Thumbnails -->
-                        <div class="text-center lg:text-left">
-                            <h4 class="text-2xl font-bold text-white mb-4">Nitro Energy: AI-Generated Branding</h4>
-                            <p class="text-gray-300 mb-6">
-                                Fusing AI with creative vision, we developed the entire Nitro Energy brand from the ground up. AI algorithms generated hundreds of design concepts, exploring unique color palettes, typography, and dynamic shapes. We then refined the top-performing concepts to create a brand that feels futuristic, energetic, and instantly iconic. The result is a product line where every can is a testament to AI-powered creativity.
-                            </p>
-                            <!-- Flavor Thumbnails -->
-                            <div class="flex space-x-2 sm:space-x-4 justify-center lg:justify-start">
-                                <div class="nitro-flavor-thumb active-flavor hoverable" data-image="photos/nitroogtransparent.png" data-color="#ff8c00">
-                                    <img src="photos/nitroogtransparent.png" alt="Nitro OG Flavor" class="w-16 h-16 object-contain">
+                    <!-- What This Achieved -->
+                    <div class="space-y-4">
+                        <h4 class="text-2xl font-bold mb-4">What Southern Pavers Now Has:</h4>
+                        <div class="grid md:grid-cols-2 gap-4">
+                            <div class="flex items-start">
+                                <i class="fas fa-check-circle text-purple-400 mr-3 mt-1 text-xl"></i>
+                                <div>
+                                    <div class="font-bold mb-1">14,753 Qualified Prospects</div>
+                                    <div class="text-gray-400 text-sm">Segmented by interest and behavior, ready for conversion campaigns</div>
                                 </div>
-                                <div class="nitro-flavor-thumb hoverable" data-image="photos/nitropinktransparent.png" data-color="#ff00ff">
-                                    <img src="photos/nitropinktransparent.png" alt="Nitro Dragonfruit Flavor" class="w-16 h-16 object-contain">
-                                </div>
-                                <div class="nitro-flavor-thumb hoverable" data-image="photos/nitrogreentransparent.png" data-color="#39ff14">
-                                    <img src="photos/nitrogreentransparent.png" alt="Nitro Lemon Lime Flavor" class="w-16 h-16 object-contain">
-                                </div>
-                                <div class="nitro-flavor-thumb hoverable" data-image="photos/nitrobluetransparent.png" data-color="#00ffff">
-                                    <img src="photos/nitrobluetransparent.png" alt="Nitro Turbo Tropical Flavor" class="w-16 h-16 object-contain">
+                            </div>
+                            <div class="flex items-start">
+                                <i class="fas fa-check-circle text-purple-400 mr-3 mt-1 text-xl"></i>
+                                <div>
+                                    <div class="font-bold mb-1">Warm Retargeting Audience</div>
+                                    <div class="text-gray-400 text-sm">Worth $5,000-10,000+ in organic value for future campaigns</div>
                                 </div>
                             </div>
+                            <div class="flex items-start">
+                                <i class="fas fa-check-circle text-purple-400 mr-3 mt-1 text-xl"></i>
+                                <div>
+                                    <div class="font-bold mb-1">Data Foundation</div>
+                                    <div class="text-gray-400 text-sm">Clear insights on who's interested in their services and why</div>
+                                </div>
+                            </div>
+                            <div class="flex items-start">
+                                <i class="fas fa-check-circle text-purple-400 mr-3 mt-1 text-xl"></i>
+                                <div>
+                                    <div class="font-bold mb-1">60-70% Lower Conversion Costs</div>
+                                    <div class="text-gray-400 text-sm">Future campaigns target warm audiences, not expensive cold traffic</div>
+                                </div>
+                            </div>
                         </div>
                     </div>
-                    <!-- Promotional Designs Gallery -->
-                    <div class="mt-12 pt-8 border-t border-gray-700">
-                        <h4 class="text-xl font-bold text-white mb-6 text-center">Promotional Brand Designs</h4>
-                        <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
-                            <div class="scroll-reveal" style="transition-delay: 50ms;">
-                                <img src="photos/nitroorangedesign.png" alt="Nitro Energy Orange Design" class="rounded-lg shadow-lg aspect-square object-cover card-glow hoverable" loading="lazy">
-                            </div>
-                            <div class="scroll-reveal" style="transition-delay: 100ms;">
-                                <img src="photos/nitroPINKdesign.png" alt="Nitro Energy Pink Design" class="rounded-lg shadow-lg aspect-square object-cover card-glow hoverable" loading="lazy">
-                            </div>
-                            <div class="scroll-reveal" style="transition-delay: 150ms;">
-                                <img src="photos/nitrobluedesign.png" alt="Nitro Energy Blue Design" class="rounded-lg shadow-lg aspect-square object-cover card-glow hoverable" loading="lazy">
-                            </div>
-                            <div class="scroll-reveal" style="transition-delay: 200ms;">
-                                <img src="photos/nitrogreendesign.png" alt="Nitro Energy Green Design" class="rounded-lg shadow-lg aspect-square object-cover card-glow hoverable" loading="lazy">
+
+                    <!-- Client Quote -->
+                    <div class="mt-8 bg-purple-500/10 border border-purple-500/30 rounded-xl p-8">
+                        <div class="flex items-start">
+                            <i class="fas fa-quote-left text-purple-400 text-3xl mr-4 mt-2"></i>
+                            <div>
+                                <p class="text-gray-300 text-lg italic mb-4">
+                                    "Julian didn't just re-create the brand or run ads, he showed us the strategy. Building audiences first meant we're not burning money on cold traffic. Now we're retargeting people who already know us. It's smarter spending."
+                                </p>
+                                <p class="text-gray-500">— Southern Pavers, October 2025</p>
                             </div>
                         </div>
                     </div>
                 </div>
 
-            </div>
-        </section>
-        <!-- End AI-Powered Creative Branding Section -->
-
-
-        <!-- Proposal Section -->
-        <section id="proposal-example" class="py-20 overflow-hidden section-bg">
-            <div class="container mx-auto px-6">
-                <div class="text-center mb-16 scroll-reveal">
-                    <h2 class="text-3xl md:text-4xl font-bold text-white">Client Proposals & Strategy</h2>
-                    <p class="text-gray-400 mt-2">Presenting clear, data-driven strategies for client success.</p>
-                </div>
-
-                <div class="p-8 rounded-2xl border border-gray-800 bg-gray-900/30 card-glow scroll-reveal">
-                    <div class="spotlight"></div>
-                    <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-                        <div class="p-4 mockup-bg rounded-lg">
-                            <img src="photos/jpaxproposal.png" alt="An attractive proposal for social media management" class="rounded-md shadow-2xl" loading="lazy">
+                <!-- The RISE Advantage -->
+                <div class="bg-black/40 border border-gray-800 rounded-2xl p-8 md:p-12 scroll-reveal">
+                    <h3 class="text-2xl font-bold mb-6 text-center">Why RISE Partnerships Deliver Consistent ROI</h3>
+                    <div class="grid md:grid-cols-3 gap-8">
+                        <div class="text-center">
+                            <div class="text-5xl font-black text-purple-400 mb-3">Month 1</div>
+                            <h4 class="font-bold mb-2">Build Efficiently</h4>
+                            <p class="text-gray-400 text-sm">Generate qualified audiences at 92-96% lower cost than traditional methods</p>
                         </div>
-                         <div>
-                             <h3 class="text-3xl font-bold text-white mb-4">Social Media Management Proposal</h3>
-                             <p class="text-gray-400 mb-6 leading-relaxed">We craft clear, compelling, and visually attractive proposals to outline our data-driven strategies. This example for social media management was designed to not only detail the plan but also to reflect the quality and professionalism we bring to every project.</p>
-                             <div class="space-y-4">
-                                <h4 class="text-xl font-semibold text-white">Key Strategies</h4>
-                                <ul class="list-none space-y-3 text-gray-400">
-                                    <li class="flex items-center"><i class="fas fa-check-circle text-green-400 mr-3"></i>Consistent content strategy with 4-5 posts per week.</li>
-                                    <li class="flex items-center"><i class="fas fa-check-circle text-green-400 mr-3"></i>Engagement-focused content including behind-the-scenes, promotions, and interactive polls.</li>
-                                    <li class="flex items-center"><i class="fas fa-check-circle text-green-400 mr-3"></i>Targeted paid advertising campaigns to boost posts, gain likes, and promote events.</li>
-                                    <li class="flex items-center"><i class="fas fa-check-circle text-green-400 mr-3"></i>Monthly KPI reporting to track growth and optimize performance.</li>
-                                </ul>
-                                <a href="https://www.dropbox.com/scl/fi/gnt0zfqxy9zo4obp2p5ek/Proposal-for-Social-Media-Management-1.pdf?rlkey=y6z3fm5rk9cr16gcu944rcmbz&st=3goisfoa&dl=0" target="_blank" class="hoverable inline-block mt-6 bg-green-500/10 border border-green-500 text-green-400 font-bold py-2 px-6 rounded-lg transition-all hover:bg-green-500/20 button-glow">View Full Proposal <i class="fas fa-external-link-alt ml-2 text-sm"></i></a>
-                            </div>
+                        <div class="text-center">
+                            <div class="text-5xl font-black text-purple-400 mb-3">Month 2-3</div>
+                            <h4 class="font-bold mb-2">Convert Smarter</h4>
+                            <p class="text-gray-400 text-sm">Retarget warm audiences with conversion messaging at 60-70% lower cost</p>
+                        </div>
+                        <div class="text-center">
+                            <div class="text-5xl font-black text-purple-400 mb-3">Month 4+</div>
+                            <h4 class="font-bold mb-2">Scale What Works</h4>
+                            <p class="text-gray-400 text-sm">Optimize based on real data, eliminate what doesn't work, compound results</p>
                         </div>
                     </div>
                 </div>
             </div>
-        </section>
-
-        <!-- Pitch Deck Section -->
-        <section id="pitch-decks" class="py-20 overflow-hidden">
-            <div class="container mx-auto px-6">
-                <div class="text-center mb-16 scroll-reveal">
-                    <h2 class="text-3xl md:text-4xl font-bold text-white">AI-Powered Pitch Decks & Presentations</h2>
-                    <p class="text-gray-400 mt-2">Transforming ideas into investor-ready narratives.</p>
-                </div>
-
-                <div class="p-8 rounded-2xl border border-gray-800 bg-gray-900/30 card-glow scroll-reveal">
-                    <div class="spotlight"></div>
-                    <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-                         <div class="order-2 lg:order-1">
-                             <h3 class="text-3xl font-bold text-white mb-4">NovaFlow AI: Pitch Deck Example</h3>
-                             <p class="text-gray-400 mb-6 leading-relaxed">We specialize in creating compelling, professional pitch decks that tell a powerful story and secure funding. Using AI-driven tools for market research, content generation, and design, we build presentations that are not only visually stunning but also strategically sound. This example for NovaFlow AI showcases our ability to distill complex ideas into a clear, persuasive narrative for investors.</p>
-                             <div class="space-y-4">
-                                <h4 class="text-xl font-semibold text-white">Key Features</h4>
-                                <ul class="list-none space-y-3 text-gray-400">
-                                    <li class="flex items-center"><i class="fas fa-check-circle text-green-400 mr-3"></i>Data-driven narrative and storytelling.</li>
-                                    <li class="flex items-center"><i class="fas fa-check-circle text-green-400 mr-3"></i>Clean, modern, and on-brand visual design.</li>
-                                    <li class="flex items-center"><i class="fas fa-check-circle text-green-400 mr-3"></i>Clear articulation of the problem, solution, and market opportunity.</li>
-                                    <li class="flex items-center"><i class="fas fa-check-circle text-green-400 mr-3"></i>Financial projections and go-to-market strategy.</li>
-                                </ul>
-                                <a href="https://www.dropbox.com/scl/fi/gvkt8eo3d9ukabqirkp9a/NovaFlow-AI.pdf?rlkey=9r5xg2z99lp1gahnm925tayyn&st=zcs5rvmx&dl=0" target="_blank" class="hoverable inline-block mt-6 bg-green-500/10 border border-green-500 text-green-400 font-bold py-2 px-6 rounded-lg transition-all hover:bg-green-500/20 button-glow">View Full Pitch Deck <i class="fas fa-external-link-alt ml-2 text-sm"></i></a>
-                            </div>
-                        </div>
-                        <div class="order-1 lg:order-2 p-4 mockup-bg rounded-lg space-y-6">
-                            <img src="photos/Screenshot 2025-09-30 at 10.49.40 AM.png" alt="NovaFlow AI Pitch Deck Cover" class="rounded-md shadow-2xl" loading="lazy">
-                            <img src="photos/Screenshot 2025-09-30 at 10.49.49 AM.png" alt="NovaFlow AI Pitch Deck Problem Slide" class="rounded-md shadow-2xl" loading="lazy">
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Video Gallery Section -->
-        <section id="video-gallery" class="py-20 overflow-hidden section-bg">
-            <div class="container mx-auto px-6">
-                <div class="text-center mb-16 scroll-reveal">
-                    <h2 class="text-3xl md:text-4xl font-bold text-white">Video Portfolio</h2>
-                    <p class="text-gray-400 mt-2">Capturing stories through cinematic visuals and targeted ads.</p>
-                </div>
-
-                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-12">
-                     
-                    <!-- Video Item 1 -->
-                    <div class="scroll-reveal" style="transition-delay: 100ms;">
-                        <div class="video-container card-glow" data-video-id="Z-46U0YABR0">
-                             <div class="spotlight"></div>
-                             <img src="https://img.youtube.com/vi/Z-46U0YABR0/hqdefault.jpg" alt="Thumbnail for Before & After: Inman Back Yard Oasis" loading="lazy">
-                             <div class="video-play-button"><i class="fas fa-play"></i></div>
-                        </div>
-                        <h4 class="text-xl font-bold text-white mt-4">Before & After: Inman Back Yard Oasis</h4>
-                        <p class="text-gray-400">Cinematic drone footage of a luxury hardscaping project.</p>
-                    </div>
-                    
-                    <!-- Video Item 2 -->
-                    <div class="scroll-reveal" style="transition-delay: 200ms;">
-                        <div class="video-container card-glow" data-video-id="CL1SSD0BNF4">
-                             <div class="spotlight"></div>
-                             <img src="https://img.youtube.com/vi/CL1SSD0BNF4/hqdefault.jpg" alt="Thumbnail for Basketball Hype Reel" loading="lazy">
-                             <div class="video-play-button"><i class="fas fa-play"></i></div>
-                        </div>
-                        <h4 class="text-xl font-bold text-white mt-4">Basketball Hype Reel</h4>
-                        <p class="text-gray-400">High-energy montage of a basketball program session.</p>
-                    </div>
-                    
-                    <!-- Video Item 3 -->
-                    <div class="scroll-reveal" style="transition-delay: 300ms;">
-                         <div class="video-container card-glow" data-video-id="_h0G3fUwKO4">
-                             <div class="spotlight"></div>
-                             <img src="https://img.youtube.com/vi/_h0G3fUwKO4/hqdefault.jpg" alt="Thumbnail for Aerial Video Retaining Wall Build" loading="lazy">
-                             <div class="video-play-button"><i class="fas fa-play"></i></div>
-                        </div>
-                        <h4 class="text-xl font-bold text-white mt-4">Aerial Video Retaining Wall Build</h4>
-                        <p class="text-gray-400">Professional drone video of a retaining wall build.</p>
-                    </div>
-                    
-                    <!-- Video Item 4 -->
-                    <div class="scroll-reveal" style="transition-delay: 400ms;">
-                        <div class="video-container card-glow" data-video-id="khIMdTxN47Q">
-                            <div class="spotlight"></div>
-                            <img src="https://img.youtube.com/vi/khIMdTxN47Q/hqdefault.jpg" alt="Thumbnail for Basketball Tournament Highlight" loading="lazy">
-                            <div class="video-play-button"><i class="fas fa-play"></i></div>
-                        </div>
-                        <h4 class="text-xl font-bold text-white mt-4">Basketball Tournament Highlight</h4>
-                        <p class="text-gray-400">A highlight video of a youth basketball tournament.</p>
-                    </div>
-                    
-                    <!-- Video Item 5 -->
-                    <div class="scroll-reveal" style="transition-delay: 100ms;">
-                        <div class="video-container card-glow" data-video-id="lvRs9xe1jEY">
-                            <div class="spotlight"></div>
-                            <img src="https://img.youtube.com/vi/lvRs9xe1jEY/hqdefault.jpg" alt="Thumbnail for Basketball Tournament Highlight 2" loading="lazy">
-                            <div class="video-play-button"><i class="fas fa-play"></i></div>
-                        </div>
-                        <h4 class="text-xl font-bold text-white mt-4">Basketball Tournament Highlight 2</h4>
-                        <p class="text-gray-400">A highlight video of a youth basketball tournament</p>
-                    </div>
-                    
-                    <!-- Video Item 6 -->
-                    <div class="scroll-reveal" style="transition-delay: 200ms;">
-                        <div class="video-container card-glow" data-video-id="XapYT5ZSQSA">
-                             <div class="spotlight"></div>
-                             <img src="https://img.youtube.com/vi/XapYT5ZSQSA/hqdefault.jpg" alt="Thumbnail for Hype Style Basketball Video" loading="lazy">
-                             <div class="video-play-button"><i class="fas fa-play"></i></div>
-                        </div>
-                        <h4 class="text-xl font-bold text-white mt-4">Hype Style Basketball Video</h4>
-                        <p class="text-gray-400">Highlights and dynamic edits for a basketball program.</p>
-                    </div>
-                    
-                    <!-- Video Item 7 -->
-                    <div class="scroll-reveal" style="transition-delay: 300ms;">
-                        <div class="video-container card-glow" data-video-id="wpMEBa6f3_A">
-                             <div class="spotlight"></div>
-                             <img src="https://img.youtube.com/vi/wpMEBa6f3_A/hqdefault.jpg" alt="Thumbnail for Drone Shot of Retaining Wall Fence Build" loading="lazy">
-                             <div class="video-play-button"><i class="fas fa-play"></i></div>
-                        </div>
-                        <h4 class="text-xl font-bold text-white mt-4">Drone Shot of Retaining Wall Fence Build</h4>
-                        <p class="text-gray-400">Short, engaging video optimized for vertical social media platforms.</p>
-                    </div>
-                    
-                    <!-- Video Item 8 -->
-                    <div class="scroll-reveal" style="transition-delay: 400ms;">
-                        <div class="video-container card-glow" data-video-id="slN-w4v48_o">
-                             <div class="spotlight"></div>
-                             <img src="https://img.youtube.com/vi/slN-w4v48_o/hqdefault.jpg" alt="Thumbnail for Soccer Team Highlight Video" loading="lazy">
-                             <div class="video-play-button"><i class="fas fa-play"></i></div>
-                        </div>
-                        <h4 class="text-xl font-bold text-white mt-4">Soccer Team Highlight Video</h4>
-                        <p class="text-gray-400">Girls Soccer Highlight Video.</p>
-                    </div>
-
-                </div>
-            </div>
-        </section>
-
-         <!-- CTA Section -->
-        <section id="cta" class="py-20">
-            <div class="container mx-auto px-6 text-center scroll-reveal">
-                <h2 class="text-3xl md:text-4xl font-bold text-white mb-4">Ready to Start Your Project?</h2>
-                <p class="text-lg text-gray-400 max-w-2xl mx-auto mb-8">Let's collaborate to bring your vision to life and drive real growth for your business.</p>
-                <a href="index.html#contact" class="hoverable inline-block bg-green-500 hover:bg-green-600 text-white font-bold py-3 px-8 rounded-full text-lg transition-transform hover:scale-105 button-glow">
-                    Get In Touch
-                </a>
-            </div>
-        </section>
-
-    </main>
-    
-    <!-- Footer -->
-    <footer class="relative bg-gradient-to-b from-black via-gray-900 to-black py-16 overflow-hidden">
-        <!-- Animated background elements -->
-        <div class="absolute inset-0 opacity-20">
-            <div class="absolute top-10 left-10 w-40 h-40 bg-green-500 rounded-full filter blur-3xl animate-pulse"></div>
-            <div class="absolute bottom-20 right-20 w-60 h-60 bg-green-400 rounded-full filter blur-3xl animate-pulse" style="animation-delay: 1s;"></div>
         </div>
-        
-        <div class="container mx-auto px-6 relative z-10">
-            <!-- Top Section -->
-            <div class="grid grid-cols-1 md:grid-cols-4 gap-12 mb-12">
-                <!-- Brand Column -->
-                <div class="md:col-span-2">
-                    <a href="index.html" class="hoverable inline-block mb-4">
-                        <img src="jpaxmedialogoOFFICIALFINAL(white).png" alt="JPax Media Logo" class="h-16 transition-all duration-300 logo-glow">
-                    </a>
-                    <p class="text-gray-400 text-lg mb-6 leading-relaxed max-w-md">
-                        AI-Powered. Human-Crafted. Lightning-Fast. We merge creativity with artificial intelligence to deliver smarter content and streamlined digital solutions.
-                    </p>
-                    <!-- Social Links -->
-                    <div class="flex space-x-4">
-                        <a href="https://www.facebook.com/jpaxmedia/" target="_blank" aria-label="Facebook" class="hoverable w-12 h-12 bg-gray-800 rounded-full flex items-center justify-center text-gray-400 hover:text-green-400 hover:bg-gray-700 transition-all duration-300 footer-icon border border-gray-700 hover:border-green-400">
-                            <i class="fab fa-facebook text-xl"></i>
-                        </a>
-                        <a href="https://www.instagram.com/jpaxfilmz/" target="_blank" aria-label="Instagram" class="hoverable w-12 h-12 bg-gray-800 rounded-full flex items-center justify-center text-gray-400 hover:text-green-400 hover:bg-gray-700 transition-all duration-300 footer-icon border border-gray-700 hover:border-green-400">
-                            <i class="fab fa-instagram text-xl"></i>
-                        </a>
-                        <a href="https://www.youtube.com/channel/UCl_NwAHPgf92bST4_AMZxyA" target="_blank" aria-label="YouTube" class="hoverable w-12 h-12 bg-gray-800 rounded-full flex items-center justify-center text-gray-400 hover:text-green-400 hover:bg-gray-700 transition-all duration-300 footer-icon border border-gray-700 hover:border-green-400">
-                            <i class="fab fa-youtube text-xl"></i>
-                        </a>
+    </section>
+
+    <!-- More Portfolio Items -->
+    <section class="section-bg py-20">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-12 scroll-reveal">
+                <h2 class="text-4xl md:text-5xl font-black mb-4">More Success Stories</h2>
+                <p class="text-xl text-gray-400">Every project showcases our BUILD and RISE methodology</p>
+            </div>
+
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl mx-auto">
+                <!-- LuxeCraft Construction -->
+                <div class="card-glow border border-gray-800 rounded-xl overflow-hidden bg-black/40 backdrop-blur-sm scroll-reveal">
+                    <div class="spotlight"></div>
+                    <div class="p-6">
+                        <div class="framework-badge badge-build mb-4">BUILD</div>
+                        <h3 class="text-xl font-bold mb-2">LuxeCraft Construction</h3>
+                        <p class="text-gray-400 mb-4">Complete logo and website designed and launched in 3 days, creating a polished digital presence that matches their craftsmanship quality.</p>
+                        <div class="flex items-center justify-between text-sm">
+                            <span class="text-green-400 font-semibold">3 Days</span>
+                            <span class="text-gray-500">Website + Branding</span>
+                        </div>
                     </div>
                 </div>
-                
-                <!-- Quick Links Column -->
-                <div>
-                    <h4 class="text-white font-bold text-lg mb-4 flex items-center">
-                        <span class="w-8 h-0.5 bg-green-400 mr-3"></span>
-                        Quick Links
-                    </h4>
-                    <ul class="space-y-3">
-                        <li><a href="index.html" class="hoverable text-gray-400 hover:text-green-400 transition-colors flex items-center group"><i class="fas fa-chevron-right text-xs mr-2 text-green-400 opacity-0 group-hover:opacity-100 transition-opacity"></i>Home</a></li>
-                        <li><a href="index.html#about" class="hoverable text-gray-400 hover:text-green-400 transition-colors flex items-center group"><i class="fas fa-chevron-right text-xs mr-2 text-green-400 opacity-0 group-hover:opacity-100 transition-opacity"></i>About Us</a></li>
-                        <li><a href="index.html#services" class="hoverable text-gray-400 hover:text-green-400 transition-colors flex items-center group"><i class="fas fa-chevron-right text-xs mr-2 text-green-400 opacity-0 group-hover:opacity-100 transition-opacity"></i>Services</a></li>
-                        <li><a href="portfolio.html" class="hoverable text-gray-400 hover:text-green-400 transition-colors flex items-center group"><i class="fas fa-chevron-right text-xs mr-2 text-green-400 opacity-0 group-hover:opacity-100 transition-opacity"></i>Portfolio</a></li>
-                        <li><a href="jupiter.html" class="hoverable text-gray-400 hover:text-green-400 transition-colors flex items-center group"><i class="fas fa-chevron-right text-xs mr-2 text-green-400 opacity-0 group-hover:opacity-100 transition-opacity"></i>Jupiter Dashboard</a></li>
-                    </ul>
+
+                <!-- Nitro Cooler -->
+                <div class="card-glow border border-gray-800 rounded-xl overflow-hidden bg-black/40 backdrop-blur-sm scroll-reveal">
+                    <div class="spotlight"></div>
+                    <div class="p-6">
+                        <div class="framework-badge badge-build mb-4">BUILD</div>
+                        <h3 class="text-xl font-bold mb-2">Nitro Cooler</h3>
+                        <p class="text-gray-400 mb-4">Product launch campaign with video production, social media content, and e-commerce integration.</p>
+                        <div class="flex items-center justify-between text-sm">
+                            <span class="text-green-400 font-semibold">7 Days</span>
+                            <span class="text-gray-500">Video + E-commerce</span>
+                        </div>
+                    </div>
                 </div>
-                
-                <!-- Contact Column -->
-                <div>
-                    <h4 class="text-white font-bold text-lg mb-4 flex items-center">
-                        <span class="w-8 h-0.5 bg-green-400 mr-3"></span>
-                        Get In Touch
-                    </h4>
-                    <ul class="space-y-3">
-                        <li>
-                            <a href="mailto:info@jpaxmedia.com" class="hoverable text-gray-400 hover:text-green-400 transition-colors flex items-center group">
-                                <i class="fas fa-envelope text-green-400 mr-3 group-hover:scale-110 transition-transform"></i>
-                                <span>info@jpaxmedia.com</span>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="tel:860-494-3090" class="hoverable text-gray-400 hover:text-green-400 transition-colors flex items-center group">
-                                <i class="fas fa-phone text-green-400 mr-3 group-hover:scale-110 transition-transform"></i>
-                                <span>860-494-3090</span>
-                            </a>
-                        </li>
-                        <li class="flex items-start">
-                            <i class="fas fa-map-marker-alt text-green-400 mr-3 mt-1"></i>
-                            <span class="text-gray-400">Hartford, Connecticut, USA</span>
-                        </li>
-                    </ul>
-                    
-                    <!-- CTA Button -->
-                    <a href="index.html#contact" class="hoverable inline-block mt-6 bg-green-500 hover:bg-green-600 text-white font-bold py-3 px-6 rounded-lg transition-all button-glow text-sm">
-                        <i class="fas fa-paper-plane mr-2"></i>Start a Project
+
+                <!-- Regional RISE Example -->
+                <div class="card-glow border border-gray-800 rounded-xl overflow-hidden bg-black/40 backdrop-blur-sm scroll-reveal">
+                    <div class="spotlight"></div>
+                    <div class="p-6">
+                        <div class="framework-badge badge-rise mb-4">RISE</div>
+                        <h3 class="text-xl font-bold mb-2">Regional Service Provider</h3>
+                        <p class="text-gray-400 mb-4">Ongoing social media management and ad optimization generating consistent leads month after month.</p>
+                        <div class="flex items-center justify-between text-sm">
+                            <span class="text-purple-400 font-semibold">12+ Months</span>
+                            <span class="text-gray-500">Growth Partnership</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="py-20">
+        <div class="container mx-auto px-6">
+            <div class="max-w-4xl mx-auto text-center scroll-reveal">
+                <h2 class="text-4xl md:text-5xl font-black mb-6">Ready to See Results Like These?</h2>
+                <p class="text-xl text-gray-400 mb-8">
+                    Take our 2-minute quiz to discover whether you need BUILD services or a RISE partnership—and get instant pricing recommendations.
+                </p>
+                <div class="flex flex-col sm:flex-row gap-4 justify-center">
+                    <a href="quiz.html" class="bg-green-500 text-black px-8 py-4 rounded-full font-bold text-lg hover:bg-green-400 transition-all inline-block">
+                        Take the Quiz <i class="fas fa-arrow-right ml-2"></i>
+                    </a>
+                    <a href="pricing.html" class="border-2 border-white text-white px-8 py-4 rounded-full font-bold text-lg hover:bg-white hover:text-black transition-all inline-block">
+                        View Complete Pricing
                     </a>
                 </div>
             </div>
-            
-            <!-- Divider -->
-            <div class="border-t border-gray-800 mb-8"></div>
-            
-            <!-- Bottom Section -->
-            <div class="flex flex-col md:flex-row justify-between items-center gap-4">
-                <p class="text-gray-500 text-sm">
-                    &copy; 2025 JPax Media. All rights reserved.
-                </p>
-                <div class="flex space-x-6 text-sm">
-                    <a href="#" class="hoverable text-gray-500 hover:text-green-400 transition-colors">Privacy Policy</a>
-                    <span class="text-gray-700">|</span>
-                    <a href="#" class="hoverable text-gray-500 hover:text-green-400 transition-colors">Terms of Service</a>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="section-bg border-t border-green-500/20 py-12">
+        <div class="container mx-auto px-6">
+            <div class="grid md:grid-cols-4 gap-8 mb-8">
+                <div>
+                    <h4 class="font-bold text-lg mb-4">JPax Media</h4>
+                    <p class="text-gray-400 text-sm">AI-accelerated. Human-directed. Lightning-fast.</p>
+                </div>
+                <div>
+                    <h4 class="font-bold text-lg mb-4">Services</h4>
+                    <ul class="space-y-2 text-sm">
+                        <li><a href="pricing.html#build" class="text-gray-400 hover:text-green-400 transition-colors">BUILD Services</a></li>
+                        <li><a href="pricing.html#rise" class="text-gray-400 hover:text-green-400 transition-colors">RISE Partnerships</a></li>
+                        <li><a href="portfolio.html" class="text-gray-400 hover:text-green-400 transition-colors">Portfolio</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="font-bold text-lg mb-4">Company</h4>
+                    <ul class="space-y-2 text-sm">
+                        <li><a href="portfolio.html" class="text-gray-400 hover:text-green-400 transition-colors">Case Studies</a></li>
+                        <li><a href="pricing.html" class="text-gray-400 hover:text-green-400 transition-colors">Pricing</a></li>
+                        <li><a href="quiz.html" class="text-gray-400 hover:text-green-400 transition-colors">Take Quiz</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="font-bold text-lg mb-4">Connect</h4>
+                    <div class="flex space-x-4 mb-4">
+                        <a href="https://www.facebook.com/jpaxmedia/" target="_blank" class="footer-icon text-2xl text-gray-400 hover:text-green-400 transition-all">
+                            <i class="fab fa-facebook"></i>
+                        </a>
+                        <a href="https://www.instagram.com/jpaxfilmz/" target="_blank" class="footer-icon text-2xl text-gray-400 hover:text-green-400 transition-all">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                    </div>
+                    <a href="mailto:info@jpaxmedia.com" class="text-gray-400 hover:text-green-400 transition-colors text-sm">info@jpaxmedia.com</a>
                 </div>
             </div>
-            
-            <!-- Signature -->
-            <div class="text-center mt-8">
-                <p class="text-gray-600 text-xs">
-                    Built with <i class="fas fa-heart text-green-400 animate-pulse"></i> using AI-Powered Workflows
-                </p>
+            <div class="border-t border-gray-800 pt-8 text-center text-gray-500 text-sm">
+                <p>&copy; 2025 JPax Media. All rights reserved. <span class="text-build">BUILD.</span> <span class="text-rise">RISE.</span> <span class="text-scale">SCALE.</span></p>
             </div>
         </div>
     </footer>
 
     <script>
         document.addEventListener('DOMContentLoaded', () => {
-
             // --- Custom Cursor ---
-            if (window.matchMedia('(hover: hover) and (pointer: fine)').matches) {
-                const cursorDot = document.querySelector('.cursor-dot');
-                const cursorOutline = document.querySelector('.cursor-outline');
-                window.addEventListener('mousemove', (e) => {
-                    const posX = e.clientX;
-                    const posY = e.clientY;
-                    cursorDot.style.left = `${posX}px`;
-                    cursorDot.style.top = `${posY}px`;
-                    cursorOutline.style.left = `${posX}px`;
-                    cursorOutline.style.top = `${posY}px`;
+            const cursorDot = document.querySelector('.cursor-dot');
+            const cursorOutline = document.querySelector('.cursor-outline');
+            if (cursorDot && cursorOutline) {
+                document.addEventListener('mousemove', (e) => {
+                    cursorDot.style.left = `${e.clientX}px`;
+                    cursorDot.style.top = `${e.clientY}px`;
+                    cursorOutline.style.left = `${e.clientX}px`;
+                    cursorOutline.style.top = `${e.clientY}px`;
                 });
-                const hoverables = document.querySelectorAll('.hoverable');
-                hoverables.forEach(el => {
+
+                document.querySelectorAll('a, button').forEach(el => {
                     el.addEventListener('mouseenter', () => {
                         cursorOutline.classList.add('cursor-interact');
                     });
@@ -851,11 +618,11 @@
                 });
             }
 
-            // --- Spotlight Card Effect ---
+            // --- Spotlight Effect ---
             document.querySelectorAll('.card-glow').forEach(card => {
                 const spotlight = card.querySelector('.spotlight');
                 if (spotlight) {
-                    card.addEventListener('mousemove', e => {
+                    card.addEventListener('mousemove', (e) => {
                         const rect = card.getBoundingClientRect();
                         const x = e.clientX - rect.left;
                         const y = e.clientY - rect.top;
@@ -880,53 +647,61 @@
 
             // --- Interactive Background ---
             const canvas = document.getElementById('interactive-bg');
-            const heroSection = document.getElementById('portfolio-home');
+            const heroSection = document.querySelector('.hero-bg');
             if(canvas && heroSection) {
                 try {
-                    const isMobile = window.innerWidth < 768;
                     const scene = new THREE.Scene();
                     const camera = new THREE.PerspectiveCamera(75, heroSection.offsetWidth / heroSection.offsetHeight, 0.1, 1000);
                     const renderer = new THREE.WebGLRenderer({ canvas: canvas, alpha: true });
                     renderer.setSize(heroSection.offsetWidth, heroSection.offsetHeight);
-                    // Adjust particle count for mobile vs desktop
-                    const particlesCount = isMobile ? 1500 : 3000;
+
+                    const particlesCount = 3000;
                     const positions = new Float32Array(particlesCount * 3);
-                    for (let i = 0; i < particlesCount * 3; i++) { positions[i] = (Math.random() - 0.5) * 10; }
+                    for (let i = 0; i < particlesCount * 3; i++) {
+                        positions[i] = (Math.random() - 0.5) * 10;
+                    }
                     const particlesGeometry = new THREE.BufferGeometry();
                     particlesGeometry.setAttribute('position', new THREE.BufferAttribute(positions, 3));
-                    const particlesMaterial = new THREE.PointsMaterial({ color: 0x4ade80, size: 0.025, transparent: true, blending: THREE.AdditiveBlending });
+                    const particlesMaterial = new THREE.PointsMaterial({
+                        color: 0x4ade80,
+                        size: 0.02,
+                        transparent: true,
+                        blending: THREE.AdditiveBlending
+                    });
                     const particleSystem = new THREE.Points(particlesGeometry, particlesMaterial);
                     scene.add(particleSystem);
                     camera.position.z = 5;
-                    let mouseX = 0, mouseY = 0;
+
+                    let mouseX = 0;
+                    let mouseY = 0;
                     document.addEventListener('mousemove', (event) => {
                         mouseX = (event.clientX / window.innerWidth) * 2 - 1;
                         mouseY = -(event.clientY / window.innerHeight) * 2 + 1;
                     });
+                    
                     const clock = new THREE.Clock();
                     let animationId;
                     function animate() {
-                        // Pause animation when tab is hidden to save resources
                         if (document.hidden) {
                             cancelAnimationFrame(animationId);
                             return;
                         }
                         animationId = requestAnimationFrame(animate);
-                        particleSystem.rotation.y = clock.getElapsedTime() * 0.1;
+                        const elapsedTime = clock.getElapsedTime();
+                        particleSystem.rotation.y = elapsedTime * 0.1;
                         camera.position.x += (mouseX * 0.5 - camera.position.x) * 0.05;
                         camera.position.y += (mouseY * 0.5 - camera.position.y) * 0.05;
                         camera.lookAt(scene.position);
                         renderer.render(scene, camera);
                     }
                     animate();
-                    
-                    // Resume animation when tab becomes visible
+
                     document.addEventListener('visibilitychange', () => {
                         if (!document.hidden) {
                             animate();
                         }
                     });
-                    
+
                     window.addEventListener('resize', () => {
                         camera.aspect = heroSection.offsetWidth / heroSection.offsetHeight;
                         camera.updateProjectionMatrix();
@@ -934,10 +709,6 @@
                     });
                 } catch (error) {
                     console.error('Three.js initialization failed:', error);
-                    // Fallback: ensure background is still visible
-                    heroSection.style.background = 'linear-gradient(rgba(0,0,0,0.8), rgba(0,0,0,0.8)), url("photos/spacebackground.jpg")';
-                    heroSection.style.backgroundSize = 'cover';
-                    heroSection.style.backgroundPosition = 'center';
                 }
             }
 
@@ -951,95 +722,9 @@
                     }
                 });
             }, { threshold: 0.1 });
-            scrollElements.forEach(el => { scrollObserver.observe(el); });
-
-            // --- Count-Up Animation ---
-            const countUpObserver = new IntersectionObserver((entries, observer) => {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        const counters = entry.target.querySelectorAll('[data-count]');
-                        counters.forEach(counter => {
-                            const target = +counter.getAttribute('data-count');
-                            const suffix = counter.innerText.slice(-1) === '%' ? '%' : '';
-                            counter.innerText = '0' + suffix;
-                            let current = 0;
-                            const increment = target / 100;
-                            const updateCount = () => {
-                                current += increment;
-                                if (current < target) {
-                                    counter.innerText = Math.ceil(current) + suffix;
-                                    requestAnimationFrame(updateCount);
-                                } else {
-                                    counter.innerText = target.toLocaleString() + suffix;
-                                }
-                            };
-                            requestAnimationFrame(updateCount);
-                        });
-                        observer.unobserve(entry.target);
-                    }
-                });
-            }, { threshold: 0.5 });
-            const statsSections = document.querySelectorAll('.stat-card');
-            statsSections.forEach(el => countUpObserver.observe(el.closest('.grid')));
-
-            // --- Lazy Load Videos ---
-            const videoContainers = document.querySelectorAll('.video-container');
-            videoContainers.forEach(container => {
-                container.addEventListener('click', () => {
-                    const videoId = container.dataset.videoId;
-                    if (videoId) {
-                        const iframe = document.createElement('iframe');
-                        iframe.src = `https://www.youtube.com/embed/${videoId}?rel=0&autoplay=1`;
-                        iframe.style.border = 'none';
-                        iframe.allow = 'accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture';
-                        iframe.allowfullscreen = true;
-                        
-                        // Replace container content with the iframe
-                        container.innerHTML = '';
-                        container.appendChild(iframe);
-                    }
-                }, { once: true }); // Ensure the click listener only runs once
+            scrollElements.forEach(el => {
+                scrollObserver.observe(el);
             });
-
-            // --- Nitro Energy Can Selector ---
-            const flavorThumbs = document.querySelectorAll('.nitro-flavor-thumb');
-            const mainCanImage = document.getElementById('main-can-image');
-            const nitroShowcase = document.getElementById('nitro-showcase');
-
-            if (flavorThumbs.length > 0 && mainCanImage && nitroShowcase) {
-                flavorThumbs.forEach(thumb => {
-                    thumb.addEventListener('click', () => {
-                        // Debounce to prevent rapid clicking issues
-                        if (thumb.classList.contains('active-flavor')) return;
-
-                        flavorThumbs.forEach(t => t.classList.remove('active-flavor'));
-                        thumb.classList.add('active-flavor');
-                        
-                        const newImage = thumb.dataset.image;
-                        const newColor = thumb.dataset.color;
-
-                        // Fade out the current image
-                        mainCanImage.style.opacity = 0;
-                        
-                        setTimeout(() => {
-                            mainCanImage.src = newImage;
-                            nitroShowcase.style.setProperty('--flavor-color', newColor);
-                             // Fade in the new image
-                            mainCanImage.style.opacity = 1;
-                        }, 200); // Match this delay with opacity transition in CSS
-
-                        thumb.style.setProperty('--flavor-color', newColor);
-                    });
-                });
-
-                // Set initial glow color based on the active flavor
-                const initialFlavor = document.querySelector('.nitro-flavor-thumb.active-flavor');
-                if (initialFlavor) {
-                    const initialColor = initialFlavor.dataset.color;
-                    initialFlavor.style.setProperty('--flavor-color', initialColor);
-                    nitroShowcase.style.setProperty('--flavor-color', initialColor);
-                }
-            }
         });
     </script>
 </body>

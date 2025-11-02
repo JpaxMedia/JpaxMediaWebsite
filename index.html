@@ -3,16 +3,16 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>JPax Media | AI-Powered Digital Agency</title>
+    <title>JPax Media | BUILD. RISE. SCALE.</title>
     
     <!-- SEO Meta Tags -->
-    <meta name="description" content="JPax Media - AI-powered digital agency specializing in videography, social media management, Meta ads, and custom website creation. Drive growth with smarter content and targeted campaigns.">
-    <meta name="keywords" content="digital agency, AI marketing, video production, social media management, web design, Meta ads, Connecticut">
+    <meta name="description" content="JPax Media - AI-accelerated digital agency delivering websites, branding, and growth campaigns in days. Human creativity meets intelligent automation. BUILD your foundation. RISE with ongoing growth.">
+    <meta name="keywords" content="digital agency, AI marketing, BUILD RISE framework, fast website design, social media management, Southeast agency, Connecticut">
     
     <!-- Open Graph / Social Media -->
     <meta property="og:type" content="website">
-    <meta property="og:title" content="JPax Media | AI-Powered Digital Agency">
-    <meta property="og:description" content="We merge creativity with AI to deliver smarter content, targeted campaigns, and streamlined digital solutions that drive results.">
+    <meta property="og:title" content="JPax Media | BUILD. RISE. SCALE.">
+    <meta property="og:description" content="Human creativity accelerated by AI. Build your digital foundation in days, rise with partnerships that compound results month after month.">
     <meta property="og:image" content="https://jpaxmedia.com/photos/jpaxmediawebicon.png">
     <meta property="og:url" content="https://jpaxmedia.com">
     
@@ -27,7 +27,7 @@
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;800;900&display=swap" rel="stylesheet">
     <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <!-- Three.js for interactive background -->
@@ -40,16 +40,13 @@
         body {
             font-family: 'Inter', sans-serif;
             background-color: #0c0c0c;
-            /* Dynamic background gradient */
             background-image: radial-gradient(circle 800px at var(--mouse-x) var(--mouse-y), rgba(74, 222, 128, 0.05), transparent 40%);
             background-repeat: no-repeat;
-            /* Page transition styles - REMOVED opacity: 0; to fix blank screen issue */
             transition: opacity 0.4s ease-in-out;
         }
-        /* Custom cursor styles for devices that support hover */
         @media (hover: hover) and (pointer: fine) {
             body {
-                cursor: none; /* Hide the default cursor */
+                cursor: none;
             }
             .cursor-dot, .cursor-outline {
                 pointer-events: none;
@@ -83,12 +80,12 @@
             }
         }
         .hero-bg {
-             position: relative; /* Needed for the canvas positioning */
+             position: relative;
              background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('photos/spacebackground.jpg');
              background-size: cover;
              background-position: center;
              background-attachment: fixed;
-             overflow: hidden; /* Hide canvas overflow */
+             overflow: hidden;
         }
         #interactive-bg {
             position: absolute;
@@ -100,12 +97,11 @@
         }
         .hero-content {
             position: relative;
-            z-index: 2; /* Ensure content is above the canvas */
+            z-index: 2;
         }
         .section-bg {
             background-color: #111111;
         }
-        /* Scroll Reveal Animations */
         .scroll-reveal {
             opacity: 0;
             transform: translateY(30px);
@@ -115,13 +111,21 @@
             opacity: 1;
             transform: translateY(0);
         }
-        /* Neon Effects */
         .text-glow {
             text-shadow: 0 0 8px rgba(74, 222, 128, 0.8);
         }
+        .text-build {
+            color: #4ade80;
+        }
+        .text-rise {
+            color: #c084fc;
+        }
+        .text-scale {
+            color: #60a5fa;
+        }
         .card-glow {
-            position: relative; /* For spotlight */
-            overflow: hidden;   /* For spotlight */
+            position: relative;
+            overflow: hidden;
             transition: all 0.3s ease-in-out;
         }
         .card-glow:hover {
@@ -129,7 +133,6 @@
             box-shadow: 0 0 15px rgba(74, 222, 128, 0.5);
             transform: translateY(-5px);
         }
-        /* Spotlight Effect */
         .spotlight {
             position: absolute;
             width: 250px;
@@ -163,668 +166,531 @@
             0%, 100% { transform: scale(1.15) rotate(5deg); }
             50% { transform: scale(1.25) rotate(-5deg); }
         }
-        .step-glow {
-            box-shadow: 0 0 12px rgba(74, 222, 128, 0.7);
-            transition: all 0.3s ease-in-out;
-        }
-        .process-step {
-            transition: transform 0.3s ease-in-out;
-        }
-        .process-step:hover {
-            transform: scale(1.05);
-        }
-        .process-step:hover .step-glow {
-            box-shadow: 0 0 20px rgba(74, 222, 128, 1);
-            transform: scale(1.1);
-        }
-        .footer-icon:hover, .logo-glow:hover {
-            transform: scale(1.1);
-            filter: drop-shadow(0 0 8px rgba(74, 222, 128, 0.9));
-        }
-        .footer-icon:hover {
-             transform: scale(1.15);
-        }
-        .stat-card {
-            background-color: rgba(255, 255, 255, 0.05);
-            border: 1px solid rgba(255, 255, 255, 0.1);
+        .framework-badge {
+            display: inline-block;
+            padding: 0.5rem 1rem;
+            border-radius: 9999px;
+            font-weight: 700;
+            font-size: 0.875rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
             transition: all 0.3s ease;
         }
-        .stat-card:hover {
-            background-color: rgba(74, 222, 128, 0.1);
-            border-color: rgba(74, 222, 128, 0.5);
-            transform: scale(1.05);
-        }
-        .image-glow {
-             box-shadow: 0 0 20px rgba(74, 222, 128, 0.7);
-        }
-        /* Video Player Styles */
-        .video-overlay {
-            transition: opacity 0.3s ease-in-out;
-        }
-        .video-container:hover .video-overlay {
-            background-color: rgba(0,0,0,0.7);
-        }
-        .video-overlay .play-icon {
-            transition: transform 0.3s ease, filter 0.3s ease;
-        }
-        .video-container:hover .play-icon {
-            transform: scale(1.1);
-            filter: drop-shadow(0 0 15px rgba(74, 222, 128, 1));
-        }
-        /* Growth Animation */
-        @keyframes pulse-glow {
-            0%, 100% {
-                text-shadow: 0 0 8px rgba(74, 222, 128, 0.7);
-            }
-            50% {
-                text-shadow: 0 0 20px rgba(74, 222, 128, 1), 0 0 30px rgba(74, 222, 128, 0.7);
-            }
-        }
-        .animate-pulse-glow {
-            animation: pulse-glow 3s infinite ease-in-out;
-            transition: transform 0.3s ease;
-            display: inline-block; /* Ensures transform works correctly */
-        }
-        .animate-pulse-glow:hover {
-            transform: scale(1.05);
-        }
-        /* Active Page Indicator */
-        .nav-active {
+        .badge-build {
+            background: rgba(74, 222, 128, 0.1);
+            border: 2px solid #4ade80;
             color: #4ade80;
-            border-bottom: 2px solid #4ade80;
-            padding-bottom: 2px;
+        }
+        .badge-rise {
+            background: rgba(192, 132, 252, 0.1);
+            border: 2px solid #c084fc;
+            color: #c084fc;
+        }
+        .footer-icon:hover, .logo-glow:hover {
+            filter: drop-shadow(0 0 10px rgba(74, 222, 128, 0.8));
+            transform: scale(1.1);
+        }
+        .stat-card {
+            background: rgba(17, 17, 17, 0.8);
+            border: 1px solid rgba(74, 222, 128, 0.2);
+            backdrop-filter: blur(10px);
         }
     </style>
 </head>
-<body class="text-gray-200">
+<body class="text-gray-100">
     <!-- Custom Cursor -->
     <div class="cursor-dot"></div>
     <div class="cursor-outline"></div>
 
-    <!-- Header & Navigation -->
-    <header class="bg-black/80 backdrop-blur-sm sticky top-0 z-50">
-        <nav class="container mx-auto px-6 py-4 flex justify-between items-center">
-            <a href="index.html" class="hoverable">
-                <!-- UPDATED Logo Source & Size (h-20 -> h-12) -->
-                <img src="jpaxmedialogoOFFICIALFINAL(white).png" alt="JPax Media Logo" class="h-12 transition-all duration-300 logo-glow">
-            </a>
-            <div class="hidden md:flex items-center space-x-8">
-                <a href="index.html" class="hoverable hover:text-green-400 transition-colors nav-active">Home</a>
-                <a href="#about" class="hoverable hover:text-green-400 transition-colors">About</a>
-                <a href="#services" class="hoverable hover:text-green-400 transition-colors">Services</a>
-                <a href="portfolio.html" class="hoverable hover:text-green-400 transition-colors">Portfolio</a>
-                <a href="jupiter.html" class="hoverable hover:text-green-400 transition-colors">Jupiter</a>
-                <a href="https://www.facebook.com/jpaxmedia/" target="_blank" aria-label="Facebook" class="hoverable text-gray-300 hover:text-green-400 text-xl transition-colors"><i class="fab fa-facebook"></i></a>
-                <a href="https://www.instagram.com/jpaxfilmz/" target="_blank" aria-label="Instagram" class="hoverable text-gray-300 hover:text-green-400 text-xl transition-colors"><i class="fab fa-instagram"></i></a>
-                <a href="https://www.youtube.com/channel/UCl_NwAHPgf92bST4_AMZxyA" target="_blank" aria-label="YouTube" class="hoverable text-gray-300 hover:text-green-400 text-xl transition-colors"><i class="fab fa-youtube"></i></a>
-                <a href="#contact" class="hoverable bg-green-500 hover:bg-green-600 text-white font-bold py-2 px-4 rounded-lg transition-colors button-glow">Contact</a>
-            </div>
-            <button id="mobile-menu-button" class="md:hidden text-2xl hoverable">
-                <i class="fas fa-bars"></i>
-            </button>
-        </nav>
-        <!-- Mobile Menu -->
-        <div id="mobile-menu" class="hidden md:hidden bg-black/90">
-            <a href="index.html" class="block text-center py-3 bg-green-500/20">Home</a>
-            <a href="#about" class="block text-center py-3 hover:bg-green-500/20 transition-colors">About</a>
-            <a href="#services" class="block text-center py-3 hover:bg-green-500/20 transition-colors">Services</a>
-            <a href="portfolio.html" class="block text-center py-3 hover:bg-green-500/20 transition-colors">Portfolio</a>
-            <a href="jupiter.html" class="block text-center py-3 hover:bg-green-500/20 transition-colors">Jupiter</a>
-            <div class="flex justify-center py-3 space-x-6">
-                 <a href="https://www.facebook.com/jpaxmedia/" target="_blank" aria-label="Facebook" class="text-gray-300 hover:text-green-400 text-2xl transition-colors"><i class="fab fa-facebook"></i></a>
-                <a href="https://www.instagram.com/jpaxfilmz/" target="_blank" aria-label="Instagram" class="text-gray-300 hover:text-green-400 text-2xl transition-colors"><i class="fab fa-instagram"></i></a>
-                <a href="https://www.youtube.com/channel/UCl_NwAHPgf92bST4_AMZxyA" target="_blank" aria-label="YouTube" class="text-gray-300 hover:text-green-400 text-2xl transition-colors"><i class="fab fa-youtube"></i></a>
-            </div>
-            <a href="#contact" class="block text-center py-4 bg-green-500 hover:bg-green-600 text-white font-bold transition-colors">Contact</a>
-        </div>
-    </header>
-
-    <main>
-        <!-- Hero Section -->
-        <section id="home" class="hero-bg min-h-[80vh] flex items-center">
-            <canvas id="interactive-bg"></canvas>
-            <div class="hero-content container mx-auto px-6 text-center">
-                <h1 id="hero-headline" class="text-4xl md:text-6xl font-extrabold text-white leading-tight mb-4 text-glow min-h-[80px] md:min-h-[150px]">AI-Powered Growth for Modern Brands</h1>
-                <p class="text-lg md:text-xl text-gray-300 max-w-3xl mx-auto mb-8">We merge creativity with artificial intelligence to deliver smarter content, targeted campaigns, and streamlined digital solutions that drive results.</p>
-                <a href="#contact" class="hoverable bg-green-500 hover:bg-green-600 text-white font-bold py-3 px-8 rounded-full text-lg transition-transform hover:scale-105 button-glow">Get Started</a>
-            </div>
-        </section>
-
-        <!-- About Section -->
-        <section id="about" class="py-20 overflow-hidden">
-            <div class="container mx-auto px-6">
-                <div class="text-center scroll-reveal">
-                    <h2 class="text-3xl md:text-4xl font-bold text-white mb-4">AI + Creativity = <span class="text-green-400 text-glow animate-pulse-glow">Growth</span></h2>
-                    <div class="max-w-4xl mx-auto bg-gray-800/50 p-8 rounded-xl shadow-lg border border-gray-700 mb-16">
-                        <p class="text-lg text-gray-300">
-                            JPax Media is a creative agency specializing in videography, social media management, Meta ads, and website creation — powered by AI-driven workflows. We help businesses grow faster with smarter content, targeted campaigns, and streamlined digital solutions that save time and drive measurable results.
-                        </p>
-                    </div>
-                </div>
-
-                <!-- About Julian -->
-                <div class="flex flex-col md:flex-row items-center gap-12 max-w-6xl mx-auto scroll-reveal">
-                    <div class="md:w-1/3 w-full relative">
-                        <div id="about-carousel" class="relative rounded-lg overflow-hidden shadow-lg image-glow aspect-square">
-                            <!-- Carousel Images -->
-                            <div class="carousel-item duration-700 ease-in-out">
-                                <img src="photos/jpaxcontactphoto.jpg" alt="Julian Johnson, founder of JPax Media" class="absolute block w-full h-full object-cover top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2">
-                            </div>
-                            <div class="carousel-item duration-700 ease-in-out hidden">
-                                <img src="photos/julianfront.png" alt="Julian Johnson with his camera" class="absolute block w-full h-full object-cover top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2">
-                            </div>
-                        </div>
-                        <!-- Carousel Controls -->
-                        <button type="button" id="carousel-prev" class="absolute top-0 left-0 z-30 flex items-center justify-center h-full px-4 cursor-pointer group focus:outline-none hoverable">
-                            <span class="inline-flex items-center justify-center w-10 h-10 rounded-full bg-white/30 group-hover:bg-white/50 group-focus:ring-4 group-focus:ring-white group-focus:outline-none">
-                                <svg class="w-4 h-4 text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 6 10"><path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 1 1 5l4 4"/></svg>
-                                <span class="sr-only">Previous</span>
-                            </span>
-                        </button>
-                        <button type="button" id="carousel-next" class="absolute top-0 right-0 z-30 flex items-center justify-center h-full px-4 cursor-pointer group focus:outline-none hoverable">
-                            <span class="inline-flex items-center justify-center w-10 h-10 rounded-full bg-white/30 group-hover:bg-white/50 group-focus:ring-4 group-focus:ring-white group-focus:outline-none">
-                                <svg class="w-4 h-4 text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 6 10"><path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 9 4-4-4-4"/></svg>
-                                <span class="sr-only">Next</span>
-                            </span>
-                        </button>
-                    </div>
-                    <div class="md:w-2/3 text-center md:text-left">
-                        <h3 class="text-3xl font-bold text-white mb-4">Meet The Founder</h3>
-                        <p class="text-gray-400 mb-4">
-                            Julian Johnson is the creator behind JPax Media, a creative studio built on the blend of storytelling and AI-powered technology.
-                        </p>
-                        <p class="text-gray-400 mb-4">
-                            Starting out in videography and editing, Julian worked with local businesses, sports programs, and entrepreneurs to capture their stories on camera. As digital marketing evolved, he leaned into AI — using it to streamline workflows, create content faster, and unlock new possibilities for social media, ads, websites, and branding.
-                        </p>
-                        <p class="text-gray-400">
-                            Outside of client projects, Julian is a hands-on creative: testing new gear, building designs, exploring drone videography, and experimenting with AI storytelling. He brings that same curiosity and energy into every project, with one goal — to help people and businesses grow online in smarter, more creative ways.
-                        </p>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Services Section -->
-        <section id="services" class="section-bg py-20 overflow-hidden">
-            <div class="container mx-auto px-6">
-                <div class="text-center mb-12 scroll-reveal">
-                    <h2 class="text-3xl md:text-4xl font-bold text-white">Our Services</h2>
-                    <p class="text-gray-400 mt-2">AI-driven solutions designed for maximum impact.</p>
-                </div>
-                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-                    <!-- Service Item -->
-                    <div class="bg-gray-800 p-8 rounded-lg border border-gray-700 text-center flex flex-col card-glow hoverable scroll-reveal" style="transition-delay: 100ms;">
-                        <div class="spotlight"></div>
-                        <div class="text-green-400 text-4xl mb-4 icon-glow"><i class="fas fa-video"></i></div>
-                        <h3 class="text-2xl font-bold text-white mb-3">Videography</h3>
-                        <p class="text-gray-400">High-quality video production for events, real estate, and promotional content, enhanced with AI-assisted editing.</p>
-                    </div>
-                     <!-- Service Item -->
-                    <div class="bg-gray-800 p-8 rounded-lg border border-gray-700 text-center flex flex-col card-glow hoverable scroll-reveal" style="transition-delay: 200ms;">
-                        <div class="spotlight"></div>
-                        <div class="text-green-400 text-4xl mb-4 icon-glow"><i class="fas fa-share-alt"></i></div>
-                        <h3 class="text-2xl font-bold text-white mb-3">Social Media Management</h3>
-                        <p class="text-gray-400">We plan, create, and schedule content through AI-enhanced workflows — keeping your brand consistent and engaging.</p>
-                    </div>
-                    <!-- Service Item -->
-                    <div class="bg-gray-800 p-8 rounded-lg border border-gray-700 text-center flex flex-col card-glow hoverable scroll-reveal" style="transition-delay: 300ms;">
-                        <div class="spotlight"></div>
-                        <div class="text-green-400 text-4xl mb-4 icon-glow"><i class="fas fa-bullseye"></i></div>
-                        <h3 class="text-2xl font-bold text-white mb-3">AI-Driven Meta Ads</h3>
-                        <p class="text-gray-400">We design and manage highly targeted ad campaigns that drive real results, using AI to test creatives and optimize for growth.</p>
-                    </div>
-                    <!-- Service Item -->
-                    <div class="bg-gray-800 p-8 rounded-lg border border-gray-700 text-center flex flex-col card-glow hoverable scroll-reveal" style="transition-delay: 400ms;">
-                        <div class="spotlight"></div>
-                        <div class="text-green-400 text-4xl mb-4 icon-glow"><i class="fas fa-laptop-code"></i></div>
-                        <h3 class="text-2xl font-bold text-white mb-3">Website Design, SEO & Blogs</h3>
-                        <p class="text-gray-400">We build modern sites and use AI-powered SEO and blog creation to help you rank higher and attract traffic.</p>
-                    </div>
-                    <!-- Service Item -->
-                    <div class="bg-gray-800 p-8 rounded-lg border border-gray-700 text-center flex flex-col card-glow hoverable scroll-reveal" style="transition-delay: 100ms;">
-                        <div class="spotlight"></div>
-                        <div class="text-green-400 text-4xl mb-4 icon-glow"><i class="fas fa-robot"></i></div>
-                        <h3 class="text-2xl font-bold text-white mb-3">AI Creative Solutions</h3>
-                        <p class="text-gray-400">From AI-assisted video editing and creative branding to generative design and chatbots, we deliver unique, future-ready creative.</p>
-                    </div>
-                    <!-- Service Item -->
-                    <div class="bg-gray-800 p-8 rounded-lg border border-gray-700 text-center flex flex-col card-glow hoverable scroll-reveal" style="transition-delay: 200ms;">
-                        <div class="spotlight"></div>
-                        <div class="text-green-400 text-4xl mb-4 icon-glow"><i class="fas fa-file-signature"></i></div>
-                        <h3 class="text-2xl font-bold text-white mb-3">Proposal Development</h3>
-                        <p class="text-gray-400">Our AI workflows produce persuasive, branded proposals with tailored copy and polished designs to win clients.</p>
-                    </div>
-                    <!-- Service Item -->
-                    <div class="bg-gray-800 p-8 rounded-lg border border-gray-700 text-center flex flex-col card-glow hoverable scroll-reveal" style="transition-delay: 300ms;">
-                        <div class="spotlight"></div>
-                        <div class="text-green-400 text-4xl mb-4 icon-glow"><i class="fas fa-file-powerpoint"></i></div>
-                        <h3 class="text-2xl font-bold text-white mb-3">Presentations & Decks</h3>
-                        <p class="text-gray-400">We transform your ideas into stunning, professional presentations and pitch decks using AI-powered tools.</p>
-                    </div>
-                    <!-- Service Item -->
-                    <div class="bg-gray-800 p-8 rounded-lg border border-gray-700 text-center flex flex-col card-glow hoverable scroll-reveal" style="transition-delay: 400ms;">
-                        <div class="spotlight"></div>
-                        <div class="text-green-400 text-4xl mb-4 icon-glow"><i class="fas fa-chart-line"></i></div>
-                        <h3 class="text-2xl font-bold text-white mb-3">AI Strategy & Analytics</h3>
-                        <p class="text-gray-400">Our AI-driven analytics track performance, highlight what works, and guide strategy for confident business growth.</p>
-                    </div>
-                </div>
-
-                <!-- AI Efficiency Section -->
-                <div class="mt-16 text-center bg-gradient-to-br from-gray-900/80 to-gray-800/80 backdrop-blur-sm rounded-2xl p-8 md:p-12 border-2 border-green-500/30 shadow-2xl scroll-reveal relative overflow-hidden hover:border-green-500/60 transition-all duration-300">
-                    <div class="spotlight"></div>
-                    <!-- Floating particles -->
-                    <div class="absolute top-0 left-0 w-full h-full pointer-events-none">
-                        <div class="absolute top-10 left-10 w-2 h-2 bg-green-400 rounded-full animate-ping"></div>
-                        <div class="absolute top-20 right-20 w-2 h-2 bg-green-400 rounded-full animate-ping" style="animation-delay: 0.5s;"></div>
-                        <div class="absolute bottom-10 left-1/4 w-2 h-2 bg-green-400 rounded-full animate-ping" style="animation-delay: 1s;"></div>
-                    </div>
-                    
-                    <div class="relative z-10">
-                        <h3 class="text-2xl md:text-3xl font-bold text-white mb-4">
-                            <i class="fas fa-bolt text-green-400 mr-2 animate-pulse"></i>
-                            The AI Speed Advantage
-                        </h3>
-                        <p class="text-lg text-gray-300 max-w-3xl mx-auto mb-8">
-                            Our AI-powered workflow is our secret weapon. By automating complex tasks and supercharging our creative process, we deliver exceptional results in a fraction of the time it takes traditional agencies.
-                        </p>
-                        
-                        <!-- Stats Grid -->
-                        <div class="grid grid-cols-2 md:grid-cols-4 gap-6 mt-8">
-                            <div class="bg-black/40 rounded-xl p-6 border border-green-500/30 hoverable hover:border-green-500 hover:bg-black/60 transition-all group">
-                                <div class="text-4xl md:text-5xl font-bold text-green-400 mb-2 group-hover:scale-110 transition-transform" data-count="10">0</div>
-                                <div class="text-gray-400 text-sm">X Faster</div>
-                            </div>
-                            <div class="bg-black/40 rounded-xl p-6 border border-green-500/30 hoverable hover:border-green-500 hover:bg-black/60 transition-all group">
-                                <div class="text-4xl md:text-5xl font-bold text-green-400 mb-2 group-hover:scale-110 transition-transform" data-count="50">0</div>
-                                <div class="text-gray-400 text-sm">% Cost Savings</div>
-                            </div>
-                            <div class="bg-black/40 rounded-xl p-6 border border-green-500/30 hoverable hover:border-green-500 hover:bg-black/60 transition-all group">
-                                <div class="text-4xl md:text-5xl font-bold text-green-400 mb-2 group-hover:scale-110 transition-transform" data-count="24">0</div>
-                                <div class="text-gray-400 text-sm">/7 Availability</div>
-                            </div>
-                            <div class="bg-black/40 rounded-xl p-6 border border-green-500/30 hoverable hover:border-green-500 hover:bg-black/60 transition-all group">
-                                <div class="text-4xl md:text-5xl font-bold text-green-400 mb-2 group-hover:scale-110 transition-transform" data-count="100">0</div>
-                                <div class="text-gray-400 text-sm">% Satisfaction</div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-            </div>
-        </section>
-
-        <!-- Portfolio Section -->
-        <section id="portfolio" class="py-20 overflow-hidden">
-            <div class="container mx-auto px-6">
-                <div class="text-center mb-16 scroll-reveal">
-                    <h2 class="text-3xl md:text-4xl font-bold text-white">Our Work & Impact</h2>
-                    <p class="text-gray-400 mt-2">Proven results from our AI-powered campaigns.</p>
-                </div>
+    <!-- Navigation -->
+    <nav class="fixed w-full z-50 bg-black/80 backdrop-blur-md border-b border-green-500/20">
+        <div class="container mx-auto px-6 py-4">
+            <div class="flex items-center justify-between">
+                <a href="index.html" class="flex items-center space-x-3 logo-glow transition-all duration-300">
+                    <img src="photos/jpaxmediawebicon.png" alt="JPax Media Logo" class="h-10 w-auto" onerror="this.style.display='none'">
+                    <span class="text-2xl font-bold text-white">JPax Media</span>
+                </a>
                 
-                <!-- Featured Result -->
-                <div class="bg-gray-900/50 rounded-2xl p-8 md:p-12 border border-gray-700 mb-16 shadow-2xl scroll-reveal">
-                    <h3 class="text-2xl md:text-3xl font-bold text-center text-white mb-2">30-Day Impact Report</h3>
-                    <p class="text-gray-400 text-center max-w-3xl mx-auto mb-10">Transforming digital presence with AI-powered marketing campaigns that deliver measurable results.</p>
-                    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 text-center">
-                        <!-- Stat 1 -->
-                        <div class="p-6 rounded-lg stat-card hoverable">
-                            <p class="text-4xl md:text-5xl font-extrabold text-green-400 text-glow" data-count="925">0%</p>
-                            <p class="text-lg font-semibold text-white mt-2">Website Growth</p>
-                            <p class="text-gray-400 text-sm">~200 to 2,051 monthly visitors</p>
-                        </div>
-                        <!-- Stat 2 -->
-                        <div class="p-6 rounded-lg stat-card hoverable">
-                            <p class="text-4xl md:text-5xl font-extrabold text-green-400 text-glow" data-count="3694">0</p>
-                            <p class="text-lg font-semibold text-white mt-2">Total Pageviews</p>
-                            <p class="text-gray-400 text-sm">4 GB bandwidth usage</p>
-                        </div>
-                        <!-- Stat 3 -->
-                        <div class="p-6 rounded-lg stat-card hoverable">
-                            <p class="text-4xl md:text-5xl font-extrabold text-green-400 text-glow" data-count="42">0%</p>
-                            <p class="text-lg font-semibold text-white mt-2">Conversion Rate</p>
-                            <p class="text-gray-400 text-sm">10 bookings from 24 conversations</p>
-                        </div>
-                        <!-- Stat 4 -->
-                        <div class="p-6 rounded-lg stat-card hoverable">
-                            <p class="text-4xl md:text-5xl font-extrabold text-green-400 text-glow" data-count="7100">0%</p>
-                            <p class="text-lg font-semibold text-white mt-2">ROI Achievement</p>
-                            <p class="text-gray-400 text-sm">$1 in ad spend generated ~$72</p>
-                        </div>
-                    </div>
+                <!-- Desktop Menu -->
+                <div class="hidden md:flex items-center space-x-8">
+                    <a href="#home" class="text-gray-300 hover:text-green-400 transition-colors">Home</a>
+                    <a href="#services" class="text-gray-300 hover:text-green-400 transition-colors">Services</a>
+                    <a href="#how-it-works" class="text-gray-300 hover:text-green-400 transition-colors">Process</a>
+                    <a href="#case-study" class="text-gray-300 hover:text-green-400 transition-colors">Results</a>
+                    <a href="portfolio.html" class="text-gray-300 hover:text-green-400 transition-colors">Portfolio</a>
+                    <a href="pricing.html" class="bg-green-500 text-black px-6 py-2 rounded-full font-semibold hover:bg-green-400 button-glow transition-all">View Pricing</a>
                 </div>
 
-                <!-- Featured Project: Nitro Energy -->
-                <div class="bg-gray-900/50 rounded-2xl p-8 md:p-12 border border-gray-700 mb-16 shadow-2xl scroll-reveal card-glow">
-                    <div class="spotlight"></div>
-                    <h3 class="text-2xl md:text-3xl font-bold text-center text-white mb-10">Featured Project: AI-Powered Branding</h3>
-                    <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-center">
-                        <div class="order-2 lg:order-1 text-center lg:text-left">
-                            <h4 class="text-2xl font-bold text-white mb-4">Nitro Energy: Concept to Creation</h4>
-                            <p class="text-gray-300 mb-6">
-                                We fused creativity and artificial intelligence to build the Nitro Energy brand from scratch. By generating and refining hundreds of AI-driven concepts, we developed a futuristic and energetic brand identity that captures the essence of the digital realm.
-                            </p>
-                             <a href="portfolio.html#ai-branding" class="hoverable inline-block bg-green-500 hover:bg-green-600 text-white font-bold py-3 px-8 rounded-full text-lg transition-transform hover:scale-105 button-glow">
-                                Explore Our Branding Work
-                            </a>
-                        </div>
-                        <div id="nitro-carousel" class="relative order-1 lg:order-2 flex items-center justify-center h-80">
-                            <!-- Carousel Images -->
-                            <img src="photos/nitroogtransparent.png" alt="Original Nitro Flavor" class="nitro-carousel-item absolute max-h-80 object-contain transition-opacity duration-1000 ease-in-out opacity-100">
-                            <img src="photos/nitropinktransparent.png" alt="Dragonfruit Nitro Flavor" class="nitro-carousel-item absolute max-h-80 object-contain transition-opacity duration-1000 ease-in-out opacity-0">
-                            <img src="photos/nitrobluetransparent.png" alt="Turbo Tropical Nitro Flavor" class="nitro-carousel-item absolute max-h-80 object-contain transition-opacity duration-1000 ease-in-out opacity-0">
-                            <img src="photos/nitrogreentransparent.png" alt="Lemon Lime Nitro Flavor" class="nitro-carousel-item absolute max-h-80 object-contain transition-opacity duration-1000 ease-in-out opacity-0">
-                        </div>
-                    </div>
-                </div>
+                <!-- Mobile Menu Button -->
+                <button id="mobile-menu-button" class="md:hidden text-white focus:outline-none">
+                    <i class="fas fa-bars text-2xl"></i>
+                </button>
+            </div>
 
+            <!-- Mobile Menu -->
+            <div id="mobile-menu" class="hidden md:hidden mt-4 pb-4 space-y-3">
+                <a href="#home" class="block text-gray-300 hover:text-green-400 transition-colors">Home</a>
+                <a href="#services" class="block text-gray-300 hover:text-green-400 transition-colors">Services</a>
+                <a href="#how-it-works" class="block text-gray-300 hover:text-green-400 transition-colors">Process</a>
+                <a href="#case-study" class="block text-gray-300 hover:text-green-400 transition-colors">Results</a>
+                <a href="portfolio.html" class="block text-gray-300 hover:text-green-400 transition-colors">Portfolio</a>
+                <a href="pricing.html" class="block bg-green-500 text-black px-6 py-2 rounded-full font-semibold text-center hover:bg-green-400 transition-all">View Pricing</a>
+            </div>
+        </div>
+    </nav>
 
-                <!-- Video Showcase -->
-                <div class="text-center mb-10 scroll-reveal">
-                    <h3 class="text-2xl md:text-3xl font-bold text-white mb-2">
-                        <i class="fas fa-video text-green-400 mr-2"></i>Video Highlights
-                    </h3>
+    <!-- Hero Section -->
+    <section id="home" class="hero-bg min-h-screen flex items-center relative">
+        <canvas id="interactive-bg"></canvas>
+        <div class="container mx-auto px-6 hero-content">
+            <div class="max-w-4xl">
+                <div class="mb-6">
+                    <span class="text-green-400 text-sm font-semibold uppercase tracking-wider">AI-Accelerated. Human-Directed.</span>
                 </div>
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-12">
-                    <div class="scroll-reveal" style="transition-delay: 100ms;">
-                        <a href="https://youtu.be/Z-46U0YABR0" target="_blank" class="block hoverable">
-                            <div class="video-container relative aspect-video rounded-lg overflow-hidden border-2 border-gray-700 shadow-lg group">
-                                <img src="https://img.youtube.com/vi/Z-46U0YABR0/maxresdefault.jpg" onerror="this.onerror=null;this.src='https://img.youtube.com/vi/Z-46U0YABR0/hqdefault.jpg';" alt="Before & After: Inman Back Yard Oasis" class="w-full h-full object-cover">
-                                <div class="video-overlay absolute inset-0 bg-black/50 flex items-center justify-center">
-                                    <i class="fas fa-play text-white text-6xl text-glow play-icon"></i>
-                                </div>
-                            </div>
-                        </a>
-                        <h4 class="text-xl font-bold text-white mt-4">Before & After: Inman Back Yard Oasis</h4>
-                        <p class="text-gray-400">Cinematic backyard transformation featuring drone video.</p>
-                    </div>
-                     <div class="scroll-reveal" style="transition-delay: 200ms;">
-                        <a href="https://youtu.be/CL1SSD0BNF4" target="_blank" class="block hoverable">
-                            <div class="video-container relative aspect-video rounded-lg overflow-hidden border-2 border-gray-700 shadow-lg group">
-                                <img src="https://img.youtube.com/vi/CL1SSD0BNF4/maxresdefault.jpg" onerror="this.onerror=null;this.src='https://img.youtube.com/vi/CL1SSD0BNF4/hqdefault.jpg';" alt="Dynamic Sports Hype Reel" class="w-full h-full object-cover">
-                                <div class="video-overlay absolute inset-0 bg-black/50 flex items-center justify-center">
-                                    <i class="fas fa-play text-white text-6xl text-glow play-icon"></i>
-                                </div>
-                            </div>
-                        </a>
-                        <h4 class="text-xl font-bold text-white mt-4">Dynamic Sports Hype Reel</h4>
-                        <p class="text-gray-400">High-energy basketball and sports highlights montage.</p>
-                    </div>
-                </div>
-
-                <!-- View Full Portfolio Button -->
-                <div class="text-center mt-16 scroll-reveal">
-                    <a href="portfolio.html" class="hoverable inline-block bg-green-500 hover:bg-green-600 text-white font-bold py-3 px-8 rounded-full text-lg transition-transform hover:scale-105 button-glow">
-                        View Full Portfolio
+                <h1 class="text-5xl md:text-7xl font-black mb-6 leading-tight">
+                    <span class="text-build">BUILD.</span>
+                    <span class="text-rise"> RISE.</span>
+                    <span class="text-scale"> SCALE.</span>
+                </h1>
+                <p class="text-xl md:text-2xl text-gray-300 mb-4 max-w-3xl">
+                    We merge <span class="text-green-400 font-bold">intelligent automation</span> with <span class="text-purple-400 font-bold">human creativity</span> to deliver your digital foundation in <span class="text-white font-bold">3-14 days</span>—not weeks.
+                </p>
+                <p class="text-lg text-gray-400 mb-8 max-w-3xl">
+                    Every strategy, every decision, every creative direction comes from human expertise. AI simply accelerates our execution, giving you agency-quality work at startup speed.
+                </p>
+                <div class="flex flex-col sm:flex-row gap-4 mb-8">
+                    <a href="quiz.html" class="bg-green-500 text-black px-8 py-4 rounded-full font-bold text-lg hover:bg-green-400 button-glow transition-all inline-block text-center">
+                        Find Your Path <i class="fas fa-arrow-right ml-2"></i>
+                    </a>
+                    <a href="pricing.html" class="border-2 border-green-500 text-green-400 px-8 py-4 rounded-full font-bold text-lg hover:bg-green-500 hover:text-black transition-all inline-block text-center">
+                        View Transparent Pricing
                     </a>
                 </div>
-
-            </div>
-        </section>
-
-        <!-- Our Process Section -->
-        <section id="process" class="section-bg py-20 overflow-hidden">
-            <div class="container mx-auto px-6">
-                 <div class="text-center mb-12 scroll-reveal">
-                    <h2 class="text-3xl md:text-4xl font-bold text-white">Our AI-Powered Process</h2>
-                    <p class="text-gray-400 mt-2">A streamlined workflow for guaranteed results.</p>
-                </div>
-                <div class="relative">
-                    <!-- Connecting line -->
-                    <div class="hidden md:block absolute top-1/2 left-0 w-full h-0.5 bg-gray-700" style="transform: translateY(-50%);"></div>
-                    <div class="grid grid-cols-1 md:grid-cols-3 gap-12 relative">
-                        <!-- Step 1 -->
-                        <div class="text-center z-10 process-step hoverable scroll-reveal" style="transition-delay: 100ms;">
-                            <div class="bg-green-500 text-white w-16 h-16 rounded-full flex items-center justify-center text-2xl font-bold mx-auto mb-4 border-4 border-gray-800 step-glow">1</div>
-                            <h3 class="text-xl font-bold text-white mb-2">Discover & Strategize</h3>
-                            <p class="text-gray-400">We start by understanding your goals, then use AI tools to analyze your market and craft a winning strategy.</p>
-                        </div>
-                         <!-- Step 2 -->
-                        <div class="text-center z-10 process-step hoverable scroll-reveal" style="transition-delay: 200ms;">
-                            <div class="bg-green-500 text-white w-16 h-16 rounded-full flex items-center justify-center text-2xl font-bold mx-auto mb-4 border-4 border-gray-800 step-glow">2</div>
-                            <h3 class="text-xl font-bold text-white mb-2">AI-Powered Execution</h3>
-                            <p class="text-gray-400">Our team uses advanced AI workflows to create content, launch campaigns, and build your digital assets efficiently.</p>
-                        </div>
-                         <!-- Step 3 -->
-                        <div class="text-center z-10 process-step hoverable scroll-reveal" style="transition-delay: 300ms;">
-                            <div class="bg-green-500 text-white w-16 h-16 rounded-full flex items-center justify-center text-2xl font-bold mx-auto mb-4 border-4 border-gray-800 step-glow">3</div>
-                            <h3 class="text-xl font-bold text-white mb-2">Analyze & Scale</h3>
-                            <p class="text-gray-400">We continuously monitor performance with AI-driven analytics, providing insights to optimize and scale your growth.</p>
-                        </div>
+                <div class="flex flex-wrap gap-6 text-sm text-gray-400">
+                    <div class="flex items-center">
+                        <i class="fas fa-bolt text-green-400 mr-2"></i>
+                        <span>Projects in 3-14 days</span>
+                    </div>
+                    <div class="flex items-center">
+                        <i class="fas fa-dollar-sign text-green-400 mr-2"></i>
+                        <span>Flat-rate, transparent pricing</span>
+                    </div>
+                    <div class="flex items-center">
+                        <i class="fas fa-user text-green-400 mr-2"></i>
+                        <span>Direct access to founder</span>
                     </div>
                 </div>
             </div>
-        </section>
-
-        <!-- Contact Section -->
-        <section id="contact" class="py-20 overflow-hidden relative">
-            <!-- Background decoration -->
-            <div class="absolute inset-0 bg-gradient-to-b from-black/50 via-gray-900/30 to-black/50"></div>
-            
-            <div class="container mx-auto px-6 text-center relative z-10">
-                <div class="scroll-reveal">
-                    <h2 class="text-4xl md:text-5xl font-bold text-white mb-4">
-                        Let's Build <span class="text-green-400 text-glow">Together</span>
-                    </h2>
-                    <p class="text-gray-400 text-lg mt-2 mb-12 max-w-2xl mx-auto">
-                        Ready to accelerate your growth? Fill out the form below or email us at 
-                        <a href="mailto:info@jpaxmedia.com" class="hoverable text-green-400 hover:underline font-semibold">info@jpaxmedia.com</a>
-                    </p>
-                </div>
-                
-                <!-- Contact Card -->
-                <div class="max-w-2xl mx-auto">
-                    <div class="bg-gradient-to-br from-gray-900/80 to-gray-800/80 backdrop-blur-sm rounded-2xl p-8 md:p-12 border-2 border-green-500/30 shadow-2xl scroll-reveal relative overflow-hidden hover:border-green-500/60 transition-all duration-300">
-                        <div class="spotlight"></div>
-                        
-                        <!-- Netlify Form -->
-                        <form name="contact" method="POST" data-netlify="true" class="text-left relative z-10">
-                            <input type="hidden" name="form-name" value="contact" />
-                            
-                            <div class="mb-6 relative group">
-                                <label for="name" class="block text-gray-300 mb-2 font-semibold flex items-center">
-                                    <i class="fas fa-user text-green-400 mr-2"></i>Your Name
-                                </label>
-                                <input type="text" id="name" name="name" required 
-                                    class="hoverable w-full bg-gray-800/80 border-2 border-gray-700 rounded-xl py-4 px-5 text-white focus:outline-none focus:border-green-500 focus:ring-2 focus:ring-green-500/50 transition-all placeholder-gray-500 group-hover:border-gray-600"
-                                    placeholder="John Doe">
-                            </div>
-                            
-                            <div class="mb-6 relative group">
-                                <label for="email" class="block text-gray-300 mb-2 font-semibold flex items-center">
-                                    <i class="fas fa-envelope text-green-400 mr-2"></i>Your Email
-                                </label>
-                                <input type="email" id="email" name="email" required 
-                                    class="hoverable w-full bg-gray-800/80 border-2 border-gray-700 rounded-xl py-4 px-5 text-white focus:outline-none focus:border-green-500 focus:ring-2 focus:ring-green-500/50 transition-all placeholder-gray-500 group-hover:border-gray-600"
-                                    placeholder="john@example.com">
-                            </div>
-                            
-                            <div class="mb-8 relative group">
-                                <label for="message" class="block text-gray-300 mb-2 font-semibold flex items-center">
-                                    <i class="fas fa-comment-dots text-green-400 mr-2"></i>Message
-                                </label>
-                                <textarea id="message" name="message" rows="6" required 
-                                    class="hoverable w-full bg-gray-800/80 border-2 border-gray-700 rounded-xl py-4 px-5 text-white focus:outline-none focus:border-green-500 focus:ring-2 focus:ring-green-500/50 transition-all placeholder-gray-500 resize-none group-hover:border-gray-600"
-                                    placeholder="Tell us about your project..."></textarea>
-                            </div>
-                            
-                            <div class="text-center">
-                                <button type="submit" class="hoverable bg-green-500 hover:bg-green-600 text-white font-bold py-4 px-10 rounded-full text-lg transition-all button-glow inline-flex items-center group">
-                                    <i class="fas fa-paper-plane mr-3 group-hover:translate-x-1 transition-transform"></i>
-                                    Send Message
-                                    <i class="fas fa-arrow-right ml-3 group-hover:translate-x-1 transition-transform"></i>
-                                </button>
-                            </div>
-                        </form>
-                        
-                        <!-- Contact Info Below Form -->
-                        <div class="mt-10 pt-8 border-t border-gray-700">
-                            <p class="text-gray-400 text-center mb-4">Or reach us directly:</p>
-                            <div class="flex flex-col sm:flex-row justify-center gap-6">
-                                <a href="tel:860-494-3090" class="hoverable flex items-center justify-center text-green-400 hover:text-green-300 transition-colors group">
-                                    <i class="fas fa-phone mr-2 group-hover:scale-110 transition-transform"></i>
-                                    <span class="font-semibold">860-494-3090</span>
-                                </a>
-                                <a href="mailto:info@jpaxmedia.com" class="hoverable flex items-center justify-center text-green-400 hover:text-green-300 transition-colors group">
-                                    <i class="fas fa-envelope mr-2 group-hover:scale-110 transition-transform"></i>
-                                    <span class="font-semibold">info@jpaxmedia.com</span>
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-            </div>
-        </section>
-
-    </main>
-    
-    <!-- Footer -->
-    <footer class="relative bg-gradient-to-b from-black via-gray-900 to-black py-16 overflow-hidden">
-        <!-- Animated background elements -->
-        <div class="absolute inset-0 opacity-20">
-            <div class="absolute top-10 left-10 w-40 h-40 bg-green-500 rounded-full filter blur-3xl animate-pulse"></div>
-            <div class="absolute bottom-20 right-20 w-60 h-60 bg-green-400 rounded-full filter blur-3xl animate-pulse" style="animation-delay: 1s;"></div>
         </div>
-        
-        <div class="container mx-auto px-6 relative z-10">
-            <!-- Top Section -->
-            <div class="grid grid-cols-1 md:grid-cols-4 gap-12 mb-12">
-                <!-- Brand Column -->
-                <div class="md:col-span-2">
-                    <a href="index.html" class="hoverable inline-block mb-4">
-                        <img src="jpaxmedialogoOFFICIALFINAL(white).png" alt="JPax Media Logo" class="h-16 transition-all duration-300 logo-glow">
-                    </a>
-                    <p class="text-gray-400 text-lg mb-6 leading-relaxed max-w-md">
-                        AI-Powered. Human-Crafted. Lightning-Fast. We merge creativity with artificial intelligence to deliver smarter content and streamlined digital solutions.
-                    </p>
-                    <!-- Social Links -->
-                    <div class="flex space-x-4">
-                        <a href="https://www.facebook.com/jpaxmedia/" target="_blank" aria-label="Facebook" class="hoverable w-12 h-12 bg-gray-800 rounded-full flex items-center justify-center text-gray-400 hover:text-green-400 hover:bg-gray-700 transition-all duration-300 footer-icon border border-gray-700 hover:border-green-400">
-                            <i class="fab fa-facebook text-xl"></i>
-                        </a>
-                        <a href="https://www.instagram.com/jpaxfilmz/" target="_blank" aria-label="Instagram" class="hoverable w-12 h-12 bg-gray-800 rounded-full flex items-center justify-center text-gray-400 hover:text-green-400 hover:bg-gray-700 transition-all duration-300 footer-icon border border-gray-700 hover:border-green-400">
-                            <i class="fab fa-instagram text-xl"></i>
-                        </a>
-                        <a href="https://www.youtube.com/channel/UCl_NwAHPgf92bST4_AMZxyA" target="_blank" aria-label="YouTube" class="hoverable w-12 h-12 bg-gray-800 rounded-full flex items-center justify-center text-gray-400 hover:text-green-400 hover:bg-gray-700 transition-all duration-300 footer-icon border border-gray-700 hover:border-green-400">
-                            <i class="fab fa-youtube text-xl"></i>
-                        </a>
-                    </div>
-                </div>
-                
-                <!-- Quick Links Column -->
-                <div>
-                    <h4 class="text-white font-bold text-lg mb-4 flex items-center">
-                        <span class="w-8 h-0.5 bg-green-400 mr-3"></span>
-                        Quick Links
-                    </h4>
-                    <ul class="space-y-3">
-                        <li><a href="index.html" class="hoverable text-gray-400 hover:text-green-400 transition-colors flex items-center group"><i class="fas fa-chevron-right text-xs mr-2 text-green-400 opacity-0 group-hover:opacity-100 transition-opacity"></i>Home</a></li>
-                        <li><a href="index.html#about" class="hoverable text-gray-400 hover:text-green-400 transition-colors flex items-center group"><i class="fas fa-chevron-right text-xs mr-2 text-green-400 opacity-0 group-hover:opacity-100 transition-opacity"></i>About Us</a></li>
-                        <li><a href="index.html#services" class="hoverable text-gray-400 hover:text-green-400 transition-colors flex items-center group"><i class="fas fa-chevron-right text-xs mr-2 text-green-400 opacity-0 group-hover:opacity-100 transition-opacity"></i>Services</a></li>
-                        <li><a href="portfolio.html" class="hoverable text-gray-400 hover:text-green-400 transition-colors flex items-center group"><i class="fas fa-chevron-right text-xs mr-2 text-green-400 opacity-0 group-hover:opacity-100 transition-opacity"></i>Portfolio</a></li>
-                        <li><a href="jupiter.html" class="hoverable text-gray-400 hover:text-green-400 transition-colors flex items-center group"><i class="fas fa-chevron-right text-xs mr-2 text-green-400 opacity-0 group-hover:opacity-100 transition-opacity"></i>Jupiter Dashboard</a></li>
-                    </ul>
-                </div>
-                
-                <!-- Contact Column -->
-                <div>
-                    <h4 class="text-white font-bold text-lg mb-4 flex items-center">
-                        <span class="w-8 h-0.5 bg-green-400 mr-3"></span>
-                        Get In Touch
-                    </h4>
-                    <ul class="space-y-3">
-                        <li>
-                            <a href="mailto:info@jpaxmedia.com" class="hoverable text-gray-400 hover:text-green-400 transition-colors flex items-center group">
-                                <i class="fas fa-envelope text-green-400 mr-3 group-hover:scale-110 transition-transform"></i>
-                                <span>info@jpaxmedia.com</span>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="tel:860-494-3090" class="hoverable text-gray-400 hover:text-green-400 transition-colors flex items-center group">
-                                <i class="fas fa-phone text-green-400 mr-3 group-hover:scale-110 transition-transform"></i>
-                                <span>860-494-3090</span>
-                            </a>
+    </section>
+
+    <!-- Framework Overview -->
+    <section class="section-bg py-20">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-16 scroll-reveal">
+                <h2 class="text-4xl md:text-5xl font-black mb-4">Two Clear Paths to Growth</h2>
+                <p class="text-xl text-gray-400">Choose BUILD for foundational projects or RISE for ongoing optimization</p>
+            </div>
+            <div class="grid md:grid-cols-2 gap-8 max-w-6xl mx-auto">
+                <!-- BUILD Card -->
+                <div class="card-glow border border-green-500/30 rounded-2xl p-8 bg-gradient-to-br from-black/50 to-gray-900/50 backdrop-blur-sm scroll-reveal hover:border-green-500/60">
+                    <div class="spotlight"></div>
+                    <div class="framework-badge badge-build mb-6">BUILD</div>
+                    <h3 class="text-3xl font-bold mb-4 text-white">Launch Your Foundation</h3>
+                    <p class="text-gray-300 mb-6 text-lg">Fast, foundational digital projects delivered with flat-rate pricing and complete transparency.</p>
+                    <ul class="space-y-3 mb-8">
+                        <li class="flex items-start">
+                            <i class="fas fa-check text-green-400 mr-3 mt-1"></i>
+                            <span class="text-gray-300">Websites: $2,500-$15,000+ (5-14 days)</span>
                         </li>
                         <li class="flex items-start">
-                            <i class="fas fa-map-marker-alt text-green-400 mr-3 mt-1"></i>
-                            <span class="text-gray-400">Hartford, Connecticut, USA</span>
+                            <i class="fas fa-check text-green-400 mr-3 mt-1"></i>
+                            <span class="text-gray-300">Branding: $1,500-$7,000 (2-10 days)</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-check text-green-400 mr-3 mt-1"></i>
+                            <span class="text-gray-300">Apps & Automation: $3,000-$15,000+ (7-30 days)</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-check text-green-400 mr-3 mt-1"></i>
+                            <span class="text-gray-300">Video Production: $800-$7,500 (3-10 days)</span>
                         </li>
                     </ul>
-                    
-                    <!-- CTA Button -->
-                    <a href="#contact" class="hoverable inline-block mt-6 bg-green-500 hover:bg-green-600 text-white font-bold py-3 px-6 rounded-lg transition-all button-glow text-sm">
-                        <i class="fas fa-paper-plane mr-2"></i>Start a Project
+                    <a href="pricing.html#build" class="inline-block bg-green-500 text-black px-6 py-3 rounded-full font-semibold hover:bg-green-400 button-glow transition-all">
+                        Explore BUILD Services →
+                    </a>
+                </div>
+
+                <!-- RISE Card -->
+                <div class="card-glow border border-purple-500/30 rounded-2xl p-8 bg-gradient-to-br from-black/50 to-gray-900/50 backdrop-blur-sm scroll-reveal hover:border-purple-500/60">
+                    <div class="spotlight"></div>
+                    <div class="framework-badge badge-rise mb-6">RISE</div>
+                    <h3 class="text-3xl font-bold mb-4 text-white">Scale With Ongoing Growth</h3>
+                    <p class="text-gray-300 mb-6 text-lg">Monthly partnerships focused on continuous optimization and compounding results.</p>
+                    <ul class="space-y-3 mb-8">
+                        <li class="flex items-start">
+                            <i class="fas fa-check text-purple-400 mr-3 mt-1"></i>
+                            <span class="text-gray-300">Starter: $800-$1,200/month (1 platform, 10 posts)</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-check text-purple-400 mr-3 mt-1"></i>
+                            <span class="text-gray-300">Growth: $1,500-$2,500/month (2-3 platforms, video)</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-check text-purple-400 mr-3 mt-1"></i>
+                            <span class="text-gray-300">Accelerator: $2,500-$3,500/month (multi-platform)</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-check text-purple-400 mr-3 mt-1"></i>
+                            <span class="text-gray-300">Enterprise: $5,000+/month (unlimited campaigns)</span>
+                        </li>
+                    </ul>
+                    <a href="pricing.html#rise" class="inline-block bg-purple-500 text-white px-6 py-3 rounded-full font-semibold hover:bg-purple-400 button-glow transition-all">
+                        Explore RISE Partnerships →
                     </a>
                 </div>
             </div>
-            
-            <!-- Divider -->
-            <div class="border-t border-gray-800 mb-8"></div>
-            
-            <!-- Bottom Section -->
-            <div class="flex flex-col md:flex-row justify-between items-center gap-4">
-                <p class="text-gray-500 text-sm">
-                    &copy; 2025 JPax Media. All rights reserved.
-                </p>
-                <div class="flex space-x-6 text-sm">
-                    <a href="#" class="hoverable text-gray-500 hover:text-green-400 transition-colors">Privacy Policy</a>
-                    <span class="text-gray-700">|</span>
-                    <a href="#" class="hoverable text-gray-500 hover:text-green-400 transition-colors">Terms of Service</a>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section id="services" class="py-20">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-16 scroll-reveal">
+                <h2 class="text-4xl md:text-5xl font-black mb-4">What We <span class="text-build">BUILD</span></h2>
+                <p class="text-xl text-gray-400">Foundational digital assets delivered at lightning speed</p>
+            </div>
+            <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+                <!-- Service 1 -->
+                <div class="card-glow border border-gray-800 rounded-xl p-6 bg-black/40 backdrop-blur-sm scroll-reveal">
+                    <div class="spotlight"></div>
+                    <i class="fas fa-globe icon-glow text-4xl text-green-400 mb-4"></i>
+                    <h3 class="text-xl font-bold mb-3">Websites</h3>
+                    <p class="text-gray-400 mb-4">Professional, converting websites delivered in 5-14 days. Mobile-optimized, SEO-ready, yours to own.</p>
+                    <span class="text-green-400 font-semibold">From $2,500</span>
+                </div>
+
+                <!-- Service 2 -->
+                <div class="card-glow border border-gray-800 rounded-xl p-6 bg-black/40 backdrop-blur-sm scroll-reveal">
+                    <div class="spotlight"></div>
+                    <i class="fas fa-palette icon-glow text-4xl text-green-400 mb-4"></i>
+                    <h3 class="text-xl font-bold mb-3">Branding</h3>
+                    <p class="text-gray-400 mb-4">Complete brand identity systems. Logo, colors, typography, and guidelines in 2-10 days.</p>
+                    <span class="text-green-400 font-semibold">From $1,500</span>
+                </div>
+
+                <!-- Service 3 -->
+                <div class="card-glow border border-gray-800 rounded-xl p-6 bg-black/40 backdrop-blur-sm scroll-reveal">
+                    <div class="spotlight"></div>
+                    <i class="fas fa-mobile-alt icon-glow text-4xl text-green-400 mb-4"></i>
+                    <h3 class="text-xl font-bold mb-3">Apps & Automation</h3>
+                    <p class="text-gray-400 mb-4">Custom web apps, visualizers, and automation platforms. Interactive tools that convert.</p>
+                    <span class="text-green-400 font-semibold">From $3,000</span>
+                </div>
+
+                <!-- Service 4 -->
+                <div class="card-glow border border-gray-800 rounded-xl p-6 bg-black/40 backdrop-blur-sm scroll-reveal">
+                    <div class="spotlight"></div>
+                    <i class="fas fa-video icon-glow text-4xl text-green-400 mb-4"></i>
+                    <h3 class="text-xl font-bold mb-3">Video Production</h3>
+                    <p class="text-gray-400 mb-4">Professional video ads and content. Script to delivery in 3-10 days, optimized for all platforms.</p>
+                    <span class="text-green-400 font-semibold">From $800</span>
                 </div>
             </div>
-            
-            <!-- Signature -->
-            <div class="text-center mt-8">
-                <p class="text-gray-600 text-xs">
-                    Built with <i class="fas fa-heart text-green-400 animate-pulse"></i> using AI-Powered Workflows
+
+            <div class="text-center mt-16 scroll-reveal">
+                <h2 class="text-4xl md:text-5xl font-black mb-4 mt-20">How We Help You <span class="text-rise">RISE</span></h2>
+                <p class="text-xl text-gray-400 mb-12">Ongoing optimization that compounds month after month</p>
+            </div>
+
+            <div class="grid md:grid-cols-3 gap-8 max-w-5xl mx-auto">
+                <!-- RISE Service 1 -->
+                <div class="card-glow border border-gray-800 rounded-xl p-6 bg-black/40 backdrop-blur-sm scroll-reveal">
+                    <div class="spotlight"></div>
+                    <i class="fas fa-chart-line icon-glow text-4xl text-purple-400 mb-4"></i>
+                    <h3 class="text-xl font-bold mb-3">Social Media Management</h3>
+                    <p class="text-gray-400 mb-4">Consistent, high-performing content across 1-5 platforms. Strategic posting, engagement, and community building.</p>
+                </div>
+
+                <!-- RISE Service 2 -->
+                <div class="card-glow border border-gray-800 rounded-xl p-6 bg-black/40 backdrop-blur-sm scroll-reveal">
+                    <div class="spotlight"></div>
+                    <i class="fas fa-bullhorn icon-glow text-4xl text-purple-400 mb-4"></i>
+                    <h3 class="text-xl font-bold mb-3">Ad Campaign Optimization</h3>
+                    <p class="text-gray-400 mb-4">Build warm audiences efficiently, then convert at 60-70% lower cost. Transparent reporting on every dollar.</p>
+                </div>
+
+                <!-- RISE Service 3 -->
+                <div class="card-glow border border-gray-800 rounded-xl p-6 bg-black/40 backdrop-blur-sm scroll-reveal">
+                    <div class="spotlight"></div>
+                    <i class="fas fa-cogs icon-glow text-4xl text-purple-400 mb-4"></i>
+                    <h3 class="text-xl font-bold mb-3">Continuous Optimization</h3>
+                    <p class="text-gray-400 mb-4">Monthly strategy sessions, performance tracking, and relentless testing. What works scales. What doesn't gets eliminated.</p>
+                </div>
+            </div>
+
+            <div class="text-center mt-12 scroll-reveal">
+                <a href="pricing.html" class="inline-block bg-gradient-to-r from-green-500 to-purple-500 text-white px-8 py-4 rounded-full font-bold text-lg hover:shadow-2xl hover:scale-105 transition-all">
+                    See Complete Pricing Guide
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Case Study Section -->
+    <section id="case-study" class="section-bg py-20">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-16 scroll-reveal">
+                <div class="inline-block bg-green-500/10 border border-green-500/30 rounded-full px-6 py-2 mb-6">
+                    <span class="text-green-400 font-semibold uppercase text-sm">Featured Success Story</span>
+                </div>
+                <h2 class="text-4xl md:text-5xl font-black mb-4">
+                    Southern Pavers: <span class="text-build">BUILD</span> to <span class="text-rise">RISE</span>
+                </h2>
+                <p class="text-xl text-gray-400">How we helped a regional landscaping business scale from $8,500 project to $2,000/month partnership</p>
+            </div>
+
+            <div class="max-w-5xl mx-auto">
+                <!-- Phase 1: BUILD -->
+                <div class="bg-gradient-to-br from-green-900/20 to-black/40 border border-green-500/30 rounded-2xl p-8 md:p-12 mb-8 scroll-reveal">
+                    <div class="framework-badge badge-build mb-6">PHASE 1: BUILD</div>
+                    <h3 class="text-3xl font-bold mb-6">Foundation Built in 7 Days</h3>
+                    <div class="grid md:grid-cols-3 gap-6 mb-8">
+                        <div>
+                            <div class="text-4xl font-black text-green-400 mb-2">7</div>
+                            <div class="text-gray-400">Working Days</div>
+                        </div>
+                        <div>
+                            <div class="text-4xl font-black text-green-400 mb-2">$8,500</div>
+                            <div class="text-gray-400">Total Investment</div>
+                        </div>
+                        <div>
+                            <div class="text-4xl font-black text-green-400 mb-2">2</div>
+                            <div class="text-gray-400">Major Deliverables</div>
+                        </div>
+                    </div>
+                    <div class="space-y-4">
+                        <div class="flex items-start">
+                            <i class="fas fa-check-circle text-green-400 mr-3 mt-1 text-xl"></i>
+                            <div>
+                                <div class="font-bold text-lg mb-1">Complete Brand Rebrand</div>
+                                <div class="text-gray-400">New visual identity, professional logo, color system</div>
+                            </div>
+                        </div>
+                        <div class="flex items-start">
+                            <i class="fas fa-check-circle text-green-400 mr-3 mt-1 text-xl"></i>
+                            <div>
+                                <div class="font-bold text-lg mb-1">Custom Paver Visualizer App</div>
+                                <div class="text-gray-400">Interactive tool allowing customers to see paver options in their space</div>
+                            </div>
+                        </div>
+                        <div class="flex items-start">
+                            <i class="fas fa-check-circle text-green-400 mr-3 mt-1 text-xl"></i>
+                            <div>
+                                <div class="font-bold text-lg mb-1">Professional Website</div>
+                                <div class="text-gray-400">Mobile-optimized, conversion-focused, fully owned by client</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Phase 2: RISE -->
+                <div class="bg-gradient-to-br from-purple-900/20 to-black/40 border border-purple-500/30 rounded-2xl p-8 md:p-12 scroll-reveal">
+                    <div class="framework-badge badge-rise mb-6">PHASE 2: RISE</div>
+                    <h3 class="text-3xl font-bold mb-6">First 30 Days: Strategic Audience Building</h3>
+                    <div class="bg-black/40 border border-purple-500/20 rounded-xl p-6 mb-8">
+                        <div class="text-purple-400 font-semibold mb-4">RESULTS (October 2025)</div>
+                        <div class="grid md:grid-cols-2 gap-6">
+                            <div>
+                                <div class="text-3xl font-black text-purple-400 mb-2">14,753</div>
+                                <div class="text-gray-400 mb-1">Qualified Prospects Built</div>
+                                <div class="text-sm text-green-400">+50% above industry average</div>
+                            </div>
+                            <div>
+                                <div class="text-3xl font-black text-purple-400 mb-2">1,046</div>
+                                <div class="text-gray-400 mb-1">High-Intent Website Visitors</div>
+                                <div class="text-sm text-green-400">+30% conversion intent</div>
+                            </div>
+                            <div>
+                                <div class="text-3xl font-black text-purple-400 mb-2">$0.04</div>
+                                <div class="text-gray-400 mb-1">Cost Per Prospect</div>
+                                <div class="text-sm text-green-400">92-96% cheaper than industry avg</div>
+                            </div>
+                            <div>
+                                <div class="text-3xl font-black text-purple-400 mb-2">15,632</div>
+                                <div class="text-gray-400 mb-1">Video Engagement Plays</div>
+                                <div class="text-sm text-green-400">200%+ higher engagement</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="border-t border-purple-500/20 pt-8">
+                        <h4 class="text-xl font-bold mb-4">The Strategy That Made It Work</h4>
+                        <p class="text-gray-300 mb-4">
+                            Instead of expensive cold-traffic conversion campaigns, we focused Phase 1 on building qualified audiences at maximum efficiency. These warm audiences are now being retargeted with conversion-focused messaging at <span class="text-purple-400 font-bold">60-70% lower cost</span> than traditional cold traffic acquisition.
+                        </p>
+                        <div class="bg-purple-500/10 border border-purple-500/30 rounded-lg p-6">
+                            <div class="text-sm text-purple-400 font-semibold mb-2">CLIENT QUOTE</div>
+                            <p class="text-gray-300 italic">"Julian didn't just re-create the brand or run ads, he showed us the strategy. Building audiences first meant we're not burning money on cold traffic. Now we're retargeting people who already know us. It's smarter spending."</p>
+                            <p class="text-gray-500 text-sm mt-2">— Southern Pavers, October 2025</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="text-center mt-12 scroll-reveal">
+                    <a href="portfolio.html" class="inline-block bg-white text-black px-8 py-4 rounded-full font-bold text-lg hover:bg-gray-200 transition-all">
+                        View Full Portfolio →
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- How It Works -->
+    <section id="how-it-works" class="py-20">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-16 scroll-reveal">
+                <h2 class="text-4xl md:text-5xl font-black mb-4">How It Works</h2>
+                <p class="text-xl text-gray-400">Simple, transparent process from start to success</p>
+            </div>
+            <div class="grid md:grid-cols-4 gap-8 max-w-6xl mx-auto">
+                <div class="text-center scroll-reveal">
+                    <div class="bg-green-500/20 border-2 border-green-500 rounded-full w-16 h-16 flex items-center justify-center mx-auto mb-4 text-2xl font-bold">1</div>
+                    <h3 class="text-xl font-bold mb-2">Choose Your Path</h3>
+                    <p class="text-gray-400">Need to BUILD something new or RISE with ongoing growth? Take our 2-minute quiz.</p>
+                </div>
+                <div class="text-center scroll-reveal">
+                    <div class="bg-green-500/20 border-2 border-green-500 rounded-full w-16 h-16 flex items-center justify-center mx-auto mb-4 text-2xl font-bold">2</div>
+                    <h3 class="text-xl font-bold mb-2">Strategy Call</h3>
+                    <p class="text-gray-400">30-minute consultation to understand your goals and recommend the right solution.</p>
+                </div>
+                <div class="text-center scroll-reveal">
+                    <div class="bg-green-500/20 border-2 border-green-500 rounded-full w-16 h-16 flex items-center justify-center mx-auto mb-4 text-2xl font-bold">3</div>
+                    <h3 class="text-xl font-bold mb-2">Fast Delivery</h3>
+                    <p class="text-gray-400">BUILD projects in 3-14 days. RISE partnerships start within 48 hours.</p>
+                </div>
+                <div class="text-center scroll-reveal">
+                    <div class="bg-green-500/20 border-2 border-green-500 rounded-full w-16 h-16 flex items-center justify-center mx-auto mb-4 text-2xl font-bold">4</div>
+                    <h3 class="text-xl font-bold mb-2">See Results</h3>
+                    <p class="text-gray-400">Track everything transparently. Optimize relentlessly. Scale what works.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Stats Section -->
+    <section class="section-bg py-20">
+        <div class="container mx-auto px-6">
+            <div class="grid md:grid-cols-4 gap-8 max-w-6xl mx-auto">
+                <div class="stat-card rounded-xl p-6 text-center scroll-reveal">
+                    <div class="text-4xl md:text-5xl font-black text-green-400 mb-2" data-count="45">0</div>
+                    <div class="text-gray-400">Faster Than Traditional</div>
+                    <div class="text-sm text-gray-500 mt-2">Projects in days, not weeks</div>
+                </div>
+                <div class="stat-card rounded-xl p-6 text-center scroll-reveal">
+                    <div class="text-4xl md:text-5xl font-black text-green-400 mb-2" data-count="96">0</div>
+                    <div class="text-gray-400">More Cost Efficient</div>
+                    <div class="text-sm text-gray-500 mt-2">Lower acquisition costs</div>
+                </div>
+                <div class="stat-card rounded-xl p-6 text-center scroll-reveal">
+                    <div class="text-4xl md:text-5xl font-black text-green-400 mb-2" data-count="100">0</div>
+                    <div class="text-gray-400">Transparent Pricing</div>
+                    <div class="text-sm text-gray-500 mt-2">No hidden fees, ever</div>
+                </div>
+                <div class="stat-card rounded-xl p-6 text-center scroll-reveal">
+                    <div class="text-4xl md:text-5xl font-black text-green-400 mb-2" data-count="90">0%</div>
+                    <div class="text-gray-400">Client Retention</div>
+                    <div class="text-sm text-gray-500 mt-2">After month 3 (RISE)</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="py-20">
+        <div class="container mx-auto px-6">
+            <div class="max-w-4xl mx-auto text-center scroll-reveal">
+                <h2 class="text-4xl md:text-5xl font-black mb-6">Ready to <span class="text-build">BUILD</span> Your Foundation?</h2>
+                <p class="text-xl text-gray-400 mb-8">
+                    Take our 2-minute quiz to discover whether you need BUILD services or a RISE partnership—and get instant pricing recommendations.
                 </p>
+                <div class="flex flex-col sm:flex-row gap-4 justify-center">
+                    <a href="quiz.html" class="bg-green-500 text-black px-8 py-4 rounded-full font-bold text-lg hover:bg-green-400 button-glow transition-all inline-block">
+                        Take the Quiz <i class="fas fa-arrow-right ml-2"></i>
+                    </a>
+                    <a href="pricing.html" class="border-2 border-white text-white px-8 py-4 rounded-full font-bold text-lg hover:bg-white hover:text-black transition-all inline-block">
+                        View All Pricing
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="section-bg border-t border-green-500/20 py-12">
+        <div class="container mx-auto px-6">
+            <div class="grid md:grid-cols-4 gap-8 mb-8">
+                <div>
+                    <h4 class="font-bold text-lg mb-4">JPax Media</h4>
+                    <p class="text-gray-400 text-sm">AI-accelerated. Human-directed. Lightning-fast.</p>
+                </div>
+                <div>
+                    <h4 class="font-bold text-lg mb-4">Services</h4>
+                    <ul class="space-y-2 text-sm">
+                        <li><a href="pricing.html#build" class="text-gray-400 hover:text-green-400 transition-colors">BUILD Services</a></li>
+                        <li><a href="pricing.html#rise" class="text-gray-400 hover:text-green-400 transition-colors">RISE Partnerships</a></li>
+                        <li><a href="portfolio.html" class="text-gray-400 hover:text-green-400 transition-colors">Portfolio</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="font-bold text-lg mb-4">Company</h4>
+                    <ul class="space-y-2 text-sm">
+                        <li><a href="#case-study" class="text-gray-400 hover:text-green-400 transition-colors">Case Studies</a></li>
+                        <li><a href="pricing.html" class="text-gray-400 hover:text-green-400 transition-colors">Pricing</a></li>
+                        <li><a href="quiz.html" class="text-gray-400 hover:text-green-400 transition-colors">Take Quiz</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="font-bold text-lg mb-4">Connect</h4>
+                    <div class="flex space-x-4 mb-4">
+                        <a href="https://www.facebook.com/jpaxmedia/" target="_blank" class="footer-icon text-2xl text-gray-400 hover:text-green-400 transition-all">
+                            <i class="fab fa-facebook"></i>
+                        </a>
+                        <a href="https://www.instagram.com/jpaxfilmz/" target="_blank" class="footer-icon text-2xl text-gray-400 hover:text-green-400 transition-all">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                    </div>
+                    <a href="mailto:info@jpaxmedia.com" class="text-gray-400 hover:text-green-400 transition-colors text-sm">info@jpaxmedia.com</a>
+                </div>
+            </div>
+            <div class="border-t border-gray-800 pt-8 text-center text-gray-500 text-sm">
+                <p>&copy; 2025 JPax Media. All rights reserved. <span class="text-build">BUILD.</span> <span class="text-rise">RISE.</span> <span class="text-scale">SCALE.</span></p>
             </div>
         </div>
     </footer>
 
     <script>
         document.addEventListener('DOMContentLoaded', () => {
-
             // --- Dynamic Background Gradient ---
-            window.addEventListener('mousemove', e => {
-                // We add window.scrollY to the mouse Y position to ensure the gradient follows the cursor even when scrolled
-                document.body.style.setProperty('--mouse-y', `${e.clientY + window.scrollY}px`);
-                document.body.style.setProperty('--mouse-x', `${e.clientX}px`);
+            document.addEventListener('mousemove', (e) => {
+                const mouseX = (e.clientX / window.innerWidth) * 100;
+                const mouseY = (e.clientY / window.innerHeight) * 100;
+                document.documentElement.style.setProperty('--mouse-x', `${mouseX}%`);
+                document.documentElement.style.setProperty('--mouse-y', `${mouseY}%`);
             });
-
-            // --- Page Fade-Out Transition on Link Click ---
-            document.querySelectorAll('a').forEach(link => {
-                const href = link.getAttribute('href');
-                const target = link.getAttribute('target');
-
-                // Apply to internal, non-hash, non-target="_blank" links
-                if (href && !href.startsWith('#') && !href.startsWith('http') && target !== '_blank') {
-                    link.addEventListener('click', (e) => {
-                        e.preventDefault(); // Prevent instant navigation
-                        document.body.style.opacity = '0'; // Start fade out
-                        setTimeout(() => {
-                            window.location.href = href; // Navigate after fade out
-                        }, 400); // This duration should match the CSS transition time
-                    });
-                }
-            });
-
 
             // --- Custom Cursor ---
-            if (window.matchMedia('(hover: hover) and (pointer: fine)').matches) {
-                const cursorDot = document.querySelector('.cursor-dot');
-                const cursorOutline = document.querySelector('.cursor-outline');
-                window.addEventListener('mousemove', (e) => {
-                    const posX = e.clientX;
-                    const posY = e.clientY;
-                    cursorDot.style.left = `${posX}px`;
-                    cursorDot.style.top = `${posY}px`;
-                    cursorOutline.style.left = `${posX}px`;
-                    cursorOutline.style.top = `${posY}px`;
+            const cursorDot = document.querySelector('.cursor-dot');
+            const cursorOutline = document.querySelector('.cursor-outline');
+            if (cursorDot && cursorOutline) {
+                document.addEventListener('mousemove', (e) => {
+                    cursorDot.style.left = `${e.clientX}px`;
+                    cursorDot.style.top = `${e.clientY}px`;
+                    cursorOutline.style.left = `${e.clientX}px`;
+                    cursorOutline.style.top = `${e.clientY}px`;
                 });
-                const hoverables = document.querySelectorAll('.hoverable');
-                hoverables.forEach(el => {
+
+                document.querySelectorAll('a, button').forEach(el => {
                     el.addEventListener('mouseenter', () => {
                         cursorOutline.classList.add('cursor-interact');
                     });
@@ -834,11 +700,11 @@
                 });
             }
 
-            // --- Spotlight Card Effect ---
+            // --- Spotlight Effect ---
             document.querySelectorAll('.card-glow').forEach(card => {
                 const spotlight = card.querySelector('.spotlight');
                 if (spotlight) {
-                    card.addEventListener('mousemove', e => {
+                    card.addEventListener('mousemove', (e) => {
                         const rect = card.getBoundingClientRect();
                         const x = e.clientX - rect.left;
                         const y = e.clientY - rect.top;
@@ -847,43 +713,6 @@
                     });
                 }
             });
-
-            // --- Text Scramble Effect ---
-            function scrambleText(element, originalText) {
-                const chars = '!<>-_\\/[]{}—=+*^?#________';
-                let frame = 0;
-                const frameRate = 2; // Speed of the scramble
-                const endFrame = originalText.length * frameRate * 1.5;
-
-                const animate = () => {
-                    let newText = '';
-                    for (let i = 0; i < originalText.length; i++) {
-                        const progress = (frame - i * frameRate) / (frameRate * 2);
-                        if (progress < 0) {
-                             newText += ' ';
-                        } else if (progress < 1) {
-                            const randomChar = chars[Math.floor(Math.random() * chars.length)];
-                            newText += randomChar;
-                        } else {
-                            newText += originalText[i];
-                        }
-                    }
-                    element.textContent = newText;
-                    if (frame < endFrame) {
-                        frame++;
-                        requestAnimationFrame(animate);
-                    }
-                };
-                setTimeout(animate, 100); // Start after a short delay
-            }
-            
-            const headline = document.getElementById('hero-headline');
-            if (headline) {
-                const originalText = headline.textContent;
-                headline.textContent = ''; // Clear text initially
-                scrambleText(headline, originalText);
-            }
-
 
             // --- Mobile Menu ---
             const mobileMenuButton = document.getElementById('mobile-menu-button');
@@ -935,7 +764,6 @@
                     const clock = new THREE.Clock();
                     let animationId;
                     function animate() {
-                        // Pause animation when tab is hidden to save resources
                         if (document.hidden) {
                             cancelAnimationFrame(animationId);
                             return;
@@ -950,7 +778,6 @@
                     }
                     animate();
 
-                    // Resume animation when tab becomes visible
                     document.addEventListener('visibilitychange', () => {
                         if (!document.hidden) {
                             animate();
@@ -964,7 +791,6 @@
                     });
                 } catch (error) {
                     console.error('Three.js initialization failed:', error);
-                    // Fallback: ensure background is still visible
                     heroSection.style.background = 'linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url("photos/spacebackground.jpg")';
                     heroSection.style.backgroundSize = 'cover';
                     heroSection.style.backgroundPosition = 'center';
@@ -1015,52 +841,6 @@
             const statsSection = document.querySelector('.stat-card')?.closest('.grid');
             if (statsSection) {
                  countUpObserver.observe(statsSection);
-            }
-            
-            // --- About Section Carousel ---
-            const carousel = document.getElementById('about-carousel');
-            if (carousel) {
-                const items = carousel.querySelectorAll('.carousel-item');
-                const prevButton = document.getElementById('carousel-prev');
-                const nextButton = document.getElementById('carousel-next');
-                let currentIndex = 0;
-
-                function showSlide(index) {
-                    items.forEach((item, i) => {
-                        item.classList.toggle('hidden', i !== index);
-                    });
-                }
-
-                prevButton.addEventListener('click', () => {
-                    currentIndex = (currentIndex > 0) ? currentIndex - 1 : items.length - 1;
-                    showSlide(currentIndex);
-                });
-
-                nextButton.addEventListener('click', () => {
-                    currentIndex = (currentIndex < items.length - 1) ? currentIndex + 1 : 0;
-                    showSlide(currentIndex);
-                });
-            }
-
-            // --- Nitro Can Auto Carousel ---
-            const nitroCarousel = document.getElementById('nitro-carousel');
-            if (nitroCarousel) {
-                const items = nitroCarousel.querySelectorAll('.nitro-carousel-item');
-                let currentIndex = 0;
-                const intervalTime = 3000; // 3 seconds between slides
-
-                setInterval(() => {
-                    // Fade out current image
-                    items[currentIndex].classList.remove('opacity-100');
-                    items[currentIndex].classList.add('opacity-0');
-
-                    // Move to the next image index, looping back to the start
-                    currentIndex = (currentIndex + 1) % items.length;
-
-                    // Fade in next image
-                    items[currentIndex].classList.remove('opacity-0');
-                    items[currentIndex].classList.add('opacity-100');
-                }, intervalTime);
             }
         });
     </script>
