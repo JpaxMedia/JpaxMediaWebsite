@@ -19,31 +19,22 @@
     <!-- Favicon -->
     <link rel="icon" type="image/png" href="jpaxmedialogoOFFICIALFINALwhite.png">
     
-    <!-- Preload Critical Assets -->
-    <link rel="preload" href="photos/spacebackground.jpg" as="image">
-    <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js" as="script">
     <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;800;900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
     <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <!-- Three.js for interactive background -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js" defer></script>
+    
     <style>
-        :root {
-            --mouse-x: 50%;
-            --mouse-y: 50%;
-        }
         body {
             font-family: 'Inter', sans-serif;
-            background-color: #0c0c0c;
-            background-image: radial-gradient(circle 800px at var(--mouse-x) var(--mouse-y), rgba(74, 222, 128, 0.05), transparent 40%);
-            background-repeat: no-repeat;
-            transition: opacity 0.4s ease-in-out;
+            background-color: #000000;
         }
+        
+        /* Custom cursor */
         @media (hover: hover) and (pointer: fine) {
             body {
                 cursor: none;
@@ -79,40 +70,148 @@
                 border: 3px solid #4ade80;
             }
         }
-        .hero-bg {
-             position: relative;
-             background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('photos/spacebackground.jpg');
-             background-size: cover;
-             background-position: center;
-             background-attachment: fixed;
-             overflow: hidden;
+        
+        /* Hero Section - SpaceX Inspired */
+        .hero-section {
+            position: relative;
+            height: 100vh;
+            overflow: hidden;
+            background: linear-gradient(to bottom, #000000, #0a0a0a);
         }
         
-        /* Mobile-specific adjustments */
-        @media (max-width: 768px) {
-            .hero-bg {
-                min-height: 100vh;
-                background-attachment: scroll; /* Better performance on mobile */
-            }
-            nav {
-                background-color: rgba(0, 0, 0, 0.95) !important; /* More solid on mobile */
-            }
-        }
-        #interactive-bg {
+        .hero-video-overlay {
             position: absolute;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
+            background: 
+                radial-gradient(ellipse at top, rgba(74, 222, 128, 0.15) 0%, transparent 50%),
+                radial-gradient(ellipse at bottom left, rgba(168, 85, 247, 0.1) 0%, transparent 50%),
+                linear-gradient(to bottom, rgba(0,0,0,0.3) 0%, rgba(0,0,0,0.8) 100%);
             z-index: 1;
         }
+        
         .hero-content {
             position: relative;
             z-index: 2;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            padding: 2rem;
         }
-        .section-bg {
-            background-color: #111111;
+        
+        .hero-title {
+            font-size: clamp(2.5rem, 8vw, 6rem);
+            font-weight: 900;
+            letter-spacing: -0.02em;
+            line-height: 1.1;
+            margin-bottom: 1.5rem;
         }
+        
+        .hero-subtitle {
+            font-size: clamp(1rem, 2.5vw, 1.5rem);
+            font-weight: 400;
+            color: #a0a0a0;
+            max-width: 700px;
+            margin-bottom: 3rem;
+            line-height: 1.6;
+        }
+        
+        .hero-cta {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.75rem;
+            padding: 1rem 2.5rem;
+            background: transparent;
+            border: 2px solid #ffffff;
+            color: #ffffff;
+            font-weight: 600;
+            font-size: 1.125rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .hero-cta::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: #4ade80;
+            transition: left 0.3s ease;
+            z-index: -1;
+        }
+        
+        .hero-cta:hover::before {
+            left: 0;
+        }
+        
+        .hero-cta:hover {
+            border-color: #4ade80;
+            color: #000000;
+        }
+        
+        .hero-scroll-indicator {
+            position: absolute;
+            bottom: 3rem;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 0.5rem;
+            color: #4ade80;
+            animation: bounce 2s infinite;
+        }
+        
+        @keyframes bounce {
+            0%, 100% { transform: translate(-50%, 0); }
+            50% { transform: translate(-50%, 10px); }
+        }
+        
+        /* Animated Background Grid */
+        .grid-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: 
+                linear-gradient(rgba(74, 222, 128, 0.03) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(74, 222, 128, 0.03) 1px, transparent 1px);
+            background-size: 50px 50px;
+            animation: gridMove 20s linear infinite;
+            z-index: 0;
+        }
+        
+        @keyframes gridMove {
+            0% { transform: translateY(0); }
+            100% { transform: translateY(50px); }
+        }
+        
+        /* Floating Particles */
+        .particle {
+            position: absolute;
+            width: 2px;
+            height: 2px;
+            background: #4ade80;
+            border-radius: 50%;
+            opacity: 0.5;
+            animation: float 15s infinite;
+        }
+        
+        @keyframes float {
+            0%, 100% { transform: translate(0, 0) scale(1); opacity: 0.5; }
+            50% { transform: translate(100px, -100px) scale(1.5); opacity: 0.8; }
+        }
+        
+        /* Scroll Reveal */
         .scroll-reveal {
             opacity: 0;
             transform: translateY(30px);
@@ -122,302 +221,143 @@
             opacity: 1;
             transform: translateY(0);
         }
-        .text-glow {
-            text-shadow: 0 0 8px rgba(74, 222, 128, 0.8);
-        }
-        .text-build {
-            color: #4ade80;
-        }
-        .text-rise {
-            color: #c084fc;
-        }
-        .text-scale {
-            color: #60a5fa;
-        }
+        
+        /* Card Styles */
         .card-glow {
             position: relative;
             overflow: hidden;
             transition: all 0.3s ease-in-out;
+            background: rgba(17, 17, 17, 0.8);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(74, 222, 128, 0.2);
         }
+        
         .card-glow:hover {
             border-color: #4ade80;
-            box-shadow: 0 0 15px rgba(74, 222, 128, 0.5);
+            box-shadow: 0 0 30px rgba(74, 222, 128, 0.3);
             transform: translateY(-5px);
         }
+        
         .spotlight {
             position: absolute;
-            width: 250px;
-            height: 250px;
-            background: radial-gradient(circle, rgba(74, 222, 128, 0.15), transparent 70%);
+            width: 300px;
+            height: 300px;
+            background: radial-gradient(circle, rgba(74, 222, 128, 0.2), transparent 70%);
             border-radius: 50%;
             pointer-events: none;
             opacity: 0;
             transition: opacity 0.3s ease;
             transform: translate(-50%, -50%);
         }
+        
         .card-glow:hover .spotlight {
             opacity: 1;
         }
-        .button-glow {
-            transition: box-shadow 0.3s ease-in-out;
+        
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 1000;
         }
-        .button-glow:hover {
-             box-shadow: 0 0 10px rgba(74, 222, 128, 0.6), 0 0 20px rgba(74, 222, 128, 0.4);
-        }
-        .icon-glow {
-             filter: drop-shadow(0 0 5px rgba(74, 222, 128, 0.7));
-             transition: all 0.3s ease;
-        }
-        .card-glow:hover .icon-glow {
-            filter: drop-shadow(0 0 15px rgba(74, 222, 128, 1));
-            transform: scale(1.15) rotate(5deg);
-            animation: icon-bounce 0.6s ease;
-        }
-        @keyframes icon-bounce {
-            0%, 100% { transform: scale(1.15) rotate(5deg); }
-            50% { transform: scale(1.25) rotate(-5deg); }
-        }
-        .framework-badge {
-            display: inline-block;
-            padding: 0.5rem 1rem;
-            border-radius: 9999px;
-            font-weight: 700;
-            font-size: 0.875rem;
-            text-transform: uppercase;
-            letter-spacing: 0.05em;
+        
+        .logo-container {
             transition: all 0.3s ease;
         }
-        .badge-build {
-            background: rgba(74, 222, 128, 0.1);
-            border: 2px solid #4ade80;
-            color: #4ade80;
+        
+        .logo-glow {
+            transition: transform 0.3s ease;
         }
-        .badge-rise {
-            background: rgba(192, 132, 252, 0.1);
-            border: 2px solid #c084fc;
-            color: #c084fc;
-        }
-        .footer-icon:hover, .logo-glow:hover {
-            filter: drop-shadow(0 0 10px rgba(74, 222, 128, 0.8));
+        
+        .logo-glow:hover {
             transform: scale(1.1);
         }
-        .stat-card {
-            background: rgba(17, 17, 17, 0.8);
-            border: 1px solid rgba(74, 222, 128, 0.2);
-            backdrop-filter: blur(10px);
+        
+        .button-glow {
+            transition: all 0.3s ease;
         }
-
-        /* Enhanced Mobile Menu Styles */
-        .hamburger-icon {
-            width: 28px;
-            height: 24px;
-            position: relative;
-            cursor: pointer;
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
+        
+        .button-glow:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px rgba(74, 222, 128, 0.4);
         }
-
-        .hamburger-icon span {
-            display: block;
-            width: 100%;
-            height: 3px;
-            background: white;
-            border-radius: 2px;
-            transition: all 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55);
-            transform-origin: center;
-        }
-
-        .hamburger-icon.active span:nth-child(1) {
-            transform: translateY(10.5px) rotate(45deg);
-        }
-
-        .hamburger-icon.active span:nth-child(2) {
-            opacity: 0;
-            transform: translateX(-20px);
-        }
-
-        .hamburger-icon.active span:nth-child(3) {
-            transform: translateY(-10.5px) rotate(-45deg);
-        }
-
-        .mobile-menu-overlay {
+        
+        /* Mobile Menu */
+        .mobile-menu {
             position: fixed;
             top: 0;
             left: 0;
             width: 100%;
             height: 100vh;
-            background: linear-gradient(135deg, rgba(0, 0, 0, 0.98) 0%, rgba(20, 20, 30, 0.98) 100%);
-            backdrop-filter: blur(20px);
-            z-index: 40;
-            opacity: 0;
-            visibility: hidden;
-            transition: opacity 0.4s ease, visibility 0.4s ease;
-            overflow-y: auto;
-        }
-
-        .mobile-menu-overlay.active {
-            opacity: 1;
-            visibility: visible;
-        }
-
-        .mobile-menu-content {
-            padding: 100px 24px 40px;
-            min-height: 100vh;
+            background: rgba(0, 0, 0, 0.98);
+            backdrop-filter: blur(10px);
+            transform: translateX(-100%);
+            transition: transform 0.3s ease-in-out;
+            z-index: 999;
             display: flex;
             flex-direction: column;
-            justify-content: space-between;
+            justify-content: center;
+            align-items: center;
+            gap: 2rem;
         }
-
-        .mobile-menu-header {
-            margin-bottom: 40px;
-            opacity: 0;
-            transform: translateY(-20px);
-            transition: all 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.55);
-            transition-delay: 0.1s;
+        
+        .mobile-menu.active {
+            transform: translateX(0);
         }
-
-        .mobile-menu-overlay.active .mobile-menu-header {
-            opacity: 1;
-            transform: translateY(0);
-        }
-
-        .mobile-menu-nav {
+        
+        .hamburger-icon {
             display: flex;
             flex-direction: column;
-            gap: 8px;
-            margin-bottom: 40px;
+            gap: 5px;
+            cursor: pointer;
         }
-
-        .mobile-menu-link {
-            display: flex;
-            align-items: center;
-            gap: 20px;
-            padding: 20px;
-            background: rgba(255, 255, 255, 0.03);
-            border: 1px solid rgba(255, 255, 255, 0.05);
-            border-radius: 16px;
-            text-decoration: none;
-            opacity: 0;
-            transform: translateX(-50px);
-            transition: all 0.3s ease;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .mobile-menu-link::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: -100%;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(34, 197, 94, 0.1), transparent);
-            transition: left 0.5s ease;
-        }
-
-        .mobile-menu-link:hover::before {
-            left: 100%;
-        }
-
-        .mobile-menu-overlay.active .mobile-menu-link {
-            opacity: 1;
-            transform: translateX(0);
-        }
-
-        .mobile-menu-link[data-index="0"] { transition-delay: 0.15s; }
-        .mobile-menu-link[data-index="1"] { transition-delay: 0.2s; }
-        .mobile-menu-link[data-index="2"] { transition-delay: 0.25s; }
-        .mobile-menu-link[data-index="3"] { transition-delay: 0.3s; }
-        .mobile-menu-link[data-index="4"] { transition-delay: 0.35s; }
-
-        .mobile-menu-link:active {
-            transform: scale(0.98);
-            background: rgba(34, 197, 94, 0.1);
-        }
-
-        .mobile-menu-link-number {
-            font-size: 14px;
-            font-weight: 700;
-            color: #22c55e;
-            opacity: 0.5;
-            min-width: 24px;
-        }
-
-        .mobile-menu-link-text {
-            flex: 1;
-            font-size: 24px;
-            font-weight: 700;
-            color: white;
-            transition: color 0.3s ease;
-        }
-
-        .mobile-menu-link:hover .mobile-menu-link-text {
-            color: #22c55e;
-        }
-
-        .mobile-menu-link-icon {
-            color: #22c55e;
-            font-size: 18px;
-            opacity: 0;
-            transform: translateX(-10px);
+        
+        .hamburger-icon span {
+            width: 25px;
+            height: 2px;
+            background: white;
             transition: all 0.3s ease;
         }
-
-        .mobile-menu-link:hover .mobile-menu-link-icon {
-            opacity: 1;
-            transform: translateX(0);
+        
+        .hamburger-icon.active span:nth-child(1) {
+            transform: rotate(45deg) translate(7px, 7px);
         }
-
-        .mobile-menu-footer {
+        
+        .hamburger-icon.active span:nth-child(2) {
             opacity: 0;
-            transform: translateY(20px);
-            transition: all 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.55);
-            transition-delay: 0.4s;
         }
-
-        .mobile-menu-overlay.active .mobile-menu-footer {
-            opacity: 1;
-            transform: translateY(0);
+        
+        .hamburger-icon.active span:nth-child(3) {
+            transform: rotate(-45deg) translate(7px, -7px);
         }
-
-        .mobile-menu-cta {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 8px;
-            width: 100%;
-            padding: 18px 32px;
-            background: linear-gradient(135deg, #22c55e 0%, #16a34a 100%);
-            color: black;
+        
+        /* Framework Badges */
+        .framework-badge {
+            display: inline-block;
+            padding: 0.5rem 1.5rem;
+            border-radius: 9999px;
             font-weight: 700;
-            font-size: 18px;
-            border-radius: 50px;
-            text-decoration: none;
-            transition: all 0.3s ease;
-            box-shadow: 0 4px 20px rgba(34, 197, 94, 0.3);
-            margin-bottom: 32px;
+            font-size: 0.875rem;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
         }
-
-        .mobile-menu-cta:active {
-            transform: scale(0.98);
+        
+        .badge-build {
+            background: rgba(74, 222, 128, 0.2);
+            color: #4ade80;
+            border: 1px solid #4ade80;
         }
-
-        .mobile-menu-social {
-            display: flex;
-            justify-content: center;
-            gap: 32px;
-            font-size: 24px;
-        }
-
-        @media (min-width: 768px) {
-            .mobile-menu-overlay {
-                display: none;
-            }
+        
+        .badge-rise {
+            background: rgba(168, 85, 247, 0.2);
+            color: #c084fc;
+            border: 1px solid #c084fc;
         }
     </style>
 </head>
-<body class="text-gray-100">
+<body class="bg-black text-white">
     <!-- Custom Cursor -->
     <div class="cursor-dot"></div>
     <div class="cursor-outline"></div>
@@ -434,9 +374,9 @@
                 <div class="hidden md:flex items-center space-x-8">
                     <a href="#home" class="text-gray-300 hover:text-green-400 transition-colors">Home</a>
                     <a href="#services" class="text-gray-300 hover:text-green-400 transition-colors">Services</a>
-                    <a href="#how-it-works" class="text-gray-300 hover:text-green-400 transition-colors">Process</a>
-                    <a href="#case-study" class="text-gray-300 hover:text-green-400 transition-colors">Results</a>
+                    <a href="#framework" class="text-gray-300 hover:text-green-400 transition-colors">Framework</a>
                     <a href="portfolio.html" class="text-gray-300 hover:text-green-400 transition-colors">Portfolio</a>
+                    <a href="jupiter.html" class="text-gray-300 hover:text-green-400 transition-colors">Jupiter</a>
                     <a href="pricing.html" class="bg-green-500 text-black px-6 py-2 rounded-full font-semibold hover:bg-green-400 button-glow transition-all">View Pricing</a>
                 </div>
 
@@ -449,170 +389,149 @@
                     </div>
                 </button>
             </div>
-
-            <!-- Mobile Menu Overlay -->
-            <div id="mobile-menu" class="mobile-menu-overlay">
-                <div class="mobile-menu-content">
-                    <div class="mobile-menu-header">
-                        <span class="text-green-400 text-sm font-semibold uppercase tracking-wider">Navigation</span>
-                    </div>
-                    <nav class="mobile-menu-nav">
-                        <a href="#home" class="mobile-menu-link" data-index="0">
-                            <span class="mobile-menu-link-number">01</span>
-                            <span class="mobile-menu-link-text">Home</span>
-                            <i class="fas fa-arrow-right mobile-menu-link-icon"></i>
-                        </a>
-                        <a href="#services" class="mobile-menu-link" data-index="1">
-                            <span class="mobile-menu-link-number">02</span>
-                            <span class="mobile-menu-link-text">Services</span>
-                            <i class="fas fa-arrow-right mobile-menu-link-icon"></i>
-                        </a>
-                        <a href="#how-it-works" class="mobile-menu-link" data-index="2">
-                            <span class="mobile-menu-link-number">03</span>
-                            <span class="mobile-menu-link-text">Process</span>
-                            <i class="fas fa-arrow-right mobile-menu-link-icon"></i>
-                        </a>
-                        <a href="#case-study" class="mobile-menu-link" data-index="3">
-                            <span class="mobile-menu-link-number">04</span>
-                            <span class="mobile-menu-link-text">Results</span>
-                            <i class="fas fa-arrow-right mobile-menu-link-icon"></i>
-                        </a>
-                        <a href="portfolio.html" class="mobile-menu-link" data-index="4">
-                            <span class="mobile-menu-link-number">05</span>
-                            <span class="mobile-menu-link-text">Portfolio</span>
-                            <i class="fas fa-arrow-right mobile-menu-link-icon"></i>
-                        </a>
-                    </nav>
-                    <div class="mobile-menu-footer">
-                        <a href="pricing.html" class="mobile-menu-cta">
-                            <span>View Pricing</span>
-                            <i class="fas fa-arrow-right ml-2"></i>
-                        </a>
-                        <div class="mobile-menu-social">
-                            <a href="#" class="text-gray-400 hover:text-green-400 transition-colors">
-                                <i class="fab fa-twitter"></i>
-                            </a>
-                            <a href="#" class="text-gray-400 hover:text-green-400 transition-colors">
-                                <i class="fab fa-linkedin"></i>
-                            </a>
-                            <a href="#" class="text-gray-400 hover:text-green-400 transition-colors">
-                                <i class="fab fa-instagram"></i>
-                            </a>
-                        </div>
-                    </div>
-                </div>
-            </div>
         </div>
     </nav>
 
+    <!-- Mobile Menu -->
+    <div id="mobile-menu" class="mobile-menu">
+        <a href="#home" class="text-2xl font-semibold hover:text-green-400 transition-colors">Home</a>
+        <a href="#services" class="text-2xl font-semibold hover:text-green-400 transition-colors">Services</a>
+        <a href="#framework" class="text-2xl font-semibold hover:text-green-400 transition-colors">Framework</a>
+        <a href="portfolio.html" class="text-2xl font-semibold hover:text-green-400 transition-colors">Portfolio</a>
+        <a href="jupiter.html" class="text-2xl font-semibold hover:text-green-400 transition-colors">Jupiter</a>
+        <a href="pricing.html" class="text-2xl font-semibold text-green-400">Pricing</a>
+    </div>
+
     <!-- Hero Section -->
-    <section id="home" class="hero-bg min-h-screen flex items-center relative pt-24 md:pt-0">
-        <canvas id="interactive-bg"></canvas>
-        <div class="container mx-auto px-6 py-8 md:py-0 hero-content">
+    <section id="home" class="hero-section">
+        <div class="grid-overlay"></div>
+        <!-- Floating Particles -->
+        <div class="particle" style="left: 10%; top: 20%; animation-delay: 0s;"></div>
+        <div class="particle" style="left: 80%; top: 30%; animation-delay: 2s;"></div>
+        <div class="particle" style="left: 30%; top: 60%; animation-delay: 4s;"></div>
+        <div class="particle" style="left: 70%; top: 70%; animation-delay: 6s;"></div>
+        <div class="particle" style="left: 50%; top: 40%; animation-delay: 8s;"></div>
+        <div class="particle" style="left: 20%; top: 80%; animation-delay: 10s;"></div>
+        
+        <div class="hero-video-overlay"></div>
+        <div class="hero-content container mx-auto">
             <div class="max-w-4xl">
-                <div class="mb-4 md:mb-6">
-                    <span class="text-green-400 text-xs md:text-sm font-semibold uppercase tracking-wider">AI-Accelerated. Human-Directed.</span>
-                </div>
-                <h1 class="text-4xl md:text-5xl lg:text-7xl font-black mb-4 md:mb-6 leading-tight">
-                    <span class="text-build">BUILD.</span>
-                    <span class="text-rise"> RISE.</span>
-                    <span class="text-scale"> SCALE.</span>
+                <div class="text-green-400 text-sm font-semibold uppercase tracking-wider mb-4">AI-Accelerated. Human-Directed.</div>
+                <h1 class="hero-title">
+                    <span class="text-green-400">BUILD.</span>
+                    <span class="text-purple-400"> RISE.</span>
+                    <span class="text-blue-400"> SCALE.</span>
                 </h1>
-                <p class="text-lg md:text-xl lg:text-2xl text-gray-300 mb-3 md:mb-4 max-w-3xl">
-                    We merge <span class="text-green-400 font-bold">intelligent automation</span> with <span class="text-purple-400 font-bold">human creativity</span> to deliver your digital foundation in <span class="text-white font-bold">3-14 days</span>—not weeks.
+                <p class="hero-subtitle">
+                    We merge intelligent automation with human creativity to deliver your digital foundation in 3-14 days—not weeks. Every strategy, every decision, every creative direction comes from human expertise.
                 </p>
-                <p class="text-base md:text-lg text-gray-400 mb-6 md:mb-8 max-w-3xl">
-                    Every strategy, every decision, every creative direction comes from human expertise. AI simply accelerates our execution, giving you agency-quality work at startup speed.
-                </p>
-                <div class="flex flex-col sm:flex-row gap-3 md:gap-4 mb-6 md:mb-8">
-                    <a href="quiz.html" class="bg-green-500 text-black px-6 md:px-8 py-3 md:py-4 rounded-full font-bold text-base md:text-lg hover:bg-green-400 button-glow transition-all inline-block text-center">
-                        Find Your Path <i class="fas fa-arrow-right ml-2"></i>
+                <div class="flex flex-col sm:flex-row gap-4">
+                    <a href="quiz.html" class="hero-cta">
+                        <span>Find Your Path</span>
+                        <i class="fas fa-arrow-right"></i>
                     </a>
-                    <a href="pricing.html" class="border-2 border-green-500 text-green-400 px-6 md:px-8 py-3 md:py-4 rounded-full font-bold text-base md:text-lg hover:bg-green-500 hover:text-black transition-all inline-block text-center">
-                        View Transparent Pricing
+                    <a href="pricing.html" class="hero-cta" style="border-color: #4ade80; color: #4ade80;">
+                        <span>View Pricing</span>
                     </a>
                 </div>
-                <div class="flex flex-wrap gap-4 md:gap-6 text-xs md:text-sm text-gray-400">
-                    <div class="flex items-center">
-                        <i class="fas fa-bolt text-green-400 mr-2"></i>
-                        <span>Projects in 3-14 days</span>
-                    </div>
-                    <div class="flex items-center">
-                        <i class="fas fa-dollar-sign text-green-400 mr-2"></i>
-                        <span>Flat-rate, transparent pricing</span>
-                    </div>
-                    <div class="flex items-center">
-                        <i class="fas fa-user text-green-400 mr-2"></i>
-                        <span>Direct access to founder</span>
-                    </div>
+            </div>
+        </div>
+        <div class="hero-scroll-indicator">
+            <span class="text-xs uppercase tracking-wider">Scroll</span>
+            <i class="fas fa-chevron-down"></i>
+        </div>
+    </section>
+
+    <!-- Stats Bar -->
+    <section class="py-16 bg-gradient-to-b from-black to-gray-900">
+        <div class="container mx-auto px-4">
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
+                <div class="scroll-reveal">
+                    <div class="text-4xl md:text-5xl font-bold text-green-400 mb-2">3-14</div>
+                    <div class="text-sm text-gray-400 uppercase tracking-wide">Days Delivery</div>
+                </div>
+                <div class="scroll-reveal">
+                    <div class="text-4xl md:text-5xl font-bold text-green-400 mb-2">100%</div>
+                    <div class="text-sm text-gray-400 uppercase tracking-wide">Transparent Pricing</div>
+                </div>
+                <div class="scroll-reveal">
+                    <div class="text-4xl md:text-5xl font-bold text-green-400 mb-2">24/7</div>
+                    <div class="text-sm text-gray-400 uppercase tracking-wide">AI Support</div>
+                </div>
+                <div class="scroll-reveal">
+                    <div class="text-4xl md:text-5xl font-bold text-green-400 mb-2">∞</div>
+                    <div class="text-sm text-gray-400 uppercase tracking-wide">Revisions (RISE)</div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Framework Overview -->
-    <section class="section-bg py-20">
-        <div class="container mx-auto px-6">
-            <div class="text-center mb-16 scroll-reveal">
-                <h2 class="text-4xl md:text-5xl font-black mb-4">Two Clear Paths to Growth</h2>
-                <p class="text-xl text-gray-400">Choose BUILD for foundational projects or RISE for ongoing optimization</p>
+    <!-- Framework Section -->
+    <section id="framework" class="py-32 bg-black">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-20 scroll-reveal">
+                <h2 class="text-5xl md:text-6xl font-bold mb-6">Two Clear Paths</h2>
+                <p class="text-xl text-gray-400 max-w-3xl mx-auto">Choose BUILD for foundational projects or RISE for ongoing optimization</p>
             </div>
+            
             <div class="grid md:grid-cols-2 gap-8 max-w-6xl mx-auto">
                 <!-- BUILD Card -->
-                <div class="card-glow border border-green-500/30 rounded-2xl p-8 bg-gradient-to-br from-black/50 to-gray-900/50 backdrop-blur-sm scroll-reveal hover:border-green-500/60">
+                <div class="card-glow p-8 rounded-xl scroll-reveal">
                     <div class="spotlight"></div>
                     <div class="framework-badge badge-build mb-6">BUILD</div>
-                    <h3 class="text-3xl font-bold mb-4 text-white">Launch Your Foundation</h3>
-                    <p class="text-gray-300 mb-6 text-lg">Fast, foundational digital projects delivered with flat-rate pricing and complete transparency.</p>
-                    <ul class="space-y-3 mb-8">
-                        <li class="flex items-start">
-                            <i class="fas fa-check text-green-400 mr-3 mt-1"></i>
+                    <h3 class="text-3xl font-bold mb-4">Launch Your Foundation</h3>
+                    <p class="text-gray-400 mb-6 text-lg">Fast, foundational digital projects delivered with flat-rate pricing and complete transparency.</p>
+                    <div class="space-y-3 mb-8">
+                        <div class="flex items-center gap-3">
+                            <i class="fas fa-check text-green-400"></i>
                             <span class="text-gray-300">Websites: $2,500-$15,000+ (5-14 days)</span>
-                        </li>
-                        <li class="flex items-start">
-                            <i class="fas fa-check text-green-400 mr-3 mt-1"></i>
+                        </div>
+                        <div class="flex items-center gap-3">
+                            <i class="fas fa-check text-green-400"></i>
                             <span class="text-gray-300">Branding: $1,500-$7,000 (2-10 days)</span>
-                        </li>
-                        <li class="flex items-start">
-                            <i class="fas fa-check text-green-400 mr-3 mt-1"></i>
-                            <span class="text-gray-300">Apps & Automation: $3,000-$15,000+ (7-30 days)</span>
-                        </li>
-                        <li class="flex items-start">
-                            <i class="fas fa-check text-green-400 mr-3 mt-1"></i>
-                            <span class="text-gray-300">Video Production: $800-$7,500 (3-10 days)</span>
-                        </li>
-                    </ul>
-                    <a href="pricing.html#build" class="inline-block bg-green-500 text-black px-6 py-3 rounded-full font-semibold hover:bg-green-400 button-glow transition-all">
-                        Explore BUILD Services →
+                        </div>
+                        <div class="flex items-center gap-3">
+                            <i class="fas fa-check text-green-400"></i>
+                            <span class="text-gray-300">Apps & Automation: $3,000-$15,000+</span>
+                        </div>
+                        <div class="flex items-center gap-3">
+                            <i class="fas fa-check text-green-400"></i>
+                            <span class="text-gray-300">Video Production: $800-$7,500</span>
+                        </div>
+                    </div>
+                    <a href="pricing.html#build" class="inline-flex items-center gap-2 bg-green-500 text-black px-6 py-3 rounded-full font-semibold hover:bg-green-400 button-glow transition-all">
+                        <span>Explore BUILD</span>
+                        <i class="fas fa-arrow-right"></i>
                     </a>
                 </div>
 
                 <!-- RISE Card -->
-                <div class="card-glow border border-purple-500/30 rounded-2xl p-8 bg-gradient-to-br from-black/50 to-gray-900/50 backdrop-blur-sm scroll-reveal hover:border-purple-500/60">
-                    <div class="spotlight"></div>
+                <div class="card-glow p-8 rounded-xl scroll-reveal" style="border-color: rgba(168, 85, 247, 0.2);">
+                    <div class="spotlight" style="background: radial-gradient(circle, rgba(168, 85, 247, 0.2), transparent 70%);"></div>
                     <div class="framework-badge badge-rise mb-6">RISE</div>
-                    <h3 class="text-3xl font-bold mb-4 text-white">Scale With Ongoing Growth</h3>
-                    <p class="text-gray-300 mb-6 text-lg">Monthly partnerships focused on continuous optimization and compounding results.</p>
-                    <ul class="space-y-3 mb-8">
-                        <li class="flex items-start">
-                            <i class="fas fa-check text-purple-400 mr-3 mt-1"></i>
-                            <span class="text-gray-300">Starter: $800-$1,200/month (1 platform, 10 posts)</span>
-                        </li>
-                        <li class="flex items-start">
-                            <i class="fas fa-check text-purple-400 mr-3 mt-1"></i>
-                            <span class="text-gray-300">Growth: $1,500-$2,500/month (2-3 platforms, video)</span>
-                        </li>
-                        <li class="flex items-start">
-                            <i class="fas fa-check text-purple-400 mr-3 mt-1"></i>
-                            <span class="text-gray-300">Accelerator: $2,500-$3,500/month (multi-platform)</span>
-                        </li>
-                        <li class="flex items-start">
-                            <i class="fas fa-check text-purple-400 mr-3 mt-1"></i>
-                            <span class="text-gray-300">Enterprise: $5,000+/month (unlimited campaigns)</span>
-                        </li>
-                    </ul>
-                    <a href="pricing.html#rise" class="inline-block bg-purple-500 text-white px-6 py-3 rounded-full font-semibold hover:bg-purple-400 button-glow transition-all">
-                        Explore RISE Partnerships →
+                    <h3 class="text-3xl font-bold mb-4">Grow with Ongoing Support</h3>
+                    <p class="text-gray-400 mb-6 text-lg">Unlimited requests, continuous optimization, and dedicated team for sustained growth.</p>
+                    <div class="space-y-3 mb-8">
+                        <div class="flex items-center gap-3">
+                            <i class="fas fa-check text-purple-400"></i>
+                            <span class="text-gray-300">Unlimited requests & revisions</span>
+                        </div>
+                        <div class="flex items-center gap-3">
+                            <i class="fas fa-check text-purple-400"></i>
+                            <span class="text-gray-300">Dedicated team & strategy</span>
+                        </div>
+                        <div class="flex items-center gap-3">
+                            <i class="fas fa-check text-purple-400"></i>
+                            <span class="text-gray-300">Monthly reporting & optimization</span>
+                        </div>
+                        <div class="flex items-center gap-3">
+                            <i class="fas fa-check text-purple-400"></i>
+                            <span class="text-gray-300">From $2,500/month</span>
+                        </div>
+                    </div>
+                    <a href="pricing.html#rise" class="inline-flex items-center gap-2 bg-purple-500 text-white px-6 py-3 rounded-full font-semibold hover:bg-purple-400 transition-all">
+                        <span>Explore RISE</span>
+                        <i class="fas fa-arrow-right"></i>
                     </a>
                 </div>
             </div>
@@ -620,313 +539,134 @@
     </section>
 
     <!-- Services Section -->
-    <section id="services" class="py-20">
-        <div class="container mx-auto px-6">
-            <div class="text-center mb-16 scroll-reveal">
-                <h2 class="text-4xl md:text-5xl font-black mb-4">What We <span class="text-build">BUILD</span></h2>
-                <p class="text-xl text-gray-400">Foundational digital assets delivered at lightning speed</p>
+    <section id="services" class="py-32 bg-gradient-to-b from-gray-900 to-black">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-20 scroll-reveal">
+                <h2 class="text-5xl md:text-6xl font-bold mb-6 bg-gradient-to-r from-green-400 to-blue-400 bg-clip-text text-transparent">What We Build</h2>
+                <p class="text-xl text-gray-400 max-w-3xl mx-auto">Full-service digital solutions powered by AI acceleration</p>
             </div>
-            <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+            
+            <div class="grid md:grid-cols-3 gap-8">
                 <!-- Service 1 -->
-                <div class="card-glow border border-gray-800 rounded-xl p-6 bg-black/40 backdrop-blur-sm scroll-reveal">
+                <div class="card-glow p-8 rounded-xl scroll-reveal">
                     <div class="spotlight"></div>
-                    <i class="fas fa-globe icon-glow text-4xl text-green-400 mb-4"></i>
-                    <h3 class="text-xl font-bold mb-3">Websites</h3>
-                    <p class="text-gray-400 mb-4">Professional, converting websites delivered in 5-14 days. Mobile-optimized, SEO-ready, yours to own.</p>
-                    <span class="text-green-400 font-semibold">From $2,500</span>
+                    <div class="text-green-400 text-5xl mb-4">
+                        <i class="fas fa-code"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold mb-3">Websites & Apps</h3>
+                    <p class="text-gray-400">Custom websites, web apps, and automation tools built for speed and conversion.</p>
                 </div>
 
                 <!-- Service 2 -->
-                <div class="card-glow border border-gray-800 rounded-xl p-6 bg-black/40 backdrop-blur-sm scroll-reveal">
+                <div class="card-glow p-8 rounded-xl scroll-reveal">
                     <div class="spotlight"></div>
-                    <i class="fas fa-palette icon-glow text-4xl text-green-400 mb-4"></i>
-                    <h3 class="text-xl font-bold mb-3">Branding</h3>
-                    <p class="text-gray-400 mb-4">Complete brand identity systems. Logo, colors, typography, and guidelines in 2-10 days.</p>
-                    <span class="text-green-400 font-semibold">From $1,500</span>
+                    <div class="text-purple-400 text-5xl mb-4">
+                        <i class="fas fa-palette"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold mb-3">Branding & Design</h3>
+                    <p class="text-gray-400">Complete brand identities, logos, and design systems that stand out.</p>
                 </div>
 
                 <!-- Service 3 -->
-                <div class="card-glow border border-gray-800 rounded-xl p-6 bg-black/40 backdrop-blur-sm scroll-reveal">
+                <div class="card-glow p-8 rounded-xl scroll-reveal">
                     <div class="spotlight"></div>
-                    <i class="fas fa-mobile-alt icon-glow text-4xl text-green-400 mb-4"></i>
-                    <h3 class="text-xl font-bold mb-3">Apps & Automation</h3>
-                    <p class="text-gray-400 mb-4">Custom web apps, visualizers, and automation platforms. Interactive tools that convert.</p>
-                    <span class="text-green-400 font-semibold">From $3,000</span>
+                    <div class="text-blue-400 text-5xl mb-4">
+                        <i class="fas fa-video"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold mb-3">Video Production</h3>
+                    <p class="text-gray-400">Professional video content from concept to final delivery.</p>
                 </div>
 
                 <!-- Service 4 -->
-                <div class="card-glow border border-gray-800 rounded-xl p-6 bg-black/40 backdrop-blur-sm scroll-reveal">
+                <div class="card-glow p-8 rounded-xl scroll-reveal">
                     <div class="spotlight"></div>
-                    <i class="fas fa-video icon-glow text-4xl text-green-400 mb-4"></i>
-                    <h3 class="text-xl font-bold mb-3">Video Production</h3>
-                    <p class="text-gray-400 mb-4">Professional video ads and content. Script to delivery in 3-10 days, optimized for all platforms.</p>
-                    <span class="text-green-400 font-semibold">From $800</span>
+                    <div class="text-yellow-400 text-5xl mb-4">
+                        <i class="fas fa-bullhorn"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold mb-3">Marketing</h3>
+                    <p class="text-gray-400">Social media management, ad campaigns, and growth strategies.</p>
                 </div>
-            </div>
 
-            <div class="text-center mt-16 scroll-reveal">
-                <h2 class="text-4xl md:text-5xl font-black mb-4 mt-20">How We Help You <span class="text-rise">RISE</span></h2>
-                <p class="text-xl text-gray-400 mb-12">Ongoing optimization that compounds month after month</p>
-            </div>
-
-            <div class="grid md:grid-cols-3 gap-8 max-w-5xl mx-auto">
-                <!-- RISE Service 1 -->
-                <div class="card-glow border border-gray-800 rounded-xl p-6 bg-black/40 backdrop-blur-sm scroll-reveal">
+                <!-- Service 5 -->
+                <div class="card-glow p-8 rounded-xl scroll-reveal">
                     <div class="spotlight"></div>
-                    <i class="fas fa-chart-line icon-glow text-4xl text-purple-400 mb-4"></i>
-                    <h3 class="text-xl font-bold mb-3">Social Media Management</h3>
-                    <p class="text-gray-400 mb-4">Consistent, high-performing content across 1-5 platforms. Strategic posting, engagement, and community building.</p>
+                    <div class="text-pink-400 text-5xl mb-4">
+                        <i class="fas fa-chart-line"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold mb-3">SEO & Analytics</h3>
+                    <p class="text-gray-400">Data-driven optimization to increase visibility and conversions.</p>
                 </div>
 
-                <!-- RISE Service 2 -->
-                <div class="card-glow border border-gray-800 rounded-xl p-6 bg-black/40 backdrop-blur-sm scroll-reveal">
+                <!-- Service 6 -->
+                <div class="card-glow p-8 rounded-xl scroll-reveal">
                     <div class="spotlight"></div>
-                    <i class="fas fa-bullhorn icon-glow text-4xl text-purple-400 mb-4"></i>
-                    <h3 class="text-xl font-bold mb-3">Ad Campaign Optimization</h3>
-                    <p class="text-gray-400 mb-4">Build warm audiences efficiently, then convert at 60-70% lower cost. Transparent reporting on every dollar.</p>
-                </div>
-
-                <!-- RISE Service 3 -->
-                <div class="card-glow border border-gray-800 rounded-xl p-6 bg-black/40 backdrop-blur-sm scroll-reveal">
-                    <div class="spotlight"></div>
-                    <i class="fas fa-cogs icon-glow text-4xl text-purple-400 mb-4"></i>
-                    <h3 class="text-xl font-bold mb-3">Continuous Optimization</h3>
-                    <p class="text-gray-400 mb-4">Monthly strategy sessions, performance tracking, and relentless testing. What works scales. What doesn't gets eliminated.</p>
-                </div>
-            </div>
-
-            <div class="text-center mt-12 scroll-reveal">
-                <a href="pricing.html" class="inline-block bg-gradient-to-r from-green-500 to-purple-500 text-white px-8 py-4 rounded-full font-bold text-lg hover:shadow-2xl hover:scale-105 transition-all">
-                    See Complete Pricing Guide
-                </a>
-            </div>
-        </div>
-    </section>
-
-    <!-- Case Study Section -->
-    <section id="case-study" class="section-bg py-20">
-        <div class="container mx-auto px-6">
-            <div class="text-center mb-16 scroll-reveal">
-                <div class="inline-block bg-green-500/10 border border-green-500/30 rounded-full px-6 py-2 mb-6">
-                    <span class="text-green-400 font-semibold uppercase text-sm">Featured Success Story</span>
-                </div>
-                <h2 class="text-4xl md:text-5xl font-black mb-4">
-                    Southern Pavers: <span class="text-build">BUILD</span> to <span class="text-rise">RISE</span>
-                </h2>
-                <p class="text-xl text-gray-400">How we helped a regional landscaping business scale from $8,500 project to $2,000/month partnership</p>
-            </div>
-
-            <div class="max-w-5xl mx-auto">
-                <!-- Phase 1: BUILD -->
-                <div class="bg-gradient-to-br from-green-900/20 to-black/40 border border-green-500/30 rounded-2xl p-8 md:p-12 mb-8 scroll-reveal">
-                    <div class="framework-badge badge-build mb-6">PHASE 1: BUILD</div>
-                    <h3 class="text-3xl font-bold mb-6">Foundation Built in 7 Days</h3>
-                    <div class="grid md:grid-cols-3 gap-6 mb-8">
-                        <div>
-                            <div class="text-4xl font-black text-green-400 mb-2">7</div>
-                            <div class="text-gray-400">Working Days</div>
-                        </div>
-                        <div>
-                            <div class="text-4xl font-black text-green-400 mb-2">$8,500</div>
-                            <div class="text-gray-400">Total Investment</div>
-                        </div>
-                        <div>
-                            <div class="text-4xl font-black text-green-400 mb-2">2</div>
-                            <div class="text-gray-400">Major Deliverables</div>
-                        </div>
+                    <div class="text-orange-400 text-5xl mb-4">
+                        <i class="fas fa-rocket"></i>
                     </div>
-                    <div class="space-y-4">
-                        <div class="flex items-start">
-                            <i class="fas fa-check-circle text-green-400 mr-3 mt-1 text-xl"></i>
-                            <div>
-                                <div class="font-bold text-lg mb-1">Complete Brand Rebrand</div>
-                                <div class="text-gray-400">New visual identity, professional logo, color system</div>
-                            </div>
-                        </div>
-                        <div class="flex items-start">
-                            <i class="fas fa-check-circle text-green-400 mr-3 mt-1 text-xl"></i>
-                            <div>
-                                <div class="font-bold text-lg mb-1">Custom Paver Visualizer App</div>
-                                <div class="text-gray-400">Interactive tool allowing customers to see paver options in their space</div>
-                            </div>
-                        </div>
-                        <div class="flex items-start">
-                            <i class="fas fa-check-circle text-green-400 mr-3 mt-1 text-xl"></i>
-                            <div>
-                                <div class="font-bold text-lg mb-1">Professional Website</div>
-                                <div class="text-gray-400">Mobile-optimized, conversion-focused, fully owned by client</div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Phase 2: RISE -->
-                <div class="bg-gradient-to-br from-purple-900/20 to-black/40 border border-purple-500/30 rounded-2xl p-8 md:p-12 scroll-reveal">
-                    <div class="framework-badge badge-rise mb-6">PHASE 2: RISE</div>
-                    <h3 class="text-3xl font-bold mb-6">First 30 Days: Strategic Audience Building</h3>
-                    <div class="bg-black/40 border border-purple-500/20 rounded-xl p-6 mb-8">
-                        <div class="text-purple-400 font-semibold mb-4">RESULTS (October 2025)</div>
-                        <div class="grid md:grid-cols-2 gap-6">
-                            <div>
-                                <div class="text-3xl font-black text-purple-400 mb-2">14,753</div>
-                                <div class="text-gray-400 mb-1">Qualified Prospects Built</div>
-                                <div class="text-sm text-green-400">+50% above industry average</div>
-                            </div>
-                            <div>
-                                <div class="text-3xl font-black text-purple-400 mb-2">1,046</div>
-                                <div class="text-gray-400 mb-1">High-Intent Website Visitors</div>
-                                <div class="text-sm text-green-400">+30% conversion intent</div>
-                            </div>
-                            <div>
-                                <div class="text-3xl font-black text-purple-400 mb-2">$0.04</div>
-                                <div class="text-gray-400 mb-1">Cost Per Prospect</div>
-                                <div class="text-sm text-green-400">92-96% cheaper than industry avg</div>
-                            </div>
-                            <div>
-                                <div class="text-3xl font-black text-purple-400 mb-2">15,632</div>
-                                <div class="text-gray-400 mb-1">Video Engagement Plays</div>
-                                <div class="text-sm text-green-400">200%+ higher engagement</div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="border-t border-purple-500/20 pt-8">
-                        <h4 class="text-xl font-bold mb-4">The Strategy That Made It Work</h4>
-                        <p class="text-gray-300 mb-4">
-                            Instead of expensive cold-traffic conversion campaigns, we focused Phase 1 on building qualified audiences at maximum efficiency. These warm audiences are now being retargeted with conversion-focused messaging at <span class="text-purple-400 font-bold">60-70% lower cost</span> than traditional cold traffic acquisition.
-                        </p>
-                        <div class="bg-purple-500/10 border border-purple-500/30 rounded-lg p-6">
-                            <div class="text-sm text-purple-400 font-semibold mb-2">CLIENT QUOTE</div>
-                            <p class="text-gray-300 italic">"Julian didn't just re-create the brand or run ads, he showed us the strategy. Building audiences first meant we're not burning money on cold traffic. Now we're retargeting people who already know us. It's smarter spending."</p>
-                            <p class="text-gray-500 text-sm mt-2">— Southern Pavers, October 2025</p>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="text-center mt-12 scroll-reveal">
-                    <a href="portfolio.html" class="inline-block bg-white text-black px-8 py-4 rounded-full font-bold text-lg hover:bg-gray-200 transition-all">
-                        View Full Portfolio →
-                    </a>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- How It Works -->
-    <section id="how-it-works" class="py-20">
-        <div class="container mx-auto px-6">
-            <div class="text-center mb-16 scroll-reveal">
-                <h2 class="text-4xl md:text-5xl font-black mb-4">How It Works</h2>
-                <p class="text-xl text-gray-400">Simple, transparent process from start to success</p>
-            </div>
-            <div class="grid md:grid-cols-4 gap-8 max-w-6xl mx-auto">
-                <div class="text-center scroll-reveal">
-                    <div class="bg-green-500/20 border-2 border-green-500 rounded-full w-16 h-16 flex items-center justify-center mx-auto mb-4 text-2xl font-bold">1</div>
-                    <h3 class="text-xl font-bold mb-2">Choose Your Path</h3>
-                    <p class="text-gray-400">Need to BUILD something new or RISE with ongoing growth? Take our 2-minute quiz.</p>
-                </div>
-                <div class="text-center scroll-reveal">
-                    <div class="bg-green-500/20 border-2 border-green-500 rounded-full w-16 h-16 flex items-center justify-center mx-auto mb-4 text-2xl font-bold">2</div>
-                    <h3 class="text-xl font-bold mb-2">Strategy Call</h3>
-                    <p class="text-gray-400">30-minute consultation to understand your goals and recommend the right solution.</p>
-                </div>
-                <div class="text-center scroll-reveal">
-                    <div class="bg-green-500/20 border-2 border-green-500 rounded-full w-16 h-16 flex items-center justify-center mx-auto mb-4 text-2xl font-bold">3</div>
-                    <h3 class="text-xl font-bold mb-2">Fast Delivery</h3>
-                    <p class="text-gray-400">BUILD projects in 3-14 days. RISE partnerships start within 48 hours.</p>
-                </div>
-                <div class="text-center scroll-reveal">
-                    <div class="bg-green-500/20 border-2 border-green-500 rounded-full w-16 h-16 flex items-center justify-center mx-auto mb-4 text-2xl font-bold">4</div>
-                    <h3 class="text-xl font-bold mb-2">See Results</h3>
-                    <p class="text-gray-400">Track everything transparently. Optimize relentlessly. Scale what works.</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Stats Section -->
-    <section class="section-bg py-20">
-        <div class="container mx-auto px-6">
-            <div class="grid md:grid-cols-4 gap-8 max-w-6xl mx-auto">
-                <div class="stat-card rounded-xl p-6 text-center scroll-reveal">
-                    <div class="text-4xl md:text-5xl font-black text-green-400 mb-2" data-count="45">0</div>
-                    <div class="text-gray-400">Faster Than Traditional</div>
-                    <div class="text-sm text-gray-500 mt-2">Projects in days, not weeks</div>
-                </div>
-                <div class="stat-card rounded-xl p-6 text-center scroll-reveal">
-                    <div class="text-4xl md:text-5xl font-black text-green-400 mb-2" data-count="96">0</div>
-                    <div class="text-gray-400">More Cost Efficient</div>
-                    <div class="text-sm text-gray-500 mt-2">Lower acquisition costs</div>
-                </div>
-                <div class="stat-card rounded-xl p-6 text-center scroll-reveal">
-                    <div class="text-4xl md:text-5xl font-black text-green-400 mb-2" data-count="100">0</div>
-                    <div class="text-gray-400">Transparent Pricing</div>
-                    <div class="text-sm text-gray-500 mt-2">No hidden fees, ever</div>
-                </div>
-                <div class="stat-card rounded-xl p-6 text-center scroll-reveal">
-                    <div class="text-4xl md:text-5xl font-black text-green-400 mb-2" data-count="90">0%</div>
-                    <div class="text-gray-400">Client Retention</div>
-                    <div class="text-sm text-gray-500 mt-2">After month 3 (RISE)</div>
+                    <h3 class="text-2xl font-bold mb-3">Strategy</h3>
+                    <p class="text-gray-400">Comprehensive digital strategies tailored to your business goals.</p>
                 </div>
             </div>
         </div>
     </section>
 
     <!-- CTA Section -->
-    <section class="py-20">
-        <div class="container mx-auto px-6">
-            <div class="max-w-4xl mx-auto text-center scroll-reveal">
-                <h2 class="text-4xl md:text-5xl font-black mb-6">Ready to <span class="text-build">BUILD</span> Your Foundation?</h2>
-                <p class="text-xl text-gray-400 mb-8">
-                    Take our 2-minute quiz to discover whether you need BUILD services or a RISE partnership—and get instant pricing recommendations.
-                </p>
+    <section class="py-32 bg-black relative overflow-hidden">
+        <div class="absolute inset-0">
+            <div class="absolute inset-0 bg-gradient-to-r from-green-400/10 to-purple-400/10 opacity-30"></div>
+        </div>
+        <div class="container mx-auto px-4 text-center relative z-10">
+            <div class="scroll-reveal max-w-4xl mx-auto">
+                <h2 class="text-5xl md:text-6xl font-bold mb-6">Ready to Build?</h2>
+                <p class="text-xl text-gray-400 mb-12">Start your project today and experience the future of digital collaboration</p>
                 <div class="flex flex-col sm:flex-row gap-4 justify-center">
-                    <a href="quiz.html" class="bg-green-500 text-black px-8 py-4 rounded-full font-bold text-lg hover:bg-green-400 button-glow transition-all inline-block">
-                        Take the Quiz <i class="fas fa-arrow-right ml-2"></i>
+                    <a href="quiz.html" class="hero-cta inline-flex justify-center">
+                        <span>Take the Quiz</span>
+                        <i class="fas fa-arrow-right"></i>
                     </a>
-                    <a href="pricing.html" class="border-2 border-white text-white px-8 py-4 rounded-full font-bold text-lg hover:bg-white hover:text-black transition-all inline-block">
-                        View All Pricing
+                    <a href="jupiter.html" class="hero-cta inline-flex justify-center" style="border-color: #4ade80; color: #4ade80;">
+                        <span>See Jupiter</span>
+                        <i class="fas fa-rocket"></i>
                     </a>
                 </div>
             </div>
         </div>
     </section>
 
-        <!-- Footer -->
-    <footer class="section-bg border-t border-green-500/20 py-12">
-        <div class="container mx-auto px-6">
-            <div class="grid md:grid-cols-4 gap-8 mb-8">
+    <!-- Footer -->
+    <footer class="bg-black text-gray-400 py-16 border-t border-gray-800">
+        <div class="container mx-auto px-4">
+            <div class="grid md:grid-cols-3 gap-12 mb-12">
                 <div>
-                    <h4 class="font-bold text-lg mb-4">JPax Media</h4>
-                    <p class="text-gray-400 text-sm">AI-accelerated. Human-directed. Lightning-fast.</p>
-                </div>
-                <div>
-                    <h4 class="font-bold text-lg mb-4">Services</h4>
-                    <ul class="space-y-2 text-sm">
-                        <li><a href="pricing.html#build" class="text-gray-400 hover:text-green-400 transition-colors">BUILD Services</a></li>
-                        <li><a href="pricing.html#rise" class="text-gray-400 hover:text-green-400 transition-colors">RISE Partnerships</a></li>
-                        <li><a href="portfolio.html" class="text-gray-400 hover:text-green-400 transition-colors">Portfolio</a></li>
-                    </ul>
-                </div>
-                <div>
-                    <h4 class="font-bold text-lg mb-4">Company</h4>
-                    <ul class="space-y-2 text-sm">
-                        <li><a href="portfolio.html" class="text-gray-400 hover:text-green-400 transition-colors">Case Studies</a></li>
-                        <li><a href="pricing.html" class="text-gray-400 hover:text-green-400 transition-colors">Pricing</a></li>
-                        <li><a href="quiz.html" class="text-gray-400 hover:text-green-400 transition-colors">Take Quiz</a></li>
-                    </ul>
-                </div>
-                <div>
-                    <h4 class="font-bold text-lg mb-4">Connect</h4>
-                    <div class="flex space-x-4 mb-4">
-                        <a href="https://www.facebook.com/jpaxmedia/" target="_blank" class="footer-icon text-2xl text-gray-400 hover:text-green-400 transition-all">
+                    <img src="jpaxmedialogoOFFICIALFINALwhite.png" alt="JPax Media" class="h-12 mb-4">
+                    <p class="mb-4">Building digital experiences that drive results.</p>
+                    <div class="flex space-x-4">
+                        <a href="https://www.youtube.com/@JPaxFilms/videos" target="_blank" class="text-2xl text-gray-400 hover:text-green-400 transition-all">
+                            <i class="fab fa-youtube"></i>
+                        </a>
+                        <a href="https://www.tiktok.com/@jpaxfilms?lang=en" target="_blank" class="text-2xl text-gray-400 hover:text-green-400 transition-all">
+                            <i class="fab fa-tiktok"></i>
+                        </a>
+                        <a href="https://www.facebook.com/JPaxFilms/" target="_blank" class="text-2xl text-gray-400 hover:text-green-400 transition-all">
                             <i class="fab fa-facebook"></i>
                         </a>
-                        <a href="https://www.instagram.com/jpaxfilmz/" target="_blank" class="footer-icon text-2xl text-gray-400 hover:text-green-400 transition-all">
+                        <a href="https://www.instagram.com/jpaxfilmz/" target="_blank" class="text-2xl text-gray-400 hover:text-green-400 transition-all">
                             <i class="fab fa-instagram"></i>
                         </a>
                     </div>
-                    <a href="mailto:info@jpaxmedia.com" class="text-gray-400 hover:text-green-400 transition-colors text-sm">info@jpaxmedia.com</a>
+                </div>
+                <div>
+                    <h4 class="text-white font-bold mb-4">Quick Links</h4>
+                    <ul class="space-y-2">
+                        <li><a href="#home" class="hover:text-green-400 transition-colors">Home</a></li>
+                        <li><a href="portfolio.html" class="hover:text-green-400 transition-colors">Portfolio</a></li>
+                        <li><a href="pricing.html" class="hover:text-green-400 transition-colors">Pricing</a></li>
+                        <li><a href="jupiter.html" class="hover:text-green-400 transition-colors">Jupiter</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="text-white font-bold mb-4">Contact</h4>
+                    <a href="mailto:info@jpaxmedia.com" class="text-gray-400 hover:text-green-400 transition-colors">info@jpaxmedia.com</a>
                 </div>
             </div>
             <div class="border-t border-gray-800 pt-8 text-center text-gray-500 text-sm">
@@ -937,40 +677,36 @@
 
     <script>
         document.addEventListener('DOMContentLoaded', () => {
-            // --- Dynamic Background Gradient ---
-            document.addEventListener('mousemove', (e) => {
-                const mouseX = (e.clientX / window.innerWidth) * 100;
-                const mouseY = (e.clientY / window.innerHeight) * 100;
-                document.documentElement.style.setProperty('--mouse-x', `${mouseX}%`);
-                document.documentElement.style.setProperty('--mouse-y', `${mouseY}%`);
-            });
-
             // --- Custom Cursor ---
             const cursorDot = document.querySelector('.cursor-dot');
             const cursorOutline = document.querySelector('.cursor-outline');
+            
             if (cursorDot && cursorOutline) {
+                let mouseX = 0, mouseY = 0;
+                let outlineX = 0, outlineY = 0;
+
                 document.addEventListener('mousemove', (e) => {
-                    cursorDot.style.left = `${e.clientX}px`;
-                    cursorDot.style.top = `${e.clientY}px`;
-                    cursorOutline.style.left = `${e.clientX}px`;
-                    cursorOutline.style.top = `${e.clientY}px`;
+                    mouseX = e.clientX;
+                    mouseY = e.clientY;
+                    cursorDot.style.left = mouseX + 'px';
+                    cursorDot.style.top = mouseY + 'px';
                 });
 
-                document.querySelectorAll('a, button').forEach(el => {
-                    el.addEventListener('mouseenter', () => {
-                        cursorOutline.classList.add('cursor-interact');
-                    });
-                    el.addEventListener('mouseleave', () => {
-                        cursorOutline.classList.remove('cursor-interact');
-                    });
-                });
+                function animateOutline() {
+                    outlineX += (mouseX - outlineX) * 0.2;
+                    outlineY += (mouseY - outlineY) * 0.2;
+                    cursorOutline.style.left = outlineX + 'px';
+                    cursorOutline.style.top = outlineY + 'px';
+                    requestAnimationFrame(animateOutline);
+                }
+                animateOutline();
             }
 
-            // --- Spotlight Effect ---
+            // --- Spotlight Card Effect ---
             document.querySelectorAll('.card-glow').forEach(card => {
                 const spotlight = card.querySelector('.spotlight');
                 if (spotlight) {
-                    card.addEventListener('mousemove', (e) => {
+                    card.addEventListener('mousemove', e => {
                         const rect = card.getBoundingClientRect();
                         const x = e.clientX - rect.left;
                         const y = e.clientY - rect.top;
@@ -980,112 +716,43 @@
                 }
             });
 
-            // --- Enhanced Mobile Menu ---
+            // --- Mobile Menu ---
             const mobileMenuButton = document.getElementById('mobile-menu-button');
             const mobileMenu = document.getElementById('mobile-menu');
-            const hamburgerIcon = mobileMenuButton.querySelector('.hamburger-icon');
-            const body = document.body;
-            
-            mobileMenuButton.addEventListener('click', () => {
-                const isActive = mobileMenu.classList.contains('active');
+            if (mobileMenuButton && mobileMenu) {
+                const hamburgerIcon = mobileMenuButton.querySelector('.hamburger-icon');
+                const body = document.body;
                 
-                if (!isActive) {
-                    mobileMenu.classList.add('active');
-                    hamburgerIcon.classList.add('active');
-                    body.style.overflow = 'hidden';
-                } else {
-                    mobileMenu.classList.remove('active');
-                    hamburgerIcon.classList.remove('active');
-                    body.style.overflow = '';
-                }
-            });
-            
-            const mobileMenuLinks = mobileMenu.querySelectorAll('a');
-            mobileMenuLinks.forEach(link => {
-                link.addEventListener('click', () => {
-                    mobileMenu.classList.remove('active');
-                    hamburgerIcon.classList.remove('active');
-                    body.style.overflow = '';
-                });
-            });
-
-            // Close menu when clicking outside
-            mobileMenu.addEventListener('click', (e) => {
-                if (e.target === mobileMenu) {
-                    mobileMenu.classList.remove('active');
-                    hamburgerIcon.classList.remove('active');
-                    body.style.overflow = '';
-                }
-            });
-
-            // --- Interactive Background ---
-            const canvas = document.getElementById('interactive-bg');
-            const heroSection = document.getElementById('home');
-            if(canvas && heroSection) {
-                try {
-                    const scene = new THREE.Scene();
-                    const camera = new THREE.PerspectiveCamera(75, heroSection.offsetWidth / heroSection.offsetHeight, 0.1, 1000);
-                    const renderer = new THREE.WebGLRenderer({ canvas: canvas, alpha: true });
-                    renderer.setSize(heroSection.offsetWidth, heroSection.offsetHeight);
-
-                    const particlesCount = 5000;
-                    const positions = new Float32Array(particlesCount * 3);
-                    for (let i = 0; i < particlesCount * 3; i++) {
-                        positions[i] = (Math.random() - 0.5) * 10;
-                    }
-                    const particlesGeometry = new THREE.BufferGeometry();
-                    particlesGeometry.setAttribute('position', new THREE.BufferAttribute(positions, 3));
-                    const particlesMaterial = new THREE.PointsMaterial({
-                        color: 0x4ade80,
-                        size: 0.02,
-                        transparent: true,
-                        blending: THREE.AdditiveBlending
-                    });
-                    const particleSystem = new THREE.Points(particlesGeometry, particlesMaterial);
-                    scene.add(particleSystem);
-                    camera.position.z = 5;
-
-                    let mouseX = 0;
-                    let mouseY = 0;
-                    document.addEventListener('mousemove', (event) => {
-                        mouseX = (event.clientX / window.innerWidth) * 2 - 1;
-                        mouseY = -(event.clientY / window.innerHeight) * 2 + 1;
-                    });
+                mobileMenuButton.addEventListener('click', () => {
+                    const isActive = mobileMenu.classList.contains('active');
                     
-                    const clock = new THREE.Clock();
-                    let animationId;
-                    function animate() {
-                        if (document.hidden) {
-                            cancelAnimationFrame(animationId);
-                            return;
-                        }
-                        animationId = requestAnimationFrame(animate);
-                        const elapsedTime = clock.getElapsedTime();
-                        particleSystem.rotation.y = elapsedTime * 0.1;
-                        camera.position.x += (mouseX * 0.5 - camera.position.x) * 0.05;
-                        camera.position.y += (mouseY * 0.5 - camera.position.y) * 0.05;
-                        camera.lookAt(scene.position);
-                        renderer.render(scene, camera);
+                    if (!isActive) {
+                        mobileMenu.classList.add('active');
+                        hamburgerIcon.classList.add('active');
+                        body.style.overflow = 'hidden';
+                    } else {
+                        mobileMenu.classList.remove('active');
+                        hamburgerIcon.classList.remove('active');
+                        body.style.overflow = '';
                     }
-                    animate();
-
-                    document.addEventListener('visibilitychange', () => {
-                        if (!document.hidden) {
-                            animate();
-                        }
+                });
+                
+                const mobileMenuLinks = mobileMenu.querySelectorAll('a');
+                mobileMenuLinks.forEach(link => {
+                    link.addEventListener('click', () => {
+                        mobileMenu.classList.remove('active');
+                        hamburgerIcon.classList.remove('active');
+                        body.style.overflow = '';
                     });
+                });
 
-                    window.addEventListener('resize', () => {
-                        camera.aspect = heroSection.offsetWidth / heroSection.offsetHeight;
-                        camera.updateProjectionMatrix();
-                        renderer.setSize(heroSection.offsetWidth, heroSection.offsetHeight);
-                    });
-                } catch (error) {
-                    console.error('Three.js initialization failed:', error);
-                    heroSection.style.background = 'linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url("photos/spacebackground.jpg")';
-                    heroSection.style.backgroundSize = 'cover';
-                    heroSection.style.backgroundPosition = 'center';
-                }
+                mobileMenu.addEventListener('click', (e) => {
+                    if (e.target === mobileMenu) {
+                        mobileMenu.classList.remove('active');
+                        hamburgerIcon.classList.remove('active');
+                        body.style.overflow = '';
+                    }
+                });
             }
 
             // --- Scroll Animations ---
@@ -1101,38 +768,6 @@
             scrollElements.forEach(el => {
                 scrollObserver.observe(el);
             });
-
-            // --- Count-Up Animation ---
-            const countUpObserver = new IntersectionObserver((entries, observer) => {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        const counters = entry.target.querySelectorAll('[data-count]');
-                        counters.forEach(counter => {
-                            const target = +counter.getAttribute('data-count');
-                            const suffix = counter.innerText.slice(-1) === '%' ? '%' : '';
-                            counter.innerText = '0' + suffix;
-                            let current = 0;
-                            const increment = target / 100;
-
-                            const updateCount = () => {
-                                current += increment;
-                                if (current < target) {
-                                    counter.innerText = Math.ceil(current) + suffix;
-                                    requestAnimationFrame(updateCount);
-                                } else {
-                                    counter.innerText = target.toLocaleString() + suffix;
-                                }
-                            };
-                            requestAnimationFrame(updateCount);
-                        });
-                        observer.unobserve(entry.target);
-                    }
-                });
-            }, { threshold: 0.5 });
-            const statsSection = document.querySelector('.stat-card')?.closest('.grid');
-            if (statsSection) {
-                 countUpObserver.observe(statsSection);
-            }
         });
     </script>
 </body>

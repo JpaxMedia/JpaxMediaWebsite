@@ -19,24 +19,22 @@
     <!-- Favicon -->
     <link rel="icon" type="image/png" href="jpaxmedialogoOFFICIALFINALwhite.png">
     
-    <!-- Preload Critical Assets -->
-    <link rel="preload" href="photos/spacebackground.jpg" as="image">
-    <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js" as="script">
     <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;800;900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
     <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <!-- Three.js -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js" defer></script>
+    
     <style>
         body {
             font-family: 'Inter', sans-serif;
-            background-color: #0c0c0c;
+            background-color: #000000;
         }
+        
+        /* Custom cursor */
         @media (hover: hover) and (pointer: fine) {
             body {
                 cursor: none;
@@ -72,29 +70,92 @@
                 border: 3px solid #4ade80;
             }
         }
-        .hero-bg {
-             position: relative;
-             background: linear-gradient(rgba(0,0,0,0.8), rgba(0,0,0,0.8)), url('photos/spacebackground.jpg');
-             background-size: cover;
-             background-position: center;
-             background-attachment: fixed;
-             overflow: hidden;
+        
+        /* Hero Section - SpaceX Inspired */
+        .hero-section {
+            position: relative;
+            height: 80vh;
+            min-height: 600px;
+            overflow: hidden;
+            background: linear-gradient(to bottom, #000000, #0a0a0a);
         }
-        #interactive-bg {
+        
+        .hero-video-overlay {
             position: absolute;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
+            background: 
+                radial-gradient(ellipse at top right, rgba(74, 222, 128, 0.12) 0%, transparent 50%),
+                radial-gradient(ellipse at bottom left, rgba(168, 85, 247, 0.08) 0%, transparent 50%),
+                linear-gradient(to bottom, rgba(0,0,0,0.3) 0%, rgba(0,0,0,0.9) 100%);
             z-index: 1;
         }
+        
         .hero-content {
             position: relative;
             z-index: 2;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            padding: 2rem;
         }
-        .section-bg {
-            background-color: #111111;
+        
+        .hero-title {
+            font-size: clamp(2rem, 7vw, 5rem);
+            font-weight: 900;
+            letter-spacing: -0.02em;
+            line-height: 1.1;
+            margin-bottom: 1.5rem;
         }
+        
+        .hero-subtitle {
+            font-size: clamp(1rem, 2.5vw, 1.5rem);
+            font-weight: 400;
+            color: #a0a0a0;
+            max-width: 700px;
+            line-height: 1.6;
+        }
+        
+        /* Animated Background Grid */
+        .grid-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: 
+                linear-gradient(rgba(74, 222, 128, 0.03) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(74, 222, 128, 0.03) 1px, transparent 1px);
+            background-size: 50px 50px;
+            animation: gridMove 20s linear infinite;
+            z-index: 0;
+        }
+        
+        @keyframes gridMove {
+            0% { transform: translateY(0); }
+            100% { transform: translateY(50px); }
+        }
+        
+        /* Floating Particles */
+        .particle {
+            position: absolute;
+            width: 2px;
+            height: 2px;
+            background: #4ade80;
+            border-radius: 50%;
+            opacity: 0.5;
+            animation: float 15s infinite;
+        }
+        
+        @keyframes float {
+            0%, 100% { transform: translate(0, 0) scale(1); opacity: 0.5; }
+            50% { transform: translate(100px, -100px) scale(1.5); opacity: 0.8; }
+        }
+        
+        /* Scroll Reveal */
         .scroll-reveal {
             opacity: 0;
             transform: translateY(30px);
@@ -104,286 +165,162 @@
             opacity: 1;
             transform: translateY(0);
         }
-        .text-glow {
-            text-shadow: 0 0 8px rgba(74, 222, 128, 0.8);
-        }
-        .text-build {
-            color: #4ade80;
-        }
-        .text-rise {
-            color: #c084fc;
-        }
+        
+        /* Card Styles */
         .card-glow {
             position: relative;
             overflow: hidden;
             transition: all 0.3s ease-in-out;
+            background: rgba(17, 17, 17, 0.8);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(74, 222, 128, 0.2);
         }
+        
         .card-glow:hover {
             border-color: #4ade80;
-            box-shadow: 0 0 15px rgba(74, 222, 128, 0.5);
+            box-shadow: 0 0 30px rgba(74, 222, 128, 0.3);
             transform: translateY(-5px);
         }
+        
         .spotlight {
             position: absolute;
-            width: 250px;
-            height: 250px;
-            background: radial-gradient(circle, rgba(74, 222, 128, 0.15), transparent 70%);
+            width: 300px;
+            height: 300px;
+            background: radial-gradient(circle, rgba(74, 222, 128, 0.2), transparent 70%);
             border-radius: 50%;
             pointer-events: none;
             opacity: 0;
             transition: opacity 0.3s ease;
             transform: translate(-50%, -50%);
         }
+        
         .card-glow:hover .spotlight {
             opacity: 1;
         }
+        
+        /* Metric Cards */
+        .metric-card {
+            background: rgba(17, 17, 17, 0.5);
+            border: 1px solid rgba(74, 222, 128, 0.2);
+            transition: all 0.3s ease;
+        }
+        
+        .metric-card:hover {
+            border-color: #4ade80;
+            box-shadow: 0 0 20px rgba(74, 222, 128, 0.2);
+        }
+        
+        /* Framework Badges */
         .framework-badge {
             display: inline-block;
-            padding: 0.5rem 1rem;
+            padding: 0.5rem 1.5rem;
             border-radius: 9999px;
             font-weight: 700;
             font-size: 0.875rem;
             text-transform: uppercase;
-            letter-spacing: 0.05em;
+            letter-spacing: 0.1em;
         }
+        
         .badge-build {
-            background: rgba(74, 222, 128, 0.1);
-            border: 2px solid #4ade80;
+            background: rgba(74, 222, 128, 0.2);
             color: #4ade80;
+            border: 1px solid #4ade80;
         }
+        
         .badge-rise {
-            background: rgba(192, 132, 252, 0.1);
-            border: 2px solid #c084fc;
+            background: rgba(168, 85, 247, 0.2);
             color: #c084fc;
+            border: 1px solid #c084fc;
         }
-        .footer-icon:hover, .logo-glow:hover {
-            filter: drop-shadow(0 0 10px rgba(74, 222, 128, 0.8));
+        
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 1000;
+        }
+        
+        .logo-container {
+            transition: all 0.3s ease;
+        }
+        
+        .logo-glow {
+            transition: transform 0.3s ease;
+        }
+        
+        .logo-glow:hover {
             transform: scale(1.1);
         }
-        .metric-card {
-            background: rgba(17, 17, 17, 0.8);
-            border: 1px solid rgba(74, 222, 128, 0.2);
-            backdrop-filter: blur(10px);
+        
+        .button-glow {
+            transition: all 0.3s ease;
         }
-
-        /* Enhanced Mobile Menu Styles */
-        .hamburger-icon {
-            width: 28px;
-            height: 24px;
-            position: relative;
-            cursor: pointer;
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
+        
+        .button-glow:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px rgba(74, 222, 128, 0.4);
         }
-
-        .hamburger-icon span {
-            display: block;
-            width: 100%;
-            height: 3px;
-            background: white;
-            border-radius: 2px;
-            transition: all 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55);
-            transform-origin: center;
-        }
-
-        .hamburger-icon.active span:nth-child(1) {
-            transform: translateY(10.5px) rotate(45deg);
-        }
-
-        .hamburger-icon.active span:nth-child(2) {
-            opacity: 0;
-            transform: translateX(-20px);
-        }
-
-        .hamburger-icon.active span:nth-child(3) {
-            transform: translateY(-10.5px) rotate(-45deg);
-        }
-
-        .mobile-menu-overlay {
+        
+        /* Mobile Menu */
+        .mobile-menu {
             position: fixed;
             top: 0;
             left: 0;
             width: 100%;
             height: 100vh;
-            background: linear-gradient(135deg, rgba(0, 0, 0, 0.98) 0%, rgba(20, 20, 30, 0.98) 100%);
-            backdrop-filter: blur(20px);
-            z-index: 40;
-            opacity: 0;
-            visibility: hidden;
-            transition: opacity 0.4s ease, visibility 0.4s ease;
-            overflow-y: auto;
-        }
-
-        .mobile-menu-overlay.active {
-            opacity: 1;
-            visibility: visible;
-        }
-
-        .mobile-menu-content {
-            padding: 100px 24px 40px;
-            min-height: 100vh;
+            background: rgba(0, 0, 0, 0.98);
+            backdrop-filter: blur(10px);
+            transform: translateX(-100%);
+            transition: transform 0.3s ease-in-out;
+            z-index: 999;
             display: flex;
             flex-direction: column;
-            justify-content: space-between;
+            justify-content: center;
+            align-items: center;
+            gap: 2rem;
         }
-
-        .mobile-menu-header {
-            margin-bottom: 40px;
-            opacity: 0;
-            transform: translateY(-20px);
-            transition: all 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.55);
-            transition-delay: 0.1s;
+        
+        .mobile-menu.active {
+            transform: translateX(0);
         }
-
-        .mobile-menu-overlay.active .mobile-menu-header {
-            opacity: 1;
-            transform: translateY(0);
-        }
-
-        .mobile-menu-nav {
+        
+        .hamburger-icon {
             display: flex;
             flex-direction: column;
-            gap: 8px;
-            margin-bottom: 40px;
+            gap: 5px;
+            cursor: pointer;
         }
-
-        .mobile-menu-link {
-            display: flex;
-            align-items: center;
-            gap: 20px;
-            padding: 20px;
-            background: rgba(255, 255, 255, 0.03);
-            border: 1px solid rgba(255, 255, 255, 0.05);
-            border-radius: 16px;
-            text-decoration: none;
-            opacity: 0;
-            transform: translateX(-50px);
-            transition: all 0.3s ease;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .mobile-menu-link::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: -100%;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(34, 197, 94, 0.1), transparent);
-            transition: left 0.5s ease;
-        }
-
-        .mobile-menu-link:hover::before {
-            left: 100%;
-        }
-
-        .mobile-menu-overlay.active .mobile-menu-link {
-            opacity: 1;
-            transform: translateX(0);
-        }
-
-        .mobile-menu-link[data-index="0"] { transition-delay: 0.15s; }
-        .mobile-menu-link[data-index="1"] { transition-delay: 0.2s; }
-        .mobile-menu-link[data-index="2"] { transition-delay: 0.25s; }
-        .mobile-menu-link[data-index="3"] { transition-delay: 0.3s; }
-        .mobile-menu-link[data-index="4"] { transition-delay: 0.35s; }
-
-        .mobile-menu-link:active {
-            transform: scale(0.98);
-            background: rgba(34, 197, 94, 0.1);
-        }
-
-        .mobile-menu-link-number {
-            font-size: 14px;
-            font-weight: 700;
-            color: #22c55e;
-            opacity: 0.5;
-            min-width: 24px;
-        }
-
-        .mobile-menu-link-text {
-            flex: 1;
-            font-size: 24px;
-            font-weight: 700;
-            color: white;
-            transition: color 0.3s ease;
-        }
-
-        .mobile-menu-link:hover .mobile-menu-link-text {
-            color: #22c55e;
-        }
-
-        .mobile-menu-link-icon {
-            color: #22c55e;
-            font-size: 18px;
-            opacity: 0;
-            transform: translateX(-10px);
+        
+        .hamburger-icon span {
+            width: 25px;
+            height: 2px;
+            background: white;
             transition: all 0.3s ease;
         }
-
-        .mobile-menu-link:hover .mobile-menu-link-icon {
-            opacity: 1;
-            transform: translateX(0);
+        
+        .hamburger-icon.active span:nth-child(1) {
+            transform: rotate(45deg) translate(7px, 7px);
         }
-
-        .mobile-menu-footer {
+        
+        .hamburger-icon.active span:nth-child(2) {
             opacity: 0;
-            transform: translateY(20px);
-            transition: all 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.55);
-            transition-delay: 0.4s;
         }
-
-        .mobile-menu-overlay.active .mobile-menu-footer {
-            opacity: 1;
-            transform: translateY(0);
-        }
-
-        .mobile-menu-cta {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 8px;
-            width: 100%;
-            padding: 18px 32px;
-            background: linear-gradient(135deg, #22c55e 0%, #16a34a 100%);
-            color: black;
-            font-weight: 700;
-            font-size: 18px;
-            border-radius: 50px;
-            text-decoration: none;
-            transition: all 0.3s ease;
-            box-shadow: 0 4px 20px rgba(34, 197, 94, 0.3);
-            margin-bottom: 32px;
-        }
-
-        .mobile-menu-cta:active {
-            transform: scale(0.98);
-        }
-
-        .mobile-menu-social {
-            display: flex;
-            justify-content: center;
-            gap: 32px;
-            font-size: 24px;
-        }
-
-        @media (min-width: 768px) {
-            .mobile-menu-overlay {
-                display: none;
-            }
+        
+        .hamburger-icon.active span:nth-child(3) {
+            transform: rotate(-45deg) translate(7px, -7px);
         }
     </style>
 </head>
-<body class="text-gray-100">
+<body class="bg-black text-white">
     <!-- Custom Cursor -->
     <div class="cursor-dot"></div>
     <div class="cursor-outline"></div>
 
     <!-- Navigation -->
-    <nav class="fixed w-full z-50 bg-black/80 backdrop-blur-md border-b border-green-500/20">
-        <div class="container mx-auto px-6 py-4">
+    <nav class="fixed w-full z-50 bg-black/90 backdrop-blur-md border-b border-green-500/20">
+        <div class="container mx-auto px-4 md:px-6 py-3 md:py-4">
             <div class="flex items-center justify-between">
                 <a href="index.html" class="logo-container p-2 rounded-lg transition-all duration-300 hover:bg-white/5">
                     <img src="jpaxmedialogoOFFICIALFINALwhite.png" alt="JPax Media" class="h-10 md:h-12 w-auto logo-glow transition-transform duration-300 hover:scale-110" onerror="this.style.display='none'">
@@ -393,11 +330,10 @@
                 <div class="hidden md:flex items-center space-x-8">
                     <a href="index.html" class="text-gray-300 hover:text-green-400 transition-colors">Home</a>
                     <a href="index.html#services" class="text-gray-300 hover:text-green-400 transition-colors">Services</a>
-                    <a href="index.html#how-it-works" class="text-gray-300 hover:text-green-400 transition-colors">Process</a>
                     <a href="portfolio.html" class="text-green-400 transition-colors">Portfolio</a>
                     <a href="pricing.html" class="text-gray-300 hover:text-green-400 transition-colors">Pricing</a>
                     <a href="jupiter.html" class="text-gray-300 hover:text-green-400 transition-colors">Jupiter</a>
-                    <a href="quiz.html" class="bg-green-500 text-black px-6 py-2 rounded-full font-semibold hover:bg-green-400 transition-all">Take Quiz</a>
+                    <a href="quiz.html" class="bg-green-500 text-black px-6 py-2 rounded-full font-semibold hover:bg-green-400 button-glow transition-all">Take Quiz</a>
                 </div>
 
                 <!-- Mobile Menu Button -->
@@ -412,243 +348,211 @@
         </div>
     </nav>
 
-    <!-- Mobile Menu Overlay -->
-    <div id="mobile-menu" class="mobile-menu-overlay">
-        <div class="mobile-menu-content">
-            <div class="mobile-menu-header">
-                <span class="text-green-400 text-sm font-semibold uppercase tracking-wider">Navigation</span>
-            </div>
-            <nav class="mobile-menu-nav">
-                <a href="index.html" class="mobile-menu-link" data-index="0">
-                    <span class="mobile-menu-link-number">01</span>
-                    <span class="mobile-menu-link-text">Home</span>
-                    <i class="fas fa-arrow-right mobile-menu-link-icon"></i>
-                </a>
-                <a href="index.html#services" class="mobile-menu-link" data-index="1">
-                    <span class="mobile-menu-link-number">02</span>
-                    <span class="mobile-menu-link-text">Services</span>
-                    <i class="fas fa-arrow-right mobile-menu-link-icon"></i>
-                </a>
-                <a href="portfolio.html" class="mobile-menu-link" data-index="2">
-                    <span class="mobile-menu-link-number">03</span>
-                    <span class="mobile-menu-link-text">Portfolio</span>
-                    <i class="fas fa-arrow-right mobile-menu-link-icon"></i>
-                </a>
-                <a href="pricing.html" class="mobile-menu-link" data-index="3">
-                    <span class="mobile-menu-link-number">04</span>
-                    <span class="mobile-menu-link-text">Pricing</span>
-                    <i class="fas fa-arrow-right mobile-menu-link-icon"></i>
-                </a>
-                <a href="jupiter.html" class="mobile-menu-link" data-index="4">
-                    <span class="mobile-menu-link-number">05</span>
-                    <span class="mobile-menu-link-text">Jupiter</span>
-                    <i class="fas fa-arrow-right mobile-menu-link-icon"></i>
-                </a>
-            </nav>
-            <div class="mobile-menu-footer">
-                <a href="quiz.html" class="mobile-menu-cta">
-                    <span>Start Your Project</span>
-                    <i class="fas fa-arrow-right ml-2"></i>
-                </a>
-                <div class="mobile-menu-social">
-                    <a href="#" class="text-gray-400 hover:text-green-400 transition-colors">
-                        <i class="fab fa-twitter"></i>
-                    </a>
-                    <a href="#" class="text-gray-400 hover:text-green-400 transition-colors">
-                        <i class="fab fa-linkedin"></i>
-                    </a>
-                    <a href="#" class="text-gray-400 hover:text-green-400 transition-colors">
-                        <i class="fab fa-instagram"></i>
-                    </a>
-                </div>
-            </div>
-        </div>
+    <!-- Mobile Menu -->
+    <div id="mobile-menu" class="mobile-menu">
+        <a href="index.html" class="text-2xl font-semibold hover:text-green-400 transition-colors">Home</a>
+        <a href="index.html#services" class="text-2xl font-semibold hover:text-green-400 transition-colors">Services</a>
+        <a href="portfolio.html" class="text-2xl font-semibold text-green-400">Portfolio</a>
+        <a href="pricing.html" class="text-2xl font-semibold hover:text-green-400 transition-colors">Pricing</a>
+        <a href="jupiter.html" class="text-2xl font-semibold hover:text-green-400 transition-colors">Jupiter</a>
+        <a href="quiz.html" class="text-2xl font-semibold hover:text-green-400 transition-colors">Quiz</a>
     </div>
 
     <!-- Hero Section -->
-    <section class="hero-bg pt-24 md:pt-32 pb-16 md:pb-20 min-h-[50vh] flex items-center relative">
-        <canvas id="interactive-bg"></canvas>
-        <div class="container mx-auto px-4 md:px-6 hero-content">
+    <section class="hero-section">
+        <div class="grid-overlay"></div>
+        <!-- Floating Particles -->
+        <div class="particle" style="left: 15%; top: 25%; animation-delay: 0s;"></div>
+        <div class="particle" style="left: 85%; top: 35%; animation-delay: 2s;"></div>
+        <div class="particle" style="left: 35%; top: 65%; animation-delay: 4s;"></div>
+        <div class="particle" style="left: 75%; top: 75%; animation-delay: 6s;"></div>
+        
+        <div class="hero-video-overlay"></div>
+        <div class="hero-content container mx-auto">
             <div class="max-w-4xl">
-                <h1 class="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-black mb-4 md:mb-6 leading-tight">
-                    Real Work. Real Results. Real Numbers.
+                <div class="text-green-400 text-sm font-semibold uppercase tracking-wider mb-4">Real Work. Real Results.</div>
+                <h1 class="hero-title">
+                    Proven Results,<br/>
+                    <span class="text-green-400">Verified</span> <span class="text-purple-400">Numbers</span>
                 </h1>
-                <p class="text-lg sm:text-xl md:text-2xl text-gray-300 mb-4">
-                    Every metric is verified. Every claim is documented. See how we help businesses <span class="text-build font-bold">BUILD</span> their foundation and <span class="text-rise font-bold">RISE</span> with ongoing growth.
+                <p class="hero-subtitle">
+                    Every metric is documented. Every claim is verified. See how we help businesses BUILD their foundation and RISE with ongoing growth.
                 </p>
             </div>
         </div>
     </section>
 
     <!-- Featured Case Study: Southern Pavers -->
-    <section class="py-12 md:py-20">
-        <div class="container mx-auto px-4 md:px-6">
-            <div class="text-center mb-8 md:mb-12 scroll-reveal">
-                <div class="inline-block bg-green-500/10 border border-green-500/30 rounded-full px-4 md:px-6 py-2 mb-4 md:mb-6">
-                    <span class="text-green-400 font-semibold uppercase text-xs md:text-sm">Featured Success Story</span>
+    <section class="py-32 bg-black">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-16 scroll-reveal">
+                <div class="inline-block bg-green-500/10 border border-green-500/30 rounded-full px-6 py-2 mb-6">
+                    <span class="text-green-400 font-semibold uppercase text-sm tracking-wider">Featured Success Story</span>
                 </div>
-                <h2 class="text-3xl sm:text-4xl md:text-5xl font-black mb-3 md:mb-4 px-4">
-                    Southern Pavers: From Foundation to Growth
+                <h2 class="text-5xl md:text-6xl font-bold mb-6">
+                    Southern Pavers
                 </h2>
-                <p class="text-base sm:text-lg md:text-xl text-gray-400 max-w-3xl mx-auto px-4">Complete rebrand, custom visualizer app, and strategic audience building—delivering measurable ROI at every stage</p>
+                <p class="text-xl text-gray-400 max-w-3xl mx-auto">Complete rebrand, custom visualizer app, and strategic audience building—delivering measurable ROI at every stage</p>
             </div>
 
             <div class="max-w-6xl mx-auto">
                 <!-- Company Overview -->
-                <div class="bg-black/40 border border-gray-800 rounded-2xl p-6 md:p-8 lg:p-12 mb-6 md:mb-8 scroll-reveal">
-                    <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 md:gap-6 mb-6 md:mb-8">
+                <div class="card-glow rounded-2xl p-8 md:p-12 mb-8 scroll-reveal">
+                    <div class="spotlight"></div>
+                    <div class="grid md:grid-cols-3 gap-6 mb-8">
                         <div>
-                            <div class="text-xs md:text-sm text-gray-500 uppercase mb-2">Industry</div>
-                            <div class="text-lg md:text-xl font-bold">Outdoor Living & Landscaping</div>
+                            <div class="text-sm text-gray-500 uppercase mb-2">Industry</div>
+                            <div class="text-xl font-bold">Outdoor Living & Landscaping</div>
                         </div>
                         <div>
-                            <div class="text-xs md:text-sm text-gray-500 uppercase mb-2">Location</div>
-                            <div class="text-lg md:text-xl font-bold">Southeast Regional</div>
+                            <div class="text-sm text-gray-500 uppercase mb-2">Location</div>
+                            <div class="text-xl font-bold">Southeast Regional</div>
                         </div>
                         <div>
-                            <div class="text-xs md:text-sm text-gray-500 uppercase mb-2">Challenge</div>
-                            <div class="text-lg md:text-xl font-bold">Scale Digital Presence</div>
+                            <div class="text-sm text-gray-500 uppercase mb-2">Challenge</div>
+                            <div class="text-xl font-bold">Scale Digital Presence</div>
                         </div>
                     </div>
-                    <p class="text-gray-300 text-base md:text-lg">
+                    <p class="text-gray-400 text-lg">
                         Established landscaping business with steady local revenue wanted to modernize their brand identity, showcase their work interactively, and generate consistent qualified leads month-over-month.
                     </p>
                 </div>
 
                 <!-- Phase 1: BUILD -->
-                <div class="bg-gradient-to-br from-green-900/20 to-black/40 border border-green-500/30 rounded-2xl p-6 md:p-8 lg:p-12 mb-6 md:mb-8 scroll-reveal">
-                    <div class="flex flex-col md:flex-row items-start md:items-center justify-between mb-6 md:mb-8 gap-4">
+                <div class="card-glow rounded-2xl p-8 md:p-12 mb-8 scroll-reveal" style="border-color: rgba(74, 222, 128, 0.3);">
+                    <div class="spotlight"></div>
+                    <div class="flex flex-col md:flex-row items-start md:items-center justify-between mb-8 gap-4">
                         <div>
-                            <div class="framework-badge badge-build mb-3 md:mb-4">PHASE 1: BUILD</div>
-                            <h3 class="text-2xl sm:text-3xl md:text-4xl font-black">Digital Foundation in 7 Days</h3>
+                            <div class="framework-badge badge-build mb-4">PHASE 1: BUILD</div>
+                            <h3 class="text-4xl font-bold">Digital Foundation in 7 Days</h3>
                         </div>
                         <div class="md:text-right">
-                            <div class="text-xs md:text-sm text-gray-500 uppercase mb-2">Timeline</div>
-                            <div class="text-2xl md:text-3xl font-black text-green-400">7 Days</div>
+                            <div class="text-sm text-gray-500 uppercase mb-2">Timeline</div>
+                            <div class="text-3xl font-bold text-green-400">7 Days</div>
                         </div>
                     </div>
 
                     <!-- Investment & Deliverables -->
-                    <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 md:gap-6 mb-6 md:mb-8">
-                        <div class="metric-card rounded-xl p-4 md:p-6">
-                            <div class="text-3xl md:text-4xl font-black text-green-400 mb-2">$8,500</div>
-                            <div class="text-sm md:text-base text-gray-400">Total Investment</div>
+                    <div class="grid md:grid-cols-3 gap-6 mb-8">
+                        <div class="metric-card rounded-xl p-6">
+                            <div class="text-4xl font-bold text-green-400 mb-2">$8,500</div>
+                            <div class="text-sm text-gray-400">Total Investment</div>
                         </div>
-                        <div class="metric-card rounded-xl p-4 md:p-6">
-                            <div class="text-3xl md:text-4xl font-black text-green-400 mb-2">3</div>
-                            <div class="text-sm md:text-base text-gray-400">Major Deliverables</div>
+                        <div class="metric-card rounded-xl p-6">
+                            <div class="text-4xl font-bold text-green-400 mb-2">3</div>
+                            <div class="text-sm text-gray-400">Major Deliverables</div>
                         </div>
-                        <div class="metric-card rounded-xl p-4 md:p-6">
-                            <div class="text-3xl md:text-4xl font-black text-green-400 mb-2">100%</div>
-                            <div class="text-sm md:text-base text-gray-400">Client Satisfaction</div>
+                        <div class="metric-card rounded-xl p-6">
+                            <div class="text-4xl font-bold text-green-400 mb-2">100%</div>
+                            <div class="text-sm text-gray-400">Client Satisfaction</div>
                         </div>
                     </div>
 
                     <!-- Deliverables List -->
-                    <div class="space-y-4 md:space-y-6">
-                        <div class="border-l-4 border-green-500 pl-4 md:pl-6">
-                            <h4 class="text-lg md:text-xl font-bold mb-2">Complete Brand Rebrand</h4>
-                            <p class="text-sm md:text-base text-gray-400 mb-3">Professional visual identity with new logo, comprehensive color system, typography hierarchy, and brand guidelines for consistent application across all touchpoints.</p>
+                    <div class="space-y-6">
+                        <div class="border-l-4 border-green-500 pl-6">
+                            <h4 class="text-xl font-bold mb-2">Complete Brand Rebrand</h4>
+                            <p class="text-gray-400 mb-3">Professional visual identity with new logo, comprehensive color system, typography hierarchy, and brand guidelines for consistent application across all touchpoints.</p>
                             <a href="https://southernpaversscpro.com/" target="_blank" class="text-green-400 hover:text-green-300 transition-colors">
                                 View Live Website <i class="fas fa-external-link-alt ml-1"></i>
                             </a>
                         </div>
 
-                        <div class="border-l-4 border-green-500 pl-4 md:pl-6">
-                            <h4 class="text-lg md:text-xl font-bold mb-2">Custom Paver Visualizer App</h4>
-                            <p class="text-sm md:text-base text-gray-400 mb-3">Interactive web application allowing customers to visualize different paver options in their actual space. Integrated lead capture and CRM automation increased conversion rates by an estimated 60%.</p>
-                            <a href="https://southernpaverssc.app/" target="_blank" class="text-sm md:text-base text-green-400 hover:text-green-300 transition-colors">
+                        <div class="border-l-4 border-green-500 pl-6">
+                            <h4 class="text-xl font-bold mb-2">Custom Paver Visualizer App</h4>
+                            <p class="text-gray-400 mb-3">Interactive web application allowing customers to visualize different paver options in their actual space. Integrated lead capture and CRM automation increased conversion rates by an estimated 60%.</p>
+                            <a href="https://southernpaverssc.app/" target="_blank" class="text-green-400 hover:text-green-300 transition-colors">
                                 Try the Visualizer <i class="fas fa-external-link-alt ml-1"></i>
                             </a>
                         </div>
 
-                        <div class="border-l-4 border-green-500 pl-4 md:pl-6">
-                            <h4 class="text-lg md:text-xl font-bold mb-2">Professional Website</h4>
-                            <p class="text-sm md:text-base text-gray-400">Mobile-optimized, conversion-focused website with integrated visualizer, service showcase, portfolio gallery, and contact automation. Full ownership transferred to client.</p>
+                        <div class="border-l-4 border-green-500 pl-6">
+                            <h4 class="text-xl font-bold mb-2">Professional Website</h4>
+                            <p class="text-gray-400">Mobile-optimized, conversion-focused website with integrated visualizer, service showcase, portfolio gallery, and contact automation. Full ownership transferred to client.</p>
                         </div>
                     </div>
                 </div>
 
                 <!-- Phase 2: RISE -->
-                <div class="bg-gradient-to-br from-purple-900/20 to-black/40 border border-purple-500/30 rounded-2xl p-6 md:p-8 lg:p-12 mb-6 md:mb-8 scroll-reveal">
-                    <div class="flex flex-col md:flex-row items-start md:items-center justify-between mb-6 md:mb-8 gap-4">
+                <div class="card-glow rounded-2xl p-8 md:p-12 mb-8 scroll-reveal" style="border-color: rgba(168, 85, 247, 0.3);">
+                    <div class="spotlight" style="background: radial-gradient(circle, rgba(168, 85, 247, 0.2), transparent 70%);"></div>
+                    <div class="flex flex-col md:flex-row items-start md:items-center justify-between mb-8 gap-4">
                         <div>
-                            <div class="framework-badge badge-rise mb-3 md:mb-4">PHASE 2: RISE GROWTH PARTNERSHIP</div>
-                            <h3 class="text-2xl sm:text-3xl md:text-4xl font-black">Strategic Audience Building</h3>
+                            <div class="framework-badge badge-rise mb-4">PHASE 2: RISE GROWTH PARTNERSHIP</div>
+                            <h3 class="text-4xl font-bold">Strategic Audience Building</h3>
                         </div>
                         <div class="md:text-right">
-                            <div class="text-xs md:text-sm text-gray-500 uppercase mb-2">Investment</div>
-                            <div class="text-2xl md:text-3xl font-black text-purple-400">$2,000/mo</div>
+                            <div class="text-sm text-gray-500 uppercase mb-2">Investment</div>
+                            <div class="text-3xl font-bold text-purple-400">$2,000/mo</div>
                         </div>
                     </div>
 
-                    <div class="bg-purple-500/10 border border-purple-500/30 rounded-xl p-4 md:p-6 mb-6 md:mb-8">
-                        <h4 class="text-lg md:text-xl font-bold mb-3 md:mb-4 text-purple-400">The Strategy</h4>
-                        <p class="text-sm md:text-base text-gray-300 mb-3 md:mb-4">
+                    <div class="bg-purple-500/10 border border-purple-500/30 rounded-xl p-6 mb-8">
+                        <h4 class="text-xl font-bold mb-4 text-purple-400">The Strategy</h4>
+                        <p class="text-gray-300 mb-4">
                             Instead of expensive cold-traffic conversion campaigns ($1-5 per prospect), we focused on Phase 1: building qualified audiences at maximum efficiency. These warm audiences would then be retargeted with conversion messaging at <span class="font-bold text-white">60-70% lower cost</span> than traditional cold traffic acquisition.
                         </p>
-                        <p class="text-xs md:text-sm text-gray-400">
+                        <p class="text-sm text-gray-400">
                             Most agencies burn through ad budgets chasing immediate conversions. We build smart audience foundations first, then convert them efficiently. The result: sustainable lead generation that compounds month after month.
                         </p>
                     </div>
 
                     <!-- Results Grid -->
-                    <div class="mb-6 md:mb-8">
-                        <h4 class="text-xl md:text-2xl font-bold mb-4 md:mb-6 text-center">First 30 Days Results (October 2025)</h4>
-                        <div class="grid grid-cols-2 md:grid-cols-2 lg:grid-cols-4 gap-3 md:gap-6">
-                            <div class="metric-card rounded-xl p-4 md:p-6">
-                                <div class="text-2xl sm:text-3xl md:text-4xl font-black text-purple-400 mb-2">14,753</div>
-                                <div class="text-2xl sm:text-3xl md:text-4xl font-black text-purple-400 mb-2">14,753</div>
-                                <div class="text-xs md:text-sm text-gray-400 mb-2">Qualified Prospects</div>
-                                <div class="text-xs md:text-sm text-green-400">+50% vs industry avg (8K-10K)</div>
+                    <div class="mb-8">
+                        <h4 class="text-2xl font-bold mb-6 text-center">First 30 Days Results (October 2025)</h4>
+                        <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+                            <div class="metric-card rounded-xl p-6">
+                                <div class="text-4xl font-bold text-purple-400 mb-2">14,753</div>
+                                <div class="text-sm text-gray-400 mb-2">Qualified Prospects</div>
+                                <div class="text-sm text-green-400">+50% vs industry avg</div>
                             </div>
-                            <div class="metric-card rounded-xl p-4 md:p-6">
-                                <div class="text-2xl sm:text-3xl md:text-4xl font-black text-purple-400 mb-2">1,046</div>
-                                <div class="text-xs md:text-sm text-gray-400 mb-2">Website Visitors</div>
-                                <div class="text-xs md:text-sm text-green-400">+30% higher intent (vs 600-800)</div>
+                            <div class="metric-card rounded-xl p-6">
+                                <div class="text-4xl font-bold text-purple-400 mb-2">1,046</div>
+                                <div class="text-sm text-gray-400 mb-2">Website Visitors</div>
+                                <div class="text-sm text-green-400">+30% higher intent</div>
                             </div>
-                            <div class="metric-card rounded-xl p-4 md:p-6">
-                                <div class="text-2xl sm:text-3xl md:text-4xl font-black text-purple-400 mb-2">$0.04</div>
-                                <div class="text-xs md:text-sm text-gray-400 mb-2">Cost Per Prospect</div>
-                                <div class="text-xs md:text-sm text-green-400">92-96% cheaper ($1-5 typical)</div>
+                            <div class="metric-card rounded-xl p-6">
+                                <div class="text-4xl font-bold text-purple-400 mb-2">$0.04</div>
+                                <div class="text-sm text-gray-400 mb-2">Cost Per Prospect</div>
+                                <div class="text-sm text-green-400">92-96% cheaper</div>
                             </div>
-                            <div class="metric-card rounded-xl p-4 md:p-6">
-                                <div class="text-2xl sm:text-3xl md:text-4xl font-black text-purple-400 mb-2">15,632</div>
-                                <div class="text-xs md:text-sm text-gray-400 mb-2">Video Plays</div>
-                                <div class="text-xs md:text-sm text-green-400">200%+ higher (vs 3K-5K avg)</div>
+                            <div class="metric-card rounded-xl p-6">
+                                <div class="text-4xl font-bold text-purple-400 mb-2">15,632</div>
+                                <div class="text-sm text-gray-400 mb-2">Video Plays</div>
+                                <div class="text-sm text-green-400">200%+ higher</div>
                             </div>
                         </div>
                     </div>
 
                     <!-- Comparison Table -->
-                    <div class="bg-black/40 border border-purple-500/20 rounded-xl p-4 md:p-6 mb-6 md:mb-8">
-                        <h4 class="text-lg md:text-xl font-bold mb-4">JPax Media vs Industry Standard</h4>
-                        <div class="overflow-x-auto -mx-4 md:mx-0 px-4 md:px-0">
-                            <table class="w-full text-left min-w-[500px]">
+                    <div class="bg-black/40 border border-purple-500/20 rounded-xl p-6 mb-8">
+                        <h4 class="text-xl font-bold mb-4">JPax Media vs Industry Standard</h4>
+                        <div class="overflow-x-auto">
+                            <table class="w-full text-left">
                                 <thead>
                                     <tr class="border-b border-gray-800">
-                                        <th class="py-3 text-xs md:text-sm text-gray-400">Metric</th>
-                                        <th class="py-3 text-xs md:text-sm text-purple-400">JPax Result</th>
-                                        <th class="py-3 text-xs md:text-sm text-gray-400">Industry Avg</th>
-                                        <th class="py-3 text-xs md:text-sm text-green-400">Advantage</th>
+                                        <th class="py-3 text-sm text-gray-400">Metric</th>
+                                        <th class="py-3 text-sm text-purple-400">JPax Result</th>
+                                        <th class="py-3 text-sm text-gray-400">Industry Avg</th>
+                                        <th class="py-3 text-sm text-green-400">Advantage</th>
                                     </tr>
                                 </thead>
-                                <tbody class="text-xs md:text-base">
+                                <tbody>
                                     <tr class="border-b border-gray-800/50">
-                                        <td class="py-3 md:py-4">Total Ad Spend</td>
-                                        <td class="py-3 md:py-4 font-bold">$611</td>
-                                        <td class="py-3 md:py-4">$2,000-3,000</td>
-                                        <td class="py-3 md:py-4 text-green-400">70% savings</td>
+                                        <td class="py-4">Total Ad Spend</td>
+                                        <td class="py-4 font-bold">$611</td>
+                                        <td class="py-4">$2,000-3,000</td>
+                                        <td class="py-4 text-green-400">70% savings</td>
                                     </tr>
                                     <tr class="border-b border-gray-800/50">
-                                        <td class="py-3 md:py-4">Prospects Generated</td>
-                                        <td class="py-3 md:py-4 font-bold">14,753</td>
-                                        <td class="py-3 md:py-4">8,000-10,000</td>
-                                        <td class="py-3 md:py-4 text-green-400">+50% reach</td>
+                                        <td class="py-4">Prospects Generated</td>
+                                        <td class="py-4 font-bold">14,753</td>
+                                        <td class="py-4">8,000-10,000</td>
+                                        <td class="py-4 text-green-400">+50% reach</td>
                                     </tr>
                                     <tr class="border-b border-gray-800/50">
-                                        <td class="py-3 md:py-4">Cost Per Prospect</td>
-                                        <td class="py-3 md:py-4 font-bold">$0.04</td>
+                                        <td class="py-4">Cost Per Prospect</td>
+                                        <td class="py-4 font-bold">$0.04</td>
                                         <td class="py-4">$1.00-5.00</td>
                                         <td class="py-4 text-green-400">96% cheaper</td>
                                     </tr>
@@ -713,23 +617,24 @@
                 </div>
 
                 <!-- The RISE Advantage -->
-                <div class="bg-black/40 border border-gray-800 rounded-2xl p-6 md:p-8 lg:p-12 scroll-reveal">
-                    <h3 class="text-xl md:text-2xl font-bold mb-6 md:mb-8 text-center">Why RISE Partnerships Deliver Consistent ROI</h3>
-                    <div class="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8">
+                <div class="card-glow rounded-2xl p-8 md:p-12 scroll-reveal">
+                    <div class="spotlight"></div>
+                    <h3 class="text-2xl font-bold mb-8 text-center">Why RISE Partnerships Deliver Consistent ROI</h3>
+                    <div class="grid md:grid-cols-3 gap-8">
                         <div class="text-center">
-                            <div class="text-3xl sm:text-4xl md:text-5xl font-black text-purple-400 mb-2 md:mb-3">Month 1</div>
-                            <h4 class="text-base md:text-lg font-bold mb-2">Build Efficiently</h4>
-                            <p class="text-xs md:text-sm text-gray-400">Generate qualified audiences at 92-96% lower cost than traditional methods</p>
+                            <div class="text-5xl font-bold text-purple-400 mb-3">Month 1</div>
+                            <h4 class="text-lg font-bold mb-2">Build Efficiently</h4>
+                            <p class="text-sm text-gray-400">Generate qualified audiences at 92-96% lower cost than traditional methods</p>
                         </div>
                         <div class="text-center">
-                            <div class="text-3xl sm:text-4xl md:text-5xl font-black text-purple-400 mb-2 md:mb-3">Month 2-3</div>
-                            <h4 class="text-base md:text-lg font-bold mb-2">Convert Smarter</h4>
-                            <p class="text-xs md:text-sm text-gray-400">Retarget warm audiences with conversion messaging at 60-70% lower cost</p>
+                            <div class="text-5xl font-bold text-purple-400 mb-3">Month 2-3</div>
+                            <h4 class="text-lg font-bold mb-2">Convert Smarter</h4>
+                            <p class="text-sm text-gray-400">Retarget warm audiences with conversion messaging at 60-70% lower cost</p>
                         </div>
                         <div class="text-center">
-                            <div class="text-3xl sm:text-4xl md:text-5xl font-black text-purple-400 mb-2 md:mb-3">Month 4+</div>
-                            <h4 class="text-base md:text-lg font-bold mb-2">Scale What Works</h4>
-                            <p class="text-xs md:text-sm text-gray-400">Optimize based on real data, eliminate what doesn't work, compound results</p>
+                            <div class="text-5xl font-bold text-purple-400 mb-3">Month 4+</div>
+                            <h4 class="text-lg font-bold mb-2">Scale What Works</h4>
+                            <p class="text-sm text-gray-400">Optimize based on real data, eliminate what doesn't work, compound results</p>
                         </div>
                     </div>
                 </div>
@@ -738,22 +643,22 @@
     </section>
 
     <!-- More Portfolio Items -->
-    <section class="section-bg py-12 md:py-20">
-        <div class="container mx-auto px-4 md:px-6">
-            <div class="text-center mb-8 md:mb-12 scroll-reveal">
-                <h2 class="text-3xl sm:text-4xl md:text-5xl font-black mb-3 md:mb-4">More Success Stories</h2>
-                <p class="text-base sm:text-lg md:text-xl text-gray-400">Every project showcases our BUILD and RISE methodology</p>
+    <section class="py-32 bg-gradient-to-b from-gray-900 to-black">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-16 scroll-reveal">
+                <h2 class="text-5xl md:text-6xl font-bold mb-6">More Success Stories</h2>
+                <p class="text-xl text-gray-400">Every project showcases our BUILD and RISE methodology</p>
             </div>
 
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8 max-w-6xl mx-auto">
+            <div class="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto">
                 <!-- LuxeCraft Construction -->
-                <div class="card-glow border border-gray-800 rounded-xl overflow-hidden bg-black/40 backdrop-blur-sm scroll-reveal">
+                <div class="card-glow rounded-xl overflow-hidden scroll-reveal">
                     <div class="spotlight"></div>
-                    <div class="p-5 md:p-6">
-                        <div class="framework-badge badge-build mb-3 md:mb-4">BUILD</div>
-                        <h3 class="text-lg md:text-xl font-bold mb-2">LuxeCraft Construction</h3>
-                        <p class="text-sm md:text-base text-gray-400 mb-4">Complete logo and website designed and launched in 3 days, creating a polished digital presence that matches their craftsmanship quality.</p>
-                        <div class="flex items-center justify-between text-xs md:text-sm">
+                    <div class="p-6">
+                        <div class="framework-badge badge-build mb-4">BUILD</div>
+                        <h3 class="text-xl font-bold mb-2">LuxeCraft Construction</h3>
+                        <p class="text-gray-400 mb-4">Complete logo and website designed and launched in 3 days, creating a polished digital presence that matches their craftsmanship quality.</p>
+                        <div class="flex items-center justify-between text-sm">
                             <span class="text-green-400 font-semibold">3 Days</span>
                             <span class="text-gray-500">Website + Branding</span>
                         </div>
@@ -761,13 +666,13 @@
                 </div>
 
                 <!-- Nitro Cooler -->
-                <div class="card-glow border border-gray-800 rounded-xl overflow-hidden bg-black/40 backdrop-blur-sm scroll-reveal">
+                <div class="card-glow rounded-xl overflow-hidden scroll-reveal">
                     <div class="spotlight"></div>
-                    <div class="p-5 md:p-6">
-                        <div class="framework-badge badge-build mb-3 md:mb-4">BUILD</div>
-                        <h3 class="text-lg md:text-xl font-bold mb-2">Nitro Cooler</h3>
-                        <p class="text-sm md:text-base text-gray-400 mb-4">Product launch campaign with video production, social media content, and e-commerce integration.</p>
-                        <div class="flex items-center justify-between text-xs md:text-sm">
+                    <div class="p-6">
+                        <div class="framework-badge badge-build mb-4">BUILD</div>
+                        <h3 class="text-xl font-bold mb-2">Nitro Cooler</h3>
+                        <p class="text-gray-400 mb-4">Product launch campaign with video production, social media content, and e-commerce integration.</p>
+                        <div class="flex items-center justify-between text-sm">
                             <span class="text-green-400 font-semibold">7 Days</span>
                             <span class="text-gray-500">Video + E-commerce</span>
                         </div>
@@ -775,13 +680,13 @@
                 </div>
 
                 <!-- Regional RISE Example -->
-                <div class="card-glow border border-gray-800 rounded-xl overflow-hidden bg-black/40 backdrop-blur-sm scroll-reveal">
+                <div class="card-glow rounded-xl overflow-hidden scroll-reveal">
                     <div class="spotlight"></div>
-                    <div class="p-5 md:p-6">
-                        <div class="framework-badge badge-rise mb-3 md:mb-4">RISE</div>
-                        <h3 class="text-lg md:text-xl font-bold mb-2">Regional Service Provider</h3>
-                        <p class="text-sm md:text-base text-gray-400 mb-4">Ongoing social media management and ad optimization generating consistent leads month after month.</p>
-                        <div class="flex items-center justify-between text-xs md:text-sm">
+                    <div class="p-6">
+                        <div class="framework-badge badge-rise mb-4">RISE</div>
+                        <h3 class="text-xl font-bold mb-2">Regional Service Provider</h3>
+                        <p class="text-gray-400 mb-4">Ongoing social media management and ad optimization generating consistent leads month after month.</p>
+                        <div class="flex items-center justify-between text-sm">
                             <span class="text-purple-400 font-semibold">12+ Months</span>
                             <span class="text-gray-500">Growth Partnership</span>
                         </div>
@@ -792,60 +697,63 @@
     </section>
 
     <!-- CTA Section -->
-    <section class="py-20">
-        <div class="container mx-auto px-6">
-            <div class="max-w-4xl mx-auto text-center scroll-reveal">
-                <h2 class="text-4xl md:text-5xl font-black mb-6">Ready to See Results Like These?</h2>
-                <p class="text-xl text-gray-400 mb-8">
+    <section class="py-32 bg-black relative overflow-hidden">
+        <div class="absolute inset-0">
+            <div class="absolute inset-0 bg-gradient-to-r from-green-400/10 to-purple-400/10 opacity-30"></div>
+        </div>
+        <div class="container mx-auto px-4 text-center relative z-10">
+            <div class="scroll-reveal max-w-4xl mx-auto">
+                <h2 class="text-5xl md:text-6xl font-bold mb-6">Ready to See Results Like These?</h2>
+                <p class="text-xl text-gray-400 mb-12">
                     Take our 2-minute quiz to discover whether you need BUILD services or a RISE partnership—and get instant pricing recommendations.
                 </p>
                 <div class="flex flex-col sm:flex-row gap-4 justify-center">
-                    <a href="quiz.html" class="bg-green-500 text-black px-8 py-4 rounded-full font-bold text-lg hover:bg-green-400 transition-all inline-block">
-                        Take the Quiz <i class="fas fa-arrow-right ml-2"></i>
+                    <a href="quiz.html" class="inline-flex items-center justify-center gap-2 px-8 py-4 bg-green-500 text-black rounded-full font-bold text-lg hover:bg-green-400 button-glow transition-all">
+                        <span>Take the Quiz</span>
+                        <i class="fas fa-arrow-right"></i>
                     </a>
-                    <a href="pricing.html" class="border-2 border-white text-white px-8 py-4 rounded-full font-bold text-lg hover:bg-white hover:text-black transition-all inline-block">
-                        View Complete Pricing
+                    <a href="pricing.html" class="inline-flex items-center justify-center gap-2 px-8 py-4 border-2 border-white text-white rounded-full font-bold text-lg hover:bg-white hover:text-black transition-all">
+                        <span>View Complete Pricing</span>
                     </a>
                 </div>
             </div>
         </div>
     </section>
 
-        <!-- Footer -->
-    <footer class="section-bg border-t border-green-500/20 py-12">
-        <div class="container mx-auto px-6">
-            <div class="grid md:grid-cols-4 gap-8 mb-8">
+    <!-- Footer -->
+    <footer class="bg-black text-gray-400 py-16 border-t border-gray-800">
+        <div class="container mx-auto px-4">
+            <div class="grid md:grid-cols-3 gap-12 mb-12">
                 <div>
-                    <h4 class="font-bold text-lg mb-4">JPax Media</h4>
-                    <p class="text-gray-400 text-sm">AI-accelerated. Human-directed. Lightning-fast.</p>
-                </div>
-                <div>
-                    <h4 class="font-bold text-lg mb-4">Services</h4>
-                    <ul class="space-y-2 text-sm">
-                        <li><a href="pricing.html#build" class="text-gray-400 hover:text-green-400 transition-colors">BUILD Services</a></li>
-                        <li><a href="pricing.html#rise" class="text-gray-400 hover:text-green-400 transition-colors">RISE Partnerships</a></li>
-                        <li><a href="portfolio.html" class="text-gray-400 hover:text-green-400 transition-colors">Portfolio</a></li>
-                    </ul>
-                </div>
-                <div>
-                    <h4 class="font-bold text-lg mb-4">Company</h4>
-                    <ul class="space-y-2 text-sm">
-                        <li><a href="portfolio.html" class="text-gray-400 hover:text-green-400 transition-colors">Case Studies</a></li>
-                        <li><a href="pricing.html" class="text-gray-400 hover:text-green-400 transition-colors">Pricing</a></li>
-                        <li><a href="quiz.html" class="text-gray-400 hover:text-green-400 transition-colors">Take Quiz</a></li>
-                    </ul>
-                </div>
-                <div>
-                    <h4 class="font-bold text-lg mb-4">Connect</h4>
-                    <div class="flex space-x-4 mb-4">
-                        <a href="https://www.facebook.com/jpaxmedia/" target="_blank" class="footer-icon text-2xl text-gray-400 hover:text-green-400 transition-all">
+                    <img src="jpaxmedialogoOFFICIALFINALwhite.png" alt="JPax Media" class="h-12 mb-4">
+                    <p class="mb-4">Building digital experiences that drive results.</p>
+                    <div class="flex space-x-4">
+                        <a href="https://www.youtube.com/@JPaxFilms/videos" target="_blank" class="text-2xl text-gray-400 hover:text-green-400 transition-all">
+                            <i class="fab fa-youtube"></i>
+                        </a>
+                        <a href="https://www.tiktok.com/@jpaxfilms?lang=en" target="_blank" class="text-2xl text-gray-400 hover:text-green-400 transition-all">
+                            <i class="fab fa-tiktok"></i>
+                        </a>
+                        <a href="https://www.facebook.com/JPaxFilms/" target="_blank" class="text-2xl text-gray-400 hover:text-green-400 transition-all">
                             <i class="fab fa-facebook"></i>
                         </a>
-                        <a href="https://www.instagram.com/jpaxfilmz/" target="_blank" class="footer-icon text-2xl text-gray-400 hover:text-green-400 transition-all">
+                        <a href="https://www.instagram.com/jpaxfilmz/" target="_blank" class="text-2xl text-gray-400 hover:text-green-400 transition-all">
                             <i class="fab fa-instagram"></i>
                         </a>
                     </div>
-                    <a href="mailto:info@jpaxmedia.com" class="text-gray-400 hover:text-green-400 transition-colors text-sm">info@jpaxmedia.com</a>
+                </div>
+                <div>
+                    <h4 class="text-white font-bold mb-4">Quick Links</h4>
+                    <ul class="space-y-2">
+                        <li><a href="index.html" class="hover:text-green-400 transition-colors">Home</a></li>
+                        <li><a href="portfolio.html" class="hover:text-green-400 transition-colors">Portfolio</a></li>
+                        <li><a href="pricing.html" class="hover:text-green-400 transition-colors">Pricing</a></li>
+                        <li><a href="jupiter.html" class="hover:text-green-400 transition-colors">Jupiter</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="text-white font-bold mb-4">Contact</h4>
+                    <a href="mailto:info@jpaxmedia.com" class="text-gray-400 hover:text-green-400 transition-colors">info@jpaxmedia.com</a>
                 </div>
             </div>
             <div class="border-t border-gray-800 pt-8 text-center text-gray-500 text-sm">
@@ -859,29 +767,33 @@
             // --- Custom Cursor ---
             const cursorDot = document.querySelector('.cursor-dot');
             const cursorOutline = document.querySelector('.cursor-outline');
+            
             if (cursorDot && cursorOutline) {
+                let mouseX = 0, mouseY = 0;
+                let outlineX = 0, outlineY = 0;
+
                 document.addEventListener('mousemove', (e) => {
-                    cursorDot.style.left = `${e.clientX}px`;
-                    cursorDot.style.top = `${e.clientY}px`;
-                    cursorOutline.style.left = `${e.clientX}px`;
-                    cursorOutline.style.top = `${e.clientY}px`;
+                    mouseX = e.clientX;
+                    mouseY = e.clientY;
+                    cursorDot.style.left = mouseX + 'px';
+                    cursorDot.style.top = mouseY + 'px';
                 });
 
-                document.querySelectorAll('a, button').forEach(el => {
-                    el.addEventListener('mouseenter', () => {
-                        cursorOutline.classList.add('cursor-interact');
-                    });
-                    el.addEventListener('mouseleave', () => {
-                        cursorOutline.classList.remove('cursor-interact');
-                    });
-                });
+                function animateOutline() {
+                    outlineX += (mouseX - outlineX) * 0.2;
+                    outlineY += (mouseY - outlineY) * 0.2;
+                    cursorOutline.style.left = outlineX + 'px';
+                    cursorOutline.style.top = outlineY + 'px';
+                    requestAnimationFrame(animateOutline);
+                }
+                animateOutline();
             }
 
-            // --- Spotlight Effect ---
+            // --- Spotlight Card Effect ---
             document.querySelectorAll('.card-glow').forEach(card => {
                 const spotlight = card.querySelector('.spotlight');
                 if (spotlight) {
-                    card.addEventListener('mousemove', (e) => {
+                    card.addEventListener('mousemove', e => {
                         const rect = card.getBoundingClientRect();
                         const x = e.clientX - rect.left;
                         const y = e.clientY - rect.top;
@@ -891,109 +803,43 @@
                 }
             });
 
-            // --- Enhanced Mobile Menu ---
+            // --- Mobile Menu ---
             const mobileMenuButton = document.getElementById('mobile-menu-button');
             const mobileMenu = document.getElementById('mobile-menu');
-            const hamburgerIcon = mobileMenuButton.querySelector('.hamburger-icon');
-            const body = document.body;
-            
-            mobileMenuButton.addEventListener('click', () => {
-                const isActive = mobileMenu.classList.contains('active');
+            if (mobileMenuButton && mobileMenu) {
+                const hamburgerIcon = mobileMenuButton.querySelector('.hamburger-icon');
+                const body = document.body;
                 
-                if (!isActive) {
-                    mobileMenu.classList.add('active');
-                    hamburgerIcon.classList.add('active');
-                    body.style.overflow = 'hidden';
-                } else {
-                    mobileMenu.classList.remove('active');
-                    hamburgerIcon.classList.remove('active');
-                    body.style.overflow = '';
-                }
-            });
-            
-            const mobileMenuLinks = mobileMenu.querySelectorAll('a');
-            mobileMenuLinks.forEach(link => {
-                link.addEventListener('click', () => {
-                    mobileMenu.classList.remove('active');
-                    hamburgerIcon.classList.remove('active');
-                    body.style.overflow = '';
-                });
-            });
-
-            // Close menu when clicking outside
-            mobileMenu.addEventListener('click', (e) => {
-                if (e.target === mobileMenu) {
-                    mobileMenu.classList.remove('active');
-                    hamburgerIcon.classList.remove('active');
-                    body.style.overflow = '';
-                }
-            });
-
-            // --- Interactive Background ---
-            const canvas = document.getElementById('interactive-bg');
-            const heroSection = document.querySelector('.hero-bg');
-            if(canvas && heroSection) {
-                try {
-                    const scene = new THREE.Scene();
-                    const camera = new THREE.PerspectiveCamera(75, heroSection.offsetWidth / heroSection.offsetHeight, 0.1, 1000);
-                    const renderer = new THREE.WebGLRenderer({ canvas: canvas, alpha: true });
-                    renderer.setSize(heroSection.offsetWidth, heroSection.offsetHeight);
-
-                    const particlesCount = 3000;
-                    const positions = new Float32Array(particlesCount * 3);
-                    for (let i = 0; i < particlesCount * 3; i++) {
-                        positions[i] = (Math.random() - 0.5) * 10;
-                    }
-                    const particlesGeometry = new THREE.BufferGeometry();
-                    particlesGeometry.setAttribute('position', new THREE.BufferAttribute(positions, 3));
-                    const particlesMaterial = new THREE.PointsMaterial({
-                        color: 0x4ade80,
-                        size: 0.02,
-                        transparent: true,
-                        blending: THREE.AdditiveBlending
-                    });
-                    const particleSystem = new THREE.Points(particlesGeometry, particlesMaterial);
-                    scene.add(particleSystem);
-                    camera.position.z = 5;
-
-                    let mouseX = 0;
-                    let mouseY = 0;
-                    document.addEventListener('mousemove', (event) => {
-                        mouseX = (event.clientX / window.innerWidth) * 2 - 1;
-                        mouseY = -(event.clientY / window.innerHeight) * 2 + 1;
-                    });
+                mobileMenuButton.addEventListener('click', () => {
+                    const isActive = mobileMenu.classList.contains('active');
                     
-                    const clock = new THREE.Clock();
-                    let animationId;
-                    function animate() {
-                        if (document.hidden) {
-                            cancelAnimationFrame(animationId);
-                            return;
-                        }
-                        animationId = requestAnimationFrame(animate);
-                        const elapsedTime = clock.getElapsedTime();
-                        particleSystem.rotation.y = elapsedTime * 0.1;
-                        camera.position.x += (mouseX * 0.5 - camera.position.x) * 0.05;
-                        camera.position.y += (mouseY * 0.5 - camera.position.y) * 0.05;
-                        camera.lookAt(scene.position);
-                        renderer.render(scene, camera);
+                    if (!isActive) {
+                        mobileMenu.classList.add('active');
+                        hamburgerIcon.classList.add('active');
+                        body.style.overflow = 'hidden';
+                    } else {
+                        mobileMenu.classList.remove('active');
+                        hamburgerIcon.classList.remove('active');
+                        body.style.overflow = '';
                     }
-                    animate();
-
-                    document.addEventListener('visibilitychange', () => {
-                        if (!document.hidden) {
-                            animate();
-                        }
+                });
+                
+                const mobileMenuLinks = mobileMenu.querySelectorAll('a');
+                mobileMenuLinks.forEach(link => {
+                    link.addEventListener('click', () => {
+                        mobileMenu.classList.remove('active');
+                        hamburgerIcon.classList.remove('active');
+                        body.style.overflow = '';
                     });
+                });
 
-                    window.addEventListener('resize', () => {
-                        camera.aspect = heroSection.offsetWidth / heroSection.offsetHeight;
-                        camera.updateProjectionMatrix();
-                        renderer.setSize(heroSection.offsetWidth, heroSection.offsetHeight);
-                    });
-                } catch (error) {
-                    console.error('Three.js initialization failed:', error);
-                }
+                mobileMenu.addEventListener('click', (e) => {
+                    if (e.target === mobileMenu) {
+                        mobileMenu.classList.remove('active');
+                        hamburgerIcon.classList.remove('active');
+                        body.style.overflow = '';
+                    }
+                });
             }
 
             // --- Scroll Animations ---
