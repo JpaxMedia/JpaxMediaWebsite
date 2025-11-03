@@ -441,6 +441,7 @@
         .mobile-menu-link[data-index="1"] { transition-delay: 0.2s; }
         .mobile-menu-link[data-index="2"] { transition-delay: 0.25s; }
         .mobile-menu-link[data-index="3"] { transition-delay: 0.3s; }
+        .mobile-menu-link[data-index="4"] { transition-delay: 0.35s; }
 
         .mobile-menu-link:active {
             transform: scale(0.98);
@@ -536,13 +537,14 @@
     <!-- Header & Navigation -->
     <header class="bg-black/80 backdrop-blur-sm sticky top-0 z-50">
         <nav class="container mx-auto px-6 py-4 flex justify-between items-center">
-            <a href="index.html" class="hoverable">
-                <img src="jpaxmedialogoOFFICIALFINALwhite.png" alt="JPax Media Logo" onerror="this.style.display='none'; this.nextElementSibling.style.marginLeft='0'" class="h-12 transition-all duration-300 logo-glow">
+            <a href="index.html" class="logo-container p-2 rounded-lg transition-all duration-300 hover:bg-white/5 hoverable">
+                <img src="jpaxmedialogoOFFICIALFINALwhite.png" alt="JPax Media" class="h-12 md:h-14 w-auto logo-glow transition-transform duration-300 hover:scale-110" onerror="this.style.display='none'">
             </a>
             <div class="hidden md:flex items-center space-x-8">
                 <a href="index.html" class="hoverable hover:text-green-400 transition-colors">Home</a>
                 <a href="index.html#services" class="hoverable hover:text-green-400 transition-colors">Services</a>
                 <a href="portfolio.html" class="hoverable hover:text-green-400 transition-colors">Portfolio</a>
+                <a href="pricing.html" class="hoverable hover:text-green-400 transition-colors">Pricing</a>
                 <a href="jupiter.html" class="hoverable hover:text-green-400 transition-colors nav-active">Jupiter</a>
                 <a href="https://www.facebook.com/jpaxmedia/" target="_blank" aria-label="Facebook" class="hoverable text-gray-300 hover:text-green-400 text-xl transition-colors"><i class="fab fa-facebook"></i></a>
                 <a href="https://www.instagram.com/jpaxfilmz/" target="_blank" aria-label="Instagram" class="hoverable text-gray-300 hover:text-green-400 text-xl transition-colors"><i class="fab fa-instagram"></i></a>
@@ -578,8 +580,13 @@
                         <span class="mobile-menu-link-text">Portfolio</span>
                         <i class="fas fa-arrow-right mobile-menu-link-icon"></i>
                     </a>
-                    <a href="jupiter.html" class="mobile-menu-link" data-index="3">
+                    <a href="pricing.html" class="mobile-menu-link" data-index="3">
                         <span class="mobile-menu-link-number">04</span>
+                        <span class="mobile-menu-link-text">Pricing</span>
+                        <i class="fas fa-arrow-right mobile-menu-link-icon"></i>
+                    </a>
+                    <a href="jupiter.html" class="mobile-menu-link" data-index="4">
+                        <span class="mobile-menu-link-number">05</span>
                         <span class="mobile-menu-link-text">Jupiter</span>
                         <i class="fas fa-arrow-right mobile-menu-link-icon"></i>
                     </a>

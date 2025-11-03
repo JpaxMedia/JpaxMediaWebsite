@@ -288,6 +288,7 @@
         .mobile-menu-link[data-index="1"] { transition-delay: 0.2s; }
         .mobile-menu-link[data-index="2"] { transition-delay: 0.25s; }
         .mobile-menu-link[data-index="3"] { transition-delay: 0.3s; }
+        .mobile-menu-link[data-index="4"] { transition-delay: 0.35s; }
 
         .mobile-menu-link:active {
             transform: scale(0.98);
@@ -384,9 +385,8 @@
     <nav class="fixed w-full z-50 bg-black/80 backdrop-blur-md border-b border-green-500/20">
         <div class="container mx-auto px-6 py-4">
             <div class="flex items-center justify-between">
-                <a href="index.html" class="flex items-center space-x-3 logo-glow transition-all duration-300">
-                    <img src="jpaxmedialogoOFFICIALFINALwhite.png" alt="JPax Media" class="h-10 w-auto">
-                    <span class="text-2xl font-bold text-white">JPax Media</span>
+                <a href="index.html" class="logo-container p-2 rounded-lg transition-all duration-300 hover:bg-white/5">
+                    <img src="jpaxmedialogoOFFICIALFINALwhite.png" alt="JPax Media" class="h-10 md:h-12 w-auto logo-glow transition-transform duration-300 hover:scale-110" onerror="this.style.display='none'">
                 </a>
                 
                 <!-- Desktop Menu -->
@@ -395,7 +395,9 @@
                     <a href="index.html#services" class="text-gray-300 hover:text-green-400 transition-colors">Services</a>
                     <a href="index.html#how-it-works" class="text-gray-300 hover:text-green-400 transition-colors">Process</a>
                     <a href="portfolio.html" class="text-green-400 transition-colors">Portfolio</a>
-                    <a href="pricing.html" class="bg-green-500 text-black px-6 py-2 rounded-full font-semibold hover:bg-green-400 transition-all">View Pricing</a>
+                    <a href="pricing.html" class="text-gray-300 hover:text-green-400 transition-colors">Pricing</a>
+                    <a href="jupiter.html" class="text-gray-300 hover:text-green-400 transition-colors">Jupiter</a>
+                    <a href="quiz.html" class="bg-green-500 text-black px-6 py-2 rounded-full font-semibold hover:bg-green-400 transition-all">Take Quiz</a>
                 </div>
 
                 <!-- Mobile Menu Button -->
@@ -435,6 +437,11 @@
                 <a href="pricing.html" class="mobile-menu-link" data-index="3">
                     <span class="mobile-menu-link-number">04</span>
                     <span class="mobile-menu-link-text">Pricing</span>
+                    <i class="fas fa-arrow-right mobile-menu-link-icon"></i>
+                </a>
+                <a href="jupiter.html" class="mobile-menu-link" data-index="4">
+                    <span class="mobile-menu-link-number">05</span>
+                    <span class="mobile-menu-link-text">Jupiter</span>
                     <i class="fas fa-arrow-right mobile-menu-link-icon"></i>
                 </a>
             </nav>
