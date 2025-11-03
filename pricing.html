@@ -77,6 +77,14 @@
             min-height: 500px;
             overflow: hidden;
             background: linear-gradient(to bottom, #000000, #0a0a0a);
+            padding-top: 100px; /* Extra padding for mobile nav */
+        }
+        
+        @media (max-width: 768px) {
+            .hero-section {
+                min-height: 600px;
+                padding-top: 100px;
+            }
         }
         
         .hero-video-overlay {
@@ -99,16 +107,29 @@
             display: flex;
             flex-direction: column;
             justify-content: center;
-            padding: 2rem;
+            padding: 2rem 1rem;
             text-align: center;
         }
         
+        @media (max-width: 768px) {
+            .hero-content {
+                padding: 2rem 1.5rem;
+            }
+        }
+        
         .hero-title {
-            font-size: clamp(2.5rem, 8vw, 6rem);
+            font-size: clamp(2rem, 8vw, 6rem);
             font-weight: 900;
             letter-spacing: -0.02em;
             line-height: 1.1;
             margin-bottom: 1.5rem;
+        }
+        
+        @media (max-width: 640px) {
+            .hero-title {
+                font-size: clamp(2rem, 12vw, 4rem);
+                margin-bottom: 1rem;
+            }
         }
         
         /* Animated Background Grid */
@@ -300,9 +321,10 @@
                 <div class="hidden md:flex items-center space-x-8">
                     <a href="index.html" class="text-gray-300 hover:text-green-400 transition-colors">Home</a>
                     <a href="index.html#services" class="text-gray-300 hover:text-green-400 transition-colors">Services</a>
+                    <a href="index.html#framework" class="text-gray-300 hover:text-green-400 transition-colors">Framework</a>
                     <a href="portfolio.html" class="text-gray-300 hover:text-green-400 transition-colors">Portfolio</a>
-                    <a href="pricing.html" class="text-green-400 transition-colors">Pricing</a>
                     <a href="jupiter.html" class="text-gray-300 hover:text-green-400 transition-colors">Jupiter</a>
+                    <a href="pricing.html" class="text-green-400 transition-colors">Pricing</a>
                     <a href="quiz.html" class="bg-green-500 text-black px-6 py-2 rounded-full font-semibold hover:bg-green-400 button-glow transition-all">Take Quiz</a>
                 </div>
 
@@ -322,14 +344,15 @@
     <div id="mobile-menu" class="mobile-menu">
         <a href="index.html" class="text-2xl font-semibold hover:text-green-400 transition-colors">Home</a>
         <a href="index.html#services" class="text-2xl font-semibold hover:text-green-400 transition-colors">Services</a>
+        <a href="index.html#framework" class="text-2xl font-semibold hover:text-green-400 transition-colors">Framework</a>
         <a href="portfolio.html" class="text-2xl font-semibold hover:text-green-400 transition-colors">Portfolio</a>
-        <a href="pricing.html" class="text-2xl font-semibold text-green-400">Pricing</a>
         <a href="jupiter.html" class="text-2xl font-semibold hover:text-green-400 transition-colors">Jupiter</a>
+        <a href="pricing.html" class="text-2xl font-semibold text-green-400">Pricing</a>
         <a href="quiz.html" class="text-2xl font-semibold hover:text-green-400 transition-colors">Quiz</a>
     </div>
 
     <!-- Hero Section -->
-    <section class="hero-section">
+    <section class="hero-section" style="padding-top: 80px;">
         <div class="grid-overlay"></div>
         <!-- Floating Particles -->
         <div class="particle" style="left: 10%; top: 20%; animation-delay: 0s;"></div>

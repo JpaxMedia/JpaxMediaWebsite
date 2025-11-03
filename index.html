@@ -211,6 +211,211 @@
             50% { transform: translate(100px, -100px) scale(1.5); opacity: 0.8; }
         }
         
+        /* Rocket Animation */
+        .rocket-container {
+            position: absolute;
+            bottom: 10%;
+            right: 5%;
+            width: 120px;
+            height: 120px;
+            opacity: 0.6;
+            animation: rocketFloat 6s ease-in-out infinite;
+            z-index: 1;
+        }
+        
+        @keyframes rocketFloat {
+            0%, 100% { transform: translateY(0px) translateX(0px) rotate(-5deg); }
+            50% { transform: translateY(-20px) translateX(10px) rotate(5deg); }
+        }
+        
+        .rocket {
+            position: relative;
+            width: 60px;
+            height: 80px;
+            margin: 0 auto;
+        }
+        
+        .rocket-body {
+            position: absolute;
+            width: 40px;
+            height: 60px;
+            background: linear-gradient(135deg, #4ade80 0%, #22c55e 50%, #16a34a 100%);
+            border-radius: 50% 50% 10px 10px;
+            left: 10px;
+            top: 10px;
+            box-shadow: 0 0 20px rgba(74, 222, 128, 0.3);
+        }
+        
+        .rocket-body::before {
+            content: '';
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            background: linear-gradient(135deg, #60a5fa 0%, #3b82f6 100%);
+            border-radius: 50%;
+            left: 10px;
+            top: 15px;
+            box-shadow: 0 0 10px rgba(59, 130, 246, 0.5);
+        }
+        
+        .rocket-window {
+            position: absolute;
+            width: 16px;
+            height: 16px;
+            background: linear-gradient(135deg, #93c5fd 0%, #60a5fa 100%);
+            border-radius: 50%;
+            left: 22px;
+            top: 22px;
+            border: 2px solid rgba(255, 255, 255, 0.3);
+        }
+        
+        .rocket-wing {
+            position: absolute;
+            width: 0;
+            height: 0;
+            border-left: 15px solid transparent;
+            border-right: 15px solid transparent;
+            border-top: 25px solid #16a34a;
+            opacity: 0.8;
+        }
+        
+        .rocket-wing.left {
+            left: -10px;
+            top: 50px;
+            transform: rotate(-20deg);
+        }
+        
+        .rocket-wing.right {
+            right: -10px;
+            top: 50px;
+            transform: rotate(20deg);
+        }
+        
+        .rocket-fire {
+            position: absolute;
+            bottom: -30px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 30px;
+            height: 40px;
+            background: linear-gradient(to bottom, 
+                rgba(251, 191, 36, 0.9) 0%,
+                rgba(249, 115, 22, 0.7) 50%,
+                rgba(239, 68, 68, 0.5) 100%);
+            border-radius: 50% 50% 50% 50% / 60% 60% 40% 40%;
+            filter: blur(2px);
+            animation: fireFlicker 0.2s infinite alternate;
+        }
+        
+        .rocket-fire::before {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 20px;
+            height: 30px;
+            background: linear-gradient(to bottom, 
+                rgba(253, 224, 71, 0.9) 0%,
+                rgba(251, 191, 36, 0.6) 50%,
+                rgba(249, 115, 22, 0.3) 100%);
+            border-radius: 50% 50% 50% 50% / 60% 60% 40% 40%;
+            filter: blur(1px);
+        }
+        
+        @keyframes fireFlicker {
+            0% { transform: translateX(-50%) scaleY(1); opacity: 0.9; }
+            100% { transform: translateX(-50%) scaleY(0.95); opacity: 1; }
+        }
+        
+        .rocket-smoke {
+            position: absolute;
+            bottom: -40px;
+            left: 50%;
+            width: 4px;
+            height: 4px;
+            background: rgba(74, 222, 128, 0.3);
+            border-radius: 50%;
+            animation: smokeRise 2s infinite;
+        }
+        
+        @keyframes smokeRise {
+            0% {
+                transform: translateX(-50%) translateY(0) scale(1);
+                opacity: 0.6;
+            }
+            100% {
+                transform: translateX(-50%) translateY(-60px) scale(2);
+                opacity: 0;
+            }
+        }
+        
+        .rocket-smoke:nth-child(2) {
+            animation-delay: 0.5s;
+        }
+        
+        .rocket-smoke:nth-child(3) {
+            animation-delay: 1s;
+        }
+        
+        .rocket-smoke:nth-child(4) {
+            animation-delay: 1.5s;
+        }
+        
+        /* Stars around rocket */
+        .rocket-star {
+            position: absolute;
+            width: 2px;
+            height: 2px;
+            background: #4ade80;
+            border-radius: 50%;
+            opacity: 0;
+            animation: starTwinkle 3s infinite;
+        }
+        
+        @keyframes starTwinkle {
+            0%, 100% { opacity: 0; transform: scale(1); }
+            50% { opacity: 0.8; transform: scale(1.5); }
+        }
+        
+        .rocket-star:nth-child(1) {
+            top: 10%;
+            left: 20%;
+            animation-delay: 0s;
+        }
+        
+        .rocket-star:nth-child(2) {
+            top: 30%;
+            left: 80%;
+            animation-delay: 1s;
+        }
+        
+        .rocket-star:nth-child(3) {
+            top: 60%;
+            left: 15%;
+            animation-delay: 2s;
+        }
+        
+        @media (max-width: 768px) {
+            .rocket-container {
+                width: 80px;
+                height: 80px;
+                bottom: 5%;
+                right: 5%;
+                opacity: 0.4;
+            }
+            
+            .rocket {
+                width: 40px;
+                height: 60px;
+            }
+            
+            .rocket-body {
+                width: 30px;
+                height: 45px;
+            }
+        }
+        
         /* Scroll Reveal */
         .scroll-reveal {
             opacity: 0;
@@ -413,6 +618,25 @@
         <div class="particle" style="left: 50%; top: 40%; animation-delay: 8s;"></div>
         <div class="particle" style="left: 20%; top: 80%; animation-delay: 10s;"></div>
         
+        <!-- Animated Rocket -->
+        <div class="rocket-container">
+            <div class="rocket">
+                <div class="rocket-body">
+                    <div class="rocket-window"></div>
+                </div>
+                <div class="rocket-wing left"></div>
+                <div class="rocket-wing right"></div>
+                <div class="rocket-fire"></div>
+                <div class="rocket-smoke"></div>
+                <div class="rocket-smoke"></div>
+                <div class="rocket-smoke"></div>
+                <div class="rocket-smoke"></div>
+            </div>
+            <div class="rocket-star"></div>
+            <div class="rocket-star"></div>
+            <div class="rocket-star"></div>
+        </div>
+        
         <div class="hero-video-overlay"></div>
         <div class="hero-content container mx-auto">
             <div class="max-w-4xl">
@@ -546,65 +770,342 @@
                 <p class="text-xl text-gray-400 max-w-3xl mx-auto">Full-service digital solutions powered by AI acceleration</p>
             </div>
             
-            <div class="grid md:grid-cols-3 gap-8">
+            <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8 mb-16">
                 <!-- Service 1 -->
                 <div class="card-glow p-8 rounded-xl scroll-reveal">
                     <div class="spotlight"></div>
                     <div class="text-green-400 text-5xl mb-4">
-                        <i class="fas fa-code"></i>
+                        <i class="fas fa-laptop-code"></i>
                     </div>
-                    <h3 class="text-2xl font-bold mb-3">Websites & Apps</h3>
-                    <p class="text-gray-400">Custom websites, web apps, and automation tools built for speed and conversion.</p>
+                    <h3 class="text-2xl font-bold mb-3">Websites</h3>
+                    <p class="text-gray-400 mb-4">Professional, converting websites delivered in 5-14 days. Mobile-optimized, SEO-ready, yours to own.</p>
+                    <span class="text-green-400 font-semibold">From $2,500</span>
                 </div>
 
                 <!-- Service 2 -->
                 <div class="card-glow p-8 rounded-xl scroll-reveal">
                     <div class="spotlight"></div>
-                    <div class="text-purple-400 text-5xl mb-4">
+                    <div class="text-green-400 text-5xl mb-4">
                         <i class="fas fa-palette"></i>
                     </div>
-                    <h3 class="text-2xl font-bold mb-3">Branding & Design</h3>
-                    <p class="text-gray-400">Complete brand identities, logos, and design systems that stand out.</p>
+                    <h3 class="text-2xl font-bold mb-3">Branding</h3>
+                    <p class="text-gray-400 mb-4">Complete brand identity systems. Logo, colors, typography, and guidelines in 2-10 days.</p>
+                    <span class="text-green-400 font-semibold">From $1,500</span>
                 </div>
 
                 <!-- Service 3 -->
                 <div class="card-glow p-8 rounded-xl scroll-reveal">
                     <div class="spotlight"></div>
-                    <div class="text-blue-400 text-5xl mb-4">
-                        <i class="fas fa-video"></i>
+                    <div class="text-green-400 text-5xl mb-4">
+                        <i class="fas fa-mobile-alt"></i>
                     </div>
-                    <h3 class="text-2xl font-bold mb-3">Video Production</h3>
-                    <p class="text-gray-400">Professional video content from concept to final delivery.</p>
+                    <h3 class="text-2xl font-bold mb-3">Apps & Automation</h3>
+                    <p class="text-gray-400 mb-4">Custom web apps, visualizers, and automation platforms. Interactive tools that convert.</p>
+                    <span class="text-green-400 font-semibold">From $3,000</span>
                 </div>
 
                 <!-- Service 4 -->
                 <div class="card-glow p-8 rounded-xl scroll-reveal">
                     <div class="spotlight"></div>
-                    <div class="text-yellow-400 text-5xl mb-4">
-                        <i class="fas fa-bullhorn"></i>
+                    <div class="text-green-400 text-5xl mb-4">
+                        <i class="fas fa-video"></i>
                     </div>
-                    <h3 class="text-2xl font-bold mb-3">Marketing</h3>
-                    <p class="text-gray-400">Social media management, ad campaigns, and growth strategies.</p>
+                    <h3 class="text-2xl font-bold mb-3">Video Production</h3>
+                    <p class="text-gray-400 mb-4">Professional video ads and content. Script to delivery in 3-10 days, optimized for all platforms.</p>
+                    <span class="text-green-400 font-semibold">From $800</span>
                 </div>
+            </div>
 
-                <!-- Service 5 -->
-                <div class="card-glow p-8 rounded-xl scroll-reveal">
-                    <div class="spotlight"></div>
-                    <div class="text-pink-400 text-5xl mb-4">
+            <div class="text-center mt-20 mb-16 scroll-reveal">
+                <h2 class="text-5xl md:text-6xl font-bold mb-6">How We Help You <span class="text-purple-400">RISE</span></h2>
+                <p class="text-xl text-gray-400 mb-12">Ongoing optimization that compounds month after month</p>
+            </div>
+
+            <div class="grid md:grid-cols-3 gap-8 max-w-5xl mx-auto">
+                <!-- RISE Service 1 -->
+                <div class="card-glow p-8 rounded-xl scroll-reveal" style="border-color: rgba(168, 85, 247, 0.2);">
+                    <div class="spotlight" style="background: radial-gradient(circle, rgba(168, 85, 247, 0.2), transparent 70%);"></div>
+                    <div class="text-purple-400 text-5xl mb-4">
                         <i class="fas fa-chart-line"></i>
                     </div>
-                    <h3 class="text-2xl font-bold mb-3">SEO & Analytics</h3>
-                    <p class="text-gray-400">Data-driven optimization to increase visibility and conversions.</p>
+                    <h3 class="text-2xl font-bold mb-3">Social Media Management</h3>
+                    <p class="text-gray-400">Consistent, high-performing content across 1-5 platforms. Strategic posting, engagement, and community building.</p>
                 </div>
 
-                <!-- Service 6 -->
-                <div class="card-glow p-8 rounded-xl scroll-reveal">
-                    <div class="spotlight"></div>
-                    <div class="text-orange-400 text-5xl mb-4">
-                        <i class="fas fa-rocket"></i>
+                <!-- RISE Service 2 -->
+                <div class="card-glow p-8 rounded-xl scroll-reveal" style="border-color: rgba(168, 85, 247, 0.2);">
+                    <div class="spotlight" style="background: radial-gradient(circle, rgba(168, 85, 247, 0.2), transparent 70%);"></div>
+                    <div class="text-purple-400 text-5xl mb-4">
+                        <i class="fas fa-bullhorn"></i>
                     </div>
-                    <h3 class="text-2xl font-bold mb-3">Strategy</h3>
-                    <p class="text-gray-400">Comprehensive digital strategies tailored to your business goals.</p>
+                    <h3 class="text-2xl font-bold mb-3">Ad Campaign Optimization</h3>
+                    <p class="text-gray-400">Build warm audiences efficiently, then convert at 60-70% lower cost. Transparent reporting on every dollar.</p>
+                </div>
+
+                <!-- RISE Service 3 -->
+                <div class="card-glow p-8 rounded-xl scroll-reveal" style="border-color: rgba(168, 85, 247, 0.2);">
+                    <div class="spotlight" style="background: radial-gradient(circle, rgba(168, 85, 247, 0.2), transparent 70%);"></div>
+                    <div class="text-purple-400 text-5xl mb-4">
+                        <i class="fas fa-cogs"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold mb-3">Continuous Optimization</h3>
+                    <p class="text-gray-400">Monthly strategy sessions, performance tracking, and relentless testing. What works scales. What doesn't gets eliminated.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Case Study Section -->
+    <section id="case-study" class="py-32 bg-black">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-16 scroll-reveal">
+                <div class="inline-block bg-green-500/10 border border-green-500/30 rounded-full px-6 py-2 mb-6">
+                    <span class="text-green-400 font-semibold uppercase text-sm tracking-wider">Featured Success Story</span>
+                </div>
+                <h2 class="text-5xl md:text-6xl font-bold mb-6">
+                    Southern Pavers: <span class="text-green-400">BUILD</span> to <span class="text-purple-400">RISE</span>
+                </h2>
+                <p class="text-xl text-gray-400 max-w-3xl mx-auto">How we helped a regional landscaping business scale from $8,500 project to $2,000/month partnership</p>
+            </div>
+
+            <div class="max-w-5xl mx-auto">
+                <!-- Phase 1: BUILD -->
+                <div class="card-glow rounded-2xl p-12 mb-8 scroll-reveal" style="border-color: rgba(74, 222, 128, 0.3);">
+                    <div class="spotlight"></div>
+                    <div class="inline-block bg-green-500/20 border border-green-400 rounded-full px-6 py-2 mb-6">
+                        <span class="text-green-400 font-bold uppercase text-sm tracking-wider">PHASE 1: BUILD</span>
+                    </div>
+                    <h3 class="text-4xl font-bold mb-6">Foundation Built in 7 Days</h3>
+                    <div class="grid md:grid-cols-3 gap-6 mb-8">
+                        <div>
+                            <div class="text-5xl font-bold text-green-400 mb-2">7</div>
+                            <div class="text-gray-400">Working Days</div>
+                        </div>
+                        <div>
+                            <div class="text-5xl font-bold text-green-400 mb-2">$8,500</div>
+                            <div class="text-gray-400">Total Investment</div>
+                        </div>
+                        <div>
+                            <div class="text-5xl font-bold text-green-400 mb-2">3</div>
+                            <div class="text-gray-400">Major Deliverables</div>
+                        </div>
+                    </div>
+                    <div class="space-y-4">
+                        <div class="flex items-start">
+                            <i class="fas fa-check-circle text-green-400 mr-3 mt-1 text-xl"></i>
+                            <div>
+                                <div class="font-bold text-lg mb-1">Complete Brand Rebrand</div>
+                                <div class="text-gray-400">New visual identity, professional logo, color system</div>
+                            </div>
+                        </div>
+                        <div class="flex items-start">
+                            <i class="fas fa-check-circle text-green-400 mr-3 mt-1 text-xl"></i>
+                            <div>
+                                <div class="font-bold text-lg mb-1">Custom Paver Visualizer App</div>
+                                <div class="text-gray-400">Interactive tool allowing customers to see paver options in their space</div>
+                            </div>
+                        </div>
+                        <div class="flex items-start">
+                            <i class="fas fa-check-circle text-green-400 mr-3 mt-1 text-xl"></i>
+                            <div>
+                                <div class="font-bold text-lg mb-1">Professional Website</div>
+                                <div class="text-gray-400">Mobile-optimized, conversion-focused, fully owned by client</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Phase 2: RISE -->
+                <div class="card-glow rounded-2xl p-12 scroll-reveal" style="border-color: rgba(168, 85, 247, 0.3);">
+                    <div class="spotlight" style="background: radial-gradient(circle, rgba(168, 85, 247, 0.2), transparent 70%);"></div>
+                    <div class="inline-block bg-purple-500/20 border border-purple-400 rounded-full px-6 py-2 mb-6">
+                        <span class="text-purple-400 font-bold uppercase text-sm tracking-wider">PHASE 2: RISE</span>
+                    </div>
+                    <h3 class="text-4xl font-bold mb-6">First 30 Days: Strategic Audience Building</h3>
+                    <div class="bg-purple-500/10 border border-purple-500/30 rounded-xl p-8 mb-8">
+                        <div class="text-purple-400 font-semibold mb-6 text-lg">RESULTS (October 2025)</div>
+                        <div class="grid md:grid-cols-2 gap-8">
+                            <div>
+                                <div class="text-4xl font-bold text-purple-400 mb-2">14,753</div>
+                                <div class="text-gray-400 mb-1">Qualified Prospects Built</div>
+                                <div class="text-sm text-green-400">+50% above industry average</div>
+                            </div>
+                            <div>
+                                <div class="text-4xl font-bold text-purple-400 mb-2">1,046</div>
+                                <div class="text-gray-400 mb-1">High-Intent Website Visitors</div>
+                                <div class="text-sm text-green-400">+30% conversion intent</div>
+                            </div>
+                            <div>
+                                <div class="text-4xl font-bold text-purple-400 mb-2">$0.04</div>
+                                <div class="text-gray-400 mb-1">Cost Per Prospect</div>
+                                <div class="text-sm text-green-400">92-96% cheaper than industry avg</div>
+                            </div>
+                            <div>
+                                <div class="text-4xl font-bold text-purple-400 mb-2">15,632</div>
+                                <div class="text-gray-400 mb-1">Video Engagement Plays</div>
+                                <div class="text-sm text-green-400">200%+ higher engagement</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="border-t border-purple-500/20 pt-8">
+                        <h4 class="text-2xl font-bold mb-4">The Strategy That Made It Work</h4>
+                        <p class="text-gray-300 mb-6">
+                            Instead of expensive cold-traffic conversion campaigns, we focused Phase 1 on building qualified audiences at maximum efficiency. These warm audiences are now being retargeted with conversion-focused messaging at <span class="text-purple-400 font-bold">60-70% lower cost</span> than traditional cold traffic acquisition.
+                        </p>
+                        <div class="bg-purple-500/10 border border-purple-500/30 rounded-lg p-6">
+                            <div class="text-sm text-purple-400 font-semibold mb-2">CLIENT QUOTE</div>
+                            <p class="text-gray-300 italic">"Julian didn't just re-create the brand or run ads, he showed us the strategy. Building audiences first meant we're not burning money on cold traffic. Now we're retargeting people who already know us. It's smarter spending."</p>
+                            <p class="text-gray-500 text-sm mt-2">— Southern Pavers, October 2025</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="text-center mt-12 scroll-reveal">
+                    <a href="portfolio.html" class="inline-flex items-center gap-2 bg-white text-black px-8 py-4 rounded-full font-bold text-lg hover:bg-gray-200 transition-all">
+                        <span>View Full Portfolio</span>
+                        <i class="fas fa-arrow-right"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- How It Works -->
+    <section id="how-it-works" class="py-32 bg-gradient-to-b from-gray-900 to-black">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-16 scroll-reveal">
+                <h2 class="text-5xl md:text-6xl font-bold mb-6">How It Works</h2>
+                <p class="text-xl text-gray-400">Simple, transparent process from start to success</p>
+            </div>
+            <div class="grid md:grid-cols-4 gap-8 max-w-6xl mx-auto">
+                <div class="text-center scroll-reveal">
+                    <div class="bg-green-500/20 border-2 border-green-500 rounded-full w-20 h-20 flex items-center justify-center mx-auto mb-4 text-3xl font-bold text-green-400">1</div>
+                    <h3 class="text-xl font-bold mb-2">Choose Your Path</h3>
+                    <p class="text-gray-400">Need to BUILD something new or RISE with ongoing growth? Take our 2-minute quiz.</p>
+                </div>
+                <div class="text-center scroll-reveal">
+                    <div class="bg-green-500/20 border-2 border-green-500 rounded-full w-20 h-20 flex items-center justify-center mx-auto mb-4 text-3xl font-bold text-green-400">2</div>
+                    <h3 class="text-xl font-bold mb-2">Strategy Call</h3>
+                    <p class="text-gray-400">30-minute consultation to understand your goals and recommend the right solution.</p>
+                </div>
+                <div class="text-center scroll-reveal">
+                    <div class="bg-green-500/20 border-2 border-green-500 rounded-full w-20 h-20 flex items-center justify-center mx-auto mb-4 text-3xl font-bold text-green-400">3</div>
+                    <h3 class="text-xl font-bold mb-2">Fast Delivery</h3>
+                    <p class="text-gray-400">BUILD projects in 3-14 days. RISE partnerships start within 48 hours.</p>
+                </div>
+                <div class="text-center scroll-reveal">
+                    <div class="bg-green-500/20 border-2 border-green-500 rounded-full w-20 h-20 flex items-center justify-center mx-auto mb-4 text-3xl font-bold text-green-400">4</div>
+                    <h3 class="text-xl font-bold mb-2">See Results</h3>
+                    <p class="text-gray-400">Track everything transparently. Optimize relentlessly. Scale what works.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Form Section -->
+    <section id="contact" class="py-32 bg-black">
+        <div class="container mx-auto px-4">
+            <div class="max-w-3xl mx-auto">
+                <div class="text-center mb-12 scroll-reveal">
+                    <h2 class="text-5xl md:text-6xl font-bold mb-6">Let's Build Something</h2>
+                    <p class="text-xl text-gray-400">Ready to get started? Fill out the form below and we'll get back to you within 24 hours.</p>
+                </div>
+
+                <div class="card-glow rounded-2xl p-8 md:p-12 scroll-reveal">
+                    <div class="spotlight"></div>
+                    <form name="contact" method="POST" data-netlify="true" netlify-honeypot="bot-field" class="space-y-6">
+                        <!-- Netlify form detection -->
+                        <input type="hidden" name="form-name" value="contact" />
+                        
+                        <!-- Honeypot field for spam protection -->
+                        <p class="hidden">
+                            <label>Don't fill this out if you're human: <input name="bot-field" /></label>
+                        </p>
+
+                        <div class="grid md:grid-cols-2 gap-6">
+                            <div>
+                                <label for="name" class="block text-sm font-semibold mb-2 text-gray-300">Name *</label>
+                                <input 
+                                    type="text" 
+                                    id="name" 
+                                    name="name" 
+                                    required
+                                    class="w-full px-4 py-3 bg-black/50 border border-green-500/30 rounded-lg focus:border-green-500 focus:outline-none focus:ring-2 focus:ring-green-500/20 transition-all text-white"
+                                    placeholder="Your name"
+                                />
+                            </div>
+                            <div>
+                                <label for="email" class="block text-sm font-semibold mb-2 text-gray-300">Email *</label>
+                                <input 
+                                    type="email" 
+                                    id="email" 
+                                    name="email" 
+                                    required
+                                    class="w-full px-4 py-3 bg-black/50 border border-green-500/30 rounded-lg focus:border-green-500 focus:outline-none focus:ring-2 focus:ring-green-500/20 transition-all text-white"
+                                    placeholder="your@email.com"
+                                />
+                            </div>
+                        </div>
+
+                        <div>
+                            <label for="phone" class="block text-sm font-semibold mb-2 text-gray-300">Phone</label>
+                            <input 
+                                type="tel" 
+                                id="phone" 
+                                name="phone"
+                                class="w-full px-4 py-3 bg-black/50 border border-green-500/30 rounded-lg focus:border-green-500 focus:outline-none focus:ring-2 focus:ring-green-500/20 transition-all text-white"
+                                placeholder="(555) 123-4567"
+                            />
+                        </div>
+
+                        <div>
+                            <label for="service" class="block text-sm font-semibold mb-2 text-gray-300">I'm interested in *</label>
+                            <select 
+                                id="service" 
+                                name="service" 
+                                required
+                                class="w-full px-4 py-3 bg-black/50 border border-green-500/30 rounded-lg focus:border-green-500 focus:outline-none focus:ring-2 focus:ring-green-500/20 transition-all text-white"
+                            >
+                                <option value="">Select a service</option>
+                                <option value="build-website">BUILD: Website</option>
+                                <option value="build-branding">BUILD: Branding</option>
+                                <option value="build-app">BUILD: App/Automation</option>
+                                <option value="build-video">BUILD: Video Production</option>
+                                <option value="rise-starter">RISE: Starter ($800-$1.2K/mo)</option>
+                                <option value="rise-growth">RISE: Growth ($1.5K-$2.5K/mo)</option>
+                                <option value="rise-accelerator">RISE: Accelerator ($2.5K-$3.5K/mo)</option>
+                                <option value="rise-enterprise">RISE: Enterprise ($5K+/mo)</option>
+                                <option value="not-sure">Not sure - Need guidance</option>
+                            </select>
+                        </div>
+
+                        <div>
+                            <label for="message" class="block text-sm font-semibold mb-2 text-gray-300">Tell us about your project *</label>
+                            <textarea 
+                                id="message" 
+                                name="message" 
+                                rows="6" 
+                                required
+                                class="w-full px-4 py-3 bg-black/50 border border-green-500/30 rounded-lg focus:border-green-500 focus:outline-none focus:ring-2 focus:ring-green-500/20 transition-all text-white resize-none"
+                                placeholder="What are you looking to accomplish? Share as much detail as you'd like..."
+                            ></textarea>
+                        </div>
+
+                        <div>
+                            <button 
+                                type="submit" 
+                                class="w-full bg-green-500 hover:bg-green-400 text-black font-bold py-4 px-8 rounded-full text-lg transition-all button-glow flex items-center justify-center gap-2"
+                            >
+                                <span>Send Message</span>
+                                <i class="fas fa-paper-plane"></i>
+                            </button>
+                        </div>
+
+                        <p class="text-sm text-gray-500 text-center">
+                            We'll respond within 24 hours. Or skip the form and email us at <a href="mailto:info@jpaxmedia.com" class="text-green-400 hover:text-green-300">info@jpaxmedia.com</a>
+                        </p>
+                    </form>
                 </div>
             </div>
         </div>
