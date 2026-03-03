@@ -3,899 +3,839 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>JPax Media Pricing | BUILD. RISE. SCALE.</title>
+    <title>Pricing | JPax Media — AI Operating Systems & Creative Services</title>
     
-    <!-- SEO Meta Tags -->
-    <meta name="description" content="Transparent pricing. No hidden fees. Choose BUILD for foundational projects or RISE for ongoing growth partnerships.">
-    <meta name="keywords" content="digital agency pricing, BUILD RISE framework, website pricing, branding costs, marketing packages">
+    <meta name="description" content="Transparent pricing for AI operating systems, websites, branding, and growth partnerships. No hidden fees. TradeOS, CreatorOS, and full creative services.">
+    <meta name="keywords" content="TradeOS pricing, CreatorOS pricing, AI operating system cost, website pricing, branding pricing, digital agency pricing">
     
-    <!-- Open Graph -->
     <meta property="og:type" content="website">
-    <meta property="og:title" content="JPax Media Pricing">
-    <meta property="og:description" content="Transparent pricing. No hidden fees. No contact us for a quote games.">
+    <meta property="og:title" content="Pricing | JPax Media">
+    <meta property="og:description" content="Transparent pricing. No hidden fees. AI operating systems and creative services delivered in days.">
     <meta property="og:image" content="https://jpaxmedia.com/jpaxmedialogoOFFICIALFINALwhite.png">
+    <meta property="og:url" content="https://jpaxmedia.com/pricing.html">
     
-    <!-- Favicon -->
     <link rel="icon" type="image/png" href="jpaxmedialogoOFFICIALFINALwhite.png">
     
-    <!-- Tailwind CSS -->
-    <script src="https://cdn.tailwindcss.com"></script>
-    <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
-    <!-- Font Awesome -->
+    <link href="https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@400;500;600;700&family=IBM+Plex+Sans:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    
+
     <style>
+        :root {
+            --bg: #06080F;
+            --bg-card: rgba(12, 16, 28, 0.85);
+            --bg-card-solid: #0C101C;
+            --accent: #4ADE80;
+            --accent-glow: rgba(74, 222, 128, 0.15);
+            --green: #10B981;
+            --green-dim: rgba(16, 185, 129, 0.1);
+            --green-glow: rgba(16, 185, 129, 0.2);
+            --purple: #8B5CF6;
+            --purple-dim: rgba(139, 92, 246, 0.1);
+            --purple-glow: rgba(139, 92, 246, 0.2);
+            --white: #F1F5F9;
+            --gray-300: #CBD5E1;
+            --gray-400: #94A3B8;
+            --gray-500: #64748B;
+            --gray-700: #334155;
+            --gray-800: #1E293B;
+            --font-display: 'Chakra Petch', sans-serif;
+            --font-body: 'IBM Plex Sans', sans-serif;
+            --font-mono: 'JetBrains Mono', monospace;
+        }
+
+        *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
+
         body {
-            font-family: 'Inter', sans-serif;
-            background-color: #000000;
+            font-family: var(--font-body);
+            background: var(--bg);
+            color: var(--gray-300);
+            overflow-x: hidden;
+            -webkit-font-smoothing: antialiased;
         }
-        
-        /* Custom cursor */
-        @media (hover: hover) and (pointer: fine) {
-            body {
-                cursor: none;
-            }
-            .cursor-dot, .cursor-outline {
-                pointer-events: none;
-                position: fixed;
-                top: 50%;
-                left: 50%;
-                border-radius: 50%;
-                opacity: 0;
-                transform: translate(-50%, -50%);
-                transition: opacity 0.3s ease-in-out, transform 0.1s linear;
-                z-index: 9999;
-            }
-            .cursor-dot {
-                width: 8px;
-                height: 8px;
-                background-color: #4ade80;
-            }
-            .cursor-outline {
-                width: 40px;
-                height: 40px;
-                border: 2px solid #4ade80;
-                transition: width 0.2s ease, height 0.2s ease, border 0.2s ease, transform 0.1s linear;
-            }
-            body:hover .cursor-dot, body:hover .cursor-outline {
-                opacity: 1;
-            }
-            .cursor-interact {
-                width: 60px;
-                height: 60px;
-                border: 3px solid #4ade80;
-            }
-        }
-        
-        /* Hero Section */
-        .hero-section {
-            position: relative;
-            height: 70vh;
-            min-height: 500px;
-            overflow: hidden;
-            background: linear-gradient(to bottom, #000000, #0a0a0a);
-            padding-top: 100px; /* Extra padding for mobile nav */
-        }
-        
-        @media (max-width: 768px) {
-            .hero-section {
-                min-height: 600px;
-                padding-top: 100px;
-            }
-        }
-        
-        .hero-video-overlay {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: 
-                radial-gradient(ellipse at top, rgba(74, 222, 128, 0.12) 0%, transparent 50%),
-                radial-gradient(ellipse at bottom, rgba(168, 85, 247, 0.08) 0%, transparent 50%),
-                linear-gradient(to bottom, rgba(0,0,0,0.3) 0%, rgba(0,0,0,0.9) 100%);
-            z-index: 1;
-        }
-        
-        .hero-content {
-            position: relative;
-            z-index: 2;
-            height: 100%;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            padding: 2rem 1rem;
-            text-align: center;
-        }
-        
-        @media (max-width: 768px) {
-            .hero-content {
-                padding: 2rem 1.5rem;
-            }
-        }
-        
-        .hero-title {
-            font-size: clamp(2rem, 8vw, 6rem);
-            font-weight: 900;
-            letter-spacing: -0.02em;
-            line-height: 1.1;
-            margin-bottom: 1.5rem;
-        }
-        
-        @media (max-width: 640px) {
-            .hero-title {
-                font-size: clamp(2rem, 12vw, 4rem);
-                margin-bottom: 1rem;
-            }
-        }
-        
-        /* Animated Background Grid */
-        .grid-overlay {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-image: 
+
+        /* Grid background */
+        .grid-bg {
+            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+            pointer-events: none; z-index: 0;
+            background-image:
                 linear-gradient(rgba(74, 222, 128, 0.03) 1px, transparent 1px),
                 linear-gradient(90deg, rgba(74, 222, 128, 0.03) 1px, transparent 1px);
-            background-size: 50px 50px;
-            animation: gridMove 20s linear infinite;
-            z-index: 0;
+            background-size: 60px 60px;
+            animation: gridDrift 25s linear infinite;
         }
-        
-        @keyframes gridMove {
-            0% { transform: translateY(0); }
-            100% { transform: translateY(50px); }
+        .grid-bg::after {
+            content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+            background-image:
+                linear-gradient(rgba(74, 222, 128, 0.06) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(74, 222, 128, 0.06) 1px, transparent 1px);
+            background-size: 300px 300px;
         }
-        
-        /* Floating Particles */
+        @keyframes gridDrift { 0% { transform: translateY(0); } 100% { transform: translateY(60px); } }
+
+        /* Particles */
         .particle {
-            position: absolute;
-            width: 2px;
-            height: 2px;
-            background: #4ade80;
-            border-radius: 50%;
-            opacity: 0.5;
-            animation: float 15s infinite;
+            position: absolute; width: 2px; height: 2px; background: var(--accent);
+            border-radius: 50%; opacity: 0.4; animation: particleFloat 20s infinite;
         }
-        
-        @keyframes float {
-            0%, 100% { transform: translate(0, 0) scale(1); opacity: 0.5; }
-            50% { transform: translate(100px, -100px) scale(1.5); opacity: 0.8; }
+        @keyframes particleFloat {
+            0%, 100% { transform: translate(0, 0); opacity: 0.4; }
+            25% { transform: translate(80px, -60px); opacity: 0.7; }
+            50% { transform: translate(-40px, -120px); opacity: 0.3; }
+            75% { transform: translate(60px, -80px); opacity: 0.6; }
         }
-        
-        /* Scroll Reveal */
-        .scroll-reveal {
-            opacity: 0;
-            transform: translateY(30px);
-            transition: opacity 0.8s cubic-bezier(0.6, 0.2, 0.1, 1), transform 0.8s cubic-bezier(0.6, 0.2, 0.1, 1);
-        }
-        .scroll-reveal.is-visible {
-            opacity: 1;
-            transform: translateY(0);
-        }
-        
-        /* Card Styles */
-        .card-glow {
-            position: relative;
-            overflow: hidden;
-            transition: all 0.3s ease-in-out;
-            background: rgba(17, 17, 17, 0.8);
-            backdrop-filter: blur(10px);
-            border: 1px solid rgba(74, 222, 128, 0.2);
-        }
-        
-        .card-glow:hover {
-            border-color: #4ade80;
-            box-shadow: 0 0 30px rgba(74, 222, 128, 0.3);
-            transform: translateY(-5px);
-        }
-        
-        .spotlight {
-            position: absolute;
-            width: 300px;
-            height: 300px;
-            background: radial-gradient(circle, rgba(74, 222, 128, 0.2), transparent 70%);
-            border-radius: 50%;
-            pointer-events: none;
-            opacity: 0;
-            transition: opacity 0.3s ease;
-            transform: translate(-50%, -50%);
-        }
-        
-        .card-glow:hover .spotlight {
-            opacity: 1;
-        }
-        
-        /* Badge */
-        .badge-build {
-            background: rgba(74, 222, 128, 0.2);
-            color: #4ade80;
-            border: 1px solid #4ade80;
-        }
-        
-        .badge-rise {
-            background: rgba(168, 85, 247, 0.2);
-            color: #c084fc;
-            border: 1px solid #c084fc;
-        }
-        
-        /* Navigation */
-        nav {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            z-index: 1000;
-        }
-        
-        .logo-container {
+
+        /* Navigation — same as homepage */
+        .nav {
+            position: fixed; top: 0; left: 0; width: 100%; z-index: 1000;
+            padding: 0.75rem 2rem;
+            background: rgba(6, 8, 15, 0.85); backdrop-filter: blur(20px);
+            border-bottom: 1px solid rgba(74, 222, 128, 0.08);
             transition: all 0.3s ease;
         }
-        
-        .logo-glow {
-            transition: transform 0.3s ease;
+        .nav.scrolled { background: rgba(6, 8, 15, 0.95); border-bottom-color: rgba(74, 222, 128, 0.15); }
+        .nav-inner { max-width: 1200px; margin: 0 auto; display: flex; align-items: center; justify-content: space-between; }
+        .nav-logo img { height: 40px; transition: transform 0.3s; }
+        .nav-logo img:hover { transform: scale(1.05); }
+        .nav-links { display: flex; align-items: center; gap: 2rem; }
+        .nav-links a { color: var(--gray-400); text-decoration: none; font-size: 0.9rem; font-weight: 500; transition: color 0.3s; letter-spacing: 0.02em; }
+        .nav-links a:hover { color: var(--white); }
+        .nav-links a.active { color: var(--accent); }
+        .nav-cta {
+            background: var(--accent) !important; color: #000 !important;
+            padding: 0.6rem 1.5rem; border-radius: 6px; font-weight: 600 !important;
+            font-size: 0.85rem !important; transition: all 0.3s !important;
         }
-        
-        .logo-glow:hover {
-            transform: scale(1.1);
-        }
-        
-        .button-glow {
-            transition: all 0.3s ease;
-        }
-        
-        .button-glow:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 10px 25px rgba(74, 222, 128, 0.4);
-        }
-        
-        /* Mobile Menu */
+        .nav-cta:hover { background: #6EE7A8 !important; transform: translateY(-1px); box-shadow: 0 4px 20px rgba(74, 222, 128, 0.4); }
+        .nav-mobile-btn { display: none; background: none; border: none; cursor: pointer; padding: 0.5rem; }
+        .nav-mobile-btn span { display: block; width: 24px; height: 2px; background: var(--gray-400); margin: 5px 0; transition: all 0.3s; }
         .mobile-menu {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100vh;
-            background: rgba(0, 0, 0, 0.98);
-            backdrop-filter: blur(10px);
-            transform: translateX(-100%);
-            transition: transform 0.3s ease-in-out;
-            z-index: 999;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            gap: 2rem;
+            position: fixed; top: 0; left: 0; width: 100%; height: 100vh;
+            background: rgba(6, 8, 15, 0.98); backdrop-filter: blur(20px);
+            display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 2rem;
+            opacity: 0; pointer-events: none; transition: opacity 0.3s; z-index: 999;
         }
-        
-        .mobile-menu.active {
-            transform: translateX(0);
+        .mobile-menu.active { opacity: 1; pointer-events: all; }
+        .mobile-menu a { color: var(--white); text-decoration: none; font-size: 1.5rem; font-family: var(--font-display); font-weight: 600; }
+        @media (max-width: 768px) { .nav-links { display: none; } .nav-mobile-btn { display: block; } }
+
+        /* Layout */
+        section { position: relative; z-index: 1; }
+        .container { max-width: 1200px; margin: 0 auto; padding: 0 1.5rem; }
+
+        /* Hero */
+        .hero {
+            padding: 10rem 0 4rem; text-align: center; position: relative; overflow: hidden;
         }
-        
-        .hamburger-icon {
-            display: flex;
-            flex-direction: column;
-            gap: 5px;
-            cursor: pointer;
+        .hero-glow {
+            position: absolute; width: 600px; height: 600px; border-radius: 50%;
+            filter: blur(150px); pointer-events: none;
         }
-        
-        .hamburger-icon span {
-            width: 25px;
-            height: 2px;
-            background: white;
-            transition: all 0.3s ease;
+        .hero-glow-1 { background: rgba(74, 222, 128, 0.06); top: -200px; right: -100px; }
+        .hero-glow-2 { background: rgba(139, 92, 246, 0.04); bottom: -100px; left: -200px; }
+        .hero-badge {
+            display: inline-flex; align-items: center; gap: 0.5rem;
+            padding: 0.5rem 1.25rem; border-radius: 100px;
+            background: rgba(74, 222, 128, 0.08); border: 1px solid rgba(74, 222, 128, 0.25);
+            font-family: var(--font-mono); font-size: 0.75rem; color: var(--accent);
+            letter-spacing: 0.08em; text-transform: uppercase; margin-bottom: 2rem;
+            animation: fadeInUp 0.6s ease both;
         }
-        
-        .hamburger-icon.active span:nth-child(1) {
-            transform: rotate(45deg) translate(7px, 7px);
+        .hero h1 {
+            font-family: var(--font-display); font-weight: 700;
+            font-size: clamp(2.2rem, 5vw, 3.5rem); line-height: 1.15;
+            color: var(--white); margin-bottom: 1.25rem;
+            animation: fadeInUp 0.6s ease 0.1s both;
         }
-        
-        .hamburger-icon.active span:nth-child(2) {
-            opacity: 0;
+        .hero-sub {
+            font-size: clamp(1rem, 2vw, 1.15rem); color: var(--gray-400);
+            max-width: 600px; margin: 0 auto 2rem; line-height: 1.7;
+            animation: fadeInUp 0.6s ease 0.2s both;
         }
-        
-        .hamburger-icon.active span:nth-child(3) {
-            transform: rotate(-45deg) translate(7px, -7px);
+        .hero-nav {
+            display: flex; gap: 0.75rem; justify-content: center; flex-wrap: wrap;
+            animation: fadeInUp 0.6s ease 0.3s both;
+        }
+        .hero-nav a {
+            padding: 0.6rem 1.5rem; border-radius: 8px; font-size: 0.85rem;
+            font-weight: 600; text-decoration: none; transition: all 0.3s;
+            font-family: var(--font-body);
+        }
+        .hero-nav .hn-active {
+            background: rgba(74, 222, 128, 0.1); border: 1px solid rgba(74, 222, 128, 0.3);
+            color: var(--accent);
+        }
+        .hero-nav .hn-default {
+            background: transparent; border: 1px solid var(--gray-700); color: var(--gray-400);
+        }
+        .hero-nav a:hover { transform: translateY(-2px); }
+
+        @keyframes fadeInUp { from { opacity:0; transform:translateY(20px); } to { opacity:1; transform:translateY(0); } }
+
+        /* Section labels */
+        .section-label {
+            font-family: var(--font-mono); font-size: 0.75rem; color: var(--accent);
+            letter-spacing: 0.12em; text-transform: uppercase; margin-bottom: 1rem;
+        }
+        .section-title {
+            font-family: var(--font-display); font-weight: 700;
+            font-size: clamp(1.8rem, 3.5vw, 2.5rem); color: var(--white);
+            margin-bottom: 0.75rem; line-height: 1.2;
+        }
+        .section-desc {
+            font-size: 1rem; color: var(--gray-400); max-width: 600px; line-height: 1.7; margin-bottom: 3rem;
+        }
+
+        /* Pricing Category Sections */
+        .pricing-section { padding: 5rem 0; }
+        .pricing-section + .pricing-section { border-top: 1px solid rgba(255,255,255,0.04); }
+
+        /* OS Product Cards (featured — larger) */
+        .os-pricing-grid {
+            display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; margin-bottom: 2rem;
+        }
+        .os-price-card {
+            border-radius: 16px; padding: 2.5rem;
+            border: 1px solid rgba(255,255,255,0.06);
+            background: var(--bg-card); position: relative; overflow: hidden;
+            transition: all 0.4s;
+        }
+        .os-price-card:hover { transform: translateY(-4px); }
+        .os-price-card.trade { border-color: rgba(16,185,129,0.2); }
+        .os-price-card.trade:hover { border-color: rgba(16,185,129,0.4); box-shadow: 0 20px 60px rgba(16,185,129,0.1); }
+        .os-price-card.creator { border-color: rgba(139,92,246,0.2); }
+        .os-price-card.creator:hover { border-color: rgba(139,92,246,0.4); box-shadow: 0 20px 60px rgba(139,92,246,0.1); }
+
+        .os-price-tag {
+            display: inline-flex; padding: 0.3rem 0.7rem; border-radius: 4px;
+            font-family: var(--font-mono); font-size: 0.65rem; font-weight: 600;
+            letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 1.25rem;
+        }
+        .os-price-tag.trade { background: var(--green-dim); color: var(--green); border: 1px solid rgba(16,185,129,0.3); }
+        .os-price-tag.creator { background: var(--purple-dim); color: var(--purple); border: 1px solid rgba(139,92,246,0.3); }
+
+        .os-price-name {
+            font-family: var(--font-display); font-weight: 700;
+            font-size: 1.6rem; color: var(--white); margin-bottom: 0.5rem;
+        }
+        .os-price-desc { font-size: 0.9rem; color: var(--gray-400); line-height: 1.6; margin-bottom: 1.5rem; }
+
+        .os-tier-grid { display: flex; flex-direction: column; gap: 0.75rem; margin-bottom: 2rem; }
+        .os-tier {
+            display: flex; justify-content: space-between; align-items: center;
+            padding: 0.75rem 1rem; border-radius: 8px;
+            background: rgba(255,255,255,0.02); border: 1px solid rgba(255,255,255,0.04);
+        }
+        .os-tier-left { display: flex; flex-direction: column; gap: 0.15rem; }
+        .os-tier-name { font-weight: 600; font-size: 0.9rem; color: var(--white); }
+        .os-tier-detail { font-size: 0.75rem; color: var(--gray-500); }
+        .os-tier-price { font-family: var(--font-display); font-weight: 700; font-size: 1.1rem; }
+        .os-tier-price.trade-c { color: var(--green); }
+        .os-tier-price.creator-c { color: var(--purple); }
+
+        .os-price-features { margin-bottom: 2rem; }
+        .os-price-features h4 {
+            font-family: var(--font-mono); font-size: 0.65rem; color: var(--gray-500);
+            letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 0.75rem;
+        }
+        .os-feat-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 0.5rem; }
+        .os-feat {
+            display: flex; align-items: center; gap: 0.4rem;
+            font-size: 0.8rem; color: var(--gray-300);
+        }
+        .os-feat i { font-size: 0.6rem; }
+        .os-feat.trade i { color: var(--green); }
+        .os-feat.creator i { color: var(--purple); }
+
+        .os-price-cta {
+            display: inline-flex; align-items: center; gap: 0.5rem;
+            padding: 0.7rem 1.5rem; border-radius: 8px; font-weight: 600;
+            font-size: 0.85rem; text-decoration: none; transition: all 0.3s;
+        }
+        .os-price-cta.trade { background: var(--green); color: #000; }
+        .os-price-cta.trade:hover { background: #34D399; transform: translateY(-2px); box-shadow: 0 8px 25px var(--green-glow); }
+        .os-price-cta.creator { background: var(--purple); color: var(--white); }
+        .os-price-cta.creator:hover { background: #A78BFA; transform: translateY(-2px); box-shadow: 0 8px 25px var(--purple-glow); }
+
+        /* BUILD Creative Service Cards */
+        .build-grid {
+            display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 1.5rem; margin-bottom: 2rem;
+        }
+        .build-card {
+            border-radius: 12px; padding: 2rem;
+            border: 1px solid rgba(255,255,255,0.06);
+            background: var(--bg-card); transition: all 0.3s;
+        }
+        .build-card:hover { border-color: rgba(74,222,128,0.2); transform: translateY(-4px); }
+        .build-card-icon {
+            width: 42px; height: 42px; border-radius: 8px;
+            display: flex; align-items: center; justify-content: center;
+            font-size: 1.1rem; margin-bottom: 1rem;
+            background: var(--accent-glow); color: var(--accent);
+        }
+        .build-card h3 {
+            font-family: var(--font-display); font-weight: 600;
+            font-size: 1.2rem; color: var(--white); margin-bottom: 0.4rem;
+        }
+        .build-card-sub { font-size: 0.8rem; color: var(--gray-500); margin-bottom: 1.25rem; }
+        .build-tier {
+            display: flex; justify-content: space-between; align-items: center;
+            padding: 0.5rem 0; border-bottom: 1px solid rgba(255,255,255,0.04);
+            font-size: 0.85rem;
+        }
+        .build-tier:last-child { border: none; }
+        .build-tier-name { color: var(--gray-400); }
+        .build-tier-price { color: var(--accent); font-weight: 600; font-family: var(--font-mono); font-size: 0.8rem; }
+        .build-card-timeline {
+            font-family: var(--font-mono); font-size: 0.7rem; color: var(--gray-500);
+            margin-top: 1rem; letter-spacing: 0.05em;
+        }
+
+        /* Included box */
+        .included-box {
+            border-radius: 12px; padding: 2rem;
+            border: 1px solid rgba(74, 222, 128, 0.15);
+            background: var(--bg-card);
+        }
+        .included-box.purple { border-color: rgba(139, 92, 246, 0.15); }
+        .included-box h3 {
+            font-family: var(--font-display); font-weight: 600;
+            font-size: 1.1rem; color: var(--white); margin-bottom: 1.25rem;
+            display: flex; align-items: center; gap: 0.5rem;
+        }
+        .included-box h3 i.g { color: var(--accent); }
+        .included-box h3 i.p { color: var(--purple); }
+        .included-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 0.6rem; }
+        .included-item {
+            display: flex; align-items: center; gap: 0.5rem;
+            font-size: 0.85rem; color: var(--gray-300);
+        }
+        .included-item i { font-size: 0.65rem; }
+        .included-item i.g { color: var(--accent); }
+        .included-item i.p { color: var(--purple); }
+
+        /* RISE Tier Cards */
+        .rise-grid {
+            display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; margin-bottom: 2rem;
+        }
+        .rise-card {
+            border-radius: 12px; padding: 2rem;
+            border: 1px solid rgba(139,92,246,0.12);
+            background: var(--bg-card); transition: all 0.3s;
+            position: relative;
+        }
+        .rise-card:hover { border-color: rgba(139,92,246,0.3); transform: translateY(-4px); box-shadow: 0 15px 50px rgba(139,92,246,0.08); }
+        .rise-card.popular { border-color: var(--purple); border-width: 2px; }
+        .rise-popular-badge {
+            position: absolute; top: -10px; left: 50%; transform: translateX(-50%);
+            background: var(--purple); color: var(--white);
+            font-family: var(--font-mono); font-size: 0.6rem; font-weight: 600;
+            padding: 0.25rem 0.75rem; border-radius: 100px; letter-spacing: 0.08em;
+            text-transform: uppercase;
+        }
+        .rise-card h3 {
+            font-family: var(--font-display); font-weight: 700;
+            font-size: 1.3rem; color: var(--white); margin-bottom: 0.5rem;
+        }
+        .rise-price {
+            font-family: var(--font-display); font-weight: 700;
+            font-size: 1.6rem; color: var(--purple); margin-bottom: 0.25rem;
+        }
+        .rise-period { font-size: 0.75rem; color: var(--gray-500); margin-bottom: 1.5rem; }
+        .rise-features { display: flex; flex-direction: column; gap: 0.6rem; }
+        .rise-feat {
+            display: flex; align-items: flex-start; gap: 0.5rem;
+            font-size: 0.8rem; color: var(--gray-300);
+        }
+        .rise-feat i { color: var(--purple); font-size: 0.65rem; margin-top: 0.3rem; flex-shrink: 0; }
+
+        /* Add-ons */
+        .addons-grid {
+            display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1rem; margin-top: 2rem;
+        }
+        .addon-item {
+            display: flex; justify-content: space-between; align-items: center;
+            padding: 0.75rem 1rem; border-radius: 8px;
+            background: rgba(255,255,255,0.02); border: 1px solid rgba(255,255,255,0.04);
+            font-size: 0.85rem;
+        }
+        .addon-name { color: var(--gray-300); }
+        .addon-price { color: var(--accent); font-weight: 600; font-family: var(--font-mono); font-size: 0.8rem; }
+
+        /* CTA */
+        .cta-section { padding: 5rem 0; text-align: center; }
+        .cta-box {
+            background: var(--bg-card); border: 1px solid rgba(74,222,128,0.15);
+            border-radius: 20px; padding: 3.5rem 2.5rem; position: relative; overflow: hidden;
+        }
+        .cta-box::before {
+            content: ''; position: absolute; top: -50%; left: -50%; width: 200%; height: 200%;
+            background: radial-gradient(ellipse at center, rgba(74,222,128,0.04), transparent 60%);
+            pointer-events: none;
+        }
+        .cta-box h2 {
+            font-family: var(--font-display); font-weight: 700;
+            font-size: clamp(1.8rem, 3.5vw, 2.5rem); color: var(--white);
+            margin-bottom: 1rem; position: relative;
+        }
+        .cta-box p { font-size: 1rem; color: var(--gray-400); max-width: 500px; margin: 0 auto 2rem; position: relative; }
+        .cta-actions { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; position: relative; }
+        .btn-primary {
+            display: inline-flex; align-items: center; gap: 0.5rem;
+            padding: 0.8rem 1.75rem; background: var(--accent); color: #000;
+            border: none; border-radius: 8px; font-weight: 600; font-size: 0.95rem;
+            cursor: pointer; transition: all 0.3s; text-decoration: none; font-family: var(--font-body);
+        }
+        .btn-primary:hover { background: #6EE7A8; transform: translateY(-2px); box-shadow: 0 8px 30px rgba(74, 222, 128, 0.4); }
+        .btn-secondary {
+            display: inline-flex; align-items: center; gap: 0.5rem;
+            padding: 0.8rem 1.75rem; background: transparent; color: var(--white);
+            border: 1px solid var(--gray-700); border-radius: 8px; font-weight: 600;
+            font-size: 0.95rem; text-decoration: none; transition: all 0.3s; font-family: var(--font-body);
+        }
+        .btn-secondary:hover { border-color: var(--gray-400); background: rgba(255,255,255,0.03); transform: translateY(-2px); }
+
+        /* Footer */
+        .footer { padding: 3rem 0; border-top: 1px solid rgba(255,255,255,0.06); }
+        .footer-inner { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1.5rem; }
+        .footer-logo img { height: 32px; opacity: 0.7; }
+        .footer-links { display: flex; gap: 1.5rem; }
+        .footer-links a { color: var(--gray-500); text-decoration: none; font-size: 0.85rem; transition: color 0.3s; }
+        .footer-links a:hover { color: var(--white); }
+        .footer-copy { color: var(--gray-500); font-size: 0.8rem; }
+        .footer-copy span { font-family: var(--font-display); font-weight: 600; }
+        .footer-copy .g { color: var(--accent); }
+        .footer-copy .p { color: var(--purple); }
+        .footer-copy .b { color: #60A5FA; }
+        .footer-socials { display: flex; gap: 1rem; }
+        .footer-socials a { color: var(--gray-500); font-size: 1.1rem; transition: color 0.3s; }
+        .footer-socials a:hover { color: var(--accent); }
+
+        /* Scroll reveal */
+        .reveal { opacity: 0; transform: translateY(25px); transition: opacity 0.7s ease, transform 0.7s ease; }
+        .reveal.visible { opacity: 1; transform: translateY(0); }
+
+        /* Responsive */
+        @media (max-width: 960px) {
+            .os-pricing-grid { grid-template-columns: 1fr; }
+            .rise-grid { grid-template-columns: 1fr 1fr; }
+        }
+        @media (max-width: 640px) {
+            .rise-grid { grid-template-columns: 1fr; }
+            .build-grid { grid-template-columns: 1fr; }
+            .included-grid { grid-template-columns: 1fr; }
+            .os-feat-grid { grid-template-columns: 1fr; }
+            .addons-grid { grid-template-columns: 1fr; }
         }
     </style>
 </head>
-<body class="bg-black text-white">
-    <!-- Custom Cursor -->
-    <div class="cursor-dot"></div>
-    <div class="cursor-outline"></div>
+<body>
+    <div class="grid-bg"></div>
+    <div class="particle" style="left:12%;top:20%;animation-delay:0s"></div>
+    <div class="particle" style="left:82%;top:35%;animation-delay:4s"></div>
+    <div class="particle" style="left:45%;top:65%;animation-delay:8s"></div>
+    <div class="particle" style="left:25%;top:80%;animation-delay:12s"></div>
 
     <!-- Navigation -->
-    <nav class="fixed w-full z-50 bg-black/90 backdrop-blur-md border-b border-green-500/20">
-        <div class="container mx-auto px-4 md:px-6 py-3 md:py-4">
-            <div class="flex items-center justify-between">
-                <a href="index.html" class="logo-container p-2 rounded-lg transition-all duration-300 hover:bg-white/5">
-                    <img src="jpaxmedialogoOFFICIALFINALwhite.png" alt="JPax Media" class="h-10 md:h-12 w-auto logo-glow transition-transform duration-300 hover:scale-110" onerror="this.style.display='none'">
-                </a>
-                
-                <!-- Desktop Menu -->
-                <div class="hidden md:flex items-center space-x-8">
-                    <a href="index.html" class="text-gray-300 hover:text-green-400 transition-colors">Home</a>
-                    <a href="index.html#services" class="text-gray-300 hover:text-green-400 transition-colors">Services</a>
-                    <a href="index.html#framework" class="text-gray-300 hover:text-green-400 transition-colors">Framework</a>
-                    <a href="portfolio.html" class="text-gray-300 hover:text-green-400 transition-colors">Portfolio</a>
-                    <a href="jupiter.html" class="text-gray-300 hover:text-green-400 transition-colors">Jupiter</a>
-                    <a href="pricing.html" class="text-green-400 transition-colors">Pricing</a>
-                    <a href="quiz.html" class="bg-green-500 text-black px-6 py-2 rounded-full font-semibold hover:bg-green-400 button-glow transition-all">Take Quiz</a>
-                </div>
-
-                <!-- Mobile Menu Button -->
-                <button id="mobile-menu-button" class="md:hidden text-white focus:outline-none z-50 relative">
-                    <div class="hamburger-icon">
-                        <span></span>
-                        <span></span>
-                        <span></span>
-                    </div>
-                </button>
+    <nav class="nav" id="nav">
+        <div class="nav-inner">
+            <a href="index.html" class="nav-logo">
+                <img src="jpaxmedialogoOFFICIALFINALwhite.png" alt="JPax Media" onerror="this.style.display='none'">
+            </a>
+            <div class="nav-links">
+                <a href="index.html">Home</a>
+                <a href="index.html#systems">Systems</a>
+                <a href="index.html#services">Services</a>
+                <a href="portfolio.html">Portfolio</a>
+                <a href="jupiter.html">Jupiter</a>
+                <a href="pricing.html" class="active">Pricing</a>
+                <a href="quiz.html" class="nav-cta">Take Quiz</a>
             </div>
+            <button class="nav-mobile-btn" id="mobileBtn" aria-label="Menu">
+                <span></span><span></span><span></span>
+            </button>
         </div>
     </nav>
-
-    <!-- Mobile Menu -->
-    <div id="mobile-menu" class="mobile-menu">
-        <a href="index.html" class="text-2xl font-semibold hover:text-green-400 transition-colors">Home</a>
-        <a href="index.html#services" class="text-2xl font-semibold hover:text-green-400 transition-colors">Services</a>
-        <a href="index.html#framework" class="text-2xl font-semibold hover:text-green-400 transition-colors">Framework</a>
-        <a href="portfolio.html" class="text-2xl font-semibold hover:text-green-400 transition-colors">Portfolio</a>
-        <a href="jupiter.html" class="text-2xl font-semibold hover:text-green-400 transition-colors">Jupiter</a>
-        <a href="pricing.html" class="text-2xl font-semibold text-green-400">Pricing</a>
-        <a href="quiz.html" class="text-2xl font-semibold hover:text-green-400 transition-colors">Quiz</a>
+    <div class="mobile-menu" id="mobileMenu">
+        <a href="index.html">Home</a>
+        <a href="index.html#systems">Systems</a>
+        <a href="portfolio.html">Portfolio</a>
+        <a href="jupiter.html">Jupiter</a>
+        <a href="pricing.html">Pricing</a>
+        <a href="quiz.html">Take the Quiz</a>
     </div>
 
-    <!-- Hero Section -->
-    <section class="hero-section" style="padding-top: 80px;">
-        <div class="grid-overlay"></div>
-        <!-- Floating Particles -->
-        <div class="particle" style="left: 10%; top: 20%; animation-delay: 0s;"></div>
-        <div class="particle" style="left: 85%; top: 30%; animation-delay: 2s;"></div>
-        <div class="particle" style="left: 30%; top: 65%; animation-delay: 4s;"></div>
-        <div class="particle" style="left: 75%; top: 75%; animation-delay: 6s;"></div>
-        
-        <div class="hero-video-overlay"></div>
-        <div class="hero-content container mx-auto">
-            <div class="max-w-4xl mx-auto">
-                <h1 class="hero-title">
-                    <span class="text-green-400">BUILD.</span>
-                    <span class="text-purple-400"> RISE.</span>
-                    <span class="text-blue-400"> SCALE.</span>
-                </h1>
-                <p class="text-xl md:text-2xl text-gray-300 mb-4">
-                    Transparent pricing. No hidden fees. No "contact us for a quote" games.
-                </p>
-                <p class="text-lg text-gray-400 mb-8">
-                    Everything you need to know is right here. Choose your path: BUILD something new, or RISE with ongoing growth.
-                </p>
-                <a href="quiz.html" class="inline-flex items-center gap-2 bg-green-500 hover:bg-green-600 text-white font-bold py-4 px-8 rounded-full text-lg transition-all button-glow">
-                    <i class="fas fa-question-circle"></i>
-                    <span>Not Sure? Take Our Quiz</span>
-                </a>
+    <!-- Hero -->
+    <section class="hero">
+        <div class="hero-glow hero-glow-1"></div>
+        <div class="hero-glow hero-glow-2"></div>
+        <div class="container">
+            <div class="hero-badge">Radical Transparency</div>
+            <h1>Transparent Pricing.<br>No Hidden Fees. No Games.</h1>
+            <p class="hero-sub">
+                Everything you need to know is right here. OS systems, creative services, 
+                and ongoing partnerships — all with flat-rate pricing and clear timelines.
+            </p>
+            <div class="hero-nav">
+                <a href="#os-systems" class="hn-active"><i class="fas fa-terminal"></i> OS Systems</a>
+                <a href="#build" class="hn-default"><i class="fas fa-hammer"></i> BUILD</a>
+                <a href="#rise" class="hn-default"><i class="fas fa-rocket"></i> RISE</a>
             </div>
         </div>
     </section>
 
-    <!-- BUILD Section -->
-    <section id="build" class="py-32 bg-black">
-        <div class="container mx-auto px-4">
-            <div class="text-center mb-16 scroll-reveal">
-                <div class="inline-block bg-green-500/20 border-2 border-green-400 rounded-full px-6 py-2 mb-6">
-                    <span class="text-green-400 font-bold text-lg uppercase tracking-wider"><i class="fas fa-tools mr-2"></i>BUILD</span>
-                </div>
-                <h2 class="text-5xl md:text-6xl font-bold mb-6">
-                    Launch Your Foundation
-                </h2>
-                <p class="text-xl text-gray-400 max-w-3xl mx-auto">
-                    Fast. Foundational. Delivered in 3-14 days. One-time projects with flat-rate pricing.
+    <!-- ===== OS SYSTEMS PRICING ===== -->
+    <section class="pricing-section" id="os-systems">
+        <div class="container">
+            <div class="reveal">
+                <div class="section-label">Flagship Products</div>
+                <div class="section-title">AI Operating Systems</div>
+                <p class="section-desc">
+                    White-label dashboards branded to your business. Lead management, job tracking, 
+                    revenue analytics, and more — delivered in days.
                 </p>
             </div>
 
-            <!-- BUILD Services Grid -->
-            <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8 max-w-7xl mx-auto mb-12">
+            <div class="os-pricing-grid">
+                <!-- TradeOS -->
+                <div class="os-price-card trade reveal">
+                    <div class="os-price-tag trade">For Trades Businesses</div>
+                    <div class="os-price-name">TradeOS</div>
+                    <p class="os-price-desc">
+                        Mission control for home service businesses. Leads, jobs, quotes, 
+                        crew management, and revenue tracking in one branded dashboard.
+                    </p>
+                    <div class="os-tier-grid">
+                        <div class="os-tier">
+                            <div class="os-tier-left">
+                                <span class="os-tier-name">Starter</span>
+                                <span class="os-tier-detail">Dashboard + Leads + Jobs &middot; 7-10 days</span>
+                            </div>
+                            <span class="os-tier-price trade-c">From $3,000</span>
+                        </div>
+                        <div class="os-tier">
+                            <div class="os-tier-left">
+                                <span class="os-tier-name">Pro</span>
+                                <span class="os-tier-detail">+ Quoting + Reports + Automations &middot; 10-14 days</span>
+                            </div>
+                            <span class="os-tier-price trade-c">From $6,000</span>
+                        </div>
+                    </div>
+                    <div class="os-price-features">
+                        <h4>Included in every tier</h4>
+                        <div class="os-feat-grid">
+                            <div class="os-feat trade"><i class="fas fa-check"></i> White-label branding</div>
+                            <div class="os-feat trade"><i class="fas fa-check"></i> Lead management</div>
+                            <div class="os-feat trade"><i class="fas fa-check"></i> Job tracking pipeline</div>
+                            <div class="os-feat trade"><i class="fas fa-check"></i> Client database</div>
+                            <div class="os-feat trade"><i class="fas fa-check"></i> Mobile responsive</div>
+                            <div class="os-feat trade"><i class="fas fa-check"></i> Demo data populated</div>
+                        </div>
+                    </div>
+                    <a href="index.html#contact" class="os-price-cta trade">
+                        Get TradeOS <i class="fas fa-arrow-right"></i>
+                    </a>
+                </div>
+
+                <!-- CreatorOS -->
+                <div class="os-price-card creator reveal">
+                    <div class="os-price-tag creator">For Content Creators</div>
+                    <div class="os-price-name">CreatorOS</div>
+                    <p class="os-price-desc">
+                        Creative command center. Content pipeline, brand deal management, audience 
+                        analytics, and revenue tracking across every platform.
+                    </p>
+                    <div class="os-tier-grid">
+                        <div class="os-tier">
+                            <div class="os-tier-left">
+                                <span class="os-tier-name">Starter</span>
+                                <span class="os-tier-detail">Dashboard + Content + Deals &middot; 7-10 days</span>
+                            </div>
+                            <span class="os-tier-price creator-c">From $3,000</span>
+                        </div>
+                        <div class="os-tier">
+                            <div class="os-tier-left">
+                                <span class="os-tier-name">Pro</span>
+                                <span class="os-tier-detail">+ Audience + Revenue + Automations &middot; 10-14 days</span>
+                            </div>
+                            <span class="os-tier-price creator-c">From $6,000</span>
+                        </div>
+                    </div>
+                    <div class="os-price-features">
+                        <h4>Included in every tier</h4>
+                        <div class="os-feat-grid">
+                            <div class="os-feat creator"><i class="fas fa-check"></i> White-label branding</div>
+                            <div class="os-feat creator"><i class="fas fa-check"></i> Content pipeline</div>
+                            <div class="os-feat creator"><i class="fas fa-check"></i> Deal management</div>
+                            <div class="os-feat creator"><i class="fas fa-check"></i> Multi-platform stats</div>
+                            <div class="os-feat creator"><i class="fas fa-check"></i> Mobile responsive</div>
+                            <div class="os-feat creator"><i class="fas fa-check"></i> Demo data populated</div>
+                        </div>
+                    </div>
+                    <a href="index.html#contact" class="os-price-cta creator">
+                        Get CreatorOS <i class="fas fa-arrow-right"></i>
+                    </a>
+                </div>
+            </div>
+
+            <!-- OS Included box -->
+            <div class="included-box reveal">
+                <h3><i class="fas fa-check-circle g"></i> Every OS Deployment Includes</h3>
+                <div class="included-grid">
+                    <div class="included-item"><i class="fas fa-check g"></i> Branded to your business name, logo & colors</div>
+                    <div class="included-item"><i class="fas fa-check g"></i> Populated with realistic demo data</div>
+                    <div class="included-item"><i class="fas fa-check g"></i> 2 revision rounds included</div>
+                    <div class="included-item"><i class="fas fa-check g"></i> All source files & full ownership</div>
+                    <div class="included-item"><i class="fas fa-check g"></i> Jupiter dashboard access</div>
+                    <div class="included-item"><i class="fas fa-check g"></i> 30-day post-delivery support</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== BUILD — CREATIVE SERVICES ===== -->
+    <section class="pricing-section" id="build">
+        <div class="container">
+            <div class="reveal">
+                <div class="section-label">BUILD — One-Time Projects</div>
+                <div class="section-title">Creative Services & Add-Ons</div>
+                <p class="section-desc">
+                    Pair with an OS deployment or standalone. Flat-rate pricing, 3-14 day delivery.
+                </p>
+            </div>
+
+            <div class="build-grid">
                 <!-- Websites -->
-                <div class="card-glow rounded-xl p-8 scroll-reveal">
-                    <div class="spotlight"></div>
-                    <div class="text-green-400 text-4xl mb-4">
-                        <i class="fas fa-laptop-code"></i>
-                    </div>
-                    <h3 class="text-3xl font-bold mb-2">Websites</h3>
-                    <p class="text-gray-400 text-sm mb-6">Professional sites that convert</p>
-                    <div class="space-y-3">
-                        <div class="flex justify-between items-center">
-                            <span class="text-gray-400">Launch</span>
-                            <span class="text-green-400 font-bold">$2.5K-$4.5K</span>
-                        </div>
-                        <div class="flex justify-between items-center">
-                            <span class="text-gray-400">Growth</span>
-                            <span class="text-green-400 font-bold">$5K-$8K</span>
-                        </div>
-                        <div class="flex justify-between items-center">
-                            <span class="text-gray-400">Accelerator</span>
-                            <span class="text-green-400 font-bold">$8K-$12K</span>
-                        </div>
-                        <div class="flex justify-between items-center">
-                            <span class="text-gray-400">Enterprise</span>
-                            <span class="text-green-400 font-bold">$12K+</span>
-                        </div>
-                    </div>
-                    <p class="text-gray-500 text-xs mt-6">3-14 days delivery</p>
+                <div class="build-card reveal">
+                    <div class="build-card-icon"><i class="fas fa-laptop-code"></i></div>
+                    <h3>Websites</h3>
+                    <div class="build-card-sub">Professional sites that convert</div>
+                    <div class="build-tier"><span class="build-tier-name">Starter (5-7 pages)</span><span class="build-tier-price">From $2,500</span></div>
+                    <div class="build-tier"><span class="build-tier-name">Growth (10-15 pages)</span><span class="build-tier-price">From $5,000</span></div>
+                    <div class="build-tier"><span class="build-tier-name">Pro (custom features)</span><span class="build-tier-price">From $8,000</span></div>
+                    <div class="build-card-timeline">5-14 days delivery</div>
                 </div>
 
                 <!-- Branding -->
-                <div class="card-glow rounded-xl p-8 scroll-reveal">
-                    <div class="spotlight"></div>
-                    <div class="text-green-400 text-4xl mb-4">
-                        <i class="fas fa-palette"></i>
-                    </div>
-                    <h3 class="text-3xl font-bold mb-2">Branding</h3>
-                    <p class="text-gray-400 text-sm mb-6">Identity that stands out</p>
-                    <div class="space-y-3">
-                        <div class="flex justify-between items-center">
-                            <span class="text-gray-400">Starter</span>
-                            <span class="text-green-400 font-bold">$1.5K-$2.5K</span>
-                        </div>
-                        <div class="flex justify-between items-center">
-                            <span class="text-gray-400">Complete</span>
-                            <span class="text-green-400 font-bold">$2.5K-$4.5K</span>
-                        </div>
-                        <div class="flex justify-between items-center">
-                            <span class="text-gray-400">Systems</span>
-                            <span class="text-green-400 font-bold">$4.5K-$7K</span>
-                        </div>
-                    </div>
-                    <p class="text-gray-500 text-xs mt-6">2-10 days delivery</p>
+                <div class="build-card reveal">
+                    <div class="build-card-icon"><i class="fas fa-palette"></i></div>
+                    <h3>Branding</h3>
+                    <div class="build-card-sub">Identity that stands out</div>
+                    <div class="build-tier"><span class="build-tier-name">Starter</span><span class="build-tier-price">From $1,500</span></div>
+                    <div class="build-tier"><span class="build-tier-name">Complete Identity</span><span class="build-tier-price">From $2,500</span></div>
+                    <div class="build-tier"><span class="build-tier-name">Brand + Systems</span><span class="build-tier-price">From $4,500</span></div>
+                    <div class="build-card-timeline">2-10 days delivery</div>
                 </div>
 
-                <!-- Apps -->
-                <div class="card-glow rounded-xl p-8 scroll-reveal">
-                    <div class="spotlight"></div>
-                    <div class="text-green-400 text-4xl mb-4">
-                        <i class="fas fa-mobile-alt"></i>
-                    </div>
-                    <h3 class="text-3xl font-bold mb-2">Apps</h3>
-                    <p class="text-gray-400 text-sm mb-6">Interactive experiences</p>
-                    <div class="space-y-3">
-                        <div class="flex justify-between items-center">
-                            <span class="text-gray-400">Web App</span>
-                            <span class="text-green-400 font-bold">$3K-$5K</span>
-                        </div>
-                        <div class="flex justify-between items-center">
-                            <span class="text-gray-400">Visualizer</span>
-                            <span class="text-green-400 font-bold">$6K-$9K</span>
-                        </div>
-                        <div class="flex justify-between items-center">
-                            <span class="text-gray-400">Platform</span>
-                            <span class="text-green-400 font-bold">$8K-$12K</span>
-                        </div>
-                        <div class="flex justify-between items-center">
-                            <span class="text-gray-400">Enterprise</span>
-                            <span class="text-green-400 font-bold">$15K+</span>
-                        </div>
-                    </div>
-                    <p class="text-gray-500 text-xs mt-6">7-30 days delivery</p>
+                <!-- Apps & Automation -->
+                <div class="build-card reveal">
+                    <div class="build-card-icon"><i class="fas fa-cogs"></i></div>
+                    <h3>Custom Apps</h3>
+                    <div class="build-card-sub">Bespoke tools outside the OS mold</div>
+                    <div class="build-tier"><span class="build-tier-name">Custom Tool</span><span class="build-tier-price">From $5,000</span></div>
+                    <div class="build-tier"><span class="build-tier-name">Full Platform</span><span class="build-tier-price">From $8,000</span></div>
+                    <div class="build-card-timeline">7-21 days delivery</div>
                 </div>
 
                 <!-- Video -->
-                <div class="card-glow rounded-xl p-8 scroll-reveal">
-                    <div class="spotlight"></div>
-                    <div class="text-green-400 text-4xl mb-4">
-                        <i class="fas fa-video"></i>
-                    </div>
-                    <h3 class="text-3xl font-bold mb-2">Video</h3>
-                    <p class="text-gray-400 text-sm mb-6">Content that converts</p>
-                    <div class="space-y-3">
-                        <div class="flex justify-between items-center">
-                            <span class="text-gray-400">Single Ad</span>
-                            <span class="text-green-400 font-bold">$800-$1.4K</span>
-                        </div>
-                        <div class="flex justify-between items-center">
-                            <span class="text-gray-400">5-Bundle</span>
-                            <span class="text-green-400 font-bold">$2K-$4.5K</span>
-                        </div>
-                        <div class="flex justify-between items-center">
-                            <span class="text-gray-400">Story</span>
-                            <span class="text-green-400 font-bold">$3.5K-$7.5K</span>
-                        </div>
-                    </div>
-                    <p class="text-gray-500 text-xs mt-6">3-14 days delivery</p>
+                <div class="build-card reveal">
+                    <div class="build-card-icon"><i class="fas fa-video"></i></div>
+                    <h3>Video Production</h3>
+                    <div class="build-card-sub">Content that converts</div>
+                    <div class="build-tier"><span class="build-tier-name">Single Ad</span><span class="build-tier-price">From $800</span></div>
+                    <div class="build-tier"><span class="build-tier-name">5-Video Bundle</span><span class="build-tier-price">From $2,000</span></div>
+                    <div class="build-tier"><span class="build-tier-name">Brand Film</span><span class="build-tier-price">From $3,500</span></div>
+                    <div class="build-card-timeline">3-14 days delivery</div>
                 </div>
             </div>
 
-            <!-- BUILD What's Included -->
-            <div class="max-w-4xl mx-auto card-glow rounded-2xl p-10 scroll-reveal" style="border-color: rgba(74, 222, 128, 0.3);">
-                <div class="spotlight"></div>
-                <h3 class="text-3xl font-bold mb-8 flex items-center">
-                    <i class="fas fa-check-circle text-green-400 mr-3"></i>
-                    Every BUILD Project Includes:
-                </h3>
-                <div class="grid md:grid-cols-2 gap-6">
-                    <div class="flex items-start">
-                        <i class="fas fa-check text-green-400 mr-3 mt-1"></i>
-                        <span class="text-gray-300">50% deposit, 50% at delivery</span>
-                    </div>
-                    <div class="flex items-start">
-                        <i class="fas fa-check text-green-400 mr-3 mt-1"></i>
-                        <span class="text-gray-300">Jupiter dashboard access</span>
-                    </div>
-                    <div class="flex items-start">
-                        <i class="fas fa-check text-green-400 mr-3 mt-1"></i>
-                        <span class="text-gray-300">2 revision rounds included</span>
-                    </div>
-                    <div class="flex items-start">
-                        <i class="fas fa-check text-green-400 mr-3 mt-1"></i>
-                        <span class="text-gray-300">All source files & ownership</span>
-                    </div>
-                    <div class="flex items-start">
-                        <i class="fas fa-check text-green-400 mr-3 mt-1"></i>
-                        <span class="text-gray-300">30-day post-delivery support</span>
-                    </div>
-                    <div class="flex items-start">
-                        <i class="fas fa-check text-green-400 mr-3 mt-1"></i>
-                        <span class="text-gray-300">Permanent file access</span>
-                    </div>
+            <!-- BUILD Included -->
+            <div class="included-box reveal">
+                <h3><i class="fas fa-check-circle g"></i> Every BUILD Project Includes</h3>
+                <div class="included-grid">
+                    <div class="included-item"><i class="fas fa-check g"></i> 50% deposit, 50% at delivery</div>
+                    <div class="included-item"><i class="fas fa-check g"></i> Jupiter dashboard access</div>
+                    <div class="included-item"><i class="fas fa-check g"></i> 2 revision rounds included</div>
+                    <div class="included-item"><i class="fas fa-check g"></i> All source files & ownership</div>
+                    <div class="included-item"><i class="fas fa-check g"></i> 30-day post-delivery support</div>
+                    <div class="included-item"><i class="fas fa-check g"></i> Permanent file access</div>
+                </div>
+            </div>
+
+            <!-- Add-ons -->
+            <div class="reveal" style="margin-top:2.5rem">
+                <h3 style="font-family:var(--font-display);font-weight:600;font-size:1.1rem;color:var(--white);margin-bottom:0.5rem">Branding Add-Ons</h3>
+                <p style="font-size:0.85rem;color:var(--gray-500);margin-bottom:1rem">Pair with any branding package</p>
+                <div class="addons-grid">
+                    <div class="addon-item"><span class="addon-name">Website integration</span><span class="addon-price">$500</span></div>
+                    <div class="addon-item"><span class="addon-name">Social media templates</span><span class="addon-price">$400</span></div>
+                    <div class="addon-item"><span class="addon-name">Packaging design</span><span class="addon-price">$800</span></div>
+                    <div class="addon-item"><span class="addon-name">Vehicle wrap design</span><span class="addon-price">$600</span></div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- RISE Section -->
-    <section id="rise" class="py-32 bg-gradient-to-b from-gray-900 to-black">
-        <div class="container mx-auto px-4">
-            <div class="text-center mb-16 scroll-reveal">
-                <div class="inline-block bg-purple-500/20 border-2 border-purple-400 rounded-full px-6 py-2 mb-6">
-                    <span class="text-purple-400 font-bold text-lg uppercase tracking-wider"><i class="fas fa-rocket mr-2"></i>RISE</span>
-                </div>
-                <h2 class="text-5xl md:text-6xl font-bold mb-6">
-                    Scale With Ongoing Growth
-                </h2>
-                <p class="text-xl text-gray-400 max-w-3xl mx-auto">
-                    Continuous. Optimized. Monthly momentum. Recurring partnerships that compound results.
+    <!-- ===== RISE — ONGOING ===== -->
+    <section class="pricing-section" id="rise">
+        <div class="container">
+            <div class="reveal">
+                <div class="section-label" style="color:var(--purple)">RISE — Ongoing Partnerships</div>
+                <div class="section-title">Scale With Monthly Momentum</div>
+                <p class="section-desc">
+                    Continuous optimization, content, and growth that compounds month after month.
                 </p>
             </div>
 
-            <!-- RISE Tiers -->
-            <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8 max-w-7xl mx-auto">
+            <div class="rise-grid">
                 <!-- Starter -->
-                <div class="card-glow rounded-xl p-8 scroll-reveal" style="border-color: rgba(168, 85, 247, 0.2);">
-                    <div class="spotlight" style="background: radial-gradient(circle, rgba(168, 85, 247, 0.2), transparent 70%);"></div>
-                    <h3 class="text-3xl font-bold mb-3">Starter</h3>
-                    <div class="text-4xl font-bold text-purple-400 mb-2">$800-$1.2K</div>
-                    <p class="text-gray-400 text-sm mb-8">Per month</p>
-                    <ul class="space-y-4">
-                        <li class="flex items-start">
-                            <i class="fas fa-check-circle text-purple-400 mr-3 mt-1"></i>
-                            <span class="text-gray-300">1 platform</span>
-                        </li>
-                        <li class="flex items-start">
-                            <i class="fas fa-check-circle text-purple-400 mr-3 mt-1"></i>
-                            <span class="text-gray-300">10 posts/month</span>
-                        </li>
-                        <li class="flex items-start">
-                            <i class="fas fa-check-circle text-purple-400 mr-3 mt-1"></i>
-                            <span class="text-gray-300">1-2 ad campaigns</span>
-                        </li>
-                        <li class="flex items-start">
-                            <i class="fas fa-check-circle text-purple-400 mr-3 mt-1"></i>
-                            <span class="text-gray-300">Basic analytics</span>
-                        </li>
-                        <li class="flex items-start">
-                            <i class="fas fa-check-circle text-purple-400 mr-3 mt-1"></i>
-                            <span class="text-gray-300">Monthly review</span>
-                        </li>
-                    </ul>
+                <div class="rise-card reveal">
+                    <h3>Starter</h3>
+                    <div class="rise-price">From $800</div>
+                    <div class="rise-period">per month</div>
+                    <div class="rise-features">
+                        <div class="rise-feat"><i class="fas fa-check"></i> 1 platform</div>
+                        <div class="rise-feat"><i class="fas fa-check"></i> 10 posts/month</div>
+                        <div class="rise-feat"><i class="fas fa-check"></i> 1-2 ad campaigns</div>
+                        <div class="rise-feat"><i class="fas fa-check"></i> Basic analytics</div>
+                        <div class="rise-feat"><i class="fas fa-check"></i> Monthly review</div>
+                    </div>
                 </div>
 
-                <!-- Growth - Popular -->
-                <div class="card-glow rounded-xl p-8 scroll-reveal relative" style="border-color: #c084fc; border-width: 2px;">
-                    <div class="absolute -top-3 left-1/2 transform -translate-x-1/2 z-10">
-                        <span class="bg-purple-500 text-white text-xs font-bold px-4 py-1.5 rounded-full shadow-lg">POPULAR</span>
+                <!-- Growth (Popular) -->
+                <div class="rise-card popular reveal">
+                    <div class="rise-popular-badge">Popular</div>
+                    <h3>Growth</h3>
+                    <div class="rise-price">From $1,500</div>
+                    <div class="rise-period">per month</div>
+                    <div class="rise-features">
+                        <div class="rise-feat"><i class="fas fa-check"></i> 2-3 platforms</div>
+                        <div class="rise-feat"><i class="fas fa-check"></i> 20-25 posts/month</div>
+                        <div class="rise-feat"><i class="fas fa-check"></i> 3 ad campaigns</div>
+                        <div class="rise-feat"><i class="fas fa-check"></i> 1 video/week</div>
+                        <div class="rise-feat"><i class="fas fa-check"></i> Advanced analytics</div>
+                        <div class="rise-feat"><i class="fas fa-check"></i> Monthly strategy session</div>
                     </div>
-                    <div class="spotlight" style="background: radial-gradient(circle, rgba(168, 85, 247, 0.2), transparent 70%);"></div>
-                    <h3 class="text-3xl font-bold mb-3 mt-2">Growth</h3>
-                    <div class="text-4xl font-bold text-purple-400 mb-2">$1.5K-$2.5K</div>
-                    <p class="text-gray-400 text-sm mb-8">Per month</p>
-                    <ul class="space-y-4">
-                        <li class="flex items-start">
-                            <i class="fas fa-check-circle text-purple-400 mr-3 mt-1"></i>
-                            <span class="text-gray-300">2-3 platforms</span>
-                        </li>
-                        <li class="flex items-start">
-                            <i class="fas fa-check-circle text-purple-400 mr-3 mt-1"></i>
-                            <span class="text-gray-300">20-25 posts/month</span>
-                        </li>
-                        <li class="flex items-start">
-                            <i class="fas fa-check-circle text-purple-400 mr-3 mt-1"></i>
-                            <span class="text-gray-300">3 ad campaigns</span>
-                        </li>
-                        <li class="flex items-start">
-                            <i class="fas fa-check-circle text-purple-400 mr-3 mt-1"></i>
-                            <span class="text-gray-300">1 video/week</span>
-                        </li>
-                        <li class="flex items-start">
-                            <i class="fas fa-check-circle text-purple-400 mr-3 mt-1"></i>
-                            <span class="text-gray-300">Advanced analytics</span>
-                        </li>
-                        <li class="flex items-start">
-                            <i class="fas fa-check-circle text-purple-400 mr-3 mt-1"></i>
-                            <span class="text-gray-300">Monthly strategy session</span>
-                        </li>
-                    </ul>
                 </div>
 
                 <!-- Accelerator -->
-                <div class="card-glow rounded-xl p-8 scroll-reveal" style="border-color: rgba(168, 85, 247, 0.2);">
-                    <div class="spotlight" style="background: radial-gradient(circle, rgba(168, 85, 247, 0.2), transparent 70%);"></div>
-                    <h3 class="text-3xl font-bold mb-3">Accelerator</h3>
-                    <div class="text-4xl font-bold text-purple-400 mb-2">$2.5K-$3.5K</div>
-                    <p class="text-gray-400 text-sm mb-8">Per month</p>
-                    <ul class="space-y-4">
-                        <li class="flex items-start">
-                            <i class="fas fa-check-circle text-purple-400 mr-3 mt-1"></i>
-                            <span class="text-gray-300">3-5 platforms</span>
-                        </li>
-                        <li class="flex items-start">
-                            <i class="fas fa-check-circle text-purple-400 mr-3 mt-1"></i>
-                            <span class="text-gray-300">4-5 ad campaigns</span>
-                        </li>
-                        <li class="flex items-start">
-                            <i class="fas fa-check-circle text-purple-400 mr-3 mt-1"></i>
-                            <span class="text-gray-300">5+ videos/month</span>
-                        </li>
-                        <li class="flex items-start">
-                            <i class="fas fa-check-circle text-purple-400 mr-3 mt-1"></i>
-                            <span class="text-gray-300">Custom dashboards</span>
-                        </li>
-                        <li class="flex items-start">
-                            <i class="fas fa-check-circle text-purple-400 mr-3 mt-1"></i>
-                            <span class="text-gray-300">Bi-weekly strategy</span>
-                        </li>
-                        <li class="flex items-start">
-                            <i class="fas fa-check-circle text-purple-400 mr-3 mt-1"></i>
-                            <span class="text-gray-300">Quarterly refresh</span>
-                        </li>
-                    </ul>
+                <div class="rise-card reveal">
+                    <h3>Accelerator</h3>
+                    <div class="rise-price">From $2,500</div>
+                    <div class="rise-period">per month</div>
+                    <div class="rise-features">
+                        <div class="rise-feat"><i class="fas fa-check"></i> 3-5 platforms</div>
+                        <div class="rise-feat"><i class="fas fa-check"></i> 4-5 ad campaigns</div>
+                        <div class="rise-feat"><i class="fas fa-check"></i> 5+ videos/month</div>
+                        <div class="rise-feat"><i class="fas fa-check"></i> Custom dashboards</div>
+                        <div class="rise-feat"><i class="fas fa-check"></i> Bi-weekly strategy</div>
+                        <div class="rise-feat"><i class="fas fa-check"></i> Quarterly refresh</div>
+                    </div>
                 </div>
 
-                <!-- Enterprise -->
-                <div class="card-glow rounded-xl p-8 scroll-reveal" style="border-color: rgba(168, 85, 247, 0.2);">
-                    <div class="spotlight" style="background: radial-gradient(circle, rgba(168, 85, 247, 0.2), transparent 70%);"></div>
-                    <h3 class="text-3xl font-bold mb-3">Enterprise</h3>
-                    <div class="text-4xl font-bold text-purple-400 mb-2">$5K+</div>
-                    <p class="text-gray-400 text-sm mb-8">Per month</p>
-                    <ul class="space-y-4">
-                        <li class="flex items-start">
-                            <i class="fas fa-check-circle text-purple-400 mr-3 mt-1"></i>
-                            <span class="text-gray-300">Unlimited campaigns</span>
-                        </li>
-                        <li class="flex items-start">
-                            <i class="fas fa-check-circle text-purple-400 mr-3 mt-1"></i>
-                            <span class="text-gray-300">Custom AI dashboards</span>
-                        </li>
-                        <li class="flex items-start">
-                            <i class="fas fa-check-circle text-purple-400 mr-3 mt-1"></i>
-                            <span class="text-gray-300">Automation integration</span>
-                        </li>
-                        <li class="flex items-start">
-                            <i class="fas fa-check-circle text-purple-400 mr-3 mt-1"></i>
-                            <span class="text-gray-300">Dedicated management</span>
-                        </li>
-                        <li class="flex items-start">
-                            <i class="fas fa-check-circle text-purple-400 mr-3 mt-1"></i>
-                            <span class="text-gray-300">Priority support</span>
-                        </li>
-                        <li class="flex items-start">
-                            <i class="fas fa-check-circle text-purple-400 mr-3 mt-1"></i>
-                            <span class="text-gray-300">Weekly strategy</span>
-                        </li>
-                    </ul>
-                </div>
             </div>
 
-            <!-- RISE Terms -->
-            <div class="max-w-4xl mx-auto mt-12 card-glow rounded-2xl p-10 scroll-reveal" style="border-color: rgba(168, 85, 247, 0.3);">
-                <div class="spotlight" style="background: radial-gradient(circle, rgba(168, 85, 247, 0.2), transparent 70%);"></div>
-                <h3 class="text-3xl font-bold mb-8 flex items-center">
-                    <i class="fas fa-infinity text-purple-400 mr-3"></i>
-                    Every RISE Partnership Includes:
-                </h3>
-                <div class="grid md:grid-cols-2 gap-6">
-                    <div class="flex items-start">
-                        <i class="fas fa-check text-purple-400 mr-3 mt-1"></i>
-                        <span class="text-gray-300">3-month minimum commitment</span>
-                    </div>
-                    <div class="flex items-start">
-                        <i class="fas fa-check text-purple-400 mr-3 mt-1"></i>
-                        <span class="text-gray-300">Full Jupiter dashboard</span>
-                    </div>
-                    <div class="flex items-start">
-                        <i class="fas fa-check text-purple-400 mr-3 mt-1"></i>
-                        <span class="text-gray-300">Monthly performance reports</span>
-                    </div>
-                    <div class="flex items-start">
-                        <i class="fas fa-check text-purple-400 mr-3 mt-1"></i>
-                        <span class="text-gray-300">Direct team messaging</span>
-                    </div>
-                    <div class="flex items-start">
-                        <i class="fas fa-check text-purple-400 mr-3 mt-1"></i>
-                        <span class="text-gray-300">First-month satisfaction guarantee</span>
-                    </div>
-                    <div class="flex items-start">
-                        <i class="fas fa-check text-purple-400 mr-3 mt-1"></i>
-                        <span class="text-gray-300">Cancel anytime after month 3</span>
-                    </div>
+            <!-- RISE Included -->
+            <div class="included-box purple reveal">
+                <h3><i class="fas fa-infinity p"></i> Every RISE Partnership Includes</h3>
+                <div class="included-grid">
+                    <div class="included-item"><i class="fas fa-check p"></i> 3-month minimum commitment</div>
+                    <div class="included-item"><i class="fas fa-check p"></i> Full Jupiter dashboard</div>
+                    <div class="included-item"><i class="fas fa-check p"></i> Monthly performance reports</div>
+                    <div class="included-item"><i class="fas fa-check p"></i> Direct team messaging</div>
+                    <div class="included-item"><i class="fas fa-check p"></i> First-month satisfaction guarantee</div>
+                    <div class="included-item"><i class="fas fa-check p"></i> Cancel anytime after month 3</div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- CTA Section -->
-    <section class="py-32 bg-black relative overflow-hidden">
-        <div class="absolute inset-0">
-            <div class="absolute inset-0 bg-gradient-to-r from-green-400/10 to-purple-400/10 opacity-30"></div>
-        </div>
-        <div class="container mx-auto px-4 text-center relative z-10">
-            <div class="max-w-4xl mx-auto scroll-reveal">
-                <h2 class="text-5xl md:text-6xl font-bold mb-6">
-                    Not Sure Which Path?
-                </h2>
-                <p class="text-xl text-gray-300 mb-8">
-                    Take our 2-minute quiz to find out if you need to BUILD or RISE.
-                </p>
-                <div class="flex flex-col sm:flex-row gap-4 justify-center">
-                    <a href="quiz.html" class="inline-flex items-center justify-center gap-2 bg-green-500 hover:bg-green-600 text-white font-bold py-4 px-10 rounded-full text-lg transition-all button-glow">
-                        <i class="fas fa-question-circle"></i>
-                        <span>Take The Quiz</span>
-                    </a>
-                    <a href="jupiter.html" class="inline-flex items-center justify-center gap-2 bg-transparent border-2 border-green-400 text-green-400 hover:bg-green-400 hover:text-black font-bold py-4 px-10 rounded-full text-lg transition-all">
-                        <i class="fas fa-rocket"></i>
-                        <span>See Jupiter</span>
-                    </a>
+    <!-- CTA -->
+    <section class="cta-section">
+        <div class="container">
+            <div class="cta-box reveal">
+                <h2>Not Sure Which Path?</h2>
+                <p>Take our 2-minute quiz to find the right system and service tier for your business.</p>
+                <div class="cta-actions">
+                    <a href="quiz.html" class="btn-primary"><i class="fas fa-question-circle"></i> Take The Quiz</a>
+                    <a href="index.html#contact" class="btn-secondary">Contact Us</a>
+                    <a href="jupiter.html" class="btn-secondary"><i class="fas fa-rocket"></i> See Jupiter</a>
                 </div>
             </div>
         </div>
     </section>
 
     <!-- Footer -->
-    <footer class="bg-black text-gray-400 py-16 border-t border-gray-800">
-        <div class="container mx-auto px-4">
-            <div class="grid md:grid-cols-3 gap-12 mb-12">
-                <div>
-                    <img src="jpaxmedialogoOFFICIALFINALwhite.png" alt="JPax Media" class="h-12 mb-4">
-                    <p class="mb-4">Building digital experiences that drive results.</p>
-                    <div class="flex space-x-4">
-                        <a href="https://www.youtube.com/@JPaxFilms/videos" target="_blank" class="text-2xl text-gray-400 hover:text-green-400 transition-all">
-                            <i class="fab fa-youtube"></i>
-                        </a>
-                        <a href="https://www.tiktok.com/@jpaxfilms?lang=en" target="_blank" class="text-2xl text-gray-400 hover:text-green-400 transition-all">
-                            <i class="fab fa-tiktok"></i>
-                        </a>
-                        <a href="https://www.facebook.com/JPaxFilms/" target="_blank" class="text-2xl text-gray-400 hover:text-green-400 transition-all">
-                            <i class="fab fa-facebook"></i>
-                        </a>
-                        <a href="https://www.instagram.com/jpaxfilmz/" target="_blank" class="text-2xl text-gray-400 hover:text-green-400 transition-all">
-                            <i class="fab fa-instagram"></i>
-                        </a>
-                    </div>
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-inner">
+                <div class="footer-logo"><img src="jpaxmedialogoOFFICIALFINALwhite.png" alt="JPax Media" onerror="this.style.display='none'"></div>
+                <div class="footer-links">
+                    <a href="index.html">Home</a>
+                    <a href="portfolio.html">Portfolio</a>
+                    <a href="pricing.html">Pricing</a>
+                    <a href="jupiter.html">Jupiter</a>
+                    <a href="quiz.html">Quiz</a>
                 </div>
-                <div>
-                    <h4 class="text-white font-bold mb-4">Quick Links</h4>
-                    <ul class="space-y-2">
-                        <li><a href="index.html" class="hover:text-green-400 transition-colors">Home</a></li>
-                        <li><a href="portfolio.html" class="hover:text-green-400 transition-colors">Portfolio</a></li>
-                        <li><a href="pricing.html" class="hover:text-green-400 transition-colors">Pricing</a></li>
-                        <li><a href="jupiter.html" class="hover:text-green-400 transition-colors">Jupiter</a></li>
-                    </ul>
-                </div>
-                <div>
-                    <h4 class="text-white font-bold mb-4">Contact</h4>
-                    <a href="mailto:info@jpaxmedia.com" class="text-gray-400 hover:text-green-400 transition-colors">info@jpaxmedia.com</a>
+                <div class="footer-socials">
+                    <a href="https://www.youtube.com/@JPaxFilms/videos" target="_blank"><i class="fab fa-youtube"></i></a>
+                    <a href="https://www.tiktok.com/@jpaxfilms?lang=en" target="_blank"><i class="fab fa-tiktok"></i></a>
+                    <a href="https://www.facebook.com/JPaxFilms/" target="_blank"><i class="fab fa-facebook"></i></a>
+                    <a href="https://www.instagram.com/jpaxfilmz/" target="_blank"><i class="fab fa-instagram"></i></a>
                 </div>
             </div>
+<<<<<<< HEAD
             <div class="border-t border-gray-800 pt-8 text-center text-gray-500 text-sm">
                 <p>&copy; 2026 JPax Media. All rights reserved. <span class="text-green-400">BUILD.</span> <span class="text-purple-400">RISE.</span> <span class="text-blue-400">SCALE.</span></p>
+=======
+            <div style="text-align:center;margin-top:2rem">
+                <p class="footer-copy">&copy; 2025 JPax Media. All rights reserved. <span class="g">BUILD.</span> <span class="p">RISE.</span> <span class="b">SCALE.</span></p>
+>>>>>>> 10d9cd3 (Update Jpax Media Website)
             </div>
         </div>
     </footer>
 
     <script>
-        document.addEventListener('DOMContentLoaded', () => {
-            // --- Custom Cursor ---
-            const cursorDot = document.querySelector('.cursor-dot');
-            const cursorOutline = document.querySelector('.cursor-outline');
-            
-            if (cursorDot && cursorOutline) {
-                let mouseX = 0, mouseY = 0;
-                let outlineX = 0, outlineY = 0;
+        // Nav scroll
+        const nav = document.getElementById('nav');
+        window.addEventListener('scroll', () => nav.classList.toggle('scrolled', window.scrollY > 50));
 
-                document.addEventListener('mousemove', (e) => {
-                    mouseX = e.clientX;
-                    mouseY = e.clientY;
-                    cursorDot.style.left = mouseX + 'px';
-                    cursorDot.style.top = mouseY + 'px';
-                });
+        // Mobile menu
+        const mobileBtn = document.getElementById('mobileBtn');
+        const mobileMenu = document.getElementById('mobileMenu');
+        mobileBtn.addEventListener('click', () => {
+            mobileMenu.classList.toggle('active');
+            document.body.style.overflow = mobileMenu.classList.contains('active') ? 'hidden' : '';
+        });
+        mobileMenu.querySelectorAll('a').forEach(a => a.addEventListener('click', () => {
+            mobileMenu.classList.remove('active'); document.body.style.overflow = '';
+        }));
 
-                function animateOutline() {
-                    outlineX += (mouseX - outlineX) * 0.2;
-                    outlineY += (mouseY - outlineY) * 0.2;
-                    cursorOutline.style.left = outlineX + 'px';
-                    cursorOutline.style.top = outlineY + 'px';
-                    requestAnimationFrame(animateOutline);
-                }
-                animateOutline();
-            }
+        // Scroll reveal
+        const revealObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => { if (entry.isIntersecting) entry.target.classList.add('visible'); });
+        }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+        document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
 
-            // --- Spotlight Card Effect ---
-            document.querySelectorAll('.card-glow').forEach(card => {
-                const spotlight = card.querySelector('.spotlight');
-                if (spotlight) {
-                    card.addEventListener('mousemove', e => {
-                        const rect = card.getBoundingClientRect();
-                        const x = e.clientX - rect.left;
-                        const y = e.clientY - rect.top;
-                        spotlight.style.left = `${x}px`;
-                        spotlight.style.top = `${y}px`;
-                    });
-                }
+        // Active nav highlight on scroll
+        const sections = document.querySelectorAll('.pricing-section');
+        const heroNavLinks = document.querySelectorAll('.hero-nav a');
+        window.addEventListener('scroll', () => {
+            let current = '';
+            sections.forEach(s => {
+                if (window.scrollY >= s.offsetTop - 200) current = s.getAttribute('id');
             });
-
-            // --- Mobile Menu ---
-            const mobileMenuButton = document.getElementById('mobile-menu-button');
-            const mobileMenu = document.getElementById('mobile-menu');
-            if (mobileMenuButton && mobileMenu) {
-                const hamburgerIcon = mobileMenuButton.querySelector('.hamburger-icon');
-                const body = document.body;
-                
-                mobileMenuButton.addEventListener('click', () => {
-                    const isActive = mobileMenu.classList.contains('active');
-                    
-                    if (!isActive) {
-                        mobileMenu.classList.add('active');
-                        hamburgerIcon.classList.add('active');
-                        body.style.overflow = 'hidden';
-                    } else {
-                        mobileMenu.classList.remove('active');
-                        hamburgerIcon.classList.remove('active');
-                        body.style.overflow = '';
-                    }
-                });
-                
-                const mobileMenuLinks = mobileMenu.querySelectorAll('a');
-                mobileMenuLinks.forEach(link => {
-                    link.addEventListener('click', () => {
-                        mobileMenu.classList.remove('active');
-                        hamburgerIcon.classList.remove('active');
-                        body.style.overflow = '';
-                    });
-                });
-
-                mobileMenu.addEventListener('click', (e) => {
-                    if (e.target === mobileMenu) {
-                        mobileMenu.classList.remove('active');
-                        hamburgerIcon.classList.remove('active');
-                        body.style.overflow = '';
-                    }
-                });
-            }
-
-            // --- Scroll Animations ---
-            const scrollElements = document.querySelectorAll('.scroll-reveal');
-            const scrollObserver = new IntersectionObserver((entries) => {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        entry.target.classList.add('is-visible');
-                        scrollObserver.unobserve(entry.target);
-                    }
-                });
-            }, { threshold: 0.1 });
-            scrollElements.forEach(el => {
-                scrollObserver.observe(el);
+            heroNavLinks.forEach(a => {
+                a.classList.remove('hn-active');
+                a.classList.add('hn-default');
+                if (a.getAttribute('href') === '#' + current) {
+                    a.classList.add('hn-active');
+                    a.classList.remove('hn-default');
+                }
             });
         });
     </script>

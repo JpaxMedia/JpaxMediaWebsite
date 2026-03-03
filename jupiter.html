@@ -1,639 +1,315 @@
 <!DOCTYPE html>
-<html lang="en" class="scroll-smooth">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Jupiter | Your Project Command Center - JPax Media</title>
-    
-    <!-- SEO Meta Tags -->
-    <meta name="description" content="Jupiter is your custom project dashboard - track progress, download files, communicate with our team, and view analytics all in one place. The future of client collaboration.">
-    <meta name="keywords" content="project dashboard, client portal, Jupiter, project management, JPax Media">
-    
-    <!-- Open Graph / Social Media -->
+    <title>Jupiter | Client Mission Control — JPax Media</title>
+    <meta name="description" content="Jupiter is JPax Media's proprietary client portal. Track your project, download deliverables, message the team, and monitor results — all in one mission control dashboard.">
     <meta property="og:type" content="website">
-    <meta property="og:title" content="Jupiter | Your Project Command Center">
-    <meta property="og:description" content="Experience the future of client collaboration with Jupiter - your all-in-one project dashboard.">
+    <meta property="og:title" content="Jupiter | Client Mission Control — JPax Media">
     <meta property="og:image" content="https://jpaxmedia.com/jpaxmedialogoOFFICIALFINALwhite.png">
-    <meta property="og:url" content="https://jpaxmedia.com/jupiter">
-    
-    <!-- Favicon -->
     <link rel="icon" type="image/png" href="jpaxmedialogoOFFICIALFINALwhite.png">
-    
-    <!-- Tailwind CSS -->
-    <script src="https://cdn.tailwindcss.com"></script>
-    <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
-    <!-- Font Awesome -->
+    <link href="https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@400;500;600;700&family=IBM+Plex+Sans:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    
     <style>
-        body {
-            font-family: 'Inter', sans-serif;
-            background-color: #000000;
+        :root {
+            --bg:#06080F;--bg-card:rgba(12,16,28,0.85);--accent:#4ADE80;--accent-glow:rgba(74,222,128,0.15);
+            --green:#10B981;--green-dim:rgba(16,185,129,0.1);--green-glow:rgba(16,185,129,0.2);
+            --purple:#8B5CF6;--purple-dim:rgba(139,92,246,0.1);--purple-glow:rgba(139,92,246,0.2);
+            --blue:#3B82F6;--blue-dim:rgba(59,130,246,0.1);--blue-glow:rgba(59,130,246,0.2);
+            --white:#F1F5F9;--gray-300:#CBD5E1;--gray-400:#94A3B8;--gray-500:#64748B;--gray-700:#334155;--gray-800:#1E293B;
+            --font-display:'Chakra Petch',sans-serif;--font-body:'IBM Plex Sans',sans-serif;--font-mono:'JetBrains Mono',monospace;
         }
-        
-        /* Custom cursor styles for devices that support hover */
-        @media (hover: hover) and (pointer: fine) {
-            body {
-                cursor: none;
-            }
-            .cursor-dot, .cursor-outline {
-                pointer-events: none;
-                position: fixed;
-                top: 50%;
-                left: 50%;
-                border-radius: 50%;
-                opacity: 0;
-                transform: translate(-50%, -50%);
-                transition: opacity 0.3s ease-in-out, transform 0.1s linear;
-                z-index: 9999;
-            }
-            .cursor-dot {
-                width: 8px;
-                height: 8px;
-                background-color: #4ade80;
-            }
-            .cursor-outline {
-                width: 40px;
-                height: 40px;
-                border: 2px solid #4ade80;
-                transition: width 0.2s ease, height 0.2s ease, border 0.2s ease, transform 0.1s linear;
-            }
-            body:hover .cursor-dot, body:hover .cursor-outline {
-                opacity: 1;
-            }
-            .cursor-interact {
-                width: 60px;
-                height: 60px;
-                border: 3px solid #4ade80;
-            }
-        }
-        
-        /* Hero Section - SpaceX Inspired */
-        .hero-section {
-            position: relative;
-            height: 100vh;
-            overflow: hidden;
-            background: linear-gradient(to bottom, #000000, #0a0a0a);
-        }
-        
-        .hero-video-overlay {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: 
-                radial-gradient(ellipse at top, rgba(74, 222, 128, 0.15) 0%, transparent 50%),
-                radial-gradient(ellipse at bottom, rgba(168, 85, 247, 0.1) 0%, transparent 50%),
-                linear-gradient(to bottom, rgba(0,0,0,0.3) 0%, rgba(0,0,0,0.8) 100%);
-            z-index: 1;
-        }
-        
-        .hero-content {
-            position: relative;
-            z-index: 2;
-            height: 100%;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            text-align: center;
-            padding: 2rem;
-        }
-        
-        .hero-title {
-            font-size: clamp(3rem, 10vw, 8rem);
-            font-weight: 900;
-            letter-spacing: -0.05em;
-            line-height: 0.9;
-            margin-bottom: 1.5rem;
-            background: linear-gradient(to bottom, #ffffff 0%, #a0a0a0 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-        }
-        
-        .hero-subtitle {
-            font-size: clamp(1rem, 3vw, 1.5rem);
-            font-weight: 400;
-            color: #a0a0a0;
-            max-width: 800px;
-            margin: 0 auto 3rem;
-            letter-spacing: 0.1em;
-            text-transform: uppercase;
-        }
-        
-        .hero-cta {
-            display: inline-flex;
-            align-items: center;
-            gap: 0.75rem;
-            padding: 1rem 2.5rem;
-            background: transparent;
-            border: 2px solid #ffffff;
-            color: #ffffff;
-            font-weight: 600;
-            font-size: 1.125rem;
-            text-transform: uppercase;
-            letter-spacing: 0.1em;
-            transition: all 0.3s ease;
-            position: relative;
-            overflow: hidden;
-        }
-        
-        .hero-cta::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: -100%;
-            width: 100%;
-            height: 100%;
-            background: #4ade80;
-            transition: left 0.3s ease;
-            z-index: -1;
-        }
-        
-        .hero-cta:hover::before {
-            left: 0;
-        }
-        
-        .hero-cta:hover {
-            border-color: #4ade80;
-            transform: translateY(-2px);
-        }
-        
-        .hero-scroll-indicator {
-            position: absolute;
-            bottom: 3rem;
-            left: 50%;
-            transform: translateX(-50%);
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            gap: 0.5rem;
-            color: #4ade80;
-            animation: bounce 2s infinite;
-        }
-        
-        @keyframes bounce {
-            0%, 100% { transform: translate(-50%, 0); }
-            50% { transform: translate(-50%, 10px); }
-        }
-        
-        /* Animated Background Grid */
-        .grid-overlay {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-image: 
-                linear-gradient(rgba(74, 222, 128, 0.05) 1px, transparent 1px),
-                linear-gradient(90deg, rgba(74, 222, 128, 0.05) 1px, transparent 1px);
-            background-size: 50px 50px;
-            animation: gridMove 20s linear infinite;
-            z-index: 0;
-        }
-        
-        @keyframes gridMove {
-            0% { transform: translateY(0); }
-            100% { transform: translateY(50px); }
-        }
-        
-        /* Floating Particles */
-        .particle {
-            position: absolute;
-            width: 2px;
-            height: 2px;
-            background: #4ade80;
-            border-radius: 50%;
-            opacity: 0.5;
-            animation: float 15s infinite;
-        }
-        
-        @keyframes float {
-            0%, 100% { transform: translate(0, 0) scale(1); opacity: 0.5; }
-            50% { transform: translate(100px, -100px) scale(1.5); opacity: 0.8; }
-        }
-        
-        /* Scroll Reveal Animations */
-        .scroll-reveal {
-            opacity: 0;
-            transform: translateY(30px);
-            transition: opacity 0.8s cubic-bezier(0.6, 0.2, 0.1, 1), transform 0.8s cubic-bezier(0.6, 0.2, 0.1, 1);
-        }
-        .scroll-reveal.is-visible {
-            opacity: 1;
-            transform: translateY(0);
-        }
-        
-        /* Card Styles */
-        .card-glow {
-            position: relative;
-            overflow: hidden;
-            transition: all 0.3s ease-in-out;
-            background: rgba(17, 17, 17, 0.8);
-            backdrop-filter: blur(10px);
-            border: 1px solid rgba(74, 222, 128, 0.2);
-        }
-        
-        .card-glow:hover {
-            border-color: #4ade80;
-            box-shadow: 0 0 30px rgba(74, 222, 128, 0.3);
-            transform: translateY(-5px);
-        }
-        
-        .spotlight {
-            position: absolute;
-            width: 300px;
-            height: 300px;
-            background: radial-gradient(circle, rgba(74, 222, 128, 0.2), transparent 70%);
-            border-radius: 50%;
-            pointer-events: none;
-            opacity: 0;
-            transition: opacity 0.3s ease;
-            transform: translate(-50%, -50%);
-        }
-        
-        .card-glow:hover .spotlight {
-            opacity: 1;
-        }
-        
-        /* Navigation */
-        nav {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            z-index: 1000;
-            background: rgba(0, 0, 0, 0.9);
-            backdrop-filter: blur(10px);
-            border-bottom: 1px solid rgba(74, 222, 128, 0.2);
-        }
-        
-        .logo-container {
-            transition: all 0.3s ease;
-        }
-        
-        .logo-glow {
-            transition: transform 0.3s ease;
-        }
-        
-        .logo-glow:hover {
-            transform: scale(1.1);
-        }
-        
-        .nav-active {
-            color: #4ade80;
-        }
-        
-        /* Mobile Menu */
-        .mobile-menu {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100vh;
-            background: rgba(0, 0, 0, 0.98);
-            backdrop-filter: blur(10px);
-            transform: translateX(-100%);
-            transition: transform 0.3s ease-in-out;
-            z-index: 999;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            gap: 2rem;
-        }
-        
-        .mobile-menu.active {
-            transform: translateX(0);
-        }
-        
-        .hamburger-icon {
-            display: flex;
-            flex-direction: column;
-            gap: 5px;
-            cursor: pointer;
-        }
-        
-        .hamburger-icon span {
-            width: 25px;
-            height: 2px;
-            background: white;
-            transition: all 0.3s ease;
-        }
-        
-        .hamburger-icon.active span:nth-child(1) {
-            transform: rotate(45deg) translate(7px, 7px);
-        }
-        
-        .hamburger-icon.active span:nth-child(2) {
-            opacity: 0;
-        }
-        
-        .hamburger-icon.active span:nth-child(3) {
-            transform: rotate(-45deg) translate(7px, -7px);
-        }
-        
-        .footer-icon:hover, .logo-glow:hover {
-            transform: scale(1.1);
-            filter: drop-shadow(0 0 8px rgba(74, 222, 128, 0.9));
-        }
-        
-        .button-glow {
-            transition: all 0.3s ease;
-        }
-        
-        .button-glow:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 10px 25px rgba(74, 222, 128, 0.4);
-        }
+        *,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+        html{scroll-behavior:smooth}
+        body{font-family:var(--font-body);background:var(--bg);color:var(--gray-300);overflow-x:hidden;-webkit-font-smoothing:antialiased}
+
+        .grid-bg{position:fixed;top:0;left:0;width:100%;height:100%;pointer-events:none;z-index:0;
+            background-image:linear-gradient(rgba(74,222,128,0.03) 1px,transparent 1px),linear-gradient(90deg,rgba(74,222,128,0.03) 1px,transparent 1px);
+            background-size:60px 60px;animation:gridDrift 25s linear infinite}
+        .grid-bg::after{content:'';position:absolute;top:0;left:0;width:100%;height:100%;
+            background-image:linear-gradient(rgba(74,222,128,0.06) 1px,transparent 1px),linear-gradient(90deg,rgba(74,222,128,0.06) 1px,transparent 1px);background-size:300px 300px}
+        @keyframes gridDrift{0%{transform:translateY(0)}100%{transform:translateY(60px)}}
+        .particle{position:absolute;width:2px;height:2px;background:var(--accent);border-radius:50%;opacity:0.4;animation:particleFloat 20s infinite}
+        @keyframes particleFloat{0%,100%{transform:translate(0,0);opacity:0.4}25%{transform:translate(80px,-60px);opacity:0.7}50%{transform:translate(-40px,-120px);opacity:0.3}75%{transform:translate(60px,-80px);opacity:0.6}}
+
+        /* Nav */
+        .nav{position:fixed;top:0;left:0;width:100%;z-index:1000;padding:0.75rem 2rem;background:rgba(6,8,15,0.85);backdrop-filter:blur(20px);border-bottom:1px solid rgba(74,222,128,0.08);transition:all 0.3s}
+        .nav.scrolled{background:rgba(6,8,15,0.95);border-bottom-color:rgba(74,222,128,0.15)}
+        .nav-inner{max-width:1200px;margin:0 auto;display:flex;align-items:center;justify-content:space-between}
+        .nav-logo img{height:40px;transition:transform 0.3s}.nav-logo img:hover{transform:scale(1.05)}
+        .nav-links{display:flex;align-items:center;gap:2rem}
+        .nav-links a{color:var(--gray-400);text-decoration:none;font-size:0.9rem;font-weight:500;transition:color 0.3s}.nav-links a:hover{color:var(--white)}.nav-links a.active{color:var(--accent)}
+        .nav-cta{background:var(--accent)!important;color:#000!important;padding:0.6rem 1.5rem;border-radius:6px;font-weight:600!important;font-size:0.85rem!important;transition:all 0.3s!important}
+        .nav-cta:hover{background:#6EE7A8!important;transform:translateY(-1px);box-shadow:0 4px 20px rgba(74,222,128,0.4)}
+        .nav-mobile-btn{display:none;background:none;border:none;cursor:pointer;padding:0.5rem}
+        .nav-mobile-btn span{display:block;width:24px;height:2px;background:var(--gray-400);margin:5px 0;transition:all 0.3s}
+        .mobile-menu{position:fixed;top:0;left:0;width:100%;height:100vh;background:rgba(6,8,15,0.98);backdrop-filter:blur(20px);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:2rem;opacity:0;pointer-events:none;transition:opacity 0.3s;z-index:999}
+        .mobile-menu.active{opacity:1;pointer-events:all}
+        .mobile-menu a{color:var(--white);text-decoration:none;font-size:1.5rem;font-family:var(--font-display);font-weight:600}
+        @media(max-width:768px){.nav-links{display:none}.nav-mobile-btn{display:block}}
+
+        section{position:relative;z-index:1}
+        .container{max-width:1200px;margin:0 auto;padding:0 1.5rem}
+
+        /* Hero */
+        .hero{min-height:85vh;display:flex;align-items:center;position:relative;overflow:hidden;padding:9rem 0 5rem}
+        .hero-glow{position:absolute;border-radius:50%;filter:blur(150px);pointer-events:none}
+        .hg1{background:rgba(74,222,128,0.07);width:700px;height:700px;top:-200px;right:-200px}
+        .hg2{background:rgba(59,130,246,0.05);width:500px;height:500px;bottom:-100px;left:-150px}
+        .hero-grid{display:grid;grid-template-columns:1fr 1fr;gap:5rem;align-items:center}
+        .hero-badge{display:inline-flex;align-items:center;gap:0.5rem;padding:0.5rem 1.25rem;border-radius:100px;background:rgba(74,222,128,0.08);border:1px solid rgba(74,222,128,0.25);font-family:var(--font-mono);font-size:0.75rem;color:var(--accent);letter-spacing:0.08em;text-transform:uppercase;margin-bottom:1.5rem;animation:fadeInUp 0.8s ease both}
+        .hero-badge .dot{width:6px;height:6px;border-radius:50%;background:var(--green);animation:pulse 2s infinite}
+        @keyframes pulse{0%,100%{opacity:1}50%{opacity:0.4}}
+        .hero h1{font-family:var(--font-display);font-weight:700;font-size:clamp(2.5rem,5vw,4rem);line-height:1.1;color:var(--white);margin-bottom:1.25rem;animation:fadeInUp 0.8s ease 0.1s both}
+        .hero h1 .gradient{background:linear-gradient(135deg,var(--accent),#60A5FA);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+        .hero-sub{font-size:1.05rem;color:var(--gray-400);line-height:1.75;margin-bottom:2rem;animation:fadeInUp 0.8s ease 0.2s both}
+        .hero-actions{display:flex;gap:1rem;flex-wrap:wrap;animation:fadeInUp 0.8s ease 0.3s both}
+        .btn-p{display:inline-flex;align-items:center;gap:0.5rem;background:var(--accent);color:#000;padding:0.8rem 1.75rem;border-radius:8px;text-decoration:none;font-family:var(--font-display);font-weight:600;font-size:0.9rem;letter-spacing:0.03em;transition:all 0.2s}
+        .btn-p:hover{background:#6EE7A8;transform:translateY(-2px);box-shadow:0 6px 25px rgba(74,222,128,0.35)}
+        .btn-s{display:inline-flex;align-items:center;gap:0.5rem;border:1px solid rgba(255,255,255,0.15);color:var(--gray-300);padding:0.8rem 1.75rem;border-radius:8px;text-decoration:none;font-family:var(--font-display);font-weight:500;font-size:0.9rem;transition:all 0.2s}
+        .btn-s:hover{border-color:rgba(255,255,255,0.35);color:var(--white)}
+        .hero-note{font-family:var(--font-mono);font-size:0.7rem;color:var(--gray-500);margin-top:1rem;letter-spacing:0.04em;animation:fadeInUp 0.8s ease 0.4s both}
+        @keyframes fadeInUp{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:translateY(0)}}
+        @media(max-width:900px){.hero-grid{grid-template-columns:1fr;gap:3rem}.hero{min-height:auto;padding:7rem 0 4rem}}
+
+        /* Dashboard mockup */
+        .dash-wrap{animation:fadeInUp 0.8s ease 0.2s both}
+        .dash-browser{background:rgba(8,12,22,0.95);border:1px solid rgba(74,222,128,0.15);border-radius:16px;overflow:hidden;box-shadow:0 30px 80px rgba(0,0,0,0.5),0 0 60px rgba(74,222,128,0.06)}
+        .browser-bar{display:flex;align-items:center;gap:0.6rem;padding:0.75rem 1rem;background:rgba(255,255,255,0.03);border-bottom:1px solid rgba(255,255,255,0.06)}
+        .b-dot{width:9px;height:9px;border-radius:50%}
+        .b-url{flex:1;margin-left:0.5rem;background:rgba(255,255,255,0.05);border-radius:4px;padding:0.25rem 0.6rem;font-family:var(--font-mono);font-size:0.65rem;color:var(--gray-500)}
+        .dash-body{display:grid;grid-template-columns:140px 1fr;min-height:340px}
+        .dash-sidebar{background:rgba(6,8,15,0.8);border-right:1px solid rgba(255,255,255,0.05);padding:1rem 0}
+        .ds-logo{padding:0 1rem 1rem;border-bottom:1px solid rgba(255,255,255,0.05);margin-bottom:0.75rem}
+        .ds-logo-name{font-family:var(--font-display);font-size:0.8rem;font-weight:700;color:var(--white);line-height:1.2}
+        .ds-logo-sub{font-family:var(--font-mono);font-size:0.5rem;color:var(--accent);letter-spacing:0.1em;text-transform:uppercase}
+        .ds-item{display:flex;align-items:center;gap:0.5rem;padding:0.45rem 1rem;font-size:0.65rem;color:var(--gray-500);cursor:pointer;transition:all 0.2s;border-left:2px solid transparent}
+        .ds-item:hover,.ds-item.on{color:var(--white);background:rgba(74,222,128,0.05);border-left-color:var(--accent)}
+        .ds-item.on{color:var(--accent)}
+        .ds-item i{width:12px;font-size:0.6rem}
+        .ds-section{font-family:var(--font-mono);font-size:0.5rem;color:var(--gray-700);letter-spacing:0.1em;text-transform:uppercase;padding:0.75rem 1rem 0.35rem}
+        .dash-main{padding:1.25rem;background:rgba(8,12,22,0.6);overflow:hidden}
+        .dm-header{display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:1rem}
+        .dm-greet{font-family:var(--font-display);font-weight:700;font-size:0.9rem;color:var(--white);margin-bottom:0.2rem}
+        .dm-sub{font-family:var(--font-mono);font-size:0.55rem;color:var(--gray-500);letter-spacing:0.05em}
+        .dm-badge{display:flex;align-items:center;gap:0.35rem;padding:0.25rem 0.6rem;border-radius:4px;background:rgba(16,185,129,0.1);border:1px solid rgba(16,185,129,0.25);font-family:var(--font-mono);font-size:0.5rem;color:var(--green);letter-spacing:0.05em}
+        .dm-badge-dot{width:4px;height:4px;border-radius:50%;background:var(--green);animation:pulse 2s infinite}
+        .dm-stats{display:grid;grid-template-columns:repeat(3,1fr);gap:0.5rem;margin-bottom:1rem}
+        .dm-stat{background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.06);border-radius:8px;padding:0.65rem}
+        .dm-stat-val{font-family:var(--font-display);font-weight:700;font-size:1.1rem;color:var(--white);margin-bottom:0.1rem}
+        .dm-stat-val.g{color:var(--green)}
+        .dm-stat-val.a{color:var(--accent)}
+        .dm-stat-lbl{font-family:var(--font-mono);font-size:0.5rem;color:var(--gray-500);letter-spacing:0.06em;text-transform:uppercase}
+        .dm-progress-wrap{margin-bottom:1rem}
+        .dm-p-head{display:flex;justify-content:space-between;font-size:0.6rem;margin-bottom:0.35rem}
+        .dm-p-head span:first-child{color:var(--gray-400)}
+        .dm-p-head span:last-child{color:var(--accent);font-family:var(--font-mono)}
+        .dm-bar{height:4px;background:rgba(255,255,255,0.06);border-radius:2px;overflow:hidden;margin-bottom:0.5rem}
+        .dm-bar-fill{height:100%;border-radius:2px;transition:width 1.5s ease}
+        .dm-bar-fill.green{background:linear-gradient(90deg,var(--green),var(--accent));width:0}
+        .dm-bar-fill.blue{background:linear-gradient(90deg,var(--blue),var(--purple));width:0}
+        .dm-bar-fill.purple{background:var(--purple);width:0}
+        .dm-bar-fill.go-green{width:78%}
+        .dm-bar-fill.go-blue{width:55%}
+        .dm-bar-fill.go-purple{width:35%}
+        .dm-files{background:rgba(255,255,255,0.02);border:1px solid rgba(255,255,255,0.05);border-radius:8px;overflow:hidden}
+        .dm-files-head{display:flex;justify-content:space-between;align-items:center;padding:0.5rem 0.75rem;border-bottom:1px solid rgba(255,255,255,0.05)}
+        .dm-files-title{font-family:var(--font-mono);font-size:0.55rem;color:var(--gray-400);letter-spacing:0.08em;text-transform:uppercase}
+        .dm-files-new{font-family:var(--font-mono);font-size:0.5rem;color:var(--green)}
+        .dm-file{display:flex;align-items:center;justify-content:space-between;padding:0.45rem 0.75rem;border-bottom:1px solid rgba(255,255,255,0.03)}
+        .dm-file:last-child{border-bottom:none}
+        .dm-file-name{font-size:0.6rem;color:var(--gray-300);display:flex;align-items:center;gap:0.4rem}
+        .dm-file-name i{color:var(--accent);font-size:0.55rem}
+        .dm-file-dl{font-family:var(--font-mono);font-size:0.5rem;color:var(--blue);cursor:pointer}
+
+        /* Features grid */
+        .features-section{padding:5rem 0}
+        .section-label{font-family:var(--font-mono);font-size:0.75rem;color:var(--accent);letter-spacing:0.12em;text-transform:uppercase;margin-bottom:1rem}
+        .section-title{font-family:var(--font-display);font-weight:700;font-size:clamp(2rem,4vw,3rem);color:var(--white);margin-bottom:1rem;line-height:1.2}
+        .section-desc{font-size:1.05rem;color:var(--gray-400);max-width:600px;line-height:1.7;margin-bottom:3rem}
+        .feat-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.25rem}
+        @media(max-width:768px){.feat-grid{grid-template-columns:1fr}}
+        .feat-card{background:rgba(12,16,28,0.7);border:1px solid rgba(255,255,255,0.07);border-radius:14px;padding:1.75rem;transition:all 0.3s}
+        .feat-card:hover{border-color:rgba(74,222,128,0.25);transform:translateY(-3px)}
+        .feat-icon{width:44px;height:44px;border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:1.1rem;margin-bottom:1.25rem}
+        .fi-green{background:rgba(16,185,129,0.1);border:1px solid rgba(16,185,129,0.2);color:var(--green)}
+        .fi-blue{background:rgba(59,130,246,0.1);border:1px solid rgba(59,130,246,0.2);color:var(--blue)}
+        .fi-purple{background:rgba(139,92,246,0.1);border:1px solid rgba(139,92,246,0.2);color:var(--purple)}
+        .fi-accent{background:rgba(74,222,128,0.08);border:1px solid rgba(74,222,128,0.2);color:var(--accent)}
+        .feat-title{font-family:var(--font-display);font-weight:600;font-size:1rem;color:var(--white);margin-bottom:0.5rem}
+        .feat-desc{font-size:0.9rem;color:var(--gray-400);line-height:1.6}
+        .feat-tag{display:inline-block;margin-top:1rem;font-family:var(--font-mono);font-size:0.65rem;color:var(--accent);letter-spacing:0.06em}
+
+        /* "What you see" section - full dash preview */
+        .preview-section{padding:5rem 0;background:linear-gradient(180deg,transparent,rgba(12,16,28,0.4),transparent)}
+        .preview-wide{max-width:1100px;margin:0 auto;background:rgba(8,12,22,0.95);border:1px solid rgba(74,222,128,0.12);border-radius:20px;overflow:hidden;box-shadow:0 40px 100px rgba(0,0,0,0.5),0 0 80px rgba(74,222,128,0.04)}
+        .pw-bar{display:flex;align-items:center;gap:0.6rem;padding:1rem 1.5rem;background:rgba(255,255,255,0.025);border-bottom:1px solid rgba(255,255,255,0.06)}
+        .pw-dots{display:flex;gap:0.4rem}
+        .pw-dot{width:10px;height:10px;border-radius:50%}
+        .pw-url{margin-left:0.75rem;background:rgba(255,255,255,0.04);border-radius:6px;padding:0.3rem 1rem;font-family:var(--font-mono);font-size:0.7rem;color:var(--gray-500);min-width:220px}
+        .pw-body{display:grid;grid-template-columns:200px 1fr;min-height:460px}
+        .pw-sidebar{background:rgba(6,8,15,0.9);border-right:1px solid rgba(255,255,255,0.05);padding:1.5rem 0}
+        .pws-logo{padding:0 1.25rem 1.25rem;border-bottom:1px solid rgba(255,255,255,0.05);margin-bottom:1rem}
+        .pws-name{font-family:var(--font-display);font-size:1rem;font-weight:700;color:var(--white)}
+        .pws-sub{font-family:var(--font-mono);font-size:0.6rem;color:var(--accent);letter-spacing:0.1em;text-transform:uppercase;margin-top:0.1rem}
+        .pws-item{display:flex;align-items:center;gap:0.65rem;padding:0.55rem 1.25rem;font-size:0.8rem;color:var(--gray-500);cursor:pointer;transition:all 0.2s;border-left:2px solid transparent}
+        .pws-item:hover,.pws-item.on{color:var(--white);background:rgba(74,222,128,0.05);border-left-color:var(--accent)}
+        .pws-item.on{color:var(--accent)}
+        .pws-item i{width:14px;font-size:0.75rem}
+        .pws-section{font-family:var(--font-mono);font-size:0.55rem;color:var(--gray-700);letter-spacing:0.1em;text-transform:uppercase;padding:1rem 1.25rem 0.4rem}
+        .pw-main{padding:2rem;background:rgba(8,12,22,0.6)}
+        .pwm-top{display:flex;justify-content:space-between;align-items:center;margin-bottom:1.75rem}
+        .pwm-greet{font-family:var(--font-display);font-weight:700;font-size:1.4rem;color:var(--white);margin-bottom:0.2rem}
+        .pwm-sub{font-size:0.8rem;color:var(--gray-500)}
+        .pwm-badge{display:flex;align-items:center;gap:0.4rem;padding:0.4rem 0.9rem;border-radius:6px;background:rgba(16,185,129,0.1);border:1px solid rgba(16,185,129,0.25);font-family:var(--font-mono);font-size:0.65rem;color:var(--green)}
+        .pwm-badge-dot{width:5px;height:5px;border-radius:50%;background:var(--green);animation:pulse 2s infinite}
+        .pwm-stats{display:grid;grid-template-columns:repeat(4,1fr);gap:0.75rem;margin-bottom:1.75rem}
+        .pwm-stat{background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.06);border-radius:10px;padding:1rem}
+        .pwm-stat-val{font-family:var(--font-display);font-weight:700;font-size:1.5rem;color:var(--white);margin-bottom:0.2rem}
+        .pwm-stat-val.g{color:var(--green)}.pwm-stat-val.a{color:var(--accent)}.pwm-stat-val.b{color:var(--blue)}.pwm-stat-val.p{color:var(--purple)}
+        .pwm-stat-lbl{font-family:var(--font-mono);font-size:0.6rem;color:var(--gray-500);letter-spacing:0.06em;text-transform:uppercase}
+        .pwm-grid{display:grid;grid-template-columns:1fr 1fr;gap:1rem}
+        .pwm-card{background:rgba(255,255,255,0.02);border:1px solid rgba(255,255,255,0.05);border-radius:10px;padding:1.25rem}
+        .pwm-card-title{font-family:var(--font-mono);font-size:0.65rem;color:var(--gray-400);letter-spacing:0.08em;text-transform:uppercase;margin-bottom:1rem}
+        .progress-item{margin-bottom:0.75rem}
+        .pi-head{display:flex;justify-content:space-between;font-size:0.75rem;margin-bottom:0.35rem}
+        .pi-head span:first-child{color:var(--gray-300)}
+        .pi-head span:last-child{font-family:var(--font-mono);color:var(--accent)}
+        .pi-bar{height:4px;background:rgba(255,255,255,0.06);border-radius:2px;overflow:hidden}
+        .pi-fill{height:100%;border-radius:2px}
+        .pi-fill.green{background:linear-gradient(90deg,var(--green),var(--accent))}
+        .pi-fill.blue{background:linear-gradient(90deg,var(--blue),var(--purple))}
+        .pi-fill.purple{background:var(--purple)}
+        .msg-item{display:flex;gap:0.75rem;padding:0.6rem 0;border-bottom:1px solid rgba(255,255,255,0.04)}
+        .msg-item:last-child{border-bottom:none}
+        .msg-avatar{width:28px;height:28px;border-radius:50%;background:rgba(74,222,128,0.15);border:1px solid rgba(74,222,128,0.3);display:flex;align-items:center;justify-content:center;font-family:var(--font-display);font-size:0.65rem;color:var(--accent);flex-shrink:0}
+        .msg-content{flex:1}
+        .msg-name{font-size:0.75rem;color:var(--white);font-weight:500;margin-bottom:0.15rem}
+        .msg-text{font-size:0.7rem;color:var(--gray-500);line-height:1.4}
+        .msg-time{font-family:var(--font-mono);font-size:0.55rem;color:var(--gray-700)}
+        .msg-unread{width:6px;height:6px;border-radius:50%;background:var(--accent);margin-top:4px}
+        @media(max-width:768px){.pw-body{grid-template-columns:1fr}.pw-sidebar{display:none}.pwm-stats{grid-template-columns:repeat(2,1fr)}.pwm-grid{grid-template-columns:1fr}}
+
+        /* Included section */
+        .included-section{padding:5rem 0}
+        .included-grid{display:grid;grid-template-columns:1fr 1fr;gap:3rem;align-items:center}
+        @media(max-width:768px){.included-grid{grid-template-columns:1fr}}
+        .check-list{display:flex;flex-direction:column;gap:0.85rem}
+        .check-item{display:flex;align-items:flex-start;gap:0.85rem}
+        .check-icon{width:22px;height:22px;border-radius:50%;background:rgba(16,185,129,0.1);border:1px solid rgba(16,185,129,0.25);display:flex;align-items:center;justify-content:center;color:var(--green);font-size:0.65rem;flex-shrink:0;margin-top:1px}
+        .check-text strong{display:block;font-size:0.95rem;color:var(--white);margin-bottom:0.15rem}
+        .check-text span{font-size:0.85rem;color:var(--gray-500);line-height:1.5}
+
+        /* CTA */
+        .cta-section{padding:6rem 0}
+        .cta-box{background:rgba(12,16,28,0.8);border:1px solid rgba(74,222,128,0.15);border-radius:20px;padding:4rem;text-align:center;position:relative;overflow:hidden}
+        .cta-box::before{content:'';position:absolute;top:-50%;left:50%;transform:translateX(-50%);width:600px;height:400px;background:radial-gradient(ellipse,rgba(74,222,128,0.06),transparent 70%);pointer-events:none}
+        .cta-box h2{font-family:var(--font-display);font-weight:700;font-size:clamp(1.8rem,4vw,2.75rem);color:var(--white);margin-bottom:1rem}
+        .cta-box p{font-size:1.05rem;color:var(--gray-400);max-width:500px;margin:0 auto 2.5rem;line-height:1.7}
+        .cta-actions{display:flex;gap:1rem;justify-content:center;flex-wrap:wrap}
+
+        /* Reveal */
+        .reveal{opacity:0;transform:translateY(24px);transition:opacity 0.6s ease,transform 0.6s ease}
+        .reveal.visible{opacity:1;transform:translateY(0)}
+
+        /* Footer */
+        .footer{padding:3rem 0;border-top:1px solid rgba(255,255,255,0.06)}
+        .footer-inner{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:1.5rem}
+        .footer-logo img{height:32px;opacity:0.7}
+        .footer-links{display:flex;gap:1.5rem}
+        .footer-links a{color:var(--gray-500);text-decoration:none;font-size:0.85rem;transition:color 0.3s}
+        .footer-links a:hover{color:var(--white)}
+        .footer-copy{color:var(--gray-500);font-size:0.8rem}
+        .footer-copy .g{color:var(--green);font-family:var(--font-display);font-weight:600}
+        .footer-copy .p{color:var(--purple);font-family:var(--font-display);font-weight:600}
+        .footer-copy .b{color:#60A5FA;font-family:var(--font-display);font-weight:600}
+        .footer-socials{display:flex;gap:1rem}
+        .footer-socials a{color:var(--gray-500);font-size:1.1rem;transition:color 0.3s}
+        .footer-socials a:hover{color:var(--accent)}
     </style>
 </head>
-<body class="bg-black text-white">
-    <!-- Custom Cursor (Desktop Only) -->
-    <div class="cursor-dot"></div>
-    <div class="cursor-outline"></div>
+<body>
+    <div class="grid-bg"></div>
+    <div class="particle" style="left:12%;top:20%;animation-delay:0s"></div>
+    <div class="particle" style="left:80%;top:30%;animation-delay:3s"></div>
+    <div class="particle" style="left:45%;top:60%;animation-delay:6s"></div>
+    <div class="particle" style="left:75%;top:80%;animation-delay:9s"></div>
 
-    <!-- Navigation -->
-    <nav class="fixed w-full z-50 bg-black/90 backdrop-blur-md border-b border-green-500/20">
-        <div class="container mx-auto px-4 md:px-6 py-3 md:py-4">
-            <div class="flex items-center justify-between">
-                <a href="index.html" class="logo-container p-2 rounded-lg transition-all duration-300 hover:bg-white/5 hoverable">
-                    <img src="jpaxmedialogoOFFICIALFINALwhite.png" alt="JPax Media" class="h-10 md:h-12 w-auto logo-glow transition-transform duration-300 hover:scale-110" onerror="this.style.display='none'">
-                </a>
-                
-                <!-- Desktop Menu -->
-                <div class="hidden md:flex items-center space-x-8">
-                    <a href="index.html" class="text-gray-300 hover:text-green-400 transition-colors hoverable">Home</a>
-                    <a href="index.html#services" class="text-gray-300 hover:text-green-400 transition-colors hoverable">Services</a>
-                    <a href="portfolio.html" class="text-gray-300 hover:text-green-400 transition-colors hoverable">Portfolio</a>
-                    <a href="pricing.html" class="text-gray-300 hover:text-green-400 transition-colors hoverable">Pricing</a>
-                    <a href="jupiter.html" class="text-green-400 nav-active hoverable">Jupiter</a>
-                </div>
-
-                <!-- Mobile Menu Button -->
-                <button id="mobile-menu-button" class="md:hidden text-white focus:outline-none z-50 relative hoverable">
-                    <div class="hamburger-icon">
-                        <span></span>
-                        <span></span>
-                        <span></span>
-                    </div>
-                </button>
-            </div>
+    <nav class="nav" id="nav"><div class="nav-inner">
+        <a href="index.html" class="nav-logo"><img src="jpaxmedialogoOFFICIALFINALwhite.png" alt="JPax Media" onerror="this.style.display='none'"></a>
+        <div class="nav-links">
+            <a href="index.html#systems">Systems</a><a href="index.html#services">Services</a><a href="index.html#process">Process</a>
+            <a href="portfolio.html">Portfolio</a><a href="jupiter.html" class="active">Jupiter</a><a href="pricing.html" class="nav-cta">View Pricing</a>
         </div>
-    </nav>
-
-    <!-- Mobile Menu -->
-    <div id="mobile-menu" class="mobile-menu">
-        <a href="index.html" class="text-2xl font-semibold hover:text-green-400 transition-colors">Home</a>
-        <a href="index.html#services" class="text-2xl font-semibold hover:text-green-400 transition-colors">Services</a>
-        <a href="portfolio.html" class="text-2xl font-semibold hover:text-green-400 transition-colors">Portfolio</a>
-        <a href="pricing.html" class="text-2xl font-semibold hover:text-green-400 transition-colors">Pricing</a>
-        <a href="jupiter.html" class="text-2xl font-semibold text-green-400">Jupiter</a>
+        <button class="nav-mobile-btn" id="mobileBtn" aria-label="Menu"><span></span><span></span><span></span></button>
+    </div></nav>
+    <div class="mobile-menu" id="mobileMenu">
+        <a href="index.html">Home</a><a href="index.html#systems">Systems</a><a href="portfolio.html">Portfolio</a>
+        <a href="jupiter.html" style="color:var(--accent)">Jupiter</a><a href="pricing.html">Pricing</a><a href="quiz.html">Take the Quiz</a>
     </div>
 
-    <!-- Hero Section -->
-    <section class="hero-section">
-        <div class="grid-overlay"></div>
-        <!-- Floating Particles -->
-        <div class="particle" style="left: 10%; top: 20%; animation-delay: 0s;"></div>
-        <div class="particle" style="left: 80%; top: 30%; animation-delay: 2s;"></div>
-        <div class="particle" style="left: 30%; top: 60%; animation-delay: 4s;"></div>
-        <div class="particle" style="left: 70%; top: 70%; animation-delay: 6s;"></div>
-        <div class="particle" style="left: 50%; top: 40%; animation-delay: 8s;"></div>
-        
-        <div class="hero-video-overlay"></div>
-        <div class="hero-content">
-            <h1 class="hero-title">JUPITER</h1>
-            <p class="hero-subtitle">Your Project Command Center</p>
-            <a href="#features" class="hero-cta hoverable">
-                <span>Launch Portal</span>
-                <i class="fas fa-arrow-right"></i>
-            </a>
-        </div>
-        <div class="hero-scroll-indicator">
-            <span class="text-sm uppercase tracking-wider">Scroll</span>
-            <i class="fas fa-chevron-down text-xl"></i>
-        </div>
-    </section>
-
-    <!-- Features Section -->
-    <section id="features" class="py-32 bg-black relative">
-        <div class="absolute inset-0 bg-gradient-to-b from-black via-gray-900 to-black opacity-50"></div>
-        <div class="container mx-auto px-4 relative z-10">
-            <div class="text-center mb-20 scroll-reveal">
-                <h2 class="text-5xl md:text-6xl font-bold mb-6 bg-gradient-to-r from-green-400 to-blue-400 bg-clip-text text-transparent">Mission Control Features</h2>
-                <p class="text-xl text-gray-400 max-w-3xl mx-auto">Everything you need to manage your project in one powerful dashboard</p>
-            </div>
-            
-            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-                <!-- Feature 1: Live Dashboard -->
-                <div class="card-glow p-8 rounded-xl scroll-reveal hoverable">
-                    <div class="spotlight"></div>
-                    <div class="text-green-400 text-5xl mb-4">
-                        <i class="fas fa-chart-line"></i>
+    <!-- HERO -->
+    <section class="hero">
+        <div class="hero-glow hg1"></div><div class="hero-glow hg2"></div>
+        <div class="container">
+            <div class="hero-grid">
+                <div>
+                    <div class="hero-badge"><span class="dot"></span>Proprietary Client System</div>
+                    <h1>Your Project's <span class="gradient">Mission Control</span></h1>
+                    <p class="hero-sub">Every JPax client gets access to Jupiter — a private command center where you track progress, download deliverables, message the team, and monitor results. Not a generic tool. Built by us, for you.</p>
+                    <div class="hero-actions">
+                        <a href="pricing.html" class="btn-p">Start a Project <i class="fas fa-arrow-right"></i></a>
+                        <a href="#features" class="btn-s">See Features <i class="fas fa-chevron-down"></i></a>
                     </div>
-                    <h3 class="text-2xl font-bold mb-3">Live Dashboard</h3>
-                    <p class="text-gray-400 mb-4">
-                        See project status, timelines, milestones, and team members at a glance. One view tells you everything.
-                    </p>
-                    <div class="flex items-center text-green-400 text-sm font-semibold">
-                        <span>Real-time updates</span>
-                        <i class="fas fa-check-circle ml-2"></i>
-                    </div>
+                    <div class="hero-note">// Included with every BUILD &amp; RISE engagement</div>
                 </div>
-
-                <!-- Feature 2: Instant Downloads -->
-                <div class="card-glow p-8 rounded-xl scroll-reveal hoverable">
-                    <div class="spotlight"></div>
-                    <div class="text-green-400 text-5xl mb-4">
-                        <i class="fas fa-cloud-download-alt"></i>
-                    </div>
-                    <h3 class="text-2xl font-bold mb-3">Instant Downloads</h3>
-                    <p class="text-gray-400 mb-4">
-                        All your deliverables organized and ready. Download anytime, anywhere. No more hunting through emails.
-                    </p>
-                    <div class="flex items-center text-green-400 text-sm font-semibold">
-                        <span>Version history included</span>
-                        <i class="fas fa-check-circle ml-2"></i>
-                    </div>
-                </div>
-
-                <!-- Feature 3: Direct Messaging -->
-                <div class="card-glow p-8 rounded-xl scroll-reveal hoverable">
-                    <div class="spotlight"></div>
-                    <div class="text-green-400 text-5xl mb-4">
-                        <i class="fas fa-comments"></i>
-                    </div>
-                    <h3 class="text-2xl font-bold mb-3">Direct Messaging</h3>
-                    <p class="text-gray-400 mb-4">
-                        Chat with our team without email chaos. Share files, get fast responses, stay organized.
-                    </p>
-                    <div class="flex items-center text-green-400 text-sm font-semibold">
-                        <span>Read receipts & notifications</span>
-                        <i class="fas fa-check-circle ml-2"></i>
-                    </div>
-                </div>
-
-                <!-- Feature 4: Performance Reports -->
-                <div class="card-glow p-8 rounded-xl scroll-reveal hoverable">
-                    <div class="spotlight"></div>
-                    <div class="text-green-400 text-5xl mb-4">
-                        <i class="fas fa-chart-pie"></i>
-                    </div>
-                    <h3 class="text-2xl font-bold mb-3">Performance Reports</h3>
-                    <p class="text-gray-400 mb-4">
-                        For ongoing partnerships, see real data on traffic, leads, conversions. Proof that it's working.
-                    </p>
-                    <div class="flex items-center text-green-400 text-sm font-semibold">
-                        <span>Monthly automated reports</span>
-                        <i class="fas fa-check-circle ml-2"></i>
-                    </div>
-                </div>
-
-                <!-- Feature 5: Smart Calendar -->
-                <div class="card-glow p-8 rounded-xl scroll-reveal hoverable">
-                    <div class="spotlight"></div>
-                    <div class="text-green-400 text-5xl mb-4">
-                        <i class="fas fa-calendar-alt"></i>
-                    </div>
-                    <h3 class="text-2xl font-bold mb-3">Smart Calendar</h3>
-                    <p class="text-gray-400 mb-4">
-                        Strategy sessions and check-ins scheduled. Never miss a call. Sync to your calendar instantly.
-                    </p>
-                    <div class="flex items-center text-green-400 text-sm font-semibold">
-                        <span>Auto reminders</span>
-                        <i class="fas fa-check-circle ml-2"></i>
-                    </div>
-                </div>
-
-                <!-- Feature 6: AI Assistant -->
-                <div class="card-glow p-8 rounded-xl scroll-reveal hoverable">
-                    <div class="spotlight"></div>
-                    <div class="text-green-400 text-5xl mb-4">
-                        <i class="fas fa-robot"></i>
-                    </div>
-                    <h3 class="text-2xl font-bold mb-3">AI Help 24/7</h3>
-                    <p class="text-gray-400 mb-4">
-                        Get instant answers to questions about your project. Navigate Jupiter easily. Available anytime.
-                    </p>
-                    <div class="flex items-center text-green-400 text-sm font-semibold">
-                        <span>Always online</span>
-                        <i class="fas fa-check-circle ml-2"></i>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Interactive Demo Section -->
-    <section id="demo" class="py-32 bg-gradient-to-b from-gray-900 to-black">
-        <div class="container mx-auto px-4">
-            <div class="text-center mb-16 scroll-reveal">
-                <h2 class="text-5xl md:text-6xl font-bold mb-6">
-                    See Jupiter in <span class="text-green-400">Action</span>
-                </h2>
-                <p class="text-xl text-gray-400 max-w-3xl mx-auto">
-                    Here's what your dashboard looks like. Clean. Organized. Powerful.
-                </p>
-            </div>
-
-            <!-- Dashboard Preview -->
-            <div class="max-w-6xl mx-auto scroll-reveal">
-                <div class="bg-gradient-to-br from-gray-900 to-black border-2 border-green-400/30 rounded-2xl p-6 md:p-10 hover:border-green-400 transition-all duration-300">
-                    <!-- Dashboard Header -->
-                    <div class="flex flex-col md:flex-row justify-between items-start md:items-center mb-8 gap-4">
-                        <div>
-                            <h3 class="text-2xl md:text-3xl font-bold mb-2">Welcome back, Alex! 👋</h3>
-                            <p class="text-gray-400">Your project is <span class="text-green-400 font-semibold">65% complete</span> and on schedule</p>
+                <!-- Mini dash mockup -->
+                <div class="dash-wrap">
+                    <div class="dash-browser">
+                        <div class="browser-bar">
+                            <div class="b-dot" style="background:#FF5F57"></div>
+                            <div class="b-dot" style="background:#FEBC2E"></div>
+                            <div class="b-dot" style="background:#28C840"></div>
+                            <div class="b-url">jupiter.jpaxmedia.com/dashboard</div>
                         </div>
-                        <div class="bg-green-500/20 border border-green-500 rounded-lg px-4 py-2">
-                            <span class="text-green-400 font-bold text-sm"><i class="fas fa-bolt mr-1"></i>On Track</span>
-                        </div>
-                    </div>
-
-                    <!-- Progress Bars -->
-                    <div class="grid md:grid-cols-3 gap-6 mb-8">
-                        <div class="bg-gray-800/50 rounded-lg p-5 border border-gray-700">
-                            <div class="flex items-center justify-between mb-3">
-                                <span class="text-gray-300 text-sm font-semibold">Website Development</span>
-                                <span class="text-green-400 text-sm font-bold">85%</span>
+                        <div class="dash-body">
+                            <div class="dash-sidebar">
+                                <div class="ds-logo"><div class="ds-logo-name">JUPITER</div><div class="ds-logo-sub">Mission Control</div></div>
+                                <div class="ds-item on"><i class="fas fa-th-large"></i> Dashboard</div>
+                                <div class="ds-item"><i class="fas fa-tasks"></i> Milestones</div>
+                                <div class="ds-item"><i class="fas fa-cloud-download-alt"></i> Files</div>
+                                <div class="ds-item"><i class="fas fa-comments"></i> Messages <span style="margin-left:auto;background:var(--accent);color:#000;border-radius:3px;padding:0 4px;font-size:0.5rem;font-weight:700">3</span></div>
+                                <div class="ds-section">Analytics</div>
+                                <div class="ds-item"><i class="fas fa-chart-line"></i> Reports</div>
+                                <div class="ds-item"><i class="fas fa-calendar-alt"></i> Schedule</div>
                             </div>
-                            <div class="w-full bg-gray-700 rounded-full h-2">
-                                <div class="bg-green-400 h-2 rounded-full" style="width: 85%;"></div>
-                            </div>
-                        </div>
-                        <div class="bg-gray-800/50 rounded-lg p-5 border border-gray-700">
-                            <div class="flex items-center justify-between mb-3">
-                                <span class="text-gray-300 text-sm font-semibold">Video Production</span>
-                                <span class="text-green-400 text-sm font-bold">60%</span>
-                            </div>
-                            <div class="w-full bg-gray-700 rounded-full h-2">
-                                <div class="bg-green-400 h-2 rounded-full" style="width: 60%;"></div>
-                            </div>
-                        </div>
-                        <div class="bg-gray-800/50 rounded-lg p-5 border border-gray-700">
-                            <div class="flex items-center justify-between mb-3">
-                                <span class="text-gray-300 text-sm font-semibold">Social Media</span>
-                                <span class="text-green-400 text-sm font-bold">40%</span>
-                            </div>
-                            <div class="w-full bg-gray-700 rounded-full h-2">
-                                <div class="bg-green-400 h-2 rounded-full" style="width: 40%;"></div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Quick Stats -->
-                    <div class="grid grid-cols-2 md:grid-cols-4 gap-4 mb-8">
-                        <div class="bg-gray-800/30 rounded-lg p-4 text-center border border-gray-700">
-                            <div class="text-3xl font-bold text-green-400 mb-1">12</div>
-                            <div class="text-xs text-gray-400 uppercase tracking-wide">Files Ready</div>
-                        </div>
-                        <div class="bg-gray-800/30 rounded-lg p-4 text-center border border-gray-700">
-                            <div class="text-3xl font-bold text-green-400 mb-1">3</div>
-                            <div class="text-xs text-gray-400 uppercase tracking-wide">New Messages</div>
-                        </div>
-                        <div class="bg-gray-800/30 rounded-lg p-4 text-center border border-gray-700">
-                            <div class="text-3xl font-bold text-green-400 mb-1">8</div>
-                            <div class="text-xs text-gray-400 uppercase tracking-wide">Days Left</div>
-                        </div>
-                        <div class="bg-gray-800/30 rounded-lg p-4 text-center border border-gray-700">
-                            <div class="text-3xl font-bold text-green-400 mb-1">24/7</div>
-                            <div class="text-xs text-gray-400 uppercase tracking-wide">AI Support</div>
-                        </div>
-                    </div>
-
-                    <!-- Recent Activity -->
-                    <div class="bg-gray-800/30 rounded-lg p-6 border border-gray-700">
-                        <h4 class="text-lg font-bold mb-4 flex items-center">
-                            <i class="fas fa-clock text-green-400 mr-2"></i>
-                            Recent Activity
-                        </h4>
-                        <div class="space-y-3">
-                            <div class="flex items-center justify-between py-2 border-b border-gray-700">
-                                <div class="flex items-center gap-3">
-                                    <div class="w-2 h-2 bg-green-400 rounded-full"></div>
-                                    <span class="text-sm text-gray-300">Homepage mockup uploaded</span>
+                            <div class="dash-main">
+                                <div class="dm-header">
+                                    <div><div class="dm-greet">Welcome back, Alex 👋</div><div class="dm-sub">// TradeOS Build — Week 2</div></div>
+                                    <div class="dm-badge"><span class="dm-badge-dot"></span>ON TRACK</div>
                                 </div>
-                                <span class="text-xs text-gray-500">2 hours ago</span>
-                            </div>
-                            <div class="flex items-center justify-between py-2 border-b border-gray-700">
-                                <div class="flex items-center gap-3">
-                                    <div class="w-2 h-2 bg-blue-400 rounded-full"></div>
-                                    <span class="text-sm text-gray-300">Team message received</span>
+                                <div class="dm-stats">
+                                    <div class="dm-stat"><div class="dm-stat-val a">78%</div><div class="dm-stat-lbl">Complete</div></div>
+                                    <div class="dm-stat"><div class="dm-stat-val g">9</div><div class="dm-stat-lbl">Days Left</div></div>
+                                    <div class="dm-stat"><div class="dm-stat-val">7</div><div class="dm-stat-lbl">Files Ready</div></div>
                                 </div>
-                                <span class="text-xs text-gray-500">5 hours ago</span>
-                            </div>
-                            <div class="flex items-center justify-between py-2">
-                                <div class="flex items-center gap-3">
-                                    <div class="w-2 h-2 bg-purple-400 rounded-full"></div>
-                                    <span class="text-sm text-gray-300">Video edit #2 completed</span>
+                                <div class="dm-progress-wrap">
+                                    <div class="dm-p-head"><span>System Architecture</span><span>78%</span></div>
+                                    <div class="dm-bar"><div class="dm-bar-fill green" id="b1"></div></div>
+                                    <div class="dm-p-head"><span>UI & Dashboard Build</span><span>55%</span></div>
+                                    <div class="dm-bar"><div class="dm-bar-fill blue" id="b2"></div></div>
+                                    <div class="dm-p-head"><span>Integration & Testing</span><span>35%</span></div>
+                                    <div class="dm-bar"><div class="dm-bar-fill purple" id="b3"></div></div>
                                 </div>
-                                <span class="text-xs text-gray-500">1 day ago</span>
+                                <div class="dm-files">
+                                    <div class="dm-files-head"><span class="dm-files-title">Recent Deliverables</span><span class="dm-files-new">+ 2 new</span></div>
+                                    <div class="dm-file"><span class="dm-file-name"><i class="fas fa-file-code"></i>TradeOS_v1.2_final.zip</span><span class="dm-file-dl">↓ Download</span></div>
+                                    <div class="dm-file"><span class="dm-file-name"><i class="fas fa-file-image"></i>Brand_Assets_Pack.zip</span><span class="dm-file-dl">↓ Download</span></div>
+                                    <div class="dm-file"><span class="dm-file-name"><i class="fas fa-file-pdf"></i>System_Docs_v2.pdf</span><span class="dm-file-dl">↓ Download</span></div>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -642,129 +318,181 @@
         </div>
     </section>
 
-    <!-- How It Works Section -->
-    <section class="py-32 bg-gradient-to-b from-black to-gray-900 relative overflow-hidden">
-        <div class="container mx-auto px-4 relative z-10">
-            <div class="text-center mb-20 scroll-reveal">
-                <h2 class="text-5xl md:text-6xl font-bold mb-6">How Jupiter Works</h2>
-                <p class="text-xl text-gray-400 max-w-3xl mx-auto">A streamlined process designed for clarity and control</p>
+    <!-- Features -->
+    <section class="features-section" id="features">
+        <div class="container">
+            <div class="reveal" style="text-align:center;margin-bottom:3rem">
+                <div class="section-label">What's Inside</div>
+                <div class="section-title">Everything in One Place</div>
+                <p class="section-desc" style="margin:0 auto">No more hunting through email threads. Jupiter puts your entire project in a single, clean dashboard — built for your engagement specifically.</p>
             </div>
-            
-            <div class="max-w-4xl mx-auto space-y-16">
-                <!-- Step 1 -->
-                <div class="flex flex-col md:flex-row items-center gap-8 scroll-reveal">
-                    <div class="md:w-1/3 text-center md:text-left">
-                        <div class="inline-block text-8xl font-black text-green-400 opacity-20">01</div>
-                    </div>
-                    <div class="md:w-2/3">
-                        <h3 class="text-3xl font-bold mb-4">Get Your Invitation</h3>
-                        <p class="text-gray-400 text-lg">Once your project kicks off, you'll receive a personalized invitation link to access your Jupiter dashboard.</p>
-                    </div>
+            <div class="feat-grid">
+                <div class="feat-card reveal">
+                    <div class="feat-icon fi-green"><i class="fas fa-th-large"></i></div>
+                    <div class="feat-title">Live Project Dashboard</div>
+                    <div class="feat-desc">Real-time progress across every milestone. See exactly where your project stands — phase by phase, day by day.</div>
+                    <div class="feat-tag">// Always up to date</div>
                 </div>
-
-                <!-- Step 2 -->
-                <div class="flex flex-col md:flex-row-reverse items-center gap-8 scroll-reveal">
-                    <div class="md:w-1/3 text-center md:text-right">
-                        <div class="inline-block text-8xl font-black text-purple-400 opacity-20">02</div>
-                    </div>
-                    <div class="md:w-2/3 md:text-right">
-                        <h3 class="text-3xl font-bold mb-4">Track Everything</h3>
-                        <p class="text-gray-400 text-lg">Monitor progress, review deliverables, and access analytics all in real-time from your custom dashboard.</p>
-                    </div>
+                <div class="feat-card reveal">
+                    <div class="feat-icon fi-blue"><i class="fas fa-cloud-download-alt"></i></div>
+                    <div class="feat-title">Organized Deliverables</div>
+                    <div class="feat-desc">Every file, every version, organized and downloadable on demand. Brand assets, code packages, documents — all in one place.</div>
+                    <div class="feat-tag">// Version history included</div>
                 </div>
+                <div class="feat-card reveal">
+                    <div class="feat-icon fi-accent"><i class="fas fa-comments"></i></div>
+                    <div class="feat-title">Direct Messaging</div>
+                    <div class="feat-desc">One thread. No email chains. Share files, give feedback, and get fast responses directly inside Jupiter.</div>
+                    <div class="feat-tag">// Read receipts + notifications</div>
+                </div>
+                <div class="feat-card reveal">
+                    <div class="feat-icon fi-purple"><i class="fas fa-chart-bar"></i></div>
+                    <div class="feat-title">Performance Reports</div>
+                    <div class="feat-desc">For RISE partnerships, see real data — traffic, leads, social growth, conversions. Every month, automatically.</div>
+                    <div class="feat-tag">// RISE partnerships only</div>
+                </div>
+                <div class="feat-card reveal">
+                    <div class="feat-icon fi-blue"><i class="fas fa-calendar-check"></i></div>
+                    <div class="feat-title">Schedule & Check-Ins</div>
+                    <div class="feat-desc">Strategy calls, reviews, and milestones all scheduled inside Jupiter. Sync to your calendar with one click.</div>
+                    <div class="feat-tag">// Auto reminders included</div>
+                </div>
+                <div class="feat-card reveal">
+                    <div class="feat-icon fi-green"><i class="fas fa-lock"></i></div>
+                    <div class="feat-title">Private & Secure</div>
+                    <div class="feat-desc">Your own private portal. No shared workspaces. Your data, your project, your access — no one else's.</div>
+                    <div class="feat-tag">// Dedicated per client</div>
+                </div>
+            </div>
+        </div>
+    </section>
 
-                <!-- Step 3 -->
-                <div class="flex flex-col md:flex-row items-center gap-8 scroll-reveal">
-                    <div class="md:w-1/3 text-center md:text-left">
-                        <div class="inline-block text-8xl font-black text-blue-400 opacity-20">03</div>
+    <!-- Full Dashboard Preview -->
+    <section class="preview-section">
+        <div class="container">
+            <div class="reveal" style="text-align:center;margin-bottom:2.5rem">
+                <div class="section-label">Live Preview</div>
+                <div class="section-title">This is What You Log Into</div>
+                <p class="section-desc" style="margin:0 auto">Clean, fast, and built around your project. No bloat, no learning curve.</p>
+            </div>
+            <div class="reveal">
+                <div class="preview-wide">
+                    <div class="pw-bar">
+                        <div class="pw-dots"><div class="pw-dot" style="background:#FF5F57"></div><div class="pw-dot" style="background:#FEBC2E"></div><div class="pw-dot" style="background:#28C840"></div></div>
+                        <div class="pw-url">jupiter.jpaxmedia.com/dashboard</div>
                     </div>
-                    <div class="md:w-2/3">
-                        <h3 class="text-3xl font-bold mb-4">Collaborate Seamlessly</h3>
-                        <p class="text-gray-400 text-lg">Communicate directly with your team, provide feedback, and watch your vision come to life.</p>
+                    <div class="pw-body">
+                        <div class="pw-sidebar">
+                            <div class="pws-logo"><div class="pws-name">JUPITER</div><div class="pws-sub">Client Portal</div></div>
+                            <div class="pws-item on"><i class="fas fa-th-large"></i> Dashboard</div>
+                            <div class="pws-item"><i class="fas fa-tasks"></i> Milestones</div>
+                            <div class="pws-item"><i class="fas fa-cloud-download-alt"></i> Files & Assets</div>
+                            <div class="pws-item"><i class="fas fa-comments"></i> Messages <span style="margin-left:auto;background:var(--accent);color:#000;border-radius:4px;padding:1px 6px;font-size:0.6rem;font-weight:700">3</span></div>
+                            <div class="pws-section">Analytics</div>
+                            <div class="pws-item"><i class="fas fa-chart-line"></i> Reports</div>
+                            <div class="pws-item"><i class="fas fa-calendar-alt"></i> Schedule</div>
+                            <div class="pws-item"><i class="fas fa-cog"></i> Settings</div>
+                        </div>
+                        <div class="pw-main">
+                            <div class="pwm-top">
+                                <div><div class="pwm-greet">Welcome back, Alex 👋</div><div class="pwm-sub">TradeOS Build — You're on schedule</div></div>
+                                <div class="pwm-badge"><span class="pwm-badge-dot"></span>ON TRACK — 9 days remaining</div>
+                            </div>
+                            <div class="pwm-stats">
+                                <div class="pwm-stat"><div class="pwm-stat-val a">78%</div><div class="pwm-stat-lbl">Overall Progress</div></div>
+                                <div class="pwm-stat"><div class="pwm-stat-val g">7</div><div class="pwm-stat-lbl">Files Ready</div></div>
+                                <div class="pwm-stat"><div class="pwm-stat-val b">3</div><div class="pwm-stat-lbl">New Messages</div></div>
+                                <div class="pwm-stat"><div class="pwm-stat-val p">2</div><div class="pwm-stat-lbl">Upcoming Calls</div></div>
+                            </div>
+                            <div class="pwm-grid">
+                                <div class="pwm-card">
+                                    <div class="pwm-card-title">Build Progress</div>
+                                    <div class="progress-item"><div class="pi-head"><span>System Architecture</span><span>78%</span></div><div class="pi-bar"><div class="pi-fill green" id="pb1" style="width:78%"></div></div></div>
+                                    <div class="progress-item"><div class="pi-head"><span>Dashboard & UI</span><span>55%</span></div><div class="pi-bar"><div class="pi-fill blue" id="pb2" style="width:55%"></div></div></div>
+                                    <div class="progress-item"><div class="pi-head"><span>Integrations</span><span>35%</span></div><div class="pi-bar"><div class="pi-fill purple" id="pb3" style="width:35%"></div></div></div>
+                                    <div class="progress-item"><div class="pi-head"><span>Testing & Launch</span><span>10%</span></div><div class="pi-bar"><div class="pi-fill green" id="pb4" style="width:10%"></div></div></div>
+                                </div>
+                                <div class="pwm-card">
+                                    <div class="pwm-card-title">Recent Messages</div>
+                                    <div class="msg-item">
+                                        <div class="msg-avatar">JP</div>
+                                        <div class="msg-content"><div class="msg-name">Julian <span style="color:var(--accent);font-size:0.65rem">JPax</span></div><div class="msg-text">Dashboard UI is complete — check Files for the preview build.</div><div class="msg-time">10 min ago</div></div>
+                                        <div class="msg-unread"></div>
+                                    </div>
+                                    <div class="msg-item">
+                                        <div class="msg-avatar">JP</div>
+                                        <div class="msg-content"><div class="msg-name">Julian <span style="color:var(--accent);font-size:0.65rem">JPax</span></div><div class="msg-text">Integration with your CRM is queued for tomorrow — on track.</div><div class="msg-time">Yesterday</div></div>
+                                        <div class="msg-unread"></div>
+                                    </div>
+                                    <div class="msg-item">
+                                        <div class="msg-avatar" style="background:rgba(59,130,246,0.15);border-color:rgba(59,130,246,0.3);color:var(--blue)">AJ</div>
+                                        <div class="msg-content"><div class="msg-name">Alex Johnson</div><div class="msg-text">Looks great so far! Can we add the quote estimator to Phase 1?</div><div class="msg-time">2 days ago</div></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Benefits Section -->
-    <section class="py-32 bg-black">
-        <div class="container mx-auto px-4">
-            <div class="text-center mb-20 scroll-reveal">
-                <h2 class="text-5xl md:text-6xl font-bold mb-6 bg-gradient-to-r from-green-400 via-blue-400 to-purple-400 bg-clip-text text-transparent">Why Clients Love Jupiter</h2>
-                <p class="text-xl text-gray-400 max-w-3xl mx-auto">Experience the difference of true project transparency</p>
-            </div>
-
-            <div class="grid md:grid-cols-2 gap-12 max-w-5xl mx-auto">
-                <div class="scroll-reveal">
-                    <div class="flex items-start gap-4">
-                        <div class="text-green-400 text-3xl mt-1">
-                            <i class="fas fa-check-circle"></i>
-                        </div>
-                        <div>
-                            <h3 class="text-2xl font-bold mb-3">Total Transparency</h3>
-                            <p class="text-gray-400">No more wondering "where's my project?" See exactly what's happening, when it's happening.</p>
-                        </div>
-                    </div>
+    <!-- What's included -->
+    <section class="included-section">
+        <div class="container">
+            <div class="included-grid">
+                <div class="reveal">
+                    <div class="section-label">Standard Inclusion</div>
+                    <div class="section-title">Included in Every Engagement</div>
+                    <p class="section-desc" style="margin-bottom:2rem">Jupiter isn't an add-on. It's part of the JPax experience. Every client — BUILD or RISE — gets a private portal from day one.</p>
+                    <a href="pricing.html" class="btn-p">Start a Project <i class="fas fa-arrow-right"></i></a>
                 </div>
-
-                <div class="scroll-reveal">
-                    <div class="flex items-start gap-4">
-                        <div class="text-purple-400 text-3xl mt-1">
-                            <i class="fas fa-check-circle"></i>
-                        </div>
-                        <div>
-                            <h3 class="text-2xl font-bold mb-3">Save Time</h3>
-                            <p class="text-gray-400">Everything in one place means less back-and-forth emails and more time focusing on what matters.</p>
-                        </div>
+                <div class="check-list reveal">
+                    <div class="check-item">
+                        <div class="check-icon"><i class="fas fa-check"></i></div>
+                        <div class="check-text"><strong>Private Client Portal</strong><span>Your own dedicated Jupiter instance — not a shared workspace.</span></div>
                     </div>
-                </div>
-
-                <div class="scroll-reveal">
-                    <div class="flex items-start gap-4">
-                        <div class="text-blue-400 text-3xl mt-1">
-                            <i class="fas fa-check-circle"></i>
-                        </div>
-                        <div>
-                            <h3 class="text-2xl font-bold mb-3">Stay In Control</h3>
-                            <p class="text-gray-400">You're part of the journey. Review, approve, and provide feedback at every milestone.</p>
-                        </div>
+                    <div class="check-item">
+                        <div class="check-icon"><i class="fas fa-check"></i></div>
+                        <div class="check-text"><strong>Real-Time Milestone Tracking</strong><span>See exactly what's done, what's in progress, and what's next.</span></div>
                     </div>
-                </div>
-
-                <div class="scroll-reveal">
-                    <div class="flex items-start gap-4">
-                        <div class="text-yellow-400 text-3xl mt-1">
-                            <i class="fas fa-check-circle"></i>
-                        </div>
-                        <div>
-                            <h3 class="text-2xl font-bold mb-3">Peace of Mind</h3>
-                            <p class="text-gray-400">With real-time updates and direct communication, you'll never feel out of the loop.</p>
-                        </div>
+                    <div class="check-item">
+                        <div class="check-icon"><i class="fas fa-check"></i></div>
+                        <div class="check-text"><strong>Organized File Vault</strong><span>Every deliverable stored, versioned, and downloadable — forever.</span></div>
+                    </div>
+                    <div class="check-item">
+                        <div class="check-icon"><i class="fas fa-check"></i></div>
+                        <div class="check-text"><strong>Direct Team Messaging</strong><span>One thread with Julian and the JPax team. No email needed.</span></div>
+                    </div>
+                    <div class="check-item">
+                        <div class="check-icon"><i class="fas fa-check"></i></div>
+                        <div class="check-text"><strong>Monthly Reports (RISE)</strong><span>Automated performance analytics delivered inside your portal every month.</span></div>
+                    </div>
+                    <div class="check-item">
+                        <div class="check-icon"><i class="fas fa-check"></i></div>
+                        <div class="check-text"><strong>Schedule & Call Management</strong><span>All strategy sessions and reviews booked and tracked inside Jupiter.</span></div>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- CTA Section -->
-    <section class="py-32 bg-gradient-to-b from-black via-gray-900 to-black relative overflow-hidden">
-        <div class="absolute inset-0">
-            <div class="absolute inset-0 bg-gradient-to-r from-green-400/10 to-purple-400/10 opacity-30"></div>
-        </div>
-        <div class="container mx-auto px-4 text-center relative z-10">
-            <div class="scroll-reveal">
-                <h2 class="text-5xl md:text-6xl font-bold mb-6">Ready to Launch?</h2>
-                <p class="text-xl text-gray-400 mb-12 max-w-2xl mx-auto">Start your project with JPax Media and experience the Jupiter difference</p>
-                <a href="quiz.html" class="hero-cta hoverable inline-flex">
-                    <span>Start Your Project</span>
-                    <i class="fas fa-rocket"></i>
-                </a>
+    <!-- CTA -->
+    <section class="cta-section">
+        <div class="container">
+            <div class="cta-box reveal">
+                <h2>Ready to Get Your System?</h2>
+                <p>Every JPax project includes Jupiter access from day one. Start a BUILD project or take the quiz to find your best fit.</p>
+                <div class="cta-actions">
+                    <a href="pricing.html" class="btn-p">View Pricing <i class="fas fa-arrow-right"></i></a>
+                    <a href="quiz.html" class="btn-s">Take the Quiz <i class="fas fa-chevron-right"></i></a>
+                </div>
             </div>
         </div>
     </section>
 
     <!-- Footer -->
+<<<<<<< HEAD
     <footer class="bg-black text-gray-400 py-16 border-t border-gray-800">
         <div class="container mx-auto px-4">
             <div class="grid md:grid-cols-3 gap-12 mb-12">
@@ -803,114 +531,48 @@
             <div class="border-t border-gray-800 pt-8 text-center text-gray-500 text-sm">
                 <p>&copy; 2026 JPax Media. All rights reserved. <span class="text-green-400">BUILD.</span> <span class="text-purple-400">RISE.</span> <span class="text-blue-400">SCALE.</span></p>
             </div>
+=======
+    <footer class="footer"><div class="container">
+        <div class="footer-inner">
+            <a href="index.html" class="footer-logo"><img src="jpaxmedialogoOFFICIALFINALwhite.png" alt="JPax Media" onerror="this.style.display='none'"></a>
+            <div class="footer-links"><a href="index.html">Home</a><a href="portfolio.html">Portfolio</a><a href="pricing.html">Pricing</a><a href="jupiter.html">Jupiter</a><a href="quiz.html">Quiz</a></div>
+            <div class="footer-socials"><a href="https://www.youtube.com/@JPaxFilms/videos" target="_blank"><i class="fab fa-youtube"></i></a><a href="https://www.tiktok.com/@jpaxfilms?lang=en" target="_blank"><i class="fab fa-tiktok"></i></a><a href="https://www.facebook.com/JPaxFilms/" target="_blank"><i class="fab fa-facebook"></i></a><a href="https://www.instagram.com/jpaxfilmz/" target="_blank"><i class="fab fa-instagram"></i></a></div>
+>>>>>>> 10d9cd3 (Update Jpax Media Website)
         </div>
-    </footer>
+        <div style="text-align:center;margin-top:2rem"><p class="footer-copy">&copy; 2025 JPax Media. All rights reserved. <span class="g">BUILD.</span> <span class="p">RISE.</span> <span class="b">SCALE.</span></p></div>
+    </div></footer>
 
     <script>
-        document.addEventListener('DOMContentLoaded', () => {
-            // --- Custom Cursor ---
-            const cursorDot = document.querySelector('.cursor-dot');
-            const cursorOutline = document.querySelector('.cursor-outline');
-            
-            if (cursorDot && cursorOutline) {
-                let mouseX = 0, mouseY = 0;
-                let outlineX = 0, outlineY = 0;
-
-                document.addEventListener('mousemove', (e) => {
-                    mouseX = e.clientX;
-                    mouseY = e.clientY;
-                    cursorDot.style.left = mouseX + 'px';
-                    cursorDot.style.top = mouseY + 'px';
-                });
-
-                function animateOutline() {
-                    outlineX += (mouseX - outlineX) * 0.2;
-                    outlineY += (mouseY - outlineY) * 0.2;
-                    cursorOutline.style.left = outlineX + 'px';
-                    cursorOutline.style.top = outlineY + 'px';
-                    requestAnimationFrame(animateOutline);
-                }
-                animateOutline();
-
-                const hoverElements = document.querySelectorAll('.hoverable');
-                hoverElements.forEach(el => {
-                    el.addEventListener('mouseenter', () => {
-                        cursorOutline.classList.add('cursor-interact');
-                    });
-                    el.addEventListener('mouseleave', () => {
-                        cursorOutline.classList.remove('cursor-interact');
-                    });
-                });
-            }
-
-            // --- Spotlight Card Effect ---
-            document.querySelectorAll('.card-glow').forEach(card => {
-                const spotlight = card.querySelector('.spotlight');
-                if (spotlight) {
-                    card.addEventListener('mousemove', e => {
-                        const rect = card.getBoundingClientRect();
-                        const x = e.clientX - rect.left;
-                        const y = e.clientY - rect.top;
-                        spotlight.style.left = `${x}px`;
-                        spotlight.style.top = `${y}px`;
-                    });
-                }
-            });
-
-            // --- Enhanced Mobile Menu ---
-            const mobileMenuButton = document.getElementById('mobile-menu-button');
-            const mobileMenu = document.getElementById('mobile-menu');
-            if (mobileMenuButton && mobileMenu) {
-                const hamburgerIcon = mobileMenuButton.querySelector('.hamburger-icon');
-                const body = document.body;
-                
-                mobileMenuButton.addEventListener('click', () => {
-                    const isActive = mobileMenu.classList.contains('active');
-                    
-                    if (!isActive) {
-                        mobileMenu.classList.add('active');
-                        hamburgerIcon.classList.add('active');
-                        body.style.overflow = 'hidden';
-                    } else {
-                        mobileMenu.classList.remove('active');
-                        hamburgerIcon.classList.remove('active');
-                        body.style.overflow = '';
-                    }
-                });
-                
-                const mobileMenuLinks = mobileMenu.querySelectorAll('a');
-                mobileMenuLinks.forEach(link => {
-                    link.addEventListener('click', () => {
-                        mobileMenu.classList.remove('active');
-                        hamburgerIcon.classList.remove('active');
-                        body.style.overflow = '';
-                    });
-                });
-
-                // Close menu when clicking outside
-                mobileMenu.addEventListener('click', (e) => {
-                    if (e.target === mobileMenu) {
-                        mobileMenu.classList.remove('active');
-                        hamburgerIcon.classList.remove('active');
-                        body.style.overflow = '';
-                    }
-                });
-            }
-
-            // --- Scroll Animations ---
-            const scrollElements = document.querySelectorAll('.scroll-reveal');
-            const scrollObserver = new IntersectionObserver((entries) => {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        entry.target.classList.add('is-visible');
-                        scrollObserver.unobserve(entry.target);
-                    }
-                });
-            }, { threshold: 0.1 });
-            scrollElements.forEach(el => {
-                scrollObserver.observe(el);
-            });
+    // Nav
+    const nav = document.getElementById('nav');
+    window.addEventListener('scroll', () => nav.classList.toggle('scrolled', window.scrollY > 50));
+    const mobileBtn = document.getElementById('mobileBtn'), mobileMenu = document.getElementById('mobileMenu');
+    if (mobileBtn && mobileMenu) {
+        mobileBtn.addEventListener('click', () => {
+            const a = mobileMenu.classList.toggle('active');
+            document.body.style.overflow = a ? 'hidden' : '';
+            const s = mobileBtn.querySelectorAll('span');
+            if (a) { s[0].style.transform='rotate(45deg) translate(5px,5px)';s[1].style.opacity='0';s[2].style.transform='rotate(-45deg) translate(7px,-7px)'; }
+            else { s[0].style.transform='none';s[1].style.opacity='1';s[2].style.transform='none'; }
         });
+        mobileMenu.querySelectorAll('a').forEach(l => l.addEventListener('click', () => {
+            mobileMenu.classList.remove('active'); document.body.style.overflow = '';
+            const s = mobileBtn.querySelectorAll('span'); s[0].style.transform='none';s[1].style.opacity='1';s[2].style.transform='none';
+        }));
+    }
+
+    // Scroll reveal + progress bar animation
+    const obs = new IntersectionObserver((entries) => {
+        entries.forEach(e => {
+            if (e.isIntersecting) {
+                e.target.classList.add('visible');
+                // Animate mini dashboard bars on hero
+                const b1 = document.getElementById('b1'), b2 = document.getElementById('b2'), b3 = document.getElementById('b3');
+                if (b1) { setTimeout(() => { b1.classList.add('go-green'); b2.classList.add('go-blue'); b3.classList.add('go-purple'); }, 400); }
+            }
+        });
+    }, { threshold: 0.15 });
+    document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
     </script>
 </body>
 </html>

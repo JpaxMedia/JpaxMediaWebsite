@@ -3,1003 +3,1090 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>JPax Media | BUILD. RISE. SCALE.</title>
+    <title>JPax Media | AI Operating Systems for Your Business</title>
     
-    <!-- SEO Meta Tags -->
-    <meta name="description" content="JPax Media - AI-accelerated digital agency delivering websites, branding, and growth campaigns in days. Human creativity meets intelligent automation. BUILD your foundation. RISE with ongoing growth.">
-    <meta name="keywords" content="digital agency, AI marketing, BUILD RISE framework, fast website design, social media management, Southeast agency, Connecticut">
+    <meta name="description" content="JPax Media builds white-label AI operating systems for trades businesses and content creators. Custom dashboards, lead management, and business intelligence — delivered in days.">
+    <meta name="keywords" content="AI operating systems, TradeOS, CreatorOS, business dashboard, trades software, content creator tools, white-label">
     
-    <!-- Open Graph / Social Media -->
     <meta property="og:type" content="website">
-    <meta property="og:title" content="JPax Media | BUILD. RISE. SCALE.">
-    <meta property="og:description" content="Human creativity accelerated by AI. Build your digital foundation in days, rise with partnerships that compound results month after month.">
+    <meta property="og:title" content="JPax Media | AI Operating Systems for Your Business">
+    <meta property="og:description" content="White-label AI operating systems delivered in days. TradeOS for trades. CreatorOS for creators. Build. Rise. Scale.">
     <meta property="og:image" content="https://jpaxmedia.com/jpaxmedialogoOFFICIALFINALwhite.png">
     <meta property="og:url" content="https://jpaxmedia.com">
     
-    <!-- Favicon -->
     <link rel="icon" type="image/png" href="jpaxmedialogoOFFICIALFINALwhite.png">
     
-    <!-- Tailwind CSS -->
-    <script src="https://cdn.tailwindcss.com"></script>
-    <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
-    <!-- Font Awesome -->
+    <link href="https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@400;500;600;700&family=IBM+Plex+Sans:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    
+
     <style>
+        :root {
+            --bg: #06080F;
+            --bg-card: rgba(12, 16, 28, 0.85);
+            --bg-card-solid: #0C101C;
+            --accent: #4ADE80;
+            --accent-glow: rgba(74, 222, 128, 0.15);
+            --green: #10B981;
+            --green-dim: rgba(16, 185, 129, 0.1);
+            --green-glow: rgba(16, 185, 129, 0.2);
+            --purple: #8B5CF6;
+            --purple-dim: rgba(139, 92, 246, 0.1);
+            --purple-glow: rgba(139, 92, 246, 0.2);
+            --white: #F1F5F9;
+            --gray-300: #CBD5E1;
+            --gray-400: #94A3B8;
+            --gray-500: #64748B;
+            --gray-700: #334155;
+            --gray-800: #1E293B;
+            --gray-900: #0F172A;
+            --font-display: 'Chakra Petch', sans-serif;
+            --font-body: 'IBM Plex Sans', sans-serif;
+            --font-mono: 'JetBrains Mono', monospace;
+        }
+
+        *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
+
         body {
-            font-family: 'Inter', sans-serif;
-            background-color: #000000;
+            font-family: var(--font-body);
+            background: var(--bg);
+            color: var(--gray-300);
+            overflow-x: hidden;
+            -webkit-font-smoothing: antialiased;
         }
-        
-        /* Custom cursor */
-        @media (hover: hover) and (pointer: fine) {
-            body {
-                cursor: none;
-            }
-            .cursor-dot, .cursor-outline {
-                pointer-events: none;
-                position: fixed;
-                top: 50%;
-                left: 50%;
-                border-radius: 50%;
-                opacity: 0;
-                transform: translate(-50%, -50%);
-                transition: opacity 0.3s ease-in-out, transform 0.1s linear;
-                z-index: 9999;
-            }
-            .cursor-dot {
-                width: 8px;
-                height: 8px;
-                background-color: #4ade80;
-            }
-            .cursor-outline {
-                width: 40px;
-                height: 40px;
-                border: 2px solid #4ade80;
-                transition: width 0.2s ease, height 0.2s ease, border 0.2s ease, transform 0.1s linear;
-            }
-            body:hover .cursor-dot, body:hover .cursor-outline {
-                opacity: 1;
-            }
-            .cursor-interact {
-                width: 60px;
-                height: 60px;
-                border: 3px solid #4ade80;
-            }
-        }
-        
-        /* Hero Section - SpaceX Inspired */
-        .hero-section {
-            position: relative;
-            height: 100vh;
-            overflow: hidden;
-            background: linear-gradient(to bottom, #000000, #0a0a0a);
-        }
-        
-        .hero-video-overlay {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: 
-                radial-gradient(ellipse at top, rgba(74, 222, 128, 0.15) 0%, transparent 50%),
-                radial-gradient(ellipse at bottom left, rgba(168, 85, 247, 0.1) 0%, transparent 50%),
-                linear-gradient(to bottom, rgba(0,0,0,0.3) 0%, rgba(0,0,0,0.8) 100%);
-            z-index: 1;
-        }
-        
-        .hero-content {
-            position: relative;
-            z-index: 2;
-            height: 100%;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            padding: 2rem;
-        }
-        
-        .hero-title {
-            font-size: clamp(2.5rem, 8vw, 6rem);
-            font-weight: 900;
-            letter-spacing: -0.02em;
-            line-height: 1.1;
-            margin-bottom: 1.5rem;
-        }
-        
-        .hero-subtitle {
-            font-size: clamp(1rem, 2.5vw, 1.5rem);
-            font-weight: 400;
-            color: #a0a0a0;
-            max-width: 700px;
-            margin-bottom: 3rem;
-            line-height: 1.6;
-        }
-        
-        .hero-cta {
-            display: inline-flex;
-            align-items: center;
-            gap: 0.75rem;
-            padding: 1rem 2.5rem;
-            background: transparent;
-            border: 2px solid #ffffff;
-            color: #ffffff;
-            font-weight: 600;
-            font-size: 1.125rem;
-            text-transform: uppercase;
-            letter-spacing: 0.05em;
-            transition: all 0.3s ease;
-            position: relative;
-            overflow: hidden;
-        }
-        
-        .hero-cta::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: -100%;
-            width: 100%;
-            height: 100%;
-            background: #4ade80;
-            transition: left 0.3s ease;
-            z-index: -1;
-        }
-        
-        .hero-cta:hover::before {
-            left: 0;
-        }
-        
-        .hero-cta:hover {
-            border-color: #4ade80;
-            color: #000000;
-        }
-        
-        .hero-scroll-indicator {
-            position: absolute;
-            bottom: 3rem;
-            left: 50%;
-            transform: translateX(-50%);
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            gap: 0.5rem;
-            color: #4ade80;
-            animation: bounce 2s infinite;
-        }
-        
-        @keyframes bounce {
-            0%, 100% { transform: translate(-50%, 0); }
-            50% { transform: translate(-50%, 10px); }
-        }
-        
-        /* Animated Background Grid */
-        .grid-overlay {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-image: 
+
+        /* ===== ANIMATED GRID ===== */
+        .grid-bg {
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            pointer-events: none; z-index: 0;
+            background-image:
                 linear-gradient(rgba(74, 222, 128, 0.03) 1px, transparent 1px),
                 linear-gradient(90deg, rgba(74, 222, 128, 0.03) 1px, transparent 1px);
-            background-size: 50px 50px;
-            animation: gridMove 20s linear infinite;
-            z-index: 0;
+            background-size: 60px 60px;
+            animation: gridDrift 25s linear infinite;
         }
-        
-        @keyframes gridMove {
+        .grid-bg::after {
+            content: '';
+            position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+            background-image:
+                linear-gradient(rgba(74, 222, 128, 0.06) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(74, 222, 128, 0.06) 1px, transparent 1px);
+            background-size: 300px 300px;
+        }
+        @keyframes gridDrift {
             0% { transform: translateY(0); }
-            100% { transform: translateY(50px); }
+            100% { transform: translateY(60px); }
         }
-        
-        /* Floating Particles */
+
+        /* ===== PARTICLES ===== */
         .particle {
             position: absolute;
-            width: 2px;
-            height: 2px;
-            background: #4ade80;
+            width: 2px; height: 2px;
+            background: var(--accent);
             border-radius: 50%;
-            opacity: 0.5;
-            animation: float 15s infinite;
+            opacity: 0.4;
+            animation: particleFloat 20s infinite;
         }
-        
-        @keyframes float {
-            0%, 100% { transform: translate(0, 0) scale(1); opacity: 0.5; }
-            50% { transform: translate(100px, -100px) scale(1.5); opacity: 0.8; }
+        @keyframes particleFloat {
+            0%, 100% { transform: translate(0, 0); opacity: 0.4; }
+            25% { transform: translate(80px, -60px); opacity: 0.7; }
+            50% { transform: translate(-40px, -120px); opacity: 0.3; }
+            75% { transform: translate(60px, -80px); opacity: 0.6; }
         }
-        
-        /* Rocket Animation */
-        .rocket-container {
-            position: absolute;
-            bottom: 10%;
-            right: 5%;
-            width: 120px;
-            height: 120px;
-            opacity: 0.6;
-            animation: rocketFloat 6s ease-in-out infinite;
-            z-index: 1;
-        }
-        
-        @keyframes rocketFloat {
-            0%, 100% { transform: translateY(0px) translateX(0px) rotate(-5deg); }
-            50% { transform: translateY(-20px) translateX(10px) rotate(5deg); }
-        }
-        
-        .rocket {
-            position: relative;
-            width: 60px;
-            height: 80px;
-            margin: 0 auto;
-        }
-        
-        .rocket-body {
-            position: absolute;
-            width: 40px;
-            height: 60px;
-            background: linear-gradient(135deg, #4ade80 0%, #22c55e 50%, #16a34a 100%);
-            border-radius: 50% 50% 10px 10px;
-            left: 10px;
-            top: 10px;
-            box-shadow: 0 0 20px rgba(74, 222, 128, 0.3);
-        }
-        
-        .rocket-body::before {
-            content: '';
-            position: absolute;
-            width: 20px;
-            height: 20px;
-            background: linear-gradient(135deg, #60a5fa 0%, #3b82f6 100%);
-            border-radius: 50%;
-            left: 10px;
-            top: 15px;
-            box-shadow: 0 0 10px rgba(59, 130, 246, 0.5);
-        }
-        
-        .rocket-window {
-            position: absolute;
-            width: 16px;
-            height: 16px;
-            background: linear-gradient(135deg, #93c5fd 0%, #60a5fa 100%);
-            border-radius: 50%;
-            left: 22px;
-            top: 22px;
-            border: 2px solid rgba(255, 255, 255, 0.3);
-        }
-        
-        .rocket-wing {
-            position: absolute;
-            width: 0;
-            height: 0;
-            border-left: 15px solid transparent;
-            border-right: 15px solid transparent;
-            border-top: 25px solid #16a34a;
-            opacity: 0.8;
-        }
-        
-        .rocket-wing.left {
-            left: -10px;
-            top: 50px;
-            transform: rotate(-20deg);
-        }
-        
-        .rocket-wing.right {
-            right: -10px;
-            top: 50px;
-            transform: rotate(20deg);
-        }
-        
-        .rocket-fire {
-            position: absolute;
-            bottom: -30px;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 30px;
-            height: 40px;
-            background: linear-gradient(to bottom, 
-                rgba(251, 191, 36, 0.9) 0%,
-                rgba(249, 115, 22, 0.7) 50%,
-                rgba(239, 68, 68, 0.5) 100%);
-            border-radius: 50% 50% 50% 50% / 60% 60% 40% 40%;
-            filter: blur(2px);
-            animation: fireFlicker 0.2s infinite alternate;
-        }
-        
-        .rocket-fire::before {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 20px;
-            height: 30px;
-            background: linear-gradient(to bottom, 
-                rgba(253, 224, 71, 0.9) 0%,
-                rgba(251, 191, 36, 0.6) 50%,
-                rgba(249, 115, 22, 0.3) 100%);
-            border-radius: 50% 50% 50% 50% / 60% 60% 40% 40%;
-            filter: blur(1px);
-        }
-        
-        @keyframes fireFlicker {
-            0% { transform: translateX(-50%) scaleY(1); opacity: 0.9; }
-            100% { transform: translateX(-50%) scaleY(0.95); opacity: 1; }
-        }
-        
-        .rocket-smoke {
-            position: absolute;
-            bottom: -40px;
-            left: 50%;
-            width: 4px;
-            height: 4px;
-            background: rgba(74, 222, 128, 0.3);
-            border-radius: 50%;
-            animation: smokeRise 2s infinite;
-        }
-        
-        @keyframes smokeRise {
-            0% {
-                transform: translateX(-50%) translateY(0) scale(1);
-                opacity: 0.6;
-            }
-            100% {
-                transform: translateX(-50%) translateY(-60px) scale(2);
-                opacity: 0;
-            }
-        }
-        
-        .rocket-smoke:nth-child(2) {
-            animation-delay: 0.5s;
-        }
-        
-        .rocket-smoke:nth-child(3) {
-            animation-delay: 1s;
-        }
-        
-        .rocket-smoke:nth-child(4) {
-            animation-delay: 1.5s;
-        }
-        
-        /* Stars around rocket */
-        .rocket-star {
-            position: absolute;
-            width: 2px;
-            height: 2px;
-            background: #4ade80;
-            border-radius: 50%;
-            opacity: 0;
-            animation: starTwinkle 3s infinite;
-        }
-        
-        @keyframes starTwinkle {
-            0%, 100% { opacity: 0; transform: scale(1); }
-            50% { opacity: 0.8; transform: scale(1.5); }
-        }
-        
-        .rocket-star:nth-child(1) {
-            top: 10%;
-            left: 20%;
-            animation-delay: 0s;
-        }
-        
-        .rocket-star:nth-child(2) {
-            top: 30%;
-            left: 80%;
-            animation-delay: 1s;
-        }
-        
-        .rocket-star:nth-child(3) {
-            top: 60%;
-            left: 15%;
-            animation-delay: 2s;
-        }
-        
-        @media (max-width: 768px) {
-            .rocket-container {
-                width: 80px;
-                height: 80px;
-                bottom: 5%;
-                right: 5%;
-                opacity: 0.4;
-            }
-            
-            .rocket {
-                width: 40px;
-                height: 60px;
-            }
-            
-            .rocket-body {
-                width: 30px;
-                height: 45px;
-            }
-        }
-        
-        /* Scroll Reveal */
-        .scroll-reveal {
-            opacity: 0;
-            transform: translateY(30px);
-            transition: opacity 0.8s cubic-bezier(0.6, 0.2, 0.1, 1), transform 0.8s cubic-bezier(0.6, 0.2, 0.1, 1);
-        }
-        .scroll-reveal.is-visible {
-            opacity: 1;
-            transform: translateY(0);
-        }
-        
-        /* Card Styles */
-        .card-glow {
-            position: relative;
-            overflow: hidden;
-            transition: all 0.3s ease-in-out;
-            background: rgba(17, 17, 17, 0.8);
-            backdrop-filter: blur(10px);
-            border: 1px solid rgba(74, 222, 128, 0.2);
-        }
-        
-        .card-glow:hover {
-            border-color: #4ade80;
-            box-shadow: 0 0 30px rgba(74, 222, 128, 0.3);
-            transform: translateY(-5px);
-        }
-        
-        .spotlight {
-            position: absolute;
-            width: 300px;
-            height: 300px;
-            background: radial-gradient(circle, rgba(74, 222, 128, 0.2), transparent 70%);
-            border-radius: 50%;
-            pointer-events: none;
-            opacity: 0;
-            transition: opacity 0.3s ease;
-            transform: translate(-50%, -50%);
-        }
-        
-        .card-glow:hover .spotlight {
-            opacity: 1;
-        }
-        
-        /* Navigation */
-        nav {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            z-index: 1000;
-        }
-        
-        .logo-container {
+
+        /* ===== NAVIGATION ===== */
+        .nav {
+            position: fixed; top: 0; left: 0; width: 100%;
+            z-index: 1000; padding: 0.75rem 2rem;
+            background: rgba(6, 8, 15, 0.85);
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid rgba(74, 222, 128, 0.08);
             transition: all 0.3s ease;
         }
-        
-        .logo-glow {
-            transition: transform 0.3s ease;
+        .nav.scrolled {
+            background: rgba(6, 8, 15, 0.95);
+            border-bottom-color: rgba(74, 222, 128, 0.15);
         }
-        
-        .logo-glow:hover {
-            transform: scale(1.1);
+        .nav-inner {
+            max-width: 1200px; margin: 0 auto;
+            display: flex; align-items: center; justify-content: space-between;
         }
-        
-        .button-glow {
-            transition: all 0.3s ease;
+        .nav-logo img { height: 40px; transition: transform 0.3s; }
+        .nav-logo img:hover { transform: scale(1.05); }
+        .nav-links { display: flex; align-items: center; gap: 2rem; }
+        .nav-links a {
+            color: var(--gray-400); text-decoration: none; font-size: 0.9rem;
+            font-weight: 500; transition: color 0.3s; letter-spacing: 0.02em;
         }
-        
-        .button-glow:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 10px 25px rgba(74, 222, 128, 0.4);
+        .nav-links a:hover { color: var(--white); }
+        .nav-cta {
+            background: var(--accent) !important; color: #000 !important;
+            padding: 0.6rem 1.5rem; border-radius: 6px; font-weight: 600 !important;
+            font-size: 0.85rem !important; transition: all 0.3s !important;
+            letter-spacing: 0.03em;
         }
-        
-        /* Mobile Menu */
+        .nav-cta:hover { background: #6EE7A8 !important; transform: translateY(-1px); box-shadow: 0 4px 20px rgba(74, 222, 128, 0.4); }
+
+        /* Mobile nav */
+        .nav-mobile-btn { display: none; background: none; border: none; cursor: pointer; padding: 0.5rem; }
+        .nav-mobile-btn span { display: block; width: 24px; height: 2px; background: var(--gray-400); margin: 5px 0; transition: all 0.3s; }
         .mobile-menu {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100vh;
-            background: rgba(0, 0, 0, 0.98);
-            backdrop-filter: blur(10px);
-            transform: translateX(-100%);
-            transition: transform 0.3s ease-in-out;
-            z-index: 999;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            gap: 2rem;
+            position: fixed; top: 0; left: 0; width: 100%; height: 100vh;
+            background: rgba(6, 8, 15, 0.98); backdrop-filter: blur(20px);
+            display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 2rem;
+            opacity: 0; pointer-events: none; transition: opacity 0.3s; z-index: 999;
         }
-        
-        .mobile-menu.active {
-            transform: translateX(0);
+        .mobile-menu.active { opacity: 1; pointer-events: all; }
+        .mobile-menu a { color: var(--white); text-decoration: none; font-size: 1.5rem; font-family: var(--font-display); font-weight: 600; }
+
+        @media (max-width: 768px) {
+            .nav-links { display: none; }
+            .nav-mobile-btn { display: block; }
         }
-        
-        .hamburger-icon {
-            display: flex;
-            flex-direction: column;
-            gap: 5px;
-            cursor: pointer;
+
+        /* ===== SECTIONS ===== */
+        section { position: relative; z-index: 1; }
+        .container { max-width: 1200px; margin: 0 auto; padding: 0 1.5rem; }
+
+        /* ===== HERO ===== */
+        .hero {
+            min-height: 100vh; display: flex; align-items: center; justify-content: center;
+            position: relative; overflow: hidden; padding: 8rem 0 6rem;
         }
-        
-        .hamburger-icon span {
-            width: 25px;
-            height: 2px;
-            background: white;
-            transition: all 0.3s ease;
+        .hero-glow {
+            position: absolute; width: 700px; height: 700px; border-radius: 50%;
+            filter: blur(150px); pointer-events: none;
         }
-        
-        .hamburger-icon.active span:nth-child(1) {
-            transform: rotate(45deg) translate(7px, 7px);
+        .hero-glow-1 { background: rgba(74, 222, 128, 0.07); top: -200px; right: -200px; }
+        .hero-glow-2 { background: rgba(139, 92, 246, 0.04); bottom: -100px; left: -200px; }
+        .hero-content { text-align: center; max-width: 900px; margin: 0 auto; }
+        .hero-badge {
+            display: inline-flex; align-items: center; gap: 0.5rem;
+            padding: 0.5rem 1.25rem; border-radius: 100px;
+            background: rgba(74, 222, 128, 0.08); border: 1px solid rgba(74, 222, 128, 0.25);
+            font-family: var(--font-mono); font-size: 0.75rem; color: var(--accent);
+            letter-spacing: 0.08em; text-transform: uppercase; margin-bottom: 2rem;
+            animation: fadeInUp 0.8s ease both;
         }
-        
-        .hamburger-icon.active span:nth-child(2) {
-            opacity: 0;
+        .hero-badge .dot { width: 6px; height: 6px; border-radius: 50%; background: var(--green); animation: pulse 2s infinite; }
+        @keyframes pulse { 0%, 100% { opacity: 1; } 50% { opacity: 0.4; } }
+
+        .hero h1 {
+            font-family: var(--font-display); font-weight: 700;
+            font-size: clamp(2.5rem, 6vw, 4.5rem); line-height: 1.1;
+            color: var(--white); margin-bottom: 1.5rem;
+            animation: fadeInUp 0.8s ease 0.15s both;
         }
-        
-        .hamburger-icon.active span:nth-child(3) {
-            transform: rotate(-45deg) translate(7px, -7px);
+        .hero h1 .gradient {
+            background: linear-gradient(135deg, var(--accent), #A78BFA);
+            -webkit-background-clip: text; -webkit-text-fill-color: transparent;
         }
-        
-        /* Framework Badges */
-        .framework-badge {
-            display: inline-block;
-            padding: 0.5rem 1.5rem;
-            border-radius: 9999px;
-            font-weight: 700;
-            font-size: 0.875rem;
-            text-transform: uppercase;
-            letter-spacing: 0.1em;
+        .hero-sub {
+            font-size: clamp(1rem, 2vw, 1.25rem); color: var(--gray-400);
+            max-width: 650px; margin: 0 auto 3rem; line-height: 1.7;
+            animation: fadeInUp 0.8s ease 0.3s both;
         }
-        
-        .badge-build {
-            background: rgba(74, 222, 128, 0.2);
-            color: #4ade80;
-            border: 1px solid #4ade80;
+        .hero-actions {
+            display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap;
+            animation: fadeInUp 0.8s ease 0.45s both;
         }
-        
-        .badge-rise {
-            background: rgba(168, 85, 247, 0.2);
-            color: #c084fc;
-            border: 1px solid #c084fc;
+        .btn-primary {
+            display: inline-flex; align-items: center; gap: 0.5rem;
+            padding: 0.9rem 2rem; background: var(--accent); color: #000;
+            border: none; border-radius: 8px; font-weight: 600; font-size: 1rem;
+            cursor: pointer; transition: all 0.3s; text-decoration: none;
+            font-family: var(--font-body);
+        }
+        .btn-primary:hover { background: #6EE7A8; transform: translateY(-2px); box-shadow: 0 8px 30px rgba(74, 222, 128, 0.4); }
+        .btn-secondary {
+            display: inline-flex; align-items: center; gap: 0.5rem;
+            padding: 0.9rem 2rem; background: transparent; color: var(--white);
+            border: 1px solid var(--gray-700); border-radius: 8px; font-weight: 600;
+            font-size: 1rem; cursor: pointer; transition: all 0.3s; text-decoration: none;
+            font-family: var(--font-body);
+        }
+        .btn-secondary:hover { border-color: var(--gray-400); background: rgba(255,255,255,0.03); transform: translateY(-2px); }
+
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* ===== SCROLL INDICATOR ===== */
+        .scroll-hint {
+            position: absolute; bottom: 2rem; left: 50%; transform: translateX(-50%);
+            display: flex; flex-direction: column; align-items: center; gap: 0.5rem;
+            color: var(--gray-500); font-size: 0.7rem; letter-spacing: 0.15em;
+            text-transform: uppercase; font-family: var(--font-mono);
+            animation: fadeInUp 0.8s ease 0.6s both;
+        }
+        .scroll-hint i { animation: scrollBounce 2s infinite; }
+        @keyframes scrollBounce { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(6px); } }
+
+        /* ===== OS SHOWCASE ===== */
+        .os-section { padding: 6rem 0; }
+        .section-label {
+            font-family: var(--font-mono); font-size: 0.75rem; color: var(--accent);
+            letter-spacing: 0.12em; text-transform: uppercase; margin-bottom: 1rem;
+        }
+        .section-title {
+            font-family: var(--font-display); font-weight: 700;
+            font-size: clamp(2rem, 4vw, 3rem); color: var(--white);
+            margin-bottom: 1rem; line-height: 1.2;
+        }
+        .section-desc {
+            font-size: 1.1rem; color: var(--gray-400); max-width: 600px;
+            line-height: 1.7; margin-bottom: 3rem;
+        }
+
+        /* OS Product Card */
+        .os-showcase {
+            display: grid; grid-template-columns: 1fr 1.3fr; gap: 4rem;
+            align-items: center; margin-bottom: 8rem;
+        }
+        .os-showcase.reverse { direction: rtl; }
+        .os-showcase.reverse > * { direction: ltr; }
+
+        .os-info { }
+        .os-tag {
+            display: inline-flex; padding: 0.35rem 0.8rem; border-radius: 4px;
+            font-family: var(--font-mono); font-size: 0.7rem; font-weight: 600;
+            letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 1.5rem;
+        }
+        .os-tag.trade { background: var(--green-dim); color: var(--green); border: 1px solid rgba(16,185,129,0.3); }
+        .os-tag.creator { background: var(--purple-dim); color: var(--purple); border: 1px solid rgba(139,92,246,0.3); }
+
+        .os-name {
+            font-family: var(--font-display); font-weight: 700;
+            font-size: clamp(1.8rem, 3vw, 2.5rem); color: var(--white);
+            margin-bottom: 1rem; line-height: 1.2;
+        }
+        .os-desc {
+            font-size: 1rem; color: var(--gray-400); line-height: 1.7;
+            margin-bottom: 2rem;
+        }
+        .os-features {
+            display: grid; grid-template-columns: 1fr 1fr; gap: 0.75rem;
+            margin-bottom: 2rem;
+        }
+        .os-feature {
+            display: flex; align-items: center; gap: 0.5rem;
+            font-size: 0.85rem; color: var(--gray-300);
+        }
+        .os-feature i { font-size: 0.7rem; }
+        .os-feature.trade i { color: var(--green); }
+        .os-feature.creator i { color: var(--purple); }
+
+        .os-cta {
+            display: inline-flex; align-items: center; gap: 0.5rem;
+            padding: 0.75rem 1.75rem; border-radius: 8px; font-weight: 600;
+            font-size: 0.9rem; text-decoration: none; transition: all 0.3s;
+        }
+        .os-cta.trade { background: var(--green); color: #000; }
+        .os-cta.trade:hover { background: #34D399; transform: translateY(-2px); box-shadow: 0 8px 30px var(--green-glow); }
+        .os-cta.creator { background: var(--purple); color: var(--white); }
+        .os-cta.creator:hover { background: #A78BFA; transform: translateY(-2px); box-shadow: 0 8px 30px var(--purple-glow); }
+
+        /* ===== MOCK BROWSER ===== */
+        .browser-frame {
+            border-radius: 12px; overflow: hidden;
+            border: 1px solid rgba(255,255,255,0.08);
+            box-shadow: 0 25px 80px rgba(0,0,0,0.5);
+            transition: transform 0.5s ease, box-shadow 0.5s ease;
+        }
+        .browser-frame:hover {
+            transform: translateY(-8px) scale(1.01);
+        }
+        .browser-frame.trade-glow {
+            box-shadow: 0 25px 80px rgba(0,0,0,0.5), 0 0 60px var(--green-dim);
+        }
+        .browser-frame.trade-glow:hover {
+            box-shadow: 0 30px 90px rgba(0,0,0,0.6), 0 0 80px var(--green-glow);
+        }
+        .browser-frame.creator-glow {
+            box-shadow: 0 25px 80px rgba(0,0,0,0.5), 0 0 60px var(--purple-dim);
+        }
+        .browser-frame.creator-glow:hover {
+            box-shadow: 0 30px 90px rgba(0,0,0,0.6), 0 0 80px var(--purple-glow);
+        }
+        .browser-bar {
+            display: flex; align-items: center; gap: 0.5rem;
+            padding: 0.75rem 1rem; background: rgba(15, 23, 42, 0.95);
+            border-bottom: 1px solid rgba(255,255,255,0.06);
+        }
+        .browser-dots { display: flex; gap: 6px; }
+        .browser-dots span { width: 10px; height: 10px; border-radius: 50%; }
+        .browser-dots span:nth-child(1) { background: #EF4444; }
+        .browser-dots span:nth-child(2) { background: #F59E0B; }
+        .browser-dots span:nth-child(3) { background: #10B981; }
+        .browser-url {
+            flex: 1; margin-left: 0.75rem;
+            padding: 0.35rem 0.75rem; border-radius: 6px;
+            background: rgba(255,255,255,0.05); font-family: var(--font-mono);
+            font-size: 0.7rem; color: var(--gray-500);
+        }
+
+        /* Dashboard Recreation */
+        .mock-dashboard {
+            background: #0A0A0A; padding: 1.5rem; min-height: 350px;
+            display: grid; gap: 1rem;
+        }
+
+        /* TradeOS Dashboard */
+        .trade-dash { grid-template-columns: 1fr; }
+        .trade-dash .stats-row {
+            display: grid; grid-template-columns: repeat(4, 1fr); gap: 0.75rem;
+        }
+        .trade-dash .stat-card {
+            background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.06);
+            border-radius: 8px; padding: 1rem;
+        }
+        .trade-dash .stat-label {
+            font-family: var(--font-mono); font-size: 0.55rem; color: var(--gray-500);
+            letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 0.4rem;
+        }
+        .trade-dash .stat-value {
+            font-family: var(--font-display); font-size: 1.4rem; font-weight: 700; color: var(--white);
+        }
+        .trade-dash .stat-value.revenue { color: var(--green); }
+        .trade-dash .stat-sub { font-size: 0.65rem; color: var(--gray-500); margin-top: 0.2rem; }
+        .trade-dash .stat-sub.up { color: var(--green); }
+
+        .trade-dash .activity-row {
+            display: grid; grid-template-columns: 1.2fr 1fr; gap: 0.75rem;
+        }
+        .trade-dash .panel {
+            background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.06);
+            border-radius: 8px; padding: 1rem;
+        }
+        .trade-dash .panel-title {
+            font-family: var(--font-mono); font-size: 0.6rem; color: var(--gray-400);
+            letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 0.75rem; font-weight: 600;
+        }
+        .trade-dash .activity-item {
+            display: flex; justify-content: space-between; align-items: center;
+            padding: 0.4rem 0; border-bottom: 1px solid rgba(255,255,255,0.04);
+            font-size: 0.7rem;
+        }
+        .trade-dash .activity-item:last-child { border: none; }
+        .trade-dash .activity-time { color: var(--gray-500); font-family: var(--font-mono); font-size: 0.6rem; }
+        .trade-dash .activity-text { color: var(--gray-300); }
+
+        .trade-dash .pipeline-item {
+            display: flex; align-items: center; gap: 0.5rem; margin-bottom: 0.6rem;
+        }
+        .trade-dash .pipeline-label { font-size: 0.7rem; color: var(--gray-400); width: 70px; }
+        .trade-dash .pipeline-bar { flex: 1; height: 6px; background: rgba(255,255,255,0.06); border-radius: 3px; overflow: hidden; }
+        .trade-dash .pipeline-fill { height: 100%; background: var(--accent); border-radius: 3px; transition: width 1.5s ease; }
+        .trade-dash .pipeline-count { font-size: 0.7rem; color: var(--white); font-weight: 600; width: 25px; text-align: right; }
+
+        /* CreatorOS Dashboard */
+        .creator-dash { grid-template-columns: 1fr; }
+        .creator-dash .stats-row {
+            display: grid; grid-template-columns: repeat(4, 1fr); gap: 0.75rem;
+        }
+        .creator-dash .stat-card {
+            background: rgba(255,255,255,0.03); border: 1px solid rgba(139,92,246,0.1);
+            border-radius: 8px; padding: 1rem;
+        }
+        .creator-dash .stat-label {
+            font-family: var(--font-mono); font-size: 0.55rem; color: var(--gray-500);
+            letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 0.4rem;
+        }
+        .creator-dash .stat-value {
+            font-family: var(--font-display); font-size: 1.4rem; font-weight: 700; color: var(--white);
+        }
+        .creator-dash .stat-sub { font-size: 0.65rem; margin-top: 0.2rem; }
+        .creator-dash .stat-sub.up { color: var(--purple); }
+
+        .creator-dash .activity-row {
+            display: grid; grid-template-columns: 1.2fr 1fr; gap: 0.75rem;
+        }
+        .creator-dash .panel {
+            background: rgba(255,255,255,0.03); border: 1px solid rgba(139,92,246,0.08);
+            border-radius: 8px; padding: 1rem;
+        }
+        .creator-dash .panel-title {
+            font-family: var(--font-mono); font-size: 0.6rem; color: var(--gray-400);
+            letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 0.75rem; font-weight: 600;
+        }
+        .creator-dash .activity-item {
+            display: flex; justify-content: space-between; align-items: center;
+            padding: 0.4rem 0; border-bottom: 1px solid rgba(255,255,255,0.04);
+            font-size: 0.7rem;
+        }
+        .creator-dash .activity-item:last-child { border: none; }
+        .creator-dash .activity-dot { width: 5px; height: 5px; border-radius: 50%; background: var(--purple); margin-right: 0.4rem; flex-shrink: 0; }
+        .creator-dash .activity-text { color: var(--gray-300); flex: 1; }
+        .creator-dash .activity-time { color: var(--gray-500); font-family: var(--font-mono); font-size: 0.6rem; }
+
+        .creator-dash .pipeline-grid {
+            display: grid; grid-template-columns: 1fr 1fr; gap: 0.5rem;
+        }
+        .creator-dash .pipeline-card {
+            background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.05);
+            border-radius: 6px; padding: 0.75rem;
+        }
+        .creator-dash .pipeline-card-label {
+            font-size: 0.55rem; color: var(--gray-500); text-transform: uppercase;
+            letter-spacing: 0.08em; margin-bottom: 0.3rem; font-family: var(--font-mono);
+        }
+        .creator-dash .pipeline-card-value {
+            font-family: var(--font-display); font-size: 1.3rem; font-weight: 700; color: var(--white);
+        }
+        .creator-dash .pipeline-card-dot { display: inline-block; width: 5px; height: 5px; border-radius: 50%; margin-right: 0.3rem; }
+
+        /* ===== CREATIVE SERVICES ADD-ON ===== */
+        .services-section { padding: 6rem 0; }
+        .services-grid {
+            display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 1.5rem; margin-top: 3rem;
+        }
+        .service-card {
+            background: var(--bg-card); border: 1px solid rgba(255,255,255,0.06);
+            border-radius: 12px; padding: 2rem; transition: all 0.3s;
+            position: relative; overflow: hidden;
+        }
+        .service-card::before {
+            content: ''; position: absolute; top: 0; left: 0; right: 0;
+            height: 2px; background: linear-gradient(90deg, transparent, var(--accent), transparent);
+            opacity: 0; transition: opacity 0.3s;
+        }
+        .service-card:hover { border-color: rgba(74,222,128,0.2); transform: translateY(-4px); }
+        .service-card:hover::before { opacity: 1; }
+        .service-icon {
+            width: 48px; height: 48px; border-radius: 10px;
+            display: flex; align-items: center; justify-content: center;
+            font-size: 1.2rem; margin-bottom: 1.25rem;
+            background: var(--accent-glow); color: var(--accent);
+        }
+        .service-card h3 {
+            font-family: var(--font-display); font-weight: 600;
+            font-size: 1.15rem; color: var(--white); margin-bottom: 0.5rem;
+        }
+        .service-card p { font-size: 0.85rem; color: var(--gray-400); line-height: 1.6; margin-bottom: 1rem; }
+        .service-price {
+            font-family: var(--font-mono); font-size: 0.8rem; color: var(--accent);
+        }
+
+        /* ===== HOW IT WORKS ===== */
+        .process-section { padding: 6rem 0; }
+        .process-steps {
+            display: grid; grid-template-columns: repeat(4, 1fr); gap: 2rem;
+            margin-top: 3rem; position: relative;
+        }
+        .process-steps::before {
+            content: ''; position: absolute; top: 30px;
+            left: 12.5%; right: 12.5%; height: 1px;
+            background: linear-gradient(90deg, transparent, var(--gray-700), var(--gray-700), transparent);
+        }
+        .process-step { text-align: center; position: relative; }
+        .step-number {
+            width: 60px; height: 60px; border-radius: 50%;
+            display: flex; align-items: center; justify-content: center;
+            font-family: var(--font-display); font-weight: 700; font-size: 1.2rem;
+            color: var(--accent); background: var(--bg);
+            border: 2px solid var(--gray-700); margin: 0 auto 1.25rem;
+            position: relative; z-index: 1;
+            transition: all 0.3s;
+        }
+        .process-step:hover .step-number {
+            border-color: var(--accent); box-shadow: 0 0 30px rgba(74, 222, 128, 0.15);
+        }
+        .process-step h3 {
+            font-family: var(--font-display); font-weight: 600;
+            font-size: 1rem; color: var(--white); margin-bottom: 0.5rem;
+        }
+        .process-step p { font-size: 0.85rem; color: var(--gray-400); line-height: 1.6; }
+
+        /* ===== BUILD RISE FRAMEWORK ===== */
+        .framework-section { padding: 6rem 0; }
+        .framework-grid {
+            display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; margin-top: 3rem;
+        }
+        .framework-card {
+            border-radius: 16px; padding: 2.5rem;
+            border: 1px solid rgba(255,255,255,0.06);
+            background: var(--bg-card); position: relative; overflow: hidden;
+            transition: all 0.4s;
+        }
+        .framework-card:hover { transform: translateY(-4px); }
+        .framework-card.build-card { border-color: rgba(16,185,129,0.15); }
+        .framework-card.build-card:hover { border-color: rgba(16,185,129,0.3); box-shadow: 0 20px 60px rgba(16,185,129,0.08); }
+        .framework-card.rise-card { border-color: rgba(139,92,246,0.15); }
+        .framework-card.rise-card:hover { border-color: rgba(139,92,246,0.3); box-shadow: 0 20px 60px rgba(139,92,246,0.08); }
+        .framework-label {
+            font-family: var(--font-display); font-weight: 700;
+            font-size: 0.8rem; letter-spacing: 0.15em; text-transform: uppercase;
+            padding: 0.35rem 0.75rem; border-radius: 4px;
+            display: inline-block; margin-bottom: 1.5rem;
+        }
+        .framework-label.build { background: var(--green-dim); color: var(--green); }
+        .framework-label.rise { background: var(--purple-dim); color: var(--purple); }
+        .framework-card h3 {
+            font-family: var(--font-display); font-size: 1.5rem; font-weight: 700;
+            color: var(--white); margin-bottom: 0.75rem;
+        }
+        .framework-card > p {
+            font-size: 0.95rem; color: var(--gray-400); line-height: 1.7; margin-bottom: 1.5rem;
+        }
+        .framework-items { display: flex; flex-direction: column; gap: 0.6rem; margin-bottom: 2rem; }
+        .framework-item {
+            display: flex; align-items: center; gap: 0.5rem;
+            font-size: 0.9rem; color: var(--gray-300);
+        }
+        .framework-item i { font-size: 0.7rem; }
+        .framework-item.build i { color: var(--green); }
+        .framework-item.rise i { color: var(--purple); }
+
+        /* ===== CONTACT / CTA ===== */
+        .cta-section {
+            padding: 6rem 0; text-align: center;
+        }
+        .cta-box {
+            background: var(--bg-card); border: 1px solid rgba(74,222,128,0.15);
+            border-radius: 20px; padding: 4rem 3rem; position: relative; overflow: hidden;
+        }
+        .cta-box::before {
+            content: ''; position: absolute; top: -50%; left: -50%; width: 200%; height: 200%;
+            background: radial-gradient(ellipse at center, rgba(74,222,128,0.04), transparent 60%);
+            pointer-events: none;
+        }
+        .cta-box h2 {
+            font-family: var(--font-display); font-weight: 700;
+            font-size: clamp(2rem, 4vw, 2.75rem); color: var(--white); margin-bottom: 1rem;
+            position: relative;
+        }
+        .cta-box p {
+            font-size: 1.1rem; color: var(--gray-400); max-width: 550px;
+            margin: 0 auto 2.5rem; position: relative;
+        }
+        .cta-actions { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; position: relative; }
+
+        /* ===== CONTACT FORM ===== */
+        .contact-section { padding: 6rem 0; }
+        .contact-grid { display: grid; grid-template-columns: 1fr 1.2fr; gap: 4rem; align-items: start; }
+        .contact-form { display: flex; flex-direction: column; gap: 1.25rem; }
+        .form-group label {
+            display: block; font-size: 0.8rem; color: var(--gray-400);
+            font-family: var(--font-mono); letter-spacing: 0.05em;
+            text-transform: uppercase; margin-bottom: 0.5rem;
+        }
+        .form-group input, .form-group textarea, .form-group select {
+            width: 100%; padding: 0.8rem 1rem;
+            background: rgba(255,255,255,0.03); border: 1px solid var(--gray-700);
+            border-radius: 8px; color: var(--white); font-family: var(--font-body);
+            font-size: 0.95rem; transition: border-color 0.3s;
+        }
+        .form-group input:focus, .form-group textarea:focus, .form-group select:focus {
+            outline: none; border-color: var(--accent);
+        }
+        .form-group textarea { resize: vertical; min-height: 120px; }
+        .form-group select option { background: var(--bg-card-solid); color: var(--white); }
+
+        /* ===== FOOTER ===== */
+        .footer {
+            padding: 3rem 0; border-top: 1px solid rgba(255,255,255,0.06);
+        }
+        .footer-inner {
+            display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1.5rem;
+        }
+        .footer-logo img { height: 32px; opacity: 0.7; }
+        .footer-links { display: flex; gap: 1.5rem; }
+        .footer-links a { color: var(--gray-500); text-decoration: none; font-size: 0.85rem; transition: color 0.3s; }
+        .footer-links a:hover { color: var(--white); }
+        .footer-copy { color: var(--gray-500); font-size: 0.8rem; }
+        .footer-copy span { font-family: var(--font-display); font-weight: 600; }
+        .footer-copy .g { color: var(--green); }
+        .footer-copy .p { color: var(--purple); }
+        .footer-copy .b { color: #60A5FA; }
+        .footer-socials { display: flex; gap: 1rem; }
+        .footer-socials a { color: var(--gray-500); font-size: 1.1rem; transition: color 0.3s; }
+        .footer-socials a:hover { color: var(--accent); }
+
+        /* ===== SCROLL REVEAL ===== */
+        .reveal {
+            opacity: 0; transform: translateY(25px);
+            transition: opacity 0.7s ease, transform 0.7s ease;
+        }
+        .reveal.visible { opacity: 1; transform: translateY(0); }
+
+        /* ===== RESPONSIVE ===== */
+        @media (max-width: 960px) {
+            .os-showcase { grid-template-columns: 1fr; gap: 2.5rem; }
+            .os-showcase.reverse { direction: ltr; }
+            .os-info { order: 1; }
+            .browser-frame { order: 2; }
+            .process-steps { grid-template-columns: 1fr 1fr; }
+            .process-steps::before { display: none; }
+            .framework-grid { grid-template-columns: 1fr; }
+            .contact-grid { grid-template-columns: 1fr; }
+        }
+        @media (max-width: 640px) {
+            .trade-dash .stats-row, .creator-dash .stats-row { grid-template-columns: 1fr 1fr; }
+            .trade-dash .activity-row, .creator-dash .activity-row { grid-template-columns: 1fr; }
+            .os-features { grid-template-columns: 1fr; }
+            .process-steps { grid-template-columns: 1fr; }
+            .services-grid { grid-template-columns: 1fr; }
         }
     </style>
 </head>
-<body class="bg-black text-white">
-    <!-- Custom Cursor -->
-    <div class="cursor-dot"></div>
-    <div class="cursor-outline"></div>
+<body>
+    <div class="grid-bg"></div>
+
+    <!-- Particles -->
+    <div class="particle" style="left:10%;top:15%;animation-delay:0s"></div>
+    <div class="particle" style="left:85%;top:25%;animation-delay:3s"></div>
+    <div class="particle" style="left:40%;top:55%;animation-delay:6s"></div>
+    <div class="particle" style="left:70%;top:75%;animation-delay:9s"></div>
+    <div class="particle" style="left:20%;top:85%;animation-delay:12s"></div>
 
     <!-- Navigation -->
-    <nav class="fixed w-full z-50 bg-black/90 backdrop-blur-md border-b border-green-500/20">
-        <div class="container mx-auto px-4 md:px-6 py-3 md:py-4">
-            <div class="flex items-center justify-between">
-                <a href="index.html" class="logo-container p-2 rounded-lg transition-all duration-300 hover:bg-white/5">
-                    <img src="jpaxmedialogoOFFICIALFINALwhite.png" alt="JPax Media" class="h-10 md:h-12 w-auto logo-glow transition-transform duration-300 hover:scale-110" onerror="this.style.display='none'">
-                </a>
-                
-                <!-- Desktop Menu -->
-                <div class="hidden md:flex items-center space-x-8">
-                    <a href="#home" class="text-gray-300 hover:text-green-400 transition-colors">Home</a>
-                    <a href="#services" class="text-gray-300 hover:text-green-400 transition-colors">Services</a>
-                    <a href="#framework" class="text-gray-300 hover:text-green-400 transition-colors">Framework</a>
-                    <a href="portfolio.html" class="text-gray-300 hover:text-green-400 transition-colors">Portfolio</a>
-                    <a href="jupiter.html" class="text-gray-300 hover:text-green-400 transition-colors">Jupiter</a>
-                    <a href="pricing.html" class="bg-green-500 text-black px-6 py-2 rounded-full font-semibold hover:bg-green-400 button-glow transition-all">View Pricing</a>
-                </div>
-
-                <!-- Mobile Menu Button -->
-                <button id="mobile-menu-button" class="md:hidden text-white focus:outline-none z-50 relative">
-                    <div class="hamburger-icon">
-                        <span></span>
-                        <span></span>
-                        <span></span>
-                    </div>
-                </button>
+    <nav class="nav" id="nav">
+        <div class="nav-inner">
+            <a href="index.html" class="nav-logo">
+                <img src="jpaxmedialogoOFFICIALFINALwhite.png" alt="JPax Media" onerror="this.style.display='none'">
+            </a>
+            <div class="nav-links">
+                <a href="#systems">Systems</a>
+                <a href="#services">Services</a>
+                <a href="#process">Process</a>
+                <a href="portfolio.html">Portfolio</a>
+                <a href="jupiter.html">Jupiter</a>
+                <a href="pricing.html" class="nav-cta">View Pricing</a>
             </div>
+            <button class="nav-mobile-btn" id="mobileBtn" aria-label="Menu">
+                <span></span><span></span><span></span>
+            </button>
         </div>
     </nav>
 
     <!-- Mobile Menu -->
-    <div id="mobile-menu" class="mobile-menu">
-        <a href="#home" class="text-2xl font-semibold hover:text-green-400 transition-colors">Home</a>
-        <a href="#services" class="text-2xl font-semibold hover:text-green-400 transition-colors">Services</a>
-        <a href="#framework" class="text-2xl font-semibold hover:text-green-400 transition-colors">Framework</a>
-        <a href="portfolio.html" class="text-2xl font-semibold hover:text-green-400 transition-colors">Portfolio</a>
-        <a href="jupiter.html" class="text-2xl font-semibold hover:text-green-400 transition-colors">Jupiter</a>
-        <a href="pricing.html" class="text-2xl font-semibold text-green-400">Pricing</a>
+    <div class="mobile-menu" id="mobileMenu">
+        <a href="#systems">Systems</a>
+        <a href="#services">Services</a>
+        <a href="#process">Process</a>
+        <a href="portfolio.html">Portfolio</a>
+        <a href="jupiter.html">Jupiter</a>
+        <a href="pricing.html">Pricing</a>
+        <a href="quiz.html">Take the Quiz</a>
     </div>
 
-    <!-- Hero Section -->
-    <section id="home" class="hero-section">
-        <div class="grid-overlay"></div>
-        <!-- Floating Particles -->
-        <div class="particle" style="left: 10%; top: 20%; animation-delay: 0s;"></div>
-        <div class="particle" style="left: 80%; top: 30%; animation-delay: 2s;"></div>
-        <div class="particle" style="left: 30%; top: 60%; animation-delay: 4s;"></div>
-        <div class="particle" style="left: 70%; top: 70%; animation-delay: 6s;"></div>
-        <div class="particle" style="left: 50%; top: 40%; animation-delay: 8s;"></div>
-        <div class="particle" style="left: 20%; top: 80%; animation-delay: 10s;"></div>
-        
-        <!-- Animated Rocket -->
-        <div class="rocket-container">
-            <div class="rocket">
-                <div class="rocket-body">
-                    <div class="rocket-window"></div>
-                </div>
-                <div class="rocket-wing left"></div>
-                <div class="rocket-wing right"></div>
-                <div class="rocket-fire"></div>
-                <div class="rocket-smoke"></div>
-                <div class="rocket-smoke"></div>
-                <div class="rocket-smoke"></div>
-                <div class="rocket-smoke"></div>
+    <!-- ===== HERO ===== -->
+    <section class="hero" id="home">
+        <div class="hero-glow hero-glow-1"></div>
+        <div class="hero-glow hero-glow-2"></div>
+        <div class="hero-content">
+            <div class="hero-badge">
+                <span class="dot"></span>
+                AI-Powered Systems Builder
             </div>
-            <div class="rocket-star"></div>
-            <div class="rocket-star"></div>
-            <div class="rocket-star"></div>
-        </div>
-        
-        <div class="hero-video-overlay"></div>
-        <div class="hero-content container mx-auto">
-            <div class="max-w-4xl">
-                <div class="text-green-400 text-sm font-semibold uppercase tracking-wider mb-4">AI-Accelerated. Human-Directed.</div>
-                <h1 class="hero-title">
-                    <span class="text-green-400">BUILD.</span>
-                    <span class="text-purple-400"> RISE.</span>
-                    <span class="text-blue-400"> SCALE.</span>
-                </h1>
-                <p class="hero-subtitle">
-                    We merge intelligent automation with human creativity to deliver your digital foundation in 3-14 days—not weeks. Every strategy, every decision, every creative direction comes from human expertise.
-                </p>
-                <div class="flex flex-col sm:flex-row gap-4">
-                    <a href="quiz.html" class="hero-cta">
-                        <span>Find Your Path</span>
-                        <i class="fas fa-arrow-right"></i>
-                    </a>
-                    <a href="pricing.html" class="hero-cta" style="border-color: #4ade80; color: #4ade80;">
-                        <span>View Pricing</span>
-                    </a>
-                </div>
+            <h1>We Build the <span class="gradient">Operating Systems</span> That Run Your Business</h1>
+            <p class="hero-sub">
+                White-label AI dashboards for trades businesses and content creators. 
+                Lead management, job tracking, revenue analytics, and client pipelines — 
+                branded to you, delivered in days.
+            </p>
+            <div class="hero-actions">
+                <a href="quiz.html" class="btn-primary">
+                    Find Your System <i class="fas fa-arrow-right"></i>
+                </a>
+                <a href="#systems" class="btn-secondary">
+                    See the Products <i class="fas fa-chevron-down"></i>
+                </a>
             </div>
         </div>
-        <div class="hero-scroll-indicator">
-            <span class="text-xs uppercase tracking-wider">Scroll</span>
+        <div class="scroll-hint">
+            <span>Scroll</span>
             <i class="fas fa-chevron-down"></i>
         </div>
     </section>
 
-    <!-- Stats Bar -->
-    <section class="py-16 bg-gradient-to-b from-black to-gray-900">
-        <div class="container mx-auto px-4">
-            <div class="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
-                <div class="scroll-reveal">
-                    <div class="text-4xl md:text-5xl font-bold text-green-400 mb-2">3-14</div>
-                    <div class="text-sm text-gray-400 uppercase tracking-wide">Days Delivery</div>
-                </div>
-                <div class="scroll-reveal">
-                    <div class="text-4xl md:text-5xl font-bold text-green-400 mb-2">100%</div>
-                    <div class="text-sm text-gray-400 uppercase tracking-wide">Transparent Pricing</div>
-                </div>
-                <div class="scroll-reveal">
-                    <div class="text-4xl md:text-5xl font-bold text-green-400 mb-2">24/7</div>
-                    <div class="text-sm text-gray-400 uppercase tracking-wide">AI Support</div>
-                </div>
-                <div class="scroll-reveal">
-                    <div class="text-4xl md:text-5xl font-bold text-green-400 mb-2">∞</div>
-                    <div class="text-sm text-gray-400 uppercase tracking-wide">Revisions (RISE)</div>
-                </div>
-            </div>
-        </div>
-    </section>
+    <!-- ===== OS PRODUCTS ===== -->
+    <section class="os-section" id="systems">
+        <div class="container">
 
-    <!-- Framework Section -->
-    <section id="framework" class="py-32 bg-black">
-        <div class="container mx-auto px-4">
-            <div class="text-center mb-20 scroll-reveal">
-                <h2 class="text-5xl md:text-6xl font-bold mb-6">Two Clear Paths</h2>
-                <p class="text-xl text-gray-400 max-w-3xl mx-auto">Choose BUILD for foundational projects or RISE for ongoing optimization</p>
-            </div>
-            
-            <div class="grid md:grid-cols-2 gap-8 max-w-6xl mx-auto">
-                <!-- BUILD Card -->
-                <div class="card-glow p-8 rounded-xl scroll-reveal">
-                    <div class="spotlight"></div>
-                    <div class="framework-badge badge-build mb-6">BUILD</div>
-                    <h3 class="text-3xl font-bold mb-4">Launch Your Foundation</h3>
-                    <p class="text-gray-400 mb-6 text-lg">Fast, foundational digital projects delivered with flat-rate pricing and complete transparency.</p>
-                    <div class="space-y-3 mb-8">
-                        <div class="flex items-center gap-3">
-                            <i class="fas fa-check text-green-400"></i>
-                            <span class="text-gray-300">Websites: $2,500-$15,000+ (5-14 days)</span>
-                        </div>
-                        <div class="flex items-center gap-3">
-                            <i class="fas fa-check text-green-400"></i>
-                            <span class="text-gray-300">Branding: $1,500-$7,000 (2-10 days)</span>
-                        </div>
-                        <div class="flex items-center gap-3">
-                            <i class="fas fa-check text-green-400"></i>
-                            <span class="text-gray-300">Apps & Automation: $3,000-$15,000+</span>
-                        </div>
-                        <div class="flex items-center gap-3">
-                            <i class="fas fa-check text-green-400"></i>
-                            <span class="text-gray-300">Video Production: $800-$7,500</span>
-                        </div>
+            <!-- TradeOS -->
+            <div class="os-showcase reveal">
+                <div class="os-info">
+                    <div class="os-tag trade">For Trades Businesses</div>
+                    <h2 class="os-name">TradeOS</h2>
+                    <p class="os-desc">
+                        The mission control center for home service businesses. Manage leads, track jobs, 
+                        send quotes, and monitor revenue — all from one dark-mode dashboard built for the way you work.
+                    </p>
+                    <div class="os-features">
+                        <div class="os-feature trade"><i class="fas fa-check"></i> Lead Management</div>
+                        <div class="os-feature trade"><i class="fas fa-check"></i> Job Tracking</div>
+                        <div class="os-feature trade"><i class="fas fa-check"></i> Quoting System</div>
+                        <div class="os-feature trade"><i class="fas fa-check"></i> Revenue Reports</div>
+                        <div class="os-feature trade"><i class="fas fa-check"></i> Client Database</div>
+                        <div class="os-feature trade"><i class="fas fa-check"></i> Automations</div>
+                        <div class="os-feature trade"><i class="fas fa-check"></i> Crew Assignment</div>
+                        <div class="os-feature trade"><i class="fas fa-check"></i> White-Label Branding</div>
                     </div>
-                    <a href="pricing.html#build" class="inline-flex items-center gap-2 bg-green-500 text-black px-6 py-3 rounded-full font-semibold hover:bg-green-400 button-glow transition-all">
-                        <span>Explore BUILD</span>
-                        <i class="fas fa-arrow-right"></i>
+                    <a href="pricing.html" class="os-cta trade">
+                        Get TradeOS <i class="fas fa-arrow-right"></i>
                     </a>
                 </div>
 
-                <!-- RISE Card -->
-                <div class="card-glow p-8 rounded-xl scroll-reveal" style="border-color: rgba(168, 85, 247, 0.2);">
-                    <div class="spotlight" style="background: radial-gradient(circle, rgba(168, 85, 247, 0.2), transparent 70%);"></div>
-                    <div class="framework-badge badge-rise mb-6">RISE</div>
-                    <h3 class="text-3xl font-bold mb-4">Grow with Ongoing Support</h3>
-                    <p class="text-gray-400 mb-6 text-lg">Unlimited requests, continuous optimization, and dedicated team for sustained growth.</p>
-                    <div class="space-y-3 mb-8">
-                        <div class="flex items-center gap-3">
-                            <i class="fas fa-check text-purple-400"></i>
-                            <span class="text-gray-300">Unlimited requests & revisions</span>
+                <div class="browser-frame trade-glow">
+                    <div class="browser-bar">
+                        <div class="browser-dots"><span></span><span></span><span></span></div>
+                        <div class="browser-url">app.yourbusiness.com/dashboard</div>
+                    </div>
+                    <div class="mock-dashboard trade-dash">
+                        <div class="stats-row">
+                            <div class="stat-card">
+                                <div class="stat-label">Active Leads</div>
+                                <div class="stat-value">24</div>
+                                <div class="stat-sub up">+3 today</div>
+                            </div>
+                            <div class="stat-card">
+                                <div class="stat-label">Open Jobs</div>
+                                <div class="stat-value">12</div>
+                                <div class="stat-sub">2 due this week</div>
+                            </div>
+                            <div class="stat-card">
+                                <div class="stat-label">Quotes Pending</div>
+                                <div class="stat-value">7</div>
+                                <div class="stat-sub">$18,400 total</div>
+                            </div>
+                            <div class="stat-card">
+                                <div class="stat-label">Revenue</div>
+                                <div class="stat-value revenue">$42,800</div>
+                                <div class="stat-sub up">+12% vs last month</div>
+                            </div>
                         </div>
-                        <div class="flex items-center gap-3">
-                            <i class="fas fa-check text-purple-400"></i>
-                            <span class="text-gray-300">Dedicated team & strategy</span>
-                        </div>
-                        <div class="flex items-center gap-3">
-                            <i class="fas fa-check text-purple-400"></i>
-                            <span class="text-gray-300">Monthly reporting & optimization</span>
-                        </div>
-                        <div class="flex items-center gap-3">
-                            <i class="fas fa-check text-purple-400"></i>
-                            <span class="text-gray-300">From $2,500/month</span>
+                        <div class="activity-row">
+                            <div class="panel">
+                                <div class="panel-title">Recent Activity</div>
+                                <div class="activity-item"><span class="activity-text">New lead from John D.</span><span class="activity-time">2m ago</span></div>
+                                <div class="activity-item"><span class="activity-text">Quote sent to ABC Roofing</span><span class="activity-time">15m ago</span></div>
+                                <div class="activity-item"><span class="activity-text">Job #047 marked complete</span><span class="activity-time">1h ago</span></div>
+                                <div class="activity-item"><span class="activity-text">Invoice #089 paid — $4,200</span><span class="activity-time">5h ago</span></div>
+                            </div>
+                            <div class="panel">
+                                <div class="panel-title">Job Pipeline</div>
+                                <div class="pipeline-item">
+                                    <span class="pipeline-label">New</span>
+                                    <div class="pipeline-bar"><div class="pipeline-fill" style="width:15%"></div></div>
+                                    <span class="pipeline-count">8</span>
+                                </div>
+                                <div class="pipeline-item">
+                                    <span class="pipeline-label">In Progress</span>
+                                    <div class="pipeline-bar"><div class="pipeline-fill" style="width:22%"></div></div>
+                                    <span class="pipeline-count">12</span>
+                                </div>
+                                <div class="pipeline-item">
+                                    <span class="pipeline-label">Complete</span>
+                                    <div class="pipeline-bar"><div class="pipeline-fill" style="width:63%"></div></div>
+                                    <span class="pipeline-count">34</span>
+                                </div>
+                            </div>
                         </div>
                     </div>
-                    <a href="pricing.html#rise" class="inline-flex items-center gap-2 bg-purple-500 text-white px-6 py-3 rounded-full font-semibold hover:bg-purple-400 transition-all">
-                        <span>Explore RISE</span>
-                        <i class="fas fa-arrow-right"></i>
+                </div>
+            </div>
+
+            <!-- CreatorOS -->
+            <div class="os-showcase reverse reveal">
+                <div class="os-info">
+                    <div class="os-tag creator">For Content Creators</div>
+                    <h2 class="os-name">CreatorOS</h2>
+                    <p class="os-desc">
+                        Your creative command center. Track followers, manage brand deals, 
+                        monitor revenue, and plan content across every platform — all in a premium 
+                        studio-feel dashboard.
+                    </p>
+                    <div class="os-features">
+                        <div class="os-feature creator"><i class="fas fa-check"></i> Content Pipeline</div>
+                        <div class="os-feature creator"><i class="fas fa-check"></i> Deal Management</div>
+                        <div class="os-feature creator"><i class="fas fa-check"></i> Audience Analytics</div>
+                        <div class="os-feature creator"><i class="fas fa-check"></i> Revenue Tracking</div>
+                        <div class="os-feature creator"><i class="fas fa-check"></i> Multi-Platform Stats</div>
+                        <div class="os-feature creator"><i class="fas fa-check"></i> Automations</div>
+                        <div class="os-feature creator"><i class="fas fa-check"></i> Invoice System</div>
+                        <div class="os-feature creator"><i class="fas fa-check"></i> White-Label Branding</div>
+                    </div>
+                    <a href="pricing.html" class="os-cta creator">
+                        Get CreatorOS <i class="fas fa-arrow-right"></i>
                     </a>
                 </div>
+
+                <div class="browser-frame creator-glow">
+                    <div class="browser-bar">
+                        <div class="browser-dots"><span></span><span></span><span></span></div>
+                        <div class="browser-url">app.yourcreatorhq.com/dashboard</div>
+                    </div>
+                    <div class="mock-dashboard creator-dash">
+                        <div class="stats-row">
+                            <div class="stat-card">
+                                <div class="stat-label">Total Followers</div>
+                                <div class="stat-value">2.4M</div>
+                                <div class="stat-sub up">+12.3%</div>
+                            </div>
+                            <div class="stat-card">
+                                <div class="stat-label">Avg Engagement</div>
+                                <div class="stat-value">4.8%</div>
+                                <div class="stat-sub up">+0.6%</div>
+                            </div>
+                            <div class="stat-card">
+                                <div class="stat-label">Active Deals</div>
+                                <div class="stat-value">7</div>
+                                <div class="stat-sub up">+2</div>
+                            </div>
+                            <div class="stat-card">
+                                <div class="stat-label">Revenue This Month</div>
+                                <div class="stat-value" style="color:var(--purple)">$18,420</div>
+                                <div class="stat-sub up">+23%</div>
+                            </div>
+                        </div>
+                        <div class="activity-row">
+                            <div class="panel">
+                                <div class="panel-title">Recent Activity</div>
+                                <div class="activity-item"><span class="activity-dot"></span><span class="activity-text">New deal from Nike</span><span class="activity-time">2h ago</span></div>
+                                <div class="activity-item"><span class="activity-dot"></span><span class="activity-text">Post published on Instagram</span><span class="activity-time">4h ago</span></div>
+                                <div class="activity-item"><span class="activity-dot"></span><span class="activity-text">Invoice paid — $3,200</span><span class="activity-time">6h ago</span></div>
+                                <div class="activity-item"><span class="activity-dot"></span><span class="activity-text">TikTok video hit 1M views</span><span class="activity-time">8h ago</span></div>
+                            </div>
+                            <div class="panel">
+                                <div class="panel-title">Content Pipeline</div>
+                                <div class="pipeline-grid">
+                                    <div class="pipeline-card">
+                                        <div class="pipeline-card-label"><span class="pipeline-card-dot" style="background:var(--gray-500)"></span> Idea</div>
+                                        <div class="pipeline-card-value">5</div>
+                                    </div>
+                                    <div class="pipeline-card">
+                                        <div class="pipeline-card-label"><span class="pipeline-card-dot" style="background:#F59E0B"></span> Drafting</div>
+                                        <div class="pipeline-card-value">3</div>
+                                    </div>
+                                    <div class="pipeline-card">
+                                        <div class="pipeline-card-label"><span class="pipeline-card-dot" style="background:var(--accent)"></span> Scheduled</div>
+                                        <div class="pipeline-card-value">4</div>
+                                    </div>
+                                    <div class="pipeline-card">
+                                        <div class="pipeline-card-label"><span class="pipeline-card-dot" style="background:var(--green)"></span> Published</div>
+                                        <div class="pipeline-card-value">12</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- ===== CREATIVE SERVICES (ADD-ONS) ===== -->
+    <section class="services-section" id="services">
+        <div class="container">
+            <div class="reveal">
+                <div class="section-label">Also Available</div>
+                <div class="section-title">Need More Than a Dashboard?</div>
+                <p class="section-desc">
+                    Every OS deployment can be paired with creative services. 
+                    Websites, branding, video, and ongoing growth — all built at AI speed.
+                </p>
+            </div>
+            <div class="services-grid">
+                <div class="service-card reveal">
+                    <div class="service-icon"><i class="fas fa-laptop-code"></i></div>
+                    <h3>Websites</h3>
+                    <p>Professional, converting websites delivered in 5-14 days. Mobile-optimized, SEO-ready, yours to own.</p>
+                    <div class="service-price">From $2,500 &middot; 5-14 days</div>
+                </div>
+                <div class="service-card reveal">
+                    <div class="service-icon"><i class="fas fa-palette"></i></div>
+                    <h3>Branding</h3>
+                    <p>Complete brand identity systems. Logo, colors, typography, and guidelines that make you memorable.</p>
+                    <div class="service-price">From $1,500 &middot; 2-10 days</div>
+                </div>
+                <div class="service-card reveal">
+                    <div class="service-icon"><i class="fas fa-video"></i></div>
+                    <h3>Video Production</h3>
+                    <p>Professional video ads and content. Script to delivery, optimized for all platforms.</p>
+                    <div class="service-price">From $800 &middot; 3-14 days</div>
+                </div>
+                <div class="service-card reveal">
+                    <div class="service-icon"><i class="fas fa-chart-line"></i></div>
+                    <h3>Social Media</h3>
+                    <p>Consistent, high-performing content across 1-5 platforms. Strategy, posting, and community growth.</p>
+                    <div class="service-price">From $800/mo &middot; RISE</div>
+                </div>
             </div>
         </div>
     </section>
 
-    <!-- Services Section -->
-    <section id="services" class="py-32 bg-gradient-to-b from-gray-900 to-black">
-        <div class="container mx-auto px-4">
-            <div class="text-center mb-20 scroll-reveal">
-                <h2 class="text-5xl md:text-6xl font-bold mb-6 bg-gradient-to-r from-green-400 to-blue-400 bg-clip-text text-transparent">What We Build</h2>
-                <p class="text-xl text-gray-400 max-w-3xl mx-auto">Full-service digital solutions powered by AI acceleration</p>
+    <!-- ===== HOW IT WORKS ===== -->
+    <section class="process-section" id="process">
+        <div class="container">
+            <div class="reveal" style="text-align:center">
+                <div class="section-label">How It Works</div>
+                <div class="section-title">From Idea to Launch in Days</div>
+                <p class="section-desc" style="margin:0 auto 3rem">
+                    Our AI-powered workflow means you get a production-ready system 
+                    faster than most agencies finish their discovery phase.
+                </p>
             </div>
-            
-            <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8 mb-16">
-                <!-- Service 1 -->
-                <div class="card-glow p-8 rounded-xl scroll-reveal">
-                    <div class="spotlight"></div>
-                    <div class="text-green-400 text-5xl mb-4">
-                        <i class="fas fa-laptop-code"></i>
-                    </div>
-                    <h3 class="text-2xl font-bold mb-3">Websites</h3>
-                    <p class="text-gray-400 mb-4">Professional, converting websites delivered in 5-14 days. Mobile-optimized, SEO-ready, yours to own.</p>
-                    <span class="text-green-400 font-semibold">From $2,500</span>
+            <div class="process-steps">
+                <div class="process-step reveal">
+                    <div class="step-number">01</div>
+                    <h3>Discovery</h3>
+                    <p>We learn your business, your workflow, and what you need the system to do.</p>
                 </div>
-
-                <!-- Service 2 -->
-                <div class="card-glow p-8 rounded-xl scroll-reveal">
-                    <div class="spotlight"></div>
-                    <div class="text-green-400 text-5xl mb-4">
-                        <i class="fas fa-palette"></i>
-                    </div>
-                    <h3 class="text-2xl font-bold mb-3">Branding</h3>
-                    <p class="text-gray-400 mb-4">Complete brand identity systems. Logo, colors, typography, and guidelines in 2-10 days.</p>
-                    <span class="text-green-400 font-semibold">From $1,500</span>
+                <div class="process-step reveal">
+                    <div class="step-number">02</div>
+                    <h3>Architecture</h3>
+                    <p>AI-assisted research and planning creates your custom system blueprint.</p>
                 </div>
-
-                <!-- Service 3 -->
-                <div class="card-glow p-8 rounded-xl scroll-reveal">
-                    <div class="spotlight"></div>
-                    <div class="text-green-400 text-5xl mb-4">
-                        <i class="fas fa-mobile-alt"></i>
-                    </div>
-                    <h3 class="text-2xl font-bold mb-3">Apps & Automation</h3>
-                    <p class="text-gray-400 mb-4">Custom web apps, visualizers, and automation platforms. Interactive tools that convert.</p>
-                    <span class="text-green-400 font-semibold">From $3,000</span>
+                <div class="process-step reveal">
+                    <div class="step-number">03</div>
+                    <h3>Build</h3>
+                    <p>Rapid development using our proven stack. Human-directed, AI-accelerated.</p>
                 </div>
-
-                <!-- Service 4 -->
-                <div class="card-glow p-8 rounded-xl scroll-reveal">
-                    <div class="spotlight"></div>
-                    <div class="text-green-400 text-5xl mb-4">
-                        <i class="fas fa-video"></i>
-                    </div>
-                    <h3 class="text-2xl font-bold mb-3">Video Production</h3>
-                    <p class="text-gray-400 mb-4">Professional video ads and content. Script to delivery in 3-10 days, optimized for all platforms.</p>
-                    <span class="text-green-400 font-semibold">From $800</span>
-                </div>
-            </div>
-
-            <div class="text-center mt-20 mb-16 scroll-reveal">
-                <h2 class="text-5xl md:text-6xl font-bold mb-6">How We Help You <span class="text-purple-400">RISE</span></h2>
-                <p class="text-xl text-gray-400 mb-12">Ongoing optimization that compounds month after month</p>
-            </div>
-
-            <div class="grid md:grid-cols-3 gap-8 max-w-5xl mx-auto">
-                <!-- RISE Service 1 -->
-                <div class="card-glow p-8 rounded-xl scroll-reveal" style="border-color: rgba(168, 85, 247, 0.2);">
-                    <div class="spotlight" style="background: radial-gradient(circle, rgba(168, 85, 247, 0.2), transparent 70%);"></div>
-                    <div class="text-purple-400 text-5xl mb-4">
-                        <i class="fas fa-chart-line"></i>
-                    </div>
-                    <h3 class="text-2xl font-bold mb-3">Social Media Management</h3>
-                    <p class="text-gray-400">Consistent, high-performing content across 1-5 platforms. Strategic posting, engagement, and community building.</p>
-                </div>
-
-                <!-- RISE Service 2 -->
-                <div class="card-glow p-8 rounded-xl scroll-reveal" style="border-color: rgba(168, 85, 247, 0.2);">
-                    <div class="spotlight" style="background: radial-gradient(circle, rgba(168, 85, 247, 0.2), transparent 70%);"></div>
-                    <div class="text-purple-400 text-5xl mb-4">
-                        <i class="fas fa-bullhorn"></i>
-                    </div>
-                    <h3 class="text-2xl font-bold mb-3">Ad Campaign Optimization</h3>
-                    <p class="text-gray-400">Build warm audiences efficiently, then convert at 60-70% lower cost. Transparent reporting on every dollar.</p>
-                </div>
-
-                <!-- RISE Service 3 -->
-                <div class="card-glow p-8 rounded-xl scroll-reveal" style="border-color: rgba(168, 85, 247, 0.2);">
-                    <div class="spotlight" style="background: radial-gradient(circle, rgba(168, 85, 247, 0.2), transparent 70%);"></div>
-                    <div class="text-purple-400 text-5xl mb-4">
-                        <i class="fas fa-cogs"></i>
-                    </div>
-                    <h3 class="text-2xl font-bold mb-3">Continuous Optimization</h3>
-                    <p class="text-gray-400">Monthly strategy sessions, performance tracking, and relentless testing. What works scales. What doesn't gets eliminated.</p>
+                <div class="process-step reveal">
+                    <div class="step-number">04</div>
+                    <h3>Launch</h3>
+                    <p>Branded to your business, populated with demo data, deployed and ready to use.</p>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Case Study Section -->
-    <section id="case-study" class="py-32 bg-black">
-        <div class="container mx-auto px-4">
-            <div class="text-center mb-16 scroll-reveal">
-                <div class="inline-block bg-green-500/10 border border-green-500/30 rounded-full px-6 py-2 mb-6">
-                    <span class="text-green-400 font-semibold uppercase text-sm tracking-wider">Featured Success Story</span>
-                </div>
-                <h2 class="text-5xl md:text-6xl font-bold mb-6">
-                    Southern Pavers: <span class="text-green-400">BUILD</span> to <span class="text-purple-400">RISE</span>
-                </h2>
-                <p class="text-xl text-gray-400 max-w-3xl mx-auto">How we helped a regional landscaping business scale from $8,500 project to $2,000/month partnership</p>
+    <!-- ===== BUILD / RISE FRAMEWORK ===== -->
+    <section class="framework-section" id="framework">
+        <div class="container">
+            <div class="reveal" style="text-align:center">
+                <div class="section-label">Two Ways to Work With Us</div>
+                <div class="section-title">Build Your Foundation. Rise With Ongoing Support.</div>
             </div>
-
-            <div class="max-w-5xl mx-auto">
-                <!-- Phase 1: BUILD -->
-                <div class="card-glow rounded-2xl p-12 mb-8 scroll-reveal" style="border-color: rgba(74, 222, 128, 0.3);">
-                    <div class="spotlight"></div>
-                    <div class="inline-block bg-green-500/20 border border-green-400 rounded-full px-6 py-2 mb-6">
-                        <span class="text-green-400 font-bold uppercase text-sm tracking-wider">PHASE 1: BUILD</span>
+            <div class="framework-grid">
+                <div class="framework-card build-card reveal">
+                    <div class="framework-label build">BUILD</div>
+                    <h3>One-Time Projects</h3>
+                    <p>Get your system, website, or brand built fast with flat-rate pricing and clear timelines.</p>
+                    <div class="framework-items">
+                        <div class="framework-item build"><i class="fas fa-check"></i> Delivered in 3-14 days</div>
+                        <div class="framework-item build"><i class="fas fa-check"></i> Flat-rate pricing — no surprises</div>
+                        <div class="framework-item build"><i class="fas fa-check"></i> OS Systems from $3,000</div>
+                        <div class="framework-item build"><i class="fas fa-check"></i> Websites from $2,500</div>
+                        <div class="framework-item build"><i class="fas fa-check"></i> Branding from $1,500</div>
                     </div>
-                    <h3 class="text-4xl font-bold mb-6">Foundation Built in 7 Days</h3>
-                    <div class="grid md:grid-cols-3 gap-6 mb-8">
-                        <div>
-                            <div class="text-5xl font-bold text-green-400 mb-2">7</div>
-                            <div class="text-gray-400">Working Days</div>
-                        </div>
-                        <div>
-                            <div class="text-5xl font-bold text-green-400 mb-2">$8,500</div>
-                            <div class="text-gray-400">Total Investment</div>
-                        </div>
-                        <div>
-                            <div class="text-5xl font-bold text-green-400 mb-2">3</div>
-                            <div class="text-gray-400">Major Deliverables</div>
-                        </div>
-                    </div>
-                    <div class="space-y-4">
-                        <div class="flex items-start">
-                            <i class="fas fa-check-circle text-green-400 mr-3 mt-1 text-xl"></i>
-                            <div>
-                                <div class="font-bold text-lg mb-1">Complete Brand Rebrand</div>
-                                <div class="text-gray-400">New visual identity, professional logo, color system</div>
-                            </div>
-                        </div>
-                        <div class="flex items-start">
-                            <i class="fas fa-check-circle text-green-400 mr-3 mt-1 text-xl"></i>
-                            <div>
-                                <div class="font-bold text-lg mb-1">Custom Paver Visualizer App</div>
-                                <div class="text-gray-400">Interactive tool allowing customers to see paver options in their space</div>
-                            </div>
-                        </div>
-                        <div class="flex items-start">
-                            <i class="fas fa-check-circle text-green-400 mr-3 mt-1 text-xl"></i>
-                            <div>
-                                <div class="font-bold text-lg mb-1">Professional Website</div>
-                                <div class="text-gray-400">Mobile-optimized, conversion-focused, fully owned by client</div>
-                            </div>
-                        </div>
-                    </div>
+                    <a href="pricing.html#build" class="os-cta trade">
+                        Explore BUILD <i class="fas fa-arrow-right"></i>
+                    </a>
                 </div>
-
-                <!-- Phase 2: RISE -->
-                <div class="card-glow rounded-2xl p-12 scroll-reveal" style="border-color: rgba(168, 85, 247, 0.3);">
-                    <div class="spotlight" style="background: radial-gradient(circle, rgba(168, 85, 247, 0.2), transparent 70%);"></div>
-                    <div class="inline-block bg-purple-500/20 border border-purple-400 rounded-full px-6 py-2 mb-6">
-                        <span class="text-purple-400 font-bold uppercase text-sm tracking-wider">PHASE 2: RISE</span>
+                <div class="framework-card rise-card reveal">
+                    <div class="framework-label rise">RISE</div>
+                    <h3>Ongoing Partnerships</h3>
+                    <p>Monthly collaboration for continuous optimization, content, and growth that compounds.</p>
+                    <div class="framework-items">
+                        <div class="framework-item rise"><i class="fas fa-check"></i> Unlimited requests & revisions</div>
+                        <div class="framework-item rise"><i class="fas fa-check"></i> Dedicated strategy & support</div>
+                        <div class="framework-item rise"><i class="fas fa-check"></i> Social media management</div>
+                        <div class="framework-item rise"><i class="fas fa-check"></i> Ad campaign optimization</div>
+                        <div class="framework-item rise"><i class="fas fa-check"></i> From $800/month</div>
                     </div>
-                    <h3 class="text-4xl font-bold mb-6">First 30 Days: Strategic Audience Building</h3>
-                    <div class="bg-purple-500/10 border border-purple-500/30 rounded-xl p-8 mb-8">
-                        <div class="text-purple-400 font-semibold mb-6 text-lg">RESULTS (October 2025)</div>
-                        <div class="grid md:grid-cols-2 gap-8">
-                            <div>
-                                <div class="text-4xl font-bold text-purple-400 mb-2">14,753</div>
-                                <div class="text-gray-400 mb-1">Qualified Prospects Built</div>
-                                <div class="text-sm text-green-400">+50% above industry average</div>
-                            </div>
-                            <div>
-                                <div class="text-4xl font-bold text-purple-400 mb-2">1,046</div>
-                                <div class="text-gray-400 mb-1">High-Intent Website Visitors</div>
-                                <div class="text-sm text-green-400">+30% conversion intent</div>
-                            </div>
-                            <div>
-                                <div class="text-4xl font-bold text-purple-400 mb-2">$0.04</div>
-                                <div class="text-gray-400 mb-1">Cost Per Prospect</div>
-                                <div class="text-sm text-green-400">92-96% cheaper than industry avg</div>
-                            </div>
-                            <div>
-                                <div class="text-4xl font-bold text-purple-400 mb-2">15,632</div>
-                                <div class="text-gray-400 mb-1">Video Engagement Plays</div>
-                                <div class="text-sm text-green-400">200%+ higher engagement</div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="border-t border-purple-500/20 pt-8">
-                        <h4 class="text-2xl font-bold mb-4">The Strategy That Made It Work</h4>
-                        <p class="text-gray-300 mb-6">
-                            Instead of expensive cold-traffic conversion campaigns, we focused Phase 1 on building qualified audiences at maximum efficiency. These warm audiences are now being retargeted with conversion-focused messaging at <span class="text-purple-400 font-bold">60-70% lower cost</span> than traditional cold traffic acquisition.
-                        </p>
-                        <div class="bg-purple-500/10 border border-purple-500/30 rounded-lg p-6">
-                            <div class="text-sm text-purple-400 font-semibold mb-2">CLIENT QUOTE</div>
-                            <p class="text-gray-300 italic">"Julian didn't just re-create the brand or run ads, he showed us the strategy. Building audiences first meant we're not burning money on cold traffic. Now we're retargeting people who already know us. It's smarter spending."</p>
-                            <p class="text-gray-500 text-sm mt-2">— Southern Pavers, October 2025</p>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="text-center mt-12 scroll-reveal">
-                    <a href="portfolio.html" class="inline-flex items-center gap-2 bg-white text-black px-8 py-4 rounded-full font-bold text-lg hover:bg-gray-200 transition-all">
-                        <span>View Full Portfolio</span>
-                        <i class="fas fa-arrow-right"></i>
+                    <a href="pricing.html#rise" class="os-cta creator">
+                        Explore RISE <i class="fas fa-arrow-right"></i>
                     </a>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- How It Works -->
-    <section id="how-it-works" class="py-32 bg-gradient-to-b from-gray-900 to-black">
-        <div class="container mx-auto px-4">
-            <div class="text-center mb-16 scroll-reveal">
-                <h2 class="text-5xl md:text-6xl font-bold mb-6">How It Works</h2>
-                <p class="text-xl text-gray-400">Simple, transparent process from start to success</p>
-            </div>
-            <div class="grid md:grid-cols-4 gap-8 max-w-6xl mx-auto">
-                <div class="text-center scroll-reveal">
-                    <div class="bg-green-500/20 border-2 border-green-500 rounded-full w-20 h-20 flex items-center justify-center mx-auto mb-4 text-3xl font-bold text-green-400">1</div>
-                    <h3 class="text-xl font-bold mb-2">Choose Your Path</h3>
-                    <p class="text-gray-400">Need to BUILD something new or RISE with ongoing growth? Take our 2-minute quiz.</p>
-                </div>
-                <div class="text-center scroll-reveal">
-                    <div class="bg-green-500/20 border-2 border-green-500 rounded-full w-20 h-20 flex items-center justify-center mx-auto mb-4 text-3xl font-bold text-green-400">2</div>
-                    <h3 class="text-xl font-bold mb-2">Strategy Call</h3>
-                    <p class="text-gray-400">30-minute consultation to understand your goals and recommend the right solution.</p>
-                </div>
-                <div class="text-center scroll-reveal">
-                    <div class="bg-green-500/20 border-2 border-green-500 rounded-full w-20 h-20 flex items-center justify-center mx-auto mb-4 text-3xl font-bold text-green-400">3</div>
-                    <h3 class="text-xl font-bold mb-2">Fast Delivery</h3>
-                    <p class="text-gray-400">BUILD projects in 3-14 days. RISE partnerships start within 48 hours.</p>
-                </div>
-                <div class="text-center scroll-reveal">
-                    <div class="bg-green-500/20 border-2 border-green-500 rounded-full w-20 h-20 flex items-center justify-center mx-auto mb-4 text-3xl font-bold text-green-400">4</div>
-                    <h3 class="text-xl font-bold mb-2">See Results</h3>
-                    <p class="text-gray-400">Track everything transparently. Optimize relentlessly. Scale what works.</p>
+    <!-- ===== CTA ===== -->
+    <section class="cta-section">
+        <div class="container">
+            <div class="cta-box reveal">
+                <h2>Ready to Build Your Operating System?</h2>
+                <p>Take the 2-minute quiz to find the right system for your business, or jump straight to pricing.</p>
+                <div class="cta-actions">
+                    <a href="quiz.html" class="btn-primary">Take the Quiz <i class="fas fa-arrow-right"></i></a>
+                    <a href="pricing.html" class="btn-secondary">View Pricing</a>
+                    <a href="jupiter.html" class="btn-secondary">See Jupiter <i class="fas fa-rocket"></i></a>
                 </div>
             </div>
+        </div>
+    </section>
+
+    <!-- ===== CONTACT ===== -->
+    <section class="contact-section" id="contact">
+        <div class="container">
+            <div class="contact-grid">
+                <div class="reveal">
+                    <div class="section-label">Get in Touch</div>
+                    <div class="section-title">Let's Talk Systems</div>
+                    <p class="section-desc">
+                        Tell us about your business and what you need. We'll respond within 24 hours 
+                        with a clear plan and timeline.
+                    </p>
+                    <p style="color:var(--gray-400);font-size:0.95rem;margin-top:1rem;">
+                        Or email directly: <a href="mailto:julian@jpaxmedia.com" style="color:var(--accent);text-decoration:none">julian@jpaxmedia.com</a>
+                    </p>
+                </div>
+                <form class="contact-form reveal" action="https://formspree.io/f/xkgwgjrn" method="POST">
+                    <div class="form-group">
+                        <label for="name">Name</label>
+                        <input type="text" id="name" name="name" required placeholder="Your name">
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Email</label>
+                        <input type="email" id="email" name="email" required placeholder="you@company.com">
+                    </div>
+                    <div class="form-group">
+                        <label for="interest">What are you looking for?</label>
+                        <select id="interest" name="interest">
+                            <option value="">Select one...</option>
+                            <option value="tradeos">TradeOS — Trades Business Dashboard</option>
+                            <option value="creatoros">CreatorOS — Creator Dashboard</option>
+                            <option value="custom-system">Custom Operating System</option>
+                            <option value="website">Website</option>
+                            <option value="branding">Branding</option>
+                            <option value="video">Video Production</option>
+                            <option value="social-media">Social Media (RISE)</option>
+                            <option value="other">Something Else</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="message">Tell us about your project</label>
+                        <textarea id="message" name="message" required placeholder="What are you looking to accomplish?"></textarea>
+                    </div>
+                    <button type="submit" class="btn-primary" style="width:100%;justify-content:center">
+                        Send Message <i class="fas fa-paper-plane"></i>
+                    </button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== FOOTER ===== -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-inner">
+                <div class="footer-logo">
+                    <img src="jpaxmedialogoOFFICIALFINALwhite.png" alt="JPax Media" onerror="this.style.display='none'">
+                </div>
+                <div class="footer-links">
+                    <a href="index.html">Home</a>
+                    <a href="portfolio.html">Portfolio</a>
+                    <a href="pricing.html">Pricing</a>
+                    <a href="jupiter.html">Jupiter</a>
+                    <a href="quiz.html">Quiz</a>
+                </div>
+                <div class="footer-socials">
+                    <a href="https://www.youtube.com/@JPaxFilms/videos" target="_blank"><i class="fab fa-youtube"></i></a>
+                    <a href="https://www.tiktok.com/@jpaxfilms?lang=en" target="_blank"><i class="fab fa-tiktok"></i></a>
+                    <a href="https://www.facebook.com/JPaxFilms/" target="_blank"><i class="fab fa-facebook"></i></a>
+                    <a href="https://www.instagram.com/jpaxfilmz/" target="_blank"><i class="fab fa-instagram"></i></a>
+                </div>
+            </div>
+<<<<<<< HEAD
         </div>
     </section>
 
@@ -1172,104 +1259,63 @@
             </div>
             <div class="border-t border-gray-800 pt-8 text-center text-gray-500 text-sm">
                 <p>&copy; 2026 JPax Media. All rights reserved. <span class="text-green-400">BUILD.</span> <span class="text-purple-400">RISE.</span> <span class="text-blue-400">SCALE.</span></p>
+=======
+            <div style="text-align:center;margin-top:2rem">
+                <p class="footer-copy">
+                    &copy; 2025 JPax Media. All rights reserved. 
+                    <span class="g">BUILD.</span> <span class="p">RISE.</span> <span class="b">SCALE.</span>
+                </p>
+>>>>>>> 10d9cd3 (Update Jpax Media Website)
             </div>
         </div>
     </footer>
 
     <script>
-        document.addEventListener('DOMContentLoaded', () => {
-            // --- Custom Cursor ---
-            const cursorDot = document.querySelector('.cursor-dot');
-            const cursorOutline = document.querySelector('.cursor-outline');
-            
-            if (cursorDot && cursorOutline) {
-                let mouseX = 0, mouseY = 0;
-                let outlineX = 0, outlineY = 0;
+        // Nav scroll effect
+        const nav = document.getElementById('nav');
+        window.addEventListener('scroll', () => {
+            nav.classList.toggle('scrolled', window.scrollY > 50);
+        });
 
-                document.addEventListener('mousemove', (e) => {
-                    mouseX = e.clientX;
-                    mouseY = e.clientY;
-                    cursorDot.style.left = mouseX + 'px';
-                    cursorDot.style.top = mouseY + 'px';
-                });
-
-                function animateOutline() {
-                    outlineX += (mouseX - outlineX) * 0.2;
-                    outlineY += (mouseY - outlineY) * 0.2;
-                    cursorOutline.style.left = outlineX + 'px';
-                    cursorOutline.style.top = outlineY + 'px';
-                    requestAnimationFrame(animateOutline);
-                }
-                animateOutline();
-            }
-
-            // --- Spotlight Card Effect ---
-            document.querySelectorAll('.card-glow').forEach(card => {
-                const spotlight = card.querySelector('.spotlight');
-                if (spotlight) {
-                    card.addEventListener('mousemove', e => {
-                        const rect = card.getBoundingClientRect();
-                        const x = e.clientX - rect.left;
-                        const y = e.clientY - rect.top;
-                        spotlight.style.left = `${x}px`;
-                        spotlight.style.top = `${y}px`;
-                    });
-                }
-            });
-
-            // --- Mobile Menu ---
-            const mobileMenuButton = document.getElementById('mobile-menu-button');
-            const mobileMenu = document.getElementById('mobile-menu');
-            if (mobileMenuButton && mobileMenu) {
-                const hamburgerIcon = mobileMenuButton.querySelector('.hamburger-icon');
-                const body = document.body;
-                
-                mobileMenuButton.addEventListener('click', () => {
-                    const isActive = mobileMenu.classList.contains('active');
-                    
-                    if (!isActive) {
-                        mobileMenu.classList.add('active');
-                        hamburgerIcon.classList.add('active');
-                        body.style.overflow = 'hidden';
-                    } else {
-                        mobileMenu.classList.remove('active');
-                        hamburgerIcon.classList.remove('active');
-                        body.style.overflow = '';
-                    }
-                });
-                
-                const mobileMenuLinks = mobileMenu.querySelectorAll('a');
-                mobileMenuLinks.forEach(link => {
-                    link.addEventListener('click', () => {
-                        mobileMenu.classList.remove('active');
-                        hamburgerIcon.classList.remove('active');
-                        body.style.overflow = '';
-                    });
-                });
-
-                mobileMenu.addEventListener('click', (e) => {
-                    if (e.target === mobileMenu) {
-                        mobileMenu.classList.remove('active');
-                        hamburgerIcon.classList.remove('active');
-                        body.style.overflow = '';
-                    }
-                });
-            }
-
-            // --- Scroll Animations ---
-            const scrollElements = document.querySelectorAll('.scroll-reveal');
-            const scrollObserver = new IntersectionObserver((entries) => {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        entry.target.classList.add('is-visible');
-                        scrollObserver.unobserve(entry.target);
-                    }
-                });
-            }, { threshold: 0.1 });
-            scrollElements.forEach(el => {
-                scrollObserver.observe(el);
+        // Mobile menu
+        const mobileBtn = document.getElementById('mobileBtn');
+        const mobileMenu = document.getElementById('mobileMenu');
+        mobileBtn.addEventListener('click', () => {
+            mobileMenu.classList.toggle('active');
+            document.body.style.overflow = mobileMenu.classList.contains('active') ? 'hidden' : '';
+        });
+        mobileMenu.querySelectorAll('a').forEach(a => {
+            a.addEventListener('click', () => {
+                mobileMenu.classList.remove('active');
+                document.body.style.overflow = '';
             });
         });
+
+        // Scroll reveal
+        const revealObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+
+        document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
+
+        // Animate pipeline bars on scroll
+        const pipelineObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.querySelectorAll('.pipeline-fill').forEach(bar => {
+                        const width = bar.style.width;
+                        bar.style.width = '0';
+                        setTimeout(() => { bar.style.width = width; }, 200);
+                    });
+                }
+            });
+        }, { threshold: 0.3 });
+
+        document.querySelectorAll('.mock-dashboard').forEach(d => pipelineObserver.observe(d));
     </script>
 </body>
 </html>

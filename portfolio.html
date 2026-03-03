@@ -3,697 +3,538 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>JPax Media Portfolio | BUILD & RISE Success Stories</title>
-    
-    <!-- SEO Meta Tags -->
-    <meta name="description" content="See how JPax Media helps businesses BUILD their digital foundation and RISE with ongoing growth. Real results, real numbers, complete transparency.">
-    <meta name="keywords" content="portfolio, case studies, BUILD RISE results, digital agency success stories, Southeast agency, Connecticut">
-    
-    <!-- Open Graph / Social Media -->
+    <title>JPax Media Portfolio | Systems We've Shipped</title>
+    <meta name="description" content="Real apps, real systems, real results. See the AI-powered operating systems and tools JPax Media has built and shipped.">
     <meta property="og:type" content="website">
-    <meta property="og:title" content="JPax Media Portfolio | Real Results">
-    <meta property="og:description" content="Explore our portfolio of BUILD projects and RISE partnerships. See the verified results that prove our methodology works.">
+    <meta property="og:title" content="JPax Media Portfolio | Systems We've Shipped">
     <meta property="og:image" content="https://jpaxmedia.com/jpaxmedialogoOFFICIALFINALwhite.png">
-    <meta property="og:url" content="https://jpaxmedia.com/portfolio.html">
-    
-    <!-- Favicon -->
     <link rel="icon" type="image/png" href="jpaxmedialogoOFFICIALFINALwhite.png">
-    
-    <!-- Tailwind CSS -->
-    <script src="https://cdn.tailwindcss.com"></script>
-    <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
-    <!-- Font Awesome -->
+    <link href="https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@400;500;600;700&family=IBM+Plex+Sans:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    
+
     <style>
-        body {
-            font-family: 'Inter', sans-serif;
-            background-color: #000000;
+        :root {
+            --bg:#06080F;--bg-card:rgba(12,16,28,0.85);--accent:#4ADE80;--accent-glow:rgba(74,222,128,0.15);
+            --green:#10B981;--green-dim:rgba(16,185,129,0.1);--green-glow:rgba(16,185,129,0.2);
+            --purple:#8B5CF6;--purple-dim:rgba(139,92,246,0.1);--purple-glow:rgba(139,92,246,0.2);
+            --blue:#3B82F6;--blue-dim:rgba(59,130,246,0.1);--blue-glow:rgba(59,130,246,0.2);
+            --rose:#F43F5E;--rose-dim:rgba(244,63,94,0.1);--rose-glow:rgba(244,63,94,0.2);
+            --amber:#F59E0B;--amber-dim:rgba(245,158,11,0.1);--amber-glow:rgba(245,158,11,0.2);
+            --white:#F1F5F9;--gray-300:#CBD5E1;--gray-400:#94A3B8;--gray-500:#64748B;--gray-700:#334155;--gray-800:#1E293B;
+            --font-display:'Chakra Petch',sans-serif;--font-body:'IBM Plex Sans',sans-serif;--font-mono:'JetBrains Mono',monospace;
         }
-        
-        /* Custom cursor */
-        @media (hover: hover) and (pointer: fine) {
-            body {
-                cursor: none;
-            }
-            .cursor-dot, .cursor-outline {
-                pointer-events: none;
-                position: fixed;
-                top: 50%;
-                left: 50%;
-                border-radius: 50%;
-                opacity: 0;
-                transform: translate(-50%, -50%);
-                transition: opacity 0.3s ease-in-out, transform 0.1s linear;
-                z-index: 9999;
-            }
-            .cursor-dot {
-                width: 8px;
-                height: 8px;
-                background-color: #4ade80;
-            }
-            .cursor-outline {
-                width: 40px;
-                height: 40px;
-                border: 2px solid #4ade80;
-                transition: width 0.2s ease, height 0.2s ease, border 0.2s ease, transform 0.1s linear;
-            }
-            body:hover .cursor-dot, body:hover .cursor-outline {
-                opacity: 1;
-            }
-            .cursor-interact {
-                width: 60px;
-                height: 60px;
-                border: 3px solid #4ade80;
-            }
+        *,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+        html{scroll-behavior:smooth}
+        body{font-family:var(--font-body);background:var(--bg);color:var(--gray-300);overflow-x:hidden;-webkit-font-smoothing:antialiased}
+
+        /* Grid BG */
+        .grid-bg{position:fixed;top:0;left:0;width:100%;height:100%;pointer-events:none;z-index:0;
+            background-image:linear-gradient(rgba(74,222,128,0.03) 1px,transparent 1px),linear-gradient(90deg,rgba(74,222,128,0.03) 1px,transparent 1px);
+            background-size:60px 60px;animation:gridDrift 25s linear infinite}
+        .grid-bg::after{content:'';position:absolute;top:0;left:0;width:100%;height:100%;
+            background-image:linear-gradient(rgba(74,222,128,0.06) 1px,transparent 1px),linear-gradient(90deg,rgba(74,222,128,0.06) 1px,transparent 1px);background-size:300px 300px}
+        @keyframes gridDrift{0%{transform:translateY(0)}100%{transform:translateY(60px)}}
+        .particle{position:absolute;width:2px;height:2px;background:var(--accent);border-radius:50%;opacity:0.4;animation:particleFloat 20s infinite}
+        @keyframes particleFloat{0%,100%{transform:translate(0,0);opacity:0.4}25%{transform:translate(80px,-60px);opacity:0.7}50%{transform:translate(-40px,-120px);opacity:0.3}75%{transform:translate(60px,-80px);opacity:0.6}}
+
+        /* Nav — matches index */
+        .nav{position:fixed;top:0;left:0;width:100%;z-index:1000;padding:0.75rem 2rem;background:rgba(6,8,15,0.85);backdrop-filter:blur(20px);border-bottom:1px solid rgba(74,222,128,0.08);transition:all 0.3s}
+        .nav.scrolled{background:rgba(6,8,15,0.95);border-bottom-color:rgba(74,222,128,0.15)}
+        .nav-inner{max-width:1200px;margin:0 auto;display:flex;align-items:center;justify-content:space-between}
+        .nav-logo img{height:40px;transition:transform 0.3s}.nav-logo img:hover{transform:scale(1.05)}
+        .nav-links{display:flex;align-items:center;gap:2rem}
+        .nav-links a{color:var(--gray-400);text-decoration:none;font-size:0.9rem;font-weight:500;transition:color 0.3s}.nav-links a:hover{color:var(--white)}.nav-links a.active{color:var(--accent)}
+        .nav-cta{background:var(--accent)!important;color:#000!important;padding:0.6rem 1.5rem;border-radius:6px;font-weight:600!important;font-size:0.85rem!important;transition:all 0.3s!important}
+        .nav-cta:hover{background:#6EE7A8!important;transform:translateY(-1px);box-shadow:0 4px 20px rgba(74,222,128,0.4)}
+        .nav-mobile-btn{display:none;background:none;border:none;cursor:pointer;padding:0.5rem}
+        .nav-mobile-btn span{display:block;width:24px;height:2px;background:var(--gray-400);margin:5px 0;transition:all 0.3s}
+        .mobile-menu{position:fixed;top:0;left:0;width:100%;height:100vh;background:rgba(6,8,15,0.98);backdrop-filter:blur(20px);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:2rem;opacity:0;pointer-events:none;transition:opacity 0.3s;z-index:999}
+        .mobile-menu.active{opacity:1;pointer-events:all}
+        .mobile-menu a{color:var(--white);text-decoration:none;font-size:1.5rem;font-family:var(--font-display);font-weight:600}
+        @media(max-width:768px){.nav-links{display:none}.nav-mobile-btn{display:block}}
+
+        section{position:relative;z-index:1}
+        .container{max-width:1200px;margin:0 auto;padding:0 1.5rem}
+
+        /* Hero */
+        .hero{min-height:70vh;display:flex;align-items:center;justify-content:center;position:relative;overflow:hidden;padding:8rem 0 4rem}
+        .hero-glow{position:absolute;width:700px;height:700px;border-radius:50%;filter:blur(150px);pointer-events:none}
+        .hero-glow-1{background:rgba(74,222,128,0.06);top:-200px;right:-200px}
+        .hero-glow-2{background:rgba(139,92,246,0.04);bottom:-100px;left:-200px}
+        .hero-content{text-align:center;max-width:900px;margin:0 auto}
+        .hero-badge{display:inline-flex;align-items:center;gap:0.5rem;padding:0.5rem 1.25rem;border-radius:100px;background:rgba(74,222,128,0.08);border:1px solid rgba(74,222,128,0.25);font-family:var(--font-mono);font-size:0.75rem;color:var(--accent);letter-spacing:0.08em;text-transform:uppercase;margin-bottom:2rem;animation:fadeInUp 0.8s ease both}
+        .hero-badge .dot{width:6px;height:6px;border-radius:50%;background:var(--green);animation:pulse 2s infinite}
+        @keyframes pulse{0%,100%{opacity:1}50%{opacity:0.4}}
+        .hero h1{font-family:var(--font-display);font-weight:700;font-size:clamp(2.5rem,6vw,4.5rem);line-height:1.1;color:var(--white);margin-bottom:1.5rem;animation:fadeInUp 0.8s ease 0.15s both}
+        .hero h1 .gradient{background:linear-gradient(135deg,var(--accent),#A78BFA);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+        .hero-sub{font-size:clamp(1rem,2vw,1.2rem);color:var(--gray-400);max-width:650px;margin:0 auto 2rem;line-height:1.7;animation:fadeInUp 0.8s ease 0.3s both}
+        .hero-stats{display:flex;justify-content:center;gap:3rem;flex-wrap:wrap;animation:fadeInUp 0.8s ease 0.45s both}
+        .hero-stat-num{font-family:var(--font-display);font-weight:700;font-size:2rem;color:var(--accent)}
+        .hero-stat-label{font-family:var(--font-mono);font-size:0.65rem;color:var(--gray-500);letter-spacing:0.1em;text-transform:uppercase}
+        @keyframes fadeInUp{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:translateY(0)}}
+
+        .section-label{font-family:var(--font-mono);font-size:0.75rem;color:var(--accent);letter-spacing:0.12em;text-transform:uppercase;margin-bottom:1rem}
+        .section-title{font-family:var(--font-display);font-weight:700;font-size:clamp(2rem,4vw,3rem);color:var(--white);margin-bottom:1rem;line-height:1.2}
+        .section-desc{font-size:1.05rem;color:var(--gray-400);max-width:600px;line-height:1.7;margin-bottom:3rem}
+
+        /* ==========================================
+           PHONE MOCKUPS
+           ========================================== */
+        .showcase-section{padding:5rem 0 6rem}
+        .phone-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:2.5rem;margin-top:3rem}
+        .phone-showcase{display:flex;flex-direction:column;align-items:center}
+
+        .phone-device{
+            position:relative;width:230px;max-width:100%;border-radius:28px;overflow:hidden;
+            background:#0D1117;aspect-ratio:9/19.5;
+            box-shadow:0 25px 80px rgba(0,0,0,0.6),0 0 0 1px rgba(255,255,255,0.08);
+            transition:transform 0.5s cubic-bezier(0.23,1,0.32,1),box-shadow 0.5s ease;
         }
-        
-        /* Hero Section - SpaceX Inspired */
-        .hero-section {
-            position: relative;
-            height: 80vh;
-            min-height: 600px;
-            overflow: hidden;
-            background: linear-gradient(to bottom, #000000, #0a0a0a);
+        .phone-device:hover{transform:translateY(-12px) scale(1.03);animation-play-state:paused!important}
+        .phone-notch{position:absolute;top:0;left:50%;transform:translateX(-50%);width:80px;height:18px;background:inherit;border-radius:0 0 12px 12px;z-index:10}
+        .phone-notch::after{content:'';position:absolute;top:6px;left:50%;transform:translateX(-50%);width:36px;height:4px;background:rgba(255,255,255,0.08);border-radius:2px}
+        .phone-screen{width:100%;height:100%;padding:26px 10px 10px;overflow:hidden;position:relative}
+
+        /* Glow + Float */
+        .glow-green{box-shadow:0 25px 80px rgba(0,0,0,0.6),0 0 40px var(--green-dim),0 0 0 1px rgba(16,185,129,0.15);animation:phoneFloat 6s ease-in-out infinite}
+        .glow-green:hover{box-shadow:0 30px 90px rgba(0,0,0,0.6),0 0 60px var(--green-glow),0 0 0 1px rgba(16,185,129,0.3)}
+        .glow-blue{box-shadow:0 25px 80px rgba(0,0,0,0.6),0 0 40px var(--blue-dim),0 0 0 1px rgba(59,130,246,0.15);animation:phoneFloat 6s ease-in-out 1.5s infinite}
+        .glow-blue:hover{box-shadow:0 30px 90px rgba(0,0,0,0.6),0 0 60px var(--blue-glow),0 0 0 1px rgba(59,130,246,0.3)}
+        .glow-rose{box-shadow:0 25px 80px rgba(0,0,0,0.6),0 0 40px var(--rose-dim),0 0 0 1px rgba(244,63,94,0.15);animation:phoneFloat 6s ease-in-out 3s infinite}
+        .glow-rose:hover{box-shadow:0 30px 90px rgba(0,0,0,0.6),0 0 60px var(--rose-glow),0 0 0 1px rgba(244,63,94,0.3)}
+        .glow-amber{box-shadow:0 25px 80px rgba(0,0,0,0.6),0 0 40px var(--amber-dim),0 0 0 1px rgba(245,158,11,0.15);animation:phoneFloat 6s ease-in-out 4.5s infinite}
+        .glow-amber:hover{box-shadow:0 30px 90px rgba(0,0,0,0.6),0 0 60px var(--amber-glow),0 0 0 1px rgba(245,158,11,0.3)}
+        @keyframes phoneFloat{0%,100%{transform:translateY(0)}50%{transform:translateY(-10px)}}
+
+        .app-el{opacity:0;transform:translateY(6px)}
+
+        /* ===== ANCHOR ===== */
+        .anchor-s{background:#0D1117;font-size:6.5px;color:var(--gray-400)}
+        .anc-top{display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:4px}
+        .anc-logo{font-family:var(--font-mono);font-size:5.5px;color:var(--green);font-weight:700;letter-spacing:0.1em;text-transform:uppercase;line-height:1.3}
+        .anc-logo small{display:block;font-size:4.5px;color:var(--gray-500);font-weight:400}
+        .anc-pills{display:flex;gap:3px}
+        .anc-pill{padding:1.5px 4px;border-radius:3px;font-size:4.5px;border:1px solid rgba(255,255,255,0.1);color:var(--gray-500)}
+        .anc-greet{font-size:10px;font-weight:700;color:var(--white);margin:5px 0 2px}
+        .anc-sub{font-size:6px;color:var(--gray-500);margin-bottom:5px;font-style:italic}
+        .anc-time{display:flex;align-items:center;gap:3px;margin-bottom:7px}
+        .anc-time-date{font-size:6px;color:var(--gray-400);line-height:1.2}
+        .anc-time-clock{font-family:var(--font-mono);font-size:11px;font-weight:700;color:var(--white)}
+        .anc-time-tz{font-size:4.5px;color:var(--gray-500)}
+        .anc-cal{margin-left:auto;padding:2px 5px;border:1px solid rgba(255,255,255,0.1);border-radius:3px;font-size:5px;color:var(--gray-400)}
+        .anc-card{background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.07);border-radius:7px;padding:7px;margin-bottom:5px}
+        .anc-card-title{font-family:var(--font-mono);font-size:5px;color:var(--gray-500);letter-spacing:0.12em;text-transform:uppercase;margin-bottom:4px}
+        .anc-streak{display:flex;align-items:center;gap:4px;margin-bottom:4px}
+        .anc-s-icon{width:14px;height:14px;border-radius:50%;background:rgba(16,185,129,0.15);display:flex;align-items:center;justify-content:center;font-size:6px;color:var(--green)}
+        .anc-s-val{font-family:var(--font-display);font-size:11px;font-weight:700;color:var(--white)}
+        .anc-s-lbl{font-size:5px;color:var(--gray-500)}
+        .anc-bar-wrap{margin-top:3px}
+        .anc-bar-head{display:flex;justify-content:space-between;font-size:5.5px;margin-bottom:2px}
+        .anc-bar-head span:first-child{color:var(--green)}
+        .anc-bar-head span:last-child{color:var(--white);font-family:var(--font-mono)}
+        .anc-bar{height:3px;background:rgba(255,255,255,0.06);border-radius:2px;overflow:hidden}
+        .anc-bar-fill{height:100%;width:0;background:var(--green);border-radius:2px;transition:width 1.5s ease}
+        .anc-bar-fill.go{width:33%}
+        .anc-bar-sub{font-size:4.5px;color:var(--gray-500);margin-top:1.5px}
+        .anc-proto{display:grid;grid-template-columns:1fr 1fr;gap:4px}
+        .anc-proto-item{display:flex;gap:3px;align-items:flex-start}
+        .anc-proto-ic{width:12px;height:12px;border-radius:50%;background:rgba(255,255,255,0.05);display:flex;align-items:center;justify-content:center;font-size:5.5px;flex-shrink:0}
+        .anc-proto-lbl{font-size:4.5px;color:var(--gray-500)}
+        .anc-proto-val{font-family:var(--font-mono);font-size:5.5px;color:var(--white);font-weight:600;line-height:1.3}
+
+        /* ===== HAVEN ===== */
+        .haven-s{background:#FFFFFF;font-size:6.5px;color:#374151}
+        .hv-top{display:flex;justify-content:space-between;align-items:center;margin-bottom:6px}
+        .hv-home{width:18px;height:18px;border-radius:5px;background:#3B82F6;display:flex;align-items:center;justify-content:center;color:white;font-size:7px}
+        .hv-back{font-size:5.5px;color:#9CA3AF;margin-bottom:3px}
+        .hv-name{font-size:12px;font-weight:800;color:#111827;margin-bottom:3px}
+        .hv-meta{font-size:5.5px;color:#9CA3AF;margin-bottom:2px}
+        .hv-email{font-size:5px;color:#9CA3AF;display:flex;align-items:center;gap:2px;margin-bottom:5px}
+        .hv-badge{background:#1F2937;color:white;padding:1px 3px;border-radius:2px;font-size:4.5px;font-weight:700}
+        .hv-btns{display:flex;gap:3px;margin-bottom:5px}
+        .hv-btn{flex:1;padding:3px;border:1px solid #E5E7EB;border-radius:5px;text-align:center;font-size:5.5px;font-weight:600;color:#374151}
+        .hv-tabs{display:flex;background:#F3F4F6;border-radius:5px;padding:1.5px;margin-bottom:5px}
+        .hv-tab{flex:1;text-align:center;padding:2px;font-size:6px;color:#9CA3AF}
+        .hv-tab.on{background:white;border-radius:3px;color:#111827;box-shadow:0 1px 2px rgba(0,0,0,0.08)}
+        .hv-input{width:100%;padding:4px 5px;border:1px solid #E5E7EB;border-radius:5px;font-size:5.5px;color:#9CA3AF;background:#F9FAFB;margin-bottom:4px}
+        .hv-upload{width:100%;padding:5px;background:#3B82F6;color:white;border-radius:5px;text-align:center;font-size:6.5px;font-weight:600;margin-bottom:5px;position:relative;overflow:hidden}
+        .hv-upload::after{content:'';position:absolute;top:0;left:0;width:100%;height:100%;background:linear-gradient(90deg,transparent,rgba(255,255,255,0.15),transparent);background-size:200% 100%;animation:shimmer 3s ease-in-out infinite}
+        @keyframes shimmer{0%{background-position:-100% 0}100%{background-position:200% 0}}
+        .hv-photo{width:100%;aspect-ratio:16/10;border-radius:5px;background:linear-gradient(135deg,#8B7355,#5C4A32 30%,#2D3B2D 60%,#4A6741);position:relative}
+        .hv-photo::after{content:'';position:absolute;top:20%;left:15%;width:50%;height:45%;background:rgba(160,140,110,0.25);border-radius:2px;border:1px solid rgba(255,255,255,0.08)}
+
+        /* ===== TALARIA ===== */
+        .talaria-s{background:#111827;font-size:6.5px;color:#D1D5DB}
+        .tl-head{display:flex;align-items:center;gap:4px;margin-bottom:10px}
+        .tl-icon{width:16px;height:16px;border-radius:5px;background:var(--rose);display:flex;align-items:center;justify-content:center;color:white;font-size:7px}
+        .tl-brand{font-family:var(--font-display);font-size:8px;font-weight:700;color:white}
+        .tl-brand small{display:block;font-size:4.5px;color:var(--gray-500);font-weight:600;letter-spacing:0.15em;text-transform:uppercase}
+        .tl-hero{font-family:var(--font-display);font-size:12px;font-weight:700;color:white;line-height:1.2;margin-bottom:3px}
+        .tl-hero em{font-style:normal;color:var(--rose)}
+        .tl-sub{font-size:5.5px;color:var(--gray-400);margin-bottom:8px;line-height:1.5}
+        .tl-form{background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.07);border-radius:8px;padding:8px}
+        .tl-label{font-family:var(--font-mono);font-size:4.5px;color:var(--gray-400);letter-spacing:0.12em;text-transform:uppercase;margin-bottom:3px;font-weight:600}
+        .tl-input{width:100%;padding:4px 5px;background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.08);border-radius:4px;font-size:5.5px;color:var(--gray-500);margin-bottom:6px}
+        .tl-cta{width:100%;padding:6px;background:var(--rose);color:white;border-radius:5px;text-align:center;font-size:6.5px;font-weight:700;margin-top:2px;position:relative;overflow:hidden}
+        .tl-cta::after{content:'';position:absolute;top:0;left:0;width:100%;height:100%;background:linear-gradient(90deg,transparent,rgba(255,255,255,0.15),transparent);background-size:200% 100%;animation:shimmer 3s ease-in-out infinite}
+        .tl-nav{position:absolute;bottom:0;left:0;right:0;display:flex;justify-content:space-around;padding:5px 0 7px;border-top:1px solid rgba(255,255,255,0.06);background:#111827}
+        .tl-nav-item{text-align:center;font-size:4.5px;color:var(--gray-500)}.tl-nav-item.on{color:var(--rose)}.tl-nav-item i{display:block;font-size:7px;margin-bottom:1px}
+
+        /* ===== SOUTHERN PAVERS ===== */
+        .sp-s{background:linear-gradient(160deg,#1a237e,#0d47a1 30%,#004d40 80%,#1b5e20);display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;height:100%;padding:28px 12px 12px}
+        .sp-logo-row{display:flex;align-items:center;gap:4px;margin-bottom:6px}
+        .sp-logo-txt{font-family:var(--font-display);font-size:12px;font-weight:700;color:white;text-transform:uppercase;letter-spacing:0.05em;line-height:1.1}
+        .sp-logo-ic{width:24px;height:24px;background:rgba(255,255,255,0.15);border-radius:3px;display:flex;align-items:center;justify-content:center;font-size:9px;color:white}
+        .sp-tag{font-size:6.5px;color:rgba(255,255,255,0.7);margin-bottom:12px;line-height:1.5}
+        .sp-cta{width:80%;padding:7px 10px;background:#F59E0B;border-radius:7px;color:white;font-size:7.5px;font-weight:700;display:flex;align-items:center;justify-content:center;gap:3px;box-shadow:0 4px 15px rgba(245,158,11,0.3);position:relative;overflow:hidden}
+        .sp-cta::after{content:'';position:absolute;top:0;left:0;width:100%;height:100%;background:linear-gradient(90deg,transparent,rgba(255,255,255,0.15),transparent);background-size:200% 100%;animation:shimmer 3s ease-in-out infinite}
+        .sp-url{font-size:4.5px;color:rgba(255,255,255,0.4);margin-top:8px}
+        .sp-admin{font-size:4.5px;color:rgba(255,255,255,0.3);margin-top:2px}
+
+        /* Phone info below */
+        .phone-info{text-align:center;margin-top:1.5rem}
+        .phone-tag{display:inline-flex;padding:0.25rem 0.6rem;border-radius:4px;font-family:var(--font-mono);font-size:0.6rem;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;margin-bottom:0.5rem}
+        .phone-tag.t-green{background:var(--green-dim);color:var(--green);border:1px solid rgba(16,185,129,0.3)}
+        .phone-tag.t-blue{background:var(--blue-dim);color:var(--blue);border:1px solid rgba(59,130,246,0.3)}
+        .phone-tag.t-rose{background:var(--rose-dim);color:var(--rose);border:1px solid rgba(244,63,94,0.3)}
+        .phone-tag.t-amber{background:var(--amber-dim);color:var(--amber);border:1px solid rgba(245,158,11,0.3)}
+        .phone-name{font-family:var(--font-display);font-weight:700;font-size:1.15rem;color:var(--white);margin-bottom:0.25rem}
+        .phone-desc{font-size:0.8rem;color:var(--gray-400);line-height:1.5}
+        .phone-time{font-family:var(--font-mono);font-size:0.65rem;color:var(--gray-500);margin-top:0.4rem}
+
+        /* ===== OS CARDS ===== */
+        .os-section{padding:6rem 0}
+        .os-grid{display:grid;grid-template-columns:1fr 1fr;gap:2rem;margin-top:3rem}
+        .os-card{border-radius:16px;padding:2.5rem;border:1px solid rgba(255,255,255,0.06);background:var(--bg-card);transition:all 0.4s}
+        .os-card:hover{transform:translateY(-4px)}
+        .os-card.trade{border-color:rgba(16,185,129,0.15)}.os-card.trade:hover{border-color:rgba(16,185,129,0.3);box-shadow:0 20px 60px rgba(16,185,129,0.08)}
+        .os-card.creator{border-color:rgba(139,92,246,0.15)}.os-card.creator:hover{border-color:rgba(139,92,246,0.3);box-shadow:0 20px 60px rgba(139,92,246,0.08)}
+        .os-tag{display:inline-flex;padding:0.35rem 0.8rem;border-radius:4px;font-family:var(--font-mono);font-size:0.7rem;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;margin-bottom:1.5rem}
+        .os-tag.trade{background:var(--green-dim);color:var(--green);border:1px solid rgba(16,185,129,0.3)}
+        .os-tag.creator{background:var(--purple-dim);color:var(--purple);border:1px solid rgba(139,92,246,0.3)}
+        .os-card h3{font-family:var(--font-display);font-weight:700;font-size:1.5rem;color:var(--white);margin-bottom:0.75rem}
+        .os-card>p{font-size:0.9rem;color:var(--gray-400);line-height:1.7;margin-bottom:1.5rem}
+        .os-feats{display:grid;grid-template-columns:1fr 1fr;gap:0.5rem;margin-bottom:1.5rem}
+        .os-feat{display:flex;align-items:center;gap:0.4rem;font-size:0.8rem;color:var(--gray-300)}
+        .os-feat i{font-size:0.6rem}.os-feat.trade i{color:var(--green)}.os-feat.creator i{color:var(--purple)}
+        .os-cta{display:inline-flex;align-items:center;gap:0.5rem;padding:0.65rem 1.5rem;border-radius:8px;font-weight:600;font-size:0.85rem;text-decoration:none;transition:all 0.3s}
+        .os-cta.trade{background:var(--green);color:#000}.os-cta.trade:hover{background:#34D399;transform:translateY(-2px);box-shadow:0 8px 30px var(--green-glow)}
+        .os-cta.creator{background:var(--purple);color:var(--white)}.os-cta.creator:hover{background:#A78BFA;transform:translateY(-2px);box-shadow:0 8px 30px var(--purple-glow)}
+
+        /* ===== CASE STUDY ===== */
+        .case-section{padding:6rem 0}
+        .case-container{max-width:1000px;margin:0 auto}
+        .case-card{background:var(--bg-card);border:1px solid rgba(255,255,255,0.06);border-radius:16px;padding:2.5rem;margin-bottom:1.5rem;transition:all 0.3s}
+        .case-card:hover{border-color:rgba(255,255,255,0.12)}
+        .case-card.green-b{border-color:rgba(16,185,129,0.2)}
+        .case-card.purple-b{border-color:rgba(139,92,246,0.2)}
+        .p-tag{display:inline-flex;padding:0.3rem 0.7rem;border-radius:4px;font-family:var(--font-mono);font-size:0.65rem;font-weight:600;letter-spacing:0.1em;text-transform:uppercase}
+        .metric-row{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:1rem;margin:1.5rem 0}
+        .metric-card{background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.06);border-radius:10px;padding:1.25rem;text-align:center}
+        .mv{font-family:var(--font-display);font-weight:700;font-size:1.75rem;margin-bottom:0.25rem}
+        .mv.green{color:var(--green)}.mv.purple{color:var(--purple)}
+        .ml{font-size:0.75rem;color:var(--gray-400)}
+        .ms{font-size:0.65rem;color:var(--green);margin-top:0.2rem;font-family:var(--font-mono)}
+        .strat-box{background:rgba(139,92,246,0.06);border:1px solid rgba(139,92,246,0.2);border-radius:12px;padding:1.5rem;margin-bottom:1.5rem}
+        .strat-box h4{font-family:var(--font-display);font-weight:700;color:var(--purple);font-size:1.1rem;margin-bottom:0.75rem}
+        .strat-box p{font-size:0.9rem;color:var(--gray-300);line-height:1.7}
+        .strat-box p+p{margin-top:0.75rem;font-size:0.8rem;color:var(--gray-400)}
+        .cmp-table{width:100%;border-collapse:collapse;font-size:0.85rem;margin:1.5rem 0}
+        .cmp-table th,.cmp-table td{padding:0.8rem 1rem;text-align:left}
+        .cmp-table thead th{font-family:var(--font-mono);font-size:0.7rem;letter-spacing:0.08em;text-transform:uppercase;border-bottom:1px solid var(--gray-700)}
+        .cmp-table tbody td{border-bottom:1px solid rgba(255,255,255,0.04)}
+        .cmp-j{color:var(--white);font-weight:600}.cmp-a{color:var(--gray-500)}.cmp-w{color:var(--green)}
+        .result-grid{display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin:1.5rem 0}
+        .result-item{display:flex;align-items:flex-start;gap:0.75rem}
+        .result-item i{color:var(--purple);margin-top:0.2rem;flex-shrink:0}
+        .result-item strong{color:var(--white);display:block;font-size:0.9rem;margin-bottom:0.15rem}
+        .result-item span{font-size:0.8rem;color:var(--gray-400)}
+        .quote-box{background:rgba(139,92,246,0.06);border:1px solid rgba(139,92,246,0.2);border-radius:12px;padding:1.5rem;margin-top:1.5rem;display:flex;align-items:flex-start;gap:1rem}
+        .quote-box i{color:var(--purple);font-size:1.5rem;flex-shrink:0}
+        .quote-box blockquote{font-size:0.95rem;color:var(--gray-300);font-style:italic;line-height:1.7}
+        .quote-box cite{display:block;margin-top:0.5rem;font-size:0.8rem;color:var(--gray-500);font-style:normal}
+        .timeline-row{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem;margin:1.5rem 0}
+        .timeline-card{text-align:center}
+        .tl-month{font-family:var(--font-display);font-weight:700;font-size:2.5rem;color:var(--purple);margin-bottom:0.5rem}
+        .timeline-card h4{font-family:var(--font-display);font-weight:600;color:var(--white);font-size:1rem;margin-bottom:0.3rem}
+        .timeline-card p{font-size:0.8rem;color:var(--gray-400)}
+
+        /* CTA */
+        .cta-section{padding:6rem 0;text-align:center}
+        .cta-box{background:var(--bg-card);border:1px solid rgba(74,222,128,0.15);border-radius:20px;padding:4rem 3rem;position:relative;overflow:hidden}
+        .cta-box::before{content:'';position:absolute;top:-50%;left:-50%;width:200%;height:200%;background:radial-gradient(ellipse at center,rgba(74,222,128,0.04),transparent 60%);pointer-events:none}
+        .cta-box h2{font-family:var(--font-display);font-weight:700;font-size:clamp(2rem,4vw,2.75rem);color:var(--white);margin-bottom:1rem;position:relative}
+        .cta-box p{font-size:1.05rem;color:var(--gray-400);max-width:550px;margin:0 auto 2.5rem;position:relative}
+        .cta-actions{display:flex;gap:1rem;justify-content:center;flex-wrap:wrap;position:relative}
+        .btn-p{display:inline-flex;align-items:center;gap:0.5rem;padding:0.9rem 2rem;background:var(--accent);color:#000;border:none;border-radius:8px;font-weight:600;font-size:1rem;text-decoration:none;transition:all 0.3s;font-family:var(--font-body)}
+        .btn-p:hover{background:#6EE7A8;transform:translateY(-2px);box-shadow:0 8px 30px rgba(74,222,128,0.4)}
+        .btn-s{display:inline-flex;align-items:center;gap:0.5rem;padding:0.9rem 2rem;background:transparent;color:var(--white);border:1px solid var(--gray-700);border-radius:8px;font-weight:600;font-size:1rem;text-decoration:none;transition:all 0.3s;font-family:var(--font-body)}
+        .btn-s:hover{border-color:var(--gray-400);background:rgba(255,255,255,0.03);transform:translateY(-2px)}
+
+        /* Footer */
+        .footer{padding:3rem 0;border-top:1px solid rgba(255,255,255,0.06)}
+        .footer-inner{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:1.5rem}
+        .footer-logo img{height:32px;opacity:0.7}
+        .footer-links{display:flex;gap:1.5rem}
+        .footer-links a{color:var(--gray-500);text-decoration:none;font-size:0.85rem;transition:color 0.3s}
+        .footer-links a:hover{color:var(--white)}
+        .footer-copy{color:var(--gray-500);font-size:0.8rem}
+        .footer-copy .g{color:var(--green);font-family:var(--font-display);font-weight:600}
+        .footer-copy .p{color:var(--purple);font-family:var(--font-display);font-weight:600}
+        .footer-copy .b{color:#60A5FA;font-family:var(--font-display);font-weight:600}
+        .footer-socials{display:flex;gap:1rem}
+        .footer-socials a{color:var(--gray-500);font-size:1.1rem;transition:color 0.3s}
+        .footer-socials a:hover{color:var(--accent)}
+
+        .reveal{opacity:0;transform:translateY(25px);transition:opacity 0.7s ease,transform 0.7s ease}
+        .reveal.visible{opacity:1;transform:translateY(0)}
+
+        @media(max-width:960px){
+            .phone-grid{grid-template-columns:1fr 1fr;gap:3rem 2rem}
+            .os-grid,.result-grid{grid-template-columns:1fr}
+            .timeline-row{grid-template-columns:1fr;gap:2rem}
         }
-        
-        .hero-video-overlay {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: 
-                radial-gradient(ellipse at top right, rgba(74, 222, 128, 0.12) 0%, transparent 50%),
-                radial-gradient(ellipse at bottom left, rgba(168, 85, 247, 0.08) 0%, transparent 50%),
-                linear-gradient(to bottom, rgba(0,0,0,0.3) 0%, rgba(0,0,0,0.9) 100%);
-            z-index: 1;
-        }
-        
-        .hero-content {
-            position: relative;
-            z-index: 2;
-            height: 100%;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            padding: 2rem;
-        }
-        
-        .hero-title {
-            font-size: clamp(2rem, 7vw, 5rem);
-            font-weight: 900;
-            letter-spacing: -0.02em;
-            line-height: 1.1;
-            margin-bottom: 1.5rem;
-        }
-        
-        .hero-subtitle {
-            font-size: clamp(1rem, 2.5vw, 1.5rem);
-            font-weight: 400;
-            color: #a0a0a0;
-            max-width: 700px;
-            line-height: 1.6;
-        }
-        
-        /* Animated Background Grid */
-        .grid-overlay {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-image: 
-                linear-gradient(rgba(74, 222, 128, 0.03) 1px, transparent 1px),
-                linear-gradient(90deg, rgba(74, 222, 128, 0.03) 1px, transparent 1px);
-            background-size: 50px 50px;
-            animation: gridMove 20s linear infinite;
-            z-index: 0;
-        }
-        
-        @keyframes gridMove {
-            0% { transform: translateY(0); }
-            100% { transform: translateY(50px); }
-        }
-        
-        /* Floating Particles */
-        .particle {
-            position: absolute;
-            width: 2px;
-            height: 2px;
-            background: #4ade80;
-            border-radius: 50%;
-            opacity: 0.5;
-            animation: float 15s infinite;
-        }
-        
-        @keyframes float {
-            0%, 100% { transform: translate(0, 0) scale(1); opacity: 0.5; }
-            50% { transform: translate(100px, -100px) scale(1.5); opacity: 0.8; }
-        }
-        
-        /* Scroll Reveal */
-        .scroll-reveal {
-            opacity: 0;
-            transform: translateY(30px);
-            transition: opacity 0.8s cubic-bezier(0.6, 0.2, 0.1, 1), transform 0.8s cubic-bezier(0.6, 0.2, 0.1, 1);
-        }
-        .scroll-reveal.is-visible {
-            opacity: 1;
-            transform: translateY(0);
-        }
-        
-        /* Card Styles */
-        .card-glow {
-            position: relative;
-            overflow: hidden;
-            transition: all 0.3s ease-in-out;
-            background: rgba(17, 17, 17, 0.8);
-            backdrop-filter: blur(10px);
-            border: 1px solid rgba(74, 222, 128, 0.2);
-        }
-        
-        .card-glow:hover {
-            border-color: #4ade80;
-            box-shadow: 0 0 30px rgba(74, 222, 128, 0.3);
-            transform: translateY(-5px);
-        }
-        
-        .spotlight {
-            position: absolute;
-            width: 300px;
-            height: 300px;
-            background: radial-gradient(circle, rgba(74, 222, 128, 0.2), transparent 70%);
-            border-radius: 50%;
-            pointer-events: none;
-            opacity: 0;
-            transition: opacity 0.3s ease;
-            transform: translate(-50%, -50%);
-        }
-        
-        .card-glow:hover .spotlight {
-            opacity: 1;
-        }
-        
-        /* Metric Cards */
-        .metric-card {
-            background: rgba(17, 17, 17, 0.5);
-            border: 1px solid rgba(74, 222, 128, 0.2);
-            transition: all 0.3s ease;
-        }
-        
-        .metric-card:hover {
-            border-color: #4ade80;
-            box-shadow: 0 0 20px rgba(74, 222, 128, 0.2);
-        }
-        
-        /* Framework Badges */
-        .framework-badge {
-            display: inline-block;
-            padding: 0.5rem 1.5rem;
-            border-radius: 9999px;
-            font-weight: 700;
-            font-size: 0.875rem;
-            text-transform: uppercase;
-            letter-spacing: 0.1em;
-        }
-        
-        .badge-build {
-            background: rgba(74, 222, 128, 0.2);
-            color: #4ade80;
-            border: 1px solid #4ade80;
-        }
-        
-        .badge-rise {
-            background: rgba(168, 85, 247, 0.2);
-            color: #c084fc;
-            border: 1px solid #c084fc;
-        }
-        
-        /* Navigation */
-        nav {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            z-index: 1000;
-        }
-        
-        .logo-container {
-            transition: all 0.3s ease;
-        }
-        
-        .logo-glow {
-            transition: transform 0.3s ease;
-        }
-        
-        .logo-glow:hover {
-            transform: scale(1.1);
-        }
-        
-        .button-glow {
-            transition: all 0.3s ease;
-        }
-        
-        .button-glow:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 10px 25px rgba(74, 222, 128, 0.4);
-        }
-        
-        /* Mobile Menu */
-        .mobile-menu {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100vh;
-            background: rgba(0, 0, 0, 0.98);
-            backdrop-filter: blur(10px);
-            transform: translateX(-100%);
-            transition: transform 0.3s ease-in-out;
-            z-index: 999;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            gap: 2rem;
-        }
-        
-        .mobile-menu.active {
-            transform: translateX(0);
-        }
-        
-        .hamburger-icon {
-            display: flex;
-            flex-direction: column;
-            gap: 5px;
-            cursor: pointer;
-        }
-        
-        .hamburger-icon span {
-            width: 25px;
-            height: 2px;
-            background: white;
-            transition: all 0.3s ease;
-        }
-        
-        .hamburger-icon.active span:nth-child(1) {
-            transform: rotate(45deg) translate(7px, 7px);
-        }
-        
-        .hamburger-icon.active span:nth-child(2) {
-            opacity: 0;
-        }
-        
-        .hamburger-icon.active span:nth-child(3) {
-            transform: rotate(-45deg) translate(7px, -7px);
+        @media(max-width:640px){
+            .phone-grid{grid-template-columns:1fr 1fr;gap:2rem 0.75rem}
+            .phone-device{width:155px;border-radius:22px}
+            .phone-notch{width:60px;height:14px;border-radius:0 0 10px 10px}
+            .phone-screen{padding:20px 7px 7px}
+            .phone-name{font-size:0.95rem}.phone-desc{font-size:0.7rem}
+            .hero-stats{gap:2rem}.hero-stat-num{font-size:1.5rem}
+            .metric-row{grid-template-columns:1fr 1fr}
+            .case-card{padding:1.5rem}
+            .os-feats{grid-template-columns:1fr}
+            .cmp-table{font-size:0.75rem}.cmp-table th,.cmp-table td{padding:0.5rem}
         }
     </style>
 </head>
-<body class="bg-black text-white">
-    <!-- Custom Cursor -->
-    <div class="cursor-dot"></div>
-    <div class="cursor-outline"></div>
+<body>
+    <div class="grid-bg"></div>
+    <div class="particle" style="left:12%;top:20%;animation-delay:0s"></div>
+    <div class="particle" style="left:80%;top:30%;animation-delay:3s"></div>
+    <div class="particle" style="left:45%;top:60%;animation-delay:6s"></div>
+    <div class="particle" style="left:75%;top:80%;animation-delay:9s"></div>
 
-    <!-- Navigation -->
-    <nav class="fixed w-full z-50 bg-black/90 backdrop-blur-md border-b border-green-500/20">
-        <div class="container mx-auto px-4 md:px-6 py-3 md:py-4">
-            <div class="flex items-center justify-between">
-                <a href="index.html" class="logo-container p-2 rounded-lg transition-all duration-300 hover:bg-white/5">
-                    <img src="jpaxmedialogoOFFICIALFINALwhite.png" alt="JPax Media" class="h-10 md:h-12 w-auto logo-glow transition-transform duration-300 hover:scale-110" onerror="this.style.display='none'">
-                </a>
-                
-                <!-- Desktop Menu -->
-                <div class="hidden md:flex items-center space-x-8">
-                    <a href="index.html" class="text-gray-300 hover:text-green-400 transition-colors">Home</a>
-                    <a href="index.html#services" class="text-gray-300 hover:text-green-400 transition-colors">Services</a>
-                    <a href="index.html#framework" class="text-gray-300 hover:text-green-400 transition-colors">Framework</a>
-                    <a href="portfolio.html" class="text-green-400 transition-colors">Portfolio</a>
-                    <a href="jupiter.html" class="text-gray-300 hover:text-green-400 transition-colors">Jupiter</a>
-                    <a href="pricing.html" class="bg-green-500 text-black px-6 py-2 rounded-full font-semibold hover:bg-green-400 button-glow transition-all">View Pricing</a>
-                </div>
-
-                <!-- Mobile Menu Button -->
-                <button id="mobile-menu-button" class="md:hidden text-white focus:outline-none z-50 relative">
-                    <div class="hamburger-icon">
-                        <span></span>
-                        <span></span>
-                        <span></span>
-                    </div>
-                </button>
-            </div>
+    <nav class="nav" id="nav"><div class="nav-inner">
+        <a href="index.html" class="nav-logo"><img src="jpaxmedialogoOFFICIALFINALwhite.png" alt="JPax Media" onerror="this.style.display='none'"></a>
+        <div class="nav-links">
+            <a href="index.html#systems">Systems</a><a href="index.html#services">Services</a><a href="index.html#process">Process</a>
+            <a href="portfolio.html" class="active">Portfolio</a><a href="jupiter.html">Jupiter</a><a href="pricing.html" class="nav-cta">View Pricing</a>
         </div>
-    </nav>
-
-    <!-- Mobile Menu -->
-    <div id="mobile-menu" class="mobile-menu">
-        <a href="index.html" class="text-2xl font-semibold hover:text-green-400 transition-colors">Home</a>
-        <a href="index.html#services" class="text-2xl font-semibold hover:text-green-400 transition-colors">Services</a>
-        <a href="index.html#framework" class="text-2xl font-semibold hover:text-green-400 transition-colors">Framework</a>
-        <a href="portfolio.html" class="text-2xl font-semibold text-green-400">Portfolio</a>
-        <a href="jupiter.html" class="text-2xl font-semibold hover:text-green-400 transition-colors">Jupiter</a>
-        <a href="pricing.html" class="text-2xl font-semibold hover:text-green-400 transition-colors">Pricing</a>
+        <button class="nav-mobile-btn" id="mobileBtn" aria-label="Menu"><span></span><span></span><span></span></button>
+    </div></nav>
+    <div class="mobile-menu" id="mobileMenu">
+        <a href="index.html">Home</a><a href="index.html#systems">Systems</a><a href="portfolio.html" style="color:var(--accent)">Portfolio</a>
+        <a href="jupiter.html">Jupiter</a><a href="pricing.html">Pricing</a><a href="quiz.html">Take the Quiz</a>
     </div>
 
-    <!-- Hero Section -->
-    <section class="hero-section">
-        <div class="grid-overlay"></div>
-        <!-- Floating Particles -->
-        <div class="particle" style="left: 15%; top: 25%; animation-delay: 0s;"></div>
-        <div class="particle" style="left: 85%; top: 35%; animation-delay: 2s;"></div>
-        <div class="particle" style="left: 35%; top: 65%; animation-delay: 4s;"></div>
-        <div class="particle" style="left: 75%; top: 75%; animation-delay: 6s;"></div>
-        
-        <div class="hero-video-overlay"></div>
-        <div class="hero-content container mx-auto">
-            <div class="max-w-4xl">
-                <div class="text-green-400 text-sm font-semibold uppercase tracking-wider mb-4">Real Work. Real Results.</div>
-                <h1 class="hero-title">
-                    Proven Results,<br/>
-                    <span class="text-green-400">Verified</span> <span class="text-purple-400">Numbers</span>
-                </h1>
-                <p class="hero-subtitle">
-                    Every metric is documented. Every claim is verified. See how we help businesses BUILD their foundation and RISE with ongoing growth.
-                </p>
+    <!-- HERO -->
+    <section class="hero">
+        <div class="hero-glow hero-glow-1"></div><div class="hero-glow hero-glow-2"></div>
+        <div class="hero-content">
+            <div class="hero-badge"><span class="dot"></span>Real Systems. Shipped.</div>
+            <h1>We Don't Show <span class="gradient">Mockups.</span><br>We Ship <span class="gradient">Products.</span></h1>
+            <p class="hero-sub">Every project here is a real, functional application — built with AI, directed by humans, delivered in days.</p>
+            <div class="hero-stats">
+                <div class="hero-stat"><div class="hero-stat-num">6+</div><div class="hero-stat-label">Apps Shipped</div></div>
+                <div class="hero-stat"><div class="hero-stat-num">Days</div><div class="hero-stat-label">Not Months</div></div>
+                <div class="hero-stat"><div class="hero-stat-num">100%</div><div class="hero-stat-label">Real &amp; Functional</div></div>
             </div>
         </div>
     </section>
 
-    <!-- Featured Case Study: Southern Pavers -->
-    <section class="py-32 bg-black">
-        <div class="container mx-auto px-4">
-            <div class="text-center mb-16 scroll-reveal">
-                <div class="inline-block bg-green-500/10 border border-green-500/30 rounded-full px-6 py-2 mb-6">
-                    <span class="text-green-400 font-semibold uppercase text-sm tracking-wider">Featured Success Story</span>
+    <!-- APP SHOWCASE -->
+    <section class="showcase-section" id="apps"><div class="container">
+        <div class="reveal" style="text-align:center">
+            <div class="section-label">Built &amp; Deployed</div>
+            <div class="section-title">Apps We've Shipped</div>
+            <p class="section-desc" style="margin-left:auto;margin-right:auto">Real interfaces from real applications — live, functional, and mobile-optimized.</p>
+        </div>
+        <div class="phone-grid">
+
+            <!-- ANCHOR -->
+            <div class="phone-showcase reveal">
+                <div class="phone-device glow-green"><div class="phone-notch"></div>
+                    <div class="phone-screen anchor-s">
+                        <div class="anc-top app-el"><div class="anc-logo">PROJECT<br>LIVE<small>SYSTEM STATUS</small></div><div class="anc-pills"><div class="anc-pill">Not committed</div><div class="anc-pill">● OFFLINE</div></div></div>
+                        <div class="anc-greet app-el">Good morning, Julian</div>
+                        <div class="anc-sub app-el">Stability over perfection.</div>
+                        <div class="anc-time app-el"><span class="anc-time-date">Fri,<br>Feb 27</span><span style="color:var(--gray-700);margin:0 2px">|</span><span class="anc-time-clock">09:44</span><span class="anc-time-tz">ET</span><span class="anc-cal"><i class="far fa-calendar"></i> Calendar</span></div>
+                        <div class="anc-card app-el">
+                            <div style="display:flex;justify-content:space-between"><div class="anc-card-title">WIN STREAK</div><div style="font-size:4.5px;color:var(--gray-500)">4/6 = Win Day</div></div>
+                            <div class="anc-streak"><div class="anc-s-icon">🔥</div><div class="anc-s-val">0</div><div class="anc-s-lbl">Current</div><div class="anc-s-icon" style="background:rgba(139,92,246,0.15)">🏆</div><div class="anc-s-val">0</div><div class="anc-s-lbl">Best</div></div>
+                            <div class="anc-bar-wrap"><div class="anc-bar-head"><span>Today's Progress</span><span>0 / 6</span></div><div class="anc-bar"><div class="anc-bar-fill"></div></div><div class="anc-bar-sub">4 more to lock in a win day.</div></div>
+                        </div>
+                        <div class="anc-card app-el">
+                            <div style="display:flex;justify-content:space-between;margin-bottom:4px"><div class="anc-card-title">CURRENT PROTOCOL</div><span style="font-size:5px;color:var(--gray-500)">⚙</span></div>
+                            <div class="anc-proto">
+                                <div class="anc-proto-item"><div class="anc-proto-ic">🍽</div><div><div class="anc-proto-lbl">Eating Window</div><div class="anc-proto-val">12:00–8:45 PM</div></div></div>
+                                <div class="anc-proto-item"><div class="anc-proto-ic">◎</div><div><div class="anc-proto-lbl">Daily Targets</div><div class="anc-proto-val">2100-2200 cal</div></div></div>
+                                <div class="anc-proto-item"><div class="anc-proto-ic">💪</div><div><div class="anc-proto-lbl">Weekly Training</div><div class="anc-proto-val">3× lift, 2× zone 2</div></div></div>
+                                <div class="anc-proto-item"><div class="anc-proto-ic">🌙</div><div><div class="anc-proto-lbl">Sleep Target</div><div class="anc-proto-val">7.25h by 10:45</div></div></div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
-                <h2 class="text-5xl md:text-6xl font-bold mb-6">
-                    Southern Pavers
-                </h2>
-                <p class="text-xl text-gray-400 max-w-3xl mx-auto">Complete rebrand, custom visualizer app, and strategic audience building—delivering measurable ROI at every stage</p>
+                <div class="phone-info"><div class="phone-tag t-green">Personal Dev</div><div class="phone-name">Anchor</div><div class="phone-desc">Daily operating system for protocols, streaks, and accountability.</div><div class="phone-time"><i class="fas fa-bolt"></i> Built in days</div></div>
             </div>
 
-            <div class="max-w-6xl mx-auto">
-                <!-- Company Overview -->
-                <div class="card-glow rounded-2xl p-8 md:p-12 mb-8 scroll-reveal">
-                    <div class="spotlight"></div>
-                    <div class="grid md:grid-cols-3 gap-6 mb-8">
-                        <div>
-                            <div class="text-sm text-gray-500 uppercase mb-2">Industry</div>
-                            <div class="text-xl font-bold">Outdoor Living & Landscaping</div>
-                        </div>
-                        <div>
-                            <div class="text-sm text-gray-500 uppercase mb-2">Location</div>
-                            <div class="text-xl font-bold">Southeast Regional</div>
-                        </div>
-                        <div>
-                            <div class="text-sm text-gray-500 uppercase mb-2">Challenge</div>
-                            <div class="text-xl font-bold">Scale Digital Presence</div>
-                        </div>
-                    </div>
-                    <p class="text-gray-400 text-lg">
-                        Established landscaping business with steady local revenue wanted to modernize their brand identity, showcase their work interactively, and generate consistent qualified leads month-over-month.
-                    </p>
-                </div>
-
-                <!-- Phase 1: BUILD -->
-                <div class="card-glow rounded-2xl p-8 md:p-12 mb-8 scroll-reveal" style="border-color: rgba(74, 222, 128, 0.3);">
-                    <div class="spotlight"></div>
-                    <div class="flex flex-col md:flex-row items-start md:items-center justify-between mb-8 gap-4">
-                        <div>
-                            <div class="framework-badge badge-build mb-4">PHASE 1: BUILD</div>
-                            <h3 class="text-4xl font-bold">Digital Foundation in 7 Days</h3>
-                        </div>
-                        <div class="md:text-right">
-                            <div class="text-sm text-gray-500 uppercase mb-2">Timeline</div>
-                            <div class="text-3xl font-bold text-green-400">7 Days</div>
-                        </div>
-                    </div>
-
-                    <!-- Investment & Deliverables -->
-                    <div class="grid md:grid-cols-3 gap-6 mb-8">
-                        <div class="metric-card rounded-xl p-6">
-                            <div class="text-4xl font-bold text-green-400 mb-2">$8,500</div>
-                            <div class="text-sm text-gray-400">Total Investment</div>
-                        </div>
-                        <div class="metric-card rounded-xl p-6">
-                            <div class="text-4xl font-bold text-green-400 mb-2">3</div>
-                            <div class="text-sm text-gray-400">Major Deliverables</div>
-                        </div>
-                        <div class="metric-card rounded-xl p-6">
-                            <div class="text-4xl font-bold text-green-400 mb-2">100%</div>
-                            <div class="text-sm text-gray-400">Client Satisfaction</div>
-                        </div>
-                    </div>
-
-                    <!-- Deliverables List -->
-                    <div class="space-y-6">
-                        <div class="border-l-4 border-green-500 pl-6">
-                            <h4 class="text-xl font-bold mb-2">Complete Brand Rebrand</h4>
-                            <p class="text-gray-400 mb-3">Professional visual identity with new logo, comprehensive color system, typography hierarchy, and brand guidelines for consistent application across all touchpoints.</p>
-                            <a href="https://southernpaversscpro.com/" target="_blank" class="text-green-400 hover:text-green-300 transition-colors">
-                                View Live Website <i class="fas fa-external-link-alt ml-1"></i>
-                            </a>
-                        </div>
-
-                        <div class="border-l-4 border-green-500 pl-6">
-                            <h4 class="text-xl font-bold mb-2">Custom Paver Visualizer App</h4>
-                            <p class="text-gray-400 mb-3">Interactive web application allowing customers to visualize different paver options in their actual space. Integrated lead capture and CRM automation increased conversion rates by an estimated 60%.</p>
-                            <a href="https://southernpaverssc.app/" target="_blank" class="text-green-400 hover:text-green-300 transition-colors">
-                                Try the Visualizer <i class="fas fa-external-link-alt ml-1"></i>
-                            </a>
-                        </div>
-
-                        <div class="border-l-4 border-green-500 pl-6">
-                            <h4 class="text-xl font-bold mb-2">Professional Website</h4>
-                            <p class="text-gray-400">Mobile-optimized, conversion-focused website with integrated visualizer, service showcase, portfolio gallery, and contact automation. Full ownership transferred to client.</p>
-                        </div>
+            <!-- HAVEN HOSPITALITY -->
+            <div class="phone-showcase reveal">
+                <div class="phone-device glow-blue"><div class="phone-notch" style="background:#FFFFFF"></div>
+                    <div class="phone-screen haven-s">
+                        <div class="hv-top app-el"><div class="hv-home"><i class="fas fa-home"></i></div><span style="font-size:10px;color:#6B7280">☰</span></div>
+                        <div class="hv-back app-el">← Back to Dashboard</div>
+                        <div class="hv-name app-el">Lake House Cabin</div>
+                        <div class="hv-meta app-el">📍 123 Mountain Rd, Charleston SC &nbsp; 👤 Elizabeth</div>
+                        <div class="hv-email app-el">✉ jpjonsondesigns@gmail.com <span class="hv-badge">Linked</span></div>
+                        <div class="hv-btns app-el"><div class="hv-btn">✏️ Edit Details</div><div class="hv-btn">👤+ Change Owner</div></div>
+                        <div class="hv-tabs app-el"><div class="hv-tab">☑</div><div class="hv-tab">📋</div><div class="hv-tab on">📷</div><div class="hv-tab">💬</div><div class="hv-tab">📁</div><div class="hv-tab">📄</div><div class="hv-tab">📈</div></div>
+                        <div class="hv-input app-el">Photo description (optional)</div>
+                        <div class="hv-upload app-el">⬆ Upload Photo</div>
+                        <div class="hv-photo app-el"></div>
                     </div>
                 </div>
+                <div class="phone-info"><div class="phone-tag t-blue">Property Mgmt</div><div class="phone-name">Haven Hospitality</div><div class="phone-desc">Property management with listings, photos, and owner portals.</div><div class="phone-time"><i class="fas fa-bolt"></i> Built in days</div></div>
+            </div>
 
-                <!-- Phase 2: RISE -->
-                <div class="card-glow rounded-2xl p-8 md:p-12 mb-8 scroll-reveal" style="border-color: rgba(168, 85, 247, 0.3);">
-                    <div class="spotlight" style="background: radial-gradient(circle, rgba(168, 85, 247, 0.2), transparent 70%);"></div>
-                    <div class="flex flex-col md:flex-row items-start md:items-center justify-between mb-8 gap-4">
-                        <div>
-                            <div class="framework-badge badge-rise mb-4">PHASE 2: RISE GROWTH PARTNERSHIP</div>
-                            <h3 class="text-4xl font-bold">Strategic Audience Building</h3>
+            <!-- TALARIA -->
+            <div class="phone-showcase reveal">
+                <div class="phone-device glow-rose"><div class="phone-notch"></div>
+                    <div class="phone-screen talaria-s">
+                        <div class="tl-head app-el"><div class="tl-icon"><i class="fas fa-bolt"></i></div><div class="tl-brand">Talaria<small>DEAL ANALYZER</small></div></div>
+                        <div class="app-el"><div class="tl-hero">Analyze any property<br><em>in seconds.</em></div></div>
+                        <div class="tl-sub app-el">Enter a property address to get instant comps, valuations, and deal metrics.</div>
+                        <div class="tl-form app-el">
+                            <div class="tl-label">PROPERTY ADDRESS</div><div class="tl-input">🔍 Enter property address...</div>
+                            <div class="tl-label">PARCEL ID / TAX MAP # <span style="opacity:0.5;font-weight:400;text-transform:none;letter-spacing:0">(optional)</span></div><div class="tl-input">🏷 e.g. 12-345-678</div>
+                            <div class="tl-label">PROPERTY TYPE</div><div class="tl-input" style="display:flex;justify-content:space-between">🏢 Select type... <span>▾</span></div>
+                            <div class="tl-cta">🔍 Analyze Property</div>
                         </div>
-                        <div class="md:text-right">
-                            <div class="text-sm text-gray-500 uppercase mb-2">Investment</div>
-                            <div class="text-3xl font-bold text-purple-400">$2,000/mo</div>
-                        </div>
-                    </div>
-
-                    <div class="bg-purple-500/10 border border-purple-500/30 rounded-xl p-6 mb-8">
-                        <h4 class="text-xl font-bold mb-4 text-purple-400">The Strategy</h4>
-                        <p class="text-gray-300 mb-4">
-                            Instead of expensive cold-traffic conversion campaigns ($1-5 per prospect), we focused on Phase 1: building qualified audiences at maximum efficiency. These warm audiences would then be retargeted with conversion messaging at <span class="font-bold text-white">60-70% lower cost</span> than traditional cold traffic acquisition.
-                        </p>
-                        <p class="text-sm text-gray-400">
-                            Most agencies burn through ad budgets chasing immediate conversions. We build smart audience foundations first, then convert them efficiently. The result: sustainable lead generation that compounds month after month.
-                        </p>
-                    </div>
-
-                    <!-- Results Grid -->
-                    <div class="mb-8">
-                        <h4 class="text-2xl font-bold mb-6 text-center">First 30 Days Results (October 2025)</h4>
-                        <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
-                            <div class="metric-card rounded-xl p-6">
-                                <div class="text-4xl font-bold text-purple-400 mb-2">14,753</div>
-                                <div class="text-sm text-gray-400 mb-2">Qualified Prospects</div>
-                                <div class="text-sm text-green-400">+50% vs industry avg</div>
-                            </div>
-                            <div class="metric-card rounded-xl p-6">
-                                <div class="text-4xl font-bold text-purple-400 mb-2">1,046</div>
-                                <div class="text-sm text-gray-400 mb-2">Website Visitors</div>
-                                <div class="text-sm text-green-400">+30% higher intent</div>
-                            </div>
-                            <div class="metric-card rounded-xl p-6">
-                                <div class="text-4xl font-bold text-purple-400 mb-2">$0.04</div>
-                                <div class="text-sm text-gray-400 mb-2">Cost Per Prospect</div>
-                                <div class="text-sm text-green-400">92-96% cheaper</div>
-                            </div>
-                            <div class="metric-card rounded-xl p-6">
-                                <div class="text-4xl font-bold text-purple-400 mb-2">15,632</div>
-                                <div class="text-sm text-gray-400 mb-2">Video Plays</div>
-                                <div class="text-sm text-green-400">200%+ higher</div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Comparison Table -->
-                    <div class="bg-black/40 border border-purple-500/20 rounded-xl p-6 mb-8">
-                        <h4 class="text-xl font-bold mb-4">JPax Media vs Industry Standard</h4>
-                        <div class="overflow-x-auto">
-                            <table class="w-full text-left">
-                                <thead>
-                                    <tr class="border-b border-gray-800">
-                                        <th class="py-3 text-sm text-gray-400">Metric</th>
-                                        <th class="py-3 text-sm text-purple-400">JPax Result</th>
-                                        <th class="py-3 text-sm text-gray-400">Industry Avg</th>
-                                        <th class="py-3 text-sm text-green-400">Advantage</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <tr class="border-b border-gray-800/50">
-                                        <td class="py-4">Total Ad Spend</td>
-                                        <td class="py-4 font-bold">$611</td>
-                                        <td class="py-4">$2,000-3,000</td>
-                                        <td class="py-4 text-green-400">70% savings</td>
-                                    </tr>
-                                    <tr class="border-b border-gray-800/50">
-                                        <td class="py-4">Prospects Generated</td>
-                                        <td class="py-4 font-bold">14,753</td>
-                                        <td class="py-4">8,000-10,000</td>
-                                        <td class="py-4 text-green-400">+50% reach</td>
-                                    </tr>
-                                    <tr class="border-b border-gray-800/50">
-                                        <td class="py-4">Cost Per Prospect</td>
-                                        <td class="py-4 font-bold">$0.04</td>
-                                        <td class="py-4">$1.00-5.00</td>
-                                        <td class="py-4 text-green-400">96% cheaper</td>
-                                    </tr>
-                                    <tr>
-                                        <td class="py-4">Retargeting Audience Value</td>
-                                        <td class="py-4 font-bold">$5K-10K+</td>
-                                        <td class="py-4">N/A</td>
-                                        <td class="py-4 text-green-400">Pure advantage</td>
-                                    </tr>
-                                </tbody>
-                            </table>
-                        </div>
-                    </div>
-
-                    <!-- What This Achieved -->
-                    <div class="space-y-4">
-                        <h4 class="text-2xl font-bold mb-4">What Southern Pavers Now Has:</h4>
-                        <div class="grid md:grid-cols-2 gap-4">
-                            <div class="flex items-start">
-                                <i class="fas fa-check-circle text-purple-400 mr-3 mt-1 text-xl"></i>
-                                <div>
-                                    <div class="font-bold mb-1">14,753 Qualified Prospects</div>
-                                    <div class="text-gray-400 text-sm">Segmented by interest and behavior, ready for conversion campaigns</div>
-                                </div>
-                            </div>
-                            <div class="flex items-start">
-                                <i class="fas fa-check-circle text-purple-400 mr-3 mt-1 text-xl"></i>
-                                <div>
-                                    <div class="font-bold mb-1">Warm Retargeting Audience</div>
-                                    <div class="text-gray-400 text-sm">Worth $5,000-10,000+ in organic value for future campaigns</div>
-                                </div>
-                            </div>
-                            <div class="flex items-start">
-                                <i class="fas fa-check-circle text-purple-400 mr-3 mt-1 text-xl"></i>
-                                <div>
-                                    <div class="font-bold mb-1">Data Foundation</div>
-                                    <div class="text-gray-400 text-sm">Clear insights on who's interested in their services and why</div>
-                                </div>
-                            </div>
-                            <div class="flex items-start">
-                                <i class="fas fa-check-circle text-purple-400 mr-3 mt-1 text-xl"></i>
-                                <div>
-                                    <div class="font-bold mb-1">60-70% Lower Conversion Costs</div>
-                                    <div class="text-gray-400 text-sm">Future campaigns target warm audiences, not expensive cold traffic</div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Client Quote -->
-                    <div class="mt-8 bg-purple-500/10 border border-purple-500/30 rounded-xl p-8">
-                        <div class="flex items-start">
-                            <i class="fas fa-quote-left text-purple-400 text-3xl mr-4 mt-2"></i>
-                            <div>
-                                <p class="text-gray-300 text-lg italic mb-4">
-                                    "Julian didn't just re-create the brand or run ads, he showed us the strategy. Building audiences first meant we're not burning money on cold traffic. Now we're retargeting people who already know us. It's smarter spending."
-                                </p>
-                                <p class="text-gray-500">— Southern Pavers, October 2025</p>
-                            </div>
-                        </div>
+                        <div class="tl-nav"><div class="tl-nav-item on"><i class="fas fa-bolt"></i>Analyze</div><div class="tl-nav-item"><i class="fas fa-th-large"></i>Pipeline</div><div class="tl-nav-item"><i class="fas fa-map-marker-alt"></i>Map</div><div class="tl-nav-item"><i class="fas fa-user"></i>Profile</div></div>
                     </div>
                 </div>
+                <div class="phone-info"><div class="phone-tag t-rose">Real Estate</div><div class="phone-name">Talaria</div><div class="phone-desc">Instant property analysis — comps, valuations, deal metrics.</div><div class="phone-time"><i class="fas fa-bolt"></i> Built overnight</div></div>
+            </div>
 
-                <!-- The RISE Advantage -->
-                <div class="card-glow rounded-2xl p-8 md:p-12 scroll-reveal">
-                    <div class="spotlight"></div>
-                    <h3 class="text-2xl font-bold mb-8 text-center">Why RISE Partnerships Deliver Consistent ROI</h3>
-                    <div class="grid md:grid-cols-3 gap-8">
-                        <div class="text-center">
-                            <div class="text-5xl font-bold text-purple-400 mb-3">Month 1</div>
-                            <h4 class="text-lg font-bold mb-2">Build Efficiently</h4>
-                            <p class="text-sm text-gray-400">Generate qualified audiences at 92-96% lower cost than traditional methods</p>
-                        </div>
-                        <div class="text-center">
-                            <div class="text-5xl font-bold text-purple-400 mb-3">Month 2-3</div>
-                            <h4 class="text-lg font-bold mb-2">Convert Smarter</h4>
-                            <p class="text-sm text-gray-400">Retarget warm audiences with conversion messaging at 60-70% lower cost</p>
-                        </div>
-                        <div class="text-center">
-                            <div class="text-5xl font-bold text-purple-400 mb-3">Month 4+</div>
-                            <h4 class="text-lg font-bold mb-2">Scale What Works</h4>
-                            <p class="text-sm text-gray-400">Optimize based on real data, eliminate what doesn't work, compound results</p>
-                        </div>
+            <!-- SOUTHERN PAVERS -->
+            <div class="phone-showcase reveal">
+                <div class="phone-device glow-amber"><div class="phone-notch" style="background:transparent"></div>
+                    <div class="phone-screen sp-s">
+                        <div class="sp-logo-row app-el"><div><div class="sp-logo-txt">SOUTHERN</div><div class="sp-logo-txt">PAVERS</div></div><div class="sp-logo-ic"><i class="fas fa-tree"></i></div></div>
+                        <div class="sp-tag app-el">Transform your outdoor space<br>with AI visualization</div>
+                        <div class="sp-cta app-el">✨ Design Your Space</div>
+                        <div class="sp-url app-el">southernpaversscpro.com</div>
+                        <div class="sp-admin app-el">◯ Admin Login</div>
                     </div>
+                </div>
+                <div class="phone-info"><div class="phone-tag t-amber">Trades App</div><div class="phone-name">Southern Pavers</div><div class="phone-desc">AI-powered outdoor space visualization tool.</div><div class="phone-time"><i class="fas fa-bolt"></i> Custom BUILD</div></div>
+            </div>
+
+        </div>
+    </div></section>
+
+    <!-- OS PRODUCTS -->
+    <section class="os-section" id="os-products"><div class="container">
+        <div class="reveal" style="text-align:center">
+            <div class="section-label">White-Label Products</div>
+            <div class="section-title">Operating Systems for Your Business</div>
+            <p class="section-desc" style="margin-left:auto;margin-right:auto">Full-stack dashboards branded to your business — delivered in days, not months.</p>
+        </div>
+        <div class="os-grid">
+            <div class="os-card trade reveal">
+                <div class="os-tag trade">For Trades Businesses</div>
+                <h3>TradeOS</h3><p>Mission control for home service businesses. Manage leads, track jobs, send quotes, and monitor revenue.</p>
+                <div class="os-feats"><div class="os-feat trade"><i class="fas fa-check"></i> Lead Management</div><div class="os-feat trade"><i class="fas fa-check"></i> Job Tracking</div><div class="os-feat trade"><i class="fas fa-check"></i> Quoting System</div><div class="os-feat trade"><i class="fas fa-check"></i> Revenue Reports</div><div class="os-feat trade"><i class="fas fa-check"></i> Crew Assignment</div><div class="os-feat trade"><i class="fas fa-check"></i> White-Label</div></div>
+                <a href="pricing.html" class="os-cta trade">Get TradeOS <i class="fas fa-arrow-right"></i></a>
+            </div>
+            <div class="os-card creator reveal">
+                <div class="os-tag creator">For Content Creators</div>
+                <h3>CreatorOS</h3><p>Your creative command center. Track followers, manage brand deals, plan content across every platform.</p>
+                <div class="os-feats"><div class="os-feat creator"><i class="fas fa-check"></i> Content Pipeline</div><div class="os-feat creator"><i class="fas fa-check"></i> Deal Tracking</div><div class="os-feat creator"><i class="fas fa-check"></i> Audience Analytics</div><div class="os-feat creator"><i class="fas fa-check"></i> Revenue Reports</div><div class="os-feat creator"><i class="fas fa-check"></i> Multi-Platform</div><div class="os-feat creator"><i class="fas fa-check"></i> White-Label</div></div>
+                <a href="pricing.html" class="os-cta creator">Get CreatorOS <i class="fas fa-arrow-right"></i></a>
+            </div>
+        </div>
+    </div></section>
+
+    <!-- CASE STUDY: SOUTHERN PAVERS -->
+    <section class="case-section" id="case-study"><div class="container">
+        <div class="reveal" style="text-align:center"><div class="section-label">Featured Case Study</div><div class="section-title">Southern Pavers</div><p class="section-desc" style="margin-left:auto;margin-right:auto">Complete rebrand, custom visualizer app, and strategic audience building — measurable ROI at every stage.</p></div>
+        <div class="case-container">
+            <!-- Overview -->
+            <div class="case-card reveal">
+                <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem;margin-bottom:1.5rem">
+                    <div><div style="font-family:var(--font-mono);font-size:0.65rem;color:var(--gray-500);letter-spacing:0.1em;text-transform:uppercase;margin-bottom:0.3rem">Industry</div><div style="font-family:var(--font-display);font-weight:700;font-size:1.1rem;color:var(--white)">Outdoor Living & Landscaping</div></div>
+                    <div><div style="font-family:var(--font-mono);font-size:0.65rem;color:var(--gray-500);letter-spacing:0.1em;text-transform:uppercase;margin-bottom:0.3rem">Location</div><div style="font-family:var(--font-display);font-weight:700;font-size:1.1rem;color:var(--white)">Southeast Regional</div></div>
+                    <div><div style="font-family:var(--font-mono);font-size:0.65rem;color:var(--gray-500);letter-spacing:0.1em;text-transform:uppercase;margin-bottom:0.3rem">Challenge</div><div style="font-family:var(--font-display);font-weight:700;font-size:1.1rem;color:var(--white)">Scale Digital Presence</div></div>
+                </div>
+                <p style="font-size:0.9rem;color:var(--gray-400);line-height:1.7">Established landscaping business with steady local revenue wanted to modernize their brand, showcase work interactively, and generate consistent qualified leads.</p>
+            </div>
+            <!-- BUILD -->
+            <div class="case-card green-b reveal">
+                <div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:1rem;margin-bottom:1.5rem">
+                    <div><span class="p-tag" style="background:var(--green-dim);color:var(--green);border:1px solid rgba(16,185,129,0.3)">Phase 1: BUILD</span><h3 style="font-family:var(--font-display);font-weight:700;font-size:1.5rem;color:var(--white);margin-top:0.5rem">Complete Digital Foundation</h3></div>
+                    <div style="text-align:right"><div style="font-family:var(--font-display);font-weight:700;font-size:1.8rem;color:var(--green)">$6,500</div><div style="font-size:0.75rem;color:var(--gray-500)">One-Time BUILD</div></div>
+                </div>
+                <div class="metric-row"><div class="metric-card"><div class="mv green">14 Days</div><div class="ml">Total Delivery</div></div><div class="metric-card"><div class="mv green">3 in 1</div><div class="ml">Brand + Site + App</div></div><div class="metric-card"><div class="mv green">Mobile</div><div class="ml">Fully Optimized</div></div></div>
+                <p style="font-size:0.9rem;color:var(--gray-400);line-height:1.7">Full rebrand, responsive website with AI-powered outdoor space visualizer, integrated service showcase, portfolio gallery, and contact automation.</p>
+                <a href="https://southernpaversscpro.com/" target="_blank" style="display:inline-flex;align-items:center;gap:0.5rem;margin-top:1rem;color:var(--green);font-weight:600;font-size:0.85rem;text-decoration:none">View Live Site <i class="fas fa-external-link-alt" style="font-size:0.7rem"></i></a>
+            </div>
+            <!-- RISE -->
+            <div class="case-card purple-b reveal">
+                <div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:1rem;margin-bottom:1.5rem">
+                    <div><span class="p-tag" style="background:var(--purple-dim);color:var(--purple);border:1px solid rgba(139,92,246,0.3)">Phase 2: RISE</span><h3 style="font-family:var(--font-display);font-weight:700;font-size:1.5rem;color:var(--white);margin-top:0.5rem">Strategic Audience Building</h3></div>
+                    <div style="text-align:right"><div style="font-family:var(--font-display);font-weight:700;font-size:1.8rem;color:var(--purple)">$2,000/mo</div><div style="font-size:0.75rem;color:var(--gray-500)">Growth Partnership</div></div>
+                </div>
+                <div class="strat-box"><h4>The Strategy</h4><p>Instead of expensive cold-traffic campaigns ($1-5 per prospect), we focused on building qualified audiences at maximum efficiency, then retargeting at <strong style="color:var(--white)">60-70% lower cost</strong>.</p><p>We build smart audience foundations first, then convert them efficiently — sustainable lead generation that compounds month after month.</p></div>
+                <h4 style="font-family:var(--font-display);font-weight:700;color:var(--white);font-size:1.1rem;text-align:center;margin-bottom:0.5rem">First 30 Days Results (October 2025)</h4>
+                <div class="metric-row"><div class="metric-card"><div class="mv purple">14,753</div><div class="ml">Qualified Prospects</div><div class="ms">+50% vs industry avg</div></div><div class="metric-card"><div class="mv purple">1,046</div><div class="ml">Website Visitors</div><div class="ms">+30% higher intent</div></div><div class="metric-card"><div class="mv purple">$0.04</div><div class="ml">Cost Per Prospect</div><div class="ms">92-96% cheaper</div></div><div class="metric-card"><div class="mv purple">15,632</div><div class="ml">Video Plays</div><div class="ms">200%+ higher</div></div></div>
+                <div style="background:rgba(0,0,0,0.3);border:1px solid rgba(139,92,246,0.15);border-radius:12px;padding:1.25rem;margin:1.5rem 0;overflow-x:auto">
+                    <h4 style="font-family:var(--font-display);font-weight:700;color:var(--white);font-size:1rem;margin-bottom:1rem">JPax Media vs Industry Standard</h4>
+                    <table class="cmp-table"><thead><tr><th style="color:var(--gray-400)">Metric</th><th style="color:var(--purple)">JPax Result</th><th class="cmp-a">Industry Avg</th><th class="cmp-w">Advantage</th></tr></thead>
+                    <tbody><tr><td style="color:var(--gray-400)">Total Ad Spend</td><td class="cmp-j">$611</td><td class="cmp-a">$2,000-3,000</td><td class="cmp-w">70% savings</td></tr>
+                    <tr><td style="color:var(--gray-400)">Prospects Generated</td><td class="cmp-j">14,753</td><td class="cmp-a">8,000-10,000</td><td class="cmp-w">+50% reach</td></tr>
+                    <tr><td style="color:var(--gray-400)">Cost Per Prospect</td><td class="cmp-j">$0.04</td><td class="cmp-a">$1.00-5.00</td><td class="cmp-w">96% cheaper</td></tr>
+                    <tr><td style="color:var(--gray-400)">Retargeting Value</td><td class="cmp-j">$5K-10K+</td><td class="cmp-a">N/A</td><td class="cmp-w">Pure advantage</td></tr></tbody></table>
+                </div>
+                <h4 style="font-family:var(--font-display);font-weight:700;color:var(--white);font-size:1.1rem;margin-bottom:1rem">What Southern Pavers Now Has:</h4>
+                <div class="result-grid">
+                    <div class="result-item"><i class="fas fa-check-circle"></i><div><strong>14,753 Qualified Prospects</strong><span>Segmented by interest, ready for conversion</span></div></div>
+                    <div class="result-item"><i class="fas fa-check-circle"></i><div><strong>Warm Retargeting Audience</strong><span>Worth $5K-10K+ in organic value</span></div></div>
+                    <div class="result-item"><i class="fas fa-check-circle"></i><div><strong>Data Foundation</strong><span>Clear insights on who's interested and why</span></div></div>
+                    <div class="result-item"><i class="fas fa-check-circle"></i><div><strong>60-70% Lower Conversion Costs</strong><span>Warm audiences, not expensive cold traffic</span></div></div>
+                </div>
+                <div class="quote-box"><i class="fas fa-quote-left"></i><div><blockquote>"Julian didn't just re-create the brand or run ads, he showed us the strategy. Building audiences first meant we're not burning money on cold traffic. It's smarter spending."</blockquote><cite>— Southern Pavers, October 2025</cite></div></div>
+            </div>
+            <!-- Timeline -->
+            <div class="case-card reveal">
+                <h3 style="font-family:var(--font-display);font-weight:700;color:var(--white);font-size:1.25rem;text-align:center;margin-bottom:1.5rem">Why RISE Partnerships Deliver Consistent ROI</h3>
+                <div class="timeline-row">
+                    <div class="timeline-card"><div class="tl-month">Month 1</div><h4>Build Efficiently</h4><p>Qualified audiences at 92-96% lower cost</p></div>
+                    <div class="timeline-card"><div class="tl-month">Month 2-3</div><h4>Convert Smarter</h4><p>Retarget warm audiences at 60-70% lower cost</p></div>
+                    <div class="timeline-card"><div class="tl-month">Month 4+</div><h4>Scale What Works</h4><p>Optimize with real data, compound results</p></div>
                 </div>
             </div>
         </div>
-    </section>
+    </div></section>
 
-    <!-- More Portfolio Items -->
-    <section class="py-32 bg-gradient-to-b from-gray-900 to-black">
-        <div class="container mx-auto px-4">
-            <div class="text-center mb-16 scroll-reveal">
-                <h2 class="text-5xl md:text-6xl font-bold mb-6">More Success Stories</h2>
-                <p class="text-xl text-gray-400">Every project showcases our BUILD and RISE methodology</p>
-            </div>
+    <!-- CTA -->
+    <section class="cta-section"><div class="container"><div class="cta-box reveal">
+        <h2>Ready to Build Your System?</h2>
+        <p>Take our 2-minute quiz to discover whether you need a BUILD project or a RISE partnership — and get instant pricing.</p>
+        <div class="cta-actions"><a href="quiz.html" class="btn-p">Take the Quiz <i class="fas fa-arrow-right"></i></a><a href="pricing.html" class="btn-s">View Pricing <i class="fas fa-chevron-right"></i></a></div>
+    </div></div></section>
 
-            <div class="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto">
-                <!-- LuxeCraft Construction -->
-                <div class="card-glow rounded-xl overflow-hidden scroll-reveal">
-                    <div class="spotlight"></div>
-                    <div class="p-6">
-                        <div class="framework-badge badge-build mb-4">BUILD</div>
-                        <h3 class="text-xl font-bold mb-2">LuxeCraft Construction</h3>
-                        <p class="text-gray-400 mb-4">Complete logo and website designed and launched in 3 days, creating a polished digital presence that matches their craftsmanship quality.</p>
-                        <div class="flex items-center justify-between text-sm">
-                            <span class="text-green-400 font-semibold">3 Days</span>
-                            <span class="text-gray-500">Website + Branding</span>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Nitro Cooler -->
-                <div class="card-glow rounded-xl overflow-hidden scroll-reveal">
-                    <div class="spotlight"></div>
-                    <div class="p-6">
-                        <div class="framework-badge badge-build mb-4">BUILD</div>
-                        <h3 class="text-xl font-bold mb-2">Nitro Cooler</h3>
-                        <p class="text-gray-400 mb-4">Product launch campaign with video production, social media content, and e-commerce integration.</p>
-                        <div class="flex items-center justify-between text-sm">
-                            <span class="text-green-400 font-semibold">7 Days</span>
-                            <span class="text-gray-500">Video + E-commerce</span>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Regional RISE Example -->
-                <div class="card-glow rounded-xl overflow-hidden scroll-reveal">
-                    <div class="spotlight"></div>
-                    <div class="p-6">
-                        <div class="framework-badge badge-rise mb-4">RISE</div>
-                        <h3 class="text-xl font-bold mb-2">Regional Service Provider</h3>
-                        <p class="text-gray-400 mb-4">Ongoing social media management and ad optimization generating consistent leads month after month.</p>
-                        <div class="flex items-center justify-between text-sm">
-                            <span class="text-purple-400 font-semibold">12+ Months</span>
-                            <span class="text-gray-500">Growth Partnership</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
+    <!-- FOOTER -->
+    <footer class="footer"><div class="container">
+        <div class="footer-inner">
+            <a href="index.html" class="footer-logo"><img src="jpaxmedialogoOFFICIALFINALwhite.png" alt="JPax Media" onerror="this.style.display='none'"></a>
+            <div class="footer-links"><a href="index.html">Home</a><a href="portfolio.html">Portfolio</a><a href="pricing.html">Pricing</a><a href="jupiter.html">Jupiter</a><a href="quiz.html">Quiz</a></div>
+            <div class="footer-socials"><a href="https://www.youtube.com/@JPaxFilms/videos" target="_blank"><i class="fab fa-youtube"></i></a><a href="https://www.tiktok.com/@jpaxfilms?lang=en" target="_blank"><i class="fab fa-tiktok"></i></a><a href="https://www.facebook.com/JPaxFilms/" target="_blank"><i class="fab fa-facebook"></i></a><a href="https://www.instagram.com/jpaxfilmz/" target="_blank"><i class="fab fa-instagram"></i></a></div>
         </div>
+<<<<<<< HEAD
     </section>
 
     <!-- CTA Section -->
@@ -761,101 +602,52 @@
             </div>
         </div>
     </footer>
+=======
+        <div style="text-align:center;margin-top:2rem"><p class="footer-copy">&copy; 2025 JPax Media. All rights reserved. <span class="g">BUILD.</span> <span class="p">RISE.</span> <span class="b">SCALE.</span></p></div>
+    </div></footer>
+>>>>>>> 10d9cd3 (Update Jpax Media Website)
 
     <script>
-        document.addEventListener('DOMContentLoaded', () => {
-            // --- Custom Cursor ---
-            const cursorDot = document.querySelector('.cursor-dot');
-            const cursorOutline = document.querySelector('.cursor-outline');
-            
-            if (cursorDot && cursorOutline) {
-                let mouseX = 0, mouseY = 0;
-                let outlineX = 0, outlineY = 0;
-
-                document.addEventListener('mousemove', (e) => {
-                    mouseX = e.clientX;
-                    mouseY = e.clientY;
-                    cursorDot.style.left = mouseX + 'px';
-                    cursorDot.style.top = mouseY + 'px';
-                });
-
-                function animateOutline() {
-                    outlineX += (mouseX - outlineX) * 0.2;
-                    outlineY += (mouseY - outlineY) * 0.2;
-                    cursorOutline.style.left = outlineX + 'px';
-                    cursorOutline.style.top = outlineY + 'px';
-                    requestAnimationFrame(animateOutline);
-                }
-                animateOutline();
-            }
-
-            // --- Spotlight Card Effect ---
-            document.querySelectorAll('.card-glow').forEach(card => {
-                const spotlight = card.querySelector('.spotlight');
-                if (spotlight) {
-                    card.addEventListener('mousemove', e => {
-                        const rect = card.getBoundingClientRect();
-                        const x = e.clientX - rect.left;
-                        const y = e.clientY - rect.top;
-                        spotlight.style.left = `${x}px`;
-                        spotlight.style.top = `${y}px`;
+    document.addEventListener('DOMContentLoaded',()=>{
+        const nav=document.getElementById('nav');
+        window.addEventListener('scroll',()=>nav.classList.toggle('scrolled',window.scrollY>50));
+        const mobileBtn=document.getElementById('mobileBtn'),mobileMenu=document.getElementById('mobileMenu');
+        if(mobileBtn&&mobileMenu){
+            mobileBtn.addEventListener('click',()=>{
+                const a=mobileMenu.classList.toggle('active');
+                document.body.style.overflow=a?'hidden':'';
+                const s=mobileBtn.querySelectorAll('span');
+                if(a){s[0].style.transform='rotate(45deg) translate(5px,5px)';s[1].style.opacity='0';s[2].style.transform='rotate(-45deg) translate(7px,-7px)'}
+                else{s[0].style.transform='none';s[1].style.opacity='1';s[2].style.transform='none'}
+            });
+            mobileMenu.querySelectorAll('a').forEach(l=>l.addEventListener('click',()=>{
+                mobileMenu.classList.remove('active');document.body.style.overflow='';
+                const s=mobileBtn.querySelectorAll('span');s[0].style.transform='none';s[1].style.opacity='1';s[2].style.transform='none';
+            }));
+        }
+        // Scroll reveal + staggered app element animations
+        const obs=new IntersectionObserver((entries)=>{
+            entries.forEach(e=>{
+                if(e.isIntersecting){
+                    e.target.classList.add('visible');
+                    const els=e.target.querySelectorAll('.app-el');
+                    els.forEach((el,i)=>{
+                        setTimeout(()=>{
+                            el.style.transition='opacity 0.4s ease,transform 0.4s ease';
+                            el.style.opacity='1';el.style.transform='translateY(0)';
+                        },150+i*120);
                     });
+                    // Animate progress bar
+                    setTimeout(()=>{
+                        const bar=e.target.querySelector('.anc-bar-fill');
+                        if(bar)bar.classList.add('go');
+                    },800);
+                    obs.unobserve(e.target);
                 }
             });
-
-            // --- Mobile Menu ---
-            const mobileMenuButton = document.getElementById('mobile-menu-button');
-            const mobileMenu = document.getElementById('mobile-menu');
-            if (mobileMenuButton && mobileMenu) {
-                const hamburgerIcon = mobileMenuButton.querySelector('.hamburger-icon');
-                const body = document.body;
-                
-                mobileMenuButton.addEventListener('click', () => {
-                    const isActive = mobileMenu.classList.contains('active');
-                    
-                    if (!isActive) {
-                        mobileMenu.classList.add('active');
-                        hamburgerIcon.classList.add('active');
-                        body.style.overflow = 'hidden';
-                    } else {
-                        mobileMenu.classList.remove('active');
-                        hamburgerIcon.classList.remove('active');
-                        body.style.overflow = '';
-                    }
-                });
-                
-                const mobileMenuLinks = mobileMenu.querySelectorAll('a');
-                mobileMenuLinks.forEach(link => {
-                    link.addEventListener('click', () => {
-                        mobileMenu.classList.remove('active');
-                        hamburgerIcon.classList.remove('active');
-                        body.style.overflow = '';
-                    });
-                });
-
-                mobileMenu.addEventListener('click', (e) => {
-                    if (e.target === mobileMenu) {
-                        mobileMenu.classList.remove('active');
-                        hamburgerIcon.classList.remove('active');
-                        body.style.overflow = '';
-                    }
-                });
-            }
-
-            // --- Scroll Animations ---
-            const scrollElements = document.querySelectorAll('.scroll-reveal');
-            const scrollObserver = new IntersectionObserver((entries) => {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        entry.target.classList.add('is-visible');
-                        scrollObserver.unobserve(entry.target);
-                    }
-                });
-            }, { threshold: 0.1 });
-            scrollElements.forEach(el => {
-                scrollObserver.observe(el);
-            });
-        });
+        },{threshold:0.1});
+        document.querySelectorAll('.reveal').forEach(el=>obs.observe(el));
+    });
     </script>
 </body>
 </html>
