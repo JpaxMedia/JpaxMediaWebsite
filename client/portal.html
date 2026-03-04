@@ -1,0 +1,630 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Portal — JPax Media</title>
+<meta name="robots" content="noindex, nofollow">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@400;500;600;700&family=IBM+Plex+Sans:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --black: #000000;
+    --near-black: #080808;
+    --surface: #0a0a0a;
+    --surface-2: #111111;
+    --surface-3: #181818;
+    --border: #1e1e1e;
+    --border-bright: #2a2a2a;
+    --white: #ffffff;
+    --off-white: #e0e0e0;
+    --gray: #777777;
+    --gray-dim: #444444;
+    --green: #00e87b;
+    --green-bright: #33ff99;
+    --green-dim: #00a85a;
+    --green-glow: rgba(0,232,123,0.08);
+    --green-glow-strong: rgba(0,232,123,0.18);
+    --red: #ff4444;
+    --font-display: 'Chakra Petch', sans-serif;
+    --font-body: 'IBM Plex Sans', sans-serif;
+    --font-mono: 'JetBrains Mono', monospace;
+  }
+
+  html { height: 100%; }
+
+  body {
+    background: var(--black);
+    color: var(--off-white);
+    font-family: var(--font-body);
+    font-size: 15px;
+    line-height: 1.6;
+    height: 100%;
+    overflow: hidden;
+  }
+
+  /* ── NOISE OVERLAY ── */
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.03'/%3E%3C/svg%3E");
+    pointer-events: none;
+    z-index: 0;
+    opacity: 0.35;
+  }
+
+  /* ── GRID BACKGROUND ── */
+  .bg-grid {
+    position: fixed;
+    inset: 0;
+    background-image:
+      linear-gradient(rgba(0,232,123,0.03) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(0,232,123,0.03) 1px, transparent 1px);
+    background-size: 60px 60px;
+    mask-image: radial-gradient(ellipse 70% 50% at 50% 50%, black 20%, transparent 80%);
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  /* ── AMBIENT GLOW ── */
+  .glow-orb {
+    position: fixed;
+    top: -180px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 700px;
+    height: 500px;
+    background: radial-gradient(ellipse, rgba(0,232,123,0.06) 0%, transparent 70%);
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  /* ── LOCK SCREEN ── */
+  #lockScreen {
+    position: fixed;
+    inset: 0;
+    z-index: 50;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    transition: opacity 0.5s ease, transform 0.5s ease;
+  }
+  #lockScreen.unlocked {
+    opacity: 0;
+    transform: scale(1.02);
+    pointer-events: none;
+  }
+
+  .lock-container {
+    position: relative;
+    z-index: 1;
+    width: 100%;
+    max-width: 440px;
+    padding: 0 24px;
+  }
+
+  /* Logo / Brand */
+  .lock-brand {
+    text-align: center;
+    margin-bottom: 48px;
+  }
+  .lock-logo {
+    font-family: var(--font-display);
+    font-size: 14px;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--gray);
+    margin-bottom: 6px;
+  }
+  .lock-logo span { color: var(--white); }
+  .lock-system {
+    font-family: var(--font-mono);
+    font-size: 10px;
+    color: var(--green);
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+  }
+
+  /* Lock Card */
+  .lock-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    overflow: hidden;
+  }
+
+  .lock-card-header {
+    padding: 24px 32px;
+    border-bottom: 1px solid var(--border);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  .lock-card-title {
+    font-family: var(--font-display);
+    font-size: 15px;
+    font-weight: 600;
+    color: var(--white);
+    letter-spacing: 0.02em;
+  }
+  .lock-status {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-family: var(--font-mono);
+    font-size: 10px;
+    color: var(--gray-dim);
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+  }
+  .lock-dot {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: var(--green);
+    box-shadow: 0 0 8px var(--green-glow-strong);
+    animation: pulse 2s ease infinite;
+  }
+
+  .lock-card-body {
+    padding: 32px;
+  }
+
+  .lock-client {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    margin-bottom: 28px;
+    padding: 16px 20px;
+    background: var(--surface-2);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+  }
+  .lock-client-icon {
+    width: 40px;
+    height: 40px;
+    border-radius: 8px;
+    background: linear-gradient(135deg, var(--surface-3), var(--border-bright));
+    border: 1px solid var(--border-bright);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: var(--font-display);
+    font-size: 16px;
+    font-weight: 700;
+    color: var(--green);
+  }
+  .lock-client-info {
+    flex: 1;
+  }
+  .lock-client-name {
+    font-family: var(--font-display);
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--white);
+    margin-bottom: 2px;
+  }
+  .lock-client-type {
+    font-family: var(--font-mono);
+    font-size: 10px;
+    color: var(--gray);
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+  }
+
+  .input-group {
+    margin-bottom: 20px;
+  }
+  .input-label {
+    display: block;
+    font-family: var(--font-mono);
+    font-size: 10px;
+    color: var(--gray);
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    margin-bottom: 8px;
+  }
+  .input-wrap {
+    position: relative;
+    display: flex;
+    align-items: center;
+  }
+  .input-field {
+    width: 100%;
+    padding: 14px 16px;
+    padding-right: 48px;
+    background: var(--surface-2);
+    border: 1px solid var(--border-bright);
+    border-radius: 8px;
+    color: var(--white);
+    font-family: var(--font-mono);
+    font-size: 14px;
+    letter-spacing: 0.15em;
+    outline: none;
+    transition: border-color 0.2s, box-shadow 0.2s;
+  }
+  .input-field::placeholder {
+    color: var(--gray-dim);
+    letter-spacing: 0.08em;
+  }
+  .input-field:focus {
+    border-color: var(--green-dim);
+    box-shadow: 0 0 0 3px var(--green-glow);
+  }
+  .input-field.error {
+    border-color: var(--red);
+    box-shadow: 0 0 0 3px rgba(255,68,68,0.1);
+    animation: shake 0.4s ease;
+  }
+  .input-icon {
+    position: absolute;
+    right: 14px;
+    color: var(--gray-dim);
+    pointer-events: none;
+    font-size: 16px;
+  }
+
+  .error-msg {
+    font-family: var(--font-mono);
+    font-size: 11px;
+    color: var(--red);
+    margin-top: 8px;
+    opacity: 0;
+    transform: translateY(-4px);
+    transition: opacity 0.2s, transform 0.2s;
+  }
+  .error-msg.show {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  .submit-btn {
+    width: 100%;
+    padding: 14px;
+    background: var(--green);
+    color: var(--black);
+    border: none;
+    border-radius: 8px;
+    font-family: var(--font-display);
+    font-size: 14px;
+    font-weight: 600;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: background 0.2s, transform 0.1s;
+  }
+  .submit-btn:hover {
+    background: var(--green-bright);
+    transform: translateY(-1px);
+  }
+  .submit-btn:active {
+    transform: translateY(0);
+  }
+
+  .lock-card-footer {
+    padding: 16px 32px;
+    border-top: 1px solid var(--border);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  .footer-note {
+    font-family: var(--font-mono);
+    font-size: 10px;
+    color: var(--gray-dim);
+    letter-spacing: 0.04em;
+  }
+  .footer-note a {
+    color: var(--green);
+    text-decoration: none;
+  }
+  .footer-note a:hover { color: var(--green-bright); }
+
+  /* ── CONTENT FRAME ── */
+  #contentFrame {
+    position: fixed;
+    inset: 0;
+    z-index: 10;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.6s ease 0.3s;
+  }
+  #contentFrame.visible {
+    opacity: 1;
+    pointer-events: auto;
+  }
+  #contentFrame iframe {
+    width: 100%;
+    height: 100%;
+    border: none;
+  }
+
+  /* ── TOP BAR (visible after unlock) ── */
+  #topBar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 60;
+    height: 48px;
+    background: rgba(0,0,0,0.95);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--border);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 24px;
+    opacity: 0;
+    transform: translateY(-100%);
+    transition: opacity 0.4s ease 0.5s, transform 0.4s ease 0.5s;
+  }
+  #topBar.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  .topbar-left {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+  .topbar-logo {
+    font-family: var(--font-display);
+    font-size: 12px;
+    font-weight: 700;
+    color: var(--gray);
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    text-decoration: none;
+  }
+  .topbar-logo span { color: var(--white); }
+  .topbar-sep {
+    width: 1px;
+    height: 16px;
+    background: var(--border-bright);
+  }
+  .topbar-client {
+    font-family: var(--font-mono);
+    font-size: 11px;
+    color: var(--green);
+    letter-spacing: 0.04em;
+  }
+  .topbar-right {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+  }
+  .topbar-badge {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-family: var(--font-mono);
+    font-size: 10px;
+    color: var(--gray-dim);
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+  }
+  .topbar-badge .dot {
+    width: 5px;
+    height: 5px;
+    border-radius: 50%;
+    background: var(--green);
+  }
+  .topbar-lock-btn {
+    padding: 5px 12px;
+    background: var(--surface-3);
+    border: 1px solid var(--border-bright);
+    border-radius: 6px;
+    color: var(--gray);
+    font-family: var(--font-mono);
+    font-size: 10px;
+    cursor: pointer;
+    transition: border-color 0.2s, color 0.2s;
+    letter-spacing: 0.04em;
+  }
+  .topbar-lock-btn:hover {
+    border-color: var(--red);
+    color: var(--red);
+  }
+
+  /* ── ANIMATIONS ── */
+  @keyframes pulse {
+    0%, 100% { opacity: 0.6; }
+    50% { opacity: 1; }
+  }
+  @keyframes shake {
+    0%, 100% { transform: translateX(0); }
+    20% { transform: translateX(-8px); }
+    40% { transform: translateX(6px); }
+    60% { transform: translateX(-4px); }
+    80% { transform: translateX(2px); }
+  }
+  @keyframes fadeIn {
+    from { opacity: 0; transform: translateY(16px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  .lock-container {
+    animation: fadeIn 0.6s ease forwards;
+  }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width: 480px) {
+    .lock-card-header { padding: 18px 20px; }
+    .lock-card-body { padding: 24px 20px; }
+    .lock-card-footer { padding: 14px 20px; flex-direction: column; gap: 6px; text-align: center; }
+    .lock-client { padding: 14px 16px; }
+    #topBar { padding: 0 16px; }
+    .topbar-client { display: none; }
+  }
+</style>
+</head>
+<body>
+
+<div class="bg-grid"></div>
+<div class="glow-orb"></div>
+
+<!-- ── LOCK SCREEN ── -->
+<div id="lockScreen">
+  <div class="lock-container">
+    <div class="lock-brand">
+      <div class="lock-logo"><span>JPax</span> Media</div>
+      <div class="lock-system">Client Portal</div>
+    </div>
+    <div class="lock-card">
+      <div class="lock-card-header">
+        <div class="lock-card-title">Secure Access</div>
+        <div class="lock-status">
+          <div class="lock-dot"></div>
+          Encrypted
+        </div>
+      </div>
+      <div class="lock-card-body">
+
+        <div class="input-group">
+          <label class="input-label" for="passInput">Access Code</label>
+          <div class="input-wrap">
+            <input
+              type="password"
+              id="passInput"
+              class="input-field"
+              placeholder="Enter access code"
+              autocomplete="off"
+              spellcheck="false"
+            >
+            <span class="input-icon">⌘</span>
+          </div>
+          <div class="error-msg" id="errorMsg">Invalid access code. Try again.</div>
+        </div>
+        <button class="submit-btn" id="submitBtn" onclick="attemptUnlock()">Unlock</button>
+      </div>
+      <div class="lock-card-footer">
+        <span class="footer-note">Provided by <a href="https://jpaxmedia.com/" target="_blank">JPax Media</a></span>
+        <span class="footer-note">Confidential</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ── TOP BAR (after unlock) ── -->
+<div id="topBar">
+  <div class="topbar-left">
+    <a href="https://jpaxmedia.com/" class="topbar-logo" target="_blank"><span>JPax</span> Media</a>
+    <div class="topbar-sep"></div>
+    <span class="topbar-client">Client Portal</span>
+  </div>
+  <div class="topbar-right">
+    <div class="topbar-badge">
+      <span class="dot"></span>
+      Secure Session
+    </div>
+    <button class="topbar-lock-btn" onclick="lockSession()">Lock</button>
+  </div>
+</div>
+
+<!-- ── CONTENT FRAME ── -->
+<div id="contentFrame">
+  <!-- Campaign brief loads here after unlock -->
+</div>
+
+<script>
+  // ── CLIENT ACCESS CODES ──
+  // Each client gets a unique access code that routes to their content.
+  // To add a new client:
+  //   1. Create their folder: /client/client-name/
+  //   2. Add their deliverable HTML file(s)
+  //   3. Add an entry below with their code and content path
+  //
+  // To generate an encoded code, run in browser console:
+  //   btoa('yourcodehere')
+  //
+  const CLIENTS = [
+    { code: atob('c291dGhlcm5wYXZlcnMyMDI1'), content: 'southern-pavers/campaign-brief.html' },
+    // { code: atob('...'), content: '27-birds/deliverable.html' },
+    // { code: atob('...'), content: 'haven-hospitality/deliverable.html' },
+  ];
+
+  const input = document.getElementById('passInput');
+  const errorMsg = document.getElementById('errorMsg');
+  const lockScreen = document.getElementById('lockScreen');
+  const contentFrame = document.getElementById('contentFrame');
+  const topBar = document.getElementById('topBar');
+
+  // Allow Enter key to submit
+  input.addEventListener('keydown', (e) => {
+    if (e.key === 'Enter') attemptUnlock();
+  });
+
+  // Clear error on typing
+  input.addEventListener('input', () => {
+    input.classList.remove('error');
+    errorMsg.classList.remove('show');
+  });
+
+  // Auto-focus
+  input.focus();
+
+  function findClient(code) {
+    return CLIENTS.find(c => c.code === code) || null;
+  }
+
+  async function attemptUnlock() {
+    const pw = input.value.trim();
+    if (!pw) {
+      input.classList.add('error');
+      errorMsg.classList.add('show');
+      return;
+    }
+
+    const client = findClient(pw);
+    if (client) {
+      unlock(client.content);
+    } else {
+      input.classList.add('error');
+      errorMsg.classList.add('show');
+      input.value = '';
+      input.focus();
+    }
+  }
+
+  function unlock(contentPath) {
+    // Store session
+    sessionStorage.setItem('jpax_unlocked', contentPath || 'true');
+
+    // Animate out lock screen
+    lockScreen.classList.add('unlocked');
+    document.body.style.overflow = 'auto';
+
+    // Load content — resolve path relative to /client/
+    const src = contentPath || sessionStorage.getItem('jpax_unlocked');
+    const iframe = document.createElement('iframe');
+    iframe.src = src;
+    iframe.style.marginTop = '48px';
+    iframe.style.height = 'calc(100% - 48px)';
+    contentFrame.appendChild(iframe);
+
+    // Show content + top bar
+    setTimeout(() => {
+      contentFrame.classList.add('visible');
+      topBar.classList.add('visible');
+    }, 200);
+  }
+
+  function lockSession() {
+    sessionStorage.removeItem('jpax_unlocked');
+    location.reload();
+  }
+
+  // Check for existing session
+  const savedSession = sessionStorage.getItem('jpax_unlocked');
+  if (savedSession && savedSession !== 'false') {
+    unlock(savedSession);
+  }
+</script>
+</body>
+</html>
