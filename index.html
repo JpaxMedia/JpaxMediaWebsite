@@ -623,6 +623,47 @@
         .framework-item.build i { color: var(--green); }
         .framework-item.rise i { color: var(--purple); }
 
+        /* ===== JUPITER SECTION ===== */
+        .jupiter-section {
+            padding: 6rem 0; text-align: center;
+        }
+        .jupiter-card {
+            background: var(--bg-card); border: 1px solid rgba(74,222,128,0.15);
+            border-radius: 20px; padding: 3.5rem 3rem; position: relative; overflow: hidden;
+            transition: all 0.4s; max-width: 860px; margin: 0 auto;
+        }
+        .jupiter-card::before {
+            content: ''; position: absolute; top: -50%; left: -50%; width: 200%; height: 200%;
+            background: radial-gradient(ellipse at center, rgba(74,222,128,0.04), transparent 60%);
+            pointer-events: none;
+        }
+        .jupiter-card:hover { border-color: rgba(74,222,128,0.3); box-shadow: 0 20px 60px rgba(74,222,128,0.08); }
+        .jupiter-icon {
+            display: inline-flex; align-items: center; justify-content: center;
+            width: 56px; height: 56px; border-radius: 14px;
+            background: rgba(74,222,128,0.08); border: 1px solid rgba(74,222,128,0.2);
+            font-size: 1.5rem; color: var(--accent); margin-bottom: 1.5rem;
+        }
+        .jupiter-card h3 {
+            font-family: var(--font-display); font-weight: 700;
+            font-size: clamp(1.5rem, 3.5vw, 2.25rem); color: var(--white);
+            margin-bottom: 1rem; line-height: 1.2; position: relative;
+        }
+        .jupiter-card > p {
+            font-size: 1.05rem; color: var(--gray-400); max-width: 620px;
+            margin: 0 auto 2rem; line-height: 1.7; position: relative;
+        }
+        .jupiter-features {
+            display: flex; flex-wrap: wrap; justify-content: center; gap: 0.6rem;
+            margin-bottom: 2rem; position: relative;
+        }
+        .jupiter-feat {
+            font-family: var(--font-mono); font-size: 0.7rem;
+            padding: 0.35rem 0.75rem; border-radius: 6px;
+            background: rgba(74,222,128,0.06); border: 1px solid rgba(74,222,128,0.15);
+            color: var(--accent); letter-spacing: 0.04em;
+        }
+
         /* ===== CONTACT / CTA ===== */
         .cta-section {
             padding: 6rem 0; text-align: center;
@@ -1224,6 +1265,28 @@
                         Explore RISE <i class="fas fa-arrow-right"></i>
                     </a>
                 </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== JUPITER ===== -->
+    <section class="jupiter-section">
+        <div class="container">
+            <div class="jupiter-card reveal">
+                <div class="jupiter-icon"><i class="fas fa-rocket"></i></div>
+                <h3>Every Partnership Runs Through Jupiter</h3>
+                <p>Jupiter, JPax Media's proprietary mission control platform, gives every client 24/7 visibility into their projects. Track deliverables, message your team, review reports, and manage your mission calendar — all from one branded dashboard.</p>
+                <div class="jupiter-features">
+                    <span class="jupiter-feat">24/7 Project Visibility</span>
+                    <span class="jupiter-feat">File Delivery</span>
+                    <span class="jupiter-feat">AI Assistant</span>
+                    <span class="jupiter-feat">Mission Calendar</span>
+                    <span class="jupiter-feat">Direct Messaging</span>
+                    <span class="jupiter-feat">Reports & Analytics</span>
+                </div>
+                <a href="https://jupitercommand.com" target="_blank" class="btn-primary" style="position:relative">
+                    Explore Jupiter <i class="fas fa-external-link-alt" style="font-size:0.75rem;margin-left:0.25rem"></i>
+                </a>
             </div>
         </div>
     </section>
