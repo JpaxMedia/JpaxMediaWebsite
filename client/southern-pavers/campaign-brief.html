@@ -1,0 +1,1482 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Spring 2025 Campaign Brief — Southern Pavers × Jpax Media</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Mono:ital,wght@0,300;0,400;0,500;1,300&family=Barlow:wght@600;700;800;900&family=Syne:wght@700&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --black: #000000;
+    --near-black: #080808;
+    --surface: #0d0d0d;
+    --surface-2: #141414;
+    --surface-3: #1a1a1a;
+    --border: #222222;
+    --border-bright: #333333;
+    --white: #ffffff;
+    --off-white: #e8e8e8;
+    --gray: #888888;
+    --gray-dim: #555555;
+    --blue: #3b82f6;
+    --blue-bright: #60a5fa;
+    --blue-dim: #1d4ed8;
+    --blue-glow: rgba(59,130,246,0.12);
+    --blue-glow-strong: rgba(59,130,246,0.22);
+    --font-display: 'Barlow', sans-serif;
+    --font-body: 'DM Sans', sans-serif;
+    --font-mono: 'DM Mono', monospace;
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--black);
+    color: var(--off-white);
+    font-family: var(--font-body);
+    font-size: 15px;
+    line-height: 1.65;
+    overflow-x: hidden;
+  }
+
+  /* ── NOISE TEXTURE OVERLAY ── */
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.03'/%3E%3C/svg%3E");
+    pointer-events: none;
+    z-index: 0;
+    opacity: 0.4;
+  }
+
+  /* ── NAV ── */
+  nav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 100;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 20px 48px;
+    border-bottom: 1px solid transparent;
+    transition: border-color 0.3s, background 0.3s;
+  }
+  nav.scrolled {
+    background: rgba(0,0,0,0.92);
+    backdrop-filter: blur(12px);
+    border-color: var(--border);
+  }
+  .nav-logo {
+    font-family: 'Syne', sans-serif;
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    color: var(--gray);
+    text-decoration: none;
+    text-transform: uppercase;
+  }
+  .nav-logo span { color: var(--white); }
+  .nav-pill {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    background: var(--surface-3);
+    border: 1px solid var(--border-bright);
+    border-radius: 100px;
+    padding: 8px 16px;
+    font-family: var(--font-mono);
+    font-size: 11px;
+    color: var(--gray);
+    text-decoration: none;
+    transition: border-color 0.2s, color 0.2s;
+  }
+  .nav-pill:hover { border-color: var(--blue); color: var(--blue-bright); }
+  .nav-pill::before { content: '↗'; font-size: 11px; }
+
+  /* ── HERO ── */
+  .hero {
+    position: relative;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 120px 48px 80px;
+    overflow: hidden;
+  }
+
+  .hero-bg-grid {
+    position: absolute;
+    inset: 0;
+    background-image:
+      linear-gradient(rgba(59,130,246,0.04) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(59,130,246,0.04) 1px, transparent 1px);
+    background-size: 60px 60px;
+    mask-image: radial-gradient(ellipse 80% 60% at 50% 40%, black 30%, transparent 80%);
+  }
+
+  .hero-glow {
+    position: absolute;
+    top: -200px; left: 50%; transform: translateX(-50%);
+    width: 800px; height: 600px;
+    background: radial-gradient(ellipse, rgba(59,130,246,0.08) 0%, transparent 70%);
+    pointer-events: none;
+  }
+
+  .hero-content { position: relative; z-index: 1; max-width: 900px; }
+
+  .eyebrow {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    font-family: var(--font-mono);
+    font-size: 11px;
+    color: var(--blue-bright);
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    margin-bottom: 28px;
+    opacity: 0;
+    animation: fadeUp 0.7s ease forwards 0.2s;
+  }
+  .eyebrow::before {
+    content: '';
+    display: block;
+    width: 24px; height: 1px;
+    background: var(--blue);
+  }
+
+  .hero h1 {
+    font-family: var(--font-display);
+    font-size: clamp(44px, 7vw, 82px);
+    font-weight: 900;
+    line-height: 1.0;
+    letter-spacing: -0.01em;
+    color: var(--white);
+    margin-bottom: 28px;
+    opacity: 0;
+    animation: fadeUp 0.8s ease forwards 0.35s;
+  }
+  .hero h1 em {
+    font-style: normal;
+    color: transparent;
+    -webkit-text-stroke: 1px rgba(255,255,255,0.35);
+  }
+
+  .hero-sub {
+    font-size: 17px;
+    color: var(--gray);
+    max-width: 560px;
+    line-height: 1.7;
+    margin-bottom: 48px;
+    opacity: 0;
+    animation: fadeUp 0.8s ease forwards 0.5s;
+  }
+
+  .hero-stats {
+    display: flex;
+    gap: 0;
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    overflow: hidden;
+    width: fit-content;
+    opacity: 0;
+    animation: fadeUp 0.8s ease forwards 0.65s;
+  }
+  .stat-block {
+    padding: 20px 32px;
+    border-right: 1px solid var(--border);
+    min-width: 130px;
+  }
+  .stat-block:last-child { border-right: none; }
+  .stat-num {
+    font-family: var(--font-display);
+    font-size: 26px;
+    font-weight: 800;
+    color: var(--white);
+    line-height: 1;
+    margin-bottom: 4px;
+  }
+  .stat-label {
+    font-family: var(--font-mono);
+    font-size: 10px;
+    color: var(--gray-dim);
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+  }
+
+  .scroll-hint {
+    position: absolute;
+    bottom: 36px; left: 48px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-family: var(--font-mono);
+    font-size: 10px;
+    color: var(--gray-dim);
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    opacity: 0;
+    animation: fadeUp 0.8s ease forwards 0.9s;
+  }
+  .scroll-line {
+    width: 1px; height: 36px;
+    background: linear-gradient(to bottom, var(--blue), transparent);
+    animation: scrollPulse 2s ease infinite;
+  }
+
+  /* ── SECTION SCAFFOLDING ── */
+  section { position: relative; padding: 100px 48px; }
+  .section-inner { max-width: 1100px; margin: 0 auto; }
+
+  .section-label {
+    font-family: var(--font-mono);
+    font-size: 10px;
+    color: var(--blue);
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    margin-bottom: 16px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+  .section-label::after {
+    content: '';
+    flex: 1;
+    max-width: 40px;
+    height: 1px;
+    background: var(--blue-dim);
+  }
+
+  .section-title {
+    font-family: var(--font-display);
+    font-size: clamp(28px, 3.5vw, 40px);
+    font-weight: 800;
+    color: var(--white);
+    letter-spacing: -0.01em;
+    line-height: 1.1;
+    margin-bottom: 16px;
+  }
+
+  .section-desc {
+    font-size: 15px;
+    color: var(--gray);
+    max-width: 540px;
+    line-height: 1.7;
+    margin-bottom: 56px;
+  }
+
+  /* ── DIVIDER ── */
+  .divider {
+    width: 100%;
+    height: 1px;
+    background: var(--border);
+    margin: 0 48px;
+    width: calc(100% - 96px);
+  }
+
+  /* ── OVERVIEW / SUMMARY ── */
+  #overview { background: var(--near-black); }
+
+  .overview-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2px;
+    background: var(--border);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    overflow: hidden;
+  }
+  .overview-card {
+    background: var(--surface);
+    padding: 36px 40px;
+  }
+  .overview-card.full { grid-column: 1 / -1; }
+  .overview-card.accent {
+    background: linear-gradient(135deg, #0a1628 0%, #0d1f3c 100%);
+    border-left: 3px solid var(--blue);
+  }
+  .ov-tag {
+    font-family: var(--font-mono);
+    font-size: 9px;
+    color: var(--blue);
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    margin-bottom: 12px;
+  }
+  .ov-title {
+    font-family: var(--font-display);
+    font-size: 17px;
+    font-weight: 700;
+    color: var(--white);
+    margin-bottom: 10px;
+  }
+  .ov-body {
+    font-size: 14px;
+    color: var(--gray);
+    line-height: 1.7;
+  }
+  .ov-body strong { color: var(--blue-bright); font-weight: 500; }
+
+  /* ── BUDGET ── */
+  #budget { background: var(--black); }
+
+  .budget-total-row {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1px;
+    background: var(--border);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    overflow: hidden;
+    margin-bottom: 48px;
+  }
+  .budget-total-cell {
+    background: var(--surface-2);
+    padding: 28px 24px;
+    text-align: center;
+  }
+  .btc-num {
+    font-family: var(--font-display);
+    font-size: 28px;
+    font-weight: 800;
+    color: var(--white);
+    margin-bottom: 6px;
+  }
+  .btc-label {
+    font-family: var(--font-mono);
+    font-size: 10px;
+    color: var(--gray-dim);
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+  }
+
+  .budget-table {
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    overflow: hidden;
+  }
+  .bt-header {
+    display: grid;
+    grid-template-columns: 80px 1fr 1fr 110px 110px 80px;
+    background: var(--surface-3);
+    border-bottom: 1px solid var(--border-bright);
+  }
+  .bt-row {
+    display: grid;
+    grid-template-columns: 80px 1fr 1fr 110px 110px 80px;
+    border-bottom: 1px solid var(--border);
+    transition: background 0.15s;
+  }
+  .bt-row:last-child { border-bottom: none; background: rgba(59,130,246,0.05); }
+  .bt-row:hover { background: var(--surface-2); }
+  .bt-cell {
+    padding: 14px 16px;
+    font-size: 13px;
+    color: var(--off-white);
+    display: flex;
+    align-items: center;
+    border-right: 1px solid var(--border);
+  }
+  .bt-cell:last-child { border-right: none; }
+  .bt-header .bt-cell {
+    font-family: var(--font-mono);
+    font-size: 9px;
+    color: var(--blue);
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    font-weight: 500;
+  }
+  .stage-badge {
+    display: inline-block;
+    padding: 3px 8px;
+    border-radius: 4px;
+    font-family: var(--font-mono);
+    font-size: 10px;
+    font-weight: 500;
+    background: rgba(59,130,246,0.12);
+    color: var(--blue-bright);
+    border: 1px solid rgba(59,130,246,0.25);
+    white-space: nowrap;
+  }
+  .bt-row:last-child .bt-cell {
+    font-family: var(--font-display);
+    font-weight: 700;
+    color: var(--white);
+    font-size: 13px;
+  }
+  .highlight-num {
+    color: var(--blue-bright);
+    font-weight: 600;
+    font-family: var(--font-mono);
+    font-size: 13px;
+  }
+
+  /* ── FUNNEL STAGES ── */
+  #funnel { background: var(--near-black); }
+
+  .stage-cards { display: flex; flex-direction: column; gap: 2px; }
+
+  .stage-card {
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    overflow: hidden;
+    transition: border-color 0.2s;
+  }
+  .stage-card:hover { border-color: var(--blue-dim); }
+
+  .stage-header {
+    display: grid;
+    grid-template-columns: 220px 1fr;
+    min-height: 100px;
+  }
+  .stage-num-block {
+    background: var(--surface-3);
+    border-right: 1px solid var(--border);
+    padding: 32px 36px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+  .stage-num {
+    font-family: var(--font-display);
+    font-size: 56px;
+    font-weight: 800;
+    color: var(--surface-3);
+    -webkit-text-stroke: 1px var(--border-bright);
+    line-height: 1;
+    margin-bottom: 4px;
+  }
+  .stage-phase {
+    font-family: var(--font-mono);
+    font-size: 9px;
+    color: var(--blue);
+    text-transform: uppercase;
+    letter-spacing: 0.14em;
+  }
+  .stage-title-block {
+    background: var(--surface);
+    padding: 32px 40px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+  .stage-name {
+    font-family: var(--font-display);
+    font-size: 22px;
+    font-weight: 800;
+    color: var(--white);
+    margin-bottom: 6px;
+    letter-spacing: -0.01em;
+  }
+  .stage-meta {
+    display: flex;
+    gap: 20px;
+    flex-wrap: wrap;
+  }
+  .meta-tag {
+    font-family: var(--font-mono);
+    font-size: 11px;
+    color: var(--gray);
+  }
+  .meta-tag span { color: var(--blue-bright); }
+
+  .stage-body {
+    border-top: 1px solid var(--border);
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+  }
+  .stage-col {
+    padding: 28px 32px;
+    border-right: 1px solid var(--border);
+  }
+  .stage-col:last-child { border-right: none; }
+  .sc-label {
+    font-family: var(--font-mono);
+    font-size: 9px;
+    color: var(--gray-dim);
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    margin-bottom: 14px;
+  }
+  .sc-list { list-style: none; }
+  .sc-list li {
+    font-size: 13px;
+    color: var(--gray);
+    padding: 5px 0;
+    border-bottom: 1px solid var(--border);
+    display: flex;
+    align-items: flex-start;
+    gap: 8px;
+    line-height: 1.5;
+  }
+  .sc-list li:last-child { border-bottom: none; }
+  .sc-list li::before {
+    content: '—';
+    color: var(--blue-dim);
+    font-size: 12px;
+    flex-shrink: 0;
+    margin-top: 1px;
+  }
+  .sc-metric {
+    margin-top: 16px;
+    padding: 12px 16px;
+    background: var(--blue-glow);
+    border: 1px solid rgba(59,130,246,0.15);
+    border-radius: 8px;
+  }
+  .scm-num {
+    font-family: var(--font-display);
+    font-size: 20px;
+    font-weight: 800;
+    color: var(--blue-bright);
+    line-height: 1;
+    margin-bottom: 2px;
+  }
+  .scm-label {
+    font-family: var(--font-mono);
+    font-size: 9px;
+    color: var(--gray-dim);
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+  }
+
+  /* ── GEO ── */
+  #geo { background: var(--black); }
+
+  .geo-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2px;
+    background: var(--border);
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    overflow: hidden;
+  }
+  .geo-card {
+    background: var(--surface);
+    padding: 36px 40px;
+  }
+  .geo-pct {
+    font-family: var(--font-display);
+    font-size: 52px;
+    font-weight: 800;
+    color: var(--white);
+    line-height: 1;
+    margin-bottom: 4px;
+  }
+  .geo-pct.secondary { color: var(--surface-3); -webkit-text-stroke: 1px var(--border-bright); }
+  .geo-market {
+    font-family: var(--font-display);
+    font-size: 18px;
+    font-weight: 700;
+    color: var(--white);
+    margin-bottom: 8px;
+  }
+  .geo-cities {
+    font-family: var(--font-mono);
+    font-size: 11px;
+    color: var(--gray);
+    margin-bottom: 16px;
+    line-height: 1.7;
+  }
+  .geo-bar {
+    height: 3px;
+    border-radius: 2px;
+    background: var(--surface-3);
+    overflow: hidden;
+    margin-top: 20px;
+  }
+  .geo-bar-fill {
+    height: 100%;
+    background: var(--blue);
+    border-radius: 2px;
+    transition: width 1.5s ease;
+  }
+  .geo-note {
+    font-size: 12px;
+    color: var(--gray-dim);
+    margin-top: 8px;
+    font-style: italic;
+  }
+
+  /* ── TIMELINE ── */
+  #timeline { background: var(--near-black); }
+
+  .timeline-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 2px;
+    background: var(--border);
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    overflow: hidden;
+  }
+  .week-card {
+    background: var(--surface);
+    padding: 28px 28px 32px;
+    position: relative;
+  }
+  .week-num {
+    font-family: var(--font-mono);
+    font-size: 10px;
+    color: var(--blue);
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    margin-bottom: 8px;
+  }
+  .week-title {
+    font-family: var(--font-display);
+    font-size: 16px;
+    font-weight: 700;
+    color: var(--white);
+    margin-bottom: 20px;
+    line-height: 1.3;
+  }
+  .week-items { list-style: none; }
+  .week-items li {
+    font-size: 12.5px;
+    color: var(--gray);
+    padding: 6px 0;
+    border-bottom: 1px solid var(--border);
+    line-height: 1.5;
+  }
+  .week-items li:last-child { border-bottom: none; }
+  .week-bar {
+    position: absolute;
+    bottom: 0; left: 0;
+    height: 3px;
+    background: var(--blue);
+    border-radius: 0 2px 0 0;
+  }
+
+  /* ── KPI ── */
+  #kpis { background: var(--black); }
+
+  .kpi-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2px;
+    background: var(--border);
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    overflow: hidden;
+    margin-bottom: 32px;
+  }
+  .kpi-card {
+    background: var(--surface);
+    padding: 28px 32px;
+  }
+  .kpi-stage {
+    font-family: var(--font-mono);
+    font-size: 9px;
+    color: var(--blue);
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    margin-bottom: 8px;
+  }
+  .kpi-metric {
+    font-size: 13px;
+    color: var(--gray);
+    margin-bottom: 12px;
+  }
+  .kpi-target {
+    font-family: var(--font-display);
+    font-size: 28px;
+    font-weight: 800;
+    color: var(--white);
+    line-height: 1;
+    margin-bottom: 4px;
+  }
+  .kpi-baseline {
+    font-family: var(--font-mono);
+    font-size: 10px;
+    color: var(--gray-dim);
+  }
+  .kpi-baseline strong { color: var(--blue-bright); font-weight: 500; }
+
+  .checklist-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2px;
+    background: var(--border);
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    overflow: hidden;
+  }
+  .checklist-col {
+    background: var(--surface);
+    padding: 28px 32px;
+  }
+  .cl-title {
+    font-family: var(--font-display);
+    font-size: 14px;
+    font-weight: 700;
+    color: var(--white);
+    margin-bottom: 18px;
+    padding-bottom: 12px;
+    border-bottom: 1px solid var(--border);
+  }
+  .cl-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    padding: 7px 0;
+    font-size: 12.5px;
+    color: var(--gray);
+    border-bottom: 1px solid var(--border);
+    line-height: 1.5;
+  }
+  .cl-item:last-child { border-bottom: none; }
+  .cl-box {
+    width: 14px; height: 14px;
+    border: 1px solid var(--border-bright);
+    border-radius: 3px;
+    flex-shrink: 0;
+    margin-top: 2px;
+    background: var(--surface-3);
+  }
+
+  /* ── FOOTER CTA ── */
+  #cta {
+    background: var(--near-black);
+    border-top: 1px solid var(--border);
+    padding: 80px 48px 60px;
+  }
+  .cta-inner {
+    max-width: 700px;
+    margin: 0 auto;
+    text-align: center;
+  }
+  .cta-tag {
+    font-family: var(--font-mono);
+    font-size: 10px;
+    color: var(--blue);
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    margin-bottom: 20px;
+  }
+  .cta-title {
+    font-family: var(--font-display);
+    font-size: clamp(28px, 4vw, 46px);
+    font-weight: 800;
+    color: var(--white);
+    line-height: 1.1;
+    letter-spacing: -0.02em;
+    margin-bottom: 16px;
+  }
+  .cta-sub {
+    font-size: 15px;
+    color: var(--gray);
+    line-height: 1.7;
+    margin-bottom: 40px;
+  }
+  .cta-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    background: var(--blue);
+    color: var(--white);
+    font-family: var(--font-display);
+    font-size: 15px;
+    font-weight: 700;
+    padding: 16px 36px;
+    border-radius: 8px;
+    text-decoration: none;
+    transition: background 0.2s, transform 0.15s;
+    letter-spacing: 0.01em;
+  }
+  .cta-btn:hover { background: var(--blue-bright); transform: translateY(-1px); }
+  .cta-btn::after { content: '↗'; font-size: 14px; }
+
+  .cta-details {
+    margin-top: 36px;
+    display: flex;
+    justify-content: center;
+    gap: 40px;
+    flex-wrap: wrap;
+  }
+  .cta-detail {
+    font-family: var(--font-mono);
+    font-size: 11px;
+    color: var(--gray-dim);
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .cta-detail::before {
+    content: '';
+    width: 4px; height: 4px;
+    border-radius: 50%;
+    background: var(--blue-dim);
+  }
+
+  footer {
+    background: var(--black);
+    border-top: 1px solid var(--border);
+    padding: 24px 48px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  .footer-left {
+    font-family: var(--font-mono);
+    font-size: 11px;
+    color: var(--gray-dim);
+  }
+  .footer-right {
+    font-family: var(--font-mono);
+    font-size: 11px;
+    color: var(--gray-dim);
+  }
+  .footer-right a {
+    color: var(--blue);
+    text-decoration: none;
+  }
+  .footer-right a:hover { color: var(--blue-bright); }
+
+  /* ── ANIMATIONS ── */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(20px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+  @keyframes scrollPulse {
+    0%, 100% { opacity: 0.4; }
+    50%       { opacity: 1; }
+  }
+
+  .reveal {
+    opacity: 0;
+    transform: translateY(24px);
+    transition: opacity 0.7s ease, transform 0.7s ease;
+  }
+  .reveal.visible {
+    opacity: 1;
+    transform: none;
+  }
+  .reveal-delay-1 { transition-delay: 0.1s; }
+  .reveal-delay-2 { transition-delay: 0.2s; }
+  .reveal-delay-3 { transition-delay: 0.3s; }
+  .reveal-delay-4 { transition-delay: 0.4s; }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width: 900px) {
+    nav { padding: 16px 20px; }
+    .nav-pill { display: none; }
+
+    .hero { padding: 100px 20px 70px; min-height: 100svh; }
+    .hero h1 { font-size: clamp(36px, 10vw, 52px); }
+    .hero-sub { font-size: 15px; }
+    .hero-stats {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      width: 100%;
+      border-radius: 10px;
+    }
+    .stat-block { padding: 16px 18px; }
+    .stat-num { font-size: 22px; }
+    .scroll-hint { left: 20px; }
+
+    section { padding: 64px 20px; }
+
+    /* Overview */
+    .overview-grid { grid-template-columns: 1fr; }
+    .overview-card.full { grid-column: 1; }
+
+    /* Budget */
+    .budget-total-row { grid-template-columns: 1fr 1fr; }
+    .budget-table { overflow-x: auto; display: block; }
+    .bt-header, .bt-row {
+      min-width: 560px;
+      grid-template-columns: 60px 1fr 1fr 80px 80px 60px;
+    }
+
+    /* Stage cards */
+    .stage-header { grid-template-columns: 100px 1fr; }
+    .stage-num-block { padding: 20px 18px; }
+    .stage-num { font-size: 40px; }
+    .stage-name { font-size: 17px; }
+    .stage-meta { gap: 10px; }
+    .meta-tag { font-size: 10px; }
+    .stage-body {
+      grid-template-columns: 1fr;
+    }
+    .stage-col {
+      border-right: none;
+      border-bottom: 1px solid var(--border);
+    }
+    .stage-col:last-child { border-bottom: none; }
+
+    /* Geo */
+    .geo-grid { grid-template-columns: 1fr; }
+    .geo-pct { font-size: 40px; }
+
+    /* Timeline */
+    .timeline-grid { grid-template-columns: 1fr; gap: 2px; }
+    .week-card { padding: 22px 20px 28px; }
+
+    /* KPIs */
+    .kpi-grid { grid-template-columns: 1fr 1fr; }
+    .kpi-target { font-size: 24px; }
+    .checklist-grid { grid-template-columns: 1fr; }
+
+    /* CTA */
+    .cta-title { font-size: clamp(26px, 8vw, 38px); }
+    .cta-details { gap: 16px; flex-direction: column; align-items: center; }
+
+    footer { flex-direction: column; gap: 8px; text-align: center; padding: 20px; }
+    .divider { margin: 0 20px; width: calc(100% - 40px); }
+
+    .section-title { font-size: clamp(24px, 6vw, 36px); }
+  }
+
+  @media (max-width: 480px) {
+    .hero h1 { font-size: 34px; }
+    .budget-total-row { grid-template-columns: 1fr 1fr; }
+    .kpi-grid { grid-template-columns: 1fr; }
+    .hero-stats { grid-template-columns: 1fr 1fr; }
+    .stat-num { font-size: 20px; }
+    .stage-header { grid-template-columns: 80px 1fr; }
+    .stage-num { font-size: 32px; }
+    .cta-btn { width: 100%; justify-content: center; padding: 16px 24px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav id="mainNav">
+  <a href="https://jpaxmedia.com/" class="nav-logo"><span>Jpax</span> Media</a>
+  <a href="https://jpaxmedia.com/" class="nav-pill">jpaxmedia.com</a>
+</nav>
+
+<!-- HERO -->
+<section class="hero" id="home">
+  <div class="hero-bg-grid"></div>
+  <div class="hero-glow"></div>
+  <div class="hero-content">
+    <div class="eyebrow">Spring 2025 · Campaign Brief · Southern Pavers</div>
+    <h1>Facebook Ad<br>Campaign <em>Strategy</em></h1>
+    <p class="hero-sub">A full-funnel Facebook advertising strategy for Southern Pavers SC Pro — built to capture spring demand across Upstate South Carolina.</p>
+    <div class="hero-stats">
+      <div class="stat-block">
+        <div class="stat-num">$400–500</div>
+        <div class="stat-label">Monthly Budget</div>
+      </div>
+      <div class="stat-block">
+        <div class="stat-num">3</div>
+        <div class="stat-label">Funnel Stages</div>
+      </div>
+      <div class="stat-block">
+        <div class="stat-num">2</div>
+        <div class="stat-label">Target Markets</div>
+      </div>
+      <div class="stat-block">
+        <div class="stat-num">&lt;$60</div>
+        <div class="stat-label">Target CPL</div>
+      </div>
+    </div>
+  </div>
+  <div class="scroll-hint">
+    <div class="scroll-line"></div>
+    Scroll
+  </div>
+</section>
+
+<!-- OVERVIEW -->
+<section id="overview">
+  <div class="section-inner">
+    <div class="section-label reveal">Overview</div>
+    <h2 class="section-title reveal reveal-delay-1">The Strategy</h2>
+    <p class="section-desc reveal reveal-delay-2">Spring is the highest-value window of the year for Southern Pavers. This campaign stacks two proven assets into a deliberate three-stage funnel.</p>
+
+    <div class="overview-grid reveal reveal-delay-3">
+      <div class="overview-card accent">
+        <div class="ov-tag">Key Insight</div>
+        <div class="ov-title">The AI Visualizer is the differentiator</div>
+        <div class="ov-body">No local competitor can show a homeowner their own backyard transformed before signing a contract. Traffic campaigns land at <strong>southernpaverssc.app</strong> — not a generic homepage. Every visitor who uses the tool becomes a warm retargeting audience.</div>
+      </div>
+      <div class="overview-card">
+        <div class="ov-tag">Stage 1</div>
+        <div class="ov-title">Bigfoot Spring Video</div>
+        <div class="ov-body">The Bigfoot firepit campaign hit <strong>$0.028/ThruPlay</strong> with a <strong>44.7% completion rate</strong> — nearly 3× industry average. A new spring creative builds a 10,000+ warm audience cheaply.</div>
+      </div>
+      <div class="overview-card">
+        <div class="ov-tag">Stage 2</div>
+        <div class="ov-title">AI Visualizer Traffic</div>
+        <div class="ov-body">The SC Homeowners traffic campaign previously hit <strong>$0.36/LPV</strong> — 28% below industry benchmarks. Portfolio creative drives warm audiences to the interactive AI tool.</div>
+      </div>
+      <div class="overview-card">
+        <div class="ov-tag">Stage 3</div>
+        <div class="ov-title">Retargeting — App Visitors</div>
+        <div class="ov-body">App visitors showed intent by interacting with the tool. The November messaging campaign hit <strong>$9.75/conversation</strong> on cold audiences. App visitors convert cheaper, at higher quality.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- BUDGET -->
+<section id="budget">
+  <div class="section-inner">
+    <div class="section-label reveal">Budget</div>
+    <h2 class="section-title reveal reveal-delay-1">Spend Allocation</h2>
+    <p class="section-desc reveal reveal-delay-2">Total monthly budget distributed across three funnel stages. Scale Stage 3 upward after week 2 once the retargeting pool hits 300+ visitors.</p>
+
+    <div class="budget-total-row reveal reveal-delay-3">
+      <div class="budget-total-cell">
+        <div class="btc-num">~$210</div>
+        <div class="btc-label">Stage 1 / Month</div>
+      </div>
+      <div class="budget-total-cell">
+        <div class="btc-num">~$240</div>
+        <div class="btc-label">Stage 2 / Month</div>
+      </div>
+      <div class="budget-total-cell">
+        <div class="btc-num">~$60</div>
+        <div class="btc-label">Stage 3 / Month</div>
+      </div>
+      <div class="budget-total-cell">
+        <div class="btc-num">~$510</div>
+        <div class="btc-label">Total / Month</div>
+      </div>
+    </div>
+
+    <div class="budget-table reveal reveal-delay-4">
+      <div class="bt-header">
+        <div class="bt-cell">Stage</div>
+        <div class="bt-cell">Campaign</div>
+        <div class="bt-cell">Objective</div>
+        <div class="bt-cell">Daily</div>
+        <div class="bt-cell">Monthly</div>
+        <div class="bt-cell">% Total</div>
+      </div>
+      <div class="bt-row">
+        <div class="bt-cell"><span class="stage-badge">S1</span></div>
+        <div class="bt-cell">Bigfoot Spring Video</div>
+        <div class="bt-cell">Video Views (ThruPlay)</div>
+        <div class="bt-cell"><span class="highlight-num">$7/day</span></div>
+        <div class="bt-cell"><span class="highlight-num">~$210</span></div>
+        <div class="bt-cell">42%</div>
+      </div>
+      <div class="bt-row">
+        <div class="bt-cell"><span class="stage-badge">S2</span></div>
+        <div class="bt-cell">AI Visualizer Traffic</div>
+        <div class="bt-cell">Landing Page Views</div>
+        <div class="bt-cell"><span class="highlight-num">$8/day</span></div>
+        <div class="bt-cell"><span class="highlight-num">~$240</span></div>
+        <div class="bt-cell">48%</div>
+      </div>
+      <div class="bt-row">
+        <div class="bt-cell"><span class="stage-badge">S3</span></div>
+        <div class="bt-cell">Retargeting — App Visitors</div>
+        <div class="bt-cell">Messenger / Lead Form</div>
+        <div class="bt-cell"><span class="highlight-num">$2/day</span></div>
+        <div class="bt-cell"><span class="highlight-num">~$60</span></div>
+        <div class="bt-cell">10%</div>
+      </div>
+      <div class="bt-row">
+        <div class="bt-cell"></div>
+        <div class="bt-cell">Total</div>
+        <div class="bt-cell"></div>
+        <div class="bt-cell">$17/day</div>
+        <div class="bt-cell">~$510</div>
+        <div class="bt-cell">100%</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FUNNEL STAGES -->
+<section id="funnel">
+  <div class="section-inner">
+    <div class="section-label reveal">Funnel</div>
+    <h2 class="section-title reveal reveal-delay-1">Three-Stage Campaign</h2>
+    <p class="section-desc reveal reveal-delay-2">Each stage has a defined role. Awareness builds the audience. Consideration converts them to app visitors. Conversion turns intent into conversations.</p>
+
+    <div class="stage-cards">
+
+      <!-- STAGE 1 -->
+      <div class="stage-card reveal">
+        <div class="stage-header">
+          <div class="stage-num-block">
+            <div class="stage-num">01</div>
+            <div class="stage-phase">Awareness</div>
+          </div>
+          <div class="stage-title-block">
+            <div class="stage-name">Bigfoot Spring Video Campaign</div>
+            <div class="stage-meta">
+              <span class="meta-tag">Objective: <span>Video Views</span></span>
+              <span class="meta-tag">Budget: <span>$7/day</span></span>
+              <span class="meta-tag">Audience: <span>Cold — SC Homeowners 35–65</span></span>
+            </div>
+          </div>
+        </div>
+        <div class="stage-body">
+          <div class="stage-col">
+            <div class="sc-label">Why It Works</div>
+            <ul class="sc-list">
+              <li>Bigfoot creative hit $0.028/ThruPlay in October — 3× industry average</li>
+              <li>Facebook algorithm favors personality-driven content with strong completion rates</li>
+              <li>Spring angle adds urgency: "schedules fill fast" without saying it directly</li>
+            </ul>
+          </div>
+          <div class="stage-col">
+            <div class="sc-label">Creative Direction</div>
+            <ul class="sc-list">
+              <li>Bigfoot emerges from woods surveying a bare winter backyard</li>
+              <li>Cut to stunning finished Southern Pavers patio</li>
+              <li>Word-by-word captions for sound-off viewing</li>
+              <li>20–25 seconds, vertical format for Reels + Feed</li>
+            </ul>
+          </div>
+          <div class="stage-col">
+            <div class="sc-label">Stage 1 Target</div>
+            <div class="sc-metric">
+              <div class="scm-num">10,000+</div>
+              <div class="scm-label">Warm video viewers in 3–4 weeks</div>
+            </div>
+            <div class="sc-metric" style="margin-top:10px;">
+              <div class="scm-num">&lt;$0.03</div>
+              <div class="scm-label">Target cost per ThruPlay</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- STAGE 2 -->
+      <div class="stage-card reveal reveal-delay-1">
+        <div class="stage-header">
+          <div class="stage-num-block">
+            <div class="stage-num">02</div>
+            <div class="stage-phase">Consideration</div>
+          </div>
+          <div class="stage-title-block">
+            <div class="stage-name">AI Visualizer Traffic Campaign</div>
+            <div class="stage-meta">
+              <span class="meta-tag">Objective: <span>Landing Page Views</span></span>
+              <span class="meta-tag">Budget: <span>$8/day</span></span>
+              <span class="meta-tag">Landing: <span>southernpaverssc.app</span></span>
+            </div>
+          </div>
+        </div>
+        <div class="stage-body">
+          <div class="stage-col">
+            <div class="sc-label">Two Ad Sets</div>
+            <ul class="sc-list">
+              <li><strong style="color:var(--off-white)">Ad Set A — Warm:</strong> Stage 1 video viewers 50%+ watched. Lowest CPC, highest intent</li>
+              <li><strong style="color:var(--off-white)">Ad Set B — Cold:</strong> Fresh homeowner audience, same demographics as Stage 1</li>
+            </ul>
+          </div>
+          <div class="stage-col">
+            <div class="sc-label">Creative Direction</div>
+            <ul class="sc-list">
+              <li>Before/after project photos matching the app's visual output</li>
+              <li>"See your backyard transformed before we break ground"</li>
+              <li>CTA: Try It Free → links directly to AI Visualizer</li>
+              <li>Carousel option: 4–5 project types cycling</li>
+            </ul>
+          </div>
+          <div class="stage-col">
+            <div class="sc-label">Stage 2 Target</div>
+            <div class="sc-metric">
+              <div class="scm-num">600–800</div>
+              <div class="scm-label">Landing page views per month</div>
+            </div>
+            <div class="sc-metric" style="margin-top:10px;">
+              <div class="scm-num">&lt;$0.50</div>
+              <div class="scm-label">Target cost per LPV</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- STAGE 3 -->
+      <div class="stage-card reveal reveal-delay-2">
+        <div class="stage-header">
+          <div class="stage-num-block">
+            <div class="stage-num">03</div>
+            <div class="stage-phase">Conversion</div>
+          </div>
+          <div class="stage-title-block">
+            <div class="stage-name">Retargeting — App Visitors</div>
+            <div class="stage-meta">
+              <span class="meta-tag">Objective: <span>Messenger / Lead Form</span></span>
+              <span class="meta-tag">Budget: <span>$2/day</span></span>
+              <span class="meta-tag">Activate: <span>Week 3 (~300 visitors)</span></span>
+            </div>
+          </div>
+        </div>
+        <div class="stage-body">
+          <div class="stage-col">
+            <div class="sc-label">Why Retargeting Works</div>
+            <ul class="sc-list">
+              <li>App visitors already clicked an ad, loaded a page, and used a design tool</li>
+              <li>Nov messaging campaign: $9.75/conversation on cold audiences</li>
+              <li>App visitors should convert cheaper, at higher quality</li>
+            </ul>
+          </div>
+          <div class="stage-col">
+            <div class="sc-label">Creative Direction</div>
+            <ul class="sc-list">
+              <li>"2× Best Paving Company in Spartanburg — ready to build yours this spring?"</li>
+              <li>"Schedules are filling up. Message Joe directly for a free estimate."</li>
+              <li>CTA: Send Message → opens Messenger with Joe</li>
+            </ul>
+          </div>
+          <div class="stage-col">
+            <div class="sc-label">Stage 3 Targets</div>
+            <div class="sc-metric">
+              <div class="scm-num">8–15</div>
+              <div class="scm-label">Conversations per month</div>
+            </div>
+            <div class="sc-metric" style="margin-top:10px;">
+              <div class="scm-num">4–8</div>
+              <div class="scm-label">Qualified leads per month</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- GEO -->
+<section id="geo">
+  <div class="section-inner">
+    <div class="section-label reveal">Geographic Targeting</div>
+    <h2 class="section-title reveal reveal-delay-1">Two Markets</h2>
+    <p class="section-desc reveal reveal-delay-2">Run as separate ad sets within each stage. Review performance at week 2 and shift budget toward the stronger market.</p>
+
+    <div class="geo-grid reveal reveal-delay-3">
+      <div class="geo-card">
+        <div class="geo-pct">70%</div>
+        <div class="geo-market">Upstate SC</div>
+        <div class="geo-cities">Greenville · Spartanburg · Greer<br>Simpsonville · Duncan · Taylors</div>
+        <ul class="sc-list" style="margin-bottom:12px;">
+          <li>Core proven market, established demand</li>
+          <li>Award wins in Spartanburg add social proof</li>
+          <li>Existing CRM leads for exclusion audiences</li>
+        </ul>
+        <div class="geo-bar"><div class="geo-bar-fill" style="width:70%"></div></div>
+        <div class="geo-note">Starting allocation — adjust at week 2</div>
+      </div>
+      <div class="geo-card">
+        <div class="geo-pct secondary">30%</div>
+        <div class="geo-market">Anderson / Clemson</div>
+        <div class="geo-cities">Anderson · Clemson · Pendleton<br>Seneca · Williamston</div>
+        <ul class="sc-list" style="margin-bottom:12px;">
+          <li>Expansion market, test phase budget</li>
+          <li>Adjacent to core Upstate service area</li>
+          <li>Scale to 40%+ if LPV cost stays under $0.50</li>
+        </ul>
+        <div class="geo-bar"><div class="geo-bar-fill" style="width:30%"></div></div>
+        <div class="geo-note">Increase if performance matches Upstate</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TIMELINE -->
+<section id="timeline">
+  <div class="section-inner">
+    <div class="section-label reveal">Launch Schedule</div>
+    <h2 class="section-title reveal reveal-delay-1">Four-Week Rollout</h2>
+    <p class="section-desc reveal reveal-delay-2">Staged launch gives each campaign time to exit the learning phase before adding complexity. Stage 3 launches when the retargeting pool is ready.</p>
+
+    <div class="timeline-grid reveal reveal-delay-3">
+      <div class="week-card">
+        <div class="week-num">Week 1</div>
+        <div class="week-title">Launch Stages 1 + 2</div>
+        <ul class="week-items">
+          <li>Publish Bigfoot spring video — ThruPlay optimization</li>
+          <li>Launch AI Visualizer traffic campaign — LPV optimization</li>
+          <li>Monitor learning phase Days 1–5</li>
+          <li>Confirm Facebook Pixel on southernpaverssc.app</li>
+        </ul>
+        <div class="week-bar" style="width:25%"></div>
+      </div>
+      <div class="week-card">
+        <div class="week-num">Week 2</div>
+        <div class="week-title">Review + Geo Rebalance</div>
+        <ul class="week-items">
+          <li>Compare CPV and LPV by market</li>
+          <li>Shift geo if &gt;20% variance between markets</li>
+          <li>Assess ThruPlay rate — refresh if &lt;35%</li>
+          <li>App visitor pool check — target 300+</li>
+        </ul>
+        <div class="week-bar" style="width:50%"></div>
+      </div>
+      <div class="week-card">
+        <div class="week-num">Week 3</div>
+        <div class="week-title">Launch Stage 3</div>
+        <ul class="week-items">
+          <li>Create Custom Audiences: app visitors + video viewers 50%+</li>
+          <li>Launch retargeting at $2/day</li>
+          <li>A/B test two Stage 3 creatives</li>
+          <li>Review full-funnel cost flow</li>
+        </ul>
+        <div class="week-bar" style="width:75%"></div>
+      </div>
+      <div class="week-card">
+        <div class="week-num">Week 4</div>
+        <div class="week-title">Full-Funnel Evaluation</div>
+        <ul class="week-items">
+          <li>Calculate cost per conversation + CPL</li>
+          <li>Assess lead quality by project type</li>
+          <li>Scale Stage 2 +20–30% if LPV holding</li>
+          <li>Plan April budget heading into peak season</li>
+        </ul>
+        <div class="week-bar" style="width:100%"></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- KPIs -->
+<section id="kpis">
+  <div class="section-inner">
+    <div class="section-label reveal">Performance Targets</div>
+    <h2 class="section-title reveal reveal-delay-1">KPI Scorecard</h2>
+    <p class="section-desc reveal reveal-delay-2">Benchmarks derived from historical Southern Pavers campaigns (Oct–Nov 2025) and home services Facebook advertising industry standards.</p>
+
+    <div class="kpi-grid reveal reveal-delay-3">
+      <div class="kpi-card">
+        <div class="kpi-stage">Stage 1 — Awareness</div>
+        <div class="kpi-metric">Cost per ThruPlay</div>
+        <div class="kpi-target">&lt;$0.03</div>
+        <div class="kpi-baseline">Baseline: <strong>$0.028</strong> (Oct Bigfoot campaign)</div>
+      </div>
+      <div class="kpi-card">
+        <div class="kpi-stage">Stage 1 — Awareness</div>
+        <div class="kpi-metric">ThruPlay Rate</div>
+        <div class="kpi-target">&gt;40%</div>
+        <div class="kpi-baseline">Baseline: <strong>44.7%</strong> vs 15–30% industry avg</div>
+      </div>
+      <div class="kpi-card">
+        <div class="kpi-stage">Stage 2 — Consideration</div>
+        <div class="kpi-metric">Cost per Landing Page View</div>
+        <div class="kpi-target">&lt;$0.50</div>
+        <div class="kpi-baseline">Baseline: <strong>$0.36</strong> (Oct SC Homeowners)</div>
+      </div>
+      <div class="kpi-card">
+        <div class="kpi-stage">Stage 2 — Consideration</div>
+        <div class="kpi-metric">LPV Rate from Reach</div>
+        <div class="kpi-target">&gt;3%</div>
+        <div class="kpi-baseline">Baseline: <strong>3.88%</strong> — upper benchmark range</div>
+      </div>
+      <div class="kpi-card">
+        <div class="kpi-stage">Stage 3 — Conversion</div>
+        <div class="kpi-metric">Cost per Conversation</div>
+        <div class="kpi-target">&lt;$10</div>
+        <div class="kpi-baseline">Baseline: <strong>$9.75</strong> (Nov messaging, cold)</div>
+      </div>
+      <div class="kpi-card">
+        <div class="kpi-stage">Full Funnel</div>
+        <div class="kpi-metric">Cost per Qualified Lead</div>
+        <div class="kpi-target">&lt;$60</div>
+        <div class="kpi-baseline">Target: <strong>4–8 leads/month</strong> at budget</div>
+      </div>
+    </div>
+
+    <div style="height:40px"></div>
+
+    <div class="section-label reveal">Pre-Launch</div>
+    <h3 class="section-title reveal reveal-delay-1" style="font-size:28px; margin-bottom:8px;">Technical Checklist</h3>
+    <p class="section-desc reveal reveal-delay-2" style="margin-bottom:32px;">Complete before campaign launch.</p>
+
+    <div class="checklist-grid reveal reveal-delay-3">
+      <div class="checklist-col">
+        <div class="cl-title">Facebook Pixel</div>
+        <div class="cl-item"><div class="cl-box"></div>Pixel firing on southernpaverssc.app</div>
+        <div class="cl-item"><div class="cl-box"></div>PageView event confirmed on app routes</div>
+        <div class="cl-item"><div class="cl-box"></div>Custom event for lead form submissions</div>
+        <div class="cl-item"><div class="cl-box"></div>Custom event for AI generation completions</div>
+      </div>
+      <div class="checklist-col">
+        <div class="cl-title">Custom Audiences</div>
+        <div class="cl-item"><div class="cl-box"></div>App / website visitors — last 30 days</div>
+        <div class="cl-item"><div class="cl-box"></div>Video viewers 50%+ — last 30 days</div>
+        <div class="cl-item"><div class="cl-box"></div>ThruPlay viewers — last 30 days</div>
+        <div class="cl-item"><div class="cl-box"></div>Past leads from CRM (exclusion list)</div>
+      </div>
+      <div class="checklist-col">
+        <div class="cl-title">Campaign Settings</div>
+        <div class="cl-item"><div class="cl-box"></div>Stage 1+2: Advantage+ placements</div>
+        <div class="cl-item"><div class="cl-box"></div>Stage 3: Feed + Messenger Inbox</div>
+        <div class="cl-item"><div class="cl-box"></div>All stages: Daily budget (not lifetime)</div>
+        <div class="cl-item"><div class="cl-box"></div>Stage 3: Frequency cap 2× per 7 days</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section id="cta">
+  <div class="cta-inner">
+    <div class="cta-tag reveal">Campaign Managed by Jpax Media</div>
+    <h2 class="cta-title reveal reveal-delay-1">Ready to Build Your<br>Operating System?</h2>
+    <p class="cta-sub reveal reveal-delay-2">Jpax Media builds AI-powered systems for trades businesses and content creators. TradeOS, websites, branding, video, and ad campaigns — delivered fast.</p>
+    <a href="https://jpaxmedia.com/" class="cta-btn reveal reveal-delay-3">jpaxmedia.com</a>
+    <div class="cta-details reveal reveal-delay-4">
+      <span class="cta-detail">Southern Pavers SC Pro</span>
+      <span class="cta-detail">southernpaversscpro.com</span>
+      <span class="cta-detail">Joe — (864) 501-6994</span>
+      <span class="cta-detail">Spring 2025</span>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-left">© 2026 Jpax Media. All rights reserved. — BUILD. RISE. SCALE.</div>
+  <div class="footer-right"><a href="https://jpaxmedia.com/">jpaxmedia.com</a></div>
+</footer>
+
+<script>
+  // Nav scroll state
+  const nav = document.getElementById('mainNav');
+  window.addEventListener('scroll', () => {
+    nav.classList.toggle('scrolled', window.scrollY > 40);
+  });
+
+  // Scroll reveal
+  const reveals = document.querySelectorAll('.reveal');
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        e.target.classList.add('visible');
+        observer.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+  reveals.forEach(el => observer.observe(el));
+
+  // Animate geo bars on scroll
+  const geoBars = document.querySelectorAll('.geo-bar-fill');
+  const geoObserver = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        e.target.style.width = e.target.style.width;
+        geoObserver.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.5 });
+  geoBars.forEach(bar => {
+    const target = bar.style.width;
+    bar.style.width = '0%';
+    setTimeout(() => geoObserver.observe(bar), 100);
+    geoObserver.observe(bar);
+    bar.addEventListener('transitionend', () => {}, { once: true });
+    const origObserver = new IntersectionObserver((entries) => {
+      entries.forEach(e => {
+        if (e.isIntersecting) { bar.style.width = target; origObserver.unobserve(bar); }
+      });
+    }, { threshold: 0.3 });
+    origObserver.observe(bar);
+  });
+</script>
+</body>
+</html>
