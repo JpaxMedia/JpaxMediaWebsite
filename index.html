@@ -10,7 +10,7 @@
     
     <meta property="og:type" content="website">
     <meta property="og:title" content="JPax Media | AI Operating Systems for Your Business">
-    <meta property="og:description" content="White-label AI operating systems delivered in days. TradeOS for trades. CreatorOS for creators. Build. Rise. Scale.">
+    <meta property="og:description" content="White-label AI operating systems delivered in days. TradeOS for trades. CreatorOS for creators.">
     <meta property="og:image" content="https://jpaxmedia.com/jpaxmedialogoOFFICIALFINALwhite.png">
     <meta property="og:url" content="https://jpaxmedia.com">
     
@@ -276,6 +276,7 @@
         }
         .hero-badge .dot { width: 6px; height: 6px; border-radius: 50%; background: var(--green); animation: pulse 2s infinite; }
         @keyframes pulse { 0%, 100% { opacity: 1; } 50% { opacity: 0.4; } }
+        @keyframes pulse-dot { 0%, 100% { opacity: 1; box-shadow: 0 0 6px var(--purple); } 50% { opacity: 0.4; box-shadow: 0 0 2px var(--purple); } }
 
         .hero h1 {
             font-family: var(--font-display); font-weight: 700;
@@ -1004,21 +1005,25 @@
             <!-- TradeOS -->
             <div class="os-showcase reveal">
                 <div class="os-info">
-                    <div class="os-tag trade">For Trades Businesses</div>
+                    <div class="os-tag trade" style="display:flex;align-items:center;gap:8px;">
+                        <span style="display:inline-block;width:8px;height:8px;border-radius:50%;background:var(--green);box-shadow:0 0 6px var(--green);"></span>
+                        Now Live — For Trades Businesses
+                    </div>
                     <h2 class="os-name">TradeOS</h2>
                     <p class="os-desc">
-                        The mission control center for home service businesses. Manage leads, track jobs, 
-                        send quotes, and monitor revenue — all from one dark-mode dashboard built for the way you work.
+                        The complete SaaS operating system for trade businesses — HVAC, plumbing, electrical, landscaping, roofing, and contractors. Manage leads, track jobs, send quotes, generate invoices, and monitor revenue — all from one branded dashboard.
                     </p>
                     <div class="os-features">
-                        <div class="os-feature trade"><i class="fas fa-check"></i> Lead Management</div>
-                        <div class="os-feature trade"><i class="fas fa-check"></i> Job Tracking</div>
-                        <div class="os-feature trade"><i class="fas fa-check"></i> Quoting System</div>
-                        <div class="os-feature trade"><i class="fas fa-check"></i> Revenue Reports</div>
-                        <div class="os-feature trade"><i class="fas fa-check"></i> Client Database</div>
+                        <div class="os-feature trade"><i class="fas fa-check"></i> Dashboard & Analytics</div>
+                        <div class="os-feature trade"><i class="fas fa-check"></i> Lead Management (CRM)</div>
+                        <div class="os-feature trade"><i class="fas fa-check"></i> Job Tracking (Kanban)</div>
+                        <div class="os-feature trade"><i class="fas fa-check"></i> Quoting & Invoicing</div>
+                        <div class="os-feature trade"><i class="fas fa-check"></i> Contracts & E-Signature</div>
+                        <div class="os-feature trade"><i class="fas fa-check"></i> Client Management</div>
+                        <div class="os-feature trade"><i class="fas fa-check"></i> Crew & Scheduling</div>
                         <div class="os-feature trade"><i class="fas fa-check"></i> Automations</div>
-                        <div class="os-feature trade"><i class="fas fa-check"></i> Crew Assignment</div>
                         <div class="os-feature trade"><i class="fas fa-check"></i> White-Label Branding</div>
+                        <div class="os-feature trade"><i class="fas fa-check"></i> Client Portal</div>
                     </div>
                     <a href="pricing.html" class="os-cta trade">
                         Get TradeOS <i class="fas fa-arrow-right"></i>
@@ -1087,25 +1092,24 @@
             <!-- CreatorOS -->
             <div class="os-showcase reverse reveal">
                 <div class="os-info">
-                    <div class="os-tag creator">For Content Creators</div>
+                    <div class="os-tag creator" style="display:flex;align-items:center;gap:8px;">
+                        <span style="display:inline-block;width:8px;height:8px;border-radius:50%;background:var(--purple);animation:pulse-dot 2s infinite;"></span>
+                        Coming Soon — For Content Creators
+                    </div>
                     <h2 class="os-name">CreatorOS</h2>
                     <p class="os-desc">
-                        Your creative command center. Track followers, manage brand deals, 
-                        monitor revenue, and plan content across every platform — all in a premium 
-                        studio-feel dashboard.
+                        A white-label AI operating system built for content creators and influencers. Manage brand deals, content pipelines, audience analytics, and revenue — all in one branded dashboard. Currently in development.
                     </p>
                     <div class="os-features">
-                        <div class="os-feature creator"><i class="fas fa-check"></i> Content Pipeline</div>
-                        <div class="os-feature creator"><i class="fas fa-check"></i> Deal Management</div>
+                        <div class="os-feature creator"><i class="fas fa-check"></i> Content Pipeline (Kanban)</div>
+                        <div class="os-feature creator"><i class="fas fa-check"></i> Brand Deals Management</div>
                         <div class="os-feature creator"><i class="fas fa-check"></i> Audience Analytics</div>
-                        <div class="os-feature creator"><i class="fas fa-check"></i> Revenue Tracking</div>
-                        <div class="os-feature creator"><i class="fas fa-check"></i> Multi-Platform Stats</div>
+                        <div class="os-feature creator"><i class="fas fa-check"></i> Revenue & Invoicing</div>
                         <div class="os-feature creator"><i class="fas fa-check"></i> Automations</div>
-                        <div class="os-feature creator"><i class="fas fa-check"></i> Invoice System</div>
-                        <div class="os-feature creator"><i class="fas fa-check"></i> White-Label Branding</div>
+                        <div class="os-feature creator"><i class="fas fa-check"></i> Reports</div>
                     </div>
-                    <a href="pricing.html" class="os-cta creator">
-                        Get CreatorOS <i class="fas fa-arrow-right"></i>
+                    <a href="#contact" class="os-cta creator">
+                        Get Notified <i class="fas fa-bell"></i>
                     </a>
                 </div>
 
@@ -1265,7 +1269,7 @@
                     <div class="framework-items">
                         <div class="framework-item build"><i class="fas fa-check"></i> Delivered in 3-14 days</div>
                         <div class="framework-item build"><i class="fas fa-check"></i> Flat-rate pricing — no surprises</div>
-                        <div class="framework-item build"><i class="fas fa-check"></i> OS Systems from $3,000</div>
+                        <div class="framework-item build"><i class="fas fa-check"></i> TradeOS subscriptions from $59/mo</div>
                         <div class="framework-item build"><i class="fas fa-check"></i> Websites from $2,500</div>
                         <div class="framework-item build"><i class="fas fa-check"></i> Branding from $1,500</div>
                     </div>
