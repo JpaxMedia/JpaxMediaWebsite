@@ -280,6 +280,48 @@
         .os-price-cta.creator { background: var(--purple); color: var(--white); }
         .os-price-cta.creator:hover { background: #A78BFA; transform: translateY(-2px); box-shadow: 0 8px 25px var(--purple-glow); }
 
+        /* TradeOS Pricing Layers */
+        .os-pricing-layer { margin-bottom: 1.5rem; }
+        .os-pricing-layer-header {
+            font-family: var(--font-mono); font-size: 0.65rem; font-weight: 600;
+            letter-spacing: 0.1em; text-transform: uppercase; color: var(--green);
+            margin-bottom: 0.75rem; display: flex; align-items: center; gap: 0.5rem;
+        }
+        .os-pricing-layer-header .layer-badge {
+            display: inline-flex; padding: 0.15rem 0.5rem; border-radius: 3px;
+            background: var(--green-dim); border: 1px solid rgba(16,185,129,0.2);
+            font-size: 0.6rem; color: var(--green);
+        }
+        .os-pricing-layer-desc {
+            font-size: 0.78rem; color: var(--gray-500); margin-bottom: 0.75rem; line-height: 1.5;
+        }
+
+        /* Coming Soon Card Overlay */
+        .os-coming-soon-badge {
+            display: inline-flex; align-items: center; gap: 6px;
+            padding: 0.3rem 0.75rem; border-radius: 100px;
+            background: rgba(139,92,246,0.1); border: 1px solid rgba(139,92,246,0.3);
+            font-family: var(--font-mono); font-size: 0.65rem; font-weight: 600;
+            letter-spacing: 0.08em; text-transform: uppercase; color: var(--purple);
+            margin-bottom: 1.25rem;
+        }
+        .os-coming-soon-badge .pulse-dot {
+            width: 6px; height: 6px; border-radius: 50%; background: var(--purple);
+            animation: pulseDot 2s infinite;
+        }
+        @keyframes pulseDot { 0%, 100% { opacity: 1; box-shadow: 0 0 4px var(--purple); } 50% { opacity: 0.3; box-shadow: 0 0 1px var(--purple); } }
+
+        .os-module-list {
+            display: flex; flex-wrap: wrap; gap: 0.4rem; margin-top: 1rem;
+        }
+        .os-module-chip {
+            display: inline-flex; align-items: center; gap: 0.3rem;
+            padding: 0.25rem 0.6rem; border-radius: 4px;
+            background: rgba(139,92,246,0.06); border: 1px solid rgba(139,92,246,0.12);
+            font-size: 0.72rem; color: var(--gray-300);
+        }
+        .os-module-chip i { font-size: 0.55rem; color: var(--purple); }
+
         /* BUILD Creative Service Cards */
         .build-grid {
             display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
@@ -531,8 +573,8 @@
             <div class="hero-badge">Radical Transparency</div>
             <h1>Transparent Pricing.<br>No Hidden Fees. No Games.</h1>
             <p class="hero-sub">
-                Everything you need to know is right here. OS systems, creative services, 
-                and ongoing partnerships — all with flat-rate pricing and clear timelines.
+                Everything you need to know is right here. OS subscriptions, creative services,
+                and ongoing partnerships — all with transparent pricing and no hidden fees.
             </p>
             <div class="hero-nav">
                 <a href="#os-systems" class="hn-active"><i class="fas fa-terminal"></i> OS Systems</a>
@@ -549,45 +591,130 @@
                 <div class="section-label">Flagship Products</div>
                 <div class="section-title">AI Operating Systems</div>
                 <p class="section-desc">
-                    White-label dashboards branded to your business. Lead management, job tracking, 
-                    revenue analytics, and more — delivered in days.
+                    White-label SaaS dashboards branded to your business. Lead management, job tracking,
+                    revenue analytics, and more — subscribe and start today.
                 </p>
             </div>
 
             <div class="os-pricing-grid">
                 <!-- TradeOS -->
                 <div class="os-price-card trade reveal">
-                    <div class="os-price-tag trade">For Trades Businesses</div>
+                    <div class="os-price-tag trade" style="display:flex;align-items:center;gap:8px;">
+                        <span style="display:inline-block;width:8px;height:8px;border-radius:50%;background:var(--green);box-shadow:0 0 6px var(--green);"></span>
+                        Now Live — For Trades Businesses
+                    </div>
                     <div class="os-price-name">TradeOS</div>
                     <p class="os-price-desc">
-                        Mission control for home service businesses. Leads, jobs, quotes, 
-                        crew management, and revenue tracking in one branded dashboard.
+                        The complete SaaS operating system for trade businesses — HVAC, plumbing, electrical, landscaping, roofing, and contractors. Three optional layers: subscription is always required; setup and management are add-ons.
                     </p>
-                    <div class="os-tier-grid">
-                        <div class="os-tier">
-                            <div class="os-tier-left">
-                                <span class="os-tier-name">Starter</span>
-                                <span class="os-tier-detail">Dashboard + Leads + Jobs &middot; 7-10 days</span>
-                            </div>
-                            <span class="os-tier-price trade-c">From $3,000</span>
+
+                    <!-- Subscription Layer -->
+                    <div class="os-pricing-layer">
+                        <div class="os-pricing-layer-header">
+                            <span class="layer-badge">Required</span> Subscription — Monthly
                         </div>
-                        <div class="os-tier">
-                            <div class="os-tier-left">
-                                <span class="os-tier-name">Pro</span>
-                                <span class="os-tier-detail">+ Quoting + Reports + Automations &middot; 10-14 days</span>
+                        <div class="os-tier-grid">
+                            <div class="os-tier">
+                                <div class="os-tier-left">
+                                    <span class="os-tier-name">Solo</span>
+                                    <span class="os-tier-detail">2 seats &middot; Leads, Jobs, Quotes, Invoices, Clients, Contracts, Reports</span>
+                                </div>
+                                <span class="os-tier-price trade-c">$59/mo</span>
                             </div>
-                            <span class="os-tier-price trade-c">From $6,000</span>
+                            <div class="os-tier">
+                                <div class="os-tier-left">
+                                    <span class="os-tier-name">Pro</span>
+                                    <span class="os-tier-detail">8 seats &middot; + Automations, Crew Management, Scheduling</span>
+                                </div>
+                                <span class="os-tier-price trade-c">$129/mo</span>
+                            </div>
+                            <div class="os-tier">
+                                <div class="os-tier-left">
+                                    <span class="os-tier-name">Growth</span>
+                                    <span class="os-tier-detail">20 seats &middot; All features</span>
+                                </div>
+                                <span class="os-tier-price trade-c">$229/mo</span>
+                            </div>
                         </div>
                     </div>
+
+                    <!-- Setup Layer -->
+                    <div class="os-pricing-layer">
+                        <div class="os-pricing-layer-header">
+                            <span class="layer-badge">Optional</span> Setup — One-Time
+                        </div>
+                        <div class="os-pricing-layer-desc">
+                            White-label branding, data migration, automation configuration, and onboarding call. Depth scales with tier.
+                        </div>
+                        <div class="os-tier-grid">
+                            <div class="os-tier">
+                                <div class="os-tier-left">
+                                    <span class="os-tier-name">Solo Setup</span>
+                                </div>
+                                <span class="os-tier-price trade-c">$150</span>
+                            </div>
+                            <div class="os-tier">
+                                <div class="os-tier-left">
+                                    <span class="os-tier-name">Pro Setup</span>
+                                </div>
+                                <span class="os-tier-price trade-c">$300</span>
+                            </div>
+                            <div class="os-tier">
+                                <div class="os-tier-left">
+                                    <span class="os-tier-name">Growth Setup</span>
+                                </div>
+                                <span class="os-tier-price trade-c">$500</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Management Layer -->
+                    <div class="os-pricing-layer">
+                        <div class="os-pricing-layer-header">
+                            <span class="layer-badge">Optional</span> Management — Monthly
+                        </div>
+                        <div class="os-pricing-layer-desc">
+                            JPax handles ongoing app maintenance, updates, and technical upkeep.
+                        </div>
+                        <div class="os-tier-grid">
+                            <div class="os-tier">
+                                <div class="os-tier-left">
+                                    <span class="os-tier-name">Solo Management</span>
+                                </div>
+                                <span class="os-tier-price trade-c">$50/mo</span>
+                            </div>
+                            <div class="os-tier">
+                                <div class="os-tier-left">
+                                    <span class="os-tier-name">Pro Management</span>
+                                </div>
+                                <span class="os-tier-price trade-c">$100/mo</span>
+                            </div>
+                            <div class="os-tier">
+                                <div class="os-tier-left">
+                                    <span class="os-tier-name">Growth Management</span>
+                                </div>
+                                <span class="os-tier-price trade-c">Contact</span>
+                            </div>
+                        </div>
+                    </div>
+
                     <div class="os-price-features">
-                        <h4>Included in every tier</h4>
+                        <h4>Full Feature Set</h4>
                         <div class="os-feat-grid">
-                            <div class="os-feat trade"><i class="fas fa-check"></i> White-label branding</div>
-                            <div class="os-feat trade"><i class="fas fa-check"></i> Lead management</div>
-                            <div class="os-feat trade"><i class="fas fa-check"></i> Job tracking pipeline</div>
-                            <div class="os-feat trade"><i class="fas fa-check"></i> Client database</div>
-                            <div class="os-feat trade"><i class="fas fa-check"></i> Mobile responsive</div>
-                            <div class="os-feat trade"><i class="fas fa-check"></i> Demo data populated</div>
+                            <div class="os-feat trade"><i class="fas fa-check"></i> Dashboard & Live Stats</div>
+                            <div class="os-feat trade"><i class="fas fa-check"></i> Lead Management (CRM)</div>
+                            <div class="os-feat trade"><i class="fas fa-check"></i> Job Tracking (Kanban)</div>
+                            <div class="os-feat trade"><i class="fas fa-check"></i> Quoting & Templates</div>
+                            <div class="os-feat trade"><i class="fas fa-check"></i> Invoicing & Stripe</div>
+                            <div class="os-feat trade"><i class="fas fa-check"></i> Contracts & E-Signature</div>
+                            <div class="os-feat trade"><i class="fas fa-check"></i> Client Management</div>
+                            <div class="os-feat trade"><i class="fas fa-check"></i> Crew & Scheduling</div>
+                            <div class="os-feat trade"><i class="fas fa-check"></i> Automations Engine</div>
+                            <div class="os-feat trade"><i class="fas fa-check"></i> Reports & Analytics</div>
+                            <div class="os-feat trade"><i class="fas fa-check"></i> White-Label Branding</div>
+                            <div class="os-feat trade"><i class="fas fa-check"></i> Client Portal</div>
+                            <div class="os-feat trade"><i class="fas fa-check"></i> Multi-Seat Team System</div>
+                            <div class="os-feat trade"><i class="fas fa-check"></i> Photo Documentation</div>
                         </div>
                     </div>
                     <a href="index.html#contact" class="os-price-cta trade">
@@ -597,55 +724,47 @@
 
                 <!-- CreatorOS -->
                 <div class="os-price-card creator reveal">
-                    <div class="os-price-tag creator">For Content Creators</div>
+                    <div class="os-coming-soon-badge">
+                        <span class="pulse-dot"></span>
+                        Coming Soon — Currently in Development
+                    </div>
                     <div class="os-price-name">CreatorOS</div>
                     <p class="os-price-desc">
-                        Creative command center. Content pipeline, brand deal management, audience 
-                        analytics, and revenue tracking across every platform.
+                        A white-label AI operating system built for content creators and influencers. Manage brand deals, content pipelines, audience analytics, and revenue — all in one branded dashboard. Premium creative studio aesthetic with purple accent palette.
                     </p>
-                    <div class="os-tier-grid">
-                        <div class="os-tier">
-                            <div class="os-tier-left">
-                                <span class="os-tier-name">Starter</span>
-                                <span class="os-tier-detail">Dashboard + Content + Deals &middot; 7-10 days</span>
-                            </div>
-                            <span class="os-tier-price creator-c">From $3,000</span>
-                        </div>
-                        <div class="os-tier">
-                            <div class="os-tier-left">
-                                <span class="os-tier-name">Pro</span>
-                                <span class="os-tier-detail">+ Audience + Revenue + Automations &middot; 10-14 days</span>
-                            </div>
-                            <span class="os-tier-price creator-c">From $6,000</span>
-                        </div>
-                    </div>
                     <div class="os-price-features">
-                        <h4>Included in every tier</h4>
-                        <div class="os-feat-grid">
-                            <div class="os-feat creator"><i class="fas fa-check"></i> White-label branding</div>
-                            <div class="os-feat creator"><i class="fas fa-check"></i> Content pipeline</div>
-                            <div class="os-feat creator"><i class="fas fa-check"></i> Deal management</div>
-                            <div class="os-feat creator"><i class="fas fa-check"></i> Multi-platform stats</div>
-                            <div class="os-feat creator"><i class="fas fa-check"></i> Mobile responsive</div>
-                            <div class="os-feat creator"><i class="fas fa-check"></i> Demo data populated</div>
+                        <h4>Planned Modules</h4>
+                        <div class="os-module-list">
+                            <span class="os-module-chip"><i class="fas fa-check"></i> Content Pipeline (Kanban)</span>
+                            <span class="os-module-chip"><i class="fas fa-check"></i> Brand Deals Management</span>
+                            <span class="os-module-chip"><i class="fas fa-check"></i> Audience Analytics</span>
+                            <span class="os-module-chip"><i class="fas fa-check"></i> Revenue & Invoicing</span>
+                            <span class="os-module-chip"><i class="fas fa-check"></i> Automations</span>
+                            <span class="os-module-chip"><i class="fas fa-check"></i> Reports</span>
+                        </div>
+                        <div class="os-module-list" style="margin-top:0.5rem;">
+                            <span class="os-module-chip"><i class="fab fa-instagram"></i> Instagram</span>
+                            <span class="os-module-chip"><i class="fab fa-tiktok"></i> TikTok</span>
+                            <span class="os-module-chip"><i class="fab fa-youtube"></i> YouTube</span>
+                            <span class="os-module-chip"><i class="fab fa-x-twitter"></i> X</span>
                         </div>
                     </div>
                     <a href="index.html#contact" class="os-price-cta creator">
-                        Get CreatorOS <i class="fas fa-arrow-right"></i>
+                        Get Notified <i class="fas fa-bell"></i>
                     </a>
                 </div>
             </div>
 
             <!-- OS Included box -->
             <div class="included-box reveal">
-                <h3><i class="fas fa-check-circle g"></i> Every OS Deployment Includes</h3>
+                <h3><i class="fas fa-check-circle g"></i> Every TradeOS Subscription Includes</h3>
                 <div class="included-grid">
-                    <div class="included-item"><i class="fas fa-check g"></i> Branded to your business name, logo & colors</div>
-                    <div class="included-item"><i class="fas fa-check g"></i> Populated with realistic demo data</div>
-                    <div class="included-item"><i class="fas fa-check g"></i> 2 revision rounds included</div>
-                    <div class="included-item"><i class="fas fa-check g"></i> All source files & full ownership</div>
-                    <div class="included-item"><i class="fas fa-check g"></i> Jupiter Access (30-day project window)</div>
-                    <div class="included-item"><i class="fas fa-check g"></i> 30-day post-delivery support</div>
+                    <div class="included-item"><i class="fas fa-check g"></i> White-label branding (your logo, name & colors)</div>
+                    <div class="included-item"><i class="fas fa-check g"></i> Client portal for quote approval & payments</div>
+                    <div class="included-item"><i class="fas fa-check g"></i> Multi-seat team system with roles</div>
+                    <div class="included-item"><i class="fas fa-check g"></i> Online payment via Stripe</div>
+                    <div class="included-item"><i class="fas fa-check g"></i> PDF invoice & quote generation</div>
+                    <div class="included-item"><i class="fas fa-check g"></i> E-signature contracts</div>
                 </div>
             </div>
         </div>
