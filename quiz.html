@@ -46,8 +46,12 @@
         .nav-links a:hover{color:var(--white);background:rgba(255,255,255,0.04)}
         .nav-links a.active{color:var(--accent)}
         .nav-divider{width:1px;height:20px;background:rgba(255,255,255,0.08);margin:0 0.5rem}
-        .nav-cta{background:var(--accent)!important;color:#000!important;padding:0.5rem 1.3rem!important;border-radius:8px;font-weight:600!important;font-size:0.82rem!important;transition:all 0.3s!important;letter-spacing:0.02em;margin-left:0.25rem}
-        .nav-cta:hover{background:#6EE7A8!important;transform:translateY(-1px);box-shadow:0 4px 20px rgba(74,222,128,0.35)}
+        .nav-cta{background:transparent!important;color:var(--accent)!important;padding:0.5rem 1.3rem!important;border-radius:8px;font-weight:600!important;font-size:0.82rem!important;transition:all 0.3s!important;letter-spacing:0.02em;margin-left:0.25rem;border:1px solid rgba(74,222,128,0.3)!important}
+        .nav-cta:hover{background:rgba(74,222,128,0.08)!important;transform:translateY(-1px);border-color:rgba(74,222,128,0.6)!important;box-shadow:0 2px 12px rgba(74,222,128,0.15)}
+        .nav-jupiter{color:var(--accent)!important;font-weight:600!important;font-family:var(--font-display)!important;letter-spacing:0.06em;text-transform:uppercase;font-size:0.75rem!important;background:rgba(74,222,128,0.06)!important;border:1px solid rgba(74,222,128,0.12);padding:0.4rem 0.85rem!important;border-radius:6px}
+        .nav-jupiter:hover{background:rgba(74,222,128,0.12)!important;border-color:rgba(74,222,128,0.25);box-shadow:0 0 16px rgba(74,222,128,0.1)}
+        .nav-jupiter .jupiter-dot{display:inline-block;width:5px;height:5px;background:var(--accent);border-radius:50%;margin-right:5px;vertical-align:middle;box-shadow:0 0 6px rgba(74,222,128,0.5);animation:jupiterPulse 2.5s ease-in-out infinite}
+        @keyframes jupiterPulse{0%,100%{opacity:0.7;box-shadow:0 0 4px rgba(74,222,128,0.3)}50%{opacity:1;box-shadow:0 0 8px rgba(74,222,128,0.6)}}
         .nav-mobile-btn{display:none;background:none;border:none;cursor:pointer;padding:0.5rem;width:40px;height:40px;position:relative;z-index:1001;align-items:center;justify-content:center}
         .nav-mobile-btn span{display:block;width:22px;height:2px;background:var(--gray-300);margin:0 auto;transition:all 0.3s cubic-bezier(0.4,0,0.2,1);border-radius:2px}
         .nav-mobile-btn span:nth-child(1){transform:translateY(-4px)}
@@ -192,7 +196,7 @@
         <a href="index.html" class="nav-logo"><img src="jpaxmedialogoOFFICIALFINAL(white).svg" alt="JPax Media"></a>
         <div class="nav-links">
             <a href="index.html#systems">Systems</a><a href="index.html#services">Services</a><a href="index.html#process">Process</a>
-            <a href="portfolio.html">Portfolio</a><a href="jupiter.html">Jupiter</a><span class="nav-divider"></span><a href="pricing.html" class="nav-cta">View Pricing</a><a href="/client/portal.html" style="color:#6b7280;margin-left:8px;font-size:13px;text-decoration:none;transition:color 0.2s;" onmouseover="this.style.color='#00e87b'" onmouseout="this.style.color='#6b7280'">Client Portal</a>
+            <a href="portfolio.html">Portfolio</a><a href="jupiter.html" class="nav-jupiter"><span class="jupiter-dot"></span>Jupiter</a><span class="nav-divider"></span><a href="pricing.html" class="nav-cta">View Pricing</a><a href="/client/portal.html" style="color:#6b7280;margin-left:8px;font-size:13px;text-decoration:none;transition:color 0.2s;" onmouseover="this.style.color='#00e87b'" onmouseout="this.style.color='#6b7280'">Client Portal</a>
         </div>
         <button class="nav-mobile-btn" id="mobileBtn" aria-label="Menu"><span></span><span></span><span></span></button>
     </div></nav>
@@ -200,7 +204,7 @@
     <div class="mobile-menu" id="mobileMenu">
         <div class="mobile-menu-links">
             <a href="index.html">Home</a><a href="index.html#systems">Systems</a><a href="portfolio.html">Portfolio</a>
-            <a href="jupiter.html">Jupiter</a><a href="pricing.html">Pricing</a><a href="quiz.html" class="mob-active">Take the Quiz</a><a href="/client/portal.html" style="color:#6b7280;font-size:14px;transition:color 0.2s;" onmouseover="this.style.color='#00e87b'" onmouseout="this.style.color='#6b7280'">Client Portal</a>
+            <a href="jupiter.html" style="color:var(--accent);font-family:var(--font-display);font-weight:600;letter-spacing:0.06em;text-transform:uppercase;font-size:0.95rem;">Jupiter</a><a href="pricing.html">Pricing</a><a href="quiz.html" class="mob-active">Take the Quiz</a><a href="/client/portal.html" style="color:#6b7280;font-size:14px;transition:color 0.2s;" onmouseover="this.style.color='#00e87b'" onmouseout="this.style.color='#6b7280'">Client Portal</a>
         </div>
         <div class="mobile-menu-cta"><a href="pricing.html">View Pricing <i class="fas fa-arrow-right"></i></a></div>
         <div class="mobile-menu-brand">Build. Rise. Scale.</div>
