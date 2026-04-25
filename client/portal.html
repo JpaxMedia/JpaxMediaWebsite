@@ -545,6 +545,7 @@
   //
   const CLIENTS = [
     { code: atob('c291dGhlcm5wYXZlcnMyMDI1'), content: 'southern-pavers/campaign-brief.html' },
+    { code: atob('c2hlZG1vdmVyczIwMjY='), content: 'shed-movers/proposal.html' }, // shedmovers2026
     // { code: atob('...'), content: '27-birds/deliverable.html' },
     // { code: atob('...'), content: 'haven-hospitality/deliverable.html' },
   ];
@@ -620,10 +621,13 @@
     location.reload();
   }
 
-  // Check for existing session
+  // Check for existing session — only auto-unlock if the saved path matches a current client
   const savedSession = sessionStorage.getItem('jpax_unlocked');
-  if (savedSession && savedSession !== 'false') {
+  const validSession = savedSession && CLIENTS.some(c => c.content === savedSession);
+  if (validSession) {
     unlock(savedSession);
+  } else if (savedSession) {
+    sessionStorage.removeItem('jpax_unlocked');
   }
 </script>
 </body>

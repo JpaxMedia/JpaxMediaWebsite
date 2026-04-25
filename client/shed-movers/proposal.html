@@ -1,0 +1,1055 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>JPax Media — Proposal for Shed Movers LLC</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:ital,wght@0,300;0,400;0,600;0,700;1,400&family=JetBrains+Mono:wght@400;600&display=swap');
+  @import url('https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@400;600;700&display=swap');
+
+  :root {
+    --dark: #06080F;
+    --dark2: #0C101C;
+    --dark3: #0F172A;
+    --green: #4ADE80;
+    --green2: #10B981;
+    --purple: #8B5CF6;
+    --border: #1E2A3D;
+    --text: #E2E8F0;
+    --text-soft: #94A3B8;
+    --text-muted: #64748B;
+    --white: #F8FAFC;
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'IBM Plex Sans', Arial, sans-serif;
+    background: var(--dark);
+    color: var(--text);
+    font-size: 14px;
+    line-height: 1.7;
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
+
+  a { color: var(--green); text-decoration: none; }
+  a:hover { text-decoration: underline; }
+
+  /* ── SCROLL PROGRESS BAR ── */
+  .scroll-progress {
+    position: fixed;
+    top: 0; left: 0;
+    height: 3px;
+    width: 0%;
+    background: linear-gradient(90deg, var(--green), var(--purple));
+    z-index: 100;
+    transition: width 0.08s linear;
+    pointer-events: none;
+  }
+
+  /* ── SIDE NAV ── */
+  .side-nav {
+    position: fixed;
+    top: 50%;
+    right: 28px;
+    transform: translateY(-50%);
+    z-index: 50;
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+  }
+  .side-nav a {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px;
+    color: var(--text-muted);
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    transition: color 0.25s ease;
+  }
+  .side-nav a::before {
+    content: '';
+    width: 22px;
+    height: 2px;
+    background: var(--text-muted);
+    transition: width 0.25s ease, background 0.25s ease;
+  }
+  .side-nav a .nav-label {
+    opacity: 0;
+    transform: translateX(-6px);
+    transition: opacity 0.25s ease, transform 0.25s ease;
+    pointer-events: none;
+  }
+  .side-nav a:hover,
+  .side-nav a.active {
+    color: var(--green);
+    text-decoration: none;
+  }
+  .side-nav a:hover::before,
+  .side-nav a.active::before {
+    background: var(--green);
+    width: 36px;
+  }
+  .side-nav a:hover .nav-label,
+  .side-nav a.active .nav-label {
+    opacity: 1;
+    transform: translateX(0);
+  }
+  @media (max-width: 1180px) { .side-nav { display: none; } }
+
+  /* ── SCROLL REVEAL ── */
+  .reveal {
+    opacity: 0;
+    transform: translateY(24px);
+    transition: opacity 0.7s ease, transform 0.7s ease;
+  }
+  .reveal.in-view {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .reveal { opacity: 1; transform: none; transition: none; }
+    html { scroll-behavior: auto; }
+  }
+
+  /* ── BUTTONS ── */
+  .actions {
+    display: flex;
+    gap: 12px;
+    margin: 32px 0 8px;
+    flex-wrap: wrap;
+  }
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 14px 24px;
+    border-radius: 8px;
+    font-family: 'IBM Plex Sans', sans-serif;
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    cursor: pointer;
+    border: 1px solid transparent;
+    text-decoration: none;
+    transition: transform 0.2s ease, box-shadow 0.2s ease, background 0.2s ease, color 0.2s ease, border-color 0.2s ease;
+  }
+  .btn-primary {
+    background: var(--green);
+    color: var(--dark);
+  }
+  .btn-primary:hover {
+    background: var(--green2);
+    color: var(--dark);
+    transform: translateY(-2px);
+    box-shadow: 0 10px 28px rgba(74, 222, 128, 0.28);
+    text-decoration: none;
+  }
+  .btn-secondary {
+    background: transparent;
+    color: var(--text);
+    border-color: var(--border);
+  }
+  .btn-secondary:hover {
+    border-color: var(--green);
+    color: var(--green);
+    transform: translateY(-2px);
+    text-decoration: none;
+  }
+
+  /* ── COVER PAGE ── */
+  .cover {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 80px 60px;
+    position: relative;
+  }
+  .cover-eyebrow {
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--green);
+    margin-bottom: 24px;
+  }
+  .cover-title {
+    font-family: 'Chakra Petch', 'Arial Black', sans-serif;
+    font-weight: 700;
+    font-size: 56px;
+    line-height: 1.1;
+    color: var(--white);
+    margin-bottom: 8px;
+  }
+  .cover-title span { color: var(--green); }
+  .cover-subtitle {
+    font-size: 18px;
+    color: var(--text-soft);
+    margin-top: 4px;
+    font-weight: 300;
+  }
+  .cover-rule {
+    width: 60px;
+    height: 3px;
+    background: var(--green);
+    margin: 28px 0 40px;
+    border: none;
+  }
+  .cover-client-card {
+    background: var(--dark2);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 28px 32px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 18px 48px;
+    max-width: 560px;
+  }
+  .cover-client-card .label {
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--text-muted);
+    margin-bottom: 2px;
+  }
+  .cover-client-card .value {
+    font-size: 14px;
+    color: var(--white);
+    font-weight: 600;
+  }
+  .cover-client-card .value.mono {
+    font-family: 'JetBrains Mono', monospace;
+  }
+  .cover-footer {
+    position: absolute;
+    bottom: 40px;
+    left: 60px;
+    right: 60px;
+    font-size: 11px;
+    color: var(--text-muted);
+  }
+  .cover-footer a { color: var(--text-muted); }
+
+  /* ── PAGE WRAPPER ── */
+  .page {
+    max-width: 860px;
+    margin: 0 auto;
+    padding: 0 60px;
+  }
+
+  /* ── RUNNING HEADER ── */
+  .running-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 24px 0 16px;
+    border-bottom: 2px solid var(--green);
+    margin-bottom: 48px;
+  }
+  .running-header .left {
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--green);
+  }
+  .running-header .right {
+    font-size: 11px;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--text-muted);
+  }
+
+  /* ── SECTION HEADERS ── */
+  .section-num {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 12px;
+    color: var(--text-muted);
+    margin-bottom: 6px;
+  }
+  h2 {
+    font-size: 20px;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--green);
+    margin-bottom: 6px;
+  }
+  .section-rule {
+    height: 2px;
+    background: linear-gradient(to right, var(--green), transparent);
+    border: none;
+    margin-bottom: 28px;
+  }
+  h3 {
+    font-size: 15px;
+    font-weight: 700;
+    color: var(--white);
+    margin: 28px 0 12px;
+  }
+  p { margin-bottom: 14px; }
+  p strong { color: var(--white); }
+
+  /* ── SECTION SPACING ── */
+  .section { margin-bottom: 64px; }
+
+  /* ── STAT CARDS ── */
+  .stat-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 16px;
+    margin: 28px 0;
+  }
+  .stat-card {
+    background: var(--dark2);
+    border: 1px solid var(--border);
+    border-top: 3px solid var(--green);
+    border-radius: 8px;
+    padding: 20px;
+    text-align: center;
+    transition: transform 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease;
+  }
+  .stat-card:hover {
+    transform: translateY(-4px);
+    border-color: var(--green);
+    box-shadow: 0 12px 32px rgba(74, 222, 128, 0.12);
+  }
+  .stat-card .number {
+    font-size: 28px;
+    font-weight: 700;
+    color: var(--green);
+    margin-bottom: 4px;
+  }
+  .stat-card .stat-label {
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--text-muted);
+  }
+
+  /* ── TABLES ── */
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 20px 0;
+  }
+  thead th {
+    background: var(--dark3);
+    color: var(--green);
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    text-align: left;
+    padding: 12px 16px;
+    border-bottom: 2px solid var(--border);
+  }
+  thead th.right { text-align: right; }
+  tbody tr { transition: background 0.2s ease; }
+  tbody tr:hover td { background: var(--dark3); }
+  tbody td {
+    background: var(--dark2);
+    padding: 12px 16px;
+    border-bottom: 1px solid var(--border);
+    font-size: 14px;
+    transition: background 0.2s ease;
+  }
+  tbody td:first-child {
+    font-weight: 700;
+    color: var(--white);
+  }
+  tbody td.right { text-align: right; }
+  .check { color: var(--green); font-weight: 700; }
+  .total-row td {
+    background: var(--dark3);
+    font-weight: 700;
+    color: var(--green);
+    font-size: 15px;
+    border-top: 2px solid var(--green2);
+  }
+
+  /* ── CALLOUT BOX ── */
+  .callout {
+    background: var(--dark2);
+    border-left: 3px solid var(--green);
+    border-radius: 0 8px 8px 0;
+    padding: 16px 20px;
+    margin: 24px 0;
+    transition: transform 0.25s ease, border-left-width 0.2s ease;
+  }
+  .callout:hover {
+    transform: translateX(4px);
+    border-left-width: 5px;
+  }
+  .callout.purple { border-left-color: var(--purple); }
+  .callout p { margin-bottom: 0; }
+  .callout strong { color: var(--white); }
+
+  /* ── DOC LIST ── */
+  .doc-list {
+    list-style: none;
+    margin: 16px 0;
+  }
+  .doc-list li {
+    padding: 10px 0;
+    border-bottom: 1px solid var(--border);
+    display: flex;
+    align-items: baseline;
+    gap: 12px;
+  }
+  .doc-list li::before {
+    content: "–";
+    color: var(--green);
+    font-weight: 700;
+    flex-shrink: 0;
+  }
+  .doc-list li strong { color: var(--white); }
+
+  /* ── PAYMENT CARDS ── */
+  .payment-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+    margin: 24px 0;
+  }
+  .payment-card {
+    background: var(--dark2);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 24px;
+    text-align: center;
+    transition: transform 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease;
+  }
+  .payment-card:hover {
+    transform: translateY(-4px);
+    border-color: var(--green);
+    box-shadow: 0 12px 32px rgba(74, 222, 128, 0.12);
+  }
+  .payment-card .number {
+    font-size: 26px;
+    font-weight: 700;
+    color: var(--green);
+    margin-bottom: 4px;
+  }
+  .payment-card .pay-label {
+    font-size: 12px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    color: var(--text-muted);
+  }
+  .payment-card .pay-note {
+    font-size: 12px;
+    color: var(--text-soft);
+    margin-top: 6px;
+  }
+
+  /* ── TIMELINE ── */
+  .timeline-row td:first-child {
+    color: var(--green);
+  }
+
+  /* ── SIGNATURE BLOCK ── */
+  .sig-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 40px;
+    margin: 40px 0 20px;
+  }
+  .sig-block {
+    border-top: 1px solid var(--text-muted);
+    padding-top: 12px;
+  }
+  .sig-block .sig-label {
+    font-size: 11px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    color: var(--text-muted);
+    margin-bottom: 4px;
+  }
+  .sig-block .sig-name {
+    font-size: 14px;
+    color: var(--white);
+    font-weight: 600;
+  }
+  .date-line {
+    display: flex;
+    gap: 40px;
+    margin-top: 32px;
+  }
+  .date-field {
+    flex: 1;
+    border-top: 1px solid var(--text-muted);
+    padding-top: 10px;
+    font-size: 11px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    color: var(--text-muted);
+  }
+
+  /* ── FOOTER ── */
+  .doc-footer {
+    border-top: 1px solid var(--border);
+    padding: 20px 0 40px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 80px;
+  }
+  .doc-footer .left {
+    font-size: 12px;
+    font-weight: 700;
+    color: var(--green);
+  }
+  .doc-footer .right {
+    font-size: 11px;
+    color: var(--text-muted);
+  }
+  .doc-footer .right a { color: var(--text-muted); }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width: 700px) {
+    .cover { padding: 48px 28px; }
+    .cover-title { font-size: 36px; }
+    .cover-client-card { grid-template-columns: 1fr; }
+    .page { padding: 0 28px; }
+    .stat-grid { grid-template-columns: 1fr; }
+    .payment-grid { grid-template-columns: 1fr; }
+    .sig-grid { grid-template-columns: 1fr; }
+    .cover-footer { left: 28px; right: 28px; }
+  }
+
+  @media print {
+    .cover { page-break-after: always; }
+    .section { page-break-inside: avoid; }
+    .scroll-progress, .side-nav, .actions { display: none !important; }
+    .reveal { opacity: 1 !important; transform: none !important; }
+    .stat-card:hover, .payment-card:hover, .callout:hover { transform: none !important; box-shadow: none !important; }
+  }
+</style>
+</head>
+<body>
+
+<div class="scroll-progress" id="scroll-progress"></div>
+
+<nav class="side-nav" aria-label="Section navigation">
+  <a href="#sec-01" data-target="sec-01"><span class="nav-label">Intro</span></a>
+  <a href="#sec-02" data-target="sec-02"><span class="nav-label">Summary</span></a>
+  <a href="#sec-03" data-target="sec-03"><span class="nav-label">Scope</span></a>
+  <a href="#sec-04" data-target="sec-04"><span class="nav-label">Timeline</span></a>
+  <a href="#sec-05" data-target="sec-05"><span class="nav-label">Investment</span></a>
+  <a href="#sec-06" data-target="sec-06"><span class="nav-label">Why JPax</span></a>
+  <a href="#sec-07" data-target="sec-07"><span class="nav-label">Accept</span></a>
+</nav>
+
+<!-- ═══════════════════════════════════════ COVER ═══════════════════════════════════════ -->
+<div class="cover">
+  <div class="cover-eyebrow">Project Proposal · BUILD + RISE Engagement</div>
+  <h1 class="cover-title">Shed Movers <span>LLC</span></h1>
+  <p class="cover-subtitle">Full Digital Rebuild &amp; Monthly Growth Partnership</p>
+  <hr class="cover-rule">
+
+  <div class="cover-client-card">
+    <div>
+      <div class="label">Prepared For</div>
+      <div class="value">Kevin — Shed Movers LLC</div>
+    </div>
+    <div>
+      <div class="label">Location</div>
+      <div class="value">Spartanburg, SC</div>
+    </div>
+    <div>
+      <div class="label">Prepared By</div>
+      <div class="value">Julian Johnson — JPax Media</div>
+    </div>
+    <div>
+      <div class="label">Date</div>
+      <div class="value">April 25, 2026</div>
+    </div>
+    <div>
+      <div class="label">Proposal #</div>
+      <div class="value mono">PROP-BUILD-RISE-001</div>
+    </div>
+    <div>
+      <div class="label">Valid Through</div>
+      <div class="value">May 25, 2026</div>
+    </div>
+  </div>
+
+  <div class="cover-footer">
+    JPax Media LLC ·
+    <a href="mailto:julian@jpaxmedia.com">julian@jpaxmedia.com</a> ·
+    <a href="tel:+18604943090">(860) 494-3090</a> ·
+    <a href="https://jpaxmedia.com">jpaxmedia.com</a>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════ BODY ═══════════════════════════════════════ -->
+<div class="page">
+  <div class="running-header">
+    <div class="left">JPax Media LLC</div>
+    <div class="right">Proposal · Shed Movers LLC</div>
+  </div>
+
+  <!-- ── 01 INTRODUCTION ── -->
+  <div class="section reveal" id="sec-01">
+    <div class="section-num">01</div>
+    <h2>Introduction</h2>
+    <hr class="section-rule">
+    <p>Kevin — here's what I'm proposing. A modern website that ranks and converts, AI-powered video content that stops thumbs, consistent social media, and automated follow-up so no lead falls through the cracks. One system. One point of contact. Everything digital, handled.</p>
+  </div>
+
+  <!-- ── 02 PROJECT SUMMARY ── -->
+  <div class="section reveal" id="sec-02">
+    <div class="section-num">02</div>
+    <h2>Project Summary</h2>
+    <hr class="section-rule">
+
+    <div class="stat-grid">
+      <div class="stat-card">
+        <div class="number">BUILD</div>
+        <div class="stat-label">Website Rebuild</div>
+      </div>
+      <div class="stat-card">
+        <div class="number">RISE</div>
+        <div class="stat-label">Monthly Growth</div>
+      </div>
+      <div class="stat-card">
+        <div class="number">$1,000</div>
+        <div class="stat-label">One-Time Build</div>
+      </div>
+    </div>
+
+    <p>This is a two-part engagement. First, I <strong>BUILD</strong> the foundation — a brand-new website optimized for search and designed to convert visitors into calls. Then we go into <strong>RISE</strong> — an ongoing monthly partnership where I manage your video content, social media, Google presence, and lead automation.</p>
+
+    <div class="callout">
+      <p><strong>Why both?</strong> A great website without traffic is a billboard in the woods. Monthly content and ads without a solid website is money wasted. The BUILD gives you the foundation. The RISE drives people to it — and keeps them coming back.</p>
+    </div>
+  </div>
+
+  <!-- ── 03 WHAT WE'RE BUILDING ── -->
+  <div class="section reveal" id="sec-03">
+    <div class="section-num">03</div>
+    <h2>What We're Building</h2>
+    <hr class="section-rule">
+
+    <h3>Phase 1 — Website Rebuild (BUILD)</h3>
+    <p>A clean, modern, mobile-first website that tells visitors exactly what you do, where you do it, and how to contact you — in under 5 seconds.</p>
+
+    <table>
+      <thead>
+        <tr>
+          <th>Deliverable</th>
+          <th>Details</th>
+          <th>Included</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Homepage</td>
+          <td>Hero, services overview, trust signals, service area, CTAs</td>
+          <td class="check">&#10003;</td>
+        </tr>
+        <tr>
+          <td>Services Page</td>
+          <td>Shed moving, shipping containers, outdoor shed sales — each with specs</td>
+          <td class="check">&#10003;</td>
+        </tr>
+        <tr>
+          <td>Contact / Quote Page</td>
+          <td>Quote request form, phone, email, location, business hours</td>
+          <td class="check">&#10003;</td>
+        </tr>
+        <tr>
+          <td>Blog (SEO)</td>
+          <td>Blog section for ongoing content — "How much does it cost to move a shed in SC?" etc.</td>
+          <td class="check">&#10003;</td>
+        </tr>
+        <tr>
+          <td>Mobile Responsive</td>
+          <td>Looks great on phone, tablet, and desktop</td>
+          <td class="check">&#10003;</td>
+        </tr>
+        <tr>
+          <td>SEO Foundation</td>
+          <td>Meta tags, structured data, image optimization, Google indexing</td>
+          <td class="check">&#10003;</td>
+        </tr>
+        <tr>
+          <td>Google Analytics</td>
+          <td>Tracking setup so you can see who's visiting and from where</td>
+          <td class="check">&#10003;</td>
+        </tr>
+        <tr>
+          <td>Lead Capture Form</td>
+          <td>Every form submission goes directly to your phone/email</td>
+          <td class="check">&#10003;</td>
+        </tr>
+        <tr>
+          <td>Source Files</td>
+          <td>You own everything. Full code and assets delivered at completion.</td>
+          <td class="check">&#10003;</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <h3>Phase 2 — Monthly Digital Growth (RISE)</h3>
+    <p>Once the website is live, I keep the engine running. Every month, I handle your content, your ads, your social presence, and your lead follow-up — so you can focus on moving sheds.</p>
+
+    <table>
+      <thead>
+        <tr>
+          <th>Service</th>
+          <th>What You Get</th>
+          <th>Frequency</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>AI Video Content</td>
+          <td>Custom AI-generated videos — funny, outlandish, PG, scroll-stopping. Your face, your brand, your personality. No limits on creativity.</td>
+          <td>3 per week</td>
+        </tr>
+        <tr>
+          <td>Facebook Management</td>
+          <td>Content posted consistently — photos, videos, promos, engagement. You never have to think about it.</td>
+          <td>20–25 posts/mo</td>
+        </tr>
+        <tr>
+          <td>Ad Campaigns</td>
+          <td>Targeted Meta ads (Facebook + Instagram) reaching shed buyers in NC, SC, GA, TN. Managed and optimized monthly.</td>
+          <td>3 campaigns/mo</td>
+        </tr>
+        <tr>
+          <td>Google Business Profile</td>
+          <td>Fix location issues, optimize listing, manage reviews and photos. Get your Google presence cleaned up and ranking.</td>
+          <td>Ongoing</td>
+        </tr>
+        <tr>
+          <td>Lead Follow-Up Automation</td>
+          <td>Automated system that re-engages leads who don't respond. Text + email sequences so no one slips through.</td>
+          <td>Always on</td>
+        </tr>
+        <tr>
+          <td>Strategy Call</td>
+          <td>Monthly check-in — what's working, what to adjust, what's coming next.</td>
+          <td>1 per month</td>
+        </tr>
+        <tr>
+          <td>Jupiter Dashboard</td>
+          <td>Your own login to see deliverables, performance data, and message Julian directly.</td>
+          <td>24/7 access</td>
+        </tr>
+        <tr>
+          <td>Performance Report</td>
+          <td>Monthly snapshot — reach, engagement, leads, ad performance, growth trends.</td>
+          <td>Monthly</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <div class="callout purple">
+      <p><strong>About the video content:</strong> You want unique, outlandish, funny — the kind of content that makes people stop scrolling and share it. That's exactly what I do best. Full creative freedom. PG. No holds barred. I'll make content that people in Spartanburg can't stop talking about.</p>
+    </div>
+  </div>
+
+  <!-- ── 04 PROCESS & TIMELINE ── -->
+  <div class="section reveal" id="sec-04">
+    <div class="section-num">04</div>
+    <h2>Process &amp; Timeline</h2>
+    <hr class="section-rule">
+
+    <table>
+      <thead>
+        <tr>
+          <th>Phase</th>
+          <th>What Happens</th>
+          <th>Timeline</th>
+        </tr>
+      </thead>
+      <tbody class="timeline-row">
+        <tr>
+          <td>Discovery</td>
+          <td>Final details — brand assets, login access, content preferences, any must-haves</td>
+          <td>Day 1–2</td>
+        </tr>
+        <tr>
+          <td>Website Build</td>
+          <td>Full website designed, developed, and deployed. Blog section included. SEO configured.</td>
+          <td>Day 3–10</td>
+        </tr>
+        <tr>
+          <td>Review &amp; Launch</td>
+          <td>You review the site, I make revisions (2 rounds included), then go live.</td>
+          <td>Day 10–14</td>
+        </tr>
+        <tr>
+          <td>RISE Kickoff</td>
+          <td>Social accounts connected, ad campaigns launched, automation configured, first batch of video content produced.</td>
+          <td>Week 3</td>
+        </tr>
+        <tr>
+          <td>Ongoing Growth</td>
+          <td>Monthly content, ads, optimization, reporting, and strategy calls. Results compound over time.</td>
+          <td>Monthly</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <div class="callout">
+      <p><strong>Website delivery: 10–14 days.</strong> Timeline begins the day I receive your deposit and any brand assets (logo files, photos, etc.).</p>
+    </div>
+  </div>
+
+  <!-- ── 05 INVESTMENT ── -->
+  <div class="section reveal" id="sec-05">
+    <div class="section-num">05</div>
+    <h2>Investment</h2>
+    <hr class="section-rule">
+
+    <h3>One-Time — Website Rebuild (BUILD)</h3>
+    <table>
+      <thead>
+        <tr>
+          <th>Item</th>
+          <th>Description</th>
+          <th class="right">Amount</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Website Design &amp; Development</td>
+          <td>4-page site (Home, Services, Blog, Contact) — mobile responsive, SEO-ready, lead capture</td>
+          <td class="right">$1,000</td>
+        </tr>
+        <tr>
+          <td>Google Analytics Setup</td>
+          <td>Tracking, search console, sitemap submission</td>
+          <td class="right">Included</td>
+        </tr>
+        <tr>
+          <td>Source Files &amp; Ownership</td>
+          <td>Full code, assets, and domain control transferred to you</td>
+          <td class="right">Included</td>
+        </tr>
+        <tr>
+          <td>30-Day Post-Launch Support</td>
+          <td>Bug fixes, minor adjustments, and questions answered for 30 days after launch</td>
+          <td class="right">Included</td>
+        </tr>
+        <tr class="total-row">
+          <td colspan="2">Total — Website Build</td>
+          <td class="right">$1,000</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <div class="payment-grid">
+      <div class="payment-card">
+        <div class="number">$500</div>
+        <div class="pay-label">50% Deposit</div>
+        <div class="pay-note">Due to begin work</div>
+      </div>
+      <div class="payment-card">
+        <div class="number">$500</div>
+        <div class="pay-label">50% at Delivery</div>
+        <div class="pay-note">Due at website launch</div>
+      </div>
+    </div>
+
+    <h3>Monthly — Digital Growth (RISE)</h3>
+    <table>
+      <thead>
+        <tr>
+          <th>Item</th>
+          <th>Description</th>
+          <th class="right">Monthly</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>RISE Growth Partnership</td>
+          <td>AI video (3/week), Facebook management (20–25 posts), 3 ad campaigns, Google Business Profile, lead automation, strategy call, Jupiter dashboard, monthly report</td>
+          <td class="right">$1,500/mo</td>
+        </tr>
+        <tr>
+          <td>Website Management</td>
+          <td>Weekly blog post (SEO-optimized), hosting, maintenance, and minor content updates</td>
+          <td class="right">$150/mo</td>
+        </tr>
+        <tr class="total-row">
+          <td colspan="2">Total — Monthly</td>
+          <td class="right">$1,650/mo</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <div class="callout">
+      <p><strong>RISE terms:</strong> 3-month minimum commitment. First month billed upfront at signing. Cancel anytime after month 3 with 30 days' written notice. Ad spend is separate and managed through your own ad accounts — I handle the strategy, targeting, and optimization.</p>
+    </div>
+
+    <div class="callout">
+      <p><strong>First-month guarantee:</strong> If you're not satisfied after the first month, you don't pay for it. No questions asked.</p>
+    </div>
+  </div>
+
+  <!-- ── 06 WHY JPAX ── -->
+  <div class="section reveal" id="sec-06">
+    <div class="section-num">06</div>
+    <h2>Why JPax</h2>
+    <hr class="section-rule">
+
+    <ul class="doc-list">
+      <li><span><strong>I build first, talk second.</strong> You've already seen the website and video demos I made for you before this conversation even happened. That's how I work — results first, pitch after.</span></li>
+      <li><span><strong>AI-accelerated, human-directed.</strong> The AI video content you loved from 27 Birds? That's me. Same tools, same creative process. You're not paying for Sora anymore — you're getting something better, plus everything else.</span></li>
+      <li><span><strong>You own everything.</strong> Every asset I create — your website, your videos, your graphics — belongs to you. Full source files. No lock-in.</span></li>
+      <li><span><strong>One point of contact.</strong> You talk to me directly. No account managers, no runaround. Your project lives in Jupiter where you can see every deliverable and message me anytime.</span></li>
+      <li><span><strong>Speed.</strong> Website in 10–14 days. First video content within the first week of RISE. I move fast because I've built the systems to do it right at speed.</span></li>
+      <li><span><strong>Creative freedom.</strong> You said no limits, PG, funny, outlandish. That's exactly the kind of work I love making. This isn't templated content — it's custom, weird, and built to go viral in your market.</span></li>
+    </ul>
+  </div>
+
+  <!-- ── 07 ACCEPTANCE ── -->
+  <div class="section reveal" id="sec-07">
+    <div class="section-num">07</div>
+    <h2>Acceptance</h2>
+    <hr class="section-rule">
+
+    <p>By signing below, both parties agree to the scope, pricing, and terms outlined in this proposal. A formal contract will be provided upon acceptance for final signature.</p>
+    <p>This proposal is valid for <strong>30 days</strong> from the date above. Questions? Contact Julian directly at <a href="mailto:julian@jpaxmedia.com">julian@jpaxmedia.com</a> before signing.</p>
+
+    <div class="actions">
+      <a class="btn btn-primary" href="mailto:julian@jpaxmedia.com?subject=Accepting%20JPax%20Proposal%20%E2%80%94%20Shed%20Movers%20LLC%20(PROP-BUILD-RISE-001)&amp;body=Hey%20Julian%2C%0A%0AI'm%20accepting%20the%20proposal%20for%20Shed%20Movers%20LLC.%20Send%20over%20the%20deposit%20invoice%20and%20let's%20get%20started.%0A%0A-%20Kevin">Accept Proposal</a>
+      <button type="button" class="btn btn-secondary" onclick="window.print()">Print / Save PDF</button>
+    </div>
+
+    <div class="sig-grid">
+      <div class="sig-block">
+        <div class="sig-label">Client Signature</div>
+        <div class="sig-name">Kevin — Shed Movers LLC</div>
+      </div>
+      <div class="sig-block">
+        <div class="sig-label">JPax Media</div>
+        <div class="sig-name">Julian Johnson — Founder &amp; Creative Director</div>
+      </div>
+    </div>
+    <div class="date-line">
+      <div class="date-field">Date</div>
+      <div class="date-field">Date</div>
+    </div>
+  </div>
+
+  <!-- ── FOOTER ── -->
+  <div class="doc-footer">
+    <div class="left">JPax Media LLC · Build. Rise. Scale.</div>
+    <div class="right">
+      <a href="https://jpaxmedia.com">jpaxmedia.com</a> ·
+      <a href="mailto:julian@jpaxmedia.com">julian@jpaxmedia.com</a> · 2026
+    </div>
+  </div>
+</div>
+
+<script>
+(function () {
+  const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  // Scroll progress bar
+  const bar = document.getElementById('scroll-progress');
+  let ticking = false;
+  const updateBar = () => {
+    const h = document.documentElement;
+    const max = h.scrollHeight - h.clientHeight;
+    const pct = max > 0 ? (window.scrollY / max) * 100 : 0;
+    bar.style.width = pct + '%';
+    ticking = false;
+  };
+  window.addEventListener('scroll', () => {
+    if (!ticking) { requestAnimationFrame(updateBar); ticking = true; }
+  }, { passive: true });
+  updateBar();
+
+  // Reveal-on-scroll
+  const reveals = document.querySelectorAll('.reveal');
+  if (reduced) {
+    reveals.forEach(el => el.classList.add('in-view'));
+  } else if ('IntersectionObserver' in window) {
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach(e => {
+        if (e.isIntersecting) {
+          e.target.classList.add('in-view');
+          io.unobserve(e.target);
+        }
+      });
+    }, { threshold: 0.12, rootMargin: '0px 0px -8% 0px' });
+    reveals.forEach(el => io.observe(el));
+  } else {
+    reveals.forEach(el => el.classList.add('in-view'));
+  }
+
+  // Active section in side nav
+  const navLinks = document.querySelectorAll('.side-nav a');
+  if ('IntersectionObserver' in window && navLinks.length) {
+    const navIO = new IntersectionObserver((entries) => {
+      entries.forEach(e => {
+        if (e.isIntersecting) {
+          const id = e.target.id;
+          navLinks.forEach(link => {
+            link.classList.toggle('active', link.dataset.target === id);
+          });
+        }
+      });
+    }, { rootMargin: '-40% 0px -50% 0px', threshold: 0 });
+    document.querySelectorAll('.section[id]').forEach(s => navIO.observe(s));
+  }
+
+  // Count-up for numeric stats
+  const animateNumber = (el) => {
+    const original = el.textContent.trim();
+    const m = original.match(/^(\$)?([\d,]+)(.*)$/);
+    if (!m) return;
+    const target = parseInt(m[2].replace(/,/g, ''), 10);
+    if (isNaN(target) || target < 10) return;
+    const prefix = m[1] || '';
+    const suffix = m[3] || '';
+    const duration = 1100;
+    const start = performance.now();
+    const tick = (now) => {
+      const t = Math.min((now - start) / duration, 1);
+      const eased = 1 - Math.pow(1 - t, 3);
+      const current = Math.floor(target * eased);
+      el.textContent = prefix + current.toLocaleString() + suffix;
+      if (t < 1) requestAnimationFrame(tick);
+      else el.textContent = original;
+    };
+    requestAnimationFrame(tick);
+  };
+
+  if (!reduced && 'IntersectionObserver' in window) {
+    const numIO = new IntersectionObserver((entries) => {
+      entries.forEach(e => {
+        if (e.isIntersecting && !e.target.dataset.animated) {
+          e.target.dataset.animated = '1';
+          animateNumber(e.target);
+          numIO.unobserve(e.target);
+        }
+      });
+    }, { threshold: 0.6 });
+    document.querySelectorAll('.stat-card .number, .payment-card .number')
+      .forEach(el => numIO.observe(el));
+  }
+})();
+</script>
+</body>
+</html>
