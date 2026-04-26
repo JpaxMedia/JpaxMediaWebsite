@@ -286,93 +286,59 @@
   }
   .cover-footer a { color: var(--text-muted); }
 
-  .cover-showcase {
-    position: relative;
-    min-height: 540px;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    gap: 18px;
-  }
-  .browser-card {
+  .proposal-panel {
     background: var(--dark2);
     border: 1px solid var(--border);
     border-radius: 8px;
-    overflow: hidden;
-    box-shadow: 0 22px 70px rgba(0, 0, 0, 0.34);
-  }
-  .browser-card.after {
-    transform: translateX(-12px);
+    padding: 32px;
+    box-shadow: 0 22px 70px rgba(0, 0, 0, 0.26);
     border-color: rgba(74, 222, 128, 0.5);
   }
-  .browser-card.before {
-    width: 82%;
-    margin-left: auto;
-    opacity: 0.74;
+  .proposal-panel h2 {
+    font-family: 'Chakra Petch', 'Arial Black', sans-serif;
+    color: var(--white);
+    font-size: 30px;
+    line-height: 1.1;
+    letter-spacing: 0;
+    text-transform: none;
+    margin-bottom: 12px;
   }
-  .browser-top {
-    min-height: 34px;
-    padding: 9px 12px;
-    border-bottom: 1px solid var(--border);
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 12px;
-    background: var(--dark3);
+  .proposal-panel p {
+    color: var(--text-soft);
+    margin-bottom: 22px;
   }
-  .browser-dots {
-    display: inline-flex;
-    gap: 6px;
-  }
-  .browser-dots i {
-    width: 8px;
-    height: 8px;
-    border-radius: 999px;
-    background: var(--text-muted);
-    opacity: 0.62;
-  }
-  .browser-url {
-    font-family: 'JetBrains Mono', monospace;
-    font-size: 10px;
-    color: var(--text-muted);
-    overflow: hidden;
-    text-overflow: ellipsis;
-    white-space: nowrap;
-  }
-  .browser-card img {
-    display: block;
-    width: 100%;
-    aspect-ratio: 16 / 9;
-    object-fit: cover;
-    object-position: top center;
-  }
-  .result-ribbon {
+  .proposal-list {
+    list-style: none;
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 1px;
-    background: var(--border);
-    border: 1px solid var(--border);
+    gap: 12px;
+  }
+  .proposal-list li {
+    display: grid;
+    grid-template-columns: 34px 1fr;
+    gap: 12px;
+    padding: 14px 0;
+    border-top: 1px solid var(--border);
+    color: var(--text-soft);
+  }
+  .proposal-list b {
+    width: 34px;
+    height: 34px;
+    display: grid;
+    place-items: center;
+    border: 1px solid rgba(74, 222, 128, 0.36);
     border-radius: 8px;
-    overflow: hidden;
-  }
-  .result-ribbon div {
-    background: rgba(12, 16, 28, 0.94);
-    padding: 16px 14px;
-  }
-  .result-ribbon strong {
-    display: block;
     color: var(--green);
-    font-size: 20px;
-    line-height: 1;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 12px;
   }
-  .result-ribbon span {
+  .proposal-list strong {
     display: block;
-    margin-top: 6px;
-    color: var(--text-muted);
-    font-size: 10px;
-    font-weight: 700;
-    letter-spacing: 0.08em;
-    text-transform: uppercase;
+    color: var(--white);
+    margin-bottom: 2px;
+  }
+  .proposal-list span {
+    display: block;
+    font-size: 13px;
   }
 
   /* ── PAGE WRAPPER ── */
@@ -766,10 +732,7 @@
   @media (max-width: 700px) {
     .cover { padding: 48px 28px; }
     .cover-grid { grid-template-columns: 1fr; gap: 32px; }
-    .cover-copy, .cover-showcase { width: 100%; max-width: 334px; }
-    .cover-showcase { min-height: auto; }
-    .browser-card.after,
-    .browser-card.before { width: 100%; transform: none; }
+    .cover-copy, .proposal-panel { width: 100%; max-width: 334px; }
     .cover-title { font-size: 36px; }
     .cover-title span { display: block; }
     .cover-subtitle { max-width: 310px; }
@@ -779,7 +742,6 @@
     .impact-grid, .benefit-grid, .change-grid { grid-template-columns: 1fr; }
     .video-vault { grid-template-columns: 1fr; }
     .shift-list li { grid-template-columns: 1fr; gap: 4px; }
-    .result-ribbon { grid-template-columns: 1fr; }
     .payment-grid { grid-template-columns: 1fr; }
     .sig-grid { grid-template-columns: 1fr; }
     .cover-footer { left: 28px; right: 28px; }
@@ -801,23 +763,22 @@
 <nav class="side-nav" aria-label="Section navigation">
   <a href="#sec-01" data-target="sec-01"><span class="nav-label">Intro</span></a>
   <a href="#sec-02" data-target="sec-02"><span class="nav-label">Summary</span></a>
-  <a href="#sec-03" data-target="sec-03"><span class="nav-label">Before/After</span></a>
-  <a href="#sec-04" data-target="sec-04"><span class="nav-label">Scope</span></a>
-  <a href="#sec-05" data-target="sec-05"><span class="nav-label">Timeline</span></a>
-  <a href="#sec-06" data-target="sec-06"><span class="nav-label">Investment</span></a>
-  <a href="#sec-07" data-target="sec-07"><span class="nav-label">Videos</span></a>
-  <a href="#sec-08" data-target="sec-08"><span class="nav-label">Why JPax</span></a>
-  <a href="#sec-09" data-target="sec-09"><span class="nav-label">Accept</span></a>
+  <a href="#sec-03" data-target="sec-03"><span class="nav-label">Scope</span></a>
+  <a href="#sec-04" data-target="sec-04"><span class="nav-label">Management</span></a>
+  <a href="#sec-05" data-target="sec-05"><span class="nav-label">Investment</span></a>
+  <a href="#sec-06" data-target="sec-06"><span class="nav-label">Videos</span></a>
+  <a href="#sec-07" data-target="sec-07"><span class="nav-label">Why JPax</span></a>
+  <a href="#sec-08" data-target="sec-08"><span class="nav-label">Accept</span></a>
 </nav>
 
 <!-- ═══════════════════════════════════════ COVER ═══════════════════════════════════════ -->
 <div class="cover">
   <div class="cover-grid">
     <div class="cover-copy">
-      <div class="cover-live">Redesign preview ready</div>
+      <div class="cover-live">Proposal ready</div>
       <div class="cover-eyebrow">Project Proposal · BUILD Website Engagement</div>
-      <h1 class="cover-title">Shed Movers <span>Rebuilt</span></h1>
-      <p class="cover-subtitle">A sharper website that turns Kevin's real-world shed, container, and moving expertise into clearer quote paths, stronger trust, and a better first impression.</p>
+      <h1 class="cover-title">Shed Movers <span>Website</span></h1>
+      <p class="cover-subtitle">A proposal to launch the redesigned Shed Movers website, keep it hosted and maintained, and support it with monthly SEO blogs and video content examples.</p>
       <hr class="cover-rule">
 
       <div class="cover-client-card">
@@ -852,26 +813,15 @@
       </div>
     </div>
 
-    <div class="cover-showcase" aria-label="Shed Movers website redesign preview">
-      <div class="browser-card after">
-        <div class="browser-top">
-          <span class="browser-dots"><i></i><i></i><i></i></span>
-          <span class="browser-url">shedmoversllc.netlify.app</span>
-        </div>
-        <img src="shedmovers-after.png" alt="New Shed Movers website redesign preview">
-      </div>
-      <div class="browser-card before">
-        <div class="browser-top">
-          <span class="browser-dots"><i></i><i></i><i></i></span>
-          <span class="browser-url">shedmoversllc.com</span>
-        </div>
-        <img src="shedmovers-before-site.jpg" alt="Original Shed Movers website product image">
-      </div>
-      <div class="result-ribbon">
-        <div><strong>$2K</strong><span>Website build</span></div>
-        <div><strong>24hr</strong><span>Fast quote path</span></div>
-        <div><strong>4</strong><span>States served</span></div>
-      </div>
+    <div class="proposal-panel" aria-label="Proposal includes">
+      <h2>Example Work Included</h2>
+      <p>This proposal includes real examples Kevin can review before moving forward: the redesigned website direction and a Dropbox folder of video content examples.</p>
+      <ul class="proposal-list">
+        <li><b>01</b><span><strong><a href="https://shedmoversllc.netlify.app/" target="_blank" rel="noopener">Redesigned website preview</a></strong>Sharper homepage, service paths, quote flow, and local positioning.</span></li>
+        <li><b>02</b><span><strong>Shed builder</strong>A simple build-and-price starter so customers can create a quote-ready setup.</span></li>
+        <li><b>03</b><span><strong>Blog + SEO foundation</strong>A site structure ready for monthly search-focused blog content.</span></li>
+        <li><b>04</b><span><strong>Video content examples</strong>Dropbox examples showing the kind of social creative JPax can make for Kevin.</span></li>
+      </ul>
     </div>
   </div>
 
@@ -895,8 +845,8 @@
     <div class="section-num">01</div>
     <h2>Introduction</h2>
     <hr class="section-rule">
-    <p>Kevin — I rebuilt the site direction so people can understand the business faster, see clear paths for sheds, containers, and moving, and request a quote without digging around. The old site has the basics. The new version makes the business feel more established, easier to trust, and easier to buy from.</p>
-    <p>This proposal is for moving forward with the website build at <strong>$2,000</strong>. I also included the video examples I created so you can see the kind of content we can use around the site and social channels next.</p>
+    <p>Kevin — this proposal is for moving forward with the redesigned Shed Movers website and the monthly support around it. I included example work so you can see the direction before making a decision: the redesigned website preview and the video content examples in Dropbox.</p>
+    <p>The website build is <strong>$2,000</strong>. After launch, JPax will host the site, handle monthly maintenance, and publish monthly SEO blogs so the website keeps improving instead of sitting still.</p>
   </div>
 
   <!-- ── 02 PROJECT SUMMARY ── -->
@@ -915,12 +865,12 @@
         <div class="stat-label">Website Investment</div>
       </div>
       <div class="stat-card">
-        <div class="number">10-14</div>
-        <div class="stat-label">Day Launch Window</div>
+        <div class="number">2</div>
+        <div class="stat-label">Days to First Preview</div>
       </div>
     </div>
 
-    <p>The website is the foundation: a mobile-first redesign with clearer service routing, stronger calls to action, a quote starter, a better inventory experience, and local trust built directly into the page. Once that foundation is live, social content, videos, Google updates, and ad campaigns have somewhere stronger to send people.</p>
+    <p>The website is the foundation: a mobile-first redesign with clearer service routing, stronger calls to action, a quote starter, a shed builder, a blog, and local trust built directly into the page. Once it is live, monthly blogs, maintenance, and content have a stronger place to send people.</p>
 
     <div class="callout">
       <p><strong>Why move forward?</strong> The redesign gives customers a straight path: shop inventory, build a starter quote, ask Kevin, or call now. That means fewer confused visitors, more qualified conversations, and a better chance that the person browsing on their phone becomes a real lead.</p>
@@ -950,62 +900,13 @@
     </div>
   </div>
 
-  <!-- ── 03 BEFORE / AFTER ── -->
+  <!-- ── 03 WHAT WE'RE BUILDING ── -->
   <div class="section reveal" id="sec-03">
     <div class="section-num">03</div>
-    <h2>Before / After</h2>
-    <hr class="section-rule">
-
-    <div class="change-grid">
-      <article class="change-card">
-        <img class="change-img" src="shedmovers-before-site.jpg" alt="Original Shed Movers website product image">
-        <div class="change-body">
-          <span class="change-label">Before · Current site</span>
-          <strong>Basic information, but not much direction.</strong>
-          <p>The current site lists moving services, shipping containers, contact info, and location details. It works as a brochure, but it does not strongly guide a visitor toward the right next step.</p>
-        </div>
-      </article>
-      <article class="change-card">
-        <img class="change-img" src="shedmovers-after.png" alt="New Shed Movers website redesign screenshot">
-        <div class="change-body">
-          <span class="change-label">After · Redesign preview</span>
-          <strong>Sharper positioning, better routing, and quote-first conversion.</strong>
-          <p>The redesigned site puts Kevin's local expertise up front, gives every visitor a clear path, and uses a fast quote form, inventory cards, and build-and-price starter to turn attention into conversations.</p>
-        </div>
-      </article>
-    </div>
-
-    <ul class="shift-list">
-      <li><b>Message</b><span>From generic "moving services" to "Not just any shed. Kevin's shed lot." That makes the site feel personal, local, and easier to remember.</span></li>
-      <li><b>Navigation</b><span>From a few broad pages to purpose-built paths: Shop Sheds, Build &amp; Price, Services, Storage Guides, Contact, and Get Quote.</span></li>
-      <li><b>Conversion</b><span>From "contact us today" to a visible fast quote box with service type, ZIP/city, and note fields right in the hero.</span></li>
-      <li><b>Sales</b><span>From listing products to helping customers choose: shed cards, container options, recommended use cases, and a starter estimate flow.</span></li>
-      <li><b>Trust</b><span>From hidden credibility to visible proof: 10+ years moving sheds, four states served, RTO container options, DOT registration, and local guidance from Kevin.</span></li>
-    </ul>
-
-    <div class="benefit-grid">
-      <div class="benefit-card">
-        <strong>More qualified calls</strong>
-        <p>Visitors pre-select what they need before reaching out, so Kevin can respond with context instead of starting cold.</p>
-      </div>
-      <div class="benefit-card">
-        <strong>Better mobile buying flow</strong>
-        <p>The new layout is built around quick taps, clear actions, and phone-first browsing for customers already standing in a yard or on a lot.</p>
-      </div>
-      <div class="benefit-card">
-        <strong>Stronger local brand</strong>
-        <p>The site keeps the practical catalog feel but adds personality, structure, and a polished first impression.</p>
-      </div>
-    </div>
-  </div>
-
-  <!-- ── 04 WHAT WE'RE BUILDING ── -->
-  <div class="section reveal" id="sec-04">
-    <div class="section-num">04</div>
     <h2>What We're Building</h2>
     <hr class="section-rule">
 
-    <h3>Phase 1 — Website Rebuild (BUILD)</h3>
+    <h3>Website Rebuild (BUILD)</h3>
     <p>A clean, modern, mobile-first website that tells visitors exactly what Shed Movers does, where Kevin serves, and how to request the right quote in under 5 seconds.</p>
 
     <table>
@@ -1069,9 +970,15 @@
         </tr>
       </tbody>
     </table>
+  </div>
 
-    <h3>Optional Phase 2 — Monthly Digital Growth (RISE)</h3>
-    <p>Once the website is live, the next step is keeping the engine running. Every month, I can handle content, ads, social presence, Google updates, and lead follow-up so the new site has steady traffic pointed at it.</p>
+  <!-- ── 04 MONTHLY MANAGEMENT ── -->
+  <div class="section reveal" id="sec-04">
+    <div class="section-num">04</div>
+    <h2>Hosting &amp; Monthly SEO</h2>
+    <hr class="section-rule">
+
+    <p>After the website launches, JPax will host the site, keep it maintained, make minor updates, and publish monthly SEO blog content. The goal is simple: keep the site fast, current, and useful for people searching for sheds, shipping containers, and shed moving help.</p>
 
     <table>
       <thead>
@@ -1083,104 +990,42 @@
       </thead>
       <tbody>
         <tr>
-          <td>AI Video Content</td>
-          <td>Custom AI-generated videos — funny, outlandish, PG, scroll-stopping. Your face, your brand, your personality. No limits on creativity.</td>
-          <td>3 per week</td>
-        </tr>
-        <tr>
-          <td>Facebook Management</td>
-          <td>Content posted consistently — photos, videos, promos, engagement. You never have to think about it.</td>
-          <td>20–25 posts/mo</td>
-        </tr>
-        <tr>
-          <td>Ad Campaigns</td>
-          <td>Targeted Meta ads (Facebook + Instagram) reaching shed buyers in NC, SC, GA, TN. Managed and optimized monthly.</td>
-          <td>3 campaigns/mo</td>
-        </tr>
-        <tr>
-          <td>Google Business Profile</td>
-          <td>Fix location issues, optimize listing, manage reviews and photos. Get your Google presence cleaned up and ranking.</td>
+          <td>Website Hosting</td>
+          <td>JPax hosts the website and keeps the live site stable, reachable, and connected.</td>
           <td>Ongoing</td>
         </tr>
         <tr>
-          <td>Lead Follow-Up Automation</td>
-          <td>Automated system that re-engages leads who don't respond. Text + email sequences so no one slips through.</td>
-          <td>Always on</td>
+          <td>Maintenance</td>
+          <td>Minor edits, plugin/platform checks, technical fixes, and routine upkeep.</td>
+          <td>Monthly</td>
         </tr>
         <tr>
-          <td>Strategy Call</td>
-          <td>Monthly check-in — what's working, what to adjust, what's coming next.</td>
+          <td>Monthly SEO Blog</td>
+          <td>One search-focused blog post per month targeting practical questions customers are already asking.</td>
           <td>1 per month</td>
         </tr>
         <tr>
-          <td>Jupiter Dashboard</td>
-          <td>Your own login to see deliverables, performance data, and message Julian directly.</td>
-          <td>24/7 access</td>
+          <td>Content Updates</td>
+          <td>Update services, calls to action, photos, offers, or page copy as the business changes.</td>
+          <td>As needed</td>
         </tr>
         <tr>
-          <td>Performance Report</td>
-          <td>Monthly snapshot — reach, engagement, leads, ad performance, growth trends.</td>
+          <td>Analytics Review</td>
+          <td>Basic traffic and performance review so we can see what people are using and improve from there.</td>
           <td>Monthly</td>
+        </tr>
+        <tr>
+          <td>Video Content Path</td>
+          <td>The Dropbox examples show the direction available if Kevin wants JPax to create ongoing video content too.</td>
+          <td>Optional</td>
         </tr>
       </tbody>
     </table>
-
-    <div class="callout purple">
-      <p><strong>About the video content:</strong> You want unique, outlandish, funny — the kind of content that makes people stop scrolling and share it. That's exactly what I do best. Full creative freedom. PG. No holds barred. I'll make content people in your market remember.</p>
-    </div>
   </div>
 
-  <!-- ── 05 PROCESS & TIMELINE ── -->
+  <!-- ── 05 INVESTMENT ── -->
   <div class="section reveal" id="sec-05">
     <div class="section-num">05</div>
-    <h2>Process &amp; Timeline</h2>
-    <hr class="section-rule">
-
-    <table>
-      <thead>
-        <tr>
-          <th>Phase</th>
-          <th>What Happens</th>
-          <th>Timeline</th>
-        </tr>
-      </thead>
-      <tbody class="timeline-row">
-        <tr>
-          <td>Discovery</td>
-          <td>Final details — brand assets, login access, content preferences, any must-haves</td>
-          <td>Day 1–2</td>
-        </tr>
-        <tr>
-          <td>Website Build</td>
-          <td>Full website designed, developed, and deployed. Blog section included. SEO configured.</td>
-          <td>Day 3–10</td>
-        </tr>
-        <tr>
-          <td>Review &amp; Launch</td>
-          <td>You review the site, I make revisions (2 rounds included), then go live.</td>
-          <td>Day 10–14</td>
-        </tr>
-        <tr>
-          <td>Optional RISE Kickoff</td>
-          <td>If monthly growth is approved, social accounts connect, campaigns launch, automation is configured, and the first batch of video content is produced.</td>
-          <td>After website approval</td>
-        </tr>
-        <tr>
-          <td>Optional Ongoing Growth</td>
-          <td>Monthly content, ads, optimization, reporting, and strategy calls. Results compound over time.</td>
-          <td>Monthly</td>
-        </tr>
-      </tbody>
-    </table>
-
-    <div class="callout">
-      <p><strong>Website delivery: 10–14 days.</strong> Timeline begins the day I receive your deposit and any brand assets (logo files, photos, etc.).</p>
-    </div>
-  </div>
-
-  <!-- ── 06 INVESTMENT ── -->
-  <div class="section reveal" id="sec-06">
-    <div class="section-num">06</div>
     <h2>Investment</h2>
     <hr class="section-rule">
 
@@ -1196,7 +1041,7 @@
       <tbody>
         <tr>
           <td>Website Design &amp; Development</td>
-          <td>Modern site (Home, Shop, Build &amp; Price, Services, Storage Guides, Contact) — mobile responsive, SEO-ready, lead capture</td>
+          <td>Modern site with homepage, services, shed builder, blog, contact/quote flow, mobile responsiveness, and SEO foundation</td>
           <td class="right">$2,000</td>
         </tr>
         <tr>
@@ -1206,7 +1051,7 @@
         </tr>
         <tr>
           <td>Source Files &amp; Ownership</td>
-          <td>Full code, assets, and domain control transferred to you</td>
+          <td>Full code and assets delivered after final payment</td>
           <td class="right">Included</td>
         </tr>
         <tr>
@@ -1225,7 +1070,7 @@
       <div class="payment-card">
         <div class="number">$1,000</div>
         <div class="pay-label">50% Deposit</div>
-        <div class="pay-note">Due to begin work</div>
+        <div class="pay-note">Due to move forward</div>
       </div>
       <div class="payment-card">
         <div class="number">$1,000</div>
@@ -1234,7 +1079,7 @@
       </div>
     </div>
 
-    <h3>Optional Monthly — Digital Growth (RISE)</h3>
+    <h3>Monthly — Hosting, Maintenance &amp; SEO Blog</h3>
     <table>
       <thead>
         <tr>
@@ -1245,34 +1090,30 @@
       </thead>
       <tbody>
         <tr>
-          <td>RISE Growth Partnership</td>
-          <td>AI video (3/week), Facebook management (20–25 posts), 3 ad campaigns, Google Business Profile, lead automation, strategy call, Jupiter dashboard, monthly report</td>
-          <td class="right">$1,500/mo</td>
-        </tr>
-        <tr>
           <td>Website Management</td>
-          <td>Weekly blog post (SEO-optimized), hosting, maintenance, and minor content updates</td>
+          <td>Hosting, maintenance, minor content updates, and one SEO-focused blog post per month</td>
           <td class="right">$150/mo</td>
         </tr>
-        <tr class="total-row">
-          <td colspan="2">Total — Monthly</td>
-          <td class="right">$1,650/mo</td>
+        <tr>
+          <td>Analytics &amp; SEO Monitoring</td>
+          <td>Basic review of traffic, indexing, and performance so the site keeps improving</td>
+          <td class="right">Included</td>
+        </tr>
+        <tr>
+          <td colspan="2">Total — Monthly Website Management</td>
+          <td class="right">$150/mo</td>
         </tr>
       </tbody>
     </table>
 
     <div class="callout">
-      <p><strong>RISE terms:</strong> Optional after the website decision. 3-month minimum commitment. First month billed upfront at signing. Cancel anytime after month 3 with 30 days' written notice. Ad spend is separate and managed through your own ad accounts — I handle the strategy, targeting, and optimization.</p>
-    </div>
-
-    <div class="callout">
-      <p><strong>First-month guarantee:</strong> If you're not satisfied after the first month, you don't pay for it. No questions asked.</p>
+      <p><strong>Current status:</strong> The redesign preview was created quickly so Kevin can see the direction before committing. Once approved, JPax will finalize the site, connect hosting/domain details, and prepare the monthly maintenance and blog workflow.</p>
     </div>
   </div>
 
-  <!-- ── 07 VIDEO EXAMPLES ── -->
-  <div class="section reveal" id="sec-07">
-    <div class="section-num">07</div>
+  <!-- ── 06 VIDEO EXAMPLES ── -->
+  <div class="section reveal" id="sec-06">
+    <div class="section-num">06</div>
     <h2>Video Examples</h2>
     <hr class="section-rule">
 
@@ -1286,9 +1127,9 @@
     </div>
   </div>
 
-  <!-- ── 08 WHY JPAX ── -->
-  <div class="section reveal" id="sec-08">
-    <div class="section-num">08</div>
+  <!-- ── 07 WHY JPAX ── -->
+  <div class="section reveal" id="sec-07">
+    <div class="section-num">07</div>
     <h2>Why JPax</h2>
     <hr class="section-rule">
 
@@ -1297,38 +1138,23 @@
       <li><span><strong>AI-accelerated, human-directed.</strong> The video examples are not generic templates. They are directed around Kevin's personality, the shed-moving market, and the kind of content people actually stop to watch.</span></li>
       <li><span><strong>You own everything.</strong> Every asset I create — your website, your videos, your graphics — belongs to you. Full source files. No lock-in.</span></li>
       <li><span><strong>One point of contact.</strong> You talk to me directly. No account managers, no runaround. Your project lives in Jupiter where you can see every deliverable and message me anytime.</span></li>
-      <li><span><strong>Speed.</strong> Website in 10–14 days. First video content within the first week of RISE. I move fast because I've built the systems to do it right at speed.</span></li>
+      <li><span><strong>Speed.</strong> You already saw a working redesign direction within two days. I move fast because I build the system first, then refine it with the client.</span></li>
       <li><span><strong>Creative freedom.</strong> You said no limits, PG, funny, outlandish. That's exactly the kind of work I love making. This isn't templated content — it's custom, weird, and built to go viral in your market.</span></li>
     </ul>
   </div>
 
-  <!-- ── 09 ACCEPTANCE ── -->
-  <div class="section reveal" id="sec-09">
-    <div class="section-num">09</div>
-    <h2>Acceptance</h2>
+  <!-- ── 08 APPROVAL ── -->
+  <div class="section reveal" id="sec-08">
+    <div class="section-num">08</div>
+    <h2>Approval</h2>
     <hr class="section-rule">
 
-    <p>By signing below, both parties agree to move forward with the website BUILD scope and $2,000 investment outlined in this proposal. A formal contract will be provided upon acceptance for final signature.</p>
-    <p>This proposal is valid for <strong>30 days</strong> from the date above. Questions? Contact Julian directly at <a href="mailto:julian@jpaxmedia.com">julian@jpaxmedia.com</a> before signing.</p>
+    <p>If Kevin wants to move forward, JPax will send the formal agreement and deposit invoice for the website build. This page is the proposal and example work preview, not the final signing document.</p>
+    <p>This proposal is valid for <strong>30 days</strong> from the date above. Questions? Contact Julian directly at <a href="mailto:julian@jpaxmedia.com">julian@jpaxmedia.com</a>.</p>
 
     <div class="actions">
-      <a class="btn btn-primary" href="mailto:julian@jpaxmedia.com?subject=Accepting%20JPax%20Website%20Proposal%20%E2%80%94%20Shed%20Movers%20LLC&amp;body=Hey%20Julian%2C%0A%0AI'm%20accepting%20the%20%242%2C000%20website%20proposal%20for%20Shed%20Movers%20LLC.%20Send%20over%20the%20deposit%20invoice%20and%20let's%20get%20started.%0A%0A-%20Kevin">Accept Proposal</a>
+      <a class="btn btn-primary" href="mailto:julian@jpaxmedia.com?subject=Shed%20Movers%20Website%20Proposal%20%E2%80%94%20Move%20Forward&amp;body=Hey%20Julian%2C%0A%0AI%20want%20to%20move%20forward%20with%20the%20%242%2C000%20website%20proposal%20for%20Shed%20Movers%20LLC.%20Send%20over%20the%20formal%20document%20and%20deposit%20invoice.%0A%0A-%20Kevin">Move Forward</a>
       <button type="button" class="btn btn-secondary" onclick="window.print()">Print / Save PDF</button>
-    </div>
-
-    <div class="sig-grid">
-      <div class="sig-block">
-        <div class="sig-label">Client Signature</div>
-        <div class="sig-name">Kevin — Shed Movers LLC</div>
-      </div>
-      <div class="sig-block">
-        <div class="sig-label">JPax Media</div>
-        <div class="sig-name">Julian Johnson — Founder &amp; Creative Director</div>
-      </div>
-    </div>
-    <div class="date-line">
-      <div class="date-field">Date</div>
-      <div class="date-field">Date</div>
     </div>
   </div>
 
