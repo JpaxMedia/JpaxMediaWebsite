@@ -172,10 +172,11 @@
   /* ── COVER PAGE ── */
   .cover {
     min-height: 100vh;
-    padding: 80px 60px;
+    padding: 80px 60px 40px;
     position: relative;
-    display: flex;
-    align-items: center;
+    display: grid;
+    grid-template-rows: minmax(0, 1fr) auto;
+    gap: 44px;
     overflow: hidden;
   }
   .cover::after {
@@ -277,10 +278,10 @@
     font-family: 'JetBrains Mono', monospace;
   }
   .cover-footer {
-    position: absolute;
-    bottom: 40px;
-    left: 60px;
-    right: 60px;
+    position: relative;
+    z-index: 2;
+    width: min(1180px, 100%);
+    margin: 0 auto;
     font-size: 11px;
     color: var(--text-muted);
   }
@@ -753,7 +754,7 @@
     .shift-list li { grid-template-columns: 1fr; gap: 4px; }
     .payment-grid { grid-template-columns: 1fr; }
     .sig-grid { grid-template-columns: 1fr; }
-    .cover-footer { left: 28px; right: 28px; }
+    .cover-footer { width: 100%; max-width: 334px; }
   }
 
   @media print {
