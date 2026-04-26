@@ -305,20 +305,28 @@
   }
   .proposal-panel p {
     color: var(--text-soft);
-    margin-bottom: 22px;
+    margin: 0 0 26px;
+    padding-bottom: 26px;
+    border-bottom: 1px solid var(--border);
+    line-height: 1.8;
   }
   .proposal-list {
     list-style: none;
     display: grid;
-    gap: 12px;
+    gap: 0;
   }
   .proposal-list li {
     display: grid;
     grid-template-columns: 34px 1fr;
-    gap: 12px;
-    padding: 14px 0;
-    border-top: 1px solid var(--border);
+    gap: 16px;
+    padding: 20px 0;
+    border-bottom: 1px solid var(--border);
     color: var(--text-soft);
+  }
+  .proposal-list li:first-child { padding-top: 0; }
+  .proposal-list li:last-child {
+    padding-bottom: 0;
+    border-bottom: none;
   }
   .proposal-list b {
     width: 34px;
@@ -334,11 +342,12 @@
   .proposal-list strong {
     display: block;
     color: var(--white);
-    margin-bottom: 2px;
+    margin-bottom: 7px;
   }
   .proposal-list span {
     display: block;
     font-size: 13px;
+    line-height: 1.65;
   }
 
   /* ── PAGE WRAPPER ── */
