@@ -5,12 +5,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Pricing | JPax Media — AI Operating Systems & Creative Services</title>
     
-    <meta name="description" content="Transparent pricing for AI operating systems, websites, branding, and growth partnerships. No hidden fees. TradeOS, CreatorOS, and full creative services.">
-    <meta name="keywords" content="TradeOS pricing, CreatorOS pricing, AI operating system cost, website pricing, branding pricing, digital agency pricing">
+    <meta name="description" content="Transparent pricing for AI operating systems, websites, branding, AI video, and growth partnerships. TradeOS, CreatorOS, BUILD projects, and RISE bundles.">
+    <meta name="keywords" content="TradeOS pricing, CreatorOS pricing, AI operating system cost, website pricing, branding pricing, AI video pricing, RISE bundles, digital agency pricing">
     
     <meta property="og:type" content="website">
     <meta property="og:title" content="Pricing | JPax Media">
-    <meta property="og:description" content="Transparent pricing. No hidden fees. AI operating systems and creative services delivered in days.">
+    <meta property="og:description" content="Transparent pricing. AI operating systems, websites, branding, AI video, and RISE growth partnerships — delivered in days.">
     <meta property="og:image" content="https://jpaxmedia.com/jpaxmedialogoOFFICIALFINALwhite.png">
     <meta property="og:url" content="https://jpaxmedia.com/pricing.html">
     
@@ -506,10 +506,169 @@
         .reveal { opacity: 0; transform: translateY(25px); transition: opacity 0.7s ease, transform 0.7s ease; }
         .reveal.visible { opacity: 1; transform: translateY(0); }
 
+        /* Video Production Detail */
+        .video-production-detail {
+            margin-top: 2rem;
+            border-radius: 16px;
+            padding: 2.5rem;
+            border: 1px solid rgba(74, 222, 128, 0.12);
+            background: var(--bg-card);
+        }
+        .video-detail-header {
+            display: flex; align-items: center; gap: 1rem; margin-bottom: 0.4rem;
+        }
+        .video-detail-icon {
+            width: 46px; height: 46px; border-radius: 10px;
+            display: flex; align-items: center; justify-content: center;
+            font-size: 1.2rem; background: var(--accent-glow); color: var(--accent);
+            flex-shrink: 0;
+        }
+        .video-detail-header h3 {
+            font-family: var(--font-display); font-weight: 700;
+            font-size: 1.4rem; color: var(--white); margin-bottom: 0.25rem;
+        }
+        .video-detail-header p {
+            font-size: 0.88rem; color: var(--gray-400);
+        }
+        .video-paths-grid {
+            display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.25rem; margin-top: 2rem;
+        }
+        .video-path {
+            border-radius: 12px; padding: 1.5rem;
+            border: 1px solid rgba(255,255,255,0.05);
+            background: rgba(255,255,255,0.015);
+            display: flex; flex-direction: column;
+        }
+        .video-path-tag {
+            font-family: var(--font-mono); font-size: 0.65rem;
+            letter-spacing: 0.1em; text-transform: uppercase; color: var(--accent);
+            font-weight: 600; margin-bottom: 0.4rem;
+        }
+        .video-path-name {
+            font-family: var(--font-display); font-weight: 700;
+            font-size: 1.15rem; color: var(--white); margin-bottom: 0.4rem;
+        }
+        .video-path-desc {
+            font-size: 0.78rem; color: var(--gray-500); margin-bottom: 1rem; line-height: 1.5;
+        }
+        .video-path .build-tier { font-size: 0.85rem; }
+        .video-path-time {
+            font-family: var(--font-mono); font-size: 0.7rem; color: var(--gray-500);
+            margin-top: auto; padding-top: 1rem; letter-spacing: 0.05em;
+        }
+
+        /* AI Video + RISE Bundles */
+        .bundle-grid {
+            display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; margin-bottom: 2rem;
+        }
+        .bundle-card {
+            border-radius: 12px; padding: 2rem;
+            border: 1px solid rgba(139,92,246,0.15);
+            background: var(--bg-card); transition: all 0.3s;
+            position: relative;
+        }
+        .bundle-card:hover {
+            border-color: rgba(139,92,246,0.35); transform: translateY(-4px);
+            box-shadow: 0 15px 50px rgba(139,92,246,0.1);
+        }
+        .bundle-card.popular { border-color: var(--purple); border-width: 2px; }
+        .bundle-popular-badge {
+            position: absolute; top: -10px; left: 50%; transform: translateX(-50%);
+            background: var(--purple); color: var(--white);
+            font-family: var(--font-mono); font-size: 0.6rem; font-weight: 600;
+            padding: 0.25rem 0.75rem; border-radius: 100px; letter-spacing: 0.08em;
+            text-transform: uppercase;
+        }
+        .bundle-tag {
+            font-family: var(--font-mono); font-size: 0.65rem;
+            letter-spacing: 0.1em; text-transform: uppercase; color: var(--purple);
+            font-weight: 600; margin-bottom: 0.75rem;
+        }
+        .bundle-price {
+            font-family: var(--font-display); font-weight: 700;
+            font-size: 1.8rem; color: var(--white); margin-bottom: 0.25rem;
+        }
+        .bundle-price .bundle-period {
+            font-size: 0.85rem; color: var(--gray-500); font-weight: 400; margin-left: 0.25rem;
+        }
+        .bundle-savings {
+            display: inline-block; padding: 0.25rem 0.6rem; border-radius: 4px;
+            background: var(--green-dim); color: var(--green); border: 1px solid rgba(16,185,129,0.2);
+            font-family: var(--font-mono); font-size: 0.7rem; margin-bottom: 1.5rem;
+        }
+        .bundle-features { display: flex; flex-direction: column; gap: 0.6rem; }
+        .bundle-feat {
+            display: flex; align-items: flex-start; gap: 0.5rem;
+            font-size: 0.85rem; color: var(--gray-300); line-height: 1.5;
+        }
+        .bundle-feat i { color: var(--purple); font-size: 0.65rem; margin-top: 0.35rem; flex-shrink: 0; }
+
+        /* JPax Local Callout */
+        .jpax-local-section { padding: 3rem 0; }
+        .local-callout {
+            display: flex; align-items: center; gap: 2rem;
+            border-radius: 16px; padding: 2.25rem 2.5rem;
+            border: 1px solid rgba(74,222,128,0.18);
+            background: linear-gradient(135deg, rgba(74,222,128,0.04), rgba(139,92,246,0.04));
+            position: relative; overflow: hidden;
+        }
+        .local-callout::before {
+            content: ''; position: absolute; top: -50%; right: -10%;
+            width: 280px; height: 280px; border-radius: 50%;
+            background: radial-gradient(circle, rgba(74,222,128,0.06), transparent 70%);
+            pointer-events: none;
+        }
+        .local-icon {
+            width: 56px; height: 56px; border-radius: 12px; flex-shrink: 0;
+            display: flex; align-items: center; justify-content: center;
+            font-size: 1.3rem; background: var(--accent-glow); color: var(--accent);
+            border: 1px solid rgba(74,222,128,0.25);
+            position: relative; z-index: 1;
+        }
+        .local-content { flex: 1; position: relative; z-index: 1; }
+        .local-label {
+            font-family: var(--font-mono); font-size: 0.7rem; color: var(--accent);
+            letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 0.4rem;
+        }
+        .local-content h3 {
+            font-family: var(--font-display); font-weight: 700;
+            font-size: 1.4rem; color: var(--white); margin-bottom: 0.4rem;
+        }
+        .local-content p {
+            font-size: 0.9rem; color: var(--gray-400); line-height: 1.6; max-width: 540px;
+        }
+        .local-cta {
+            display: inline-flex; align-items: center; gap: 0.5rem;
+            padding: 0.75rem 1.5rem; border-radius: 8px;
+            background: var(--accent); color: #000;
+            font-weight: 600; font-size: 0.9rem; text-decoration: none;
+            transition: all 0.3s; flex-shrink: 0; position: relative; z-index: 1;
+        }
+        .local-cta:hover {
+            background: #6EE7A8; transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(74,222,128,0.35);
+        }
+
+        /* Bundle helper note */
+        .bundle-helper-note {
+            margin-top: 2.5rem; padding-top: 2rem;
+            border-top: 1px solid rgba(255,255,255,0.04);
+        }
+        .bundle-helper-note h3 {
+            font-family: var(--font-display); color: var(--white);
+            font-size: 1.15rem; margin-bottom: 0.4rem;
+        }
+        .bundle-helper-note p {
+            color: var(--gray-400); font-size: 0.88rem; margin-bottom: 1.25rem;
+        }
+
         /* Responsive */
         @media (max-width: 960px) {
             .os-pricing-grid { grid-template-columns: 1fr; }
             .rise-grid { grid-template-columns: 1fr 1fr; }
+            .video-paths-grid { grid-template-columns: 1fr; }
+            .bundle-grid { grid-template-columns: 1fr 1fr; }
+            .local-callout { flex-direction: column; text-align: center; gap: 1.25rem; padding: 2rem 1.5rem; }
         }
         @media (max-width: 640px) {
             .rise-grid { grid-template-columns: 1fr; }
@@ -517,6 +676,8 @@
             .included-grid { grid-template-columns: 1fr; }
             .os-feat-grid { grid-template-columns: 1fr; }
             .addons-grid { grid-template-columns: 1fr; }
+            .bundle-grid { grid-template-columns: 1fr; }
+            .video-production-detail { padding: 1.75rem; }
         }
     </style>
 </head>
@@ -580,6 +741,7 @@
                 <a href="#os-systems" class="hn-active"><i class="fas fa-terminal"></i> OS Systems</a>
                 <a href="#build" class="hn-default"><i class="fas fa-hammer"></i> BUILD</a>
                 <a href="#rise" class="hn-default"><i class="fas fa-rocket"></i> RISE</a>
+                <a href="#bundles" class="hn-default"><i class="fas fa-layer-group"></i> Bundles</a>
             </div>
         </div>
     </section>
@@ -787,9 +949,9 @@
                     <div class="build-card-icon"><i class="fas fa-laptop-code"></i></div>
                     <h3>Websites</h3>
                     <div class="build-card-sub">Professional sites that convert</div>
-                    <div class="build-tier"><span class="build-tier-name">Starter (5-7 pages)</span><span class="build-tier-price">From $2,500</span></div>
-                    <div class="build-tier"><span class="build-tier-name">Growth (10-15 pages)</span><span class="build-tier-price">From $5,000</span></div>
-                    <div class="build-tier"><span class="build-tier-name">Pro (custom features)</span><span class="build-tier-price">From $8,000</span></div>
+                    <div class="build-tier"><span class="build-tier-name">5-7 page site</span><span class="build-tier-price">From $2,500</span></div>
+                    <div class="build-tier"><span class="build-tier-name">10-15 pages + blog</span><span class="build-tier-price">From $5,000</span></div>
+                    <div class="build-tier"><span class="build-tier-name">Custom / advanced build</span><span class="build-tier-price">From $8,000</span></div>
                     <div class="build-card-timeline">5-14 days delivery</div>
                 </div>
 
@@ -813,16 +975,49 @@
                     <div class="build-tier"><span class="build-tier-name">Full Platform</span><span class="build-tier-price">From $8,000</span></div>
                     <div class="build-card-timeline">7-21 days delivery</div>
                 </div>
+            </div>
 
-                <!-- Video -->
-                <div class="build-card reveal">
-                    <div class="build-card-icon"><i class="fas fa-video"></i></div>
-                    <h3>Video Production</h3>
-                    <div class="build-card-sub">Content that converts</div>
-                    <div class="build-tier"><span class="build-tier-name">Single Ad</span><span class="build-tier-price">From $800</span></div>
-                    <div class="build-tier"><span class="build-tier-name">5-Video Bundle</span><span class="build-tier-price">From $2,000</span></div>
-                    <div class="build-tier"><span class="build-tier-name">Brand Film</span><span class="build-tier-price">From $3,500</span></div>
-                    <div class="build-card-timeline">3-14 days delivery</div>
+            <!-- Video Production — 3 production paths -->
+            <div class="video-production-detail reveal">
+                <div class="video-detail-header">
+                    <div class="video-detail-icon"><i class="fas fa-video"></i></div>
+                    <div>
+                        <h3>Video Production</h3>
+                        <p>Three production paths — choose the format that fits your content.</p>
+                    </div>
+                </div>
+
+                <div class="video-paths-grid">
+                    <!-- Short-Form AI -->
+                    <div class="video-path">
+                        <div class="video-path-tag">Short-Form AI</div>
+                        <div class="video-path-name">Fast Feed Content</div>
+                        <div class="video-path-desc">≤20s · TikTok, Reels, Shorts · visual hooks, captioned, ready to publish</div>
+                        <div class="build-tier"><span class="build-tier-name">Single Video</span><span class="build-tier-price">From $300</span></div>
+                        <div class="build-tier"><span class="build-tier-name">10-Pack Bundle</span><span class="build-tier-price">From $1,000</span></div>
+                        <div class="video-path-time">1-7 days delivery</div>
+                    </div>
+
+                    <!-- Long-Form AI -->
+                    <div class="video-path">
+                        <div class="video-path-tag">Long-Form AI</div>
+                        <div class="video-path-name">Scripted Ads</div>
+                        <div class="video-path-desc">30-60s · narrative-driven, voiced, built for paid ads and brand spots</div>
+                        <div class="build-tier"><span class="build-tier-name">Single Ad</span><span class="build-tier-price">From $500</span></div>
+                        <div class="build-tier"><span class="build-tier-name">5-Pack Bundle</span><span class="build-tier-price">From $2,000</span></div>
+                        <div class="video-path-time">3-14 days delivery</div>
+                    </div>
+
+                    <!-- On-Set Film -->
+                    <div class="video-path">
+                        <div class="video-path-tag">On-Set Film</div>
+                        <div class="video-path-name">Live Production</div>
+                        <div class="video-path-desc">Real talent, full crew, on-location · Upstate SC area · remote available</div>
+                        <div class="build-tier"><span class="build-tier-name">Single Ad</span><span class="build-tier-price">From $800</span></div>
+                        <div class="build-tier"><span class="build-tier-name">5-Pack</span><span class="build-tier-price">From $3,000</span></div>
+                        <div class="build-tier"><span class="build-tier-name">Brand Film</span><span class="build-tier-price">From $3,500</span></div>
+                        <div class="video-path-time">3-14 days delivery</div>
+                    </div>
                 </div>
             </div>
 
@@ -919,6 +1114,89 @@
         </div>
     </section>
 
+    <!-- ===== AI VIDEO + RISE BUNDLES ===== -->
+    <section class="pricing-section" id="bundles">
+        <div class="container">
+            <div class="reveal">
+                <div class="section-label" style="color:var(--purple)">Bundle Deals</div>
+                <div class="section-title">AI Video + RISE Bundles</div>
+                <p class="section-desc">
+                    Combine monthly social management with built-in short-form AI video.
+                    Bigger output, lower per-video rate, single billing.
+                </p>
+            </div>
+
+            <div class="bundle-grid">
+                <!-- Starter Bundle -->
+                <div class="bundle-card reveal">
+                    <div class="bundle-tag">Starter + Short AI</div>
+                    <div class="bundle-price">$1,075<span class="bundle-period">/mo</span></div>
+                    <div class="bundle-savings">Save $185/mo</div>
+                    <div class="bundle-features">
+                        <div class="bundle-feat"><i class="fas fa-check"></i> Everything in RISE Starter</div>
+                        <div class="bundle-feat"><i class="fas fa-check"></i> 4 short-form AI videos / month</div>
+                        <div class="bundle-feat"><i class="fas fa-check"></i> Generated, edited, captioned, published</div>
+                        <div class="bundle-feat"><i class="fas fa-check"></i> Jupiter Mission Control + monthly reports</div>
+                    </div>
+                </div>
+
+                <!-- Growth Bundle (Popular) -->
+                <div class="bundle-card popular reveal">
+                    <div class="bundle-popular-badge">Most Popular</div>
+                    <div class="bundle-tag">Growth + Short AI</div>
+                    <div class="bundle-price">$2,075<span class="bundle-period">/mo</span></div>
+                    <div class="bundle-savings">Save $345/mo</div>
+                    <div class="bundle-features">
+                        <div class="bundle-feat"><i class="fas fa-check"></i> Everything in RISE Growth</div>
+                        <div class="bundle-feat"><i class="fas fa-check"></i> 8 short-form AI videos / month (~2/wk)</div>
+                        <div class="bundle-feat"><i class="fas fa-check"></i> Generated, edited, captioned, published</div>
+                        <div class="bundle-feat"><i class="fas fa-check"></i> Jupiter Mission Control + monthly reports</div>
+                    </div>
+                </div>
+
+                <!-- Accelerator Bundle -->
+                <div class="bundle-card reveal">
+                    <div class="bundle-tag">Accelerator + Short AI</div>
+                    <div class="bundle-price">$3,725<span class="bundle-period">/mo</span></div>
+                    <div class="bundle-savings">Save $615/mo</div>
+                    <div class="bundle-features">
+                        <div class="bundle-feat"><i class="fas fa-check"></i> Everything in RISE Accelerator</div>
+                        <div class="bundle-feat"><i class="fas fa-check"></i> 16 short-form AI videos / month (~4/wk)</div>
+                        <div class="bundle-feat"><i class="fas fa-check"></i> Generated, edited, captioned, published</div>
+                        <div class="bundle-feat"><i class="fas fa-check"></i> Jupiter Mission Control + bi-weekly strategy</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Add-on tiers -->
+            <div class="bundle-helper-note reveal">
+                <h3>Video Add-On Tiers</h3>
+                <p>Layer onto any RISE tier when a built-in bundle doesn't match your volume needs.</p>
+                <div class="addons-grid">
+                    <div class="addon-item"><span class="addon-name">Short-Form Lite — 4/mo</span><span class="addon-price">$260/mo</span></div>
+                    <div class="addon-item"><span class="addon-name">Short-Form Standard — 8/mo</span><span class="addon-price">$520/mo</span></div>
+                    <div class="addon-item"><span class="addon-name">Short-Form Pro — 16/mo</span><span class="addon-price">$1,575/mo</span></div>
+                    <div class="addon-item"><span class="addon-name">Long-Form Add-On — 2/mo</span><span class="addon-price">$895/mo</span></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== JPAX LOCAL CALLOUT ===== -->
+    <section class="jpax-local-section">
+        <div class="container">
+            <div class="local-callout reveal">
+                <div class="local-icon"><i class="fas fa-map-marker-alt"></i></div>
+                <div class="local-content">
+                    <div class="local-label">Upstate SC Businesses</div>
+                    <h3>Ask About JPax Local</h3>
+                    <p>A pricing program for small businesses based in Greenville and the Upstate. Real systems. Local rates. Built right here. Reach out and we'll walk you through it.</p>
+                </div>
+                <a href="index.html#contact" class="local-cta">Ask About JPax Local <i class="fas fa-arrow-right"></i></a>
+            </div>
+        </div>
+    </section>
+
     <!-- CTA -->
     <section class="cta-section">
         <div class="container">
@@ -953,6 +1231,7 @@
                     <ul>
                         <li><a href="pricing.html#build">BUILD Projects</a></li>
                         <li><a href="pricing.html#rise">RISE Partnerships</a></li>
+                        <li><a href="pricing.html#bundles">AI Video Bundles</a></li>
                         <li><a href="jupiter.html">Jupiter Platform</a></li>
                         <li><a href="quiz.html">Find Your Fit</a></li>
                         <li><a href="/client/portal.html">Client Portal</a></li>
