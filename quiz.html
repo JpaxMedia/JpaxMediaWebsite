@@ -539,6 +539,13 @@
 
     function showResults() {
         const result = determineResult();
+        if (window.fbq) {
+            fbq('track', 'CompleteRegistration', {
+                content_name: result.title,
+                content_category: result.tag,
+                status: 'quiz_complete'
+            });
+        }
         quizSection.style.display = 'none';
         progressWrap.style.display = 'none';
         resultsSection.style.display = 'block';

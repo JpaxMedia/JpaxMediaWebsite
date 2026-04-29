@@ -1367,7 +1367,7 @@
                         Or email directly: <a href="mailto:julian@jpaxmedia.com" style="color:var(--accent);text-decoration:none">julian@jpaxmedia.com</a>
                     </p>
                 </div>
-                <form class="contact-form reveal" action="https://formspree.io/f/xkgwgjrn" method="POST">
+                <form class="contact-form reveal" action="https://formspree.io/f/xkgwgjrn" method="POST" onsubmit="if(window.fbq){fbq('track','Lead',{content_name:(document.getElementById('interest')||{}).value||'general',content_category:'contact_form'});}">
                     <div class="form-group">
                         <label for="name">Name</label>
                         <input type="text" id="name" name="name" required placeholder="Your name">
