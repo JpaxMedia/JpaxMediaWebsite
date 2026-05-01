@@ -17,10 +17,13 @@
     fbq('track', 'PageView');
     </script>
     <!-- End Meta Pixel Code -->
-    <title>Find Your System | JPax Media</title>
-    <meta name="description" content="Answer 5 quick questions to discover which JPax Media system is built for your business.">
+    <title>AI Readiness Diagnostic | JPax</title>
+    <meta name="description" content="Find out where your business sits on the AI curve. Take the 2-minute AI Readiness Diagnostic and get a personalized roadmap from JPax.">
+    <meta name="keywords" content="AI readiness, AI diagnostic, AI roadmap, AI agent, automation engine, AI assessment, JPax, Upstate SC">
     <meta property="og:type" content="website">
-    <meta property="og:title" content="Find Your System | JPax Media">
+    <meta property="og:title" content="AI Readiness Diagnostic | JPax">
+    <meta property="og:description" content="2-minute diagnostic + personalized AI roadmap. By Julian Johnson, JPax.">
+    <meta property="og:url" content="https://jpaxmedia.com/quiz.html">
     <meta property="og:image" content="https://jpaxmedia.com/jpaxmedialogoOFFICIALFINALwhite.png">
     <link rel="icon" type="image/png" href="jpaxmedialogoOFFICIALFINALwhite.png">
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -38,7 +41,7 @@
             --font-display:'Chakra Petch',sans-serif;--font-body:'IBM Plex Sans',sans-serif;--font-mono:'JetBrains Mono',monospace;
         }
         *,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
-        html{scroll-behavior:smooth}
+        html{scroll-behavior:smooth;scroll-padding-top:90px}
         body{font-family:var(--font-body);background:var(--bg);color:var(--gray-300);overflow-x:hidden;-webkit-font-smoothing:antialiased}
 
         .grid-bg{position:fixed;top:0;left:0;width:100%;height:100%;pointer-events:none;z-index:0;
@@ -175,6 +178,69 @@
         .restart-btn{display:block;margin:2rem auto 0;background:none;border:1px solid rgba(255,255,255,0.1);color:var(--gray-500);padding:0.6rem 1.5rem;border-radius:8px;cursor:pointer;font-family:var(--font-mono);font-size:0.75rem;letter-spacing:0.08em;text-transform:uppercase;transition:all 0.2s}
         .restart-btn:hover{border-color:rgba(255,255,255,0.25);color:var(--gray-300)}
 
+        /* Amber badge variant */
+        .rc-badge.amber{background:var(--amber);color:#000}
+
+        /* Score block — top of result page */
+        .score-block{
+            background:rgba(12,16,28,0.85);
+            border:1px solid rgba(74,222,128,0.18);
+            border-radius:16px;padding:2rem 2rem 2.25rem;margin-bottom:2rem;
+            position:relative;overflow:hidden;
+        }
+        .score-block::before{
+            content:'';position:absolute;top:0;left:0;right:0;height:2px;
+            background:linear-gradient(90deg,transparent,var(--accent),var(--purple),transparent);
+        }
+        .score-label{font-family:var(--font-mono);font-size:0.7rem;letter-spacing:0.18em;color:var(--gray-500);text-transform:uppercase;margin-bottom:0.85rem}
+        .score-value{display:flex;align-items:baseline;gap:0.25rem;margin-bottom:1rem;line-height:1}
+        .score-num{
+            font-family:var(--font-display);font-weight:700;
+            font-size:clamp(3rem, 7vw, 4.5rem);letter-spacing:-0.02em;
+            background:linear-gradient(135deg,var(--accent),var(--purple));
+            -webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;
+            text-shadow:0 0 32px rgba(74,222,128,0.18);
+        }
+        .score-max{font-family:var(--font-display);font-weight:600;font-size:1.4rem;color:var(--gray-500)}
+        .score-band-tag{
+            display:inline-block;font-family:var(--font-display);font-weight:700;
+            font-size:0.85rem;letter-spacing:0.05em;color:var(--white);
+            background:rgba(74,222,128,0.1);border:1px solid rgba(74,222,128,0.25);
+            padding:0.45rem 0.95rem;border-radius:6px;margin-bottom:0.85rem;
+        }
+        .score-band-desc{color:var(--gray-300);font-size:0.95rem;line-height:1.6;max-width:580px}
+
+        /* Soft mention — TradeOS / CreatorOS at the bottom only */
+        .soft-mention{
+            background:rgba(255,255,255,0.02);border:1px solid rgba(255,255,255,0.06);
+            border-radius:12px;padding:1.25rem 1.4rem;margin:1.5rem 0 0;
+            display:flex;gap:1rem;align-items:flex-start;
+        }
+        .soft-mention .sm-tag{
+            font-family:var(--font-mono);font-size:0.65rem;letter-spacing:0.1em;
+            text-transform:uppercase;color:var(--gray-500);
+            padding:0.3rem 0.6rem;background:rgba(255,255,255,0.04);
+            border:1px solid rgba(255,255,255,0.06);border-radius:4px;
+            white-space:nowrap;flex-shrink:0;
+        }
+        .soft-mention p{color:var(--gray-400);font-size:0.88rem;line-height:1.6;margin:0}
+        .soft-mention strong{color:var(--white);font-weight:600}
+        .soft-mention a{color:var(--accent);text-decoration:none;border-bottom:1px solid rgba(74,222,128,0.3)}
+        .soft-mention a:hover{border-bottom-color:var(--accent)}
+
+        /* Email confirmation note — bottom of results */
+        .email-confirmation{
+            margin:2rem 0 0;padding:0.95rem 1.15rem;
+            background:rgba(74,222,128,0.04);border:1px solid rgba(74,222,128,0.15);
+            border-radius:10px;display:flex;align-items:center;gap:0.65rem;
+            color:var(--gray-300);font-size:0.88rem;
+        }
+        .email-confirmation i{color:var(--accent);font-size:1rem}
+        .email-confirmation strong{color:var(--white);font-weight:600}
+
+        /* Email gate card — uses .q-card, light additions */
+        .email-gate .q-text{font-size:1.65rem}
+
         /* Footer */
         .site-footer{position:relative;z-index:1;padding:4rem 0 0;background:linear-gradient(180deg,var(--bg) 0%,#040610 100%);border-top:1px solid rgba(74,222,128,0.08)}
         .site-footer::before{content:'';position:absolute;top:0;left:50%;transform:translateX(-50%);width:40%;height:1px;background:linear-gradient(90deg,transparent,var(--accent),transparent);opacity:0.4}
@@ -212,17 +278,17 @@
     <div class="grid-bg"></div>
 
     <nav class="nav" id="nav"><div class="nav-inner">
-        <a href="index.html" class="nav-logo"><img src="jpaxmedialogoOFFICIALFINAL(white).svg" alt="JPax Media"></a>
+        <a href="index.html" class="nav-logo"><img src="jpaxmedialogoOFFICIALFINAL(white).svg" alt="JPax"></a>
         <div class="nav-links">
-            <a href="index.html#systems">Systems</a><a href="index.html#services">Services</a><a href="index.html#process">Process</a>
-            <a href="portfolio.html">Portfolio</a><a href="jupiter.html" class="nav-jupiter"><span class="jupiter-dot"></span>Jupiter</a><span class="nav-divider"></span><a href="pricing.html" class="nav-cta">View Pricing</a><a href="/client/portal.html" style="color:#6b7280;margin-left:8px;font-size:13px;text-decoration:none;transition:color 0.2s;" onmouseover="this.style.color='#00e87b'" onmouseout="this.style.color='#6b7280'">Client Portal</a>
+            <a href="index.html#what-i-build">What I Build</a><a href="index.html#process">Process</a>
+            <a href="portfolio.html">Portfolio</a><a href="blog/">Blog</a><a href="jupiter.html" class="nav-jupiter"><span class="jupiter-dot"></span>Jupiter</a><span class="nav-divider"></span><a href="pricing.html" class="nav-cta">View Pricing</a><a href="/client/portal.html" style="color:#6b7280;margin-left:8px;font-size:13px;text-decoration:none;transition:color 0.2s;" onmouseover="this.style.color='#00e87b'" onmouseout="this.style.color='#6b7280'">Client Portal</a>
         </div>
         <button class="nav-mobile-btn" id="mobileBtn" aria-label="Menu"><span></span><span></span><span></span></button>
     </div></nav>
     <div class="mobile-menu-overlay" id="mobileOverlay"></div>
     <div class="mobile-menu" id="mobileMenu">
         <div class="mobile-menu-links">
-            <a href="index.html">Home</a><a href="index.html#systems">Systems</a><a href="portfolio.html">Portfolio</a>
+            <a href="index.html">Home</a><a href="index.html#what-i-build">What I Build</a><a href="portfolio.html">Portfolio</a><a href="blog/">Blog</a>
             <a href="jupiter.html" style="color:var(--accent);font-family:var(--font-display);font-weight:600;letter-spacing:0.06em;text-transform:uppercase;font-size:0.95rem;">Jupiter</a><a href="pricing.html">Pricing</a><a href="quiz.html" class="mob-active">Take the Quiz</a><a href="/client/portal.html" style="color:#6b7280;font-size:14px;transition:color 0.2s;" onmouseover="this.style.color='#00e87b'" onmouseout="this.style.color='#6b7280'">Client Portal</a>
         </div>
         <div class="mobile-menu-cta"><a href="pricing.html">View Pricing <i class="fas fa-arrow-right"></i></a></div>
@@ -232,9 +298,9 @@
     <!-- Hero -->
     <section class="hero">
         <div class="container" style="text-align:center">
-            <div class="hero-badge"><span class="dot"></span>2-Minute Assessment</div>
-            <h1>Find Your <span class="g">System</span></h1>
-            <p class="hero-sub" style="margin-top:0.75rem">Answer 5 questions and we'll match you to the right JPax solution — with exact pricing.</p>
+            <div class="hero-badge"><span class="dot"></span>2-Minute AI Readiness Check</div>
+            <h1>Where Does Your <span class="g">Business</span> Sit on the AI Curve?</h1>
+            <p class="hero-sub" style="margin-top:0.75rem">Answer 7 questions. Get an AI Readiness Score and a personalized roadmap — automation, agents, custom apps, or growth — built for where you actually are.</p>
         </div>
     </section>
 
@@ -242,7 +308,7 @@
     <div class="progress-wrap" id="progressWrap">
         <div class="container">
             <div class="progress-meta">
-                <span>Question <span class="q-num" id="qNum">1</span> of 5</span>
+                <span>Question <span class="q-num" id="qNum">1</span> of 7</span>
                 <span id="qPct">0% complete</span>
             </div>
             <div class="progress-track"><div class="progress-fill" id="progressFill" style="width:0%"></div></div>
@@ -263,8 +329,8 @@
     <footer class="site-footer">
         <div class="footer-grid">
             <div class="footer-brand">
-                <a href="index.html" class="footer-brand-logo"><span>Jpax</span> Media</a>
-                <p>AI-accelerated digital systems for trades businesses and content creators. Built fast. Built right.</p>
+                <a href="index.html" class="footer-brand-logo"><span>JPax</span></a>
+                <p>AI agents, automation systems, and custom apps. Built fast. Built right.</p>
                 <div class="footer-social-links">
                     <a href="https://www.youtube.com/@JPaxFilms/videos" target="_blank" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
                     <a href="https://www.tiktok.com/@jpaxfilms?lang=en" target="_blank" aria-label="TikTok"><i class="fab fa-tiktok"></i></a>
@@ -277,34 +343,37 @@
                 <ul>
                     <li><a href="pricing.html#build">BUILD Projects</a></li>
                     <li><a href="pricing.html#rise">RISE Partnerships</a></li>
-                    <li><a href="jupiter.html">Jupiter Platform</a></li>
-                    <li><a href="quiz.html">Find Your Fit</a></li>
-                    <li><a href="/client/portal.html">Client Portal</a></li>
-                </ul>
-            </div>
-            <div class="footer-col">
-                <h4>Company</h4>
-                <ul>
-                    <li><a href="index.html">Home</a></li>
-                    <li><a href="portfolio.html">Portfolio</a></li>
                     <li><a href="pricing.html">Pricing</a></li>
-                    <li><a href="index.html#contact">Contact</a></li>
+                    <li><a href="jupiter.html">Jupiter Platform</a></li>
+                    <li><a href="portfolio.html">Portfolio</a></li>
+                    <li><a href="blog/">Blog</a></li>
                 </ul>
             </div>
             <div class="footer-col">
-                <h4>Get in Touch</h4>
+                <h4>Products</h4>
+                <ul>
+                    <li><a href="https://tradeoshq.app" target="_blank" rel="noopener">TradeOS <i class="fas fa-arrow-up-right-from-square" style="font-size:0.65rem;margin-left:0.25rem;opacity:0.6"></i></a></li>
+                    <li><span style="color:var(--gray-500);font-size:0.875rem;">CreatorOS <span style="font-size:0.7rem;opacity:0.7;font-style:italic">(in development)</span></span></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>Connect</h4>
                 <div class="footer-contact-item">
                     <i class="fas fa-envelope"></i>
-                    <a href="mailto:info@jpaxmedia.com">info@jpaxmedia.com</a>
+                    <a href="mailto:julian@jpaxmedia.com">julian@jpaxmedia.com</a>
                 </div>
                 <div class="footer-contact-item">
                     <i class="fas fa-arrow-right"></i>
-                    <a href="quiz.html">Take the Quiz</a>
+                    <a href="index.html#contact">Start a Project</a>
+                </div>
+                <div class="footer-contact-item">
+                    <i class="fas fa-user-circle"></i>
+                    <a href="/client/portal.html">Client Portal</a>
                 </div>
             </div>
         </div>
         <div class="footer-bottom">
-            <span class="footer-copy">&copy; 2026 JPax Media. All rights reserved.</span>
+            <span class="footer-copy">&copy; 2026 JPax Media LLC. All rights reserved.</span>
             <span class="footer-tagline"><span class="g">BUILD.</span> <span class="p">RISE.</span> <span class="b">SCALE.</span></span>
         </div>
     </footer>
@@ -316,140 +385,210 @@
             label: 'Question 01 — Your Business',
             text: 'Which best describes your business?',
             options: [
-                { text: 'Home services — roofing, HVAC, plumbing, landscaping, etc.', tags: ['trade'] },
-                { text: 'Content creator, coach, or influencer', tags: ['creator'] },
-                { text: 'Retail, hospitality, or property management', tags: ['other'] },
-                { text: 'Something else — I just need a smarter digital system', tags: ['other'] }
+                { text: 'Trade / home services (HVAC, plumbing, electrical, landscaping, roofing, contractors)', tags: ['trade'] },
+                { text: 'Content creator, coach, influencer, or media brand', tags: ['creator'] },
+                { text: 'Hospitality, property management, or short-term rental', tags: ['hospitality'] },
+                { text: 'Professional service (legal, consulting, marketing, finance)', tags: ['service'] },
+                { text: 'Something else', tags: ['other'] }
             ]
         },
         {
-            icon: 'fas fa-bullseye',
-            label: 'Question 02 — Your Goal',
-            text: 'What\'s your primary goal right now?',
+            icon: 'fas fa-pen-nib',
+            label: 'Question 02 — Your Content',
+            text: 'How does your business produce content right now?',
             options: [
-                { text: 'Get a professional system running fast — I\'m starting fresh', tags: ['build'] },
-                { text: 'Replace the chaos of spreadsheets, texts, and missed follow-ups', tags: ['trade','build'] },
-                { text: 'Manage content, bookings, and brand in one place', tags: ['creator','build'] },
-                { text: 'Scale what\'s working with ongoing support and optimization', tags: ['rise'] }
+                { text: 'We post manually whenever someone has time', tags: ['content-manual','rise-a','score-low'] },
+                { text: 'We outsource to a freelancer or agency', tags: ['content-outsourced','rise-b','score-mid'] },
+                { text: 'We use some tools but a human writes / approves everything', tags: ['content-hybrid','rise-a','score-mid'] },
+                { text: "We don't produce content right now", tags: ['content-none','build','score-low'] }
             ]
         },
         {
-            icon: 'fas fa-clock',
-            label: 'Question 03 — Your Timeline',
-            text: 'How quickly do you need this?',
+            icon: 'fas fa-network-wired',
+            label: 'Question 03 — Your Operations',
+            text: 'How do you currently run day-to-day operations?',
             options: [
-                { text: 'ASAP — days, not months', tags: ['build','trade','creator'] },
-                { text: 'I have a launch or busy season coming up', tags: ['build'] },
-                { text: 'I\'m ready to commit to long-term growth', tags: ['rise'] },
-                { text: 'Flexible — I want it done right', tags: ['other'] }
+                { text: "Spreadsheets, texts, sticky notes — it's chaos", tags: ['ops-broken','build','score-low'] },
+                { text: "Multiple tools that don't talk to each other", tags: ['ops-disconnected','build','agent','score-mid'] },
+                { text: 'Decent software, but lots of manual steps inside it', tags: ['ops-manual','agent','score-mid'] },
+                { text: 'Solid system, runs smoothly', tags: ['ops-solid','rise-b','score-high'] }
             ]
         },
         {
             icon: 'fas fa-layer-group',
-            label: 'Question 04 — Your Setup',
-            text: 'What do you currently have in place?',
+            label: 'Question 04 — Your Platform',
+            text: 'What software / platform do you currently have?',
             options: [
-                { text: 'Nothing — starting from zero', tags: ['build','starter'] },
-                { text: 'A basic website or social page, not much else', tags: ['build','starter'] },
-                { text: 'Some tools but they don\'t talk to each other', tags: ['build','pro'] },
-                { text: 'A solid foundation — I need the next level', tags: ['rise','pro'] }
+                { text: 'Nothing yet — starting from zero', tags: ['platform-none','build','score-low'] },
+                { text: 'Just a website', tags: ['platform-basic','score-low'] },
+                { text: 'Website + outdated software (legacy CRM, old portal, etc.)', tags: ['platform-outdated','build','score-mid'] },
+                { text: 'Website + a working custom app or platform', tags: ['platform-advanced','agent','score-high'] }
+            ]
+        },
+        {
+            icon: 'fas fa-bullseye',
+            label: 'Question 05 — Your Goal',
+            text: "What's your primary goal in the next 90 days?",
+            options: [
+                { text: 'Build a foundation fast — site, brand, custom system', tags: ['build'] },
+                { text: 'Stop manually producing content every week', tags: ['rise-a'] },
+                { text: 'Get hands-on growth support — strategy, ads, creative', tags: ['rise-b'] },
+                { text: 'Both: automate content AND get managed growth', tags: ['rise-c'] },
+                { text: 'Embed AI inside a platform we already own', tags: ['agent'] }
+            ]
+        },
+        {
+            icon: 'fas fa-users',
+            label: 'Question 06 — Your Team',
+            text: 'How big is your team?',
+            options: [
+                { text: 'Just me / solo', tags: ['team-solo','score-low'] },
+                { text: '2–5 people', tags: ['team-small','score-mid'] },
+                { text: '6–15 people', tags: ['team-mid','score-mid'] },
+                { text: '15+ people', tags: ['team-large','score-high'] }
             ]
         },
         {
             icon: 'fas fa-dollar-sign',
-            label: 'Question 05 — Your Investment',
-            text: 'What\'s your preferred investment style?',
+            label: 'Question 07 — Your Investment',
+            text: 'What kind of investment makes the most sense?',
             options: [
                 { text: 'One-time flat fee — own it outright', tags: ['build'] },
                 { text: 'Monthly partnership — ongoing optimization', tags: ['rise'] },
-                { text: 'Start with a build, then grow into partnership', tags: ['build','rise'] },
-                { text: 'Show me the best option for my situation', tags: ['best'] }
+                { text: 'Both — start with a build, grow into a partnership', tags: ['build','rise','rise-c'] },
+                { text: 'Show me the best option for my situation', tags: ['discovery'] }
             ]
         }
     ];
 
     const results = {
-        tradeOS: {
-            tag: 'green', tagText: 'TradeOS — Recommended',
-            title: 'TradeOS is Built for You',
-            desc: 'The complete SaaS operating system for trade businesses — HVAC, plumbing, electrical, landscaping, roofing, and contractors. Manage leads, jobs, quotes, invoices, contracts, and revenue in one branded system.',
+        aiAgent: {
+            tag: 'purple', tagText: 'AI Agent — Recommended',
+            title: 'Embed an AI Agent in Your Platform',
+            desc: 'You already have a working platform — but the work happening inside it is manual. An embedded AI agent can take real action: scheduling, billing, deliverables, communications. Custom-scoped to your stack.',
             cards: [
                 {
-                    type: 'primary', badge: 'green', badgeText: 'Solo — $59/mo',
-                    name: 'TradeOS Solo',
-                    tagline: '2 seats with core features — leads, jobs, quotes, invoices, clients, contracts, and reports.',
-                    features: ['Lead Management','Job Tracking','Quoting & Invoicing','Client Management','Contracts & E-Signature','Reports'],
-                    price: '$59', priceLabel: '/month',
-                    cta: 'See Pricing', ctaHref: 'pricing.html', ctaType: 'primary'
+                    type: 'primary', badge: 'purple', badgeText: 'BUILD — Custom',
+                    name: 'AI Agent Build',
+                    tagline: 'Custom-scoped to your platform. Real actions, not just chat. RLS-secured. Production-grade.',
+                    features: ['Scoped to your platform','Multi-tool integration','RLS-secured','Production-grade','7–21 day build'],
+                    price: 'Custom', priceLabel: 'scoped on call',
+                    cta: 'Book a Discovery Call', ctaHref: 'index.html#contact', ctaType: 'primary'
                 },
                 {
-                    type: 'secondary', badge: 'green', badgeText: 'Pro — $129/mo',
-                    name: 'TradeOS Pro',
-                    tagline: '8 seats with all Solo features plus automations, crew management, and scheduling.',
-                    features: ['Everything in Solo','Automations Engine','Crew Management','Job Scheduling','Time Tracking'],
-                    price: '$129', priceLabel: '/month',
-                    cta: 'See Pricing', ctaHref: 'pricing.html', ctaType: 'secondary'
+                    type: 'secondary', badge: 'green', badgeText: 'Case Study',
+                    name: 'See Nova in action',
+                    tagline: 'Nova is the AI agent embedded inside Jupiter — JPax\'s own client mission control. The same architecture I\'ll embed in your platform.',
+                    features: ['Real admin actions in production','Per-org configurable','Scoped permissions','Live daily inside Jupiter'],
+                    price: 'Live', priceLabel: 'in production',
+                    cta: 'See Case Study', ctaHref: 'jupiter.html', ctaType: 'secondary'
                 }
             ]
         },
-        creatorOS: {
-            tag: 'purple', tagText: 'CreatorOS — Coming Soon',
-            title: 'CreatorOS is on the Way',
-            desc: 'A white-label AI operating system built for content creators and influencers. Manage brand deals, content pipelines, audience analytics, and revenue — all in one branded dashboard. Currently in development.',
+        automationEngine: {
+            tag: 'green', tagText: 'Automation Engine — Recommended',
+            title: 'A Content Engine Built for You',
+            desc: 'Your content is too valuable to produce by hand every week. An Automation Engine handles research, drafting, imagery, and publishing on a schedule — with an approval gate so you stay in control.',
             cards: [
                 {
-                    type: 'primary', badge: 'purple', badgeText: 'Coming Soon',
-                    name: 'CreatorOS',
-                    tagline: 'Currently in development. Join the waitlist to get notified when CreatorOS launches.',
-                    features: ['Content Pipeline (Kanban)','Brand Deals Management','Audience Analytics','Revenue & Invoicing','Automations','Reports'],
-                    price: 'TBD', priceLabel: '',
-                    cta: 'Get Notified', ctaHref: 'index.html#contact', ctaType: 'primary'
+                    type: 'primary', badge: 'green', badgeText: 'RISE Track A',
+                    name: 'Spark — $300/mo',
+                    tagline: 'Single channel · weekly publishing · AI copy + imagery · approval gate · brand-voice trained.',
+                    features: ['1 channel','Weekly publishing','AI copy + imagery','Approval gate','Brand-voice trained'],
+                    price: '$300', priceLabel: '/mo + $500 setup',
+                    cta: 'See Spark', ctaHref: 'pricing.html#rise', ctaType: 'primary'
+                },
+                {
+                    type: 'secondary', badge: 'green', badgeText: 'RISE Track A',
+                    name: 'Engine — $750/mo',
+                    tagline: 'Multi-channel · auto-publish wired · higher cadence · brand-voice deeper · performance reports.',
+                    features: ['Multi-channel','Auto-publish wired','Higher cadence','Brand-voice deeper','Performance reports'],
+                    price: '$750', priceLabel: '/mo + $1,000 setup',
+                    cta: 'See Engine', ctaHref: 'pricing.html#rise', ctaType: 'secondary'
                 }
             ]
         },
-        buildCustom: {
+        customBuild: {
             tag: 'green', tagText: 'Custom BUILD — Recommended',
-            title: 'Let\'s Build Your System',
-            desc: 'Your business doesn\'t fit a template — and that\'s fine. JPax specializes in custom AI-powered systems delivered in days. A website, app, brand, or full digital foundation built around exactly what you need.',
+            title: "Let's Build Your Foundation",
+            desc: "You're ready for a real digital foundation — site, custom app, or branded platform — built fast and built right. Flat-rate pricing. You own everything.",
             cards: [
                 {
-                    type: 'primary', badge: 'green', badgeText: 'BUILD — Project',
+                    type: 'primary', badge: 'green', badgeText: 'BUILD',
                     name: 'Custom BUILD Project',
-                    tagline: 'Website, app, brand, or full system — flat-rate, fast delivery, you own everything.',
-                    features: ['Custom Scope','3–14 Day Delivery','Flat-Rate Pricing','Full Ownership','Jupiter Portal Access'],
-                    price: 'From $800', priceLabel: 'flat-rate',
-                    cta: 'View All Services', ctaHref: 'pricing.html', ctaType: 'primary'
+                    tagline: 'Custom scope. 5–21 day delivery. Flat-rate pricing. Full ownership. Jupiter portal access.',
+                    features: ['Custom scope','5–21 day delivery','Flat-rate pricing','Full ownership','Jupiter portal access'],
+                    price: 'From $2,500', priceLabel: 'site · $5,000 app',
+                    cta: 'See BUILD Pricing', ctaHref: 'pricing.html#build', ctaType: 'primary'
                 },
                 {
-                    type: 'secondary', badge: 'blue', badgeText: 'RISE — Partnership',
-                    name: 'RISE Growth Partnership',
-                    tagline: 'After your build, keep growing with monthly strategy, content, and optimization. Includes full Jupiter mission control access for real-time project visibility.',
-                    features: ['Ongoing Social Management','Monthly Strategy Calls','Performance Reports','Ad Campaign Support','Priority Access'],
-                    price: 'From $800', priceLabel: '/month',
-                    cta: 'View Partnerships', ctaHref: 'pricing.html', ctaType: 'secondary'
+                    type: 'secondary', badge: 'purple', badgeText: 'RISE',
+                    name: 'Add a RISE partnership later',
+                    tagline: 'Optional add-on. Three tracks to choose from. Cancel anytime after 3 months.',
+                    features: ['Optional add-on','Three tracks to choose','Cancel anytime after 3 mo','Automation, growth, or both'],
+                    price: 'From $300', priceLabel: '/month',
+                    cta: 'See RISE Tracks', ctaHref: 'pricing.html#rise', ctaType: 'secondary'
                 }
             ]
         },
-        risePartner: {
-            tag: 'purple', tagText: 'RISE Partnership — Recommended',
-            title: 'You\'re Ready to RISE',
-            desc: 'You have a foundation — now it\'s time to scale it. A RISE partnership means ongoing strategy, content, optimization, and reporting every month. We grow together.',
+        engineGrowth: {
+            tag: 'purple', tagText: 'Engine + Growth — Recommended',
+            title: 'Run It on Autopilot. Grow It on Purpose.',
+            desc: 'You want both — automated content production and hands-on growth strategy on top. The Engine + Growth bundle pairs an Automation Engine with a Managed Growth retainer, at a discount.',
             cards: [
                 {
-                    type: 'primary', badge: 'purple', badgeText: 'RISE — Growth Partner',
-                    name: 'RISE Growth Partnership',
-                    tagline: 'Monthly strategy, content, and optimization — we run the growth engine so you don\'t have to. Includes full Jupiter mission control access for real-time project visibility.',
-                    features: ['Social Media Management','Monthly Strategy Calls','Ad Campaign Management','Analytics & Reporting','Priority Support'],
-                    price: 'From $1,500', priceLabel: '/month',
-                    cta: 'See RISE Plans', ctaHref: 'pricing.html', ctaType: 'primary'
+                    type: 'primary', badge: 'purple', badgeText: 'RISE Track C',
+                    name: 'Engine + Growth — $2,000/mo',
+                    tagline: 'Multi-channel content engine · 2–3 platforms managed · 3 ad campaigns · 1 video/week · monthly strategy. Save $250/mo vs. unbundled.',
+                    features: ['Multi-channel engine','2–3 platforms managed','3 ad campaigns','1 video/week','Monthly strategy'],
+                    price: '$2,000', priceLabel: '/mo + $1,000 setup',
+                    cta: 'See Engine + Growth', ctaHref: 'pricing.html#rise', ctaType: 'primary'
                 },
                 {
-                    type: 'secondary', badge: 'green', badgeText: 'BUILD Add-On',
-                    name: 'System Upgrade',
-                    tagline: 'Already have a system? We can upgrade it before starting your partnership.',
-                    features: ['OS Refresh or Rebuild','New Feature Development','Integration Setup','Brand Refresh'],
-                    price: 'From $1,500', priceLabel: 'one-time',
-                    cta: 'View BUILD Options', ctaHref: 'pricing.html', ctaType: 'secondary'
+                    type: 'secondary', badge: 'purple', badgeText: 'RISE Track C',
+                    name: 'Spark + Starter — $1,000/mo',
+                    tagline: 'Single content engine · 1 platform managed · 1–2 ad campaigns · monthly check-in. Entry-level combo.',
+                    features: ['Single content engine','1 platform managed','1–2 ad campaigns','Monthly check-in'],
+                    price: '$1,000', priceLabel: '/mo + $500 setup',
+                    cta: 'See Spark + Starter', ctaHref: 'pricing.html#rise', ctaType: 'secondary'
+                }
+            ]
+        },
+        managedGrowth: {
+            tag: 'green', tagText: 'Managed Growth — Recommended',
+            title: "You're Ready to RISE",
+            desc: 'You have a foundation that works. Now you want a team running ongoing growth — strategy, social, ads, creative, optimization — every month. That\'s RISE.',
+            cards: [
+                {
+                    type: 'primary', badge: 'green', badgeText: 'RISE Track B',
+                    name: 'RISE Growth — $1,500/mo',
+                    tagline: '2–3 platforms · 20–25 posts · 3 ad campaigns · 1 video/week · monthly strategy calls.',
+                    features: ['2–3 platforms','20–25 posts','3 ad campaigns','1 video/week','Monthly strategy'],
+                    price: '$1,500', priceLabel: '/month',
+                    cta: 'See Growth Plan', ctaHref: 'pricing.html#rise', ctaType: 'primary'
+                },
+                {
+                    type: 'secondary', badge: 'green', badgeText: 'RISE Track B',
+                    name: 'RISE Accelerator — $2,500/mo',
+                    tagline: '3–5 platforms · 5+ campaigns · 5+ videos · quarterly refresh · priority support.',
+                    features: ['3–5 platforms','5+ ad campaigns','5+ videos/month','Quarterly refresh','Priority support'],
+                    price: '$2,500', priceLabel: '/month',
+                    cta: 'See Accelerator', ctaHref: 'pricing.html#rise', ctaType: 'secondary'
+                }
+            ]
+        },
+        discovery: {
+            tag: 'amber', tagText: 'Discovery Call — Recommended',
+            title: "Let's Map Your AI Roadmap Together",
+            desc: 'Your situation is custom enough that a productized recommendation wouldn\'t do it justice. The right next step is a 30-minute discovery call — we\'ll map your AI roadmap and quote the right scope.',
+            cards: [
+                {
+                    type: 'primary', badge: 'amber', badgeText: 'DISCOVERY',
+                    name: 'Book a Discovery Call',
+                    tagline: 'Free 30-minute call. Custom AI roadmap. Scope + pricing on the call. No obligation.',
+                    features: ['30-minute call','Custom AI roadmap','Scope + pricing on the call','No obligation'],
+                    price: 'Free', priceLabel: '30 minutes',
+                    cta: 'Book Discovery Call', ctaHref: 'index.html#contact', ctaType: 'primary'
                 }
             ]
         }
@@ -474,7 +613,7 @@
 
     function renderQuestion(idx) {
         const q = questions[idx];
-        const letters = ['A','B','C','D'];
+        const letters = ['A','B','C','D','E'];
         updateProgress(idx);
 
         quizContainer.innerHTML = `
@@ -510,71 +649,261 @@
             current++;
             renderQuestion(current);
         } else {
-            showResults();
+            renderEmailGate();
         }
+    }
+
+    // ===== EMAIL GATE =====
+    function renderEmailGate() {
+        progressWrap.style.display = 'none';
+        const score = calculateScore();
+        const result = determineResult();
+        const html = `
+            <div class="q-card email-gate" id="emailGateCard">
+                <div class="q-icon"><i class="fas fa-envelope-open-text"></i></div>
+                <div class="q-label">Final Step — Your Scorecard</div>
+                <div class="q-text">Your AI Readiness Score is Ready</div>
+                <p style="color:var(--gray-400);font-size:1rem;line-height:1.6;margin:0.5rem 0 1.75rem;max-width:540px">
+                    Drop your email and I'll send your full diagnostic + personalized recommendations to your inbox.
+                </p>
+                <form id="emailGateForm" novalidate style="display:flex;flex-direction:column;gap:0.85rem">
+                    <input type="email" id="gateEmail" name="email" required placeholder="you@company.com" autocomplete="email"
+                           style="width:100%;padding:1rem 1.15rem;background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.1);border-radius:10px;color:var(--white);font-family:var(--font-body);font-size:1rem;outline:none;transition:border-color 0.2s, box-shadow 0.2s"
+                           onfocus="this.style.borderColor='var(--accent)';this.style.boxShadow='0 0 0 3px rgba(74,222,128,0.12)'"
+                           onblur="this.style.borderColor='rgba(255,255,255,0.1)';this.style.boxShadow='none'" />
+                    <div id="gateError" style="display:none;color:#f87171;font-size:0.85rem;font-family:var(--font-mono)">// please enter a valid email</div>
+                    <button type="submit" id="gateSubmit"
+                            style="background:var(--accent);color:var(--bg);border:none;padding:1rem 1.5rem;border-radius:10px;font-family:var(--font-display);font-weight:700;font-size:1rem;letter-spacing:0.04em;cursor:pointer;display:inline-flex;align-items:center;justify-content:center;gap:0.6rem;transition:transform 0.2s, box-shadow 0.2s"
+                            onmouseover="this.style.transform='translateY(-1px)';this.style.boxShadow='0 8px 28px rgba(74,222,128,0.25)'"
+                            onmouseout="this.style.transform='none';this.style.boxShadow='none'">
+                        Send My Scorecard <i class="fas fa-paper-plane"></i>
+                    </button>
+                    <div style="text-align:center;color:var(--gray-500);font-size:0.78rem;margin-top:0.25rem">
+                        No spam. One scorecard, that's it.
+                    </div>
+                </form>
+            </div>
+        `;
+        while (quizContainer.firstChild) quizContainer.removeChild(quizContainer.firstChild);
+        quizContainer.insertAdjacentHTML('beforeend', html);
+        document.getElementById('emailGateForm').addEventListener('submit', submitEmailGate);
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+        window.__quizScore = score;
+        window.__quizResult = result;
+    }
+
+    function submitEmailGate(e) {
+        e.preventDefault();
+        const email = document.getElementById('gateEmail').value.trim();
+        const errEl = document.getElementById('gateError');
+        const validEmail = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+        if (!validEmail) {
+            errEl.style.display = 'block';
+            return;
+        }
+        errEl.style.display = 'none';
+
+        const score = window.__quizScore;
+        const result = window.__quizResult;
+        const answersJson = answers.map((ansIdx, qIdx) => ({
+            q: questions[qIdx].label,
+            a: ansIdx !== null ? questions[qIdx].options[ansIdx].text : null
+        }));
+
+        const payload = new FormData();
+        payload.append('form_type', 'quiz');
+        payload.append('email', email);
+        payload.append('score', score);
+        payload.append('result_key', result.key);
+        payload.append('result_title', result.data.title);
+        payload.append('answers_json', JSON.stringify(answersJson));
+        payload.append('submitted_at', new Date().toISOString());
+
+        const submitBtn = document.getElementById('gateSubmit');
+        submitBtn.disabled = true;
+        submitBtn.textContent = 'Sending…';
+
+        fetch('https://formspree.io/f/xkgwgjrn', {
+            method: 'POST',
+            headers: { 'Accept': 'application/json' },
+            body: payload
+        }).catch(() => { /* render results regardless of post success */ });
+
+        if (window.fbq) {
+            fbq('track', 'Lead', {
+                content_name: result.data.title,
+                content_category: 'quiz_' + result.key,
+                value: score,
+                currency: 'USD'
+            });
+        }
+
+        window.__quizEmail = email;
+        showResults();
     }
 
     function goBack() {
         if (current > 0) { current--; renderQuestion(current); }
     }
 
-    function determineResult() {
-        // Tally tags from all answers
-        const tagCounts = {};
+    // ===== AI READINESS SCORING =====
+    function calculateScore() {
+        let score = 50; // base
         answers.forEach((ansIdx, qIdx) => {
             if (ansIdx === null) return;
             const tags = questions[qIdx].options[ansIdx].tags;
-            tags.forEach(t => { tagCounts[t] = (tagCounts[t] || 0) + 1; });
+            tags.forEach(t => {
+                if (t === 'score-low') score -= 10;
+                else if (t === 'score-mid') score += 5;
+                else if (t === 'score-high') score += 15;
+            });
         });
+        return Math.max(0, Math.min(100, score));
+    }
 
-        const isTrade = (tagCounts['trade'] || 0) >= 1;
-        const isCreator = (tagCounts['creator'] || 0) >= 1;
-        const isRise = (tagCounts['rise'] || 0) >= 2;
+    function getScoreBand(score) {
+        if (score <= 25) return {
+            label: 'Foundation Stage',
+            desc: 'Your business is at the start of its AI journey. The biggest leverage is building a real foundation.'
+        };
+        if (score <= 55) return {
+            label: 'Building Stage',
+            desc: 'You have pieces in place. The next move is connecting them and automating what\'s still manual.'
+        };
+        if (score <= 80) return {
+            label: 'Scaling Stage',
+            desc: 'You\'re ready to operationalize. Automation engines and managed growth multiply what\'s already working.'
+        };
+        return {
+            label: 'Optimizing Stage',
+            desc: 'You\'re in the top tier. Embedded agents and deep automation are where the next gains live.'
+        };
+    }
 
-        if (isTrade) return results.tradeOS;
-        if (isCreator) return results.creatorOS;
-        if (isRise) return results.risePartner;
-        return results.buildCustom;
+    function tallyTags() {
+        const counts = {};
+        answers.forEach((ansIdx, qIdx) => {
+            if (ansIdx === null) return;
+            const tags = questions[qIdx].options[ansIdx].tags;
+            tags.forEach(t => { counts[t] = (counts[t] || 0) + 1; });
+        });
+        return counts;
+    }
+
+    function determineResult() {
+        const t = tallyTags();
+        const has = (tag) => (t[tag] || 0) >= 1;
+        const count = (tag) => t[tag] || 0;
+
+        // Force discovery if explicitly chosen
+        if (has('discovery')) return { key: 'discovery', data: results.discovery };
+
+        // 1. AI Agent — agent ≥ 2 AND platform-advanced present
+        if (count('agent') >= 2 && has('platform-advanced')) {
+            return { key: 'aiAgent', data: results.aiAgent };
+        }
+
+        // 2. Engine + Growth Bundle — rise-c present OR (build AND rise both from Q7)
+        if (has('rise-c') || (has('build') && has('rise'))) {
+            return { key: 'engineGrowth', data: results.engineGrowth };
+        }
+
+        // 3. Automation Engine — rise-a ≥ 1 AND a real platform exists
+        if (count('rise-a') >= 1 && (has('platform-basic') || has('platform-advanced') || has('platform-outdated'))) {
+            return { key: 'automationEngine', data: results.automationEngine };
+        }
+
+        // 4. Custom App / BUILD — build ≥ 2 OR platform-none OR ops-broken
+        if (count('build') >= 2 || has('platform-none') || has('ops-broken')) {
+            return { key: 'customBuild', data: results.customBuild };
+        }
+
+        // 5. Managed Growth — rise-b ≥ 1 AND solid foundation
+        if (count('rise-b') >= 1 && (has('ops-solid') || has('platform-advanced'))) {
+            return { key: 'managedGrowth', data: results.managedGrowth };
+        }
+
+        // 6. Discovery fallback
+        return { key: 'discovery', data: results.discovery };
     }
 
     function showResults() {
-        const result = determineResult();
-        if (window.fbq) {
-            fbq('track', 'CompleteRegistration', {
-                content_name: result.title,
-                content_category: result.tag,
-                status: 'quiz_complete'
-            });
-        }
+        const score = window.__quizScore || calculateScore();
+        const band = getScoreBand(score);
+        const wrapper = window.__quizResult || determineResult();
+        const result = wrapper.data;
+        const tags = tallyTags();
+        const userEmail = window.__quizEmail || '';
+
         quizSection.style.display = 'none';
         progressWrap.style.display = 'none';
         resultsSection.style.display = 'block';
         setTimeout(() => resultsSection.classList.add('show'), 10);
 
-        resultsContainer.innerHTML = `
+        // Score block + result + cards + soft-mentions + email confirmation
+        const scoreBlock = `
+            <div class="score-block">
+                <div class="score-label">YOUR AI READINESS SCORE</div>
+                <div class="score-value"><span class="score-num">${score}</span><span class="score-max">/100</span></div>
+                <div class="score-band-tag">${band.label}</div>
+                <p class="score-band-desc">${band.desc}</p>
+            </div>
+        `;
+
+        const resultHeader = `
             <div class="result-header">
                 <div class="result-tag ${result.tag}">${result.tagText}</div>
                 <h2 class="result-title">${result.title}</h2>
                 <p class="result-desc">${result.desc}</p>
             </div>
-            ${result.cards.map(card => `
-                <div class="result-card ${card.type}">
-                    <div class="rc-top">
-                        <div>
-                            <span class="rc-badge ${card.badge}">${card.badgeText}</span>
-                        </div>
-                    </div>
-                    <div class="rc-name">${card.name}</div>
-                    <div class="rc-tagline">${card.tagline}</div>
-                    <div class="rc-features">${card.features.map(f => `<span class="rc-feat">${f}</span>`).join('')}</div>
-                    <div style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:1rem">
-                        <div><span class="rc-price">${card.price}</span><span class="rc-price-label">${card.priceLabel}</span></div>
-                        <a href="${card.ctaHref}" class="rc-cta ${card.ctaType}">${card.cta} <i class="fas fa-arrow-right"></i></a>
-                    </div>
-                </div>
-            `).join('')}
-            <button class="restart-btn" onclick="restartQuiz()"><i class="fas fa-redo" style="margin-right:0.5rem"></i>Retake Quiz</button>
         `;
+
+        const cardsHtml = result.cards.map(card => `
+            <div class="result-card ${card.type}">
+                <div class="rc-top">
+                    <div><span class="rc-badge ${card.badge}">${card.badgeText}</span></div>
+                </div>
+                <div class="rc-name">${card.name}</div>
+                <div class="rc-tagline">${card.tagline}</div>
+                <div class="rc-features">${card.features.map(f => `<span class="rc-feat">${f}</span>`).join('')}</div>
+                <div style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:1rem">
+                    <div><span class="rc-price">${card.price}</span><span class="rc-price-label">${card.priceLabel}</span></div>
+                    <a href="${card.ctaHref}" class="rc-cta ${card.ctaType}">${card.cta} <i class="fas fa-arrow-right"></i></a>
+                </div>
+            </div>
+        `).join('');
+
+        // Soft-mention TradeOS / CreatorOS at the bottom only — never as primary cards
+        let softMentionHtml = '';
+        if (tags['trade']) {
+            softMentionHtml += `
+                <div class="soft-mention">
+                    <div class="sm-tag">Heads up</div>
+                    <p>I also built <strong>TradeOS</strong>, a white-label SaaS operating system for trades businesses. It's a separate product, not a JPax service. Check it out at <a href="https://tradeoshq.app" target="_blank" rel="noopener">tradeoshq.app</a> if you want a productized OS for your business.</p>
+                </div>
+            `;
+        }
+        if (tags['creator']) {
+            softMentionHtml += `
+                <div class="soft-mention">
+                    <div class="sm-tag">Heads up</div>
+                    <p>I'm also building <strong>CreatorOS</strong>, a SaaS operating system for content creators. It's a separate product launching soon at its own domain.</p>
+                </div>
+            `;
+        }
+
+        const emailNote = userEmail ? `
+            <div class="email-confirmation">
+                <i class="fas fa-circle-check"></i>
+                Scorecard sent to: <strong>${userEmail}</strong>. Check your inbox in the next few minutes.
+            </div>
+        ` : '';
+
+        const retakeBtn = `<button class="restart-btn" onclick="restartQuiz()"><i class="fas fa-redo" style="margin-right:0.5rem"></i>Retake Quiz</button>`;
+
+        const fullHtml = scoreBlock + resultHeader + cardsHtml + softMentionHtml + emailNote + retakeBtn;
+        while (resultsContainer.firstChild) resultsContainer.removeChild(resultsContainer.firstChild);
+        resultsContainer.insertAdjacentHTML('beforeend', fullHtml);
     }
 
     function restartQuiz() {
@@ -604,6 +933,22 @@
 
     // Init
     renderQuestion(0);
+
+    // ===== CONSOLE SIGNATURE =====
+    (() => {
+        const head   = 'background:#06080F;color:#4ADE80;font-size:14px;padding:8px 16px;font-family:"JetBrains Mono",monospace;font-weight:700;border:1px solid #4ADE80;border-radius:4px;letter-spacing:0.05em';
+        const label  = 'color:#64748B;font-family:"JetBrains Mono",monospace;font-size:11px;letter-spacing:0.08em;text-transform:uppercase';
+        const body   = 'color:#CBD5E1;font-family:"JetBrains Mono",monospace;font-size:12px;line-height:1.7';
+        const accent = 'color:#4ADE80;font-family:"JetBrains Mono",monospace;font-size:12px;line-height:1.7';
+        const purple = 'color:#8B5CF6;font-family:"JetBrains Mono",monospace;font-size:12px;font-style:italic';
+        const cta    = 'color:#4ADE80;font-family:"JetBrains Mono",monospace;font-size:12px;line-height:1.7';
+        console.log('%c hi from jpax. ', head);
+        console.log('%c\nbuilt by julian — upstate sc.\n%c ai-accelerated. human-directed.', body, purple);
+        console.log('%c\n// what runs here', label);
+        console.log('%c · agents       %c→ nova, live inside jupiter\n%c · automations  %c→ 3 content engines running weekly\n%c · apps         %c→ 6+ shipped to production\n%c · this site    %c→ hand-rolled html. no framework. no build step.', body, accent, body, accent, body, accent, body, accent);
+        console.log('%c\n// want to build something?', label);
+        console.log('%c → julian@jpaxmedia.com\n → jpaxmedia.com/#contact', cta);
+    })();
     </script>
 </body>
 </html>
