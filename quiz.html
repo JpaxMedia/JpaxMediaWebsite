@@ -17,12 +17,12 @@
     fbq('track', 'PageView');
     </script>
     <!-- End Meta Pixel Code -->
-    <title>AI Readiness Diagnostic | JPax</title>
-    <meta name="description" content="Find out where your business sits on the AI curve. Take the 2-minute AI Readiness Diagnostic and get a personalized roadmap from JPax.">
-    <meta name="keywords" content="AI readiness, AI diagnostic, AI roadmap, AI agent, automation engine, AI assessment, JPax, Upstate SC">
+    <title>What's Your Creator OS Level? | JPax</title>
+    <meta name="description" content="Find out where your creator business sits on the JPax System Levels — Spark, Surge, or Summit. 2-minute quiz + personalized roadmap and pricing match.">
+    <meta name="keywords" content="creator OS, creator business, content creator, Spark Surge Summit, AI agents for creators, creator economy, JPax, Elara, Upstate SC">
     <meta property="og:type" content="website">
-    <meta property="og:title" content="AI Readiness Diagnostic | JPax">
-    <meta property="og:description" content="2-minute diagnostic + personalized AI roadmap. By Julian Johnson, JPax.">
+    <meta property="og:title" content="What's Your Creator OS Level? | JPax">
+    <meta property="og:description" content="The 2-minute Creator OS Level quiz. Find your tier. Get the system that fits. By Julian Johnson, JPax.">
     <meta property="og:url" content="https://jpaxmedia.com/quiz.html">
     <meta property="og:image" content="https://jpaxmedia.com/jpaxmedialogoOFFICIALFINALwhite.png">
     <link rel="icon" type="image/png" href="jpaxmedialogoOFFICIALFINALwhite.png">
@@ -210,7 +210,7 @@
         }
         .score-band-desc{color:var(--gray-300);font-size:0.95rem;line-height:1.6;max-width:580px}
 
-        /* Soft mention — TradeOS / CreatorOS at the bottom only */
+        /* Soft mention — Elara at the bottom of every result */
         .soft-mention{
             background:rgba(255,255,255,0.02);border:1px solid rgba(255,255,255,0.06);
             border-radius:12px;padding:1.25rem 1.4rem;margin:1.5rem 0 0;
@@ -298,9 +298,9 @@
     <!-- Hero -->
     <section class="hero">
         <div class="container" style="text-align:center">
-            <div class="hero-badge"><span class="dot"></span>2-Minute AI Readiness Check</div>
-            <h1>Where Does Your <span class="g">Business</span> Sit on the AI Curve?</h1>
-            <p class="hero-sub" style="margin-top:0.75rem">Answer 7 questions. Get an AI Readiness Score and a personalized roadmap — automation, agents, custom apps, or growth — built for where you actually are.</p>
+            <div class="hero-badge"><span class="dot"></span>2-Minute Creator OS Level Quiz</div>
+            <h1>What's Your <span class="g">Creator OS</span> Level?</h1>
+            <p class="hero-sub" style="margin-top:0.75rem">Answer 7 questions. Find out where your creator business sits — Spark, Surge, or Summit — and get the system that fits.</p>
         </div>
     </section>
 
@@ -330,7 +330,7 @@
         <div class="footer-grid">
             <div class="footer-brand">
                 <a href="index.html" class="footer-brand-logo"><span>JPax</span></a>
-                <p>AI agents, automation systems, and custom apps. Built fast. Built right.</p>
+                <p>The AI agent team for creator-led businesses. Built by a creator who got tired of doing it all alone.</p>
                 <div class="footer-social-links">
                     <a href="https://www.youtube.com/@JPaxFilms/videos" target="_blank" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
                     <a href="https://www.tiktok.com/@jpaxfilms?lang=en" target="_blank" aria-label="TikTok"><i class="fab fa-tiktok"></i></a>
@@ -352,8 +352,9 @@
             <div class="footer-col">
                 <h4>Products</h4>
                 <ul>
-                    <li><a href="https://tradeoshq.app" target="_blank" rel="noopener">TradeOS <i class="fas fa-arrow-up-right-from-square" style="font-size:0.65rem;margin-left:0.25rem;opacity:0.6"></i></a></li>
-                    <li><span style="color:var(--gray-500);font-size:0.875rem;">CreatorOS <span style="font-size:0.7rem;opacity:0.7;font-style:italic">(in development)</span></span></li>
+                    <li><a href="elara.html">Elara</a></li>
+                    <li><a href="jupiter.html">Jupiter</a></li>
+                    <li><a href="https://tradeoshq.app" target="_blank" rel="noopener" style="color:var(--gray-500)">TradeOS <span style="font-size:0.7rem;opacity:0.7;font-style:italic">(legacy)</span> <i class="fas fa-arrow-up-right-from-square" style="font-size:0.65rem;margin-left:0.15rem;opacity:0.4"></i></a></li>
                 </ul>
             </div>
             <div class="footer-col">
@@ -381,214 +382,176 @@
     <script>
     const questions = [
         {
-            icon: 'fas fa-building',
-            label: 'Question 01 — Your Business',
-            text: 'Which best describes your business?',
+            icon: 'fas fa-dollar-sign',
+            label: 'Question 01 — Monthly Content Income',
+            text: "What's your current monthly income from content?",
+            sub: 'Sponsorships, ad revenue, affiliate, products, services — anything you earn because of the content you make.',
             options: [
-                { text: 'Trade / home services (HVAC, plumbing, electrical, landscaping, roofing, contractors)', tags: ['trade'] },
-                { text: 'Content creator, coach, influencer, or media brand', tags: ['creator'] },
-                { text: 'Hospitality, property management, or short-term rental', tags: ['hospitality'] },
-                { text: 'Professional service (legal, consulting, marketing, finance)', tags: ['service'] },
-                { text: 'Something else', tags: ['other'] }
+                { text: "I'm not earning from content yet", tags: ['pre-spark'] },
+                { text: '$0–$1,500/mo', tags: ['pre-spark'] },
+                { text: '$1,500–$5,000/mo', tags: ['spark'] },
+                { text: '$5,000–$15,000/mo', tags: ['surge'] },
+                { text: '$15,000+/mo', tags: ['summit'] }
             ]
         },
         {
-            icon: 'fas fa-pen-nib',
-            label: 'Question 02 — Your Content',
-            text: 'How does your business produce content right now?',
+            icon: 'fas fa-calendar-check',
+            label: 'Question 02 — Posting Cadence',
+            text: 'How often are you publishing content?',
             options: [
-                { text: 'We post manually whenever someone has time', tags: ['content-manual','rise-a','score-low'] },
-                { text: 'We outsource to a freelancer or agency', tags: ['content-outsourced','rise-b','score-mid'] },
-                { text: 'We use some tools but a human writes / approves everything', tags: ['content-hybrid','rise-a','score-mid'] },
-                { text: "We don't produce content right now", tags: ['content-none','build','score-low'] }
-            ]
-        },
-        {
-            icon: 'fas fa-network-wired',
-            label: 'Question 03 — Your Operations',
-            text: 'How do you currently run day-to-day operations?',
-            options: [
-                { text: "Spreadsheets, texts, sticky notes — it's chaos", tags: ['ops-broken','build','score-low'] },
-                { text: "Multiple tools that don't talk to each other", tags: ['ops-disconnected','build','agent','score-mid'] },
-                { text: 'Decent software, but lots of manual steps inside it', tags: ['ops-manual','agent','score-mid'] },
-                { text: 'Solid system, runs smoothly', tags: ['ops-solid','rise-b','score-high'] }
+                { text: 'Inconsistent — I post when I can', tags: ['spark'] },
+                { text: '1–3 times per week on one main platform', tags: ['spark'] },
+                { text: 'Daily on one platform, OR 3–5x/week across two platforms', tags: ['surge'] },
+                { text: 'Daily across multiple platforms', tags: ['summit'] }
             ]
         },
         {
             icon: 'fas fa-layer-group',
-            label: 'Question 04 — Your Platform',
-            text: 'What software / platform do you currently have?',
+            label: 'Question 03 — Platform Breadth',
+            text: 'How many platforms are you actively publishing to?',
             options: [
-                { text: 'Nothing yet — starting from zero', tags: ['platform-none','build','score-low'] },
-                { text: 'Just a website', tags: ['platform-basic','score-low'] },
-                { text: 'Website + outdated software (legacy CRM, old portal, etc.)', tags: ['platform-outdated','build','score-mid'] },
-                { text: 'Website + a working custom app or platform', tags: ['platform-advanced','agent','score-high'] }
+                { text: 'One main platform (TikTok, Instagram, YouTube, or podcast feed)', tags: ['spark'] },
+                { text: 'Two platforms with consistent posting', tags: ['surge'] },
+                { text: 'Three or more platforms, all active', tags: ['summit'] }
+            ]
+        },
+        {
+            icon: 'fas fa-comments',
+            label: 'Question 04 — Community Load',
+            text: 'How are you handling DMs, comments, and inbound from your audience?',
+            options: [
+                { text: 'Manageable — I keep up most of the time', tags: ['spark'] },
+                { text: "Overwhelming — I'm always behind", tags: ['surge'] },
+                { text: 'Drowning — DMs, emails, comments are stacking up unanswered', tags: ['summit'] }
+            ]
+        },
+        {
+            icon: 'fas fa-handshake',
+            label: 'Question 05 — Brand Deal Pipeline',
+            text: "What's happening with brand deals, sponsorships, or paid partnerships?",
+            options: [
+                { text: 'None yet, or occasional one-offs', tags: ['spark'] },
+                { text: "Inbound interest comes in but I don't have a system for managing it", tags: ['surge'] },
+                { text: "I'm running multiple deals at any given time", tags: ['summit'] }
+            ]
+        },
+        {
+            icon: 'fas fa-clock',
+            label: 'Question 06 — Time on Business Side',
+            text: 'How many hours per week do you spend on the business side of being a creator?',
+            sub: 'Scheduling, replying, deals, edits, admin — not the creative work itself.',
+            options: [
+                { text: '0–10 hours', tags: ['spark'] },
+                { text: '10–20 hours', tags: ['surge'] },
+                { text: "20+ hours and it's eating into my creative time", tags: ['summit'] }
             ]
         },
         {
             icon: 'fas fa-bullseye',
-            label: 'Question 05 — Your Goal',
-            text: "What's your primary goal in the next 90 days?",
+            label: 'Question 07 — Biggest Bottleneck',
+            text: "What's the single biggest thing slowing you down right now?",
             options: [
-                { text: 'Build a foundation fast — site, brand, custom system', tags: ['build'] },
-                { text: 'Stop manually producing content every week', tags: ['rise-a'] },
-                { text: 'Get hands-on growth support — strategy, ads, creative', tags: ['rise-b'] },
-                { text: 'Both: automate content AND get managed growth', tags: ['rise-c'] },
-                { text: 'Embed AI inside a platform we already own', tags: ['agent'] }
-            ]
-        },
-        {
-            icon: 'fas fa-users',
-            label: 'Question 06 — Your Team',
-            text: 'How big is your team?',
-            options: [
-                { text: 'Just me / solo', tags: ['team-solo','score-low'] },
-                { text: '2–5 people', tags: ['team-small','score-mid'] },
-                { text: '6–15 people', tags: ['team-mid','score-mid'] },
-                { text: '15+ people', tags: ['team-large','score-high'] }
-            ]
-        },
-        {
-            icon: 'fas fa-dollar-sign',
-            label: 'Question 07 — Your Investment',
-            text: 'What kind of investment makes the most sense?',
-            options: [
-                { text: 'One-time flat fee — own it outright', tags: ['build'] },
-                { text: 'Monthly partnership — ongoing optimization', tags: ['rise'] },
-                { text: 'Both — start with a build, grow into a partnership', tags: ['build','rise','rise-c'] },
-                { text: 'Show me the best option for my situation', tags: ['discovery'] }
+                { text: 'Just getting consistent with what I create', tags: ['spark'] },
+                { text: 'Scaling output and managing community at the same time', tags: ['surge'] },
+                { text: 'Operating like a team without actually having one', tags: ['summit'] }
             ]
         }
     ];
 
     const results = {
-        aiAgent: {
-            tag: 'purple', tagText: 'AI Agent — Recommended',
-            title: 'Embed an AI Agent in Your Platform',
-            desc: 'You already have a working platform — but the work happening inside it is manual. An embedded AI agent can take real action: scheduling, billing, deliverables, communications. Custom-scoped to your stack.',
+        preSpark: {
+            tag: 'amber', tagText: 'Pre-Spark — Build the Audience First',
+            title: 'Build the audience first. Come back when you\'re earning.',
+            desc: "You're not ready for Elara yet — and that's the right answer for where you are. An AI agent team is built to remove the bottleneck once you're earning real money from content. If you're not monetizing yet, the bottleneck isn't operations. It's audience.",
+            longDesc: "Focus on getting to your first $1,500/mo in content income. Stay consistent. Find your voice. Build the audience that lets monetization happen naturally. When you cross that line, come back. Spark tier ($500/mo) will be ready for you.",
             cards: [
                 {
-                    type: 'primary', badge: 'purple', badgeText: 'BUILD — Custom',
-                    name: 'AI Agent Build',
-                    tagline: 'Custom-scoped to your platform. Real actions, not just chat. RLS-secured. Production-grade.',
-                    features: ['Scoped to your platform','Multi-tool integration','RLS-secured','Production-grade','7–21 day build'],
-                    price: 'Custom', priceLabel: 'scoped on call',
-                    cta: 'Book a Discovery Call', ctaHref: 'index.html#contact', ctaType: 'primary'
+                    type: 'primary', badge: 'amber', badgeText: 'Free Resource',
+                    name: 'Follow the build journey',
+                    tagline: "Build logs that document Julian's own creator journey — same one you're on. Read what's working and what's not, in real time.",
+                    features: ['Weekly build logs','No paywall','Real creator numbers','Sprint-by-sprint updates'],
+                    price: 'Free', priceLabel: 'no signup needed',
+                    cta: 'Read the Blog', ctaHref: 'blog/', ctaType: 'primary'
                 },
                 {
-                    type: 'secondary', badge: 'green', badgeText: 'Case Study',
-                    name: 'See Nova in action',
-                    tagline: 'Nova is the AI agent embedded inside Jupiter — JPax\'s own client mission control. The same architecture I\'ll embed in your platform.',
-                    features: ['Real admin actions in production','Per-org configurable','Scoped permissions','Live daily inside Jupiter'],
+                    type: 'secondary', badge: 'green', badgeText: 'Follow Along',
+                    name: "Watch Julian build on his own accounts",
+                    tagline: "Elara is being deployed on @heroes_on_screen and @thebatsreacts first — Julian's own creator brands. The case study is happening live.",
+                    features: ['@heroes_on_screen','@thebatsreacts','Real-time deployment','Same world you\'re in'],
                     price: 'Live', priceLabel: 'in production',
-                    cta: 'See Case Study', ctaHref: 'jupiter.html', ctaType: 'secondary'
+                    cta: 'See the Founder', ctaHref: 'index.html#about', ctaType: 'secondary'
                 }
             ]
         },
-        automationEngine: {
-            tag: 'green', tagText: 'Automation Engine — Recommended',
-            title: 'A Content Engine Built for You',
-            desc: 'Your content is too valuable to produce by hand every week. An Automation Engine handles research, drafting, imagery, and publishing on a schedule — with an approval gate so you stay in control.',
+        spark: {
+            tag: 'green', tagText: 'Spark — Early-Monetizing Creator',
+            title: "You're a Spark creator.",
+            desc: "You're earning $1,500–$5,000/mo from content. The audience is real. The income is real. But the business side is starting to eat into your creative time, and your posting consistency is the wall you keep hitting.",
+            longDesc: "Spark is the foundation tier. You don't need a full agent team yet — you need the right system running in the background so you can stay creative while the basics get handled.",
             cards: [
                 {
-                    type: 'primary', badge: 'green', badgeText: 'RISE Track A',
-                    name: 'Spark — $300/mo',
-                    tagline: 'Single channel · weekly publishing · AI copy + imagery · approval gate · brand-voice trained.',
-                    features: ['1 channel','Weekly publishing','AI copy + imagery','Approval gate','Brand-voice trained'],
-                    price: '$300', priceLabel: '/mo + $500 setup',
-                    cta: 'See Spark', ctaHref: 'pricing.html#rise', ctaType: 'primary'
+                    type: 'primary', badge: 'green', badgeText: 'Recommended — RISE',
+                    name: 'Spark RISE — $500/mo',
+                    tagline: "Monthly operating partnership. 1–2 agents active (typically Ideation + Posting). 1 platform. Weekly content batch review. Monthly strategy check-in.",
+                    features: ['1–2 agents active','1 platform','Weekly content batch review','Monthly strategy','3-month minimum'],
+                    price: '$500', priceLabel: '/month',
+                    cta: 'Start a Project', ctaHref: 'index.html#contact?interest=spark', ctaType: 'primary'
                 },
                 {
-                    type: 'secondary', badge: 'green', badgeText: 'RISE Track A',
-                    name: 'Engine — $750/mo',
-                    tagline: 'Multi-channel · auto-publish wired · higher cadence · brand-voice deeper · performance reports.',
-                    features: ['Multi-channel','Auto-publish wired','Higher cadence','Brand-voice deeper','Performance reports'],
-                    price: '$750', priceLabel: '/mo + $1,000 setup',
-                    cta: 'See Engine', ctaHref: 'pricing.html#rise', ctaType: 'secondary'
+                    type: 'secondary', badge: 'purple', badgeText: 'BUILD Path',
+                    name: 'Creator Brand + Creator Site',
+                    tagline: "One-time deployments. Visual identity built for content (from $2,500) and a brand hub with monetization layer (from $5,000). You own everything.",
+                    features: ['Creator Brand from $2,500','Creator Site from $5,000','7–21 day delivery','Full ownership'],
+                    price: 'From $2,500', priceLabel: 'one-time',
+                    cta: 'See BUILD Pricing', ctaHref: 'pricing.html#build', ctaType: 'secondary'
                 }
             ]
         },
-        customBuild: {
-            tag: 'green', tagText: 'Custom BUILD — Recommended',
-            title: "Let's Build Your Foundation",
-            desc: "You're ready for a real digital foundation — site, custom app, or branded platform — built fast and built right. Flat-rate pricing. You own everything.",
+        surge: {
+            tag: 'green', tagText: 'Surge — Established Creator',
+            title: "You're a Surge creator.",
+            desc: "You're earning $5,000–$15,000/mo from content. You've outgrown \"just stay consistent\" — now you're managing two or three platforms, an inbound DM pipeline, and brand deals that come in faster than you can sort them.",
+            longDesc: "Surge is the operational scale tier. You need real infrastructure — multiple agents running in the background, cross-platform consistency, and a brand-deal pipeline that doesn't depend on you remembering to follow up.",
             cards: [
                 {
-                    type: 'primary', badge: 'green', badgeText: 'BUILD',
-                    name: 'Custom BUILD Project',
-                    tagline: 'Custom scope. 5–21 day delivery. Flat-rate pricing. Full ownership. Jupiter portal access.',
-                    features: ['Custom scope','5–21 day delivery','Flat-rate pricing','Full ownership','Jupiter portal access'],
-                    price: 'From $2,500', priceLabel: 'site · $5,000 app',
-                    cta: 'See BUILD Pricing', ctaHref: 'pricing.html#build', ctaType: 'primary'
+                    type: 'primary', badge: 'green', badgeText: 'Recommended — RISE',
+                    name: 'Surge RISE — $2,000/mo',
+                    tagline: "Monthly operating partnership. 3–5 agents active. 2–3 platforms. Community workflow drafting. Brand-deal pipeline support. Twice-monthly strategy.",
+                    features: ['3–5 agents active','2–3 platforms','Community workflow drafting','Brand-deal pipeline','Twice-monthly strategy'],
+                    price: '$2,000', priceLabel: '/month',
+                    cta: 'Book a Call', ctaHref: 'index.html#contact?interest=surge', ctaType: 'primary'
                 },
                 {
-                    type: 'secondary', badge: 'purple', badgeText: 'RISE',
-                    name: 'Add a RISE partnership later',
-                    tagline: 'Optional add-on. Three tracks to choose from. Cancel anytime after 3 months.',
-                    features: ['Optional add-on','Three tracks to choose','Cancel anytime after 3 mo','Automation, growth, or both'],
-                    price: 'From $300', priceLabel: '/month',
-                    cta: 'See RISE Tracks', ctaHref: 'pricing.html#rise', ctaType: 'secondary'
+                    type: 'secondary', badge: 'purple', badgeText: 'BUILD Path',
+                    name: 'Elara Deploy + Custom Creator App',
+                    tagline: "Full Elara operating system configured for your niche (from $8,000), plus an optional custom app for your course, community, or paid product (from $5,000).",
+                    features: ['Elara Deploy from $8,000','Custom Creator App from $5,000','14–30 day delivery','Full ownership'],
+                    price: 'From $8,000', priceLabel: 'one-time',
+                    cta: 'See BUILD Pricing', ctaHref: 'pricing.html#build', ctaType: 'secondary'
                 }
             ]
         },
-        engineGrowth: {
-            tag: 'purple', tagText: 'Engine + Growth — Recommended',
-            title: 'Run It on Autopilot. Grow It on Purpose.',
-            desc: 'You want both — automated content production and hands-on growth strategy on top. The Engine + Growth bundle pairs an Automation Engine with a Managed Growth retainer, at a discount.',
+        summit: {
+            tag: 'purple', tagText: 'Summit — Scaling Creator',
+            title: "You're a Summit creator.",
+            desc: "You're earning $15,000+/mo from content. At this level, you're effectively running a small business solo — and you're probably already burning out from how much non-creative work it takes to keep the engine running.",
+            longDesc: "Summit is the autonomous tier. You don't need agents that help. You need a full agent team that operates the business. JPax runs the system. You stay on stage.",
             cards: [
                 {
-                    type: 'primary', badge: 'purple', badgeText: 'RISE Track C',
-                    name: 'Engine + Growth — $2,000/mo',
-                    tagline: 'Multi-channel content engine · 2–3 platforms managed · 3 ad campaigns · 1 video/week · monthly strategy. Save $250/mo vs. unbundled.',
-                    features: ['Multi-channel engine','2–3 platforms managed','3 ad campaigns','1 video/week','Monthly strategy'],
-                    price: '$2,000', priceLabel: '/mo + $1,000 setup',
-                    cta: 'See Engine + Growth', ctaHref: 'pricing.html#rise', ctaType: 'primary'
+                    type: 'primary', badge: 'purple', badgeText: 'Recommended — RISE',
+                    name: 'Summit RISE — $3,500/mo',
+                    tagline: "Full agent stack operated by JPax. Cross-platform (all major platforms). End-to-end brand-deal coordination. Bi-weekly strategy. The team you couldn't afford.",
+                    features: ['Full agent stack operated by JPax','All major platforms','End-to-end brand-deal coordination','Bi-weekly strategy'],
+                    price: '$3,500', priceLabel: '/month',
+                    cta: 'Book a Call', ctaHref: 'index.html#contact?interest=summit', ctaType: 'primary'
                 },
                 {
-                    type: 'secondary', badge: 'purple', badgeText: 'RISE Track C',
-                    name: 'Spark + Starter — $1,000/mo',
-                    tagline: 'Single content engine · 1 platform managed · 1–2 ad campaigns · monthly check-in. Entry-level combo.',
-                    features: ['Single content engine','1 platform managed','1–2 ad campaigns','Monthly check-in'],
-                    price: '$1,000', priceLabel: '/mo + $500 setup',
-                    cta: 'See Spark + Starter', ctaHref: 'pricing.html#rise', ctaType: 'secondary'
-                }
-            ]
-        },
-        managedGrowth: {
-            tag: 'green', tagText: 'Managed Growth — Recommended',
-            title: "You're Ready to RISE",
-            desc: 'You have a foundation that works. Now you want a team running ongoing growth — strategy, social, ads, creative, optimization — every month. That\'s RISE.',
-            cards: [
-                {
-                    type: 'primary', badge: 'green', badgeText: 'RISE Track B',
-                    name: 'RISE Growth — $1,500/mo',
-                    tagline: '2–3 platforms · 20–25 posts · 3 ad campaigns · 1 video/week · monthly strategy calls.',
-                    features: ['2–3 platforms','20–25 posts','3 ad campaigns','1 video/week','Monthly strategy'],
-                    price: '$1,500', priceLabel: '/month',
-                    cta: 'See Growth Plan', ctaHref: 'pricing.html#rise', ctaType: 'primary'
-                },
-                {
-                    type: 'secondary', badge: 'green', badgeText: 'RISE Track B',
-                    name: 'RISE Accelerator — $2,500/mo',
-                    tagline: '3–5 platforms · 5+ campaigns · 5+ videos · quarterly refresh · priority support.',
-                    features: ['3–5 platforms','5+ ad campaigns','5+ videos/month','Quarterly refresh','Priority support'],
-                    price: '$2,500', priceLabel: '/month',
-                    cta: 'See Accelerator', ctaHref: 'pricing.html#rise', ctaType: 'secondary'
-                }
-            ]
-        },
-        discovery: {
-            tag: 'amber', tagText: 'Discovery Call — Recommended',
-            title: "Let's Map Your AI Roadmap Together",
-            desc: 'Your situation is custom enough that a productized recommendation wouldn\'t do it justice. The right next step is a 30-minute discovery call — we\'ll map your AI roadmap and quote the right scope.',
-            cards: [
-                {
-                    type: 'primary', badge: 'amber', badgeText: 'DISCOVERY',
-                    name: 'Book a Discovery Call',
-                    tagline: 'Free 30-minute call. Custom AI roadmap. Scope + pricing on the call. No obligation.',
-                    features: ['30-minute call','Custom AI roadmap','Scope + pricing on the call','No obligation'],
-                    price: 'Free', priceLabel: '30 minutes',
-                    cta: 'Book Discovery Call', ctaHref: 'index.html#contact', ctaType: 'primary'
+                    type: 'secondary', badge: 'purple', badgeText: 'BUILD Path',
+                    name: 'Full Stack System — from $15,000',
+                    tagline: "Brand + Site + Custom App + Elara as one integrated deployment. The complete operating system for a creator-led business at scale.",
+                    features: ['Brand + Site + App + Elara','21–45 day delivery','One integrated deployment','Full ownership'],
+                    price: 'From $15,000', priceLabel: 'one-time',
+                    cta: 'See BUILD Pricing', ctaHref: 'pricing.html#build', ctaType: 'secondary'
                 }
             ]
         }
@@ -621,6 +584,7 @@
                 <div class="q-icon"><i class="${q.icon}"></i></div>
                 <div class="q-label">${q.label}</div>
                 <div class="q-text">${q.text}</div>
+                ${q.sub ? `<p style="color:var(--gray-400);font-size:0.95rem;line-height:1.6;margin:-1.25rem 0 1.75rem;max-width:580px">${q.sub}</p>` : ''}
                 <div class="options" id="options">
                     ${q.options.map((opt,i) => `
                         <button class="opt${answers[idx] === i ? ' selected' : ''}" onclick="selectOpt(${i})" data-idx="${i}">
@@ -656,15 +620,14 @@
     // ===== EMAIL GATE =====
     function renderEmailGate() {
         progressWrap.style.display = 'none';
-        const score = calculateScore();
         const result = determineResult();
         const html = `
             <div class="q-card email-gate" id="emailGateCard">
                 <div class="q-icon"><i class="fas fa-envelope-open-text"></i></div>
-                <div class="q-label">Final Step — Your Scorecard</div>
-                <div class="q-text">Your AI Readiness Score is Ready</div>
+                <div class="q-label">Final Step — Your Level</div>
+                <div class="q-text">Your Creator OS Level is Ready</div>
                 <p style="color:var(--gray-400);font-size:1rem;line-height:1.6;margin:0.5rem 0 1.75rem;max-width:540px">
-                    Drop your email and I'll send your full diagnostic + personalized recommendations to your inbox.
+                    Drop your email and I'll send your Level result + recommended system to your inbox.
                 </p>
                 <form id="emailGateForm" novalidate style="display:flex;flex-direction:column;gap:0.85rem">
                     <input type="email" id="gateEmail" name="email" required placeholder="you@company.com" autocomplete="email"
@@ -688,7 +651,6 @@
         quizContainer.insertAdjacentHTML('beforeend', html);
         document.getElementById('emailGateForm').addEventListener('submit', submitEmailGate);
         window.scrollTo({ top: 0, behavior: 'smooth' });
-        window.__quizScore = score;
         window.__quizResult = result;
     }
 
@@ -703,7 +665,6 @@
         }
         errEl.style.display = 'none';
 
-        const score = window.__quizScore;
         const result = window.__quizResult;
         const answersJson = answers.map((ansIdx, qIdx) => ({
             q: questions[qIdx].label,
@@ -713,8 +674,7 @@
         const payload = new FormData();
         payload.append('form_type', 'quiz');
         payload.append('email', email);
-        payload.append('score', score);
-        payload.append('result_key', result.key);
+        payload.append('level', result.key);
         payload.append('result_title', result.data.title);
         payload.append('answers_json', JSON.stringify(answersJson));
         payload.append('submitted_at', new Date().toISOString());
@@ -732,10 +692,13 @@
         if (window.fbq) {
             fbq('track', 'Lead', {
                 content_name: result.data.title,
-                content_category: 'quiz_' + result.key,
-                value: score,
+                content_category: 'quiz_result_' + result.key,
                 currency: 'USD'
             });
+        }
+
+        if (typeof gtag === 'function') {
+            gtag('event', 'quiz_result_' + result.key, { result_key: result.key });
         }
 
         window.__quizEmail = email;
@@ -746,40 +709,7 @@
         if (current > 0) { current--; renderQuestion(current); }
     }
 
-    // ===== AI READINESS SCORING =====
-    function calculateScore() {
-        let score = 50; // base
-        answers.forEach((ansIdx, qIdx) => {
-            if (ansIdx === null) return;
-            const tags = questions[qIdx].options[ansIdx].tags;
-            tags.forEach(t => {
-                if (t === 'score-low') score -= 10;
-                else if (t === 'score-mid') score += 5;
-                else if (t === 'score-high') score += 15;
-            });
-        });
-        return Math.max(0, Math.min(100, score));
-    }
-
-    function getScoreBand(score) {
-        if (score <= 25) return {
-            label: 'Foundation Stage',
-            desc: 'Your business is at the start of its AI journey. The biggest leverage is building a real foundation.'
-        };
-        if (score <= 55) return {
-            label: 'Building Stage',
-            desc: 'You have pieces in place. The next move is connecting them and automating what\'s still manual.'
-        };
-        if (score <= 80) return {
-            label: 'Scaling Stage',
-            desc: 'You\'re ready to operationalize. Automation engines and managed growth multiply what\'s already working.'
-        };
-        return {
-            label: 'Optimizing Stage',
-            desc: 'You\'re in the top tier. Embedded agents and deep automation are where the next gains live.'
-        };
-    }
-
+    // ===== CREATOR OS LEVEL SCORING =====
     function tallyTags() {
         const counts = {};
         answers.forEach((ansIdx, qIdx) => {
@@ -791,64 +721,40 @@
     }
 
     function determineResult() {
+        // Q1 is the override: if user isn't earning yet, force Pre-Spark regardless of other answers.
+        const q1Answer = answers[0];
+        if (q1Answer !== null) {
+            const q1Tags = questions[0].options[q1Answer].tags;
+            if (q1Tags.includes('pre-spark')) {
+                return { key: 'preSpark', data: results.preSpark };
+            }
+        }
+
+        // Tally Spark / Surge / Summit across the remaining answers
         const t = tallyTags();
-        const has = (tag) => (t[tag] || 0) >= 1;
-        const count = (tag) => t[tag] || 0;
+        const counts = {
+            spark: t.spark || 0,
+            surge: t.surge || 0,
+            summit: t.summit || 0
+        };
 
-        // Force discovery if explicitly chosen
-        if (has('discovery')) return { key: 'discovery', data: results.discovery };
+        // Pick the highest count. On a tie, prefer the LOWER tier (more conservative).
+        const order = ['spark', 'surge', 'summit'];
+        const max = Math.max(counts.spark, counts.surge, counts.summit);
+        const winner = order.find(k => counts[k] === max);
 
-        // 1. AI Agent — agent ≥ 2 AND platform-advanced present
-        if (count('agent') >= 2 && has('platform-advanced')) {
-            return { key: 'aiAgent', data: results.aiAgent };
-        }
-
-        // 2. Engine + Growth Bundle — rise-c present OR (build AND rise both from Q7)
-        if (has('rise-c') || (has('build') && has('rise'))) {
-            return { key: 'engineGrowth', data: results.engineGrowth };
-        }
-
-        // 3. Automation Engine — rise-a ≥ 1 AND a real platform exists
-        if (count('rise-a') >= 1 && (has('platform-basic') || has('platform-advanced') || has('platform-outdated'))) {
-            return { key: 'automationEngine', data: results.automationEngine };
-        }
-
-        // 4. Custom App / BUILD — build ≥ 2 OR platform-none OR ops-broken
-        if (count('build') >= 2 || has('platform-none') || has('ops-broken')) {
-            return { key: 'customBuild', data: results.customBuild };
-        }
-
-        // 5. Managed Growth — rise-b ≥ 1 AND solid foundation
-        if (count('rise-b') >= 1 && (has('ops-solid') || has('platform-advanced'))) {
-            return { key: 'managedGrowth', data: results.managedGrowth };
-        }
-
-        // 6. Discovery fallback
-        return { key: 'discovery', data: results.discovery };
+        return { key: winner, data: results[winner] };
     }
 
     function showResults() {
-        const score = window.__quizScore || calculateScore();
-        const band = getScoreBand(score);
         const wrapper = window.__quizResult || determineResult();
         const result = wrapper.data;
-        const tags = tallyTags();
         const userEmail = window.__quizEmail || '';
 
         quizSection.style.display = 'none';
         progressWrap.style.display = 'none';
         resultsSection.style.display = 'block';
         setTimeout(() => resultsSection.classList.add('show'), 10);
-
-        // Score block + result + cards + soft-mentions + email confirmation
-        const scoreBlock = `
-            <div class="score-block">
-                <div class="score-label">YOUR AI READINESS SCORE</div>
-                <div class="score-value"><span class="score-num">${score}</span><span class="score-max">/100</span></div>
-                <div class="score-band-tag">${band.label}</div>
-                <p class="score-band-desc">${band.desc}</p>
-            </div>
-        `;
 
         const resultHeader = `
             <div class="result-header">
@@ -857,6 +763,12 @@
                 <p class="result-desc">${result.desc}</p>
             </div>
         `;
+
+        const longDescBlock = result.longDesc ? `
+            <div class="score-block">
+                <p class="score-band-desc" style="font-size:1rem;max-width:none">${result.longDesc}</p>
+            </div>
+        ` : '';
 
         const cardsHtml = result.cards.map(card => `
             <div class="result-card ${card.type}">
@@ -873,35 +785,24 @@
             </div>
         `).join('');
 
-        // Soft-mention TradeOS / CreatorOS at the bottom only — never as primary cards
-        let softMentionHtml = '';
-        if (tags['trade']) {
-            softMentionHtml += `
-                <div class="soft-mention">
-                    <div class="sm-tag">Heads up</div>
-                    <p>I also built <strong>TradeOS</strong>, a white-label SaaS operating system for trades businesses. It's a separate product, not a JPax service. Check it out at <a href="https://tradeoshq.app" target="_blank" rel="noopener">tradeoshq.app</a> if you want a productized OS for your business.</p>
-                </div>
-            `;
-        }
-        if (tags['creator']) {
-            softMentionHtml += `
-                <div class="soft-mention">
-                    <div class="sm-tag">Heads up</div>
-                    <p>I'm also building <strong>CreatorOS</strong>, a SaaS operating system for content creators. It's a separate product launching soon at its own domain.</p>
-                </div>
-            `;
-        }
+        // Elara mention at the bottom — every creator-led result points to elarahq.app
+        const elaraMention = wrapper.key === 'preSpark' ? '' : `
+            <div class="soft-mention">
+                <div class="sm-tag">The Flagship</div>
+                <p><strong>Elara</strong> is JPax's AI agent platform for creator-led businesses. Seven core agents, modular extensions, and the operating system the creator economy was missing. <a href="elara.html">Explore Elara →</a></p>
+            </div>
+        `;
 
         const emailNote = userEmail ? `
             <div class="email-confirmation">
                 <i class="fas fa-circle-check"></i>
-                Scorecard sent to: <strong>${userEmail}</strong>. Check your inbox in the next few minutes.
+                Result sent to: <strong>${userEmail}</strong>. Check your inbox in the next few minutes.
             </div>
         ` : '';
 
         const retakeBtn = `<button class="restart-btn" onclick="restartQuiz()"><i class="fas fa-redo" style="margin-right:0.5rem"></i>Retake Quiz</button>`;
 
-        const fullHtml = scoreBlock + resultHeader + cardsHtml + softMentionHtml + emailNote + retakeBtn;
+        const fullHtml = resultHeader + longDescBlock + cardsHtml + elaraMention + emailNote + retakeBtn;
         while (resultsContainer.firstChild) resultsContainer.removeChild(resultsContainer.firstChild);
         resultsContainer.insertAdjacentHTML('beforeend', fullHtml);
     }
