@@ -1,0 +1,407 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Meta Pixel Code -->
+    <script>
+    !function(f,b,e,v,n,t,s)
+    {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+    n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+    if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+    n.queue=[];t=b.createElement(e);t.async=!0;
+    t.src=v;s=b.getElementsByTagName(e)[0];
+    s.parentNode.insertBefore(t,s)}(window, document,'script',
+    'https://connect.facebook.net/en_US/fbevents.js');
+    fbq('init', '2817539605254046');
+    fbq('track', 'PageView');
+    </script>
+    <!-- End Meta Pixel Code -->
+    <title>Why JPax is now an AI agent platform for creator-led businesses | JPax Blog</title>
+    <meta name="description" content="I spent the last year retooling JPax. Today I'm locking the direction. JPax is now the AI agent team for creator-led businesses — and I'm building it on my own accounts first.">
+    <meta name="keywords" content="JPax pivot, Elara, AI agents for creators, creator economy, creator-led businesses, Julian Johnson, build in public, Upstate SC">
+    <meta name="author" content="Julian Johnson">
+    <meta property="og:type" content="article">
+    <meta property="og:title" content="Why JPax is now an AI agent platform for creator-led businesses">
+    <meta property="og:description" content="Today I'm locking the direction. JPax is now the AI agent team for creator-led businesses — and I'm building it on my own accounts first.">
+    <meta property="og:url" content="https://jpaxmedia.com/blog/pivot-to-creator-os.html">
+    <meta property="og:image" content="https://jpaxmedia.com/jpaxmedialogoOFFICIALFINALwhite.png">
+    <meta property="article:author" content="Julian Johnson">
+    <meta property="article:published_time" content="2026-05-12">
+    <link rel="icon" type="image/png" href="../jpaxmedialogoOFFICIALFINALwhite.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@400;500;600;700&family=IBM+Plex+Sans:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&family=Syne:wght@700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <!-- Structured data: Article -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Article",
+      "@id": "https://jpaxmedia.com/blog/pivot-to-creator-os.html#article",
+      "headline": "Why JPax is now an AI agent platform for creator-led businesses",
+      "description": "I spent the last year retooling JPax. Today I'm locking the direction. JPax is now the AI agent team for creator-led businesses — and I'm building it on my own accounts first.",
+      "image": "https://jpaxmedia.com/jpaxmedialogoOFFICIALFINALwhite.png",
+      "datePublished": "2026-05-12",
+      "dateModified": "2026-05-12",
+      "author": { "@type": "Person", "@id": "https://jpaxmedia.com/#julian", "name": "Julian Johnson" },
+      "publisher": { "@type": "Organization", "@id": "https://jpaxmedia.com/#organization", "name": "JPax", "logo": { "@type": "ImageObject", "url": "https://jpaxmedia.com/jpaxmedialogoOFFICIALFINALwhite.png" } },
+      "mainEntityOfPage": { "@type": "WebPage", "@id": "https://jpaxmedia.com/blog/pivot-to-creator-os.html" },
+      "articleSection": "Build Log",
+      "keywords": "JPax pivot, Elara, creator economy, AI agents, creator-led businesses, build in public"
+    }
+    </script>
+
+    <style>
+        :root {
+            --bg: #06080F;
+            --bg-card: rgba(12, 16, 28, 0.85);
+            --bg-card-solid: #0C101C;
+            --accent: #4ADE80;
+            --green: #10B981;
+            --purple: #8B5CF6;
+            --amber: #F59E0B;
+            --white: #F1F5F9;
+            --gray-300: #CBD5E1;
+            --gray-400: #94A3B8;
+            --gray-500: #64748B;
+            --gray-700: #334155;
+            --font-display: 'Chakra Petch', sans-serif;
+            --font-body: 'IBM Plex Sans', sans-serif;
+            --font-mono: 'JetBrains Mono', monospace;
+        }
+        *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; scroll-padding-top: 90px; }
+        body { font-family: var(--font-body); background: var(--bg); color: var(--gray-300); overflow-x: hidden; -webkit-font-smoothing: antialiased; }
+
+        .grid-bg { position: fixed; top: 0; left: 0; width: 100%; height: 100%; pointer-events: none; z-index: 0;
+            background-image: linear-gradient(rgba(74,222,128,0.03) 1px, transparent 1px), linear-gradient(90deg, rgba(74,222,128,0.03) 1px, transparent 1px);
+            background-size: 60px 60px; animation: gridDrift 25s linear infinite; }
+        @keyframes gridDrift { 0% { transform: translateY(0); } 100% { transform: translateY(60px); } }
+
+        /* Nav */
+        .nav { position: fixed; top: 0; left: 0; width: 100%; z-index: 1000; padding: 1rem 2rem; background: rgba(6,8,15,0.8); backdrop-filter: blur(24px); border-bottom: 1px solid rgba(255,255,255,0.04); transition: all 0.4s; }
+        .nav.scrolled { padding: 0.6rem 2rem; background: rgba(6,8,15,0.95); }
+        .nav-inner { max-width: 1200px; margin: 0 auto; display: flex; align-items: center; justify-content: space-between; }
+        .nav-logo img { height: 26px; width: auto; }
+        .nav-logo { display: flex; align-items: center; text-decoration: none; }
+        .nav-links { display: flex; align-items: center; gap: 0.25rem; }
+        .nav-links a { color: var(--gray-400); text-decoration: none; font-size: 0.85rem; font-weight: 500; padding: 0.45rem 0.9rem; border-radius: 8px; transition: all 0.25s; }
+        .nav-links a:hover { color: var(--white); background: rgba(255,255,255,0.04); }
+        .nav-links a.active { color: var(--accent); }
+        .nav-divider { width: 1px; height: 20px; background: rgba(255,255,255,0.08); margin: 0 0.5rem; }
+        .nav-cta { background: transparent !important; color: var(--accent) !important; padding: 0.5rem 1.3rem !important; border-radius: 8px; font-weight: 600 !important; font-size: 0.82rem !important; border: 1px solid rgba(74,222,128,0.3) !important; }
+        .nav-cta:hover { background: rgba(74,222,128,0.08) !important; }
+        .nav-jupiter { color: var(--accent) !important; font-weight: 600 !important; font-family: var(--font-display) !important; letter-spacing: 0.06em; text-transform: uppercase; font-size: 0.75rem !important; background: rgba(74,222,128,0.06) !important; border: 1px solid rgba(74,222,128,0.12); padding: 0.4rem 0.85rem !important; border-radius: 6px; }
+        .jupiter-dot { display: inline-block; width: 5px; height: 5px; background: var(--accent); border-radius: 50%; margin-right: 5px; vertical-align: middle; box-shadow: 0 0 6px rgba(74,222,128,0.5); }
+        .nav-mobile-btn { display: none; background: none; border: none; flex-direction: column; gap: 5px; cursor: pointer; padding: 0.5rem; }
+        .nav-mobile-btn span { width: 24px; height: 2px; background: var(--gray-300); }
+        @media (max-width: 768px) { .nav-links { display: none; } .nav-mobile-btn { display: flex; } }
+
+        /* Article hero */
+        .article-hero { position: relative; padding: 9rem 0 3rem; }
+        .article-hero-glow { position: absolute; top: 30%; right: -100px; width: 500px; height: 500px; background: radial-gradient(circle, rgba(139,92,246,0.10), transparent 70%); pointer-events: none; }
+        .container { max-width: 920px; margin: 0 auto; padding: 0 2rem; position: relative; z-index: 1; }
+        .article-back { display: inline-flex; align-items: center; gap: 0.5rem; color: var(--gray-500); text-decoration: none; font-family: var(--font-mono); font-size: 0.78rem; letter-spacing: 0.05em; margin-bottom: 1.75rem; transition: color 0.25s; }
+        .article-back:hover { color: var(--accent); }
+        .article-meta { display: flex; align-items: center; gap: 0.85rem; font-family: var(--font-mono); font-size: 0.72rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--gray-500); margin-bottom: 1.25rem; flex-wrap: wrap; }
+        .article-meta .pill { padding: 0.3rem 0.7rem; background: rgba(139,92,246,0.08); border: 1px solid rgba(139,92,246,0.25); border-radius: 4px; color: var(--purple); }
+        .article-meta .pill.sprint { background: rgba(74,222,128,0.08); border-color: rgba(74,222,128,0.25); color: var(--accent); }
+        .article-hero h1 { font-family: var(--font-display); font-weight: 700; font-size: clamp(2.25rem, 5vw, 3.75rem); color: var(--white); letter-spacing: -0.02em; line-height: 1.05; margin-bottom: 1.25rem; }
+        .article-hero h1 .gradient { background: linear-gradient(135deg, var(--accent), var(--purple)); -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; }
+        .article-lede { font-size: 1.2rem; color: var(--gray-300); line-height: 1.7; max-width: 720px; }
+
+        /* Article body */
+        .article-body { padding: 1rem 0 4rem; position: relative; z-index: 1; }
+        .article-body p { font-size: 1.05rem; color: var(--gray-300); line-height: 1.8; margin-bottom: 1.4rem; }
+        .article-body p strong { color: var(--white); font-weight: 600; }
+        .article-body h2 { font-family: var(--font-display); font-weight: 700; font-size: 1.85rem; color: var(--white); letter-spacing: -0.01em; margin: 3.5rem 0 1.25rem; padding-top: 1rem; border-top: 1px solid rgba(255,255,255,0.06); line-height: 1.2; }
+        .article-body h2:first-child { border-top: none; padding-top: 0; margin-top: 1rem; }
+        .article-body h3 { font-family: var(--font-display); font-weight: 600; font-size: 1.35rem; color: var(--white); margin: 2.25rem 0 1rem; line-height: 1.3; }
+        .article-body ul { margin: 0 0 1.4rem 0; padding-left: 1.4rem; }
+        .article-body ul li { font-size: 1.02rem; color: var(--gray-300); line-height: 1.75; margin-bottom: 0.5rem; }
+        .article-body a { color: var(--accent); text-decoration: none; border-bottom: 1px solid rgba(74,222,128,0.3); transition: border-color 0.25s; }
+        .article-body a:hover { border-bottom-color: var(--accent); }
+        .article-body code { font-family: var(--font-mono); font-size: 0.92em; background: rgba(74,222,128,0.06); padding: 0.15em 0.4em; border-radius: 3px; color: var(--accent); border: 1px solid rgba(74,222,128,0.15); }
+
+        .pullquote { margin: 2.5rem 0; padding: 1.75rem 2rem; background: linear-gradient(135deg, rgba(74,222,128,0.04), rgba(139,92,246,0.04)); border: 1px solid rgba(74,222,128,0.18); border-radius: 14px; border-left: 4px solid var(--accent); }
+        .pullquote p { font-family: var(--font-display); font-size: 1.4rem; font-weight: 500; color: var(--white); line-height: 1.4; margin: 0; letter-spacing: -0.005em; }
+
+        /* Level card grid */
+        .level-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 0.85rem; margin: 2.25rem 0; }
+        .level-card { padding: 1.25rem 1.1rem; background: var(--bg-card); border: 1px solid rgba(255,255,255,0.06); border-radius: 12px; }
+        .level-card.green { border-color: rgba(74,222,128,0.2); }
+        .level-card.surge { border-color: rgba(74,222,128,0.3); background: rgba(74,222,128,0.04); }
+        .level-card.purple { border-color: rgba(139,92,246,0.25); background: rgba(139,92,246,0.04); }
+        .level-card .lc-name { font-family: var(--font-display); font-weight: 700; font-size: 1rem; color: var(--white); margin-bottom: 0.25rem; letter-spacing: 0.02em; text-transform: uppercase; }
+        .level-card .lc-income { font-family: var(--font-mono); font-size: 0.7rem; letter-spacing: 0.06em; color: var(--accent); margin-bottom: 0.65rem; }
+        .level-card.purple .lc-income { color: var(--purple); }
+        .level-card .lc-desc { font-size: 0.85rem; color: var(--gray-400); line-height: 1.55; }
+
+        /* CTA box */
+        .cta-box { margin: 4rem 0 1rem; padding: 2.5rem 2rem; background: linear-gradient(135deg, rgba(74,222,128,0.06), rgba(139,92,246,0.04)); border: 1px solid rgba(74,222,128,0.2); border-radius: 16px; text-align: center; }
+        .cta-box h3 { font-family: var(--font-display); font-weight: 700; font-size: 1.5rem; color: var(--white); margin-bottom: 0.65rem; letter-spacing: -0.01em; }
+        .cta-box p { font-size: 1rem; color: var(--gray-400); margin-bottom: 1.5rem; max-width: 540px; margin-left: auto; margin-right: auto; }
+        .cta-box .btns { display: flex; gap: 0.85rem; justify-content: center; flex-wrap: wrap; }
+        .cta-box .btn-p { display: inline-flex; align-items: center; gap: 0.5rem; padding: 0.85rem 1.5rem; background: var(--accent); color: var(--bg); font-family: var(--font-display); font-weight: 700; text-decoration: none; border-radius: 8px; transition: transform 0.25s, box-shadow 0.25s; }
+        .cta-box .btn-p:hover { transform: translateY(-1px); box-shadow: 0 8px 24px rgba(74,222,128,0.2); }
+        .cta-box .btn-s { display: inline-flex; align-items: center; gap: 0.5rem; padding: 0.85rem 1.5rem; color: var(--white); font-family: var(--font-display); font-weight: 600; text-decoration: none; border-radius: 8px; border: 1px solid rgba(255,255,255,0.15); transition: border-color 0.25s; }
+        .cta-box .btn-s:hover { border-color: rgba(255,255,255,0.35); }
+
+        /* Author byline */
+        .author-byline { margin-top: 3rem; padding-top: 2rem; border-top: 1px solid rgba(255,255,255,0.06); display: flex; align-items: center; gap: 1rem; }
+        .author-byline img { width: 56px; height: 56px; border-radius: 50%; object-fit: cover; border: 1px solid rgba(255,255,255,0.1); }
+        .author-byline-text strong { color: var(--white); font-family: var(--font-display); font-weight: 600; }
+        .author-byline-text p { color: var(--gray-500); font-size: 0.85rem; margin: 0; }
+
+        /* Footer */
+        .site-footer { position: relative; z-index: 1; padding: 4rem 0 0; background: linear-gradient(180deg, var(--bg) 0%, #040610 100%); border-top: 1px solid rgba(74,222,128,0.08); margin-top: 4rem; }
+        .footer-grid { display: grid; grid-template-columns: 1.5fr 1fr 1fr 1fr; gap: 3rem; padding-bottom: 3rem; max-width: 1200px; margin: 0 auto; padding-left: 2rem; padding-right: 2rem; }
+        .footer-brand p { color: var(--gray-400); font-size: 0.9rem; line-height: 1.6; margin-bottom: 1.5rem; max-width: 280px; }
+        .footer-brand-logo { font-family: 'Syne', sans-serif; font-size: 13px; font-weight: 700; letter-spacing: 0.08em; color: #888; text-decoration: none; text-transform: uppercase; display: inline-block; margin-bottom: 1rem; }
+        .footer-brand-logo span { color: #fff; }
+        .footer-social-links { display: flex; gap: 0.75rem; }
+        .footer-social-links a { display: flex; align-items: center; justify-content: center; width: 38px; height: 38px; border-radius: 8px; background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.06); color: var(--gray-400); font-size: 1rem; text-decoration: none; transition: all 0.3s; }
+        .footer-social-links a:hover { background: rgba(74,222,128,0.1); border-color: rgba(74,222,128,0.3); color: var(--accent); }
+        .footer-col h4 { font-family: var(--font-display); font-weight: 600; font-size: 0.85rem; text-transform: uppercase; letter-spacing: 0.08em; color: var(--white); margin-bottom: 1.25rem; }
+        .footer-col ul { list-style: none; }
+        .footer-col ul li { margin-bottom: 0.65rem; }
+        .footer-col ul li a { color: var(--gray-400); text-decoration: none; font-size: 0.875rem; transition: color 0.3s; }
+        .footer-col ul li a:hover { color: var(--accent); }
+        .footer-contact-item { display: flex; align-items: center; gap: 0.65rem; margin-bottom: 0.85rem; color: var(--gray-400); font-size: 0.875rem; }
+        .footer-contact-item i { color: var(--accent); width: 16px; }
+        .footer-contact-item a { color: var(--gray-400); text-decoration: none; transition: color 0.3s; }
+        .footer-contact-item a:hover { color: var(--accent); }
+        .footer-bottom { border-top: 1px solid rgba(255,255,255,0.06); padding: 1.5rem 2rem; max-width: 1200px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem; font-size: 0.8rem; color: var(--gray-500); }
+        .footer-tagline .g { color: var(--accent); } .footer-tagline .p { color: var(--purple); } .footer-tagline .b { color: #60A5FA; }
+        @media (max-width: 960px) { .footer-grid { grid-template-columns: 1fr 1fr; gap: 2.5rem; } }
+
+        @media (max-width: 768px) {
+            .level-grid { grid-template-columns: 1fr; }
+            .pullquote p { font-size: 1.15rem; }
+            .article-body h2 { font-size: 1.55rem; }
+        }
+        @media (max-width: 640px) {
+            .footer-grid { grid-template-columns: 1fr; gap: 2rem; }
+            .footer-bottom { flex-direction: column; text-align: center; }
+            .article-hero { padding: 7rem 0 2rem; }
+        }
+    </style>
+</head>
+<body>
+    <div class="grid-bg"></div>
+
+    <!-- Navigation -->
+    <nav class="nav" id="nav">
+        <div class="nav-inner">
+            <a href="../index.html" class="nav-logo"><img src="../jpaxmedialogoOFFICIALFINAL(white).svg" alt="JPax"></a>
+            <div class="nav-links">
+                <a href="../index.html#what-i-build">What I Build</a>
+                <a href="../index.html#process">Process</a>
+                <a href="../portfolio.html">Portfolio</a>
+                <a href="index.html" class="active">Blog</a>
+                <a href="../jupiter.html" class="nav-jupiter"><span class="jupiter-dot"></span>Jupiter</a>
+                <span class="nav-divider"></span>
+                <a href="../pricing.html" class="nav-cta">View Pricing</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero -->
+    <article>
+        <header class="article-hero">
+            <div class="article-hero-glow"></div>
+            <div class="container">
+                <a href="index.html" class="article-back"><i class="fas fa-arrow-left"></i> All build logs</a>
+                <div class="article-meta">
+                    <span class="pill">Pivot</span>
+                    <span class="pill sprint">Sprint Week 1</span>
+                    <span>May 12, 2026</span>
+                    <span>· 6 min read</span>
+                    <span>· by Julian Johnson</span>
+                </div>
+                <h1>Why JPax is now an <span class="gradient">AI agent platform</span> for creator-led businesses</h1>
+                <p class="article-lede">I spent the last year retooling JPax. Today I'm locking the direction. This is the post I'll point everyone to.</p>
+            </div>
+        </header>
+
+        <!-- Body -->
+        <div class="article-body">
+            <div class="container">
+
+                <p>If you've watched JPax over the last twelve months, you've watched a company quietly disassemble itself and rebuild from the inside. The work was always real — six production systems shipped, a custom agency platform running every client, an AI agent live in production. The audience was always clear-eyed. The <em>direction</em> was the part I kept refining.</p>
+
+                <p>It's locked now. JPax is the AI agent team for creator-led businesses. Everything else is downstream of that decision.</p>
+
+                <h2>The problem I kept seeing</h2>
+
+                <p>I'm a creator. I've been one for a long time. <a href="https://www.tiktok.com/@thebatsreacts" target="_blank" rel="noopener">@thebatsreacts</a> and <a href="https://www.tiktok.com/@heroes_on_screen" target="_blank" rel="noopener">@heroes_on_screen</a> are mine — entertainment brands I built from zero on TikTok. I know what it actually takes to keep two creator brands running while also operating a business.</p>
+
+                <p>The pattern I kept watching, in myself and in every creator-led business around me, is the same: <strong>the business of being a creator eats the creating</strong>. Once income gets real, the operational load explodes — DMs, brand deals, posting cadence, cross-platform, edits, admin. You stop being a creator and start being a small business owner who used to make content.</p>
+
+                <p>The tools market saw that and answered it the way the tools market always answers things: with more tools. Schedulers, CRMs, dashboards, AI writers, AI editors. Three hundred dollars a month spread across nine platforms, and the bottleneck moved one click downstream.</p>
+
+                <div class="pullquote">
+                    <p>Tools don't solve the operational load. They redistribute it.</p>
+                </div>
+
+                <p>The bottleneck isn't tools. The bottleneck is that creator-led businesses need a team they can't afford and don't want to manage.</p>
+
+                <h2>The insight</h2>
+
+                <p>Agents are different. A scheduler is a tool. A CRM is a tool. An <em>agent</em> is something else — a unit of capability that can take action, hold context, and operate inside a workflow without you driving it. One agent is interesting. <strong>A stack of agents wired together is an operating system.</strong> Once you have one, you don't need a team. You have a team.</p>
+
+                <p>That's the bet underneath JPax now. Everything I've built over the last year — Jupiter, Nova, the four shipped content engines, the custom apps — was an architecture experiment. I was learning whether the agent-stack pattern actually works in production, or whether it falls apart the moment real money depends on it.</p>
+
+                <p>The answer is that it works. Nova has been running live admin actions inside Jupiter for months. The Southern Pavers content engines have been publishing weekly on auto-pilot for a year. The architecture is real. The remaining question was who to point it at.</p>
+
+                <h2>What JPax is now</h2>
+
+                <p>JPax is building <strong>Elara</strong> — the AI agent team for creator-led businesses. Seven core agents, five modular extensions, and the operating system the creator economy was missing.</p>
+
+                <p>The seven agents handle the work creators don't want to do but can't escape:</p>
+
+                <ul>
+                    <li><strong>Ideation</strong> — pulls research, trends, and content angles tuned to your niche</li>
+                    <li><strong>Writing</strong> — drafts in your voice (trained on your existing content)</li>
+                    <li><strong>Production</strong> — generates thumbnails, episode art, posting copy</li>
+                    <li><strong>Posting</strong> — schedules and publishes across platforms</li>
+                    <li><strong>Community</strong> — drafts replies to DMs and comments for your approval</li>
+                    <li><strong>Monetization</strong> — manages the brand-deal pipeline and follow-ups</li>
+                    <li><strong>Growth</strong> — analytics, A/B reads, and what to do next</li>
+                </ul>
+
+                <p>The modular extensions activate on top of the core stack for creators who run courses, coaching, paid newsletters, product brands, or community networks. Mix what fits. Skip what doesn't.</p>
+
+                <p>And the relationship JPax sells around Elara isn't software. It's an operating partnership. <strong>JPax doesn't hand you tools and walk away. JPax runs the system on your behalf.</strong> You stay creative. We run the rest.</p>
+
+                <h2>The Levels</h2>
+
+                <p>Every creator-led business sits in one of three lifecycle stages. The price and the agent stack scale with where you actually are — not where you want to be.</p>
+
+                <div class="level-grid">
+                    <div class="level-card green">
+                        <div class="lc-name">Spark</div>
+                        <div class="lc-income">$1.5K–$5K/mo</div>
+                        <div class="lc-desc">Early-monetizing. Foundation tier. 1–2 agents active, 1 platform. <strong style="color:var(--white)">$500/mo.</strong></div>
+                    </div>
+                    <div class="level-card surge">
+                        <div class="lc-name">Surge</div>
+                        <div class="lc-income">$5K–$15K/mo</div>
+                        <div class="lc-desc">Established. Operational scale. 3–5 agents, 2–3 platforms, brand-deal pipeline. <strong style="color:var(--white)">$2,000/mo.</strong></div>
+                    </div>
+                    <div class="level-card purple">
+                        <div class="lc-name">Summit</div>
+                        <div class="lc-income">$15K+/mo</div>
+                        <div class="lc-desc">Scaling. Autonomous tier. Full agent stack, cross-platform, end-to-end coordination. <strong style="color:var(--white)">$3,500/mo.</strong></div>
+                    </div>
+                </div>
+
+                <p>If you don't know which one you are, there's a <a href="../quiz.html">2-minute quiz</a> that'll tell you.</p>
+
+                <h2>The proof</h2>
+
+                <p>I don't expect anyone to take this seriously without a track record underneath it. So here's what's already shipped before the pivot:</p>
+
+                <ul>
+                    <li><strong><a href="../jupiter.html">Jupiter</a></strong> — JPax's own custom agency platform. Every client is onboarded, briefed, and tracked inside it. Built on the same Supabase + agent architecture Elara runs on.</li>
+                    <li><strong>Nova</strong> — the AI agent embedded inside Jupiter, running real admin actions in production daily. Per-org configurable, RLS-secured, scoped permissions. The pattern works.</li>
+                    <li><strong>4 content engines</strong> publishing weekly on auto-pilot for trades and creator clients. The Southern Pavers engine alone has produced a year of zero-effort SEO content.</li>
+                    <li><strong>6+ shipped products</strong> across creator, trades, and hospitality categories. TradeOS in production. The original CreatorOS architecture battle-tested.</li>
+                </ul>
+
+                <p>Elara isn't a v1. It's the seventh iteration of an architecture I've been refining inside production work for two years.</p>
+
+                <h2>The plan</h2>
+
+                <p>The next 90 days are a focused sprint. I'm deploying Elara on my own creator accounts — <a href="https://www.tiktok.com/@heroes_on_screen" target="_blank" rel="noopener">@heroes_on_screen</a> and <a href="https://www.tiktok.com/@thebatsreacts" target="_blank" rel="noopener">@thebatsreacts</a> — before I sell it to anyone else.</p>
+
+                <p>The reason is simple: <strong>I won't ship a system to creators that I haven't first proven on my own brands.</strong> The creator economy doesn't need another agency selling a system the founder doesn't use. The case study is going to be me, in public, every week, until the numbers are real enough that the bet stops feeling like a bet.</p>
+
+                <p>Every week of the sprint, I'll post a build log here. What got shipped. What broke. What the numbers are. No buzzwords, no agency fluff, no "transformation stories." Just the work, as it happens.</p>
+
+                <h2>The invitation</h2>
+
+                <p>If you're a creator-led business — pure creator, podcaster, coach, course creator, newsletter operator, product-brand founder — Elara is being built for you. You can do any of three things from here:</p>
+
+                <ul>
+                    <li><strong>Follow the build.</strong> Subscribe to this blog, or watch the creator accounts above. Everything I learn during the sprint will be public.</li>
+                    <li><strong>Find your Level.</strong> Take the <a href="../quiz.html">2-minute quiz</a> and see whether you're Spark, Surge, or Summit — and what the recommended tier costs.</li>
+                    <li><strong>Be one of the first five.</strong> I'm taking five beta creators onto Elara during the sprint. Heavy discount, direct line to me during onboarding, your numbers featured in the public case study if they're good. <a href="../index.html#contact">Get in touch</a> if that's you.</li>
+                </ul>
+
+                <p>This is the post I'll point everyone to from here on out. The direction is locked. The work is real. The sprint starts today.</p>
+
+                <div class="cta-box">
+                    <h3>Find your Creator OS Level</h3>
+                    <p>Two minutes. Seven questions. Find out where your creator business sits — Spark, Surge, or Summit — and get the system that fits.</p>
+                    <div class="btns">
+                        <a href="../quiz.html" class="btn-p">Take the Quiz <i class="fas fa-arrow-right"></i></a>
+                        <a href="../pricing.html" class="btn-s">See Pricing</a>
+                    </div>
+                </div>
+
+                <div class="author-byline">
+                    <img src="../jpaxcontactphoto.jpg" alt="Julian Johnson" />
+                    <div class="author-byline-text">
+                        <strong>Julian Johnson</strong>
+                        <p>Founder, JPax. Creator who builds AI agent systems for creator-led businesses. Upstate SC.</p>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </article>
+
+    <!-- Footer -->
+    <footer class="site-footer">
+        <div class="footer-grid">
+            <div class="footer-brand">
+                <a href="../index.html" class="footer-brand-logo"><span>JPax</span></a>
+                <p>The AI agent team for creator-led businesses. Built by a creator who got tired of doing it all alone.</p>
+                <div class="footer-social-links">
+                    <a href="https://www.youtube.com/@JPaxFilms/videos" target="_blank" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+                    <a href="https://www.tiktok.com/@jpaxfilms?lang=en" target="_blank" aria-label="TikTok"><i class="fab fa-tiktok"></i></a>
+                    <a href="https://www.facebook.com/JPaxFilms/" target="_blank" aria-label="Facebook"><i class="fab fa-facebook"></i></a>
+                    <a href="https://www.instagram.com/jpaxfilmz/" target="_blank" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                </div>
+            </div>
+            <div class="footer-col">
+                <h4>Services</h4>
+                <ul>
+                    <li><a href="../pricing.html#build">BUILD Projects</a></li>
+                    <li><a href="../pricing.html#rise">RISE Partnerships</a></li>
+                    <li><a href="../pricing.html">Pricing</a></li>
+                    <li><a href="../jupiter.html">Jupiter Platform</a></li>
+                    <li><a href="../portfolio.html">Portfolio</a></li>
+                    <li><a href="index.html">Blog</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>Products</h4>
+                <ul>
+                    <li><a href="../elara.html">Elara</a></li>
+                    <li><a href="../jupiter.html">Jupiter</a></li>
+                    <li><a href="https://tradeoshq.app" target="_blank" rel="noopener" style="color:var(--gray-500)">TradeOS <span style="font-size:0.7rem;opacity:0.7;font-style:italic">(legacy)</span> <i class="fas fa-arrow-up-right-from-square" style="font-size:0.65rem;margin-left:0.15rem;opacity:0.4"></i></a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>Connect</h4>
+                <div class="footer-contact-item"><i class="fas fa-envelope"></i><a href="mailto:julian@jpaxmedia.com">julian@jpaxmedia.com</a></div>
+                <div class="footer-contact-item"><i class="fas fa-arrow-right"></i><a href="../index.html#contact">Start a Project</a></div>
+                <div class="footer-contact-item"><i class="fas fa-user-circle"></i><a href="/client/portal.html">Client Portal</a></div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <span>&copy; 2026 JPax Media LLC. All rights reserved.</span>
+            <span class="footer-tagline"><span class="g">BUILD.</span> <span class="p">RISE.</span> <span class="b">SCALE.</span></span>
+        </div>
+    </footer>
+
+    <script>
+        const nav = document.getElementById('nav');
+        window.addEventListener('scroll', () => nav.classList.toggle('scrolled', window.scrollY > 50));
+    </script>
+</body>
+</html>
