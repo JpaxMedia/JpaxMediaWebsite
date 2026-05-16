@@ -1,6 +1,4 @@
-# jpaxmedia.com
 User-agent: *
 Allow: /
-Disallow: /client/
 
 Sitemap: https://jpaxmedia.com/sitemap.xml

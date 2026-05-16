@@ -3,535 +3,173 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <!-- Meta Pixel Code -->
-    <script>
-    !function(f,b,e,v,n,t,s)
-    {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
-    n.callMethod.apply(n,arguments):n.queue.push(arguments)};
-    if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
-    n.queue=[];t=b.createElement(e);t.async=!0;
-    t.src=v;s=b.getElementsByTagName(e)[0];
-    s.parentNode.insertBefore(t,s)}(window, document,'script',
-    'https://connect.facebook.net/en_US/fbevents.js');
-    fbq('init', '2817539605254046');
-    fbq('track', 'PageView');
-    </script>
-    <!-- End Meta Pixel Code -->
-    <title>Shed Movers LLC Proposal - JPax Media</title>
-<style>
-  @import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;600;700&family=JetBrains+Mono:wght@500;600&display=swap');
+    <meta name="robots" content="noindex, nofollow, noarchive">
+    <title>JPax | Busy rebuilding</title>
+    <meta name="description" content="Busy rebuilding. Stay tuned">
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="JPax | Busy rebuilding">
+    <meta property="og:description" content="Busy rebuilding. Stay tuned">
+    <meta property="og:image" content="https://jpaxmedia.com/jpaxmedialogoOFFICIALFINALwhite.png">
+    <meta property="og:url" content="https://jpaxmedia.com">
+    <link rel="icon" type="image/png" href="/jpaxmedialogoOFFICIALFINALwhite.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@500;700&amp;family=IBM+Plex+Sans:wght@400;500;600&amp;display=swap" rel="stylesheet">
+    <style>
+        :root {
+            color-scheme: dark;
+            --dark: #06080F;
+            --green: #4ADE80;
+            --green2: #10B981;
+            --border: #1E2A3D;
+            --text: #E2E8F0;
+            --text-soft: #94A3B8;
+            --white: #F8FAFC;
+            --font-display: "Chakra Petch", system-ui, sans-serif;
+            --font-body: "IBM Plex Sans", system-ui, sans-serif;
+        }
 
-  :root {
-    --ink: #101828;
-    --muted: #667085;
-    --soft: #475467;
-    --line: #D0D5DD;
-    --paper: #FFFFFF;
-    --shade: #F6F8FA;
-    --green: #10B981;
-    --green-dark: #047857;
-  }
+        *,
+        *::before,
+        *::after {
+            box-sizing: border-box;
+        }
 
-  * { box-sizing: border-box; }
+        html,
+        body {
+            min-height: 100%;
+        }
 
-  html, body {
-    margin: 0;
-    padding: 0;
-    background: var(--paper);
-    color: var(--ink);
-    font-family: "IBM Plex Sans", Arial, sans-serif;
-    font-size: 10.5pt;
-    line-height: 1.52;
-  }
+        body {
+            margin: 0;
+            min-width: 320px;
+            overflow: hidden;
+            background: var(--dark);
+            color: var(--text);
+            font-family: var(--font-body);
+            -webkit-font-smoothing: antialiased;
+        }
 
-  @page {
-    size: Letter;
-    margin: 0.45in;
-  }
+        .rebuild-page {
+            position: relative;
+            min-height: 100svh;
+            display: grid;
+            place-items: center;
+            padding: clamp(28px, 7vw, 72px);
+            isolation: isolate;
+            background:
+                linear-gradient(rgba(6, 8, 15, 0.72), rgba(6, 8, 15, 0.92)),
+                url("/spacebackground.jpg") center / cover no-repeat,
+                var(--dark);
+        }
 
-  .sheet {
-    width: 8.5in;
-    min-height: auto;
-    margin: 0 auto;
-    background: var(--paper);
-    padding: 0.48in 0.55in;
-  }
+        .rebuild-page::before,
+        .rebuild-page::after {
+            content: "";
+            position: absolute;
+            inset: -20%;
+            z-index: -1;
+            pointer-events: none;
+            background-repeat: repeat;
+            transform: rotate(-8deg);
+        }
 
-  .brand-row {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 0.25in;
-    padding-bottom: 0.2in;
-    border-bottom: 2px solid var(--green);
-  }
+        .rebuild-page::before {
+            opacity: 0.82;
+            background-image:
+                radial-gradient(circle, rgba(248, 250, 252, 0.92) 0 1px, transparent 1.6px),
+                radial-gradient(circle, rgba(74, 222, 128, 0.72) 0 1px, transparent 1.8px);
+            background-size: 86px 86px, 142px 142px;
+            background-position: 0 0, 38px 44px;
+            animation: starDrift 36s linear infinite;
+        }
 
-  .logo {
-    width: 1.45in;
-    height: auto;
-    display: block;
-  }
+        .rebuild-page::after {
+            opacity: 0.48;
+            background-image:
+                radial-gradient(circle, rgba(226, 232, 240, 0.92) 0 1px, transparent 1.5px),
+                radial-gradient(circle, rgba(148, 163, 184, 0.5) 0 1px, transparent 1.6px);
+            background-size: 52px 52px, 118px 118px;
+            background-position: 18px 12px, 64px 70px;
+            animation: starDrift 58s linear infinite reverse, twinkle 4.8s ease-in-out infinite;
+        }
 
-  .doc-meta {
-    text-align: right;
-    font-family: "JetBrains Mono", monospace;
-    font-size: 8pt;
-    line-height: 1.5;
-    color: var(--muted);
-    text-transform: uppercase;
-    letter-spacing: 0.06em;
-  }
+        .space-vignette {
+            position: absolute;
+            inset: 0;
+            z-index: -1;
+            pointer-events: none;
+            background:
+                radial-gradient(circle at center, transparent 0 28%, rgba(6, 8, 15, 0.52) 64%, rgba(6, 8, 15, 0.94) 100%),
+                linear-gradient(180deg, rgba(6, 8, 15, 0.18), rgba(6, 8, 15, 0.82));
+        }
 
-  .hero {
-    padding: 0.38in 0 0.28in;
-  }
+        .content {
+            width: min(680px, 100%);
+            text-align: center;
+        }
 
-  .eyebrow {
-    font-family: "JetBrains Mono", monospace;
-    color: var(--green-dark);
-    text-transform: uppercase;
-    letter-spacing: 0.1em;
-    font-size: 8.5pt;
-    font-weight: 600;
-    margin-bottom: 0.12in;
-  }
+        .logo {
+            width: min(245px, 68vw);
+            height: auto;
+            margin: 0 auto clamp(34px, 7vw, 54px);
+            filter: drop-shadow(0 0 24px rgba(74, 222, 128, 0.28));
+        }
 
-  h1, h2, h3, p { margin: 0; }
+        h1 {
+            margin: 0;
+            color: var(--white);
+            font-family: var(--font-display);
+            font-size: clamp(2.15rem, 8vw, 5.8rem);
+            font-weight: 700;
+            line-height: 0.98;
+            letter-spacing: 0;
+            text-wrap: balance;
+        }
 
-  h1 {
-    font-size: 31pt;
-    line-height: 1;
-    letter-spacing: -0.02em;
-    margin-bottom: 0.13in;
-  }
+        .accent-line {
+            width: min(168px, 42vw);
+            height: 2px;
+            margin: clamp(30px, 5vw, 42px) auto 0;
+            background: linear-gradient(90deg, transparent, var(--green), var(--green2), transparent);
+            box-shadow: 0 0 28px rgba(74, 222, 128, 0.42);
+        }
 
-  h1 span { color: var(--green-dark); }
+        @keyframes starDrift {
+            from {
+                background-position: 0 0, 38px 44px;
+            }
+            to {
+                background-position: 240px 180px, 278px 224px;
+            }
+        }
 
-  .lede {
-    max-width: 6.8in;
-    color: var(--soft);
-    font-size: 12pt;
-  }
+        @keyframes twinkle {
+            0%,
+            100% {
+                opacity: 0.34;
+            }
+            50% {
+                opacity: 0.66;
+            }
+        }
 
-  .summary-grid {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 0.12in;
-    margin-top: 0.28in;
-  }
-
-  .summary-card {
-    border: 1px solid var(--line);
-    border-top: 3px solid var(--green);
-    padding: 0.13in;
-    background: var(--shade);
-    min-height: 0.72in;
-  }
-
-  .label {
-    font-family: "JetBrains Mono", monospace;
-    color: var(--muted);
-    font-size: 7.4pt;
-    text-transform: uppercase;
-    letter-spacing: 0.08em;
-    font-weight: 600;
-    margin-bottom: 0.05in;
-  }
-
-  .value {
-    font-weight: 700;
-    color: var(--ink);
-  }
-
-  .section {
-    padding-top: 0.25in;
-    break-inside: auto;
-  }
-
-  h2 {
-    color: var(--green-dark);
-    font-size: 14pt;
-    text-transform: uppercase;
-    letter-spacing: 0.06em;
-    margin-bottom: 0.08in;
-    padding-bottom: 0.06in;
-    border-bottom: 1px solid var(--line);
-    break-after: avoid;
-  }
-
-  h3 {
-    font-size: 11pt;
-    margin: 0.14in 0 0.06in;
-  }
-
-  .body-copy p,
-  .callout p {
-    color: var(--soft);
-    margin-bottom: 0.09in;
-  }
-
-  .callout {
-    border-left: 4px solid var(--green);
-    background: #ECFDF3;
-    padding: 0.12in 0.15in;
-    margin: 0.14in 0;
-    page-break-inside: avoid;
-  }
-
-  table {
-    width: 100%;
-    border-collapse: collapse;
-    margin-top: 0.12in;
-    break-inside: auto;
-  }
-
-  thead { display: table-header-group; }
-
-  tr {
-    break-inside: avoid;
-    page-break-inside: avoid;
-  }
-
-  th {
-    background: #111827;
-    color: #FFFFFF;
-    text-align: left;
-    font-size: 8pt;
-    text-transform: uppercase;
-    letter-spacing: 0.06em;
-    padding: 0.09in 0.1in;
-  }
-
-  td {
-    border-bottom: 1px solid var(--line);
-    padding: 0.09in 0.1in;
-    vertical-align: top;
-    color: var(--soft);
-  }
-
-  td:first-child {
-    color: var(--ink);
-    font-weight: 700;
-    width: 27%;
-  }
-
-  .right { text-align: right; white-space: nowrap; }
-
-  .total-row td {
-    background: #ECFDF3;
-    color: var(--green-dark);
-    font-weight: 700;
-  }
-
-  .two-col {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 0.14in;
-    margin-top: 0.14in;
-  }
-
-  .pay-card {
-    border: 1px solid var(--line);
-    border-top: 3px solid var(--green);
-    padding: 0.15in;
-    background: var(--shade);
-  }
-
-  .pay-card strong {
-    display: block;
-    font-size: 17pt;
-    color: var(--green-dark);
-    margin-bottom: 0.03in;
-  }
-
-  .pay-card span {
-    color: var(--muted);
-    display: block;
-  }
-
-  ul.clean {
-    margin: 0.1in 0 0;
-    padding: 0;
-    list-style: none;
-  }
-
-  ul.clean li {
-    border-bottom: 1px solid var(--line);
-    padding: 0.08in 0;
-    color: var(--soft);
-  }
-
-  ul.clean li strong {
-    color: var(--ink);
-  }
-
-  .footer {
-    margin-top: 0.32in;
-    padding-top: 0.12in;
-    border-top: 1px solid var(--line);
-    display: flex;
-    justify-content: space-between;
-    gap: 0.2in;
-    color: var(--muted);
-    font-size: 8.5pt;
-  }
-
-  a { color: var(--green-dark); text-decoration: none; }
-
-  @media print {
-    body { background: var(--paper); }
-    .sheet {
-      width: auto;
-      min-height: auto;
-      margin: 0;
-      padding: 0;
-    }
-  }
-</style>
+        @media (prefers-reduced-motion: reduce) {
+            .rebuild-page::before,
+            .rebuild-page::after {
+                animation: none;
+            }
+        }
+    </style>
 </head>
 <body>
-    <!-- Meta Pixel Code (noscript) -->
-    <noscript><img height="1" width="1" style="display:none"
-    src="https://www.facebook.com/tr?id=2817539605254046&ev=PageView&noscript=1"
-    /></noscript>
-    <!-- End Meta Pixel Code (noscript) -->
-<main class="sheet">
-  <header class="brand-row">
-    <img class="logo" src="../../jpaxmedialogoOFFICIALFINAL(black).png" alt="JPax Media logo">
-    <div class="doc-meta">
-      Project Proposal<br>
-      Shed Movers LLC<br>
-      April 26, 2026
+    <div class="rebuild-page" role="main" aria-label="JPax site rebuilding notice">
+        <div class="space-vignette" aria-hidden="true"></div>
+        <div class="content">
+            <img class="logo" src="/jpaxmedialogoOFFICIALFINAL(whitewithtext).png" alt="JPax">
+            <h1>Busy rebuilding. Stay tuned</h1>
+            <div class="accent-line" aria-hidden="true"></div>
+        </div>
     </div>
-  </header>
-
-  <section class="hero">
-    <div class="eyebrow">JPax Media - Digital Growth System</div>
-    <h1>Shed Movers <span>Proposal</span></h1>
-    <p class="lede">Website recreation, Facebook management, content creation, hosting, website management, and monthly SEO support for Shed Movers LLC.</p>
-
-    <div class="summary-grid">
-      <div class="summary-card">
-        <div class="label">Prepared For</div>
-        <div class="value">Kevin - Shed Movers LLC</div>
-      </div>
-      <div class="summary-card">
-        <div class="label">Prepared By</div>
-        <div class="value">Julian Johnson - JPax Media</div>
-      </div>
-      <div class="summary-card">
-        <div class="label">Launch Investment</div>
-        <div class="value">$2,000</div>
-      </div>
-      <div class="summary-card">
-        <div class="label">Monthly Management</div>
-        <div class="value">$1,650/mo</div>
-      </div>
-    </div>
-  </section>
-
-  <section class="section body-copy">
-    <h2>Proposal Overview</h2>
-    <p>This proposal is for the full digital package around Shed Movers LLC: the recreated website, Facebook management, content creation, website hosting, website management, and monthly SEO blogs.</p>
-    <p>JPax has already prepared example work for review, including a redesigned website preview and video content examples. The website preview is not final; it is still subject to changes before approval and launch.</p>
-    <div class="callout">
-      <p><strong>Simple version:</strong> JPax built the digital foundation first, then manages the content and website every month so Shed Movers keeps showing up online with a better site, better social presence, and fresh SEO content.</p>
-    </div>
-  </section>
-
-  <section class="section">
-    <h2>What JPax Built</h2>
-    <table>
-      <thead>
-        <tr>
-          <th>Built / Prepared</th>
-          <th>What It Does</th>
-          <th>Status</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td>Website Recreation</td>
-          <td>Modernized layout, stronger messaging, mobile-friendly sections, and clearer customer paths.</td>
-          <td>Preview ready</td>
-        </tr>
-        <tr>
-          <td>Service Structure</td>
-          <td>Pages and sections for shed moving, outdoor sheds, shipping containers, and container delivery.</td>
-          <td>Preview ready</td>
-        </tr>
-        <tr>
-          <td>Shed Builder</td>
-          <td>Interactive build-and-price starter so customers can choose a style, size, roof, and use case before contacting Kevin.</td>
-          <td>Preview ready</td>
-        </tr>
-        <tr>
-          <td>Quote Flow</td>
-          <td>Clear quote buttons, call paths, and form direction so customers know what to do next.</td>
-          <td>Preview ready</td>
-        </tr>
-        <tr>
-          <td>Blog + SEO Foundation</td>
-          <td>Blog area prepared for monthly SEO posts about shed moving, shed buying, containers, and storage questions.</td>
-          <td>Preview ready</td>
-        </tr>
-        <tr>
-          <td>Video Examples</td>
-          <td>Dropbox folder of social-first video examples showing the creative direction JPax can produce.</td>
-          <td>Ready to review</td>
-        </tr>
-      </tbody>
-    </table>
-  </section>
-
-  <section class="section">
-    <h2>Monthly Management</h2>
-    <p>After the website is approved, JPax will manage the ongoing digital side: Facebook, content creation, hosting, website maintenance, and monthly SEO blogging.</p>
-    <table>
-      <thead>
-        <tr>
-          <th>Service</th>
-          <th>What JPax Handles</th>
-          <th>Frequency</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td>Facebook Management</td>
-          <td>Manage the Shed Movers Facebook presence with consistent posts, updates, service reminders, and customer-facing content.</td>
-          <td>Monthly</td>
-        </tr>
-        <tr>
-          <td>Content Creation</td>
-          <td>Create social content around shed moving, outdoor sheds, containers, rent-to-own options, customer questions, and Kevin's personality.</td>
-          <td>Ongoing</td>
-        </tr>
-        <tr>
-          <td>Video Content Direction</td>
-          <td>Use the example video direction as a creative base for future reels, ads, and social posts.</td>
-          <td>Ongoing</td>
-        </tr>
-        <tr>
-          <td>Website Hosting</td>
-          <td>Host the Shed Movers website and keep it live, stable, and connected.</td>
-          <td>Ongoing</td>
-        </tr>
-        <tr>
-          <td>Website Management</td>
-          <td>Make minor updates, keep pages current, fix small issues, and maintain the live site.</td>
-          <td>Monthly</td>
-        </tr>
-        <tr>
-          <td>Monthly SEO Blog</td>
-          <td>Publish one search-focused blog post per month to build long-term visibility around shed moving and storage topics.</td>
-          <td>1 per month</td>
-        </tr>
-      </tbody>
-    </table>
-  </section>
-
-  <section class="section">
-    <h2>Investment</h2>
-    <table>
-      <thead>
-        <tr>
-          <th>Item</th>
-          <th>Description</th>
-          <th class="right">Amount</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td>Website Recreation</td>
-          <td>Redesigned Shed Movers website, service pages, quote flow, shed builder, blog structure, mobile responsiveness, and SEO foundation.</td>
-          <td class="right">$2,000</td>
-        </tr>
-        <tr>
-          <td>Facebook Management</td>
-          <td>Monthly Facebook management, posting rhythm, service reminders, and audience-facing updates.</td>
-          <td class="right">$1,500/mo</td>
-        </tr>
-        <tr>
-          <td>Content Creation</td>
-          <td>Social content and video/content direction based on Shed Movers services, offers, and Kevin's brand personality.</td>
-          <td class="right">Included</td>
-        </tr>
-        <tr>
-          <td>Website Hosting &amp; Management</td>
-          <td>Hosting, maintenance, minor site updates, basic technical upkeep, and one monthly SEO blog.</td>
-          <td class="right">$150/mo</td>
-        </tr>
-        <tr class="total-row">
-          <td colspan="2">Total First-Month Investment</td>
-          <td class="right">$3,650</td>
-        </tr>
-        <tr class="total-row">
-          <td colspan="2">Ongoing Monthly Management</td>
-          <td class="right">$1,650/mo</td>
-        </tr>
-      </tbody>
-    </table>
-
-    <div class="two-col">
-      <div class="pay-card">
-        <strong>$1,000</strong>
-        <span>50% website deposit due to move forward.</span>
-      </div>
-      <div class="pay-card">
-        <strong>$2,650</strong>
-        <span>$1,000 final website payment + $1,650 first monthly management payment.</span>
-      </div>
-    </div>
-
-    <div class="callout">
-      <p><strong>Current status:</strong> The website preview is not final and is still subject to change before approval. Once Kevin approves the direction, JPax will finalize the site, connect hosting/domain details, and begin the monthly management plan.</p>
-    </div>
-    <div class="callout">
-      <p><strong>Note:</strong> Paid ad spend is not included in the monthly management amount. If Kevin wants to run paid Facebook ads later, that budget stays separate and under Shed Movers' control.</p>
-    </div>
-  </section>
-
-  <section class="section">
-    <h2>Example Links</h2>
-    <table>
-      <thead>
-        <tr>
-          <th>Example</th>
-          <th>Link</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td>Website Preview</td>
-          <td><a href="https://shedmoversllc.netlify.app/">https://shedmoversllc.netlify.app/</a></td>
-        </tr>
-        <tr>
-          <td>Video Examples</td>
-          <td><a href="https://www.dropbox.com/scl/fo/355kspxodt5gtv7egnzui/ANA5ed29-mLnOmonpDptHDs?rlkey=dze6sdliffi3u9sj69mw8wsh9&amp;st=jij5z3vy&amp;dl=0">Dropbox video examples folder</a></td>
-        </tr>
-      </tbody>
-    </table>
-  </section>
-
-  <section class="section">
-    <h2>Why JPax</h2>
-    <ul class="clean">
-      <li><strong>Work first, pitch second.</strong> Kevin is not being asked to imagine the direction from scratch. The website preview and video examples are already available to review.</li>
-      <li><strong>One connected system.</strong> The website, Facebook management, content creation, hosting, maintenance, and SEO blogs all support the same customer path.</li>
-      <li><strong>Founder-led support.</strong> Kevin works directly with Julian instead of getting passed through a slow agency chain.</li>
-      <li><strong>Flexible before approval.</strong> The preview is live enough to judge, but still flexible enough to adjust before launch.</li>
-    </ul>
-  </section>
-
-  <section class="section body-copy">
-    <h2>Next Step</h2>
-    <p>If Kevin wants to move forward, JPax will send the formal agreement and deposit invoice.</p>
-  </section>
-
-  <footer class="footer">
-    <div>JPax Media LLC - Build. Rise. Scale.</div>
-    <div>jpaxmedia.com - julian@jpaxmedia.com - (860) 494-3090</div>
-  </footer>
-</main>
 </body>
 </html>
