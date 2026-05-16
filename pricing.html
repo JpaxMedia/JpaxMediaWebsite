@@ -1,188 +1,192 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="robots" content="noindex, nofollow, noarchive">
-    <title>JPax | Busy rebuilding</title>
-    <meta name="description" content="Busy rebuilding. Stay tuned">
-    <meta property="og:type" content="website">
-    <meta property="og:title" content="JPax | Busy rebuilding">
-    <meta property="og:description" content="Busy rebuilding. Stay tuned">
-    <meta property="og:image" content="https://jpaxmedia.com/jpaxmedialogoOFFICIALFINALwhite.png">
-    <meta property="og:url" content="https://jpaxmedia.com">
-    <link rel="icon" type="image/png" href="/jpaxmedialogoOFFICIALFINALwhite.png">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@500;700&amp;family=IBM+Plex+Sans:wght@400;500;600&amp;display=swap" rel="stylesheet">
-    <style>
-        :root {
-            color-scheme: dark;
-            --dark: #06080F;
-            --green: #4ADE80;
-            --green2: #10B981;
-            --border: #1E2A3D;
-            --text: #E2E8F0;
-            --text-soft: #94A3B8;
-            --white: #F8FAFC;
-            --font-display: "Chakra Petch", system-ui, sans-serif;
-            --font-body: "IBM Plex Sans", system-ui, sans-serif;
-        }
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Starting Points | JPAX Media</title>
+  <meta name="description" content="JPAX Starting Points. Clear public entry points for websites, brand systems, AI content, dashboards, and operating partnerships. Custom scopes when bigger." />
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="JPAX Starting Points" />
+  <meta property="og:description" content="Clear entry points. Custom scopes when the work gets bigger." />
+  <meta property="og:url" content="https://jpaxmedia.com/pricing.html" />
+  <meta property="og:image" content="https://jpaxmedia.com/jpaxmedialogoOFFICIALFINALwhite.png" />
 
-        *,
-        *::before,
-        *::after {
-            box-sizing: border-box;
-        }
+  <link rel="icon" type="image/png" href="jpaxmedialogoOFFICIALFINALwhite.png" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@400;500;600;700&family=IBM+Plex+Sans:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="assets/css/jpax.css" />
 
-        html,
-        body {
-            min-height: 100%;
-        }
-
-        body {
-            margin: 0;
-            min-width: 320px;
-            overflow: hidden;
-            background: var(--dark);
-            color: var(--text);
-            font-family: var(--font-body);
-            -webkit-font-smoothing: antialiased;
-        }
-
-        .rebuild-page {
-            position: relative;
-            min-height: 100svh;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            padding: clamp(24px, 5vw, 56px);
-            isolation: isolate;
-            background:
-                radial-gradient(circle at 50% 42%, rgba(74, 222, 128, 0.13), transparent 0 28%),
-                radial-gradient(circle at 50% 58%, rgba(16, 185, 129, 0.08), transparent 0 34%),
-                linear-gradient(180deg, rgba(6, 8, 15, 0.94), rgba(6, 8, 15, 0.98)),
-                var(--dark);
-        }
-
-        .rebuild-page::before,
-        .rebuild-page::after {
-            content: "";
-            position: absolute;
-            inset: 0;
-            z-index: -1;
-            pointer-events: none;
-        }
-
-        .rebuild-page::before {
-            opacity: 0.58;
-            background-image:
-                linear-gradient(rgba(74, 222, 128, 0.105) 1px, transparent 1px),
-                linear-gradient(90deg, rgba(74, 222, 128, 0.105) 1px, transparent 1px),
-                linear-gradient(rgba(226, 232, 240, 0.026) 1px, transparent 1px),
-                linear-gradient(90deg, rgba(226, 232, 240, 0.026) 1px, transparent 1px);
-            background-size: 68px 68px, 68px 68px, 272px 272px, 272px 272px;
-            mask-image: radial-gradient(circle at center, rgba(0, 0, 0, 0.95), transparent 74%);
-        }
-
-        .rebuild-page::after {
-            inset: -12%;
-            opacity: 0.38;
-            background-image:
-                radial-gradient(circle, rgba(248, 250, 252, 0.52) 0 1px, transparent 1.5px),
-                radial-gradient(circle, rgba(74, 222, 128, 0.5) 0 1px, transparent 1.7px);
-            background-size: 170px 94px, 260px 148px;
-            background-position: 0 0, 70px 42px;
-            animation: specDrift 28s linear infinite;
-        }
-
-        .space-vignette {
-            position: absolute;
-            inset: 0;
-            z-index: -1;
-            pointer-events: none;
-            background:
-                radial-gradient(circle at center, transparent 0 32%, rgba(6, 8, 15, 0.58) 72%, rgba(6, 8, 15, 0.96) 100%),
-                linear-gradient(180deg, rgba(6, 8, 15, 0.08), rgba(6, 8, 15, 0.72));
-        }
-
-        .content {
-            width: min(760px, 100%);
-            padding-block: 18px;
-            text-align: center;
-        }
-
-        .logo {
-            width: clamp(132px, 18vw, 188px);
-            height: auto;
-            margin: 0 auto clamp(20px, 3.8vw, 30px);
-            filter: drop-shadow(0 0 24px rgba(74, 222, 128, 0.28));
-        }
-
-        h1 {
-            margin: 0;
-            color: var(--white);
-            font-family: var(--font-display);
-            font-size: clamp(2rem, 5.2vw, 4.35rem);
-            font-weight: 700;
-            line-height: 1.04;
-            letter-spacing: 0;
-            max-width: 100%;
-            text-wrap: balance;
-        }
-
-        h1 span {
-            display: block;
-        }
-
-        .accent-line {
-            width: min(146px, 36vw);
-            height: 2px;
-            margin: clamp(22px, 4vw, 34px) auto 0;
-            background: linear-gradient(90deg, transparent, var(--green), var(--green2), transparent);
-            box-shadow: 0 0 28px rgba(74, 222, 128, 0.42);
-        }
-
-        @keyframes specDrift {
-            from {
-                transform: translate3d(-4%, -2%, 0);
-            }
-            to {
-                transform: translate3d(4%, 2%, 0);
-            }
-        }
-
-        @media (max-width: 640px) {
-            .rebuild-page {
-                padding: 26px;
-            }
-
-            .logo {
-                width: clamp(128px, 42vw, 154px);
-                margin-bottom: 22px;
-            }
-
-            h1 {
-                font-size: clamp(1.78rem, 8vw, 2.15rem);
-                line-height: 1.08;
-            }
-        }
-
-        @media (prefers-reduced-motion: reduce) {
-            .rebuild-page::after {
-                animation: none;
-            }
-        }
-    </style>
+  <script>
+    !function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,document,'script','https://connect.facebook.net/en_US/fbevents.js');
+    fbq('init','2817539605254046'); fbq('track','PageView');
+  </script>
 </head>
 <body>
-    <div class="rebuild-page" role="main" aria-label="JPax site rebuilding notice">
-        <div class="space-vignette" aria-hidden="true"></div>
-        <div class="content">
-            <img class="logo" src="/jpaxmedialogoOFFICIALFINAL(whitewithtext).png" alt="JPax">
-            <h1><span>Busy rebuilding.</span><span>Stay tuned</span></h1>
-            <div class="accent-line" aria-hidden="true"></div>
+  <a class="skip-link" href="#main">Skip to content</a>
+  <div class="bg-grid" aria-hidden="true"></div>
+
+  <header class="site-header">
+    <nav class="nav" aria-label="Primary">
+      <a class="brand" href="index.html">
+        <img class="brand-mark" src="jpaxmedialogoOFFICIALFINAL(white).svg" alt="" />
+        <span>JPAX</span>
+      </a>
+      <button class="nav-toggle" aria-controls="primary-nav" aria-expanded="false" aria-label="Toggle menu">Menu</button>
+      <ul class="nav-links" id="primary-nav">
+        <li><a href="work.html">Work</a></li>
+        <li><a href="services.html">Services</a></li>
+        <li><a href="elara.html">Elara</a></li>
+        <li><a href="jupiter.html">Jupiter</a></li>
+        <li><a href="start.html" class="btn btn-primary nav-cta">Start a Project</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main id="main">
+    <section class="page-hero">
+      <div class="container">
+        <div class="section-label">Starting Points</div>
+        <div class="section-rule"></div>
+        <h1>Clear entry points. Custom scopes when the work gets bigger.</h1>
+        <p class="lede">JPAX does not publish a full menu. These are public anchors for the most common entry points. Real scope and pricing happen in the project intake.</p>
+      </div>
+    </section>
+
+    <section>
+      <div class="container">
+        <div class="section-label">Build the System</div>
+        <div class="section-rule"></div>
+        <div class="anchors">
+          <div class="anchor">
+            <div class="price">$3,500 <span class="small">starting</span></div>
+            <h4>Local Website Foundation</h4>
+            <p>For serious local businesses that need a clean, owned website.</p>
+          </div>
+          <div class="anchor">
+            <div class="price">$8,000 <span class="small">starting</span></div>
+            <h4>Brand + Web Foundation</h4>
+            <p>Identity plus website system, built together.</p>
+          </div>
+          <div class="anchor">
+            <div class="price">$5,000 <span class="small">starting</span></div>
+            <h4>Workflow Sprint</h4>
+            <p>Automation or dashboard sprint for one business process.</p>
+          </div>
         </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="container">
+        <div class="section-label">Create Demand</div>
+        <div class="section-rule"></div>
+        <div class="anchors">
+          <div class="anchor">
+            <div class="price">$950 <span class="small">starting</span></div>
+            <h4>AI Creative Starter</h4>
+            <p>AI photo and video ad creative and campaign assets.</p>
+          </div>
+          <div class="anchor">
+            <div class="price">$2,500 <span class="small">starting</span></div>
+            <h4>Campaign Landing Page</h4>
+            <p>A focused page built to move on one offer or launch.</p>
+          </div>
+          <div class="anchor">
+            <div class="price">$1,500<span class="small">/mo starting</span></div>
+            <h4>Social Content System</h4>
+            <p>Recurring creative output with a planning rhythm behind it.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="container">
+        <div class="section-label">Run the System</div>
+        <div class="section-rule"></div>
+        <div class="anchors">
+          <div class="anchor">
+            <div class="price">$500<span class="small">/mo starting</span></div>
+            <h4>Managed Website</h4>
+            <p>Ongoing site care, updates, and management.</p>
+          </div>
+          <div class="anchor">
+            <div class="price">$2,500<span class="small">/mo starting</span></div>
+            <h4>Growth Operating Partnership</h4>
+            <p>Ongoing systems, creative, reporting, and improvements.</p>
+          </div>
+          <div class="anchor">
+            <div class="price">Custom</div>
+            <h4>SCALE Engagement</h4>
+            <p>BUILD + RISE combined into a sustained engagement. Scoped per business.</p>
+          </div>
+        </div>
+
+        <div class="note"><strong>You own everything we build for you.</strong> BUILD projects are 50% up front and 50% at delivery. Timeline begins upon receipt of deposit.</div>
+      </div>
+    </section>
+
+    <section id="cta">
+      <div class="container">
+        <div class="cta-band">
+          <div>
+            <h2>Not sure which entry point fits?</h2>
+            <p>Tell JPAX about the business or project. The intake is short and the response is direct.</p>
+          </div>
+          <div style="display:flex; gap:12px; flex-wrap:wrap;">
+            <a class="btn btn-primary" href="start.html">Start a Project <span class="arrow">&rarr;</span></a>
+            <a class="btn" href="services.html">See Services</a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div>
+          <div class="brand" style="margin-bottom: 14px;">
+            <img class="brand-mark" src="jpaxmedialogoOFFICIALFINAL(white).svg" alt="" />
+            <span>JPAX Media</span>
+          </div>
+          <p style="font-size: 14px; color: var(--text-soft); max-width: 360px;">AI Systems Studio in Greenville, SC. Founder-led by Julian Johnson. Build. Rise. Scale.</p>
+        </div>
+        <div>
+          <h5>Studio</h5>
+          <ul>
+            <li><a href="work.html">Work</a></li>
+            <li><a href="services.html">Services</a></li>
+            <li><a href="elara.html">Elara</a></li>
+            <li><a href="jupiter.html">Jupiter</a></li>
+          </ul>
+        </div>
+        <div>
+          <h5>Engage</h5>
+          <ul>
+            <li><a href="start.html">Start a Project</a></li>
+            <li><a href="pricing.html">Starting Points</a></li>
+            <li><a href="mailto:julian@jpaxmedia.com">julian@jpaxmedia.com</a></li>
+            <li><a href="tel:+18604943090">(860) 494-3090</a></li>
+          </ul>
+        </div>
+        <div>
+          <h5>Studio Notes</h5>
+          <ul>
+            <li>Founder-led</li>
+            <li>Greenville, SC</li>
+            <li>National creators</li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-base">
+        <span>&copy; 2026 JPax Media LLC</span>
+        <span>Built fast. Built right.</span>
+      </div>
     </div>
+  </footer>
+
+  <script src="assets/js/main.js"></script>
 </body>
 </html>

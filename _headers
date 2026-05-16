@@ -1,3 +1,16 @@
+# JPAX Media — global response headers
+# Production launch readiness: site is currently set to allow indexing.
+# If Julian wants the redesign indexed only after a final sign-off, swap the X-Robots-Tag rule
+# back to "noindex, nofollow, noarchive" until launch.
+
 /*
+  X-Content-Type-Options: nosniff
+  Referrer-Policy: strict-origin-when-cross-origin
+  Permissions-Policy: geolocation=(), microphone=(), camera=()
+
+/maintenance.html
   X-Robots-Tag: noindex, nofollow, noarchive
-  Cache-Control: no-store, no-cache, must-revalidate
+  Cache-Control: no-store
+
+/assets/*
+  Cache-Control: public, max-age=604800

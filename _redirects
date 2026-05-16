@@ -1,1 +1,9 @@
-/*    /maintenance.html    200
+# JPAX Media — public site routing
+# Maintenance catch-all is OFF for the redesigned launch. To re-enable, uncomment the final line.
+
+/portfolio    /work.html    301
+/about        /index.html#gap   301
+/contact      /start.html   301
+/inquiry      /start.html   301
+
+# /*    /maintenance.html    200
