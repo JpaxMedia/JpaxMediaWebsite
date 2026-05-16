@@ -53,13 +53,15 @@
         .rebuild-page {
             position: relative;
             min-height: 100svh;
-            display: grid;
-            place-items: center;
-            padding: clamp(28px, 7vw, 72px);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: clamp(24px, 5vw, 56px);
             isolation: isolate;
             background:
-                linear-gradient(rgba(6, 8, 15, 0.72), rgba(6, 8, 15, 0.92)),
-                url("/spacebackground.jpg") center / cover no-repeat,
+                radial-gradient(circle at 50% 42%, rgba(74, 222, 128, 0.13), transparent 0 28%),
+                radial-gradient(circle at 50% 58%, rgba(16, 185, 129, 0.08), transparent 0 34%),
+                linear-gradient(180deg, rgba(6, 8, 15, 0.94), rgba(6, 8, 15, 0.98)),
                 var(--dark);
         }
 
@@ -67,31 +69,31 @@
         .rebuild-page::after {
             content: "";
             position: absolute;
-            inset: -20%;
+            inset: 0;
             z-index: -1;
             pointer-events: none;
-            background-repeat: repeat;
-            transform: rotate(-8deg);
         }
 
         .rebuild-page::before {
-            opacity: 0.82;
+            opacity: 0.58;
             background-image:
-                radial-gradient(circle, rgba(248, 250, 252, 0.92) 0 1px, transparent 1.6px),
-                radial-gradient(circle, rgba(74, 222, 128, 0.72) 0 1px, transparent 1.8px);
-            background-size: 86px 86px, 142px 142px;
-            background-position: 0 0, 38px 44px;
-            animation: starDrift 36s linear infinite;
+                linear-gradient(rgba(74, 222, 128, 0.105) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(74, 222, 128, 0.105) 1px, transparent 1px),
+                linear-gradient(rgba(226, 232, 240, 0.026) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(226, 232, 240, 0.026) 1px, transparent 1px);
+            background-size: 68px 68px, 68px 68px, 272px 272px, 272px 272px;
+            mask-image: radial-gradient(circle at center, rgba(0, 0, 0, 0.95), transparent 74%);
         }
 
         .rebuild-page::after {
-            opacity: 0.48;
+            inset: -12%;
+            opacity: 0.38;
             background-image:
-                radial-gradient(circle, rgba(226, 232, 240, 0.92) 0 1px, transparent 1.5px),
-                radial-gradient(circle, rgba(148, 163, 184, 0.5) 0 1px, transparent 1.6px);
-            background-size: 52px 52px, 118px 118px;
-            background-position: 18px 12px, 64px 70px;
-            animation: starDrift 58s linear infinite reverse, twinkle 4.8s ease-in-out infinite;
+                radial-gradient(circle, rgba(248, 250, 252, 0.52) 0 1px, transparent 1.5px),
+                radial-gradient(circle, rgba(74, 222, 128, 0.5) 0 1px, transparent 1.7px);
+            background-size: 170px 94px, 260px 148px;
+            background-position: 0 0, 70px 42px;
+            animation: specDrift 28s linear infinite;
         }
 
         .space-vignette {
@@ -100,19 +102,20 @@
             z-index: -1;
             pointer-events: none;
             background:
-                radial-gradient(circle at center, transparent 0 28%, rgba(6, 8, 15, 0.52) 64%, rgba(6, 8, 15, 0.94) 100%),
-                linear-gradient(180deg, rgba(6, 8, 15, 0.18), rgba(6, 8, 15, 0.82));
+                radial-gradient(circle at center, transparent 0 32%, rgba(6, 8, 15, 0.58) 72%, rgba(6, 8, 15, 0.96) 100%),
+                linear-gradient(180deg, rgba(6, 8, 15, 0.08), rgba(6, 8, 15, 0.72));
         }
 
         .content {
-            width: min(680px, 100%);
+            width: min(760px, 100%);
+            padding-block: 18px;
             text-align: center;
         }
 
         .logo {
-            width: min(245px, 68vw);
+            width: clamp(132px, 18vw, 188px);
             height: auto;
-            margin: 0 auto clamp(34px, 7vw, 54px);
+            margin: 0 auto clamp(20px, 3.8vw, 30px);
             filter: drop-shadow(0 0 24px rgba(74, 222, 128, 0.28));
         }
 
@@ -120,42 +123,52 @@
             margin: 0;
             color: var(--white);
             font-family: var(--font-display);
-            font-size: clamp(2.15rem, 8vw, 5.8rem);
+            font-size: clamp(2rem, 5.2vw, 4.35rem);
             font-weight: 700;
-            line-height: 0.98;
+            line-height: 1.04;
             letter-spacing: 0;
+            max-width: 100%;
             text-wrap: balance;
         }
 
+        h1 span {
+            display: block;
+        }
+
         .accent-line {
-            width: min(168px, 42vw);
+            width: min(146px, 36vw);
             height: 2px;
-            margin: clamp(30px, 5vw, 42px) auto 0;
+            margin: clamp(22px, 4vw, 34px) auto 0;
             background: linear-gradient(90deg, transparent, var(--green), var(--green2), transparent);
             box-shadow: 0 0 28px rgba(74, 222, 128, 0.42);
         }
 
-        @keyframes starDrift {
+        @keyframes specDrift {
             from {
-                background-position: 0 0, 38px 44px;
+                transform: translate3d(-4%, -2%, 0);
             }
             to {
-                background-position: 240px 180px, 278px 224px;
+                transform: translate3d(4%, 2%, 0);
             }
         }
 
-        @keyframes twinkle {
-            0%,
-            100% {
-                opacity: 0.34;
+        @media (max-width: 640px) {
+            .rebuild-page {
+                padding: 26px;
             }
-            50% {
-                opacity: 0.66;
+
+            .logo {
+                width: clamp(128px, 42vw, 154px);
+                margin-bottom: 22px;
+            }
+
+            h1 {
+                font-size: clamp(1.78rem, 8vw, 2.15rem);
+                line-height: 1.08;
             }
         }
 
         @media (prefers-reduced-motion: reduce) {
-            .rebuild-page::before,
             .rebuild-page::after {
                 animation: none;
             }
@@ -167,7 +180,7 @@
         <div class="space-vignette" aria-hidden="true"></div>
         <div class="content">
             <img class="logo" src="/jpaxmedialogoOFFICIALFINAL(whitewithtext).png" alt="JPax">
-            <h1>Busy rebuilding. Stay tuned</h1>
+            <h1><span>Busy rebuilding.</span><span>Stay tuned</span></h1>
             <div class="accent-line" aria-hidden="true"></div>
         </div>
     </div>
