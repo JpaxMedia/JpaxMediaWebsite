@@ -1,5 +1,7 @@
 /portfolio /work.html 301
 /portfolio.html /work.html 301
+/tradeos /tradeos.html 301
+/trade-os /tradeos.html 301
 
 # Re-enable this only when the public site should be hidden behind maintenance.
 # /*    /maintenance.html    200

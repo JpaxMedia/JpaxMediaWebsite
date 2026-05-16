@@ -247,6 +247,11 @@
         body: "Your pressure is operational. A focused sprint can connect intake, dashboards, automation, and internal tools.",
         href: "services.html#workflow",
       },
+      tradeos: {
+        title: "TradeOS",
+        body: "You need the trades and home-services operating layer: lead flow, follow-up, reporting, content rhythm, and operational visibility in one system.",
+        href: "tradeos.html",
+      },
       creator: {
         title: "Creator System",
         body: "Elara is the right path when content, sponsor ideas, posting rhythm, and revenue visibility need one operating layer.",
