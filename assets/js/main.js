@@ -10,6 +10,7 @@
     let height = 0;
     let pixelRatio = 1;
     let raf = 0;
+    let tick = 0;
 
     function resize() {
       pixelRatio = Math.min(window.devicePixelRatio || 1, 2);
@@ -21,7 +22,7 @@
       canvas.style.height = `${height}px`;
       ctx.setTransform(pixelRatio, 0, 0, pixelRatio, 0, 0);
 
-      const count = prefersReducedMotion ? 70 : Math.min(180, Math.floor((width * height) / 8200));
+      const count = prefersReducedMotion ? 95 : Math.min(260, Math.floor((width * height) / 5600));
       stars.length = 0;
 
       for (let i = 0; i < count; i += 1) {
@@ -29,12 +30,75 @@
           x: Math.random() * width,
           y: Math.random() * height,
           z: 0.35 + Math.random() * 1.25,
-          r: 0.5 + Math.random() * 1.3,
-          vx: -0.05 + Math.random() * 0.1,
-          vy: 0.08 + Math.random() * 0.28,
-          g: Math.random() > 0.78,
+          r: 0.55 + Math.random() * 1.55,
+          vx: -0.08 + Math.random() * 0.16,
+          vy: 0.12 + Math.random() * 0.36,
+          g: Math.random() > 0.7,
         });
       }
+    }
+
+    function drawFlightPath(px, py) {
+      const launchX = width * 0.12 + px * 0.7;
+      const launchY = height * 0.88 + py * 0.35;
+      const apexX = width * 0.48 + px * 1.6;
+      const apexY = height * 0.22 + py * 0.9;
+      const exitX = width * 0.94 + px * 0.4;
+      const exitY = height * 0.16 + py * 0.3;
+      const pulse = prefersReducedMotion ? 0.42 : (Math.sin(tick * 0.025) + 1) / 2;
+
+      ctx.save();
+      ctx.lineWidth = 1.2;
+      ctx.strokeStyle = `rgba(74, 222, 128, ${0.16 + pulse * 0.22})`;
+      ctx.beginPath();
+      ctx.moveTo(launchX, launchY);
+      ctx.quadraticCurveTo(apexX, apexY, exitX, exitY);
+      ctx.stroke();
+
+      ctx.strokeStyle = "rgba(248, 250, 252, 0.34)";
+      ctx.setLineDash([7, 12]);
+      ctx.beginPath();
+      ctx.moveTo(width * 0.18 + px, height * 0.76 + py * 0.2);
+      ctx.quadraticCurveTo(width * 0.58 + px * 1.4, height * 0.34 + py, width * 0.88, height * 0.28);
+      ctx.stroke();
+      ctx.setLineDash([]);
+
+      const t = prefersReducedMotion ? 0.55 : (tick % 360) / 360;
+      const oneMinus = 1 - t;
+      const markerX = oneMinus * oneMinus * launchX + 2 * oneMinus * t * apexX + t * t * exitX;
+      const markerY = oneMinus * oneMinus * launchY + 2 * oneMinus * t * apexY + t * t * exitY;
+      ctx.fillStyle = "rgba(248, 250, 252, 0.92)";
+      ctx.shadowColor = "rgba(74, 222, 128, 0.86)";
+      ctx.shadowBlur = 18;
+      ctx.beginPath();
+      ctx.arc(markerX, markerY, 2.4, 0, Math.PI * 2);
+      ctx.fill();
+      ctx.restore();
+    }
+
+    function drawHorizon(px, py) {
+      const horizonY = height * 0.96 + py * 0.22;
+
+      ctx.save();
+      const glow = ctx.createLinearGradient(0, horizonY - height * 0.22, 0, height);
+      glow.addColorStop(0, "rgba(56, 189, 248, 0)");
+      glow.addColorStop(0.48, "rgba(56, 189, 248, 0.11)");
+      glow.addColorStop(0.72, "rgba(74, 222, 128, 0.1)");
+      glow.addColorStop(1, "rgba(6, 8, 15, 0.88)");
+      ctx.fillStyle = glow;
+      ctx.fillRect(0, horizonY - height * 0.28, width, height * 0.34);
+
+      ctx.strokeStyle = "rgba(56, 189, 248, 0.3)";
+      ctx.lineWidth = 1;
+      ctx.beginPath();
+      ctx.ellipse(width * 0.5 + px * 0.55, horizonY, width * 0.58, height * 0.15, 0, Math.PI, Math.PI * 2);
+      ctx.stroke();
+
+      ctx.strokeStyle = "rgba(74, 222, 128, 0.15)";
+      ctx.beginPath();
+      ctx.ellipse(width * 0.5 + px * 0.42, horizonY + 18, width * 0.75, height * 0.2, 0, Math.PI, Math.PI * 2);
+      ctx.stroke();
+      ctx.restore();
     }
 
     function draw() {
@@ -61,13 +125,13 @@
         }
 
         ctx.beginPath();
-        ctx.fillStyle = star.g ? "rgba(74, 222, 128, 0.72)" : "rgba(248, 250, 252, 0.72)";
+        ctx.fillStyle = star.g ? "rgba(74, 222, 128, 0.82)" : "rgba(248, 250, 252, 0.82)";
         ctx.arc(star.x + px * star.z, star.y + py * star.z, star.r, 0, Math.PI * 2);
         ctx.fill();
 
         if (!prefersReducedMotion && star.z > 1.1) {
           ctx.beginPath();
-          ctx.strokeStyle = star.g ? "rgba(74, 222, 128, 0.14)" : "rgba(226, 232, 240, 0.1)";
+          ctx.strokeStyle = star.g ? "rgba(74, 222, 128, 0.22)" : "rgba(226, 232, 240, 0.16)";
           ctx.lineWidth = 1;
           ctx.moveTo(star.x + px * star.z, star.y + py * star.z);
           ctx.lineTo(star.x + px * star.z - star.vx * 28, star.y + py * star.z - star.vy * 42);
@@ -75,13 +139,17 @@
         }
       }
 
+      drawFlightPath(px, py);
+      drawHorizon(px, py);
+
       ctx.beginPath();
-      ctx.strokeStyle = "rgba(74, 222, 128, 0.12)";
+      ctx.strokeStyle = "rgba(74, 222, 128, 0.24)";
       ctx.lineWidth = 1;
-      ctx.ellipse(width * 0.5 + px, height * 0.48 + py, width * 0.28, height * 0.08, -0.18, 0, Math.PI * 2);
+      ctx.ellipse(width * 0.5 + px, height * 0.48 + py, width * 0.32, height * 0.09, -0.18, 0, Math.PI * 2);
       ctx.stroke();
 
       if (!prefersReducedMotion) {
+        tick += 1;
         raf = requestAnimationFrame(draw);
       }
     }
@@ -91,9 +159,21 @@
       pointer.x = event.clientX;
       pointer.y = event.clientY;
       pointer.active = true;
+      const root = document.documentElement;
+      const xRatio = (event.clientX / Math.max(width, 1)) - 0.5;
+      const yRatio = (event.clientY / Math.max(height, 1)) - 0.5;
+      root.style.setProperty("--field-x", `${(xRatio * 18).toFixed(2)}px`);
+      root.style.setProperty("--field-y", `${(yRatio * 18).toFixed(2)}px`);
+      root.style.setProperty("--tilt-x", `${(xRatio * 4).toFixed(2)}deg`);
+      root.style.setProperty("--tilt-y", `${(yRatio * -3).toFixed(2)}deg`);
     }, { passive: true });
     window.addEventListener("pointerleave", () => {
       pointer.active = false;
+      const root = document.documentElement;
+      root.style.setProperty("--field-x", "0px");
+      root.style.setProperty("--field-y", "0px");
+      root.style.setProperty("--tilt-x", "0deg");
+      root.style.setProperty("--tilt-y", "0deg");
     }, { passive: true });
 
     resize();

@@ -5,6 +5,3 @@
 
 /client/*
   X-Robots-Tag: noindex, nofollow, noarchive
-
-/blog/*
-  X-Robots-Tag: noindex, nofollow, noarchive
