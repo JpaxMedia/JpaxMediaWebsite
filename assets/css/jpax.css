@@ -915,6 +915,12 @@ button {
   padding: 30px;
 }
 
+.tradeos-band {
+  background:
+    linear-gradient(90deg, rgba(56, 189, 248, 0.1), rgba(74, 222, 128, 0.08), rgba(12, 16, 28, 0.74)),
+    rgba(12, 16, 28, 0.78);
+}
+
 .jupiter-system {
   display: grid;
   gap: 10px;
@@ -1463,7 +1469,7 @@ button {
   }
 }
 
-@media (max-width: 860px) {
+@media (max-width: 1040px) {
   .nav-shell {
     min-height: 64px;
   }
