@@ -3,853 +3,173 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <!-- Meta Pixel Code -->
-    <script>
-    !function(f,b,e,v,n,t,s)
-    {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
-    n.callMethod.apply(n,arguments):n.queue.push(arguments)};
-    if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
-    n.queue=[];t=b.createElement(e);t.async=!0;
-    t.src=v;s=b.getElementsByTagName(e)[0];
-    s.parentNode.insertBefore(t,s)}(window, document,'script',
-    'https://connect.facebook.net/en_US/fbevents.js');
-    fbq('init', '2817539605254046');
-    fbq('track', 'PageView');
-    </script>
-    <!-- End Meta Pixel Code -->
-    <title>What's Your Creator OS Level? | JPax</title>
-    <meta name="description" content="Find out where your creator business sits on the JPax System Levels — Spark, Surge, or Summit. 2-minute quiz + personalized roadmap and pricing match.">
-    <meta name="keywords" content="creator OS, creator business, content creator, Spark Surge Summit, AI agents for creators, creator economy, JPax, Elara, Upstate SC">
+    <meta name="robots" content="noindex, nofollow, noarchive">
+    <title>JPax | Busy rebuilding</title>
+    <meta name="description" content="Busy rebuilding. Stay tuned">
     <meta property="og:type" content="website">
-    <meta property="og:title" content="What's Your Creator OS Level? | JPax">
-    <meta property="og:description" content="The 2-minute Creator OS Level quiz. Find your tier. Get the system that fits. By Julian Johnson, JPax.">
-    <meta property="og:url" content="https://jpaxmedia.com/quiz.html">
+    <meta property="og:title" content="JPax | Busy rebuilding">
+    <meta property="og:description" content="Busy rebuilding. Stay tuned">
     <meta property="og:image" content="https://jpaxmedia.com/jpaxmedialogoOFFICIALFINALwhite.png">
-    <link rel="icon" type="image/png" href="jpaxmedialogoOFFICIALFINALwhite.png">
+    <meta property="og:url" content="https://jpaxmedia.com">
+    <link rel="icon" type="image/png" href="/jpaxmedialogoOFFICIALFINALwhite.png">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@400;500;600;700&family=IBM+Plex+Sans:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&family=Syne:wght@700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@500;700&amp;family=IBM+Plex+Sans:wght@400;500;600&amp;display=swap" rel="stylesheet">
     <style>
         :root {
-            --bg:#06080F;--bg-card:rgba(12,16,28,0.85);--accent:#4ADE80;--accent-glow:rgba(74,222,128,0.15);
-            --green:#10B981;--green-dim:rgba(16,185,129,0.1);--green-glow:rgba(16,185,129,0.2);
-            --purple:#8B5CF6;--purple-dim:rgba(139,92,246,0.1);--purple-glow:rgba(139,92,246,0.2);
-            --blue:#3B82F6;--blue-dim:rgba(59,130,246,0.1);--blue-glow:rgba(59,130,246,0.2);
-            --amber:#F59E0B;--amber-dim:rgba(245,158,11,0.1);
-            --white:#F1F5F9;--gray-300:#CBD5E1;--gray-400:#94A3B8;--gray-500:#64748B;--gray-700:#334155;--gray-800:#1E293B;
-            --font-display:'Chakra Petch',sans-serif;--font-body:'IBM Plex Sans',sans-serif;--font-mono:'JetBrains Mono',monospace;
-        }
-        *,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
-        html{scroll-behavior:smooth;scroll-padding-top:90px}
-        body{font-family:var(--font-body);background:var(--bg);color:var(--gray-300);overflow-x:hidden;-webkit-font-smoothing:antialiased}
-
-        .grid-bg{position:fixed;top:0;left:0;width:100%;height:100%;pointer-events:none;z-index:0;
-            background-image:linear-gradient(rgba(74,222,128,0.03) 1px,transparent 1px),linear-gradient(90deg,rgba(74,222,128,0.03) 1px,transparent 1px);
-            background-size:60px 60px;animation:gridDrift 25s linear infinite}
-        .grid-bg::after{content:'';position:absolute;top:0;left:0;width:100%;height:100%;
-            background-image:linear-gradient(rgba(74,222,128,0.06) 1px,transparent 1px),linear-gradient(90deg,rgba(74,222,128,0.06) 1px,transparent 1px);background-size:300px 300px}
-        @keyframes gridDrift{0%{transform:translateY(0)}100%{transform:translateY(60px)}}
-
-        /* Nav */
-        .nav{position:fixed;top:0;left:0;width:100%;z-index:1000;padding:1rem 2rem;background:rgba(6,8,15,0.8);backdrop-filter:blur(24px);-webkit-backdrop-filter:blur(24px);border-bottom:1px solid rgba(255,255,255,0.04);transition:all 0.4s cubic-bezier(0.4,0,0.2,1)}
-        .nav.scrolled{padding:0.6rem 2rem;background:rgba(6,8,15,0.95);border-bottom-color:rgba(74,222,128,0.1);box-shadow:0 4px 30px rgba(0,0,0,0.3)}
-        .nav-inner{max-width:1200px;margin:0 auto;display:flex;align-items:center;justify-content:space-between}
-        .nav-logo{display:flex;align-items:center;text-decoration:none;transition:opacity 0.3s}
-        .nav-logo:hover{opacity:0.8}
-        .nav-logo img{height:26px;width:auto}
-        .nav-links{display:flex;align-items:center;gap:0.25rem}
-        .nav-links a{color:var(--gray-400);text-decoration:none;font-size:0.85rem;font-weight:500;padding:0.45rem 0.9rem;border-radius:8px;transition:all 0.25s ease;letter-spacing:0.01em;position:relative}
-        .nav-links a:hover{color:var(--white);background:rgba(255,255,255,0.04)}
-        .nav-links a.active{color:var(--accent)}
-        .nav-divider{width:1px;height:20px;background:rgba(255,255,255,0.08);margin:0 0.5rem}
-        .nav-cta{background:transparent!important;color:var(--accent)!important;padding:0.5rem 1.3rem!important;border-radius:8px;font-weight:600!important;font-size:0.82rem!important;transition:all 0.3s!important;letter-spacing:0.02em;margin-left:0.25rem;border:1px solid rgba(74,222,128,0.3)!important}
-        .nav-cta:hover{background:rgba(74,222,128,0.08)!important;transform:translateY(-1px);border-color:rgba(74,222,128,0.6)!important;box-shadow:0 2px 12px rgba(74,222,128,0.15)}
-        .nav-jupiter{color:var(--accent)!important;font-weight:600!important;font-family:var(--font-display)!important;letter-spacing:0.06em;text-transform:uppercase;font-size:0.75rem!important;background:rgba(74,222,128,0.06)!important;border:1px solid rgba(74,222,128,0.12);padding:0.4rem 0.85rem!important;border-radius:6px}
-        .nav-jupiter:hover{background:rgba(74,222,128,0.12)!important;border-color:rgba(74,222,128,0.25);box-shadow:0 0 16px rgba(74,222,128,0.1)}
-        .nav-jupiter .jupiter-dot{display:inline-block;width:5px;height:5px;background:var(--accent);border-radius:50%;margin-right:5px;vertical-align:middle;box-shadow:0 0 6px rgba(74,222,128,0.5);animation:jupiterPulse 2.5s ease-in-out infinite}
-        @keyframes jupiterPulse{0%,100%{opacity:0.7;box-shadow:0 0 4px rgba(74,222,128,0.3)}50%{opacity:1;box-shadow:0 0 8px rgba(74,222,128,0.6)}}
-        .nav-mobile-btn{display:none;background:none;border:none;cursor:pointer;padding:0.5rem;width:40px;height:40px;position:relative;z-index:1001;align-items:center;justify-content:center}
-        .nav-mobile-btn span{display:block;width:22px;height:2px;background:var(--gray-300);margin:0 auto;transition:all 0.3s cubic-bezier(0.4,0,0.2,1);border-radius:2px}
-        .nav-mobile-btn span:nth-child(1){transform:translateY(-4px)}
-        .nav-mobile-btn span:nth-child(2){opacity:1}
-        .nav-mobile-btn span:nth-child(3){transform:translateY(4px)}
-        .nav-mobile-btn.active span:nth-child(1){transform:translateY(2px) rotate(45deg);background:var(--accent)}
-        .nav-mobile-btn.active span:nth-child(2){opacity:0}
-        .nav-mobile-btn.active span:nth-child(3){transform:translateY(-2px) rotate(-45deg);background:var(--accent)}
-        .mobile-menu-overlay{position:fixed;top:0;left:0;width:100%;height:100vh;background:rgba(0,0,0,0.5);opacity:0;pointer-events:none;transition:opacity 0.4s ease;z-index:998}
-        .mobile-menu-overlay.active{opacity:1;pointer-events:all}
-        .mobile-menu{position:fixed;top:0;right:0;width:100%;max-width:340px;height:100vh;background:rgba(6,8,15,0.98);backdrop-filter:blur(30px);-webkit-backdrop-filter:blur(30px);display:flex;flex-direction:column;padding:5.5rem 2rem 2rem;transform:translateX(100%);transition:transform 0.4s cubic-bezier(0.4,0,0.2,1);z-index:999;border-left:1px solid rgba(74,222,128,0.06)}
-        .mobile-menu.active{transform:translateX(0)}
-        .mobile-menu-links{display:flex;flex-direction:column;gap:0.2rem;flex:1}
-        .mobile-menu-links a{color:var(--gray-300);text-decoration:none;font-family:var(--font-display);font-size:1.1rem;font-weight:600;padding:0.8rem 1rem;border-radius:10px;transition:all 0.25s ease;transform:translateX(20px);opacity:0;border-left:2px solid transparent}
-        .mobile-menu.active .mobile-menu-links a{transform:translateX(0);opacity:1}
-        .mobile-menu.active .mobile-menu-links a:nth-child(1){transition-delay:0.08s}
-        .mobile-menu.active .mobile-menu-links a:nth-child(2){transition-delay:0.13s}
-        .mobile-menu.active .mobile-menu-links a:nth-child(3){transition-delay:0.18s}
-        .mobile-menu.active .mobile-menu-links a:nth-child(4){transition-delay:0.23s}
-        .mobile-menu.active .mobile-menu-links a:nth-child(5){transition-delay:0.28s}
-        .mobile-menu.active .mobile-menu-links a:nth-child(6){transition-delay:0.33s}
-        .mobile-menu-links a:hover{color:var(--white);background:rgba(74,222,128,0.06)}
-        .mobile-menu-links a.mob-active{color:var(--accent);border-left-color:var(--accent);background:rgba(74,222,128,0.04)}
-        .mobile-menu-cta{margin-top:auto;padding-top:1.5rem;border-top:1px solid rgba(255,255,255,0.06)}
-        .mobile-menu-cta a{display:flex;align-items:center;justify-content:center;gap:0.5rem;background:var(--accent);color:#000;text-decoration:none;font-family:var(--font-display);font-weight:600;font-size:0.95rem;padding:0.85rem 1.5rem;border-radius:10px;transition:all 0.3s;letter-spacing:0.02em}
-        .mobile-menu-cta a:hover{background:#6EE7A8;transform:translateY(-1px);box-shadow:0 4px 20px rgba(74,222,128,0.35)}
-        .mobile-menu-brand{margin-top:1.25rem;text-align:center;font-family:var(--font-mono);font-size:0.6rem;color:var(--gray-500);letter-spacing:0.12em;text-transform:uppercase}
-        @media(max-width:768px){.nav{padding:0.75rem 1.25rem}.nav.scrolled{padding:0.6rem 1.25rem}.nav-links{display:none}.nav-mobile-btn{display:flex}}
-
-        section{position:relative;z-index:1}
-        .container{max-width:800px;margin:0 auto;padding:0 1.5rem}
-
-        /* Hero */
-        .hero{min-height:40vh;display:flex;align-items:center;justify-content:center;padding:8rem 0 3rem;text-align:center}
-        .hero-badge{display:inline-flex;align-items:center;gap:0.5rem;padding:0.5rem 1.25rem;border-radius:100px;background:rgba(74,222,128,0.08);border:1px solid rgba(74,222,128,0.25);font-family:var(--font-mono);font-size:0.75rem;color:var(--accent);letter-spacing:0.08em;text-transform:uppercase;margin-bottom:1.5rem}
-        .hero-badge .dot{width:6px;height:6px;border-radius:50%;background:var(--green);animation:pulse 2s infinite}
-        @keyframes pulse{0%,100%{opacity:1}50%{opacity:0.4}}
-        .hero h1{font-family:var(--font-display);font-weight:700;font-size:clamp(2rem,5vw,3.5rem);line-height:1.1;color:var(--white);margin-bottom:1rem}
-        .hero h1 .g{background:linear-gradient(135deg,var(--accent),#A78BFA);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
-        .hero-sub{font-size:1.05rem;color:var(--gray-400);max-width:550px;margin:0 auto;line-height:1.7}
-        @keyframes fadeInUp{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:translateY(0)}}
-
-        /* Progress */
-        .progress-wrap{padding:1.5rem 0;position:sticky;top:64px;z-index:100;background:rgba(6,8,15,0.9);backdrop-filter:blur(10px);border-bottom:1px solid rgba(74,222,128,0.06)}
-        .progress-meta{display:flex;justify-content:space-between;align-items:center;margin-bottom:0.6rem}
-        .progress-meta span{font-family:var(--font-mono);font-size:0.7rem;color:var(--gray-500);letter-spacing:0.06em;text-transform:uppercase}
-        .progress-meta .q-num{color:var(--accent)}
-        .progress-track{height:2px;background:rgba(255,255,255,0.06);border-radius:2px;overflow:hidden}
-        .progress-fill{height:100%;background:linear-gradient(90deg,var(--green),var(--purple));border-radius:2px;transition:width 0.5s cubic-bezier(0.4,0,0.2,1)}
-
-        /* Quiz card */
-        .quiz-section{padding:3rem 0 6rem;min-height:60vh}
-        .q-card{animation:fadeInUp 0.4s ease both}
-        .q-label{font-family:var(--font-mono);font-size:0.7rem;color:var(--accent);letter-spacing:0.12em;text-transform:uppercase;margin-bottom:0.75rem}
-        .q-text{font-family:var(--font-display);font-weight:600;font-size:clamp(1.3rem,3vw,1.9rem);color:var(--white);line-height:1.25;margin-bottom:2rem}
-        .q-icon{display:inline-flex;align-items:center;justify-content:center;width:48px;height:48px;border-radius:12px;background:rgba(74,222,128,0.08);border:1px solid rgba(74,222,128,0.15);font-size:1.2rem;color:var(--accent);margin-bottom:1.25rem}
-
-        .options{display:flex;flex-direction:column;gap:0.75rem}
-        .opt{display:flex;align-items:center;gap:1rem;padding:1rem 1.25rem;border-radius:10px;border:1px solid rgba(255,255,255,0.07);background:rgba(12,16,28,0.6);cursor:pointer;transition:all 0.2s;text-align:left;width:100%;color:var(--gray-300);font-family:var(--font-body);font-size:0.95rem;line-height:1.4}
-        .opt:hover{border-color:rgba(74,222,128,0.3);background:rgba(74,222,128,0.05);color:var(--white);transform:translateX(4px)}
-        .opt.selected{border-color:var(--accent);background:rgba(74,222,128,0.1);color:var(--white)}
-        .opt-letter{min-width:28px;height:28px;border-radius:6px;background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.1);display:flex;align-items:center;justify-content:center;font-family:var(--font-mono);font-size:0.7rem;color:var(--gray-500);transition:all 0.2s}
-        .opt.selected .opt-letter{background:var(--accent);border-color:var(--accent);color:#000;font-weight:700}
-        .opt:hover .opt-letter{border-color:rgba(74,222,128,0.4);color:var(--accent)}
-
-        .nav-btns{display:flex;justify-content:space-between;align-items:center;margin-top:2rem}
-        .btn-back{background:none;border:1px solid rgba(255,255,255,0.1);color:var(--gray-400);padding:0.65rem 1.25rem;border-radius:8px;cursor:pointer;font-family:var(--font-body);font-size:0.9rem;transition:all 0.2s;display:flex;align-items:center;gap:0.5rem}
-        .btn-back:hover{border-color:rgba(255,255,255,0.25);color:var(--white)}
-        .btn-back:disabled{opacity:0.3;cursor:default;pointer-events:none}
-        .btn-next{background:var(--accent);color:#000;padding:0.75rem 2rem;border-radius:8px;cursor:pointer;font-family:var(--font-display);font-weight:600;font-size:0.9rem;border:none;transition:all 0.2s;display:flex;align-items:center;gap:0.5rem;letter-spacing:0.03em}
-        .btn-next:hover{background:#6EE7A8;transform:translateY(-1px);box-shadow:0 4px 20px rgba(74,222,128,0.35)}
-        .btn-next:disabled{opacity:0.35;cursor:default;pointer-events:none;transform:none;box-shadow:none}
-
-        /* Results */
-        .results-section{padding:3rem 0 6rem;display:none}
-        .results-section.show{display:block;animation:fadeInUp 0.5s ease both}
-        .result-header{text-align:center;margin-bottom:3rem}
-        .result-tag{display:inline-flex;align-items:center;gap:0.5rem;padding:0.4rem 1rem;border-radius:100px;font-family:var(--font-mono);font-size:0.7rem;letter-spacing:0.1em;text-transform:uppercase;margin-bottom:1.25rem}
-        .result-tag.green{background:rgba(16,185,129,0.1);border:1px solid rgba(16,185,129,0.3);color:var(--green)}
-        .result-tag.purple{background:rgba(139,92,246,0.1);border:1px solid rgba(139,92,246,0.3);color:var(--purple)}
-        .result-tag.amber{background:rgba(245,158,11,0.1);border:1px solid rgba(245,158,11,0.3);color:var(--amber)}
-        .result-title{font-family:var(--font-display);font-weight:700;font-size:clamp(2rem,5vw,3rem);color:var(--white);margin-bottom:1rem;line-height:1.1}
-        .result-desc{font-size:1.05rem;color:var(--gray-400);max-width:560px;margin:0 auto;line-height:1.7}
-
-        .result-card{background:rgba(12,16,28,0.8);border:1px solid rgba(255,255,255,0.07);border-radius:16px;padding:2rem;margin-bottom:1.25rem;transition:border-color 0.3s}
-        .result-card.primary{border-color:rgba(74,222,128,0.3)}
-        .result-card.primary:hover{border-color:rgba(74,222,128,0.5)}
-        .result-card.secondary{border-color:rgba(139,92,246,0.2)}
-        .result-card.secondary:hover{border-color:rgba(139,92,246,0.4)}
-        .rc-top{display:flex;align-items:flex-start;justify-content:space-between;gap:1rem;margin-bottom:1rem;flex-wrap:wrap}
-        .rc-badge{font-family:var(--font-mono);font-size:0.65rem;color:#000;padding:0.3rem 0.75rem;border-radius:4px;font-weight:700;letter-spacing:0.06em;text-transform:uppercase;white-space:nowrap}
-        .rc-badge.green{background:var(--green)}
-        .rc-badge.purple{background:var(--purple)}
-        .rc-badge.blue{background:var(--blue)}
-        .rc-name{font-family:var(--font-display);font-weight:700;font-size:1.3rem;color:var(--white);margin-bottom:0.4rem}
-        .rc-tagline{font-size:0.9rem;color:var(--gray-400);margin-bottom:1rem;line-height:1.5}
-        .rc-features{display:flex;flex-wrap:wrap;gap:0.5rem;margin-bottom:1.25rem}
-        .rc-feat{font-family:var(--font-mono);font-size:0.65rem;padding:0.3rem 0.6rem;border-radius:4px;background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.08);color:var(--gray-400);letter-spacing:0.04em}
-        .rc-price{font-family:var(--font-display);font-weight:700;color:var(--accent);font-size:1.1rem}
-        .rc-price-label{font-size:0.8rem;color:var(--gray-500);margin-left:0.3rem;font-weight:400;font-family:var(--font-body)}
-        .rc-cta{display:inline-flex;align-items:center;gap:0.5rem;padding:0.7rem 1.5rem;border-radius:8px;text-decoration:none;font-family:var(--font-display);font-weight:600;font-size:0.85rem;letter-spacing:0.03em;transition:all 0.2s}
-        .rc-cta.primary{background:var(--accent);color:#000}
-        .rc-cta.primary:hover{background:#6EE7A8;transform:translateY(-1px);box-shadow:0 4px 20px rgba(74,222,128,0.35)}
-        .rc-cta.secondary{border:1px solid rgba(255,255,255,0.15);color:var(--gray-300)}
-        .rc-cta.secondary:hover{border-color:rgba(255,255,255,0.35);color:var(--white)}
-
-        .restart-btn{display:block;margin:2rem auto 0;background:none;border:1px solid rgba(255,255,255,0.1);color:var(--gray-500);padding:0.6rem 1.5rem;border-radius:8px;cursor:pointer;font-family:var(--font-mono);font-size:0.75rem;letter-spacing:0.08em;text-transform:uppercase;transition:all 0.2s}
-        .restart-btn:hover{border-color:rgba(255,255,255,0.25);color:var(--gray-300)}
-
-        /* Amber badge variant */
-        .rc-badge.amber{background:var(--amber);color:#000}
-
-        /* Score block — top of result page */
-        .score-block{
-            background:rgba(12,16,28,0.85);
-            border:1px solid rgba(74,222,128,0.18);
-            border-radius:16px;padding:2rem 2rem 2.25rem;margin-bottom:2rem;
-            position:relative;overflow:hidden;
-        }
-        .score-block::before{
-            content:'';position:absolute;top:0;left:0;right:0;height:2px;
-            background:linear-gradient(90deg,transparent,var(--accent),var(--purple),transparent);
-        }
-        .score-label{font-family:var(--font-mono);font-size:0.7rem;letter-spacing:0.18em;color:var(--gray-500);text-transform:uppercase;margin-bottom:0.85rem}
-        .score-value{display:flex;align-items:baseline;gap:0.25rem;margin-bottom:1rem;line-height:1}
-        .score-num{
-            font-family:var(--font-display);font-weight:700;
-            font-size:clamp(3rem, 7vw, 4.5rem);letter-spacing:-0.02em;
-            background:linear-gradient(135deg,var(--accent),var(--purple));
-            -webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;
-            text-shadow:0 0 32px rgba(74,222,128,0.18);
-        }
-        .score-max{font-family:var(--font-display);font-weight:600;font-size:1.4rem;color:var(--gray-500)}
-        .score-band-tag{
-            display:inline-block;font-family:var(--font-display);font-weight:700;
-            font-size:0.85rem;letter-spacing:0.05em;color:var(--white);
-            background:rgba(74,222,128,0.1);border:1px solid rgba(74,222,128,0.25);
-            padding:0.45rem 0.95rem;border-radius:6px;margin-bottom:0.85rem;
-        }
-        .score-band-desc{color:var(--gray-300);font-size:0.95rem;line-height:1.6;max-width:580px}
-
-        /* Soft mention — Elara at the bottom of every result */
-        .soft-mention{
-            background:rgba(255,255,255,0.02);border:1px solid rgba(255,255,255,0.06);
-            border-radius:12px;padding:1.25rem 1.4rem;margin:1.5rem 0 0;
-            display:flex;gap:1rem;align-items:flex-start;
-        }
-        .soft-mention .sm-tag{
-            font-family:var(--font-mono);font-size:0.65rem;letter-spacing:0.1em;
-            text-transform:uppercase;color:var(--gray-500);
-            padding:0.3rem 0.6rem;background:rgba(255,255,255,0.04);
-            border:1px solid rgba(255,255,255,0.06);border-radius:4px;
-            white-space:nowrap;flex-shrink:0;
-        }
-        .soft-mention p{color:var(--gray-400);font-size:0.88rem;line-height:1.6;margin:0}
-        .soft-mention strong{color:var(--white);font-weight:600}
-        .soft-mention a{color:var(--accent);text-decoration:none;border-bottom:1px solid rgba(74,222,128,0.3)}
-        .soft-mention a:hover{border-bottom-color:var(--accent)}
-
-        /* Email confirmation note — bottom of results */
-        .email-confirmation{
-            margin:2rem 0 0;padding:0.95rem 1.15rem;
-            background:rgba(74,222,128,0.04);border:1px solid rgba(74,222,128,0.15);
-            border-radius:10px;display:flex;align-items:center;gap:0.65rem;
-            color:var(--gray-300);font-size:0.88rem;
-        }
-        .email-confirmation i{color:var(--accent);font-size:1rem}
-        .email-confirmation strong{color:var(--white);font-weight:600}
-
-        /* Email gate card — uses .q-card, light additions */
-        .email-gate .q-text{font-size:1.65rem}
-
-        /* Footer */
-        .site-footer{position:relative;z-index:1;padding:4rem 0 0;background:linear-gradient(180deg,var(--bg) 0%,#040610 100%);border-top:1px solid rgba(74,222,128,0.08)}
-        .site-footer::before{content:'';position:absolute;top:0;left:50%;transform:translateX(-50%);width:40%;height:1px;background:linear-gradient(90deg,transparent,var(--accent),transparent);opacity:0.4}
-        .footer-grid{display:grid;grid-template-columns:1.5fr 1fr 1fr 1fr;gap:3rem;padding-bottom:3rem;max-width:1200px;margin:0 auto;padding-left:1.5rem;padding-right:1.5rem}
-        .footer-brand p{color:var(--gray-400);font-size:0.9rem;line-height:1.6;margin-bottom:1.5rem;max-width:280px}
-        .footer-brand-logo{font-family:'Syne',sans-serif;font-size:13px;font-weight:700;letter-spacing:0.08em;color:#888888;text-decoration:none;text-transform:uppercase;display:inline-block;margin-bottom:1rem;white-space:nowrap}.footer-brand-logo span{color:#ffffff}.footer-brand-logo:hover{opacity:0.85}
-        .footer-social-links{display:flex;gap:0.75rem}
-        .footer-social-links a{display:flex;align-items:center;justify-content:center;width:38px;height:38px;border-radius:8px;background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.06);color:var(--gray-400);font-size:1rem;text-decoration:none;transition:all 0.3s ease}
-        .footer-social-links a:hover{background:rgba(74,222,128,0.1);border-color:rgba(74,222,128,0.3);color:var(--accent);transform:translateY(-2px)}
-        .footer-col h4{font-family:var(--font-display);font-weight:600;font-size:0.85rem;text-transform:uppercase;letter-spacing:0.08em;color:var(--white);margin-bottom:1.25rem}
-        .footer-col ul{list-style:none;padding:0;margin:0}
-        .footer-col ul li{margin-bottom:0.65rem}
-        .footer-col ul li a{color:var(--gray-400);text-decoration:none;font-size:0.875rem;transition:color 0.3s,padding-left 0.3s;display:inline-block}
-        .footer-col ul li a:hover{color:var(--accent);padding-left:4px}
-        .footer-contact-item{display:flex;align-items:center;gap:0.6rem;margin-bottom:0.75rem}
-        .footer-contact-item i{color:var(--accent);font-size:0.85rem;width:16px;text-align:center;opacity:0.7}
-        .footer-contact-item a,.footer-contact-item span{color:var(--gray-400);text-decoration:none;font-size:0.875rem;transition:color 0.3s}
-        .footer-contact-item a:hover{color:var(--accent)}
-        .footer-bottom{border-top:1px solid rgba(255,255,255,0.06);padding:1.5rem 0;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:1rem;max-width:1200px;margin:0 auto;padding-left:1.5rem;padding-right:1.5rem}
-        .footer-copy{color:var(--gray-500);font-size:0.8rem}
-        .footer-tagline{font-family:var(--font-display);font-size:0.8rem;font-weight:600;letter-spacing:0.05em}
-        .footer-tagline .g{color:var(--green)}
-        .footer-tagline .p{color:var(--purple)}
-        .footer-tagline .b{color:#60A5FA}
-        @media(max-width:960px){.footer-grid{grid-template-columns:1fr 1fr;gap:2.5rem}}
-        @media(max-width:640px){.footer-grid{grid-template-columns:1fr;gap:2rem}.footer-bottom{flex-direction:column;text-align:center}}
-    </style>
-</head>
-<body>
-    <!-- Meta Pixel Code (noscript) -->
-    <noscript><img height="1" width="1" style="display:none"
-    src="https://www.facebook.com/tr?id=2817539605254046&ev=PageView&noscript=1"
-    /></noscript>
-    <!-- End Meta Pixel Code (noscript) -->
-    <div class="grid-bg"></div>
-
-    <nav class="nav" id="nav"><div class="nav-inner">
-        <a href="index.html" class="nav-logo"><img src="jpaxmedialogoOFFICIALFINAL(white).svg" alt="JPax"></a>
-        <div class="nav-links">
-            <a href="index.html#what-i-build">What I Build</a><a href="index.html#process">Process</a>
-            <a href="portfolio.html">Portfolio</a><a href="blog/">Blog</a><a href="jupiter.html" class="nav-jupiter"><span class="jupiter-dot"></span>Jupiter</a><span class="nav-divider"></span><a href="pricing.html" class="nav-cta">View Pricing</a><a href="/client/portal.html" style="color:#6b7280;margin-left:8px;font-size:13px;text-decoration:none;transition:color 0.2s;" onmouseover="this.style.color='#00e87b'" onmouseout="this.style.color='#6b7280'">Client Portal</a>
-        </div>
-        <button class="nav-mobile-btn" id="mobileBtn" aria-label="Menu"><span></span><span></span><span></span></button>
-    </div></nav>
-    <div class="mobile-menu-overlay" id="mobileOverlay"></div>
-    <div class="mobile-menu" id="mobileMenu">
-        <div class="mobile-menu-links">
-            <a href="index.html">Home</a><a href="index.html#what-i-build">What I Build</a><a href="portfolio.html">Portfolio</a><a href="blog/">Blog</a>
-            <a href="jupiter.html" style="color:var(--accent);font-family:var(--font-display);font-weight:600;letter-spacing:0.06em;text-transform:uppercase;font-size:0.95rem;">Jupiter</a><a href="pricing.html">Pricing</a><a href="quiz.html" class="mob-active">Take the Quiz</a><a href="/client/portal.html" style="color:#6b7280;font-size:14px;transition:color 0.2s;" onmouseover="this.style.color='#00e87b'" onmouseout="this.style.color='#6b7280'">Client Portal</a>
-        </div>
-        <div class="mobile-menu-cta"><a href="pricing.html">View Pricing <i class="fas fa-arrow-right"></i></a></div>
-        <div class="mobile-menu-brand">Build. Rise. Scale.</div>
-    </div>
-
-    <!-- Hero -->
-    <section class="hero">
-        <div class="container" style="text-align:center">
-            <div class="hero-badge"><span class="dot"></span>2-Minute Creator OS Level Quiz</div>
-            <h1>What's Your <span class="g">Creator OS</span> Level?</h1>
-            <p class="hero-sub" style="margin-top:0.75rem">Answer 7 questions. Find out where your creator business sits — Spark, Surge, or Summit — and get the system that fits.</p>
-        </div>
-    </section>
-
-    <!-- Progress Bar -->
-    <div class="progress-wrap" id="progressWrap">
-        <div class="container">
-            <div class="progress-meta">
-                <span>Question <span class="q-num" id="qNum">1</span> of 7</span>
-                <span id="qPct">0% complete</span>
-            </div>
-            <div class="progress-track"><div class="progress-fill" id="progressFill" style="width:0%"></div></div>
-        </div>
-    </div>
-
-    <!-- Quiz -->
-    <section class="quiz-section" id="quizSection">
-        <div class="container" id="quizContainer"></div>
-    </section>
-
-    <!-- Results -->
-    <section class="results-section" id="resultsSection">
-        <div class="container" id="resultsContainer"></div>
-    </section>
-
-    <!-- Footer -->
-    <footer class="site-footer">
-        <div class="footer-grid">
-            <div class="footer-brand">
-                <a href="index.html" class="footer-brand-logo"><span>JPax</span></a>
-                <p>The AI agent team for creator-led businesses. Built by a creator who got tired of doing it all alone.</p>
-                <div class="footer-social-links">
-                    <a href="https://www.youtube.com/@JPaxFilms/videos" target="_blank" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
-                    <a href="https://www.tiktok.com/@jpaxfilms?lang=en" target="_blank" aria-label="TikTok"><i class="fab fa-tiktok"></i></a>
-                    <a href="https://www.facebook.com/JPaxFilms/" target="_blank" aria-label="Facebook"><i class="fab fa-facebook"></i></a>
-                    <a href="https://www.instagram.com/jpaxfilmz/" target="_blank" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
-                </div>
-            </div>
-            <div class="footer-col">
-                <h4>Services</h4>
-                <ul>
-                    <li><a href="pricing.html#build">BUILD Projects</a></li>
-                    <li><a href="pricing.html#rise">RISE Partnerships</a></li>
-                    <li><a href="pricing.html">Pricing</a></li>
-                    <li><a href="jupiter.html">Jupiter Platform</a></li>
-                    <li><a href="portfolio.html">Portfolio</a></li>
-                    <li><a href="blog/">Blog</a></li>
-                </ul>
-            </div>
-            <div class="footer-col">
-                <h4>Products</h4>
-                <ul>
-                    <li><a href="elara.html">Elara</a></li>
-                    <li><a href="jupiter.html">Jupiter</a></li>
-                    <li><a href="https://tradeoshq.app" target="_blank" rel="noopener" style="color:var(--gray-500)">TradeOS <span style="font-size:0.7rem;opacity:0.7;font-style:italic">(legacy)</span> <i class="fas fa-arrow-up-right-from-square" style="font-size:0.65rem;margin-left:0.15rem;opacity:0.4"></i></a></li>
-                </ul>
-            </div>
-            <div class="footer-col">
-                <h4>Connect</h4>
-                <div class="footer-contact-item">
-                    <i class="fas fa-envelope"></i>
-                    <a href="mailto:julian@jpaxmedia.com">julian@jpaxmedia.com</a>
-                </div>
-                <div class="footer-contact-item">
-                    <i class="fas fa-arrow-right"></i>
-                    <a href="index.html#contact">Start a Project</a>
-                </div>
-                <div class="footer-contact-item">
-                    <i class="fas fa-user-circle"></i>
-                    <a href="/client/portal.html">Client Portal</a>
-                </div>
-            </div>
-        </div>
-        <div class="footer-bottom">
-            <span class="footer-copy">&copy; 2026 JPax Media LLC. All rights reserved.</span>
-            <span class="footer-tagline"><span class="g">BUILD.</span> <span class="p">RISE.</span> <span class="b">SCALE.</span></span>
-        </div>
-    </footer>
-
-    <script>
-    const questions = [
-        {
-            icon: 'fas fa-dollar-sign',
-            label: 'Question 01 — Monthly Content Income',
-            text: "What's your current monthly income from content?",
-            sub: 'Sponsorships, ad revenue, affiliate, products, services — anything you earn because of the content you make.',
-            options: [
-                { text: "I'm not earning from content yet", tags: ['pre-spark'] },
-                { text: '$0–$1,500/mo', tags: ['pre-spark'] },
-                { text: '$1,500–$5,000/mo', tags: ['spark'] },
-                { text: '$5,000–$15,000/mo', tags: ['surge'] },
-                { text: '$15,000+/mo', tags: ['summit'] }
-            ]
-        },
-        {
-            icon: 'fas fa-calendar-check',
-            label: 'Question 02 — Posting Cadence',
-            text: 'How often are you publishing content?',
-            options: [
-                { text: 'Inconsistent — I post when I can', tags: ['spark'] },
-                { text: '1–3 times per week on one main platform', tags: ['spark'] },
-                { text: 'Daily on one platform, OR 3–5x/week across two platforms', tags: ['surge'] },
-                { text: 'Daily across multiple platforms', tags: ['summit'] }
-            ]
-        },
-        {
-            icon: 'fas fa-layer-group',
-            label: 'Question 03 — Platform Breadth',
-            text: 'How many platforms are you actively publishing to?',
-            options: [
-                { text: 'One main platform (TikTok, Instagram, YouTube, or podcast feed)', tags: ['spark'] },
-                { text: 'Two platforms with consistent posting', tags: ['surge'] },
-                { text: 'Three or more platforms, all active', tags: ['summit'] }
-            ]
-        },
-        {
-            icon: 'fas fa-comments',
-            label: 'Question 04 — Community Load',
-            text: 'How are you handling DMs, comments, and inbound from your audience?',
-            options: [
-                { text: 'Manageable — I keep up most of the time', tags: ['spark'] },
-                { text: "Overwhelming — I'm always behind", tags: ['surge'] },
-                { text: 'Drowning — DMs, emails, comments are stacking up unanswered', tags: ['summit'] }
-            ]
-        },
-        {
-            icon: 'fas fa-handshake',
-            label: 'Question 05 — Brand Deal Pipeline',
-            text: "What's happening with brand deals, sponsorships, or paid partnerships?",
-            options: [
-                { text: 'None yet, or occasional one-offs', tags: ['spark'] },
-                { text: "Inbound interest comes in but I don't have a system for managing it", tags: ['surge'] },
-                { text: "I'm running multiple deals at any given time", tags: ['summit'] }
-            ]
-        },
-        {
-            icon: 'fas fa-clock',
-            label: 'Question 06 — Time on Business Side',
-            text: 'How many hours per week do you spend on the business side of being a creator?',
-            sub: 'Scheduling, replying, deals, edits, admin — not the creative work itself.',
-            options: [
-                { text: '0–10 hours', tags: ['spark'] },
-                { text: '10–20 hours', tags: ['surge'] },
-                { text: "20+ hours and it's eating into my creative time", tags: ['summit'] }
-            ]
-        },
-        {
-            icon: 'fas fa-bullseye',
-            label: 'Question 07 — Biggest Bottleneck',
-            text: "What's the single biggest thing slowing you down right now?",
-            options: [
-                { text: 'Just getting consistent with what I create', tags: ['spark'] },
-                { text: 'Scaling output and managing community at the same time', tags: ['surge'] },
-                { text: 'Operating like a team without actually having one', tags: ['summit'] }
-            ]
-        }
-    ];
-
-    const results = {
-        preSpark: {
-            tag: 'amber', tagText: 'Pre-Spark — Build the Audience First',
-            title: 'Build the audience first. Come back when you\'re earning.',
-            desc: "You're not ready for Elara yet — and that's the right answer for where you are. An AI agent team is built to remove the bottleneck once you're earning real money from content. If you're not monetizing yet, the bottleneck isn't operations. It's audience.",
-            longDesc: "Focus on getting to your first $1,500/mo in content income. Stay consistent. Find your voice. Build the audience that lets monetization happen naturally. When you cross that line, come back. Spark tier ($500/mo) will be ready for you.",
-            cards: [
-                {
-                    type: 'primary', badge: 'amber', badgeText: 'Free Resource',
-                    name: 'Follow the build journey',
-                    tagline: "Build logs that document Julian's own creator journey — same one you're on. Read what's working and what's not, in real time.",
-                    features: ['Weekly build logs','No paywall','Real creator numbers','Sprint-by-sprint updates'],
-                    price: 'Free', priceLabel: 'no signup needed',
-                    cta: 'Read the Blog', ctaHref: 'blog/', ctaType: 'primary'
-                },
-                {
-                    type: 'secondary', badge: 'green', badgeText: 'Follow Along',
-                    name: "Watch Julian build on his own accounts",
-                    tagline: "Elara is being deployed on @heroes_on_screen and @thebatsreacts first — Julian's own creator brands. The case study is happening live.",
-                    features: ['@heroes_on_screen','@thebatsreacts','Real-time deployment','Same world you\'re in'],
-                    price: 'Live', priceLabel: 'in production',
-                    cta: 'See the Founder', ctaHref: 'index.html#about', ctaType: 'secondary'
-                }
-            ]
-        },
-        spark: {
-            tag: 'green', tagText: 'Spark — Early-Monetizing Creator',
-            title: "You're a Spark creator.",
-            desc: "You're earning $1,500–$5,000/mo from content. The audience is real. The income is real. But the business side is starting to eat into your creative time, and your posting consistency is the wall you keep hitting.",
-            longDesc: "Spark is the foundation tier. You don't need a full agent team yet — you need the right system running in the background so you can stay creative while the basics get handled.",
-            cards: [
-                {
-                    type: 'primary', badge: 'green', badgeText: 'Recommended — RISE',
-                    name: 'Spark RISE — $500/mo',
-                    tagline: "Monthly operating partnership. 1–2 agents active (typically Ideation + Posting). 1 platform. Weekly content batch review. Monthly strategy check-in.",
-                    features: ['1–2 agents active','1 platform','Weekly content batch review','Monthly strategy','3-month minimum'],
-                    price: '$500', priceLabel: '/month',
-                    cta: 'Start a Project', ctaHref: 'index.html#contact?interest=spark', ctaType: 'primary'
-                },
-                {
-                    type: 'secondary', badge: 'purple', badgeText: 'BUILD Path',
-                    name: 'Creator Brand + Creator Site',
-                    tagline: "One-time deployments. Visual identity built for content (from $2,500) and a brand hub with monetization layer (from $5,000). You own everything.",
-                    features: ['Creator Brand from $2,500','Creator Site from $5,000','7–21 day delivery','Full ownership'],
-                    price: 'From $2,500', priceLabel: 'one-time',
-                    cta: 'See BUILD Pricing', ctaHref: 'pricing.html#build', ctaType: 'secondary'
-                }
-            ]
-        },
-        surge: {
-            tag: 'green', tagText: 'Surge — Established Creator',
-            title: "You're a Surge creator.",
-            desc: "You're earning $5,000–$15,000/mo from content. You've outgrown \"just stay consistent\" — now you're managing two or three platforms, an inbound DM pipeline, and brand deals that come in faster than you can sort them.",
-            longDesc: "Surge is the operational scale tier. You need real infrastructure — multiple agents running in the background, cross-platform consistency, and a brand-deal pipeline that doesn't depend on you remembering to follow up.",
-            cards: [
-                {
-                    type: 'primary', badge: 'green', badgeText: 'Recommended — RISE',
-                    name: 'Surge RISE — $2,000/mo',
-                    tagline: "Monthly operating partnership. 3–5 agents active. 2–3 platforms. Community workflow drafting. Brand-deal pipeline support. Twice-monthly strategy.",
-                    features: ['3–5 agents active','2–3 platforms','Community workflow drafting','Brand-deal pipeline','Twice-monthly strategy'],
-                    price: '$2,000', priceLabel: '/month',
-                    cta: 'Book a Call', ctaHref: 'index.html#contact?interest=surge', ctaType: 'primary'
-                },
-                {
-                    type: 'secondary', badge: 'purple', badgeText: 'BUILD Path',
-                    name: 'Elara Deploy + Custom Creator App',
-                    tagline: "Full Elara operating system configured for your niche (from $8,000), plus an optional custom app for your course, community, or paid product (from $5,000).",
-                    features: ['Elara Deploy from $8,000','Custom Creator App from $5,000','14–30 day delivery','Full ownership'],
-                    price: 'From $8,000', priceLabel: 'one-time',
-                    cta: 'See BUILD Pricing', ctaHref: 'pricing.html#build', ctaType: 'secondary'
-                }
-            ]
-        },
-        summit: {
-            tag: 'purple', tagText: 'Summit — Scaling Creator',
-            title: "You're a Summit creator.",
-            desc: "You're earning $15,000+/mo from content. At this level, you're effectively running a small business solo — and you're probably already burning out from how much non-creative work it takes to keep the engine running.",
-            longDesc: "Summit is the autonomous tier. You don't need agents that help. You need a full agent team that operates the business. JPax runs the system. You stay on stage.",
-            cards: [
-                {
-                    type: 'primary', badge: 'purple', badgeText: 'Recommended — RISE',
-                    name: 'Summit RISE — $3,500/mo',
-                    tagline: "Full agent stack operated by JPax. Cross-platform (all major platforms). End-to-end brand-deal coordination. Bi-weekly strategy. The team you couldn't afford.",
-                    features: ['Full agent stack operated by JPax','All major platforms','End-to-end brand-deal coordination','Bi-weekly strategy'],
-                    price: '$3,500', priceLabel: '/month',
-                    cta: 'Book a Call', ctaHref: 'index.html#contact?interest=summit', ctaType: 'primary'
-                },
-                {
-                    type: 'secondary', badge: 'purple', badgeText: 'BUILD Path',
-                    name: 'Full Stack System — from $15,000',
-                    tagline: "Brand + Site + Custom App + Elara as one integrated deployment. The complete operating system for a creator-led business at scale.",
-                    features: ['Brand + Site + App + Elara','21–45 day delivery','One integrated deployment','Full ownership'],
-                    price: 'From $15,000', priceLabel: 'one-time',
-                    cta: 'See BUILD Pricing', ctaHref: 'pricing.html#build', ctaType: 'secondary'
-                }
-            ]
-        }
-    };
-
-    // State
-    let current = 0;
-    let answers = new Array(questions.length).fill(null);
-
-    const quizContainer = document.getElementById('quizContainer');
-    const resultsSection = document.getElementById('resultsSection');
-    const resultsContainer = document.getElementById('resultsContainer');
-    const quizSection = document.getElementById('quizSection');
-    const progressWrap = document.getElementById('progressWrap');
-
-    function updateProgress(q) {
-        const pct = Math.round((q / questions.length) * 100);
-        document.getElementById('progressFill').style.width = pct + '%';
-        document.getElementById('qNum').textContent = Math.min(q + 1, questions.length);
-        document.getElementById('qPct').textContent = pct + '% complete';
-    }
-
-    function renderQuestion(idx) {
-        const q = questions[idx];
-        const letters = ['A','B','C','D','E'];
-        updateProgress(idx);
-
-        quizContainer.innerHTML = `
-            <div class="q-card">
-                <div class="q-icon"><i class="${q.icon}"></i></div>
-                <div class="q-label">${q.label}</div>
-                <div class="q-text">${q.text}</div>
-                ${q.sub ? `<p style="color:var(--gray-400);font-size:0.95rem;line-height:1.6;margin:-1.25rem 0 1.75rem;max-width:580px">${q.sub}</p>` : ''}
-                <div class="options" id="options">
-                    ${q.options.map((opt,i) => `
-                        <button class="opt${answers[idx] === i ? ' selected' : ''}" onclick="selectOpt(${i})" data-idx="${i}">
-                            <span class="opt-letter">${letters[i]}</span>
-                            <span>${opt.text}</span>
-                        </button>
-                    `).join('')}
-                </div>
-                <div class="nav-btns">
-                    <button class="btn-back" onclick="goBack()" ${idx === 0 ? 'disabled' : ''}><i class="fas fa-arrow-left"></i> Back</button>
-                    <button class="btn-next" id="btnNext" onclick="goNext()" ${answers[idx] === null ? 'disabled' : ''}>${idx < questions.length - 1 ? 'Next <i class="fas fa-arrow-right"></i>' : 'See My Results <i class="fas fa-arrow-right"></i>'}</button>
-                </div>
-            </div>
-        `;
-    }
-
-    function selectOpt(i) {
-        answers[current] = i;
-        document.querySelectorAll('.opt').forEach((o,idx) => o.classList.toggle('selected', idx === i));
-        document.getElementById('btnNext').disabled = false;
-    }
-
-    function goNext() {
-        if (answers[current] === null) return;
-        if (current < questions.length - 1) {
-            current++;
-            renderQuestion(current);
-        } else {
-            renderEmailGate();
-        }
-    }
-
-    // ===== EMAIL GATE =====
-    function renderEmailGate() {
-        progressWrap.style.display = 'none';
-        const result = determineResult();
-        const html = `
-            <div class="q-card email-gate" id="emailGateCard">
-                <div class="q-icon"><i class="fas fa-envelope-open-text"></i></div>
-                <div class="q-label">Final Step — Your Level</div>
-                <div class="q-text">Your Creator OS Level is Ready</div>
-                <p style="color:var(--gray-400);font-size:1rem;line-height:1.6;margin:0.5rem 0 1.75rem;max-width:540px">
-                    Drop your email and I'll send your Level result + recommended system to your inbox.
-                </p>
-                <form id="emailGateForm" novalidate style="display:flex;flex-direction:column;gap:0.85rem">
-                    <input type="email" id="gateEmail" name="email" required placeholder="you@company.com" autocomplete="email"
-                           style="width:100%;padding:1rem 1.15rem;background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.1);border-radius:10px;color:var(--white);font-family:var(--font-body);font-size:1rem;outline:none;transition:border-color 0.2s, box-shadow 0.2s"
-                           onfocus="this.style.borderColor='var(--accent)';this.style.boxShadow='0 0 0 3px rgba(74,222,128,0.12)'"
-                           onblur="this.style.borderColor='rgba(255,255,255,0.1)';this.style.boxShadow='none'" />
-                    <div id="gateError" style="display:none;color:#f87171;font-size:0.85rem;font-family:var(--font-mono)">// please enter a valid email</div>
-                    <button type="submit" id="gateSubmit"
-                            style="background:var(--accent);color:var(--bg);border:none;padding:1rem 1.5rem;border-radius:10px;font-family:var(--font-display);font-weight:700;font-size:1rem;letter-spacing:0.04em;cursor:pointer;display:inline-flex;align-items:center;justify-content:center;gap:0.6rem;transition:transform 0.2s, box-shadow 0.2s"
-                            onmouseover="this.style.transform='translateY(-1px)';this.style.boxShadow='0 8px 28px rgba(74,222,128,0.25)'"
-                            onmouseout="this.style.transform='none';this.style.boxShadow='none'">
-                        Send My Scorecard <i class="fas fa-paper-plane"></i>
-                    </button>
-                    <div style="text-align:center;color:var(--gray-500);font-size:0.78rem;margin-top:0.25rem">
-                        No spam. One scorecard, that's it.
-                    </div>
-                </form>
-            </div>
-        `;
-        while (quizContainer.firstChild) quizContainer.removeChild(quizContainer.firstChild);
-        quizContainer.insertAdjacentHTML('beforeend', html);
-        document.getElementById('emailGateForm').addEventListener('submit', submitEmailGate);
-        window.scrollTo({ top: 0, behavior: 'smooth' });
-        window.__quizResult = result;
-    }
-
-    function submitEmailGate(e) {
-        e.preventDefault();
-        const email = document.getElementById('gateEmail').value.trim();
-        const errEl = document.getElementById('gateError');
-        const validEmail = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
-        if (!validEmail) {
-            errEl.style.display = 'block';
-            return;
-        }
-        errEl.style.display = 'none';
-
-        const result = window.__quizResult;
-        const answersJson = answers.map((ansIdx, qIdx) => ({
-            q: questions[qIdx].label,
-            a: ansIdx !== null ? questions[qIdx].options[ansIdx].text : null
-        }));
-
-        const payload = new FormData();
-        payload.append('form_type', 'quiz');
-        payload.append('email', email);
-        payload.append('level', result.key);
-        payload.append('result_title', result.data.title);
-        payload.append('answers_json', JSON.stringify(answersJson));
-        payload.append('submitted_at', new Date().toISOString());
-
-        const submitBtn = document.getElementById('gateSubmit');
-        submitBtn.disabled = true;
-        submitBtn.textContent = 'Sending…';
-
-        fetch('https://formspree.io/f/xkgwgjrn', {
-            method: 'POST',
-            headers: { 'Accept': 'application/json' },
-            body: payload
-        }).catch(() => { /* render results regardless of post success */ });
-
-        if (window.fbq) {
-            fbq('track', 'Lead', {
-                content_name: result.data.title,
-                content_category: 'quiz_result_' + result.key,
-                currency: 'USD'
-            });
+            color-scheme: dark;
+            --dark: #06080F;
+            --green: #4ADE80;
+            --green2: #10B981;
+            --border: #1E2A3D;
+            --text: #E2E8F0;
+            --text-soft: #94A3B8;
+            --white: #F8FAFC;
+            --font-display: "Chakra Petch", system-ui, sans-serif;
+            --font-body: "IBM Plex Sans", system-ui, sans-serif;
         }
 
-        if (typeof gtag === 'function') {
-            gtag('event', 'quiz_result_' + result.key, { result_key: result.key });
+        *,
+        *::before,
+        *::after {
+            box-sizing: border-box;
         }
 
-        window.__quizEmail = email;
-        showResults();
-    }
+        html,
+        body {
+            min-height: 100%;
+        }
 
-    function goBack() {
-        if (current > 0) { current--; renderQuestion(current); }
-    }
+        body {
+            margin: 0;
+            min-width: 320px;
+            overflow: hidden;
+            background: var(--dark);
+            color: var(--text);
+            font-family: var(--font-body);
+            -webkit-font-smoothing: antialiased;
+        }
 
-    // ===== CREATOR OS LEVEL SCORING =====
-    function tallyTags() {
-        const counts = {};
-        answers.forEach((ansIdx, qIdx) => {
-            if (ansIdx === null) return;
-            const tags = questions[qIdx].options[ansIdx].tags;
-            tags.forEach(t => { counts[t] = (counts[t] || 0) + 1; });
-        });
-        return counts;
-    }
+        .rebuild-page {
+            position: relative;
+            min-height: 100svh;
+            display: grid;
+            place-items: center;
+            padding: clamp(28px, 7vw, 72px);
+            isolation: isolate;
+            background:
+                linear-gradient(rgba(6, 8, 15, 0.72), rgba(6, 8, 15, 0.92)),
+                url("/spacebackground.jpg") center / cover no-repeat,
+                var(--dark);
+        }
 
-    function determineResult() {
-        // Q1 is the override: if user isn't earning yet, force Pre-Spark regardless of other answers.
-        const q1Answer = answers[0];
-        if (q1Answer !== null) {
-            const q1Tags = questions[0].options[q1Answer].tags;
-            if (q1Tags.includes('pre-spark')) {
-                return { key: 'preSpark', data: results.preSpark };
+        .rebuild-page::before,
+        .rebuild-page::after {
+            content: "";
+            position: absolute;
+            inset: -20%;
+            z-index: -1;
+            pointer-events: none;
+            background-repeat: repeat;
+            transform: rotate(-8deg);
+        }
+
+        .rebuild-page::before {
+            opacity: 0.82;
+            background-image:
+                radial-gradient(circle, rgba(248, 250, 252, 0.92) 0 1px, transparent 1.6px),
+                radial-gradient(circle, rgba(74, 222, 128, 0.72) 0 1px, transparent 1.8px);
+            background-size: 86px 86px, 142px 142px;
+            background-position: 0 0, 38px 44px;
+            animation: starDrift 36s linear infinite;
+        }
+
+        .rebuild-page::after {
+            opacity: 0.48;
+            background-image:
+                radial-gradient(circle, rgba(226, 232, 240, 0.92) 0 1px, transparent 1.5px),
+                radial-gradient(circle, rgba(148, 163, 184, 0.5) 0 1px, transparent 1.6px);
+            background-size: 52px 52px, 118px 118px;
+            background-position: 18px 12px, 64px 70px;
+            animation: starDrift 58s linear infinite reverse, twinkle 4.8s ease-in-out infinite;
+        }
+
+        .space-vignette {
+            position: absolute;
+            inset: 0;
+            z-index: -1;
+            pointer-events: none;
+            background:
+                radial-gradient(circle at center, transparent 0 28%, rgba(6, 8, 15, 0.52) 64%, rgba(6, 8, 15, 0.94) 100%),
+                linear-gradient(180deg, rgba(6, 8, 15, 0.18), rgba(6, 8, 15, 0.82));
+        }
+
+        .content {
+            width: min(680px, 100%);
+            text-align: center;
+        }
+
+        .logo {
+            width: min(245px, 68vw);
+            height: auto;
+            margin: 0 auto clamp(34px, 7vw, 54px);
+            filter: drop-shadow(0 0 24px rgba(74, 222, 128, 0.28));
+        }
+
+        h1 {
+            margin: 0;
+            color: var(--white);
+            font-family: var(--font-display);
+            font-size: clamp(2.15rem, 8vw, 5.8rem);
+            font-weight: 700;
+            line-height: 0.98;
+            letter-spacing: 0;
+            text-wrap: balance;
+        }
+
+        .accent-line {
+            width: min(168px, 42vw);
+            height: 2px;
+            margin: clamp(30px, 5vw, 42px) auto 0;
+            background: linear-gradient(90deg, transparent, var(--green), var(--green2), transparent);
+            box-shadow: 0 0 28px rgba(74, 222, 128, 0.42);
+        }
+
+        @keyframes starDrift {
+            from {
+                background-position: 0 0, 38px 44px;
+            }
+            to {
+                background-position: 240px 180px, 278px 224px;
             }
         }
 
-        // Tally Spark / Surge / Summit across the remaining answers
-        const t = tallyTags();
-        const counts = {
-            spark: t.spark || 0,
-            surge: t.surge || 0,
-            summit: t.summit || 0
-        };
+        @keyframes twinkle {
+            0%,
+            100% {
+                opacity: 0.34;
+            }
+            50% {
+                opacity: 0.66;
+            }
+        }
 
-        // Pick the highest count. On a tie, prefer the LOWER tier (more conservative).
-        const order = ['spark', 'surge', 'summit'];
-        const max = Math.max(counts.spark, counts.surge, counts.summit);
-        const winner = order.find(k => counts[k] === max);
-
-        return { key: winner, data: results[winner] };
-    }
-
-    function showResults() {
-        const wrapper = window.__quizResult || determineResult();
-        const result = wrapper.data;
-        const userEmail = window.__quizEmail || '';
-
-        quizSection.style.display = 'none';
-        progressWrap.style.display = 'none';
-        resultsSection.style.display = 'block';
-        setTimeout(() => resultsSection.classList.add('show'), 10);
-
-        const resultHeader = `
-            <div class="result-header">
-                <div class="result-tag ${result.tag}">${result.tagText}</div>
-                <h2 class="result-title">${result.title}</h2>
-                <p class="result-desc">${result.desc}</p>
-            </div>
-        `;
-
-        const longDescBlock = result.longDesc ? `
-            <div class="score-block">
-                <p class="score-band-desc" style="font-size:1rem;max-width:none">${result.longDesc}</p>
-            </div>
-        ` : '';
-
-        const cardsHtml = result.cards.map(card => `
-            <div class="result-card ${card.type}">
-                <div class="rc-top">
-                    <div><span class="rc-badge ${card.badge}">${card.badgeText}</span></div>
-                </div>
-                <div class="rc-name">${card.name}</div>
-                <div class="rc-tagline">${card.tagline}</div>
-                <div class="rc-features">${card.features.map(f => `<span class="rc-feat">${f}</span>`).join('')}</div>
-                <div style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:1rem">
-                    <div><span class="rc-price">${card.price}</span><span class="rc-price-label">${card.priceLabel}</span></div>
-                    <a href="${card.ctaHref}" class="rc-cta ${card.ctaType}">${card.cta} <i class="fas fa-arrow-right"></i></a>
-                </div>
-            </div>
-        `).join('');
-
-        // Elara mention at the bottom — every creator-led result points to elarahq.app
-        const elaraMention = wrapper.key === 'preSpark' ? '' : `
-            <div class="soft-mention">
-                <div class="sm-tag">The Flagship</div>
-                <p><strong>Elara</strong> is JPax's AI agent platform for creator-led businesses. Seven core agents, modular extensions, and the operating system the creator economy was missing. <a href="elara.html">Explore Elara →</a></p>
-            </div>
-        `;
-
-        const emailNote = userEmail ? `
-            <div class="email-confirmation">
-                <i class="fas fa-circle-check"></i>
-                Result sent to: <strong>${userEmail}</strong>. Check your inbox in the next few minutes.
-            </div>
-        ` : '';
-
-        const retakeBtn = `<button class="restart-btn" onclick="restartQuiz()"><i class="fas fa-redo" style="margin-right:0.5rem"></i>Retake Quiz</button>`;
-
-        const fullHtml = resultHeader + longDescBlock + cardsHtml + elaraMention + emailNote + retakeBtn;
-        while (resultsContainer.firstChild) resultsContainer.removeChild(resultsContainer.firstChild);
-        resultsContainer.insertAdjacentHTML('beforeend', fullHtml);
-    }
-
-    function restartQuiz() {
-        current = 0;
-        answers = new Array(questions.length).fill(null);
-        resultsSection.classList.remove('show');
-        resultsSection.style.display = 'none';
-        quizSection.style.display = 'block';
-        progressWrap.style.display = 'block';
-        renderQuestion(0);
-        window.scrollTo({top: 0, behavior: 'smooth'});
-    }
-
-    // Nav
-    const nav = document.getElementById('nav');
-    window.addEventListener('scroll', () => nav.classList.toggle('scrolled', window.scrollY > 50));
-    const mobileBtn = document.getElementById('mobileBtn');
-    const mobileMenu = document.getElementById('mobileMenu');
-    const mobileOverlay = document.getElementById('mobileOverlay');
-    function closeMobileMenu(){mobileMenu.classList.remove('active');mobileOverlay.classList.remove('active');mobileBtn.classList.remove('active');document.body.style.overflow='';}
-    function openMobileMenu(){mobileMenu.classList.add('active');mobileOverlay.classList.add('active');mobileBtn.classList.add('active');document.body.style.overflow='hidden';}
-    if (mobileBtn && mobileMenu) {
-        mobileBtn.addEventListener('click', () => {mobileMenu.classList.contains('active')?closeMobileMenu():openMobileMenu();});
-        mobileOverlay.addEventListener('click', closeMobileMenu);
-        mobileMenu.querySelectorAll('a').forEach(l => l.addEventListener('click', closeMobileMenu));
-    }
-
-    // Init
-    renderQuestion(0);
-
-    // ===== CONSOLE SIGNATURE =====
-    (() => {
-        const head   = 'background:#06080F;color:#4ADE80;font-size:14px;padding:8px 16px;font-family:"JetBrains Mono",monospace;font-weight:700;border:1px solid #4ADE80;border-radius:4px;letter-spacing:0.05em';
-        const label  = 'color:#64748B;font-family:"JetBrains Mono",monospace;font-size:11px;letter-spacing:0.08em;text-transform:uppercase';
-        const body   = 'color:#CBD5E1;font-family:"JetBrains Mono",monospace;font-size:12px;line-height:1.7';
-        const accent = 'color:#4ADE80;font-family:"JetBrains Mono",monospace;font-size:12px;line-height:1.7';
-        const purple = 'color:#8B5CF6;font-family:"JetBrains Mono",monospace;font-size:12px;font-style:italic';
-        const cta    = 'color:#4ADE80;font-family:"JetBrains Mono",monospace;font-size:12px;line-height:1.7';
-        console.log('%c hi from jpax. ', head);
-        console.log('%c\nbuilt by julian — upstate sc.\n%c ai-accelerated. human-directed.', body, purple);
-        console.log('%c\n// what runs here', label);
-        console.log('%c · agents       %c→ nova, live inside jupiter\n%c · automations  %c→ 3 content engines running weekly\n%c · apps         %c→ 6+ shipped to production\n%c · this site    %c→ hand-rolled html. no framework. no build step.', body, accent, body, accent, body, accent, body, accent);
-        console.log('%c\n// want to build something?', label);
-        console.log('%c → julian@jpaxmedia.com\n → jpaxmedia.com/#contact', cta);
-    })();
-    </script>
+        @media (prefers-reduced-motion: reduce) {
+            .rebuild-page::before,
+            .rebuild-page::after {
+                animation: none;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="rebuild-page" role="main" aria-label="JPax site rebuilding notice">
+        <div class="space-vignette" aria-hidden="true"></div>
+        <div class="content">
+            <img class="logo" src="/jpaxmedialogoOFFICIALFINAL(whitewithtext).png" alt="JPax">
+            <h1>Busy rebuilding. Stay tuned</h1>
+            <div class="accent-line" aria-hidden="true"></div>
+        </div>
+    </div>
 </body>
 </html>

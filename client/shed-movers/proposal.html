@@ -3,1224 +3,173 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <!-- Meta Pixel Code -->
-    <script>
-    !function(f,b,e,v,n,t,s)
-    {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
-    n.callMethod.apply(n,arguments):n.queue.push(arguments)};
-    if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
-    n.queue=[];t=b.createElement(e);t.async=!0;
-    t.src=v;s=b.getElementsByTagName(e)[0];
-    s.parentNode.insertBefore(t,s)}(window, document,'script',
-    'https://connect.facebook.net/en_US/fbevents.js');
-    fbq('init', '2817539605254046');
-    fbq('track', 'PageView');
-    </script>
-    <!-- End Meta Pixel Code -->
-    <title>JPax Media — Proposal for Shed Movers LLC</title>
-<style>
-  @import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:ital,wght@0,300;0,400;0,600;0,700;1,400&family=JetBrains+Mono:wght@400;600&display=swap');
-  @import url('https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@400;600;700&display=swap');
+    <meta name="robots" content="noindex, nofollow, noarchive">
+    <title>JPax | Busy rebuilding</title>
+    <meta name="description" content="Busy rebuilding. Stay tuned">
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="JPax | Busy rebuilding">
+    <meta property="og:description" content="Busy rebuilding. Stay tuned">
+    <meta property="og:image" content="https://jpaxmedia.com/jpaxmedialogoOFFICIALFINALwhite.png">
+    <meta property="og:url" content="https://jpaxmedia.com">
+    <link rel="icon" type="image/png" href="/jpaxmedialogoOFFICIALFINALwhite.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@500;700&amp;family=IBM+Plex+Sans:wght@400;500;600&amp;display=swap" rel="stylesheet">
+    <style>
+        :root {
+            color-scheme: dark;
+            --dark: #06080F;
+            --green: #4ADE80;
+            --green2: #10B981;
+            --border: #1E2A3D;
+            --text: #E2E8F0;
+            --text-soft: #94A3B8;
+            --white: #F8FAFC;
+            --font-display: "Chakra Petch", system-ui, sans-serif;
+            --font-body: "IBM Plex Sans", system-ui, sans-serif;
+        }
 
-  :root {
-    --dark: #06080F;
-    --dark2: #0C101C;
-    --dark3: #0F172A;
-    --green: #4ADE80;
-    --green2: #10B981;
-    --purple: #8B5CF6;
-    --border: #1E2A3D;
-    --text: #E2E8F0;
-    --text-soft: #94A3B8;
-    --text-muted: #64748B;
-    --white: #F8FAFC;
-  }
+        *,
+        *::before,
+        *::after {
+            box-sizing: border-box;
+        }
 
-  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+        html,
+        body {
+            min-height: 100%;
+        }
 
-  html { scroll-behavior: smooth; }
+        body {
+            margin: 0;
+            min-width: 320px;
+            overflow: hidden;
+            background: var(--dark);
+            color: var(--text);
+            font-family: var(--font-body);
+            -webkit-font-smoothing: antialiased;
+        }
 
-  body {
-    font-family: 'IBM Plex Sans', Arial, sans-serif;
-    background:
-      linear-gradient(180deg, rgba(74, 222, 128, 0.04), transparent 420px),
-      linear-gradient(rgba(74, 222, 128, 0.035) 1px, transparent 1px),
-      linear-gradient(90deg, rgba(74, 222, 128, 0.025) 1px, transparent 1px),
-      var(--dark);
-    background-size: auto, 72px 72px, 72px 72px, auto;
-    color: var(--text);
-    font-size: 14px;
-    line-height: 1.7;
-    -webkit-print-color-adjust: exact;
-    print-color-adjust: exact;
-  }
+        .rebuild-page {
+            position: relative;
+            min-height: 100svh;
+            display: grid;
+            place-items: center;
+            padding: clamp(28px, 7vw, 72px);
+            isolation: isolate;
+            background:
+                linear-gradient(rgba(6, 8, 15, 0.72), rgba(6, 8, 15, 0.92)),
+                url("/spacebackground.jpg") center / cover no-repeat,
+                var(--dark);
+        }
 
-  a { color: var(--green); text-decoration: none; }
-  a:hover { text-decoration: underline; }
+        .rebuild-page::before,
+        .rebuild-page::after {
+            content: "";
+            position: absolute;
+            inset: -20%;
+            z-index: -1;
+            pointer-events: none;
+            background-repeat: repeat;
+            transform: rotate(-8deg);
+        }
 
-  /* ── SCROLL PROGRESS BAR ── */
-  .scroll-progress {
-    position: fixed;
-    top: 0; left: 0;
-    height: 3px;
-    width: 0%;
-    background: linear-gradient(90deg, var(--green), var(--purple));
-    z-index: 100;
-    transition: width 0.08s linear;
-    pointer-events: none;
-  }
+        .rebuild-page::before {
+            opacity: 0.82;
+            background-image:
+                radial-gradient(circle, rgba(248, 250, 252, 0.92) 0 1px, transparent 1.6px),
+                radial-gradient(circle, rgba(74, 222, 128, 0.72) 0 1px, transparent 1.8px);
+            background-size: 86px 86px, 142px 142px;
+            background-position: 0 0, 38px 44px;
+            animation: starDrift 36s linear infinite;
+        }
 
-  /* ── SIDE NAV ── */
-  .side-nav {
-    position: fixed;
-    top: 50%;
-    right: 28px;
-    transform: translateY(-50%);
-    z-index: 50;
-    display: flex;
-    flex-direction: column;
-    gap: 14px;
-  }
-  .side-nav a {
-    display: flex;
-    align-items: center;
-    gap: 12px;
-    font-family: 'JetBrains Mono', monospace;
-    font-size: 10px;
-    color: var(--text-muted);
-    letter-spacing: 0.12em;
-    text-transform: uppercase;
-    transition: color 0.25s ease;
-  }
-  .side-nav a::before {
-    content: '';
-    width: 22px;
-    height: 2px;
-    background: var(--text-muted);
-    transition: width 0.25s ease, background 0.25s ease;
-  }
-  .side-nav a .nav-label {
-    opacity: 0;
-    transform: translateX(-6px);
-    transition: opacity 0.25s ease, transform 0.25s ease;
-    pointer-events: none;
-  }
-  .side-nav a:hover,
-  .side-nav a.active {
-    color: var(--green);
-    text-decoration: none;
-  }
-  .side-nav a:hover::before,
-  .side-nav a.active::before {
-    background: var(--green);
-    width: 36px;
-  }
-  .side-nav a:hover .nav-label,
-  .side-nav a.active .nav-label {
-    opacity: 1;
-    transform: translateX(0);
-  }
-  @media (max-width: 1180px) { .side-nav { display: none; } }
+        .rebuild-page::after {
+            opacity: 0.48;
+            background-image:
+                radial-gradient(circle, rgba(226, 232, 240, 0.92) 0 1px, transparent 1.5px),
+                radial-gradient(circle, rgba(148, 163, 184, 0.5) 0 1px, transparent 1.6px);
+            background-size: 52px 52px, 118px 118px;
+            background-position: 18px 12px, 64px 70px;
+            animation: starDrift 58s linear infinite reverse, twinkle 4.8s ease-in-out infinite;
+        }
 
-  /* ── SCROLL REVEAL ── */
-  .reveal {
-    opacity: 0;
-    transform: translateY(24px);
-    transition: opacity 0.7s ease, transform 0.7s ease;
-  }
-  .reveal.in-view {
-    opacity: 1;
-    transform: translateY(0);
-  }
-  @media (prefers-reduced-motion: reduce) {
-    .reveal { opacity: 1; transform: none; transition: none; }
-    html { scroll-behavior: auto; }
-  }
+        .space-vignette {
+            position: absolute;
+            inset: 0;
+            z-index: -1;
+            pointer-events: none;
+            background:
+                radial-gradient(circle at center, transparent 0 28%, rgba(6, 8, 15, 0.52) 64%, rgba(6, 8, 15, 0.94) 100%),
+                linear-gradient(180deg, rgba(6, 8, 15, 0.18), rgba(6, 8, 15, 0.82));
+        }
 
-  /* ── BUTTONS ── */
-  .actions {
-    display: flex;
-    gap: 12px;
-    margin: 32px 0 8px;
-    flex-wrap: wrap;
-  }
-  .btn {
-    display: inline-flex;
-    align-items: center;
-    gap: 8px;
-    padding: 14px 24px;
-    border-radius: 8px;
-    font-family: 'IBM Plex Sans', sans-serif;
-    font-size: 12px;
-    font-weight: 700;
-    letter-spacing: 0.08em;
-    text-transform: uppercase;
-    cursor: pointer;
-    border: 1px solid transparent;
-    text-decoration: none;
-    transition: transform 0.2s ease, box-shadow 0.2s ease, background 0.2s ease, color 0.2s ease, border-color 0.2s ease;
-  }
-  .btn-primary {
-    background: var(--green);
-    color: var(--dark);
-  }
-  .btn-primary:hover {
-    background: var(--green2);
-    color: var(--dark);
-    transform: translateY(-2px);
-    box-shadow: 0 10px 28px rgba(74, 222, 128, 0.28);
-    text-decoration: none;
-  }
-  .btn-secondary {
-    background: transparent;
-    color: var(--text);
-    border-color: var(--border);
-  }
-  .btn-secondary:hover {
-    border-color: var(--green);
-    color: var(--green);
-    transform: translateY(-2px);
-    text-decoration: none;
-  }
+        .content {
+            width: min(680px, 100%);
+            text-align: center;
+        }
 
-  /* ── COVER PAGE ── */
-  .cover {
-    min-height: 100vh;
-    padding: 80px 60px 40px;
-    position: relative;
-    display: grid;
-    grid-template-rows: minmax(0, 1fr) auto;
-    gap: 44px;
-    overflow: hidden;
-  }
-  .cover::after {
-    content: '';
-    position: absolute;
-    inset: auto 0 0 0;
-    height: 1px;
-    background: linear-gradient(90deg, transparent, rgba(74, 222, 128, 0.5), transparent);
-  }
-  .cover-grid {
-    width: min(1180px, 100%);
-    margin: 0 auto;
-    display: grid;
-    grid-template-columns: minmax(0, 0.92fr) minmax(360px, 0.78fr);
-    gap: 54px;
-    align-items: center;
-  }
-  .cover-grid > * { min-width: 0; }
-  .cover-copy { min-width: 0; }
-  .cover-live {
-    display: inline-flex;
-    align-items: center;
-    gap: 10px;
-    padding: 8px 12px;
-    border: 1px solid rgba(74, 222, 128, 0.28);
-    background: rgba(74, 222, 128, 0.06);
-    color: var(--green);
-    border-radius: 999px;
-    font-family: 'JetBrains Mono', monospace;
-    font-size: 10px;
-    letter-spacing: 0.14em;
-    text-transform: uppercase;
-    margin-bottom: 18px;
-  }
-  .cover-live::before {
-    content: '';
-    width: 7px;
-    height: 7px;
-    border-radius: 999px;
-    background: var(--green);
-    box-shadow: 0 0 12px rgba(74, 222, 128, 0.8);
-  }
-  .cover-eyebrow {
-    font-size: 11px;
-    font-weight: 700;
-    letter-spacing: 0.14em;
-    text-transform: uppercase;
-    color: var(--green);
-    margin-bottom: 24px;
-  }
-  .cover-title {
-    font-family: 'Chakra Petch', 'Arial Black', sans-serif;
-    font-weight: 700;
-    font-size: clamp(48px, 7vw, 86px);
-    line-height: 0.98;
-    color: var(--white);
-    margin-bottom: 16px;
-  }
-  .cover-title span { color: var(--green); }
-  .cover-subtitle {
-    max-width: 620px;
-    font-size: 18px;
-    color: var(--text-soft);
-    margin-top: 4px;
-    font-weight: 300;
-  }
-  .cover-rule {
-    width: 60px;
-    height: 3px;
-    background: var(--green);
-    margin: 28px 0 40px;
-    border: none;
-  }
-  .cover-client-card {
-    background: var(--dark2);
-    border: 1px solid var(--border);
-    border-radius: 10px;
-    padding: 28px 32px;
-    width: 100%;
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 18px 48px;
-    max-width: 660px;
-  }
-  .cover-client-card .label {
-    font-size: 10px;
-    font-weight: 700;
-    letter-spacing: 0.1em;
-    text-transform: uppercase;
-    color: var(--text-muted);
-    margin-bottom: 2px;
-  }
-  .cover-client-card .value {
-    font-size: 14px;
-    color: var(--white);
-    font-weight: 600;
-  }
-  .cover-client-card .value.mono {
-    font-family: 'JetBrains Mono', monospace;
-  }
-  .cover-footer {
-    position: relative;
-    z-index: 2;
-    width: min(1180px, 100%);
-    margin: 0 auto;
-    font-size: 11px;
-    color: var(--text-muted);
-  }
-  .cover-footer a { color: var(--text-muted); }
+        .logo {
+            width: min(245px, 68vw);
+            height: auto;
+            margin: 0 auto clamp(34px, 7vw, 54px);
+            filter: drop-shadow(0 0 24px rgba(74, 222, 128, 0.28));
+        }
 
-  .proposal-panel {
-    background: var(--dark2);
-    border: 1px solid var(--border);
-    border-radius: 8px;
-    padding: 32px;
-    box-shadow: 0 22px 70px rgba(0, 0, 0, 0.26);
-    border-color: rgba(74, 222, 128, 0.5);
-  }
-  .proposal-panel h2 {
-    font-family: 'Chakra Petch', 'Arial Black', sans-serif;
-    color: var(--white);
-    font-size: 30px;
-    line-height: 1.1;
-    letter-spacing: 0;
-    text-transform: none;
-    margin-bottom: 12px;
-  }
-  .proposal-panel p {
-    color: var(--text-soft);
-    margin: 0 0 26px;
-    padding-bottom: 26px;
-    border-bottom: 1px solid var(--border);
-    line-height: 1.8;
-  }
-  .proposal-list {
-    list-style: none;
-    display: grid;
-    gap: 0;
-  }
-  .proposal-list li {
-    display: grid;
-    grid-template-columns: 34px 1fr;
-    gap: 16px;
-    padding: 20px 0;
-    border-bottom: 1px solid var(--border);
-    color: var(--text-soft);
-  }
-  .proposal-list li:first-child { padding-top: 0; }
-  .proposal-list li:last-child {
-    padding-bottom: 0;
-    border-bottom: none;
-  }
-  .proposal-list b {
-    width: 34px;
-    height: 34px;
-    display: grid;
-    place-items: center;
-    border: 1px solid rgba(74, 222, 128, 0.36);
-    border-radius: 8px;
-    color: var(--green);
-    font-family: 'JetBrains Mono', monospace;
-    font-size: 12px;
-  }
-  .proposal-list strong {
-    display: block;
-    color: var(--white);
-    margin-bottom: 7px;
-  }
-  .proposal-list span {
-    display: block;
-    font-size: 13px;
-    line-height: 1.65;
-  }
+        h1 {
+            margin: 0;
+            color: var(--white);
+            font-family: var(--font-display);
+            font-size: clamp(2.15rem, 8vw, 5.8rem);
+            font-weight: 700;
+            line-height: 0.98;
+            letter-spacing: 0;
+            text-wrap: balance;
+        }
 
-  /* ── PAGE WRAPPER ── */
-  .page {
-    max-width: 860px;
-    margin: 0 auto;
-    padding: 0 60px;
-  }
+        .accent-line {
+            width: min(168px, 42vw);
+            height: 2px;
+            margin: clamp(30px, 5vw, 42px) auto 0;
+            background: linear-gradient(90deg, transparent, var(--green), var(--green2), transparent);
+            box-shadow: 0 0 28px rgba(74, 222, 128, 0.42);
+        }
 
-  /* ── RUNNING HEADER ── */
-  .running-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 24px 0 16px;
-    border-bottom: 2px solid var(--green);
-    margin-bottom: 48px;
-  }
-  .running-header .left {
-    font-size: 12px;
-    font-weight: 700;
-    letter-spacing: 0.08em;
-    text-transform: uppercase;
-    color: var(--green);
-  }
-  .running-header .right {
-    font-size: 11px;
-    letter-spacing: 0.06em;
-    text-transform: uppercase;
-    color: var(--text-muted);
-  }
+        @keyframes starDrift {
+            from {
+                background-position: 0 0, 38px 44px;
+            }
+            to {
+                background-position: 240px 180px, 278px 224px;
+            }
+        }
 
-  /* ── SECTION HEADERS ── */
-  .section-num {
-    font-family: 'JetBrains Mono', monospace;
-    font-size: 12px;
-    color: var(--text-muted);
-    margin-bottom: 6px;
-  }
-  h2 {
-    font-size: 20px;
-    font-weight: 700;
-    letter-spacing: 0.08em;
-    text-transform: uppercase;
-    color: var(--green);
-    margin-bottom: 6px;
-  }
-  .section-rule {
-    height: 2px;
-    background: linear-gradient(to right, var(--green), transparent);
-    border: none;
-    margin-bottom: 28px;
-  }
-  h3 {
-    font-size: 15px;
-    font-weight: 700;
-    color: var(--white);
-    margin: 28px 0 12px;
-  }
-  p { margin-bottom: 14px; }
-  p strong { color: var(--white); }
+        @keyframes twinkle {
+            0%,
+            100% {
+                opacity: 0.34;
+            }
+            50% {
+                opacity: 0.66;
+            }
+        }
 
-  /* ── SECTION SPACING ── */
-  .section { margin-bottom: 64px; }
-
-  /* ── STAT CARDS ── */
-  .stat-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 16px;
-    margin: 28px 0;
-  }
-  .stat-card {
-    background: var(--dark2);
-    border: 1px solid var(--border);
-    border-top: 3px solid var(--green);
-    border-radius: 8px;
-    padding: 20px;
-    text-align: center;
-    transition: transform 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease;
-  }
-  .stat-card:hover {
-    transform: translateY(-4px);
-    border-color: var(--green);
-    box-shadow: 0 12px 32px rgba(74, 222, 128, 0.12);
-  }
-  .stat-card .number {
-    font-size: 28px;
-    font-weight: 700;
-    color: var(--green);
-    margin-bottom: 4px;
-  }
-  .stat-card .stat-label {
-    font-size: 11px;
-    font-weight: 700;
-    letter-spacing: 0.08em;
-    text-transform: uppercase;
-    color: var(--text-muted);
-  }
-
-  /* ── VISUAL CASE STUDY BLOCKS ── */
-  .impact-grid,
-  .change-grid,
-  .benefit-grid {
-    display: grid;
-    gap: 16px;
-    margin: 28px 0;
-  }
-  .impact-grid { grid-template-columns: repeat(4, 1fr); }
-  .benefit-grid { grid-template-columns: repeat(3, 1fr); }
-  .change-grid { grid-template-columns: 0.82fr 1.18fr; align-items: stretch; }
-  .impact-card,
-  .benefit-card,
-  .change-card,
-  .video-vault {
-    background: var(--dark2);
-    border: 1px solid var(--border);
-    border-radius: 8px;
-    padding: 22px;
-  }
-  .impact-card strong,
-  .benefit-card strong,
-  .change-card strong {
-    display: block;
-    color: var(--white);
-    font-size: 15px;
-    margin-bottom: 8px;
-  }
-  .impact-card .metric {
-    display: block;
-    color: var(--green);
-    font-family: 'Chakra Petch', 'Arial Black', sans-serif;
-    font-size: 32px;
-    line-height: 1;
-    margin-bottom: 10px;
-  }
-  .impact-card p,
-  .benefit-card p,
-  .change-card p {
-    color: var(--text-soft);
-    font-size: 13px;
-    margin-bottom: 0;
-  }
-  .change-card {
-    padding: 0;
-    overflow: hidden;
-  }
-  .change-card .change-img {
-    width: 100%;
-    aspect-ratio: 16 / 10;
-    object-fit: cover;
-    object-position: top center;
-    display: block;
-    border-bottom: 1px solid var(--border);
-  }
-  .change-body { padding: 20px; }
-  .change-label {
-    display: inline-flex;
-    margin-bottom: 10px;
-    color: var(--green);
-    font-family: 'JetBrains Mono', monospace;
-    font-size: 10px;
-    font-weight: 700;
-    letter-spacing: 0.14em;
-    text-transform: uppercase;
-  }
-  .shift-list {
-    list-style: none;
-    display: grid;
-    gap: 10px;
-    margin: 18px 0 0;
-  }
-  .shift-list li {
-    display: grid;
-    grid-template-columns: 120px 1fr;
-    gap: 14px;
-    padding: 12px 0;
-    border-top: 1px solid var(--border);
-    color: var(--text-soft);
-  }
-  .shift-list b {
-    color: var(--green);
-    font-family: 'JetBrains Mono', monospace;
-    font-size: 10px;
-    letter-spacing: 0.1em;
-    text-transform: uppercase;
-  }
-  .video-vault {
-    display: grid;
-    grid-template-columns: 1fr auto;
-    gap: 24px;
-    align-items: center;
-    border-color: rgba(139, 92, 246, 0.48);
-    background:
-      linear-gradient(135deg, rgba(139, 92, 246, 0.14), transparent 44%),
-      var(--dark2);
-  }
-  .video-vault h3 {
-    margin-top: 0;
-    font-family: 'Chakra Petch', 'Arial Black', sans-serif;
-    font-size: 26px;
-  }
-  .video-vault p {
-    max-width: 620px;
-    color: var(--text-soft);
-  }
-
-  /* ── TABLES ── */
-  table {
-    width: 100%;
-    border-collapse: collapse;
-    margin: 20px 0;
-  }
-  thead th {
-    background: var(--dark3);
-    color: var(--green);
-    font-size: 11px;
-    font-weight: 700;
-    letter-spacing: 0.06em;
-    text-transform: uppercase;
-    text-align: left;
-    padding: 12px 16px;
-    border-bottom: 2px solid var(--border);
-  }
-  thead th.right { text-align: right; }
-  tbody tr { transition: background 0.2s ease; }
-  tbody tr:hover td { background: var(--dark3); }
-  tbody td {
-    background: var(--dark2);
-    padding: 12px 16px;
-    border-bottom: 1px solid var(--border);
-    font-size: 14px;
-    transition: background 0.2s ease;
-  }
-  tbody td:first-child {
-    font-weight: 700;
-    color: var(--white);
-  }
-  tbody td.right { text-align: right; }
-  .check { color: var(--green); font-weight: 700; }
-  .total-row td {
-    background: var(--dark3);
-    font-weight: 700;
-    color: var(--green);
-    font-size: 15px;
-    border-top: 2px solid var(--green2);
-  }
-
-  /* ── CALLOUT BOX ── */
-  .callout {
-    background: var(--dark2);
-    border-left: 3px solid var(--green);
-    border-radius: 0 8px 8px 0;
-    padding: 16px 20px;
-    margin: 24px 0;
-    transition: transform 0.25s ease, border-left-width 0.2s ease;
-  }
-  .callout:hover {
-    transform: translateX(4px);
-    border-left-width: 5px;
-  }
-  .callout.purple { border-left-color: var(--purple); }
-  .callout p { margin-bottom: 0; }
-  .callout strong { color: var(--white); }
-
-  /* ── DOC LIST ── */
-  .doc-list {
-    list-style: none;
-    margin: 16px 0;
-  }
-  .doc-list li {
-    padding: 10px 0;
-    border-bottom: 1px solid var(--border);
-    display: flex;
-    align-items: baseline;
-    gap: 12px;
-  }
-  .doc-list li::before {
-    content: "–";
-    color: var(--green);
-    font-weight: 700;
-    flex-shrink: 0;
-  }
-  .doc-list li strong { color: var(--white); }
-
-  /* ── PAYMENT CARDS ── */
-  .payment-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 16px;
-    margin: 24px 0;
-  }
-  .payment-card {
-    background: var(--dark2);
-    border: 1px solid var(--border);
-    border-radius: 8px;
-    padding: 24px;
-    text-align: center;
-    transition: transform 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease;
-  }
-  .payment-card:hover {
-    transform: translateY(-4px);
-    border-color: var(--green);
-    box-shadow: 0 12px 32px rgba(74, 222, 128, 0.12);
-  }
-  .payment-card .number {
-    font-size: 26px;
-    font-weight: 700;
-    color: var(--green);
-    margin-bottom: 4px;
-  }
-  .payment-card .pay-label {
-    font-size: 12px;
-    font-weight: 700;
-    text-transform: uppercase;
-    letter-spacing: 0.06em;
-    color: var(--text-muted);
-  }
-  .payment-card .pay-note {
-    font-size: 12px;
-    color: var(--text-soft);
-    margin-top: 6px;
-  }
-
-  /* ── TIMELINE ── */
-  .timeline-row td:first-child {
-    color: var(--green);
-  }
-
-  /* ── SIGNATURE BLOCK ── */
-  .sig-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 40px;
-    margin: 40px 0 20px;
-  }
-  .sig-block {
-    border-top: 1px solid var(--text-muted);
-    padding-top: 12px;
-  }
-  .sig-block .sig-label {
-    font-size: 11px;
-    font-weight: 700;
-    text-transform: uppercase;
-    letter-spacing: 0.06em;
-    color: var(--text-muted);
-    margin-bottom: 4px;
-  }
-  .sig-block .sig-name {
-    font-size: 14px;
-    color: var(--white);
-    font-weight: 600;
-  }
-  .date-line {
-    display: flex;
-    gap: 40px;
-    margin-top: 32px;
-  }
-  .date-field {
-    flex: 1;
-    border-top: 1px solid var(--text-muted);
-    padding-top: 10px;
-    font-size: 11px;
-    font-weight: 700;
-    text-transform: uppercase;
-    letter-spacing: 0.06em;
-    color: var(--text-muted);
-  }
-
-  /* ── FOOTER ── */
-  .doc-footer {
-    border-top: 1px solid var(--border);
-    padding: 20px 0 40px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-top: 80px;
-  }
-  .doc-footer .left {
-    font-size: 12px;
-    font-weight: 700;
-    color: var(--green);
-  }
-  .doc-footer .right {
-    font-size: 11px;
-    color: var(--text-muted);
-  }
-  .doc-footer .right a { color: var(--text-muted); }
-
-  /* ── RESPONSIVE ── */
-  @media (max-width: 700px) {
-    .cover { padding: 48px 28px; }
-    .cover-grid { grid-template-columns: 1fr; gap: 32px; }
-    .cover-copy, .proposal-panel { width: 100%; max-width: 334px; }
-    .cover-title { font-size: 36px; }
-    .cover-title span { display: block; }
-    .cover-subtitle { max-width: 310px; }
-    .cover-client-card { grid-template-columns: 1fr; max-width: 334px; padding: 24px; }
-    .page { padding: 0 28px; }
-    .stat-grid { grid-template-columns: 1fr; }
-    .impact-grid, .benefit-grid, .change-grid { grid-template-columns: 1fr; }
-    .video-vault { grid-template-columns: 1fr; }
-    .shift-list li { grid-template-columns: 1fr; gap: 4px; }
-    .payment-grid { grid-template-columns: 1fr; }
-    .sig-grid { grid-template-columns: 1fr; }
-    .cover-footer { width: 100%; max-width: 334px; }
-  }
-
-  @media print {
-    .cover { page-break-after: always; }
-    .section { page-break-inside: avoid; }
-    .scroll-progress, .side-nav, .actions { display: none !important; }
-    .reveal { opacity: 1 !important; transform: none !important; }
-    .stat-card:hover, .payment-card:hover, .callout:hover { transform: none !important; box-shadow: none !important; }
-  }
-</style>
+        @media (prefers-reduced-motion: reduce) {
+            .rebuild-page::before,
+            .rebuild-page::after {
+                animation: none;
+            }
+        }
+    </style>
 </head>
 <body>
-    <!-- Meta Pixel Code (noscript) -->
-    <noscript><img height="1" width="1" style="display:none"
-    src="https://www.facebook.com/tr?id=2817539605254046&ev=PageView&noscript=1"
-    /></noscript>
-    <!-- End Meta Pixel Code (noscript) -->
-
-<div class="scroll-progress" id="scroll-progress"></div>
-
-<nav class="side-nav" aria-label="Section navigation">
-  <a href="#sec-01" data-target="sec-01"><span class="nav-label">Overview</span></a>
-  <a href="#sec-02" data-target="sec-02"><span class="nav-label">Built</span></a>
-  <a href="#sec-03" data-target="sec-03"><span class="nav-label">Manage</span></a>
-  <a href="#sec-04" data-target="sec-04"><span class="nav-label">Investment</span></a>
-  <a href="#sec-05" data-target="sec-05"><span class="nav-label">Videos</span></a>
-  <a href="#sec-06" data-target="sec-06"><span class="nav-label">Why JPax</span></a>
-  <a href="#sec-07" data-target="sec-07"><span class="nav-label">Next</span></a>
-</nav>
-
-<!-- ═══════════════════════════════════════ COVER ═══════════════════════════════════════ -->
-<div class="cover">
-  <div class="cover-grid">
-    <div class="cover-copy">
-      <div class="cover-live">Proposal ready</div>
-      <div class="cover-eyebrow">Project Proposal · Digital Growth System</div>
-      <h1 class="cover-title">Shed Movers <span>Proposal</span></h1>
-      <p class="cover-subtitle">Website recreation, Facebook management, content creation, hosting, website management, and monthly SEO support for Shed Movers LLC.</p>
-      <hr class="cover-rule">
-
-      <div class="cover-client-card">
-        <div>
-          <div class="label">Prepared For</div>
-          <div class="value">Kevin — Shed Movers LLC</div>
+    <div class="rebuild-page" role="main" aria-label="JPax site rebuilding notice">
+        <div class="space-vignette" aria-hidden="true"></div>
+        <div class="content">
+            <img class="logo" src="/jpaxmedialogoOFFICIALFINAL(whitewithtext).png" alt="JPax">
+            <h1>Busy rebuilding. Stay tuned</h1>
+            <div class="accent-line" aria-hidden="true"></div>
         </div>
-        <div>
-          <div class="label">Service Area</div>
-          <div class="value">NC · SC · GA · TN</div>
-        </div>
-        <div>
-          <div class="label">Prepared By</div>
-          <div class="value">Julian Johnson — JPax Media</div>
-        </div>
-        <div>
-          <div class="label">Date</div>
-          <div class="value">April 26, 2026</div>
-        </div>
-        <div>
-          <div class="label">Launch Investment</div>
-          <div class="value mono">$2,000</div>
-        </div>
-        <div>
-          <div class="label">Monthly Management</div>
-          <div class="value mono">$1,650/mo</div>
-        </div>
-        <div>
-          <div class="label">Proposal #</div>
-          <div class="value mono">PROP-BUILD-RISE-001</div>
-        </div>
-        <div>
-          <div class="label">Current Status</div>
-          <div class="value">Preview ready</div>
-        </div>
-      </div>
     </div>
-
-    <div class="proposal-panel" aria-label="Proposal includes">
-      <h2>What This Covers</h2>
-      <p>JPax has already prepared example work so Kevin can see the direction: a redesigned website preview and video content examples. The website is not final and can still be adjusted before approval.</p>
-      <ul class="proposal-list">
-        <li><b>01</b><span><strong><a href="https://shedmoversllc.netlify.app/" target="_blank" rel="noopener">Website recreation</a></strong>Redesigned site preview with quote paths, service pages, shed builder, and blog.</span></li>
-        <li><b>02</b><span><strong>Social media management</strong>Facebook management, posting rhythm, and customer-facing content.</span></li>
-        <li><b>03</b><span><strong>Content creation</strong>Video/content direction built around Kevin's personality and the shed-moving market.</span></li>
-        <li><b>04</b><span><strong>Hosting + SEO</strong>Website hosting, monthly maintenance, and monthly blog posts for search visibility.</span></li>
-      </ul>
-    </div>
-  </div>
-
-  <div class="cover-footer">
-    JPax Media LLC ·
-    <a href="mailto:julian@jpaxmedia.com">julian@jpaxmedia.com</a> ·
-    <a href="tel:+18604943090">(860) 494-3090</a> ·
-    <a href="https://jpaxmedia.com">jpaxmedia.com</a>
-  </div>
-</div>
-
-<!-- ═══════════════════════════════════════ BODY ═══════════════════════════════════════ -->
-<div class="page">
-  <div class="running-header">
-    <div class="left">JPax Media LLC</div>
-    <div class="right">Proposal · Shed Movers LLC</div>
-  </div>
-
-  <!-- ── 01 PROPOSAL OVERVIEW ── -->
-  <div class="section reveal" id="sec-01">
-    <div class="section-num">01</div>
-    <h2>Proposal Overview</h2>
-    <hr class="section-rule">
-    <p>Kevin — this proposal is for the full digital package around Shed Movers LLC: the recreated website, Facebook management, content creation, website hosting, website management, and monthly SEO blogs.</p>
-    <p>JPax has already prepared example work for you to review. That includes a redesigned website preview and video content examples. The website preview is not final; it is still subject to changes before approval and launch.</p>
-
-    <div class="stat-grid">
-      <div class="stat-card">
-        <div class="number">$2,000</div>
-        <div class="stat-label">One-Time Website Recreation</div>
-      </div>
-      <div class="stat-card">
-        <div class="number">$1,650</div>
-        <div class="stat-label">Monthly Management</div>
-      </div>
-      <div class="stat-card">
-        <div class="number">$3,650</div>
-        <div class="stat-label">First-Month Total</div>
-      </div>
-    </div>
-
-    <div class="callout">
-      <p><strong>Simple version:</strong> JPax built the digital foundation first, then manages the content and website every month so Shed Movers keeps showing up online with a better site, better social presence, and fresh SEO content.</p>
-    </div>
-  </div>
-
-  <!-- ── 02 WHAT JPAX BUILT ── -->
-  <div class="section reveal" id="sec-02">
-    <div class="section-num">02</div>
-    <h2>What JPax Built</h2>
-    <hr class="section-rule">
-
-    <p>JPax recreated the Shed Movers website into a cleaner, easier-to-use customer path. The preview is built to show the direction: stronger homepage messaging, clearer services, quote-focused calls to action, a shed builder, and a blog structure for future SEO content.</p>
-    <p>This is still a preview. Before final approval, Kevin can request changes to copy, photos, offers, service details, colors, or any parts of the site that need to feel more accurate to the business.</p>
-
-    <table>
-      <thead>
-        <tr>
-          <th>Built / Prepared</th>
-          <th>What It Does</th>
-          <th>Status</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td>Website Recreation</td>
-          <td>Modernized layout, stronger messaging, mobile-friendly sections, and clearer customer paths.</td>
-          <td>Preview ready</td>
-        </tr>
-        <tr>
-          <td>Service Structure</td>
-          <td>Pages and sections for shed moving, outdoor sheds, shipping containers, and container delivery.</td>
-          <td>Preview ready</td>
-        </tr>
-        <tr>
-          <td>Shed Builder</td>
-          <td>Interactive build-and-price starter so customers can choose a style, size, roof, and use case before contacting Kevin.</td>
-          <td>Preview ready</td>
-        </tr>
-        <tr>
-          <td>Quote Flow</td>
-          <td>Clear quote buttons, call paths, and form direction so customers know what to do next.</td>
-          <td>Preview ready</td>
-        </tr>
-        <tr>
-          <td>Blog</td>
-          <td>Blog area prepared for monthly SEO posts about shed moving, shed buying, containers, and storage questions.</td>
-          <td>Preview ready</td>
-        </tr>
-        <tr>
-          <td>SEO Foundation</td>
-          <td>Page structure, content direction, metadata planning, and future blog strategy for search visibility.</td>
-          <td>In progress</td>
-        </tr>
-        <tr>
-          <td>Video Content Examples</td>
-          <td>Dropbox folder of social-first video examples showing the creative direction JPax can produce.</td>
-          <td>Ready to review</td>
-        </tr>
-      </tbody>
-    </table>
-  </div>
-
-  <!-- ── 03 MONTHLY MANAGEMENT ── -->
-  <div class="section reveal" id="sec-03">
-    <div class="section-num">03</div>
-    <h2>Monthly Management</h2>
-    <hr class="section-rule">
-
-    <p>After the website is approved, JPax will manage the ongoing digital side: Facebook, content creation, hosting, website maintenance, and monthly SEO blogging. This is what keeps the website and brand active after the initial build.</p>
-
-    <table>
-      <thead>
-        <tr>
-          <th>Service</th>
-          <th>What JPax Handles</th>
-          <th>Frequency</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td>Facebook Management</td>
-          <td>Manage the Shed Movers Facebook presence with consistent posts, updates, service reminders, and customer-facing content.</td>
-          <td>Monthly</td>
-        </tr>
-        <tr>
-          <td>Content Creation</td>
-          <td>Create social content around shed moving, outdoor sheds, containers, rent-to-own options, customer questions, and Kevin's personality.</td>
-          <td>Ongoing</td>
-        </tr>
-        <tr>
-          <td>Video Content Direction</td>
-          <td>Use the example video direction as a creative base for future reels, ads, and social posts.</td>
-          <td>Ongoing</td>
-        </tr>
-        <tr>
-          <td>Website Hosting</td>
-          <td>Host the Shed Movers website and keep it live, stable, and connected.</td>
-          <td>Ongoing</td>
-        </tr>
-        <tr>
-          <td>Website Management</td>
-          <td>Make minor updates, keep pages current, fix small issues, and maintain the live site.</td>
-          <td>Monthly</td>
-        </tr>
-        <tr>
-          <td>Monthly SEO Blog</td>
-          <td>Publish one search-focused blog post per month to build long-term visibility around shed moving and storage topics.</td>
-          <td>1 per month</td>
-        </tr>
-      </tbody>
-    </table>
-  </div>
-
-  <!-- ── 04 INVESTMENT ── -->
-  <div class="section reveal" id="sec-04">
-    <div class="section-num">04</div>
-    <h2>Investment</h2>
-    <hr class="section-rule">
-
-    <h3>Total Investment</h3>
-    <table>
-      <thead>
-        <tr>
-          <th>Item</th>
-          <th>Description</th>
-          <th class="right">Amount</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td>Website Recreation</td>
-          <td>Redesigned Shed Movers website, service pages, quote flow, shed builder, blog structure, mobile responsiveness, and SEO foundation</td>
-          <td class="right">$2,000</td>
-        </tr>
-        <tr>
-          <td>Facebook Management</td>
-          <td>Monthly Facebook management, posting rhythm, service reminders, and audience-facing updates</td>
-          <td class="right">$1,500/mo</td>
-        </tr>
-        <tr>
-          <td>Content Creation</td>
-          <td>Social content and video/content direction based on Shed Movers services, offers, and Kevin's brand personality</td>
-          <td class="right">Included</td>
-        </tr>
-        <tr>
-          <td>Website Hosting &amp; Management</td>
-          <td>Hosting, maintenance, minor site updates, basic technical upkeep, and one monthly SEO blog</td>
-          <td class="right">$150/mo</td>
-        </tr>
-        <tr class="total-row">
-          <td colspan="2">Total First-Month Investment</td>
-          <td class="right">$3,650</td>
-        </tr>
-        <tr class="total-row">
-          <td colspan="2">Ongoing Monthly Management</td>
-          <td class="right">$1,650/mo</td>
-        </tr>
-      </tbody>
-    </table>
-
-    <div class="payment-grid">
-      <div class="payment-card">
-        <div class="number">$1,000</div>
-        <div class="pay-label">50% Deposit</div>
-        <div class="pay-note">Due to move forward with the website</div>
-      </div>
-      <div class="payment-card">
-        <div class="number">$2,650</div>
-        <div class="pay-label">Launch + First Month</div>
-        <div class="pay-note">$1,000 final website payment + $1,650 first monthly management payment</div>
-      </div>
-    </div>
-
-    <div class="callout">
-      <p><strong>Current status:</strong> The website preview is not final and is still subject to change before approval. Once Kevin approves the direction, JPax will finalize the site, connect hosting/domain details, and begin the monthly management plan.</p>
-    </div>
-
-    <div class="callout">
-      <p><strong>Note:</strong> Paid ad spend is not included in the monthly management amount. If Kevin wants to run paid Facebook ads later, that budget stays separate and under Shed Movers' control.</p>
-    </div>
-  </div>
-
-  <!-- ── 05 VIDEO EXAMPLES ── -->
-  <div class="section reveal" id="sec-05">
-    <div class="section-num">05</div>
-    <h2>Video Examples</h2>
-    <hr class="section-rule">
-
-    <div class="video-vault">
-      <div>
-        <h3>Kevin's Video Vault</h3>
-        <p>I created a few video examples so Kevin can see the creative direction in motion: memorable, social-first content that can support the website launch, Facebook posts, and future campaign pushes.</p>
-        <p>The website gives people a better place to land. The videos help create the attention that sends them there.</p>
-      </div>
-      <a class="btn btn-primary" href="https://www.dropbox.com/scl/fo/355kspxodt5gtv7egnzui/ANA5ed29-mLnOmonpDptHDs?rlkey=dze6sdliffi3u9sj69mw8wsh9&amp;st=jij5z3vy&amp;dl=0" target="_blank" rel="noopener">View Dropbox Videos</a>
-    </div>
-  </div>
-
-  <!-- ── 06 WHY JPAX ── -->
-  <div class="section reveal" id="sec-06">
-    <div class="section-num">06</div>
-    <h2>Why JPax</h2>
-    <hr class="section-rule">
-
-    <ul class="doc-list">
-      <li><span><strong>Work first, pitch second.</strong> Kevin is not being asked to imagine the direction from scratch. The website preview and video examples are already available to review.</span></li>
-      <li><span><strong>One connected system.</strong> The website, Facebook management, content creation, hosting, maintenance, and SEO blogs all support the same customer path.</span></li>
-      <li><span><strong>Founder-led support.</strong> Kevin works directly with Julian instead of getting passed through a slow agency chain.</span></li>
-      <li><span><strong>Fast changes before approval.</strong> The preview is live enough to judge, but still flexible enough to adjust before launch.</span></li>
-    </ul>
-  </div>
-
-  <!-- ── 07 APPROVAL ── -->
-  <div class="section reveal" id="sec-07">
-    <div class="section-num">07</div>
-    <h2>Approval</h2>
-    <hr class="section-rule">
-
-    <p>If Kevin wants to move forward, JPax will send the formal agreement and deposit invoice for the website build. This page is the proposal and example work preview, not the final signing document.</p>
-    <p>Questions? Contact Julian directly at <a href="mailto:julian@jpaxmedia.com">julian@jpaxmedia.com</a>.</p>
-
-    <div class="actions">
-      <a class="btn btn-primary" href="mailto:julian@jpaxmedia.com?subject=Shed%20Movers%20Digital%20Proposal%20%E2%80%94%20Move%20Forward&amp;body=Hey%20Julian%2C%0A%0AI%20want%20to%20move%20forward%20with%20the%20Shed%20Movers%20proposal%3A%20website%20recreation%2C%20Facebook%20management%2C%20content%20creation%2C%20hosting%2C%20website%20management%2C%20and%20monthly%20SEO%20blogs.%20Send%20over%20the%20formal%20document%20and%20deposit%20invoice.%0A%0A-%20Kevin">Move Forward</a>
-      <button type="button" class="btn btn-secondary" onclick="window.print()">Print / Save PDF</button>
-    </div>
-  </div>
-
-  <!-- ── FOOTER ── -->
-  <div class="doc-footer">
-    <div class="left">JPax Media LLC · Build. Rise. Scale.</div>
-    <div class="right">
-      <a href="https://jpaxmedia.com">jpaxmedia.com</a> ·
-      <a href="mailto:julian@jpaxmedia.com">julian@jpaxmedia.com</a> · 2026
-    </div>
-  </div>
-</div>
-
-<script>
-(function () {
-  const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-
-  // Scroll progress bar
-  const bar = document.getElementById('scroll-progress');
-  let ticking = false;
-  const updateBar = () => {
-    const h = document.documentElement;
-    const max = h.scrollHeight - h.clientHeight;
-    const pct = max > 0 ? (window.scrollY / max) * 100 : 0;
-    bar.style.width = pct + '%';
-    ticking = false;
-  };
-  window.addEventListener('scroll', () => {
-    if (!ticking) { requestAnimationFrame(updateBar); ticking = true; }
-  }, { passive: true });
-  updateBar();
-
-  // Reveal-on-scroll
-  const reveals = document.querySelectorAll('.reveal');
-  if (reduced) {
-    reveals.forEach(el => el.classList.add('in-view'));
-  } else if ('IntersectionObserver' in window) {
-    const io = new IntersectionObserver((entries) => {
-      entries.forEach(e => {
-        if (e.isIntersecting) {
-          e.target.classList.add('in-view');
-          io.unobserve(e.target);
-        }
-      });
-    }, { threshold: 0.12, rootMargin: '0px 0px -8% 0px' });
-    reveals.forEach(el => io.observe(el));
-  } else {
-    reveals.forEach(el => el.classList.add('in-view'));
-  }
-
-  // Active section in side nav
-  const navLinks = document.querySelectorAll('.side-nav a');
-  if ('IntersectionObserver' in window && navLinks.length) {
-    const navIO = new IntersectionObserver((entries) => {
-      entries.forEach(e => {
-        if (e.isIntersecting) {
-          const id = e.target.id;
-          navLinks.forEach(link => {
-            link.classList.toggle('active', link.dataset.target === id);
-          });
-        }
-      });
-    }, { rootMargin: '-40% 0px -50% 0px', threshold: 0 });
-    document.querySelectorAll('.section[id]').forEach(s => navIO.observe(s));
-  }
-
-  // Count-up for numeric stats
-  const animateNumber = (el) => {
-    const original = el.textContent.trim();
-    const m = original.match(/^(\$)?([\d,]+)(.*)$/);
-    if (!m) return;
-    const target = parseInt(m[2].replace(/,/g, ''), 10);
-    if (isNaN(target) || target < 10) return;
-    const prefix = m[1] || '';
-    const suffix = m[3] || '';
-    const duration = 1100;
-    const start = performance.now();
-    const tick = (now) => {
-      const t = Math.min((now - start) / duration, 1);
-      const eased = 1 - Math.pow(1 - t, 3);
-      const current = Math.floor(target * eased);
-      el.textContent = prefix + current.toLocaleString() + suffix;
-      if (t < 1) requestAnimationFrame(tick);
-      else el.textContent = original;
-    };
-    requestAnimationFrame(tick);
-  };
-
-  if (!reduced && 'IntersectionObserver' in window) {
-    const numIO = new IntersectionObserver((entries) => {
-      entries.forEach(e => {
-        if (e.isIntersecting && !e.target.dataset.animated) {
-          e.target.dataset.animated = '1';
-          animateNumber(e.target);
-          numIO.unobserve(e.target);
-        }
-      });
-    }, { threshold: 0.6 });
-    document.querySelectorAll('.stat-card .number, .payment-card .number')
-      .forEach(el => numIO.observe(el));
-  }
-})();
-</script>
 </body>
 </html>

@@ -1,633 +1,175 @@
 <!DOCTYPE html>
-<html lang="en" class="scroll-smooth">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <!-- Meta Pixel Code -->
-    <script>
-    !function(f,b,e,v,n,t,s)
-    {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
-    n.callMethod.apply(n,arguments):n.queue.push(arguments)};
-    if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
-    n.queue=[];t=b.createElement(e);t.async=!0;
-    t.src=v;s=b.getElementsByTagName(e)[0];
-    s.parentNode.insertBefore(t,s)}(window, document,'script',
-    'https://connect.facebook.net/en_US/fbevents.js');
-    fbq('init', '2817539605254046');
-    fbq('track', 'PageView');
-    </script>
-    <!-- End Meta Pixel Code -->
-    <title>Elara | The AI Agent Team for Creators · by JPax</title>
-    <meta name="description" content="Elara is the AI agent team for creator-led businesses. Seven core agents handle the business of being a creator — brand deals, posting, community, monetization — so you stay creative. Built by a creator. By JPax.">
-    <meta name="keywords" content="Elara, AI agent team, AI agents for creators, creator economy, creator-led businesses, content creators, podcasters, course creators, JPax, Spark Surge Summit, build in public">
+    <meta name="robots" content="noindex, nofollow, noarchive">
+    <title>JPax | Busy rebuilding</title>
+    <meta name="description" content="Busy rebuilding. Stay tuned">
     <meta property="og:type" content="website">
-    <meta property="og:title" content="Elara | The AI Agent Team for Creators">
-    <meta property="og:description" content="Seven agents. One operating system. Built by a creator who got tired of doing it all alone. By JPax.">
-    <meta property="og:url" content="https://jpaxmedia.com/elara.html">
+    <meta property="og:title" content="JPax | Busy rebuilding">
+    <meta property="og:description" content="Busy rebuilding. Stay tuned">
     <meta property="og:image" content="https://jpaxmedia.com/jpaxmedialogoOFFICIALFINALwhite.png">
-    <link rel="icon" type="image/png" href="jpaxmedialogoOFFICIALFINALwhite.png">
+    <meta property="og:url" content="https://jpaxmedia.com">
+    <link rel="icon" type="image/png" href="/jpaxmedialogoOFFICIALFINALwhite.png">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@400;500;600;700&family=IBM+Plex+Sans:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&family=Syne:wght@700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-
+    <link href="https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@500;700&amp;family=IBM+Plex+Sans:wght@400;500;600&amp;display=swap" rel="stylesheet">
     <style>
         :root {
-            --bg:#06080F;--bg-card:rgba(12,16,28,0.85);--bg-card-solid:#0C101C;
-            --accent:#8B5CF6;--accent-2:#A78BFA;--accent-glow:rgba(139,92,246,0.22);
-            --green:#4ADE80;--green-glow:rgba(74,222,128,0.18);
-            --pink:#EC4899;--amber:#F59E0B;
-            --white:#F1F5F9;--gray-300:#CBD5E1;--gray-400:#94A3B8;--gray-500:#64748B;--gray-700:#334155;
-            --font-display:'Chakra Petch',sans-serif;--font-body:'IBM Plex Sans',sans-serif;--font-mono:'JetBrains Mono',monospace;
-        }
-        *,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
-        html{scroll-behavior:smooth;scroll-padding-top:90px}
-        body{font-family:var(--font-body);background:var(--bg);color:var(--gray-300);overflow-x:hidden;-webkit-font-smoothing:antialiased}
-
-        /* Grid bg in purple */
-        .grid-bg{position:fixed;top:0;left:0;width:100%;height:100%;pointer-events:none;z-index:0;
-            background-image:linear-gradient(rgba(139,92,246,0.035) 1px,transparent 1px),linear-gradient(90deg,rgba(139,92,246,0.035) 1px,transparent 1px);
-            background-size:60px 60px;animation:gridDrift 25s linear infinite}
-        .grid-bg::after{content:'';position:absolute;inset:0;
-            background-image:linear-gradient(rgba(139,92,246,0.06) 1px,transparent 1px),linear-gradient(90deg,rgba(139,92,246,0.06) 1px,transparent 1px);background-size:300px 300px}
-        @keyframes gridDrift{0%{transform:translateY(0)}100%{transform:translateY(60px)}}
-
-        /* Glows */
-        .glow{position:absolute;border-radius:50%;filter:blur(80px);opacity:0.35;pointer-events:none;z-index:0}
-        .glow.purple{background:radial-gradient(circle,var(--accent) 0%,transparent 70%)}
-        .glow.pink{background:radial-gradient(circle,var(--pink) 0%,transparent 70%)}
-
-        /* Nav */
-        .nav{position:fixed;top:0;left:0;width:100%;z-index:1000;padding:1rem 2rem;background:rgba(6,8,15,0.8);backdrop-filter:blur(24px);-webkit-backdrop-filter:blur(24px);border-bottom:1px solid rgba(139,92,246,0.08);transition:all 0.4s cubic-bezier(0.4,0,0.2,1)}
-        .nav.scrolled{padding:0.6rem 2rem;background:rgba(6,8,15,0.95);border-bottom-color:rgba(139,92,246,0.18)}
-        .nav-inner{max-width:1200px;margin:0 auto;display:flex;align-items:center;justify-content:space-between}
-        .nav-logo{display:flex;align-items:center;text-decoration:none;gap:0.6rem;transition:opacity 0.3s}
-        .nav-logo:hover{opacity:0.85}
-        .nav-logo-dot{width:10px;height:10px;border-radius:50%;background:var(--accent);box-shadow:0 0 14px var(--accent-glow);animation:elaraPulse 2.5s ease-in-out infinite}
-        @keyframes elaraPulse{0%,100%{opacity:0.8;box-shadow:0 0 10px rgba(139,92,246,0.4)}50%{opacity:1;box-shadow:0 0 18px rgba(139,92,246,0.7)}}
-        .nav-logo-text{font-family:var(--font-display);font-weight:700;font-size:1.1rem;letter-spacing:0.04em;color:var(--white)}
-        .nav-logo-sub{font-family:var(--font-mono);font-size:0.6rem;letter-spacing:0.18em;text-transform:uppercase;color:var(--accent);opacity:0.8;margin-left:0.4rem}
-        .nav-links{display:flex;align-items:center;gap:0.25rem}
-        .nav-links a{color:var(--gray-400);text-decoration:none;font-size:0.85rem;font-weight:500;padding:0.45rem 0.9rem;border-radius:8px;transition:all 0.25s ease;letter-spacing:0.01em}
-        .nav-links a:hover{color:var(--white);background:rgba(139,92,246,0.06)}
-        .nav-cta{background:var(--accent)!important;color:#fff!important;padding:0.55rem 1.2rem!important;border-radius:8px;font-weight:600!important;font-size:0.82rem!important;transition:all 0.3s!important;letter-spacing:0.02em;border:1px solid var(--accent)!important}
-        .nav-cta:hover{background:var(--accent-2)!important;border-color:var(--accent-2)!important;transform:translateY(-1px);box-shadow:0 4px 18px var(--accent-glow)}
-        .nav-jpax{font-family:var(--font-mono)!important;font-size:0.7rem!important;letter-spacing:0.15em;text-transform:uppercase;color:var(--gray-500)!important;border:1px solid rgba(255,255,255,0.08);padding:0.4rem 0.8rem!important;border-radius:6px}
-        .nav-jpax:hover{color:var(--gray-300)!important;border-color:rgba(255,255,255,0.18)}
-        .nav-mobile-btn{display:none;background:none;border:none;cursor:pointer;padding:0.5rem;width:40px;height:40px;flex-direction:column;align-items:center;justify-content:center;gap:5px}
-        .nav-mobile-btn span{display:block;width:22px;height:2px;background:var(--gray-300);transition:all 0.3s;border-radius:2px}
-        @media(max-width:768px){.nav{padding:0.75rem 1.25rem}.nav-links{display:none}.nav-mobile-btn{display:flex}}
-
-        section{position:relative;z-index:1}
-        .container{max-width:1200px;margin:0 auto;padding:0 2rem}
-        .container-narrow{max-width:920px;margin:0 auto;padding:0 2rem}
-
-        /* Section labels */
-        .section-label{font-family:var(--font-mono);font-size:0.72rem;letter-spacing:0.18em;text-transform:uppercase;color:var(--accent);margin-bottom:0.85rem;display:inline-flex;align-items:center;gap:0.5rem}
-        .section-label::before{content:'';width:18px;height:1px;background:var(--accent);opacity:0.5}
-        .section-title{font-family:var(--font-display);font-weight:700;font-size:clamp(1.85rem,3.5vw,2.75rem);color:var(--white);letter-spacing:-0.015em;line-height:1.15;margin-bottom:1rem}
-        .section-title .g{background:linear-gradient(135deg,var(--accent),var(--pink));-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent}
-        .section-desc{color:var(--gray-400);font-size:1.05rem;line-height:1.7;max-width:680px}
-
-        /* Hero */
-        .hero{padding:9rem 0 5rem;position:relative;overflow:hidden}
-        .hero .glow.purple{top:5%;right:-160px;width:600px;height:600px}
-        .hero .glow.pink{bottom:-100px;left:-100px;width:480px;height:480px;opacity:0.22}
-        .hero-badge{display:inline-flex;align-items:center;gap:0.5rem;padding:0.5rem 1.1rem;border-radius:100px;background:rgba(139,92,246,0.08);border:1px solid rgba(139,92,246,0.28);font-family:var(--font-mono);font-size:0.72rem;color:var(--accent-2);letter-spacing:0.1em;text-transform:uppercase;margin-bottom:1.5rem}
-        .hero-badge .dot{width:6px;height:6px;border-radius:50%;background:var(--accent);animation:elaraPulse 2.5s ease-in-out infinite}
-        .hero h1{font-family:var(--font-display);font-weight:700;font-size:clamp(2.5rem,6vw,4.5rem);line-height:1.04;color:var(--white);letter-spacing:-0.025em;margin-bottom:1.5rem;max-width:920px}
-        .hero h1 .gradient{background:linear-gradient(135deg,var(--accent),var(--pink) 70%,#F472B6);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent}
-        .hero-sub{font-size:1.2rem;color:var(--gray-300);line-height:1.7;max-width:680px;margin-bottom:2.25rem}
-        .hero-actions{display:flex;gap:1rem;flex-wrap:wrap}
-        .btn-p{display:inline-flex;align-items:center;gap:0.55rem;padding:0.95rem 1.75rem;background:var(--accent);color:#fff;font-family:var(--font-display);font-weight:700;text-decoration:none;border-radius:10px;font-size:0.95rem;letter-spacing:0.02em;transition:all 0.3s}
-        .btn-p:hover{background:var(--accent-2);transform:translateY(-2px);box-shadow:0 10px 32px var(--accent-glow)}
-        .btn-s{display:inline-flex;align-items:center;gap:0.55rem;padding:0.95rem 1.75rem;color:var(--white);font-family:var(--font-display);font-weight:600;text-decoration:none;border-radius:10px;font-size:0.95rem;border:1px solid rgba(255,255,255,0.15);transition:all 0.3s}
-        .btn-s:hover{border-color:rgba(139,92,246,0.5);background:rgba(139,92,246,0.04)}
-
-        .hero-strip{margin-top:3.5rem;padding:1.25rem 0;border-top:1px solid rgba(255,255,255,0.06);border-bottom:1px solid rgba(255,255,255,0.06);display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:1rem}
-        .hero-strip-item{font-family:var(--font-mono);font-size:0.78rem;color:var(--gray-500);display:flex;align-items:center;gap:0.5rem}
-        .hero-strip-item i{color:var(--accent)}
-        .hero-strip-item strong{color:var(--white);font-weight:600}
-
-        /* Problem section */
-        .problem{padding:5rem 0;background:linear-gradient(180deg,transparent 0%,rgba(139,92,246,0.025) 50%,transparent 100%)}
-        .problem-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.25rem;margin-top:2.5rem}
-        .problem-stat{padding:1.75rem 1.5rem;background:var(--bg-card);border:1px solid rgba(255,255,255,0.06);border-radius:14px;transition:border-color 0.3s,transform 0.3s}
-        .problem-stat:hover{border-color:rgba(139,92,246,0.3);transform:translateY(-2px)}
-        .problem-stat-num{font-family:var(--font-display);font-weight:700;font-size:3rem;color:var(--accent);letter-spacing:-0.03em;line-height:1;margin-bottom:0.5rem;text-shadow:0 0 24px var(--accent-glow)}
-        .problem-stat-lbl{font-size:0.95rem;color:var(--gray-300);line-height:1.55;font-weight:500}
-        .problem-stat-src{font-family:var(--font-mono);font-size:0.65rem;color:var(--gray-500);letter-spacing:0.08em;margin-top:0.65rem;text-transform:uppercase}
-
-        /* Agents grid — 7 agents */
-        .agents{padding:5rem 0}
-        .agents-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1rem;margin-top:2.5rem}
-        .agent-card{padding:1.5rem 1.25rem;background:var(--bg-card);border:1px solid rgba(139,92,246,0.12);border-radius:14px;transition:border-color 0.3s,transform 0.3s,background 0.3s;position:relative;overflow:hidden}
-        .agent-card::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,transparent,var(--accent),transparent);opacity:0.6}
-        .agent-card:hover{border-color:rgba(139,92,246,0.4);transform:translateY(-3px);background:rgba(139,92,246,0.03)}
-        .agent-num{font-family:var(--font-mono);font-size:0.65rem;color:var(--accent);letter-spacing:0.14em;margin-bottom:0.6rem;opacity:0.7}
-        .agent-icon{width:42px;height:42px;border-radius:10px;background:rgba(139,92,246,0.1);border:1px solid rgba(139,92,246,0.2);display:flex;align-items:center;justify-content:center;color:var(--accent);font-size:1.05rem;margin-bottom:0.85rem}
-        .agent-name{font-family:var(--font-display);font-weight:700;color:var(--white);font-size:1.1rem;margin-bottom:0.45rem}
-        .agent-desc{font-size:0.85rem;color:var(--gray-400);line-height:1.5}
-        @media(max-width:960px){.agents-grid{grid-template-columns:repeat(2,1fr)}}
-
-        /* Modules strip */
-        .modules{margin-top:2.5rem;padding:1.5rem 1.75rem;background:linear-gradient(135deg,rgba(139,92,246,0.04),rgba(236,72,153,0.03));border:1px solid rgba(139,92,246,0.18);border-radius:14px}
-        .modules-label{font-family:var(--font-mono);font-size:0.7rem;letter-spacing:0.16em;text-transform:uppercase;color:var(--accent);margin-bottom:0.75rem}
-        .modules-head{font-family:var(--font-display);font-weight:600;color:var(--white);font-size:1.05rem;margin-bottom:0.75rem}
-        .modules-list{display:flex;flex-wrap:wrap;gap:0.5rem}
-        .modules-pill{padding:0.4rem 0.85rem;background:rgba(139,92,246,0.08);border:1px solid rgba(139,92,246,0.22);border-radius:100px;font-family:var(--font-mono);font-size:0.7rem;color:var(--gray-300);letter-spacing:0.05em}
-
-        /* How it works */
-        .how{padding:5rem 0;background:rgba(255,255,255,0.015)}
-        .how-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.25rem;margin-top:2.5rem}
-        .how-step{padding:2rem 1.75rem;background:var(--bg-card);border:1px solid rgba(255,255,255,0.07);border-radius:14px;position:relative}
-        .how-num{font-family:var(--font-display);font-weight:700;font-size:2.5rem;color:var(--accent);line-height:1;margin-bottom:1rem;letter-spacing:-0.03em;opacity:0.85}
-        .how-title{font-family:var(--font-display);font-weight:700;color:var(--white);font-size:1.25rem;margin-bottom:0.65rem}
-        .how-desc{color:var(--gray-400);font-size:0.95rem;line-height:1.65}
-
-        /* Levels */
-        .levels{padding:5rem 0}
-        .levels-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.25rem;margin-top:2.5rem}
-        .level{padding:2rem 1.75rem;border-radius:14px;border:1px solid rgba(255,255,255,0.08);background:var(--bg-card);transition:transform 0.3s,border-color 0.3s}
-        .level:hover{transform:translateY(-3px)}
-        .level.spark{border-color:rgba(74,222,128,0.25)}
-        .level.spark:hover{border-color:rgba(74,222,128,0.5)}
-        .level.surge{border-color:rgba(139,92,246,0.35);background:linear-gradient(135deg,rgba(139,92,246,0.05),rgba(12,16,28,0.85))}
-        .level.surge:hover{border-color:rgba(139,92,246,0.55)}
-        .level.summit{border-color:rgba(236,72,153,0.3);background:linear-gradient(135deg,rgba(236,72,153,0.04),rgba(12,16,28,0.85))}
-        .level.summit:hover{border-color:rgba(236,72,153,0.5)}
-        .level-tag{font-family:var(--font-mono);font-size:0.7rem;letter-spacing:0.14em;text-transform:uppercase;margin-bottom:0.6rem}
-        .level.spark .level-tag{color:var(--green)}
-        .level.surge .level-tag{color:var(--accent)}
-        .level.summit .level-tag{color:var(--pink)}
-        .level-name{font-family:var(--font-display);font-weight:700;font-size:1.6rem;color:var(--white);margin-bottom:0.25rem;letter-spacing:-0.01em}
-        .level-income{font-family:var(--font-mono);font-size:0.85rem;color:var(--gray-400);margin-bottom:1rem}
-        .level-price{font-family:var(--font-display);font-weight:700;font-size:2rem;color:var(--white);margin-bottom:0.25rem;letter-spacing:-0.02em}
-        .level-price .per{font-size:1rem;color:var(--gray-500);font-weight:400}
-        .level-desc{color:var(--gray-300);font-size:0.95rem;line-height:1.65;margin-top:1rem;padding-top:1rem;border-top:1px solid rgba(255,255,255,0.06)}
-
-        /* Proof / Jupiter callout */
-        .proof{padding:5rem 0}
-        .proof-card{padding:2.5rem 2rem;background:linear-gradient(135deg,rgba(139,92,246,0.04),rgba(74,222,128,0.03));border:1px solid rgba(139,92,246,0.25);border-radius:18px;display:grid;grid-template-columns:1fr auto;gap:2rem;align-items:center}
-        .proof-content h3{font-family:var(--font-display);font-weight:700;color:var(--white);font-size:1.5rem;letter-spacing:-0.01em;margin-bottom:0.65rem}
-        .proof-content p{color:var(--gray-300);font-size:1rem;line-height:1.7;margin-bottom:0.85rem;max-width:660px}
-        .proof-stats{display:flex;gap:1.5rem;flex-wrap:wrap;margin-top:1rem;padding-top:1rem;border-top:1px solid rgba(255,255,255,0.06)}
-        .proof-stat-item{display:flex;flex-direction:column;gap:0.2rem}
-        .proof-stat-val{font-family:var(--font-display);font-weight:700;color:var(--green);font-size:1.5rem;line-height:1}
-        .proof-stat-lbl{font-family:var(--font-mono);font-size:0.65rem;color:var(--gray-500);letter-spacing:0.1em;text-transform:uppercase}
-        @media(max-width:768px){.proof-card{grid-template-columns:1fr}}
-
-        /* Founder */
-        .founder{padding:5rem 0;background:rgba(255,255,255,0.015)}
-        .founder-row{display:grid;grid-template-columns:auto 1fr;gap:2.5rem;align-items:center}
-        .founder-photo{width:200px;height:200px;border-radius:50%;overflow:hidden;border:2px solid rgba(139,92,246,0.3);box-shadow:0 0 32px var(--accent-glow);position:relative}
-        .founder-photo img{width:100%;height:100%;object-fit:cover}
-        .founder-photo::after{content:'';position:absolute;inset:-2px;border-radius:50%;background:linear-gradient(135deg,var(--accent),var(--pink));z-index:-1;opacity:0.5;filter:blur(8px)}
-        .founder-text h3{font-family:var(--font-display);font-weight:700;font-size:1.8rem;color:var(--white);margin-bottom:0.75rem;letter-spacing:-0.01em}
-        .founder-text p{color:var(--gray-300);font-size:1rem;line-height:1.75;margin-bottom:0.9rem}
-        .founder-handles{display:flex;gap:1rem;margin-top:1rem;flex-wrap:wrap}
-        .founder-handle{display:inline-flex;align-items:center;gap:0.5rem;padding:0.5rem 1rem;background:rgba(139,92,246,0.06);border:1px solid rgba(139,92,246,0.2);border-radius:8px;font-family:var(--font-mono);font-size:0.8rem;color:var(--accent-2);text-decoration:none;transition:all 0.3s}
-        .founder-handle:hover{background:rgba(139,92,246,0.12);border-color:rgba(139,92,246,0.4);color:var(--white)}
-        .founder-handle i{font-size:0.95rem}
-        @media(max-width:768px){.founder-row{grid-template-columns:1fr;text-align:center}.founder-photo{margin:0 auto;width:160px;height:160px}.founder-handles{justify-content:center}}
-
-        /* Beta CTA */
-        .beta{padding:5rem 0;position:relative;overflow:hidden}
-        .beta .glow.purple{top:50%;left:50%;transform:translate(-50%,-50%);width:600px;height:600px;opacity:0.25}
-        .beta-card{padding:3rem 2.5rem;background:linear-gradient(135deg,rgba(139,92,246,0.08),rgba(236,72,153,0.05));border:1px solid rgba(139,92,246,0.35);border-radius:20px;text-align:center;position:relative;overflow:hidden}
-        .beta-card::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,transparent,var(--accent),var(--pink),transparent);opacity:0.7}
-        .beta-tag{display:inline-block;font-family:var(--font-mono);font-size:0.7rem;letter-spacing:0.16em;text-transform:uppercase;color:var(--accent-2);padding:0.4rem 1rem;background:rgba(139,92,246,0.1);border:1px solid rgba(139,92,246,0.3);border-radius:100px;margin-bottom:1.25rem}
-        .beta-card h2{font-family:var(--font-display);font-weight:700;font-size:clamp(1.85rem,3.5vw,2.5rem);color:var(--white);letter-spacing:-0.02em;line-height:1.1;margin-bottom:1rem;max-width:640px;margin-left:auto;margin-right:auto}
-        .beta-card p{color:var(--gray-300);font-size:1.05rem;line-height:1.7;margin-bottom:1.75rem;max-width:580px;margin-left:auto;margin-right:auto}
-        .beta-actions{display:flex;gap:0.85rem;justify-content:center;flex-wrap:wrap}
-        .beta-perks{margin-top:2rem;padding-top:1.75rem;border-top:1px solid rgba(255,255,255,0.07);display:flex;justify-content:center;gap:2rem;flex-wrap:wrap}
-        .beta-perk{display:flex;align-items:center;gap:0.5rem;font-family:var(--font-mono);font-size:0.78rem;color:var(--gray-400)}
-        .beta-perk i{color:var(--accent)}
-
-        /* Footer */
-        .site-footer{position:relative;z-index:1;padding:4rem 0 0;background:linear-gradient(180deg,var(--bg) 0%,#040610 100%);border-top:1px solid rgba(139,92,246,0.1)}
-        .site-footer::before{content:'';position:absolute;top:0;left:50%;transform:translateX(-50%);width:40%;height:1px;background:linear-gradient(90deg,transparent,var(--accent),transparent);opacity:0.4}
-        .footer-grid{display:grid;grid-template-columns:1.5fr 1fr 1fr;gap:3rem;padding-bottom:3rem;max-width:1200px;margin:0 auto;padding-left:2rem;padding-right:2rem}
-        .footer-brand p{color:var(--gray-400);font-size:0.9rem;line-height:1.6;margin-bottom:1.5rem;max-width:320px}
-        .footer-brand-logo{display:inline-flex;align-items:center;gap:0.5rem;text-decoration:none;margin-bottom:1rem}
-        .footer-brand-logo .dot{width:10px;height:10px;border-radius:50%;background:var(--accent);box-shadow:0 0 12px var(--accent-glow)}
-        .footer-brand-logo .name{font-family:var(--font-display);font-weight:700;color:var(--white);font-size:1rem;letter-spacing:0.04em}
-        .footer-col h4{font-family:var(--font-display);font-weight:600;font-size:0.85rem;text-transform:uppercase;letter-spacing:0.08em;color:var(--white);margin-bottom:1.25rem}
-        .footer-col ul{list-style:none}
-        .footer-col ul li{margin-bottom:0.65rem}
-        .footer-col ul li a{color:var(--gray-400);text-decoration:none;font-size:0.875rem;transition:color 0.3s;display:inline-block}
-        .footer-col ul li a:hover{color:var(--accent)}
-        .footer-bottom{border-top:1px solid rgba(255,255,255,0.06);padding:1.5rem 2rem;max-width:1200px;margin:0 auto;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:1rem;font-size:0.8rem;color:var(--gray-500)}
-        .footer-by{font-family:var(--font-mono);font-size:0.75rem;letter-spacing:0.05em}
-        .footer-by a{color:var(--accent);text-decoration:none;border-bottom:1px solid rgba(139,92,246,0.25)}
-        .footer-by a:hover{border-bottom-color:var(--accent)}
-        @media(max-width:960px){.footer-grid{grid-template-columns:1fr 1fr;gap:2.5rem}}
-        @media(max-width:640px){.footer-grid{grid-template-columns:1fr;gap:2rem}.footer-bottom{flex-direction:column;text-align:center}}
-
-        /* Mobile menu */
-        .mobile-menu-overlay{position:fixed;inset:0;background:rgba(0,0,0,0.5);opacity:0;pointer-events:none;transition:opacity 0.4s;z-index:998}
-        .mobile-menu-overlay.active{opacity:1;pointer-events:all}
-        .mobile-menu{position:fixed;top:0;right:0;width:100%;max-width:340px;height:100vh;background:rgba(6,8,15,0.98);backdrop-filter:blur(30px);display:flex;flex-direction:column;padding:5.5rem 2rem 2rem;transform:translateX(100%);transition:transform 0.4s cubic-bezier(0.4,0,0.2,1);z-index:999;border-left:1px solid rgba(139,92,246,0.1)}
-        .mobile-menu.active{transform:translateX(0)}
-        .mobile-menu a{color:var(--gray-300);text-decoration:none;font-family:var(--font-display);font-weight:600;font-size:1.05rem;padding:0.85rem 1rem;border-radius:10px;display:block;margin-bottom:0.25rem}
-        .mobile-menu a:hover{background:rgba(139,92,246,0.06);color:var(--white)}
-
-        /* Responsive */
-        @media(max-width:768px){
-            .problem-grid,.how-grid,.levels-grid{grid-template-columns:1fr}
-            .hero-actions{flex-direction:column;align-items:stretch}
-            .hero-actions a{justify-content:center}
+            color-scheme: dark;
+            --dark: #06080F;
+            --green: #4ADE80;
+            --green2: #10B981;
+            --border: #1E2A3D;
+            --text: #E2E8F0;
+            --text-soft: #94A3B8;
+            --white: #F8FAFC;
+            --font-display: "Chakra Petch", system-ui, sans-serif;
+            --font-body: "IBM Plex Sans", system-ui, sans-serif;
         }
 
-        /* Reveal animation */
-        .reveal{opacity:0;transform:translateY(20px);transition:opacity 0.7s ease-out,transform 0.7s ease-out}
-        .reveal.visible{opacity:1;transform:translateY(0)}
+        *,
+        *::before,
+        *::after {
+            box-sizing: border-box;
+        }
+
+        html,
+        body {
+            min-height: 100%;
+        }
+
+        body {
+            margin: 0;
+            min-width: 320px;
+            overflow: hidden;
+            background: var(--dark);
+            color: var(--text);
+            font-family: var(--font-body);
+            -webkit-font-smoothing: antialiased;
+        }
+
+        .rebuild-page {
+            position: relative;
+            min-height: 100svh;
+            display: grid;
+            place-items: center;
+            padding: clamp(28px, 7vw, 72px);
+            isolation: isolate;
+            background:
+                linear-gradient(rgba(6, 8, 15, 0.72), rgba(6, 8, 15, 0.92)),
+                url("/spacebackground.jpg") center / cover no-repeat,
+                var(--dark);
+        }
+
+        .rebuild-page::before,
+        .rebuild-page::after {
+            content: "";
+            position: absolute;
+            inset: -20%;
+            z-index: -1;
+            pointer-events: none;
+            background-repeat: repeat;
+            transform: rotate(-8deg);
+        }
+
+        .rebuild-page::before {
+            opacity: 0.82;
+            background-image:
+                radial-gradient(circle, rgba(248, 250, 252, 0.92) 0 1px, transparent 1.6px),
+                radial-gradient(circle, rgba(74, 222, 128, 0.72) 0 1px, transparent 1.8px);
+            background-size: 86px 86px, 142px 142px;
+            background-position: 0 0, 38px 44px;
+            animation: starDrift 36s linear infinite;
+        }
+
+        .rebuild-page::after {
+            opacity: 0.48;
+            background-image:
+                radial-gradient(circle, rgba(226, 232, 240, 0.92) 0 1px, transparent 1.5px),
+                radial-gradient(circle, rgba(148, 163, 184, 0.5) 0 1px, transparent 1.6px);
+            background-size: 52px 52px, 118px 118px;
+            background-position: 18px 12px, 64px 70px;
+            animation: starDrift 58s linear infinite reverse, twinkle 4.8s ease-in-out infinite;
+        }
+
+        .space-vignette {
+            position: absolute;
+            inset: 0;
+            z-index: -1;
+            pointer-events: none;
+            background:
+                radial-gradient(circle at center, transparent 0 28%, rgba(6, 8, 15, 0.52) 64%, rgba(6, 8, 15, 0.94) 100%),
+                linear-gradient(180deg, rgba(6, 8, 15, 0.18), rgba(6, 8, 15, 0.82));
+        }
+
+        .content {
+            width: min(680px, 100%);
+            text-align: center;
+        }
+
+        .logo {
+            width: min(245px, 68vw);
+            height: auto;
+            margin: 0 auto clamp(34px, 7vw, 54px);
+            filter: drop-shadow(0 0 24px rgba(74, 222, 128, 0.28));
+        }
+
+        h1 {
+            margin: 0;
+            color: var(--white);
+            font-family: var(--font-display);
+            font-size: clamp(2.15rem, 8vw, 5.8rem);
+            font-weight: 700;
+            line-height: 0.98;
+            letter-spacing: 0;
+            text-wrap: balance;
+        }
+
+        .accent-line {
+            width: min(168px, 42vw);
+            height: 2px;
+            margin: clamp(30px, 5vw, 42px) auto 0;
+            background: linear-gradient(90deg, transparent, var(--green), var(--green2), transparent);
+            box-shadow: 0 0 28px rgba(74, 222, 128, 0.42);
+        }
+
+        @keyframes starDrift {
+            from {
+                background-position: 0 0, 38px 44px;
+            }
+            to {
+                background-position: 240px 180px, 278px 224px;
+            }
+        }
+
+        @keyframes twinkle {
+            0%,
+            100% {
+                opacity: 0.34;
+            }
+            50% {
+                opacity: 0.66;
+            }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            .rebuild-page::before,
+            .rebuild-page::after {
+                animation: none;
+            }
+        }
     </style>
 </head>
 <body>
-    <!-- Meta Pixel Code (noscript) -->
-    <noscript><img height="1" width="1" style="display:none"
-    src="https://www.facebook.com/tr?id=2817539605254046&ev=PageView&noscript=1"
-    /></noscript>
-    <!-- End Meta Pixel Code (noscript) -->
-    <div class="grid-bg"></div>
-
-    <!-- Navigation -->
-    <nav class="nav" id="nav">
-        <div class="nav-inner">
-            <a href="elara.html" class="nav-logo">
-                <span class="nav-logo-dot"></span>
-                <span class="nav-logo-text">Elara</span>
-                <span class="nav-logo-sub">by JPax</span>
-            </a>
-            <div class="nav-links">
-                <a href="#agents">The 7 Agents</a>
-                <a href="#how">How It Works</a>
-                <a href="#levels">Levels</a>
-                <a href="quiz.html">Take the Quiz</a>
-                <a href="index.html" class="nav-jpax">← JPax.com</a>
-                <a href="#beta" class="nav-cta">Join the Beta</a>
-            </div>
-            <button class="nav-mobile-btn" id="mobileBtn" aria-label="Menu"><span></span><span></span><span></span></button>
+    <div class="rebuild-page" role="main" aria-label="JPax site rebuilding notice">
+        <div class="space-vignette" aria-hidden="true"></div>
+        <div class="content">
+            <img class="logo" src="/jpaxmedialogoOFFICIALFINAL(whitewithtext).png" alt="JPax">
+            <h1>Busy rebuilding. Stay tuned</h1>
+            <div class="accent-line" aria-hidden="true"></div>
         </div>
-    </nav>
-    <div class="mobile-menu-overlay" id="mobileOverlay"></div>
-    <div class="mobile-menu" id="mobileMenu">
-        <a href="#agents">The 7 Agents</a>
-        <a href="#how">How It Works</a>
-        <a href="#levels">Levels</a>
-        <a href="quiz.html">Take the Quiz</a>
-        <a href="index.html">← JPax.com</a>
-        <a href="#beta" style="background:var(--accent);color:#fff;text-align:center;margin-top:1rem">Join the Beta</a>
     </div>
-
-    <!-- ============ HERO ============ -->
-    <section class="hero">
-        <div class="glow purple"></div>
-        <div class="glow pink"></div>
-        <div class="container reveal">
-            <div class="hero-badge"><span class="dot"></span>Building in Public · Sprint Week 1</div>
-            <h1>Your AI agent team <span class="gradient">for creators.</span></h1>
-            <p class="hero-sub">
-                Brand, content, community, brand deals — your operating system runs everything except the actual creating. You stay on stage. Built by a creator who got tired of doing it all alone.
-            </p>
-            <div class="hero-actions">
-                <a href="quiz.html" class="btn-p">Take the Quiz <i class="fas fa-arrow-right"></i></a>
-                <a href="#levels" class="btn-s">See Pricing</a>
-                <a href="#beta" class="btn-s">Join the Beta</a>
-            </div>
-            <div class="hero-strip">
-                <div class="hero-strip-item"><i class="fas fa-check-circle"></i> Currently deploying on <strong>@heroes_on_screen</strong> & <strong>@thebatsreacts</strong></div>
-                <div class="hero-strip-item"><i class="fas fa-bolt"></i> Built on <strong>Jupiter</strong> · same architecture as <strong>Nova</strong></div>
-                <div class="hero-strip-item"><i class="fas fa-rocket"></i> Beta opening — <strong>5 creator slots</strong></div>
-            </div>
-        </div>
-    </section>
-
-    <!-- ============ THE PROBLEM ============ -->
-    <section class="problem">
-        <div class="container reveal">
-            <div class="section-label">The Problem</div>
-            <h2 class="section-title">The business of being a creator is <span class="g">eating the creating.</span></h2>
-            <p class="section-desc">
-                Tools didn't solve it. Three hundred dollars a month spread across nine platforms, and the bottleneck moved one click downstream. The actual problem is that creator-led businesses need a team they can't afford and don't want to manage.
-            </p>
-            <div class="problem-grid">
-                <div class="problem-stat">
-                    <div class="problem-stat-num">52%</div>
-                    <div class="problem-stat-lbl">of creators report burnout from non-creative work</div>
-                    <div class="problem-stat-src">// creator-economy studies, 2025</div>
-                </div>
-                <div class="problem-stat">
-                    <div class="problem-stat-num">37%</div>
-                    <div class="problem-stat-lbl">have considered quitting because operations got bigger than the craft</div>
-                    <div class="problem-stat-src">// creator-economy studies, 2025</div>
-                </div>
-                <div class="problem-stat">
-                    <div class="problem-stat-num">$300+</div>
-                    <div class="problem-stat-lbl">average monthly spend on tools that don't solve the bottleneck</div>
-                    <div class="problem-stat-src">// industry surveys, 2025</div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- ============ THE 7 AGENTS ============ -->
-    <section class="agents" id="agents">
-        <div class="container reveal">
-            <div class="section-label">The Solution</div>
-            <h2 class="section-title">Seven agents. <span class="g">One operating system.</span></h2>
-            <p class="section-desc">
-                Each agent owns a part of the business creators don't want to do but can't escape. Together, they're the team you couldn't afford — and you don't have to manage them.
-            </p>
-            <div class="agents-grid">
-                <div class="agent-card">
-                    <div class="agent-num">// Agent 01</div>
-                    <div class="agent-icon"><i class="fas fa-lightbulb"></i></div>
-                    <div class="agent-name">Ideation</div>
-                    <div class="agent-desc">Pulls research, trends, and content angles tuned to your niche. Never blank-page again.</div>
-                </div>
-                <div class="agent-card">
-                    <div class="agent-num">// Agent 02</div>
-                    <div class="agent-icon"><i class="fas fa-pen-fancy"></i></div>
-                    <div class="agent-name">Writing</div>
-                    <div class="agent-desc">Drafts in your voice — trained on your existing content, scripts, and captions.</div>
-                </div>
-                <div class="agent-card">
-                    <div class="agent-num">// Agent 03</div>
-                    <div class="agent-icon"><i class="fas fa-image"></i></div>
-                    <div class="agent-name">Production</div>
-                    <div class="agent-desc">Generates thumbnails, episode art, posting copy. Brand-consistent every time.</div>
-                </div>
-                <div class="agent-card">
-                    <div class="agent-num">// Agent 04</div>
-                    <div class="agent-icon"><i class="fas fa-paper-plane"></i></div>
-                    <div class="agent-name">Posting</div>
-                    <div class="agent-desc">Schedules and publishes across platforms. Cross-channel cadence, hands-off.</div>
-                </div>
-                <div class="agent-card">
-                    <div class="agent-num">// Agent 05</div>
-                    <div class="agent-icon"><i class="fas fa-comments"></i></div>
-                    <div class="agent-name">Community</div>
-                    <div class="agent-desc">Drafts replies to DMs and comments for your approval. The inbox stops drowning you.</div>
-                </div>
-                <div class="agent-card">
-                    <div class="agent-num">// Agent 06</div>
-                    <div class="agent-icon"><i class="fas fa-handshake"></i></div>
-                    <div class="agent-name">Monetization</div>
-                    <div class="agent-desc">Manages the brand-deal pipeline. Inbound capture, follow-ups, contracts.</div>
-                </div>
-                <div class="agent-card">
-                    <div class="agent-num">// Agent 07</div>
-                    <div class="agent-icon"><i class="fas fa-chart-line"></i></div>
-                    <div class="agent-name">Growth</div>
-                    <div class="agent-desc">Analytics, A/B reads, and clear recommendations on what to ship next.</div>
-                </div>
-                <div class="agent-card" style="background:linear-gradient(135deg,rgba(139,92,246,0.06),rgba(236,72,153,0.04));border-color:rgba(236,72,153,0.25)">
-                    <div class="agent-num" style="color:var(--pink)">// + Modules</div>
-                    <div class="agent-icon" style="background:rgba(236,72,153,0.1);border-color:rgba(236,72,153,0.25);color:var(--pink)"><i class="fas fa-puzzle-piece"></i></div>
-                    <div class="agent-name">Modular Extensions</div>
-                    <div class="agent-desc">Course / Coaching / Newsletter / Product / Network — mix what fits, skip what doesn't.</div>
-                </div>
-            </div>
-
-            <div class="modules">
-                <div class="modules-label">// the modular extensions</div>
-                <div class="modules-head">Activate what your business actually needs. Skip what it doesn't.</div>
-                <div class="modules-list">
-                    <span class="modules-pill"><i class="fas fa-graduation-cap" style="color:var(--accent);margin-right:0.4rem"></i>Course Module</span>
-                    <span class="modules-pill"><i class="fas fa-user-tie" style="color:var(--accent);margin-right:0.4rem"></i>Coaching Module</span>
-                    <span class="modules-pill"><i class="fas fa-envelope-open-text" style="color:var(--accent);margin-right:0.4rem"></i>Newsletter Module</span>
-                    <span class="modules-pill"><i class="fas fa-box" style="color:var(--accent);margin-right:0.4rem"></i>Product Module</span>
-                    <span class="modules-pill"><i class="fas fa-people-group" style="color:var(--accent);margin-right:0.4rem"></i>Network Module</span>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- ============ HOW IT WORKS ============ -->
-    <section class="how" id="how">
-        <div class="container reveal">
-            <div class="section-label">How It Works</div>
-            <h2 class="section-title">Three steps. <span class="g">Then the system runs.</span></h2>
-            <p class="section-desc">
-                Onboarding is the part where Elara learns you. After that, you stay creative — Elara handles the rest, with you in the approval seat whenever you want to be.
-            </p>
-            <div class="how-grid">
-                <div class="how-step">
-                    <div class="how-num">01</div>
-                    <div class="how-title">Onboard — voice training</div>
-                    <div class="how-desc">Elara reads your existing content, scripts, captions, and brand voice. By the end of week one, the Writing Agent sounds like you on a good day.</div>
-                </div>
-                <div class="how-step">
-                    <div class="how-num">02</div>
-                    <div class="how-title">Approve drafts</div>
-                    <div class="how-desc">For the first few weeks, every output runs past you. You approve, edit, or kill. Elara learns the patterns. The approval load drops fast.</div>
-                </div>
-                <div class="how-step">
-                    <div class="how-num">03</div>
-                    <div class="how-title">System runs</div>
-                    <div class="how-desc">Content publishes. DMs get drafted. Brand deals get tracked. You check in. You make the creative calls. The operating layer disappears underneath.</div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- ============ THE LEVELS ============ -->
-    <section class="levels" id="levels">
-        <div class="container reveal">
-            <div class="section-label">The Levels</div>
-            <h2 class="section-title">Spark. Surge. <span class="g">Summit.</span></h2>
-            <p class="section-desc">
-                Every creator-led business sits in one of three lifecycle stages. The Levels apply across one-time deployments (BUILD) and monthly operations (RISE). Move between them as your business grows.
-            </p>
-            <div class="levels-grid">
-                <div class="level spark">
-                    <div class="level-tag">Spark · Early-Monetizing</div>
-                    <div class="level-name">$1.5K–$5K/mo</div>
-                    <div class="level-income">content income</div>
-                    <div class="level-price">$500<span class="per">/mo</span></div>
-                    <div style="font-family:var(--font-mono);font-size:0.7rem;color:var(--gray-500);letter-spacing:0.06em">+ BUILD from $2,500</div>
-                    <div class="level-desc">Foundation tier. 1–2 agents active, 1 platform. Weekly content batch review, monthly strategy check-in.</div>
-                </div>
-                <div class="level surge">
-                    <div class="level-tag">Surge · Established</div>
-                    <div class="level-name">$5K–$15K/mo</div>
-                    <div class="level-income">content income</div>
-                    <div class="level-price">$2,000<span class="per">/mo</span></div>
-                    <div style="font-family:var(--font-mono);font-size:0.7rem;color:var(--gray-500);letter-spacing:0.06em">+ BUILD from $8,000</div>
-                    <div class="level-desc">Operational scale. 3–5 agents, 2–3 platforms, community workflow drafting, brand-deal pipeline support, twice-monthly strategy.</div>
-                </div>
-                <div class="level summit">
-                    <div class="level-tag">Summit · Scaling</div>
-                    <div class="level-name">$15K+/mo</div>
-                    <div class="level-income">content income</div>
-                    <div class="level-price">$3,500<span class="per">/mo</span></div>
-                    <div style="font-family:var(--font-mono);font-size:0.7rem;color:var(--gray-500);letter-spacing:0.06em">+ Full Stack from $15,000</div>
-                    <div class="level-desc">Autonomous tier. Full agent stack operated by JPax. Cross-platform. End-to-end brand-deal coordination. The team you couldn't afford.</div>
-                </div>
-            </div>
-            <p style="text-align:center;margin-top:1.75rem;color:var(--gray-400);font-size:0.95rem">
-                Not sure where you fit? <a href="quiz.html" style="color:var(--accent);text-decoration:none;border-bottom:1px solid rgba(139,92,246,0.3)">Take the 2-minute quiz →</a>
-            </p>
-        </div>
-    </section>
-
-    <!-- ============ PROOF ============ -->
-    <section class="proof">
-        <div class="container reveal">
-            <div class="section-label">The Proof</div>
-            <h2 class="section-title">Built on a stack that's <span class="g">already in production.</span></h2>
-            <div class="proof-card" style="margin-top:2rem">
-                <div class="proof-content">
-                    <h3>Jupiter. Nova. Same lineage.</h3>
-                    <p>Elara isn't a v1. It's the seventh iteration of an architecture I've been refining inside production work for two years. Jupiter is JPax's own agency platform; Nova is the AI agent embedded inside it. Same Supabase + agent architecture. Same scoped-permissions model. Same RLS security. The pattern works.</p>
-                    <div class="proof-stats">
-                        <div class="proof-stat-item">
-                            <span class="proof-stat-val">2yr</span>
-                            <span class="proof-stat-lbl">in production</span>
-                        </div>
-                        <div class="proof-stat-item">
-                            <span class="proof-stat-val">6+</span>
-                            <span class="proof-stat-lbl">shipped products</span>
-                        </div>
-                        <div class="proof-stat-item">
-                            <span class="proof-stat-val">4</span>
-                            <span class="proof-stat-lbl">content engines live</span>
-                        </div>
-                        <div class="proof-stat-item">
-                            <span class="proof-stat-val">23</span>
-                            <span class="proof-stat-lbl">Nova actions/day avg</span>
-                        </div>
-                    </div>
-                </div>
-                <div>
-                    <a href="jupiter.html" class="btn-s" style="white-space:nowrap"><i class="fas fa-rocket"></i> Explore Jupiter</a>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- ============ FOUNDER ============ -->
-    <section class="founder">
-        <div class="container-narrow reveal">
-            <div class="section-label">The Founder</div>
-            <div class="founder-row" style="margin-top:1.5rem">
-                <div class="founder-photo">
-                    <img src="jpaxcontactphoto.jpg" alt="Julian Johnson — Founder, JPax">
-                </div>
-                <div class="founder-text">
-                    <h3>I'm Julian. I'm a creator who builds AI systems.</h3>
-                    <p>I run JPax out of Upstate South Carolina. I've been a creator for a long time — @thebatsreacts and @heroes_on_screen are mine, entertainment brands I built from zero on TikTok. I know what it actually takes to keep two creator brands running while also operating a business.</p>
-                    <p>The reason I'm building Elara on my own accounts first is simple: <strong style="color:var(--white)">I won't ship a system to creators that I haven't first proven on my own brands.</strong> The creator economy doesn't need another agency selling a system the founder doesn't use.</p>
-                    <div class="founder-handles">
-                        <a href="https://www.tiktok.com/@thebatsreacts" target="_blank" rel="noopener" class="founder-handle">
-                            <i class="fab fa-tiktok"></i> @thebatsreacts
-                        </a>
-                        <a href="https://www.tiktok.com/@heroes_on_screen" target="_blank" rel="noopener" class="founder-handle">
-                            <i class="fab fa-tiktok"></i> @heroes_on_screen
-                        </a>
-                        <a href="blog/pivot-to-creator-os.html" class="founder-handle">
-                            <i class="fas fa-book-open"></i> Read the pivot post
-                        </a>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- ============ BETA CTA ============ -->
-    <section class="beta" id="beta">
-        <div class="glow purple"></div>
-        <div class="container reveal">
-            <div class="beta-card">
-                <div class="beta-tag"><i class="fas fa-sparkles" style="margin-right:0.3rem"></i> Beta · 5 creator slots</div>
-                <h2>Be one of the first five creators on Elara.</h2>
-                <p>I'm taking five beta creators onto Elara during the 90-day sprint. Heavy discount, direct line to me during onboarding, your numbers featured in the public case study if they're good. Spark, Surge, or Summit creators welcome.</p>
-                <div class="beta-actions">
-                    <a href="index.html#contact" class="btn-p">Apply for the Beta <i class="fas fa-arrow-right"></i></a>
-                    <a href="quiz.html" class="btn-s">Take the Quiz First</a>
-                </div>
-                <div class="beta-perks">
-                    <div class="beta-perk"><i class="fas fa-check"></i> Beta pricing</div>
-                    <div class="beta-perk"><i class="fas fa-check"></i> Direct founder access</div>
-                    <div class="beta-perk"><i class="fas fa-check"></i> Featured case study (optional)</div>
-                    <div class="beta-perk"><i class="fas fa-check"></i> Cancel any time</div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- ============ FOOTER ============ -->
-    <footer class="site-footer">
-        <div class="footer-grid">
-            <div class="footer-brand">
-                <a href="elara.html" class="footer-brand-logo">
-                    <span class="dot"></span>
-                    <span class="name">Elara</span>
-                </a>
-                <p>The AI agent team for creator-led businesses. Built by a creator who got tired of doing it all alone. A JPax product.</p>
-            </div>
-            <div class="footer-col">
-                <h4>Elara</h4>
-                <ul>
-                    <li><a href="#agents">The 7 Agents</a></li>
-                    <li><a href="#how">How It Works</a></li>
-                    <li><a href="#levels">The Levels</a></li>
-                    <li><a href="quiz.html">Take the Quiz</a></li>
-                    <li><a href="#beta">Join the Beta</a></li>
-                </ul>
-            </div>
-            <div class="footer-col">
-                <h4>JPax</h4>
-                <ul>
-                    <li><a href="index.html">JPax Home</a></li>
-                    <li><a href="jupiter.html">Jupiter Platform</a></li>
-                    <li><a href="pricing.html">Pricing</a></li>
-                    <li><a href="blog/">Build Log</a></li>
-                    <li><a href="mailto:julian@jpaxmedia.com">julian@jpaxmedia.com</a></li>
-                </ul>
-            </div>
-        </div>
-        <div class="footer-bottom">
-            <span>&copy; 2026 JPax Media LLC. Elara is a product of JPax Media.</span>
-            <span class="footer-by">By <a href="index.html">JPax</a> · Upstate SC · Build. Rise. Scale.</span>
-        </div>
-    </footer>
-
-    <script>
-        // Nav scroll
-        const nav = document.getElementById('nav');
-        window.addEventListener('scroll', () => nav.classList.toggle('scrolled', window.scrollY > 50));
-
-        // Mobile menu
-        const mobileBtn = document.getElementById('mobileBtn');
-        const mobileMenu = document.getElementById('mobileMenu');
-        const mobileOverlay = document.getElementById('mobileOverlay');
-        function closeMobile(){mobileMenu.classList.remove('active');mobileOverlay.classList.remove('active');document.body.style.overflow=''}
-        function openMobile(){mobileMenu.classList.add('active');mobileOverlay.classList.add('active');document.body.style.overflow='hidden'}
-        if(mobileBtn){
-            mobileBtn.addEventListener('click',()=>{mobileMenu.classList.contains('active')?closeMobile():openMobile()});
-            mobileOverlay.addEventListener('click',closeMobile);
-            mobileMenu.querySelectorAll('a').forEach(l=>l.addEventListener('click',closeMobile));
-        }
-
-        // Reveal animation on scroll
-        const observer = new IntersectionObserver((entries)=>{
-            entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('visible');observer.unobserve(e.target)}});
-        },{threshold:0.1,rootMargin:'0px 0px -50px 0px'});
-        document.querySelectorAll('.reveal').forEach(el=>observer.observe(el));
-
-        // ===== CONSOLE SIGNATURE =====
-        (()=>{
-            const head='background:#06080F;color:#A78BFA;font-size:14px;padding:8px 16px;font-family:"JetBrains Mono",monospace;font-weight:700;border:1px solid #8B5CF6;border-radius:4px;letter-spacing:0.05em';
-            const body='color:#CBD5E1;font-family:"JetBrains Mono",monospace;font-size:12px;line-height:1.7';
-            const purple='color:#A78BFA;font-family:"JetBrains Mono",monospace;font-size:12px;font-style:italic';
-            console.log('%c hi from elara. ',head);
-            console.log('%c\nthe ai agent team for creators.\n%c built by julian — a jpax product.',body,purple);
-            console.log('%c\n// want in?',body);
-            console.log('%c → julian@jpaxmedia.com\n → jpaxmedia.com/quiz',body);
-        })();
-    </script>
 </body>
 </html>
