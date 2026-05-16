@@ -1,188 +1,43 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="robots" content="noindex, nofollow, noarchive">
-    <title>JPax | Busy rebuilding</title>
-    <meta name="description" content="Busy rebuilding. Stay tuned">
-    <meta property="og:type" content="website">
-    <meta property="og:title" content="JPax | Busy rebuilding">
-    <meta property="og:description" content="Busy rebuilding. Stay tuned">
-    <meta property="og:image" content="https://jpaxmedia.com/jpaxmedialogoOFFICIALFINALwhite.png">
-    <meta property="og:url" content="https://jpaxmedia.com">
-    <link rel="icon" type="image/png" href="/jpaxmedialogoOFFICIALFINALwhite.png">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@500;700&amp;family=IBM+Plex+Sans:wght@400;500;600&amp;display=swap" rel="stylesheet">
-    <style>
-        :root {
-            color-scheme: dark;
-            --dark: #06080F;
-            --green: #4ADE80;
-            --green2: #10B981;
-            --border: #1E2A3D;
-            --text: #E2E8F0;
-            --text-soft: #94A3B8;
-            --white: #F8FAFC;
-            --font-display: "Chakra Petch", system-ui, sans-serif;
-            --font-body: "IBM Plex Sans", system-ui, sans-serif;
-        }
-
-        *,
-        *::before,
-        *::after {
-            box-sizing: border-box;
-        }
-
-        html,
-        body {
-            min-height: 100%;
-        }
-
-        body {
-            margin: 0;
-            min-width: 320px;
-            overflow: hidden;
-            background: var(--dark);
-            color: var(--text);
-            font-family: var(--font-body);
-            -webkit-font-smoothing: antialiased;
-        }
-
-        .rebuild-page {
-            position: relative;
-            min-height: 100svh;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            padding: clamp(24px, 5vw, 56px);
-            isolation: isolate;
-            background:
-                radial-gradient(circle at 50% 42%, rgba(74, 222, 128, 0.13), transparent 0 28%),
-                radial-gradient(circle at 50% 58%, rgba(16, 185, 129, 0.08), transparent 0 34%),
-                linear-gradient(180deg, rgba(6, 8, 15, 0.94), rgba(6, 8, 15, 0.98)),
-                var(--dark);
-        }
-
-        .rebuild-page::before,
-        .rebuild-page::after {
-            content: "";
-            position: absolute;
-            inset: 0;
-            z-index: -1;
-            pointer-events: none;
-        }
-
-        .rebuild-page::before {
-            opacity: 0.58;
-            background-image:
-                linear-gradient(rgba(74, 222, 128, 0.105) 1px, transparent 1px),
-                linear-gradient(90deg, rgba(74, 222, 128, 0.105) 1px, transparent 1px),
-                linear-gradient(rgba(226, 232, 240, 0.026) 1px, transparent 1px),
-                linear-gradient(90deg, rgba(226, 232, 240, 0.026) 1px, transparent 1px);
-            background-size: 68px 68px, 68px 68px, 272px 272px, 272px 272px;
-            mask-image: radial-gradient(circle at center, rgba(0, 0, 0, 0.95), transparent 74%);
-        }
-
-        .rebuild-page::after {
-            inset: -12%;
-            opacity: 0.38;
-            background-image:
-                radial-gradient(circle, rgba(248, 250, 252, 0.52) 0 1px, transparent 1.5px),
-                radial-gradient(circle, rgba(74, 222, 128, 0.5) 0 1px, transparent 1.7px);
-            background-size: 170px 94px, 260px 148px;
-            background-position: 0 0, 70px 42px;
-            animation: specDrift 28s linear infinite;
-        }
-
-        .space-vignette {
-            position: absolute;
-            inset: 0;
-            z-index: -1;
-            pointer-events: none;
-            background:
-                radial-gradient(circle at center, transparent 0 32%, rgba(6, 8, 15, 0.58) 72%, rgba(6, 8, 15, 0.96) 100%),
-                linear-gradient(180deg, rgba(6, 8, 15, 0.08), rgba(6, 8, 15, 0.72));
-        }
-
-        .content {
-            width: min(760px, 100%);
-            padding-block: 18px;
-            text-align: center;
-        }
-
-        .logo {
-            width: clamp(132px, 18vw, 188px);
-            height: auto;
-            margin: 0 auto clamp(20px, 3.8vw, 30px);
-            filter: drop-shadow(0 0 24px rgba(74, 222, 128, 0.28));
-        }
-
-        h1 {
-            margin: 0;
-            color: var(--white);
-            font-family: var(--font-display);
-            font-size: clamp(2rem, 5.2vw, 4.35rem);
-            font-weight: 700;
-            line-height: 1.04;
-            letter-spacing: 0;
-            max-width: 100%;
-            text-wrap: balance;
-        }
-
-        h1 span {
-            display: block;
-        }
-
-        .accent-line {
-            width: min(146px, 36vw);
-            height: 2px;
-            margin: clamp(22px, 4vw, 34px) auto 0;
-            background: linear-gradient(90deg, transparent, var(--green), var(--green2), transparent);
-            box-shadow: 0 0 28px rgba(74, 222, 128, 0.42);
-        }
-
-        @keyframes specDrift {
-            from {
-                transform: translate3d(-4%, -2%, 0);
-            }
-            to {
-                transform: translate3d(4%, 2%, 0);
-            }
-        }
-
-        @media (max-width: 640px) {
-            .rebuild-page {
-                padding: 26px;
-            }
-
-            .logo {
-                width: clamp(128px, 42vw, 154px);
-                margin-bottom: 22px;
-            }
-
-            h1 {
-                font-size: clamp(1.78rem, 8vw, 2.15rem);
-                line-height: 1.08;
-            }
-        }
-
-        @media (prefers-reduced-motion: reduce) {
-            .rebuild-page::after {
-                animation: none;
-            }
-        }
-    </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pricing | JPAX Media</title>
+  <meta name="description" content="JPAX Media starting points for websites, brand and web foundations, AI creative, workflow sprints, managed websites, and operating partnerships.">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Pricing | JPAX Media">
+  <meta property="og:description" content="Starting points for serious business systems.">
+  <meta property="og:image" content="https://jpaxmedia.com/jpaxmedialogoOFFICIALFINALwhite.png">
+  <meta property="og:url" content="https://jpaxmedia.com/pricing.html">
+  <link rel="canonical" href="https://jpaxmedia.com/pricing.html">
+  <link rel="icon" type="image/png" href="/jpaxmedialogoOFFICIALFINALwhite.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@500;700&family=IBM+Plex+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/assets/css/jpax.css">
 </head>
 <body>
-    <div class="rebuild-page" role="main" aria-label="JPax site rebuilding notice">
-        <div class="space-vignette" aria-hidden="true"></div>
-        <div class="content">
-            <img class="logo" src="/jpaxmedialogoOFFICIALFINAL(whitewithtext).png" alt="JPax">
-            <h1><span>Busy rebuilding.</span><span>Stay tuned</span></h1>
-            <div class="accent-line" aria-hidden="true"></div>
-        </div>
-    </div>
+  <a class="skip-link" href="#main">Skip to content</a>
+  <canvas id="space-field" aria-hidden="true"></canvas>
+  <div class="site-backdrop" aria-hidden="true"></div>
+  <header class="site-header"><div class="nav-shell"><a class="brand" href="/" aria-label="JPAX Media home"><img src="/jpaxmedialogoOFFICIALFINALwhite.png" alt=""><span class="brand-mark"><span class="brand-name">JPAX Media</span><span class="brand-sub">Build. Rise. Scale.</span></span></a><button class="menu-toggle" type="button" aria-label="Open navigation" aria-expanded="false" data-menu-toggle><span></span></button><nav class="site-nav" aria-label="Main navigation" data-site-nav><a href="/work.html">Work</a><a href="/services.html">Services</a><a href="/elara.html">Elara</a><a href="/jupiter.html">Jupiter</a><a class="nav-cta" href="/start.html">Start a Project</a></nav></div></header>
+  <main id="main">
+    <section class="page-hero reveal"><p class="eyebrow">Pricing</p><h1>Starting points for serious business systems.</h1><p class="lead">These are public anchors, not a giant menu. Custom scopes are built around the work, budget, timeline, and operating pressure.</p></section>
+    <section class="section compact"><div class="price-grid">
+      <article class="price-card highlight reveal"><h3>Local Website Foundation</h3><p class="price">Starting at $3,500</p><p>Clear owned website for a local business that needs trust and lead flow.</p></article>
+      <article class="price-card reveal"><h3>Business Website</h3><p class="price">Starting at $5,000</p><p>Stronger web system for service businesses, teams, and operators.</p></article>
+      <article class="price-card reveal"><h3>Brand + Web Foundation</h3><p class="price">Starting at $8,000</p><p>Identity, positioning, and website built as one system.</p></article>
+      <article class="price-card reveal"><h3>AI Creative Starter</h3><p class="price">Starting at $950</p><p>AI photo/video assets and campaign creative direction.</p></article>
+      <article class="price-card reveal"><h3>Workflow Sprint</h3><p class="price">Starting at $5,000</p><p>Focused operating tool, dashboard, intake, or automation build.</p></article>
+      <article class="price-card reveal"><h3>Managed Website</h3><p class="price">Starting at $500<small>/month</small></p><p>Ongoing site updates, management, and reporting cadence.</p></article>
+      <article class="price-card reveal"><h3>Growth Operating Partnership</h3><p class="price">Starting at $2,500<small>/month</small></p><p>Recurring support for content, reporting, creative, and systems.</p></article>
+      <article class="price-card reveal"><h3>Elara Creator System</h3><p class="price">Starting at $2,500 setup</p><p>Creator system for sponsor clarity, content rhythm, and revenue visibility.</p></article>
+    </div></section>
+    <section class="section compact"><div class="pricing-note reveal"><p>You own everything we build for you. BUILD projects are 50% up front and 50% at delivery. Timeline begins upon receipt of deposit.</p></div></section>
+    <section class="section compact"><div class="cta-panel reveal"><div><h2>Need help picking the right entry point?</h2><p>Use the system router or send a project brief.</p></div><div class="cta-row"><a class="button secondary" href="/quiz.html">Find Your System</a><a class="button" href="/start.html">Start a Project</a></div></div></section>
+  </main>
+  <footer class="site-footer"><div class="footer-shell"><div class="footer-brand"><strong>JPAX Media LLC</strong><span>Build. Rise. Scale. Greenville, SC.</span></div><div class="footer-links"><a href="/services.html">Services</a><a href="/work.html">Work</a><a href="/start.html">Start</a></div></div></footer>
+  <script src="/assets/js/main.js" defer></script>
 </body>
 </html>

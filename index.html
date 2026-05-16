@@ -1,188 +1,269 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="robots" content="noindex, nofollow, noarchive">
-    <title>JPax | Busy rebuilding</title>
-    <meta name="description" content="Busy rebuilding. Stay tuned">
-    <meta property="og:type" content="website">
-    <meta property="og:title" content="JPax | Busy rebuilding">
-    <meta property="og:description" content="Busy rebuilding. Stay tuned">
-    <meta property="og:image" content="https://jpaxmedia.com/jpaxmedialogoOFFICIALFINALwhite.png">
-    <meta property="og:url" content="https://jpaxmedia.com">
-    <link rel="icon" type="image/png" href="/jpaxmedialogoOFFICIALFINALwhite.png">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@500;700&amp;family=IBM+Plex+Sans:wght@400;500;600&amp;display=swap" rel="stylesheet">
-    <style>
-        :root {
-            color-scheme: dark;
-            --dark: #06080F;
-            --green: #4ADE80;
-            --green2: #10B981;
-            --border: #1E2A3D;
-            --text: #E2E8F0;
-            --text-soft: #94A3B8;
-            --white: #F8FAFC;
-            --font-display: "Chakra Petch", system-ui, sans-serif;
-            --font-body: "IBM Plex Sans", system-ui, sans-serif;
-        }
-
-        *,
-        *::before,
-        *::after {
-            box-sizing: border-box;
-        }
-
-        html,
-        body {
-            min-height: 100%;
-        }
-
-        body {
-            margin: 0;
-            min-width: 320px;
-            overflow: hidden;
-            background: var(--dark);
-            color: var(--text);
-            font-family: var(--font-body);
-            -webkit-font-smoothing: antialiased;
-        }
-
-        .rebuild-page {
-            position: relative;
-            min-height: 100svh;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            padding: clamp(24px, 5vw, 56px);
-            isolation: isolate;
-            background:
-                radial-gradient(circle at 50% 42%, rgba(74, 222, 128, 0.13), transparent 0 28%),
-                radial-gradient(circle at 50% 58%, rgba(16, 185, 129, 0.08), transparent 0 34%),
-                linear-gradient(180deg, rgba(6, 8, 15, 0.94), rgba(6, 8, 15, 0.98)),
-                var(--dark);
-        }
-
-        .rebuild-page::before,
-        .rebuild-page::after {
-            content: "";
-            position: absolute;
-            inset: 0;
-            z-index: -1;
-            pointer-events: none;
-        }
-
-        .rebuild-page::before {
-            opacity: 0.58;
-            background-image:
-                linear-gradient(rgba(74, 222, 128, 0.105) 1px, transparent 1px),
-                linear-gradient(90deg, rgba(74, 222, 128, 0.105) 1px, transparent 1px),
-                linear-gradient(rgba(226, 232, 240, 0.026) 1px, transparent 1px),
-                linear-gradient(90deg, rgba(226, 232, 240, 0.026) 1px, transparent 1px);
-            background-size: 68px 68px, 68px 68px, 272px 272px, 272px 272px;
-            mask-image: radial-gradient(circle at center, rgba(0, 0, 0, 0.95), transparent 74%);
-        }
-
-        .rebuild-page::after {
-            inset: -12%;
-            opacity: 0.38;
-            background-image:
-                radial-gradient(circle, rgba(248, 250, 252, 0.52) 0 1px, transparent 1.5px),
-                radial-gradient(circle, rgba(74, 222, 128, 0.5) 0 1px, transparent 1.7px);
-            background-size: 170px 94px, 260px 148px;
-            background-position: 0 0, 70px 42px;
-            animation: specDrift 28s linear infinite;
-        }
-
-        .space-vignette {
-            position: absolute;
-            inset: 0;
-            z-index: -1;
-            pointer-events: none;
-            background:
-                radial-gradient(circle at center, transparent 0 32%, rgba(6, 8, 15, 0.58) 72%, rgba(6, 8, 15, 0.96) 100%),
-                linear-gradient(180deg, rgba(6, 8, 15, 0.08), rgba(6, 8, 15, 0.72));
-        }
-
-        .content {
-            width: min(760px, 100%);
-            padding-block: 18px;
-            text-align: center;
-        }
-
-        .logo {
-            width: clamp(132px, 18vw, 188px);
-            height: auto;
-            margin: 0 auto clamp(20px, 3.8vw, 30px);
-            filter: drop-shadow(0 0 24px rgba(74, 222, 128, 0.28));
-        }
-
-        h1 {
-            margin: 0;
-            color: var(--white);
-            font-family: var(--font-display);
-            font-size: clamp(2rem, 5.2vw, 4.35rem);
-            font-weight: 700;
-            line-height: 1.04;
-            letter-spacing: 0;
-            max-width: 100%;
-            text-wrap: balance;
-        }
-
-        h1 span {
-            display: block;
-        }
-
-        .accent-line {
-            width: min(146px, 36vw);
-            height: 2px;
-            margin: clamp(22px, 4vw, 34px) auto 0;
-            background: linear-gradient(90deg, transparent, var(--green), var(--green2), transparent);
-            box-shadow: 0 0 28px rgba(74, 222, 128, 0.42);
-        }
-
-        @keyframes specDrift {
-            from {
-                transform: translate3d(-4%, -2%, 0);
-            }
-            to {
-                transform: translate3d(4%, 2%, 0);
-            }
-        }
-
-        @media (max-width: 640px) {
-            .rebuild-page {
-                padding: 26px;
-            }
-
-            .logo {
-                width: clamp(128px, 42vw, 154px);
-                margin-bottom: 22px;
-            }
-
-            h1 {
-                font-size: clamp(1.78rem, 8vw, 2.15rem);
-                line-height: 1.08;
-            }
-        }
-
-        @media (prefers-reduced-motion: reduce) {
-            .rebuild-page::after {
-                animation: none;
-            }
-        }
-    </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>JPAX Media | AI Systems Studio in Greenville, SC</title>
+  <meta name="description" content="JPAX builds AI-powered websites, content systems, and operating tools for modern businesses and creators. Founder-led in Greenville, SC.">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="JPAX Media | AI Systems Studio in Greenville, SC">
+  <meta property="og:description" content="AI-powered websites, content systems, and operating tools for modern businesses and creators.">
+  <meta property="og:image" content="https://jpaxmedia.com/jpaxmedialogoOFFICIALFINALwhite.png">
+  <meta property="og:url" content="https://jpaxmedia.com/">
+  <link rel="canonical" href="https://jpaxmedia.com/">
+  <link rel="icon" type="image/png" href="/jpaxmedialogoOFFICIALFINALwhite.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@500;700&family=IBM+Plex+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/assets/css/jpax.css">
 </head>
 <body>
-    <div class="rebuild-page" role="main" aria-label="JPax site rebuilding notice">
-        <div class="space-vignette" aria-hidden="true"></div>
-        <div class="content">
-            <img class="logo" src="/jpaxmedialogoOFFICIALFINAL(whitewithtext).png" alt="JPax">
-            <h1><span>Busy rebuilding.</span><span>Stay tuned</span></h1>
-            <div class="accent-line" aria-hidden="true"></div>
-        </div>
+  <a class="skip-link" href="#main">Skip to content</a>
+  <canvas id="space-field" aria-hidden="true"></canvas>
+  <div class="site-backdrop" aria-hidden="true"></div>
+  <header class="site-header">
+    <div class="nav-shell">
+      <a class="brand" href="/" aria-label="JPAX Media home">
+        <img src="/jpaxmedialogoOFFICIALFINALwhite.png" alt="">
+        <span class="brand-mark">
+          <span class="brand-name">JPAX Media</span>
+          <span class="brand-sub">Build. Rise. Scale.</span>
+        </span>
+      </a>
+      <button class="menu-toggle" type="button" aria-label="Open navigation" aria-expanded="false" data-menu-toggle><span></span></button>
+      <nav class="site-nav" aria-label="Main navigation" data-site-nav>
+        <a href="/work.html">Work</a>
+        <a href="/services.html">Services</a>
+        <a href="/elara.html">Elara</a>
+        <a href="/jupiter.html">Jupiter</a>
+        <a class="nav-cta" href="/start.html">Start a Project</a>
+      </nav>
     </div>
+  </header>
+
+  <main id="main">
+    <section class="hero">
+      <div class="hero-copy reveal">
+        <p class="eyebrow">Greenville AI Systems Studio</p>
+        <h1>Build the digital system your business is missing.</h1>
+        <p class="lead">JPAX builds AI-powered websites, content systems, and operating tools for modern businesses and creators. Built fast. Built right. Owned by you.</p>
+        <div class="cta-row">
+          <a class="button" href="/start.html">Start a Project</a>
+          <a class="button secondary" href="/work.html">See the Work</a>
+        </div>
+        <div class="proof-strip" aria-label="JPAX capabilities">
+          <span>Websites</span>
+          <span>Branding</span>
+          <span>AI Content</span>
+          <span>Dashboards</span>
+          <span>Custom Apps</span>
+          <span>Automation</span>
+          <span>Creator Systems</span>
+        </div>
+        <p class="trust-note"><span class="status-dot"></span>Founder-led in Greenville, SC. Built for local businesses and national creators.</p>
+      </div>
+
+      <div class="mission-panel reveal" aria-label="JPAX command center visual">
+        <div class="panel-top">
+          <span>JPAX Command Map</span>
+          <span>Owned Systems Online</span>
+        </div>
+        <div class="orbit-map">
+          <div class="orbit-ring ring-a"></div>
+          <div class="orbit-ring ring-b"></div>
+          <div class="orbit-ring ring-c"></div>
+          <div class="command-core">JPAX<span>System Core</span></div>
+          <div class="node node-a"><strong>Lead Flow</strong><small>Website intake</small></div>
+          <div class="node node-b"><strong>Content Queue</strong><small>Demand rhythm</small></div>
+          <div class="node node-c"><strong>Campaign Assets</strong><small>Creative output</small></div>
+          <div class="node node-d"><strong>Revenue Signals</strong><small>Dashboard view</small></div>
+          <div class="node node-e"><strong>Website Health</strong><small>Managed uptime</small></div>
+          <div class="node node-f"><strong>Client Delivery</strong><small>Jupiter proof</small></div>
+        </div>
+        <div class="telemetry">
+          <div><span>01</span><small>Strategy</small></div>
+          <div><span>02</span><small>Build</small></div>
+          <div><span>03</span><small>Operate</small></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="gap">
+      <div class="section-header reveal">
+        <p class="section-kicker">The Gap</p>
+        <h2>Most businesses do not need more random marketing. They need the system behind it.</h2>
+        <div class="section-rule"></div>
+        <p>A website alone will not fix unclear offers. Social posts alone will not create a sales engine. AI tools alone will not organize your business. JPAX connects the pieces: the brand, the website, the content, the dashboards, and the workflows that keep the business moving.</p>
+      </div>
+      <div class="gap-grid">
+        <article class="gap-card large reveal">
+          <span class="card-num">01</span>
+          <h3>Scattered tools</h3>
+          <p>Forms, inboxes, websites, social accounts, content ideas, client updates, and AI prompts live in different places. The business feels busy without feeling controlled.</p>
+        </article>
+        <div class="lane-list">
+          <article class="gap-card reveal">
+            <span class="card-num">02</span>
+            <h3>No operating rhythm</h3>
+            <p>Without reporting, cadence, ownership, and clear next steps, every launch becomes another one-off push.</p>
+          </article>
+          <article class="gap-card reveal">
+            <span class="card-num">03</span>
+            <h3>Cheap work gets expensive</h3>
+            <p>The lowest-cost website, logo, or content package often leaves the real business problem untouched.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="services">
+      <div class="section-header reveal">
+        <p class="section-kicker">Build. Rise. Scale.</p>
+        <h2>Three lanes. One operating system mindset.</h2>
+        <div class="section-rule"></div>
+      </div>
+      <div class="lane-system">
+        <article class="lane-card feature reveal">
+          <span class="lane-meta">Build The System</span>
+          <h3>Websites, dashboards, apps, and operating tools built to support the business behind the brand.</h3>
+          <p>Start with owned infrastructure: a serious site, a clearer offer, a better intake path, or a custom tool that removes operational drag.</p>
+          <a class="button ghost" href="/services.html#build">View Services</a>
+        </article>
+        <div class="lane-list">
+          <article class="lane-card reveal" id="create-demand">
+            <span class="lane-meta">Create Demand</span>
+            <h3>Content systems, creative assets, and campaigns that give people a reason to pay attention.</h3>
+            <p>AI photo/video ads, social systems, landing pages, content calendars, and campaign assets that support the system.</p>
+          </article>
+          <article class="lane-card reveal" id="run">
+            <span class="lane-meta">Run The System</span>
+            <h3>Ongoing management, reporting, and system improvements so the work keeps producing after launch.</h3>
+            <p>Monthly support for websites, content, dashboards, automations, and operating improvements.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="jupiter-band reveal">
+        <div class="copy-stack">
+          <p class="section-kicker">Built For Ourselves First</p>
+          <h2>JPAX runs on Jupiter.</h2>
+          <p>Jupiter is JPAX's private operating system for projects, deliverables, reports, client visibility, files, billing, and workflow decisions. It is not a product for sale. It is proof that JPAX builds real infrastructure, then uses it in the business.</p>
+          <div class="cta-row">
+            <a class="button secondary" href="/jupiter.html">See Jupiter as proof</a>
+          </div>
+        </div>
+        <div class="jupiter-system" aria-label="Jupiter proof points">
+          <div class="system-row"><span>Portal</span><strong>Client visibility</strong><small>Scoped</small></div>
+          <div class="system-row"><span>Nova</span><strong>Human-approved AI</strong><small>Governed</small></div>
+          <div class="system-row"><span>Files</span><strong>Delivery memory</strong><small>Organized</small></div>
+          <div class="system-row"><span>Reports</span><strong>Operating rhythm</strong><small>Visible</small></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="elara-band reveal">
+        <div class="copy-stack">
+          <p class="section-kicker elara-accent">For Creators</p>
+          <h2>Elara is the creator layer of JPAX.</h2>
+          <p>Creators do not need another content calendar. They need a system for sponsor ideas, posting rhythm, brand-deal visibility, website ownership, and revenue tracking. Elara brings that into one operating layer under JPAX.</p>
+          <div class="cta-row">
+            <a class="button secondary" href="/elara.html">Explore Elara</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="starting-points">
+      <div class="section-header reveal">
+        <p class="section-kicker">Starting Points</p>
+        <h2>Clear entry points. Custom scopes when the work gets bigger.</h2>
+        <div class="section-rule"></div>
+      </div>
+      <div class="price-grid">
+        <article class="price-card highlight reveal"><h3>Local Website Foundation</h3><p class="price">Starting at $3,500</p><p>Owned local site, clear offer, and stronger trust signals.</p></article>
+        <article class="price-card reveal"><h3>Business Website</h3><p class="price">Starting at $5,000</p><p>A stronger web presence for serious service businesses and modern teams.</p></article>
+        <article class="price-card reveal"><h3>Brand + Web Foundation</h3><p class="price">Starting at $8,000</p><p>Positioning, identity, and web system built together.</p></article>
+        <article class="price-card reveal"><h3>AI Creative Starter</h3><p class="price">Starting at $950</p><p>AI photo/video assets and campaign creative direction.</p></article>
+        <article class="price-card reveal"><h3>Workflow Sprint</h3><p class="price">Starting at $5,000</p><p>Focused dashboards, automations, or internal tools.</p></article>
+        <article class="price-card reveal"><h3>Managed Website</h3><p class="price">Starting at $500<small>/month</small></p><p>Ongoing site support, updates, and reporting cadence.</p></article>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="section-header reveal">
+        <p class="section-kicker">Proof</p>
+        <h2>Real systems. Real clients. Real ownership.</h2>
+        <div class="section-rule"></div>
+      </div>
+      <div class="proof-grid">
+        <article class="proof-card reveal">
+          <img src="/photos/sp.png" alt="Southern Pavers brand and web work">
+          <div class="proof-card-body">
+            <h3>Southern Pavers</h3>
+            <p>Brand, web, and campaign assets for a regional service business.</p>
+            <div class="tag-row"><span>Brand</span><span>Web</span><span>Local Trust</span></div>
+          </div>
+        </article>
+        <article class="proof-card reveal">
+          <img src="/photos/havenhub2.png" alt="Haven Hospitality website system preview">
+          <div class="proof-card-body">
+            <h3>Haven Hospitality</h3>
+            <p>Hospitality web direction and digital presence work.</p>
+            <div class="tag-row"><span>Website</span><span>Hospitality</span></div>
+          </div>
+        </article>
+        <article class="proof-card reveal">
+          <img src="/photos/27birds.png" alt="27 Birds digital work preview">
+          <div class="proof-card-body">
+            <h3>27 Birds</h3>
+            <p>Ongoing creative and digital support for a legacy client relationship.</p>
+            <div class="tag-row"><span>Creative</span><span>Support</span></div>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="section-header reveal">
+        <p class="section-kicker">How It Works</p>
+        <h2>Simple process. No mystery.</h2>
+        <div class="section-rule"></div>
+      </div>
+      <div class="steps-grid">
+        <article class="step-card reveal"><span class="card-num">01</span><h3>Scope the system</h3><p>We define what the business needs, what is broken, what should be owned, and what can wait.</p></article>
+        <article class="step-card reveal"><span class="card-num">02</span><h3>Build and configure</h3><p>JPAX designs, builds, connects, and documents the site, tool, workflow, or content system.</p></article>
+        <article class="step-card reveal"><span class="card-num">03</span><h3>Launch and improve</h3><p>You own the finished work. If the system needs ongoing rhythm, it moves into RISE.</p></article>
+      </div>
+    </section>
+
+    <section class="section compact">
+      <div class="cta-panel reveal">
+        <div>
+          <h2>Ready to build the system behind the business?</h2>
+          <p>Tell JPAX what you are building, what is not working, and what needs to happen next.</p>
+        </div>
+        <a class="button" href="/start.html">Start a Project</a>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer-shell">
+      <div class="footer-brand">
+        <strong>JPAX Media LLC</strong>
+        <span>Build. Rise. Scale. Greenville, SC.</span>
+      </div>
+      <div class="footer-links">
+        <a href="/services.html">Services</a>
+        <a href="/work.html">Work</a>
+        <a href="/pricing.html">Pricing</a>
+        <a href="/start.html">Start</a>
+      </div>
+    </div>
+  </footer>
+  <script src="/assets/js/main.js" defer></script>
 </body>
 </html>
