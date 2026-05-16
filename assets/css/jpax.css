@@ -196,6 +196,11 @@ section { padding: 96px 0; position: relative; z-index: 1; }
   transition: color .15s ease;
 }
 .nav-links a:hover, .nav-links a[aria-current="page"] { color: var(--green); }
+.nav-links a.btn-primary,
+.nav-links a.btn-primary:hover,
+.nav-links a.btn-primary[aria-current="page"] {
+  color: var(--dark);
+}
 .nav-cta { margin-left: 8px; }
 
 .nav-toggle {
@@ -219,9 +224,22 @@ section { padding: 96px 0; position: relative; z-index: 1; }
     gap: 4px;
   }
   .nav-links.open { display: flex; }
-  .nav-links li { padding: 8px 0; }
+  .nav-links li { padding: 6px 0; }
+  .nav-links a {
+    display: block;
+    padding: 12px 8px;
+    min-height: 44px;
+    font-size: 15px;
+  }
   .nav-toggle { display: inline-flex; }
-  .nav-cta { display: none; }
+  .nav-cta {
+    display: block;
+    margin: 8px 0 4px;
+    text-align: center;
+  }
+  .nav-links a.btn-primary {
+    padding: 14px 22px;
+  }
 }
 
 /* Hero */
