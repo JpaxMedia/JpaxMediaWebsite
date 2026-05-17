@@ -514,11 +514,18 @@ body.cursor-target .cursor-reticle { width: 64px; height: 64px; }
   margin: 0 auto;
 }
 
-.section.module {
-  padding: 100px 0 60px;
+.section { padding: 72px 0 48px; }
+.section.module { padding: 100px 0 60px; }
+.section.compact { padding: 64px 0; }
+
+@media (max-width: 900px) {
+  .section { padding: 56px 0 36px; }
+  .section.compact { padding: 44px 0; }
 }
 
-.section.compact { padding: 64px 0; }
+@media (max-width: 720px) {
+  .section { padding: 48px 0 28px; }
+}
 
 /* ==== HERO ==== */
 .hero {
@@ -3555,14 +3562,39 @@ a.proof-card { color: inherit; }
 }
 
 @media (max-width: 720px) {
-  .founder-panel { min-height: 460px; }
-  .founder-portrait { max-height: 460px; }
+  /* Stack the founder panel cleanly: health card on top, portrait below */
+  .founder-panel {
+    display: grid;
+    grid-template-rows: auto auto;
+    place-items: center;
+    min-height: auto;
+    gap: 18px;
+    padding-top: 4px;
+  }
+  .founder-portrait {
+    order: 2;
+    max-height: 520px;
+    max-width: 320px;
+    width: auto;
+  }
   .founder-annotation { display: none; }
   .founder-health {
-    right: 50%;
-    top: 6px;
-    transform: translateX(50%);
-    width: 88%;
+    order: 1;
+    position: static;
+    right: auto;
+    top: auto;
+    transform: none;
+    width: 100%;
+    max-width: 360px;
+  }
+  /* Recenter the orbit ring + glow around the portrait area only */
+  .founder-glow {
+    inset: auto 4% 0 4%;
+    height: 520px;
+  }
+  .founder-orbit {
+    inset: auto 2% 0 2%;
+    height: 520px;
   }
   .hero-stats { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 10px; }
   .hero-stats strong { font-size: 1.25rem; }
@@ -3847,13 +3879,20 @@ a.proof-card { color: inherit; }
   font-style: italic;
 }
 .principle h3 {
+  grid-column: 2;
   margin: 0 0 8px;
   color: var(--white);
   font-family: var(--font-display);
   font-size: 1.1rem;
   letter-spacing: 0.02em;
 }
-.principle p { margin: 0; color: var(--text-soft); font-size: 0.92rem; line-height: 1.6; }
+.principle p {
+  grid-column: 2;
+  margin: 0;
+  color: var(--text-soft);
+  font-size: 0.92rem;
+  line-height: 1.6;
+}
 
 /* Stack grid */
 .stack-grid {
