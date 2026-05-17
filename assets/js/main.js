@@ -4,7 +4,7 @@
   const body = document.body;
 
   /* ====================================================================
-     Starfield + flight path canvas
+     Starfield + slow flight path + horizon glow
      ==================================================================== */
   const canvas = document.querySelector("#space-field");
   const pointer = { x: 0, y: 0, active: false };
@@ -13,9 +13,9 @@
     const ctx = canvas.getContext("2d");
     const stars = [];
     const layers = [
-      { count: 0.45, speedY: 0.04, speedX: 0.01, size: [0.4, 0.9],  green: 0.18 },
-      { count: 0.35, speedY: 0.14, speedX: 0.02, size: [0.7, 1.4],  green: 0.22 },
-      { count: 0.20, speedY: 0.32, speedX: 0.03, size: [1.0, 2.0],  green: 0.32 },
+      { count: 0.50, speedY: 0.03, size: [0.4, 0.9], green: 0.12 },
+      { count: 0.35, speedY: 0.11, size: [0.7, 1.3], green: 0.16 },
+      { count: 0.15, speedY: 0.26, size: [1.0, 1.8], green: 0.22 },
     ];
     let width = 0;
     let height = 0;
@@ -33,8 +33,8 @@
       ctx.setTransform(pixelRatio, 0, 0, pixelRatio, 0, 0);
 
       const baseCount = prefersReducedMotion
-        ? 110
-        : Math.min(360, Math.floor((width * height) / 4400));
+        ? 100
+        : Math.min(300, Math.floor((width * height) / 5200));
       stars.length = 0;
 
       layers.forEach((layer) => {
@@ -44,10 +44,9 @@
             x: Math.random() * width,
             y: Math.random() * height,
             z: layer.speedY,
-            zx: layer.speedX,
             r: layer.size[0] + Math.random() * (layer.size[1] - layer.size[0]),
-            vx: -0.04 + Math.random() * 0.08,
-            vy: 0.6 + Math.random() * 0.6,
+            vx: -0.03 + Math.random() * 0.06,
+            vy: 0.5 + Math.random() * 0.5,
             tw: Math.random() * Math.PI * 2,
             g: Math.random() < layer.green,
           });
@@ -60,22 +59,11 @@
       ctx.save();
       const glow = ctx.createLinearGradient(0, horizonY - height * 0.26, 0, height);
       glow.addColorStop(0, "rgba(56, 189, 248, 0)");
-      glow.addColorStop(0.46, "rgba(56, 189, 248, 0.12)");
-      glow.addColorStop(0.72, "rgba(74, 222, 128, 0.1)");
-      glow.addColorStop(1, "rgba(4, 6, 11, 0.92)");
+      glow.addColorStop(0.46, "rgba(56, 189, 248, 0.09)");
+      glow.addColorStop(0.72, "rgba(74, 222, 128, 0.08)");
+      glow.addColorStop(1, "rgba(4, 6, 11, 0.6)");
       ctx.fillStyle = glow;
       ctx.fillRect(0, horizonY - height * 0.32, width, height * 0.36);
-
-      ctx.strokeStyle = "rgba(56, 189, 248, 0.32)";
-      ctx.lineWidth = 1;
-      ctx.beginPath();
-      ctx.ellipse(width * 0.5 + px * 0.55, horizonY, width * 0.6, height * 0.16, 0, Math.PI, Math.PI * 2);
-      ctx.stroke();
-
-      ctx.strokeStyle = "rgba(74, 222, 128, 0.16)";
-      ctx.beginPath();
-      ctx.ellipse(width * 0.5 + px * 0.42, horizonY + 18, width * 0.75, height * 0.2, 0, Math.PI, Math.PI * 2);
-      ctx.stroke();
       ctx.restore();
     }
 
@@ -86,102 +74,63 @@
       const apexY = height * 0.18 + py * 0.9;
       const exitX = width * 0.98 + px * 0.4;
       const exitY = height * 0.12 + py * 0.3;
-      const pulse = prefersReducedMotion ? 0.4 : (Math.sin(tick * 0.022) + 1) / 2;
 
       ctx.save();
       ctx.lineWidth = 1;
-      ctx.strokeStyle = `rgba(74, 222, 128, ${0.14 + pulse * 0.18})`;
+      ctx.strokeStyle = "rgba(74, 222, 128, 0.18)";
       ctx.beginPath();
       ctx.moveTo(launchX, launchY);
       ctx.quadraticCurveTo(apexX, apexY, exitX, exitY);
       ctx.stroke();
 
-      ctx.strokeStyle = "rgba(248, 250, 252, 0.28)";
-      ctx.setLineDash([6, 12]);
-      ctx.beginPath();
-      ctx.moveTo(width * 0.12 + px, height * 0.78 + py * 0.2);
-      ctx.quadraticCurveTo(width * 0.6 + px * 1.4, height * 0.32 + py, width * 0.94, height * 0.22);
-      ctx.stroke();
-      ctx.setLineDash([]);
-
-      const t = prefersReducedMotion ? 0.55 : (tick % 480) / 480;
+      const t = prefersReducedMotion ? 0.55 : (tick % 600) / 600;
       const om = 1 - t;
       const mx = om * om * launchX + 2 * om * t * apexX + t * t * exitX;
       const my = om * om * launchY + 2 * om * t * apexY + t * t * exitY;
-      ctx.fillStyle = "rgba(248, 250, 252, 0.96)";
-      ctx.shadowColor = "rgba(74, 222, 128, 0.92)";
-      ctx.shadowBlur = 22;
+      ctx.fillStyle = "rgba(248, 250, 252, 0.95)";
+      ctx.shadowColor = "rgba(74, 222, 128, 0.85)";
+      ctx.shadowBlur = 18;
       ctx.beginPath();
-      ctx.arc(mx, my, 2.6, 0, Math.PI * 2);
+      ctx.arc(mx, my, 2.2, 0, Math.PI * 2);
       ctx.fill();
-
-      ctx.shadowBlur = 0;
-      ctx.strokeStyle = "rgba(74, 222, 128, 0.5)";
-      ctx.lineWidth = 1;
-      ctx.beginPath();
-      ctx.moveTo(mx, my);
-      const trailT = Math.max(0, t - 0.06);
-      const om2 = 1 - trailT;
-      const tx = om2 * om2 * launchX + 2 * om2 * trailT * apexX + trailT * trailT * exitX;
-      const ty = om2 * om2 * launchY + 2 * om2 * trailT * apexY + trailT * trailT * exitY;
-      ctx.lineTo(tx, ty);
-      ctx.stroke();
       ctx.restore();
     }
 
     function draw() {
       ctx.clearRect(0, 0, width, height);
 
-      // Semi-transparent fill so the body::before color glow bleeds through.
       const grd = ctx.createLinearGradient(0, 0, 0, height);
-      grd.addColorStop(0, "rgba(2, 4, 10, 0.55)");
-      grd.addColorStop(0.45, "rgba(5, 8, 15, 0.42)");
-      grd.addColorStop(1, "rgba(1, 3, 7, 0.55)");
+      grd.addColorStop(0, "rgba(2, 4, 10, 0.5)");
+      grd.addColorStop(0.45, "rgba(5, 8, 15, 0.36)");
+      grd.addColorStop(1, "rgba(1, 3, 7, 0.5)");
       ctx.fillStyle = grd;
       ctx.fillRect(0, 0, width, height);
 
-      const px = pointer.active ? (pointer.x - width / 2) * 0.018 : 0;
-      const py = pointer.active ? (pointer.y - height / 2) * 0.018 : 0;
+      const px = pointer.active ? (pointer.x - width / 2) * 0.012 : 0;
+      const py = pointer.active ? (pointer.y - height / 2) * 0.012 : 0;
 
       for (const star of stars) {
         if (!prefersReducedMotion) {
-          star.x += star.vx * (star.z * 4) + px * 0.0035 * (star.z * 12);
-          star.y += star.vy * star.z + py * 0.0035 * (star.z * 12);
-          star.tw += 0.03 + star.z * 0.05;
+          star.x += star.vx * (star.z * 4) + px * 0.002 * (star.z * 10);
+          star.y += star.vy * star.z + py * 0.002 * (star.z * 10);
+          star.tw += 0.024 + star.z * 0.04;
 
           if (star.y > height + 8) star.y = -8;
           if (star.x < -8) star.x = width + 8;
           if (star.x > width + 8) star.x = -8;
         }
 
-        const tw = 0.7 + 0.3 * Math.sin(star.tw);
+        const tw = 0.72 + 0.28 * Math.sin(star.tw);
         ctx.beginPath();
         ctx.fillStyle = star.g
-          ? `rgba(74, 222, 128, ${0.65 * tw})`
-          : `rgba(248, 250, 252, ${0.78 * tw})`;
+          ? `rgba(74, 222, 128, ${0.55 * tw})`
+          : `rgba(248, 250, 252, ${0.7 * tw})`;
         ctx.arc(star.x, star.y, star.r, 0, Math.PI * 2);
         ctx.fill();
-
-        if (!prefersReducedMotion && star.z > 0.2 && star.r > 1.4) {
-          ctx.beginPath();
-          ctx.strokeStyle = star.g
-            ? "rgba(74, 222, 128, 0.22)"
-            : "rgba(226, 232, 240, 0.16)";
-          ctx.lineWidth = 1;
-          ctx.moveTo(star.x, star.y);
-          ctx.lineTo(star.x - star.vx * 26, star.y - star.vy * 38 * star.z * 6);
-          ctx.stroke();
-        }
       }
 
       drawFlightPath(px, py);
       drawHorizon(px, py);
-
-      ctx.beginPath();
-      ctx.strokeStyle = "rgba(74, 222, 128, 0.22)";
-      ctx.lineWidth = 1;
-      ctx.ellipse(width * 0.5 + px, height * 0.5 + py, width * 0.34, height * 0.1, -0.18, 0, Math.PI * 2);
-      ctx.stroke();
 
       if (!prefersReducedMotion) {
         tick += 1;
@@ -194,89 +143,15 @@
       pointer.x = event.clientX;
       pointer.y = event.clientY;
       pointer.active = true;
-      const xRatio = (event.clientX / Math.max(width, 1)) - 0.5;
-      const yRatio = (event.clientY / Math.max(height, 1)) - 0.5;
-      root.style.setProperty("--field-x", `${(xRatio * 22).toFixed(2)}px`);
-      root.style.setProperty("--field-y", `${(yRatio * 22).toFixed(2)}px`);
-      root.style.setProperty("--tilt-x", `${(xRatio * 4).toFixed(2)}deg`);
-      root.style.setProperty("--tilt-y", `${(yRatio * -3).toFixed(2)}deg`);
     }, { passive: true });
-    window.addEventListener("pointerleave", () => {
-      pointer.active = false;
-      root.style.setProperty("--field-x", "0px");
-      root.style.setProperty("--field-y", "0px");
-      root.style.setProperty("--tilt-x", "0deg");
-      root.style.setProperty("--tilt-y", "0deg");
-    }, { passive: true });
+    window.addEventListener("pointerleave", () => { pointer.active = false; }, { passive: true });
 
     resize();
     draw();
   }
 
   /* ====================================================================
-     Cursor reticle
-     ==================================================================== */
-  const reticle = document.querySelector("[data-cursor]");
-  if (reticle && !window.matchMedia("(pointer: coarse)").matches) {
-    let rx = window.innerWidth / 2;
-    let ry = window.innerHeight / 2;
-    let tx = rx;
-    let ty = ry;
-
-    window.addEventListener("pointermove", (event) => {
-      tx = event.clientX;
-      ty = event.clientY;
-      body.classList.add("cursor-on");
-    }, { passive: true });
-
-    window.addEventListener("pointerleave", () => {
-      body.classList.remove("cursor-on");
-    }, { passive: true });
-
-    const targetSelector = "a, button, [data-magnetic], [data-tilt], .profile-card, .hud-card, .fleet-card, .log-card, .lane-card, .seq-stage";
-    document.addEventListener("pointerover", (event) => {
-      if (event.target.closest(targetSelector)) {
-        body.classList.add("cursor-target");
-      }
-    });
-    document.addEventListener("pointerout", (event) => {
-      if (event.target.closest(targetSelector)) {
-        body.classList.remove("cursor-target");
-      }
-    });
-
-    const animateReticle = () => {
-      rx += (tx - rx) * 0.22;
-      ry += (ty - ry) * 0.22;
-      root.style.setProperty("--cursor-x", `${rx}px`);
-      root.style.setProperty("--cursor-y", `${ry}px`);
-      requestAnimationFrame(animateReticle);
-    };
-    animateReticle();
-  }
-
-  /* ====================================================================
-     Mission clock — counts up from JPAX founding (Jan 1, 2024)
-     ==================================================================== */
-  const clockEl = document.querySelector("[data-mission-clock]");
-  if (clockEl) {
-    const epoch = new Date("2024-01-01T00:00:00Z").getTime();
-    const tickClock = () => {
-      const diff = Math.max(0, Date.now() - epoch);
-      const totalSec = Math.floor(diff / 1000);
-      const days = Math.floor(totalSec / 86400);
-      const hours = Math.floor((totalSec % 86400) / 3600);
-      const mins = Math.floor((totalSec % 3600) / 60);
-      const secs = totalSec % 60;
-      const pad = (n, l = 2) => String(n).padStart(l, "0");
-      clockEl.textContent = `T+ ${pad(days, 3)}:${pad(hours)}:${pad(mins)}:${pad(secs)}`;
-    };
-    tickClock();
-    setInterval(tickClock, 1000);
-  }
-
-  /* ====================================================================
-     Magnetic CTA hover
+     Magnetic CTA hover (gentle)
      ==================================================================== */
   if (!prefersReducedMotion) {
     document.querySelectorAll("[data-magnetic]").forEach((el) => {
@@ -285,38 +160,14 @@
         if (raf) return;
         raf = requestAnimationFrame(() => {
           const rect = el.getBoundingClientRect();
-          const dx = ((event.clientX - rect.left) / rect.width - 0.5) * 16;
-          const dy = ((event.clientY - rect.top) / rect.height - 0.5) * 10;
+          const dx = ((event.clientX - rect.left) / rect.width - 0.5) * 6;
+          const dy = ((event.clientY - rect.top) / rect.height - 0.5) * 4;
           el.style.transform = `translate(${dx}px, ${dy}px)`;
           raf = 0;
         });
       });
       el.addEventListener("pointerleave", () => {
         el.style.transform = "";
-      });
-    });
-  }
-
-  /* ====================================================================
-     Card tilt on hover (light, performant)
-     ==================================================================== */
-  if (!prefersReducedMotion) {
-    document.querySelectorAll("[data-tilt]").forEach((el) => {
-      let raf = 0;
-      el.addEventListener("pointermove", (event) => {
-        if (raf) return;
-        raf = requestAnimationFrame(() => {
-          const rect = el.getBoundingClientRect();
-          const cx = (event.clientX - rect.left) / rect.width - 0.5;
-          const cy = (event.clientY - rect.top) / rect.height - 0.5;
-          el.style.setProperty("--tilt-x", `${(cx * 6).toFixed(2)}deg`);
-          el.style.setProperty("--tilt-y", `${(-cy * 6).toFixed(2)}deg`);
-          raf = 0;
-        });
-      });
-      el.addEventListener("pointerleave", () => {
-        el.style.removeProperty("--tilt-x");
-        el.style.removeProperty("--tilt-y");
       });
     });
   }
@@ -360,21 +211,20 @@
   const revealItems = document.querySelectorAll(".reveal");
   if (revealItems.length && "IntersectionObserver" in window && !prefersReducedMotion) {
     const observer = new IntersectionObserver((entries) => {
-      entries.forEach((entry, idx) => {
+      entries.forEach((entry) => {
         if (entry.isIntersecting) {
-          const delay = Math.min(220, idx * 50);
-          setTimeout(() => entry.target.classList.add("is-visible"), delay);
+          entry.target.classList.add("is-visible");
           observer.unobserve(entry.target);
         }
       });
-    }, { threshold: 0.14 });
+    }, { threshold: 0.12 });
     revealItems.forEach((item) => observer.observe(item));
   } else {
     revealItems.forEach((item) => item.classList.add("is-visible"));
   }
 
   /* ====================================================================
-     Animated counters
+     Telemetry counters on the home hero
      ==================================================================== */
   const counters = document.querySelectorAll("[data-counter]");
   if (counters.length && "IntersectionObserver" in window) {
@@ -384,7 +234,7 @@
       const out = el.querySelector("[data-counter-out]");
       if (!out) return;
       const isFloat = !Number.isInteger(target);
-      const dur = 1400;
+      const dur = 1200;
       const start = performance.now();
       const tickFn = (now) => {
         const t = Math.min(1, (now - start) / dur);
@@ -413,34 +263,7 @@
   }
 
   /* ====================================================================
-     Typewriter h1
-     ==================================================================== */
-  const tw = document.querySelector("[data-typewriter]");
-  if (tw && !prefersReducedMotion) {
-    const text = tw.textContent.trim();
-    while (tw.firstChild) tw.removeChild(tw.firstChild);
-    const out = document.createElement("span");
-    out.className = "tw-out";
-    const cursor = document.createElement("span");
-    cursor.className = "cursor";
-    tw.appendChild(out);
-    tw.appendChild(cursor);
-    let i = 0;
-    const interval = 28;
-    const run = () => {
-      if (i <= text.length) {
-        out.textContent = text.slice(0, i);
-        i += 1;
-        setTimeout(run, interval + (Math.random() * 24));
-      } else {
-        setTimeout(() => { cursor.style.display = "none"; }, 1200);
-      }
-    };
-    setTimeout(run, 380);
-  }
-
-  /* ====================================================================
-     Quiz (kept from prior implementation)
+     Quiz
      ==================================================================== */
   const quiz = document.querySelector("[data-quiz]");
   if (quiz) {

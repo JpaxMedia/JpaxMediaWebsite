@@ -23,40 +23,13 @@
 
   <canvas id="space-field" aria-hidden="true"></canvas>
   <div class="site-backdrop" aria-hidden="true"></div>
-  <div class="scan-sweep" aria-hidden="true"></div>
-  <div class="cursor-reticle" aria-hidden="true" data-cursor>
-    <span class="reticle-ring"></span>
-    <span class="reticle-dot"></span>
-  </div>
-
-  <div class="mission-bar" aria-hidden="true">
-    <div class="mission-bar-shell">
-      <span class="mb-tag"><i></i>JPAX // MISSION CONTROL</span>
-      <span class="mb-tape" data-mission-tape>
-        <span>SYSTEMS NOMINAL</span>
-        <span>VECTOR: GREENVILLE-SC // 34.85N 82.39W</span>
-        <span>CHANNEL: BUILD.RISE.SCALE</span>
-        <span>UPLINK STABLE</span>
-        <span>FLEET STATUS: 03 PRODUCTS ACTIVE</span>
-        <span>OPERATOR: JULIAN-01</span>
-        <span>SYSTEMS NOMINAL</span>
-        <span>VECTOR: GREENVILLE-SC // 34.85N 82.39W</span>
-        <span>CHANNEL: BUILD.RISE.SCALE</span>
-        <span>UPLINK STABLE</span>
-      </span>
-      <span class="mb-clock"><i></i><span data-mission-clock>T+ 00:00:00</span></span>
-    </div>
-  </div>
-
   <header class="site-header">
     <div class="nav-shell">
       <a class="brand" href="/" aria-label="JPAX Media home">
         <img src="/jpaxmedialogoOFFICIALFINALwhite.png" alt="">
         <span class="brand-mark">
           <span class="brand-name">JPAX Media</span>
-          <span class="brand-sub">Build &middot; Rise &middot; Scale</span>
-        </span>
-      </a>
+          <span class="brand-sub">By Julian Johnson</span></span><img class="brand-avatar" src="/assets/images/julian-avatar.png" alt="Julian Johnson" width="38" height="38"></a>
       <button class="menu-toggle" type="button" aria-label="Open navigation" aria-expanded="false" data-menu-toggle><span></span></button>
       <nav class="site-nav" aria-label="Main navigation" data-site-nav>
         <a href="/work.html">Labs</a>
@@ -81,88 +54,48 @@
 
       <div class="hero-grid">
         <div class="hero-copy">
-          <p class="eyebrow"><span class="dot"></span>Greenville AI Systems Studio &middot; SECTOR 01</p>
-          <div class="mission-readout" aria-label="JPAX launch status">
-            <span>JPAX // MISSION CONTROL</span>
-            <span>GREENVILLE VECTOR</span>
-            <span>SYSTEMS ONLINE</span>
-          </div>
-          <h1 id="hero-heading" class="display-h1" data-typewriter>Build the digital system your business is missing.</h1>
+          <p class="eyebrow"><span class="dot"></span>AI-Powered. Human-Focused.</p>
+
+          <h1 id="hero-heading" class="display-h1">Build. Rise. Scale.</h1>
           <p class="lead">JPAX builds AI-powered websites, content systems, and operating tools for modern businesses and creators. Built fast. Built right. Owned by you.</p>
           <div class="cta-row">
             <a class="button primary magnetic" href="/start.html" data-magnetic>
-              <span class="btn-pre">[ T-0 ]</span>
-              <span class="btn-label">Initiate Project</span>
+              <span class="btn-label">Start a Project</span>
               <span class="btn-arrow">&rarr;</span>
             </a>
             <a class="button secondary magnetic" href="/work.html" data-magnetic>
-              <span class="btn-label">View The Labs</span>
+              <span class="btn-label">See JPAX Labs</span>
             </a>
           </div>
-          <div class="proof-strip" aria-label="JPAX capabilities">
-            <span>Websites</span>
-            <span>Branding</span>
-            <span>AI Content</span>
-            <span>Dashboards</span>
-            <span>Custom Apps</span>
-            <span>Automation</span>
-            <span>TradeOS</span>
-            <span>Creator Systems</span>
+          <div class="hero-stats" aria-label="JPAX studio activity">
+            <div><span>Since 2021</span><strong>50+</strong><small>Projects delivered</small></div>
+            <div><span>Client base</span><strong>98%</strong><small>Satisfaction rate</small></div>
+            <div><span>Greenville, SC</span><strong>1</strong><small>Founder, hands-on</small></div>
           </div>
-          <p class="trust-note"><span class="status-dot"></span>Founder-led in Greenville, SC. Built for local businesses and national creators.</p>
         </div>
 
-        <aside class="hero-panel" aria-label="Live system telemetry">
-          <div class="panel-shell">
-            <div class="panel-top">
-              <div class="panel-id">
-                <span class="panel-led"></span>
-                <span>PANEL-A0 / TELEMETRY</span>
-              </div>
-              <span class="panel-meta">LIVE</span>
+        <aside class="founder-panel" aria-label="Founder">
+          <div class="founder-glow" aria-hidden="true"></div>
+          <div class="founder-orbit" aria-hidden="true">
+            <span class="orbit-line"></span>
+            <span class="orbit-node node-build"><i></i>Build</span>
+            <span class="orbit-node node-rise"><i></i>Rise</span>
+            <span class="orbit-node node-scale"><i></i>Scale</span>
+          </div>
+          <img class="founder-portrait" src="/assets/images/julian-portrait.png" alt="Julian Johnson, founder of JPAX Media" width="540" height="684">
+          <div class="founder-annotation" aria-hidden="true">
+            <span class="anno-line"></span>
+            <span class="anno-label"><small>Founder</small><strong>Julian Johnson</strong></span>
+          </div>
+          <div class="founder-health" aria-hidden="true">
+            <div class="fh-top">
+              <span>System Health</span>
+              <span class="fh-state"><i></i>Optimal</span>
             </div>
-
-            <div class="telemetry-stack">
-              <div class="telemetry-row" data-counter data-target="99.97" data-suffix="%">
-                <span class="t-label">Uptime &middot; 30d</span>
-                <span class="t-value" data-counter-out>00.00</span>
-                <span class="t-bar"><i style="--bar:99%"></i></span>
-              </div>
-              <div class="telemetry-row" data-counter data-target="247" data-suffix="">
-                <span class="t-label">Systems Online</span>
-                <span class="t-value" data-counter-out>000</span>
-                <span class="t-bar"><i style="--bar:88%"></i></span>
-              </div>
-              <div class="telemetry-row" data-counter data-target="13" data-suffix="">
-                <span class="t-label">Deploys / week</span>
-                <span class="t-value" data-counter-out>00</span>
-                <span class="t-bar"><i style="--bar:62%"></i></span>
-              </div>
-              <div class="telemetry-row" data-counter data-target="42" data-suffix="">
-                <span class="t-label">Active Missions</span>
-                <span class="t-value" data-counter-out>00</span>
-                <span class="t-bar"><i style="--bar:74%"></i></span>
-              </div>
-            </div>
-
-            <div class="orbit-map" aria-hidden="true">
-              <div class="orbit-ring ring-a"></div>
-              <div class="orbit-ring ring-b"></div>
-              <div class="orbit-ring ring-c"></div>
-              <div class="command-core">JPAX<span>SYSTEM CORE</span></div>
-              <div class="orbit-sat sat-1"></div>
-              <div class="orbit-sat sat-2"></div>
-              <div class="orbit-sat sat-3"></div>
-              <div class="node node-a"><strong>Lead Flow</strong><small>Intake</small></div>
-              <div class="node node-b"><strong>Content Queue</strong><small>Rhythm</small></div>
-              <div class="node node-c"><strong>Revenue Signals</strong><small>Dash</small></div>
-              <div class="node node-d"><strong>Delivery</strong><small>Jupiter</small></div>
-            </div>
-
-            <div class="panel-foot">
-              <div class="pf-cell"><span>STAGE</span><strong>01 SCOPE</strong></div>
-              <div class="pf-cell"><span>BURN</span><strong>02 BUILD</strong></div>
-              <div class="pf-cell"><span>ORBIT</span><strong>03 OPERATE</strong></div>
+            <div class="fh-rows">
+              <div><span>Infrastructure</span><strong>94%</strong></div>
+              <div><span>Demand</span><strong>91%</strong></div>
+              <div><span>Operations</span><strong>93%</strong></div>
             </div>
           </div>
         </aside>
@@ -170,28 +103,50 @@
 
       <div class="hero-ground" aria-hidden="true">
         <span class="ground-ticker">
-          <i></i>VECTOR 34.85N &middot; 82.39W &middot; ALT 974ft &middot; HEADING 094&deg; &middot; SIGNAL LOCK<i></i>
+          <i></i>Founder-led &middot; Greenville, SC &middot; Studio of One<i></i>
         </span>
-        <a class="scroll-cue" href="#brief" aria-label="Scroll to mission brief">
+        <a class="scroll-cue" href="#brief" aria-label="Scroll to next section">
           <span>SCROLL</span>
           <span class="cue-line"></span>
         </a>
       </div>
     </section>
 
+    <section class="trusted-strip" aria-label="Trusted by">
+      <p class="trusted-label"><span class="dot"></span>Trusted by ambitious teams</p>
+      <div class="trust-marquee" aria-hidden="true">
+        <div class="trust-track">
+          <span class="trust-chip">Southern Pavers</span>
+          <span class="trust-chip">BF Properties</span>
+          <span class="trust-chip">27 Birds</span>
+          <span class="trust-chip">Book of Men</span>
+          <span class="trust-chip">Carolina founders</span>
+          <span class="trust-chip">Trades operators</span>
+          <span class="trust-chip">Local studios</span>
+          <span class="trust-chip" aria-hidden="true">Southern Pavers</span>
+          <span class="trust-chip" aria-hidden="true">BF Properties</span>
+          <span class="trust-chip" aria-hidden="true">27 Birds</span>
+          <span class="trust-chip" aria-hidden="true">Book of Men</span>
+          <span class="trust-chip" aria-hidden="true">Carolina founders</span>
+          <span class="trust-chip" aria-hidden="true">Trades operators</span>
+          <span class="trust-chip" aria-hidden="true">Local studios</span>
+        </div>
+      </div>
+    </section>
+
     <section class="section module" id="brief" aria-labelledby="brief-heading">
       <div class="section-head reveal">
-        <p class="section-kicker"><span class="kicker-bracket">[</span> INCOMING TRANSMISSION <span class="kicker-bracket">]</span></p>
+        <p class="section-kicker"><span class="kicker-bracket">[</span> The Gap <span class="kicker-bracket">]</span></p>
         <h2 id="brief-heading">Most businesses do not need more random marketing. They need the system behind it.</h2>
         <div class="section-rule"></div>
         <p>A website alone will not fix unclear offers. Social posts alone will not create a sales engine. AI tools alone will not organize your business. JPAX connects the pieces: the brand, the website, the content, the dashboards, and the workflows that keep the business moving.</p>
       </div>
 
       <div class="hud-grid">
-        <article class="hud-card large reveal" data-tilt>
+        <article class="hud-card large reveal">
           <header class="hud-card-top">
-            <span class="hud-id">// SIG-01</span>
-            <span class="hud-sev sev-high">SEV-HIGH</span>
+            <span class="hud-id">01</span>
+            <span class="hud-sev sev-high">Top Issue</span>
           </header>
           <span class="card-num">01</span>
           <h3>Scattered tools across every channel</h3>
@@ -203,20 +158,20 @@
           <span class="scan-line" aria-hidden="true"></span>
         </article>
         <div class="hud-stack">
-          <article class="hud-card reveal" data-tilt>
+          <article class="hud-card reveal">
             <header class="hud-card-top">
-              <span class="hud-id">// SIG-02</span>
-              <span class="hud-sev sev-mid">SEV-MID</span>
+              <span class="hud-id">02</span>
+              <span class="hud-sev sev-mid">Issue</span>
             </header>
             <span class="card-num">02</span>
             <h3>No operating rhythm</h3>
             <p>Without reporting, cadence, ownership, and clear next steps, every launch becomes another one-off push.</p>
             <span class="scan-line" aria-hidden="true"></span>
           </article>
-          <article class="hud-card reveal" data-tilt>
+          <article class="hud-card reveal">
             <header class="hud-card-top">
-              <span class="hud-id">// SIG-03</span>
-              <span class="hud-sev sev-mid">SEV-MID</span>
+              <span class="hud-id">03</span>
+              <span class="hud-sev sev-mid">Issue</span>
             </header>
             <span class="card-num">03</span>
             <h3>Cheap work gets expensive</h3>
@@ -227,42 +182,70 @@
       </div>
     </section>
 
+    <section class="section compact" id="from-julian">
+      <article class="founder-note reveal" aria-labelledby="from-julian-heading">
+        <div class="fn-glow" aria-hidden="true"></div>
+        <div class="fn-portrait">
+          <img src="/assets/images/julian-portrait.png" alt="Julian Johnson, founder of JPAX Media">
+        </div>
+        <div class="fn-body">
+          <p class="section-kicker">From Julian</p>
+          <h2 id="from-julian-heading">Why I built JPAX.</h2>
+          <p class="fn-quote">Most of what gets sold as &ldquo;AI for business&rdquo; is a chatbot bolted to a marketing site. That isn&rsquo;t a system. A system is the website, the content rhythm, the dashboard, and the workflow running together &mdash; the pieces that make the work easier to <em>run</em>, not louder to advertise.</p>
+          <p class="fn-quote">If you&rsquo;re a trades operator drowning in scattered tools, a creator building real revenue, or a team that&rsquo;s outgrown the spreadsheet phase &mdash; that&rsquo;s who JPAX is for. Real systems, founder-led, out of Greenville. You own what we build, and I read every project brief myself.</p>
+          <div class="fn-sign">
+            <span class="fn-signature">Julian Johnson</span>
+            <span class="fn-role">Founder &middot; JPAX Media</span>
+          </div>
+          <div class="cta-row">
+            <a class="button primary magnetic" href="/start.html" data-magnetic>
+              <span class="btn-label">Tell me what you&rsquo;re building</span>
+              <span class="btn-arrow">&rarr;</span>
+            </a>
+            <a class="button ghost magnetic" href="/about.html" data-magnetic>
+              <span class="btn-label">More about Julian</span>
+            </a>
+          </div>
+        </div>
+      </article>
+    </section>
+
     <section class="section module" id="lanes" aria-labelledby="lanes-heading">
       <div class="section-head reveal">
-        <p class="section-kicker"><span class="kicker-bracket">[</span> SYSTEM ARCHITECTURE <span class="kicker-bracket">]</span></p>
+        <p class="section-kicker"><span class="kicker-bracket">[</span> How JPAX Works <span class="kicker-bracket">]</span></p>
         <h2 id="lanes-heading">Build. Rise. Scale. Three lanes. One operating system mindset.</h2>
         <div class="section-rule"></div>
       </div>
 
       <div class="lane-deck">
-        <article class="lane-card feature reveal" data-tilt>
-          <div class="lane-tag"><span class="lane-led"></span>LANE-01 // BUILD THE SYSTEM</div>
+        <article class="lane-card feature reveal">
+          <div class="lane-tag"><span class="lane-led"></span>Build The System</div>
           <h3>Websites, dashboards, apps, and operating tools built to support the business behind the brand.</h3>
           <p>Start with owned infrastructure: a serious site, a clearer offer, a better intake path, or a custom tool that removes operational drag.</p>
           <div class="lane-specs">
             <span><strong>04-12wk</strong><small>Build window</small></span>
-            <span><strong>$3.5k+</strong><small>Entry vector</small></span>
+            <span><strong>$3.5k+</strong><small>Starting price</small></span>
             <span><strong>Owned</strong><small>Final state</small></span>
           </div>
           <a class="button ghost magnetic" href="/services.html#build" data-magnetic>View Services <span class="btn-arrow">&rarr;</span></a>
         </article>
         <div class="lane-stack">
-          <article class="lane-card reveal" data-tilt id="create-demand">
-            <div class="lane-tag"><span class="lane-led"></span>LANE-02 // CREATE DEMAND</div>
+          <article class="lane-card reveal" id="create-demand">
+            <div class="lane-tag"><span class="lane-led"></span>Create Demand</div>
             <h3>Content systems and campaigns that give people a reason to pay attention.</h3>
             <p>AI photo/video ads, social systems, landing pages, content calendars, and campaign assets that feed the system.</p>
             <div class="lane-specs compact">
               <span><strong>Monthly</strong><small>Cadence</small></span>
-              <span><strong>$950+</strong><small>Entry vector</small></span>
+              <span><strong>$950+</strong><small>Starting price</small></span>
             </div>
           </article>
-          <article class="lane-card reveal" data-tilt id="run">
-            <div class="lane-tag"><span class="lane-led"></span>LANE-03 // RUN THE SYSTEM</div>
+          <article class="lane-card reveal" id="run">
+            <div class="lane-tag"><span class="lane-led"></span>Run The System</div>
             <h3>Ongoing management and reporting so the work keeps producing after launch.</h3>
             <p>Monthly support for websites, content, dashboards, automations, and operating improvements.</p>
             <div class="lane-specs compact">
               <span><strong>RISE</strong><small>Tier</small></span>
-              <span><strong>$500/mo+</strong><small>Entry vector</small></span>
+              <span><strong>$500/mo+</strong><small>Starting price</small></span>
             </div>
           </article>
         </div>
@@ -271,16 +254,16 @@
 
     <section class="section module" id="fleet" aria-labelledby="fleet-heading">
       <div class="section-head reveal">
-        <p class="section-kicker"><span class="kicker-bracket">[</span> ACTIVE FLEET <span class="kicker-bracket">]</span></p>
+        <p class="section-kicker"><span class="kicker-bracket">[</span> What JPAX Builds <span class="kicker-bracket">]</span></p>
         <h2 id="fleet-heading">Three operating systems. One studio behind them.</h2>
         <div class="section-rule"></div>
       </div>
 
       <div class="fleet-grid">
-        <article class="fleet-card tradeos reveal" data-tilt>
+        <article class="fleet-card tradeos reveal">
           <div class="fleet-top">
-            <span class="fleet-id">UNIT-01</span>
-            <span class="fleet-status"><i></i>READY FOR BOARDING</span>
+            <span class="fleet-id">For Trades</span>
+            <span class="fleet-status"><i></i>Available</span>
           </div>
           <div class="fleet-vis tradeos-vis" aria-hidden="true">
             <span class="vis-ring r1"></span>
@@ -299,10 +282,10 @@
           <a class="fleet-cta" href="/tradeos.html">Explore TradeOS <span>&rarr;</span></a>
         </article>
 
-        <article class="fleet-card jupiter reveal" data-tilt>
+        <article class="fleet-card jupiter reveal">
           <div class="fleet-top">
-            <span class="fleet-id">UNIT-02</span>
-            <span class="fleet-status"><i></i>INTERNAL // PROOF</span>
+            <span class="fleet-id">Internal</span>
+            <span class="fleet-status"><i></i>Private</span>
           </div>
           <div class="fleet-vis jupiter-vis" aria-hidden="true">
             <span class="vis-orbit"></span>
@@ -320,10 +303,10 @@
           <a class="fleet-cta" href="/jupiter.html">See Jupiter as proof <span>&rarr;</span></a>
         </article>
 
-        <article class="fleet-card elara reveal" data-tilt>
+        <article class="fleet-card elara reveal">
           <div class="fleet-top">
-            <span class="fleet-id">UNIT-03</span>
-            <span class="fleet-status purple"><i></i>CREATOR CHANNEL</span>
+            <span class="fleet-id">For Creators</span>
+            <span class="fleet-status purple"><i></i>Available</span>
           </div>
           <div class="fleet-vis elara-vis" aria-hidden="true">
             <span class="vis-wave w1"></span>
@@ -346,66 +329,66 @@
 
     <section class="section module" id="profiles" aria-labelledby="profiles-heading">
       <div class="section-head reveal">
-        <p class="section-kicker"><span class="kicker-bracket">[</span> MISSION PROFILES <span class="kicker-bracket">]</span></p>
+        <p class="section-kicker"><span class="kicker-bracket">[</span> Starting Points <span class="kicker-bracket">]</span></p>
         <h2 id="profiles-heading">Clear entry points. Custom scopes when the work gets bigger.</h2>
         <div class="section-rule"></div>
       </div>
 
       <div class="profile-grid">
-        <article class="profile-card highlight reveal" data-tilt>
-          <div class="profile-top"><span>MP-01</span><span class="profile-flag">RECOMMENDED</span></div>
+        <article class="profile-card highlight reveal">
+          <div class="profile-top"><span>01</span><span class="profile-flag">Recommended</span></div>
           <h3>Local Website Foundation</h3>
           <p class="profile-price"><span>FROM</span>$3,500</p>
           <p>Owned local site, clear offer, and stronger trust signals.</p>
-          <span class="profile-arrow">INITIATE &rarr;</span>
+          <span class="profile-arrow">Start <span class="profile-arrow">INITIATE &rarr;</span>rarr;</span>
         </article>
-        <article class="profile-card reveal" data-tilt>
-          <div class="profile-top"><span>MP-02</span></div>
+        <article class="profile-card reveal">
+          <div class="profile-top"><span>02</span></div>
           <h3>Business Website</h3>
           <p class="profile-price"><span>FROM</span>$5,000</p>
           <p>A stronger web presence for serious service businesses and modern teams.</p>
-          <span class="profile-arrow">INITIATE &rarr;</span>
+          <span class="profile-arrow">Start <span class="profile-arrow">INITIATE &rarr;</span>rarr;</span>
         </article>
-        <article class="profile-card reveal" data-tilt>
-          <div class="profile-top"><span>MP-03</span></div>
+        <article class="profile-card reveal">
+          <div class="profile-top"><span>03</span></div>
           <h3>Brand + Web Foundation</h3>
           <p class="profile-price"><span>FROM</span>$8,000</p>
           <p>Positioning, identity, and web system built together.</p>
-          <span class="profile-arrow">INITIATE &rarr;</span>
+          <span class="profile-arrow">Start <span class="profile-arrow">INITIATE &rarr;</span>rarr;</span>
         </article>
-        <article class="profile-card reveal" data-tilt>
-          <div class="profile-top"><span>MP-04</span></div>
+        <article class="profile-card reveal">
+          <div class="profile-top"><span>04</span></div>
           <h3>AI Creative Starter</h3>
           <p class="profile-price"><span>FROM</span>$950</p>
           <p>AI photo/video assets and campaign creative direction.</p>
-          <span class="profile-arrow">INITIATE &rarr;</span>
+          <span class="profile-arrow">Start <span class="profile-arrow">INITIATE &rarr;</span>rarr;</span>
         </article>
-        <article class="profile-card reveal" data-tilt>
-          <div class="profile-top"><span>MP-05</span></div>
+        <article class="profile-card reveal">
+          <div class="profile-top"><span>05</span></div>
           <h3>Workflow Sprint</h3>
           <p class="profile-price"><span>FROM</span>$5,000</p>
           <p>Focused dashboards, automations, or internal tools.</p>
-          <span class="profile-arrow">INITIATE &rarr;</span>
+          <span class="profile-arrow">Start <span class="profile-arrow">INITIATE &rarr;</span>rarr;</span>
         </article>
-        <article class="profile-card reveal" data-tilt>
-          <div class="profile-top"><span>MP-06</span><span class="profile-flag rise">RISE</span></div>
+        <article class="profile-card reveal">
+          <div class="profile-top"><span>06</span><span class="profile-flag rise">RISE</span></div>
           <h3>Managed Website</h3>
           <p class="profile-price"><span>FROM</span>$500<small>/mo</small></p>
           <p>Ongoing site support, updates, and reporting cadence.</p>
-          <span class="profile-arrow">INITIATE &rarr;</span>
+          <span class="profile-arrow">Start <span class="profile-arrow">INITIATE &rarr;</span>rarr;</span>
         </article>
       </div>
     </section>
 
     <section class="section module" id="log" aria-labelledby="log-heading">
       <div class="section-head reveal">
-        <p class="section-kicker"><span class="kicker-bracket">[</span> MISSION LOG <span class="kicker-bracket">]</span></p>
+        <p class="section-kicker"><span class="kicker-bracket">[</span> Recent Notes <span class="kicker-bracket">]</span></p>
         <h2 id="log-heading">Real systems. Real clients. Real ownership.</h2>
         <div class="section-rule"></div>
       </div>
       <div class="log-grid">
-        <article class="log-card reveal" data-tilt>
-          <span class="log-id">M-001</span>
+        <article class="log-card reveal">
+          <span class="log-id">01</span>
           <img src="/assets/images/labs/southern-pavers-header.png" alt="Southern Pavers brand and web work">
           <div class="log-body">
             <h3>Southern Pavers</h3>
@@ -413,8 +396,8 @@
             <div class="tag-row"><span>Brand</span><span>Web</span><span>Local Trust</span></div>
           </div>
         </article>
-        <article class="log-card reveal" data-tilt>
-          <span class="log-id">M-002</span>
+        <article class="log-card reveal">
+          <span class="log-id">02</span>
           <img src="/assets/images/labs/haven-hospitality-header.png" alt="Haven Hospitality website system preview">
           <div class="log-body">
             <h3>Haven Hospitality</h3>
@@ -422,8 +405,8 @@
             <div class="tag-row"><span>Website</span><span>Hospitality</span></div>
           </div>
         </article>
-        <article class="log-card reveal" data-tilt>
-          <span class="log-id">M-003</span>
+        <article class="log-card reveal">
+          <span class="log-id">03</span>
           <img src="/assets/images/labs/27-birds-header.png" alt="27 Birds digital work preview">
           <div class="log-body">
             <h3>27 Birds</h3>
@@ -434,28 +417,70 @@
       </div>
     </section>
 
+    <section class="section module" id="reviews" aria-labelledby="reviews-heading">
+      <div class="section-head reveal">
+        <p class="section-kicker">Word From Clients</p>
+        <h2 id="reviews-heading">What founders say after working with JPAX.</h2>
+        <div class="section-rule"></div>
+      </div>
+
+      <article class="review-card reveal">
+        <div class="review-source-top">
+          <span class="review-source-tag">
+            <svg class="g-icon" viewBox="0 0 24 24" aria-hidden="true">
+              <path d="M21.35 11.1H12v3.83h5.35c-.48 2.4-2.55 3.7-5.35 3.7-3.2 0-5.8-2.6-5.8-5.8s2.6-5.8 5.8-5.8c1.45 0 2.78.55 3.78 1.45l2.7-2.7C16.94 4.42 14.6 3.5 12 3.5 7.3 3.5 3.5 7.3 3.5 12s3.8 8.5 8.5 8.5c4.7 0 8.3-3.3 8.3-8.4 0-.55-.05-1.05-.15-1.5z" fill="#fff"/>
+            </svg>
+            <span>Verified on Google</span>
+          </span>
+          <span class="review-meta-pill">
+            <span class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</span>
+            <span class="rating-text">5.0 &middot; 8 reviews</span>
+          </span>
+        </div>
+
+        <blockquote class="review-quote">
+          <span class="quote-mark" aria-hidden="true">&ldquo;</span>
+          <p>I shared my startup concept with them and they really ran with it, bringing my vision to life better than I expected. I worked with Julian and everything from the website and app build to the automated advertising has been smooth and fast. The turnaround time is impressive, and I&rsquo;m already seeing the business start to scale.</p>
+        </blockquote>
+
+        <footer class="review-footer">
+          <div class="reviewer">
+            <span class="r-avatar" aria-hidden="true">JS</span>
+            <div class="r-meta">
+              <strong>Jesse S</strong>
+              <span>Startup Founder &middot; 2 weeks ago</span>
+            </div>
+          </div>
+          <a class="review-link" href="https://www.google.com/search?q=JPAX+Media+Greenville+reviews" target="_blank" rel="noopener noreferrer">
+            <span>Read more on Google</span>
+            <span class="btn-arrow">&rarr;</span>
+          </a>
+        </footer>
+      </article>
+    </section>
+
     <section class="section module" id="sequence" aria-labelledby="seq-heading">
       <div class="section-head reveal">
-        <p class="section-kicker"><span class="kicker-bracket">[</span> DEPLOYMENT SEQUENCE <span class="kicker-bracket">]</span></p>
+        <p class="section-kicker"><span class="kicker-bracket">[</span> Process <span class="kicker-bracket">]</span></p>
         <h2 id="seq-heading">Simple process. No mystery.</h2>
         <div class="section-rule"></div>
       </div>
       <ol class="sequence-rail">
-        <li class="seq-stage reveal" data-tilt>
-          <span class="seq-num">T&minus;3</span>
-          <span class="seq-label">SCOPE</span>
+        <li class="seq-stage reveal">
+          <span class="seq-num">Step 1</span>
+          <span class="seq-label">Scope</span>
           <h3>Scope the system</h3>
           <p>We define what the business needs, what is broken, what should be owned, and what can wait.</p>
         </li>
-        <li class="seq-stage reveal" data-tilt>
-          <span class="seq-num">T&plus;0</span>
-          <span class="seq-label">LIFTOFF</span>
+        <li class="seq-stage reveal">
+          <span class="seq-num">Step 2</span>
+          <span class="seq-label">Build</span>
           <h3>Build and configure</h3>
           <p>JPAX designs, builds, connects, and documents the site, tool, workflow, or content system.</p>
         </li>
-        <li class="seq-stage reveal" data-tilt>
-          <span class="seq-num">T&plus;90</span>
-          <span class="seq-label">ORBIT</span>
+        <li class="seq-stage reveal">
+          <span class="seq-num">Step 3</span>
+          <span class="seq-label">Phase 3</span>
           <h3>Launch and improve</h3>
           <p>You own the finished work. If the system needs ongoing rhythm, it moves into RISE.</p>
         </li>
@@ -463,7 +488,7 @@
     </section>
 
     <section class="section compact">
-      <div class="launch-panel reveal" data-tilt>
+      <div class="launch-panel reveal">
         <div class="lp-frame" aria-hidden="true">
           <span class="frame-corner tl"></span>
           <span class="frame-corner tr"></span>
@@ -471,17 +496,16 @@
           <span class="frame-corner br"></span>
         </div>
         <div class="lp-copy">
-          <p class="section-kicker"><span class="kicker-bracket">[</span> READY FOR LAUNCH <span class="kicker-bracket">]</span></p>
+          <p class="section-kicker"><span class="kicker-bracket">[</span> Let's Build <span class="kicker-bracket">]</span></p>
           <h2>Ready to build the system behind the business?</h2>
           <p>Tell JPAX what you are building, what is not working, and what needs to happen next.</p>
         </div>
         <div class="lp-cta">
           <a class="button primary big magnetic" href="/start.html" data-magnetic>
-            <span class="btn-pre">[ T-0 ]</span>
-            <span class="btn-label">Initiate Launch Sequence</span>
+            <span class="btn-label">Start a Project</span>
             <span class="btn-arrow">&rarr;</span>
           </a>
-          <span class="lp-foot"><i></i>OPERATOR ONLINE &middot; AVG REPLY 4h</span>
+          <span class="lp-foot"><i></i>Currently Available &middot; AVG REPLY 4h</span>
         </div>
       </div>
     </section>
@@ -498,6 +522,13 @@
           </span>
         </a>
         <p>AI-powered websites, content systems, and operating tools for modern businesses and creators. Founder-led in Greenville, SC.</p>
+        <div class="footer-signature">
+          <img src="/assets/images/julian-avatar.png" alt="Julian Johnson" width="46" height="46">
+          <div>
+            <strong>Built by Julian Johnson</strong>
+            <small>Founder &middot; Greenville, SC</small>
+          </div>
+        </div>
         <div class="footer-social" aria-label="JPAX social links">
           <a href="https://www.facebook.com/jpaxmedia" target="_blank" rel="noopener noreferrer" aria-label="JPAX Media on Facebook">
             <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path></svg>
