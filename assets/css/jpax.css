@@ -210,17 +210,9 @@ button {
 .brand-name {
   color: var(--white);
   font-family: var(--font-display);
-  font-size: 1.02rem;
+  font-size: 1.06rem;
   font-weight: 700;
   line-height: 1;
-}
-
-.brand-sub {
-  color: var(--text-muted);
-  font-family: var(--font-mono);
-  font-size: 0.68rem;
-  line-height: 1.2;
-  text-transform: uppercase;
 }
 
 .site-nav {
@@ -1703,10 +1695,6 @@ a.proof-card {
   :root {
     --shell: min(100% - 24px, 1160px);
     --shell-wide: min(100% - 24px, 1320px);
-  }
-
-  .brand-sub {
-    display: none;
   }
 
   .hero {
