@@ -14,16 +14,48 @@
   <link rel="icon" type="image/png" href="/jpaxmedialogoOFFICIALFINALwhite.png">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@500;700&family=IBM+Plex+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@400;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@500;600;700&family=IBM+Plex+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="/assets/css/jpax.css">
 </head>
-<body>
+<body data-page="services">
   <a class="skip-link" href="#main">Skip to content</a>
+
   <canvas id="space-field" aria-hidden="true"></canvas>
   <div class="site-backdrop" aria-hidden="true"></div>
+  <div class="scan-sweep" aria-hidden="true"></div>
+  <div class="cursor-reticle" aria-hidden="true" data-cursor>
+    <span class="reticle-ring"></span>
+    <span class="reticle-dot"></span>
+  </div>
+
+  <div class="mission-bar" aria-hidden="true">
+    <div class="mission-bar-shell">
+      <span class="mb-tag"><i></i>JPAX // MISSION CONTROL</span>
+      <span class="mb-tape" data-mission-tape>
+        <span>SYSTEMS NOMINAL</span>
+        <span>VECTOR: GREENVILLE-SC // 34.85N 82.39W</span>
+        <span>CHANNEL: BUILD.RISE.SCALE</span>
+        <span>UPLINK STABLE</span>
+        <span>FLEET STATUS: 03 PRODUCTS ACTIVE</span>
+        <span>OPERATOR: JULIAN-01</span>
+        <span>SYSTEMS NOMINAL</span>
+        <span>VECTOR: GREENVILLE-SC // 34.85N 82.39W</span>
+        <span>CHANNEL: BUILD.RISE.SCALE</span>
+        <span>UPLINK STABLE</span>
+      </span>
+      <span class="mb-clock"><i></i><span data-mission-clock>T+ 00:00:00</span></span>
+    </div>
+  </div>
+
   <header class="site-header">
     <div class="nav-shell">
-      <a class="brand" href="/" aria-label="JPAX Media home"><img src="/jpaxmedialogoOFFICIALFINALwhite.png" alt=""><span class="brand-mark"><span class="brand-name">JPAX Media</span></span></a>
+      <a class="brand" href="/" aria-label="JPAX Media home">
+        <img src="/jpaxmedialogoOFFICIALFINALwhite.png" alt="">
+        <span class="brand-mark">
+          <span class="brand-name">JPAX Media</span>
+          <span class="brand-sub">Build &middot; Rise &middot; Scale</span>
+        </span>
+      </a>
       <button class="menu-toggle" type="button" aria-label="Open navigation" aria-expanded="false" data-menu-toggle><span></span></button>
       <nav class="site-nav" aria-label="Main navigation" data-site-nav>
         <a href="/work.html">Labs</a>
@@ -31,13 +63,14 @@
         <a class="active" href="/services.html">Services</a>
         <a href="/elara.html">Elara</a>
         <a href="/jupiter.html">Jupiter</a>
-        <a class="nav-cta" href="/start.html">Start a Project</a>
+        <a class="nav-cta magnetic" href="/start.html" data-magnetic>Start a Project</a>
       </nav>
     </div>
+    <div class="scroll-progress" aria-hidden="true"><span data-scroll-bar></span></div>
   </header>
   <main id="main">
     <section class="page-hero reveal">
-      <p class="eyebrow">Services</p>
+      <p class="eyebrow"><span class="dot"></span>Services</p>
       <h1>Websites, systems, content, and operating support.</h1>
       <p class="lead">JPAX organizes work into three lanes: BUILD for one-time project work, RISE for ongoing operating support, and SCALE for larger systems that combine both.</p>
     </section>
@@ -131,7 +164,7 @@
     <section class="section compact">
       <div class="cta-panel reveal">
         <div><h2>Know what you need, or just know what is broken?</h2><p>Start with the project form and JPAX will route the scope.</p></div>
-        <a class="button" href="/start.html">Start a Project</a>
+        <a class="button primary magnetic" href="/start.html" data-magnetic><span class="btn-pre">[ T-0 ]</span><span class="btn-label">Start a Project</span><span class="btn-arrow">&rarr;</span></a>
       </div>
     </section>
   </main>
@@ -142,7 +175,7 @@
           <img src="/jpaxmedialogoOFFICIALFINALwhite.png" alt="">
           <span>
             <strong>JPAX Media LLC</strong>
-            <small>Build. Rise. Scale.</small>
+            <small>BUILD &middot; RISE &middot; SCALE</small>
           </span>
         </a>
         <p>AI-powered websites, content systems, and operating tools for modern businesses and creators. Founder-led in Greenville, SC.</p>
@@ -181,7 +214,7 @@
       </nav>
     </div>
     <div class="footer-bottom">
-      <span>JPAX Media LLC | Greenville, SC</span>
+      <span>JPAX Media LLC &middot; Greenville, SC</span>
       <span>2026 JPAX Media. All rights reserved.</span>
     </div>
   </footer>
