@@ -3,6 +3,24 @@
   const root = document.documentElement;
   const body = document.body;
 
+  const preventZoom = (event) => {
+    if (event.cancelable) event.preventDefault();
+  };
+
+  document.addEventListener("touchmove", (event) => {
+    if (event.touches.length > 1) preventZoom(event);
+  }, { passive: false });
+
+  document.addEventListener("gesturestart", preventZoom, { passive: false });
+  document.addEventListener("gesturechange", preventZoom, { passive: false });
+
+  let lastTouchEnd = 0;
+  document.addEventListener("touchend", (event) => {
+    const now = Date.now();
+    if (now - lastTouchEnd <= 300) preventZoom(event);
+    lastTouchEnd = now;
+  }, { passive: false });
+
   /* ====================================================================
      Starfield + slow flight path + horizon glow
      ==================================================================== */

@@ -40,17 +40,22 @@
 
 html {
   scroll-behavior: smooth;
+  max-width: 100%;
+  overflow-x: hidden;
   background: var(--dark);
+  touch-action: pan-y;
 }
 
 body {
   min-width: 320px;
+  max-width: 100%;
   margin: 0;
   overflow-x: hidden;
   background: transparent;
   color: var(--text);
   font-family: var(--font-body);
   line-height: 1.6;
+  touch-action: pan-y;
   -webkit-font-smoothing: antialiased;
   text-rendering: optimizeLegibility;
 }
