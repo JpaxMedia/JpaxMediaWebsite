@@ -81,6 +81,18 @@ a { color: inherit; text-decoration: none; }
 button, input, select, textarea { font: inherit; }
 button { cursor: pointer; }
 
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
 :focus-visible {
   outline: 2px solid var(--green);
   outline-offset: 4px;
@@ -345,16 +357,6 @@ body.cursor-target .cursor-reticle { width: 64px; height: 64px; }
   line-height: 1;
   letter-spacing: 0.04em;
 }
-.brand-sub {
-  color: var(--green);
-  font-family: var(--font-mono);
-  font-size: 0.6rem;
-  font-weight: 600;
-  letter-spacing: 0.16em;
-  margin-top: 4px;
-  text-transform: uppercase;
-}
-
 .site-nav {
   display: flex;
   align-items: center;
@@ -1930,8 +1932,8 @@ body.cursor-target .cursor-reticle { width: 64px; height: 64px; }
 
 /* ==== Reveal animation ==== */
 .reveal {
-  opacity: 0;
-  transform: translateY(22px);
+  opacity: 1;
+  transform: none;
   transition: opacity 700ms cubic-bezier(0.2, 0.7, 0.2, 1), transform 700ms cubic-bezier(0.2, 0.7, 0.2, 1);
 }
 .reveal.is-visible { opacity: 1; transform: translateY(0); }
@@ -3330,23 +3332,22 @@ a.proof-card { color: inherit; }
   place-items: end center;
   isolation: isolate;
   z-index: 2;
+  overflow: visible;
+}
+.founder-panel::after {
+  display: none;
 }
 
 .founder-glow {
-  position: absolute;
-  z-index: 0;
-  inset: 6% 4% 4% 4%;
-  border-radius: 50%;
-  background:
-    radial-gradient(closest-side at 50% 55%, rgba(139, 92, 246, 0.55), rgba(139, 92, 246, 0.18) 50%, transparent 75%),
-    radial-gradient(closest-side at 50% 45%, rgba(168, 85, 247, 0.32), transparent 60%);
-  filter: blur(28px);
-  pointer-events: none;
-  animation: glowPulse 7s ease-in-out infinite;
+  display: none;
+}
+@keyframes founderGlowPulse {
+  0%, 100% { transform: translate(-50%, -50%) rotate(-7deg) scale(1);    opacity: 0.82; }
+  50%      { transform: translate(-50%, -50%) rotate(-3deg) scale(1.06); opacity: 0.94; }
 }
 @keyframes glowPulse {
-  0%, 100% { transform: scale(1);    opacity: 0.92; }
-  50%      { transform: scale(1.06); opacity: 1; }
+  0%, 100% { transform: rotate(-7deg) scale(1);    opacity: 0.82; }
+  50%      { transform: rotate(-3deg) scale(1.06); opacity: 0.94; }
 }
 
 .founder-orbit {
@@ -3408,13 +3409,14 @@ a.proof-card { color: inherit; }
   height: 100%;
   max-height: 680px;
   object-fit: contain;
-  filter: drop-shadow(0 30px 60px rgba(0, 0, 0, 0.55))
-          drop-shadow(0 0 80px rgba(139, 92, 246, 0.22));
+  filter: none;
+  -webkit-mask-image: none;
+  mask-image: none;
 }
 
 .founder-annotation {
   position: absolute;
-  z-index: 3;
+  z-index: 4;
   top: 32%;
   right: -8px;
   display: inline-flex;
@@ -3460,112 +3462,77 @@ a.proof-card { color: inherit; }
   white-space: nowrap;
 }
 
-/* Small system health card peeking from top-right */
-.founder-health {
-  position: absolute;
-  z-index: 3;
-  top: 14px;
-  right: -6px;
-  width: 232px;
-  border: 1px solid rgba(74, 222, 128, 0.32);
-  border-radius: var(--radius-lg);
-  background: rgba(4, 6, 11, 0.72);
-  backdrop-filter: blur(12px) saturate(115%);
-  -webkit-backdrop-filter: blur(12px) saturate(115%);
-  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.45);
-  overflow: hidden;
-}
-.founder-health .fh-top {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 10px 14px;
-  border-bottom: 1px solid var(--border);
-  color: var(--text-soft);
-  font-family: var(--font-mono);
-  font-size: 0.62rem;
-  letter-spacing: 0.16em;
-  text-transform: uppercase;
-}
-.founder-health .fh-state {
-  display: inline-flex;
-  align-items: center;
-  gap: 6px;
-  color: var(--green);
-  font-weight: 700;
-}
-.founder-health .fh-state i {
-  width: 6px; height: 6px;
-  border-radius: 50%;
-  background: var(--green);
-  box-shadow: 0 0 8px rgba(74, 222, 128, 0.85);
-}
-.founder-health .fh-rows {
-  display: grid;
-  gap: 1px;
-  background: var(--border);
-}
-.founder-health .fh-rows div {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 9px 14px;
-  background: rgba(4, 6, 11, 0.68);
-  font-family: var(--font-mono);
-  font-size: 0.66rem;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-  color: var(--text-soft);
-}
-.founder-health .fh-rows strong {
-  color: var(--white);
-  font-family: var(--font-display);
-  font-size: 0.88rem;
-  font-weight: 700;
-  letter-spacing: 0.04em;
-}
-
-/* Hero stats strip replacing the old proof-strip on home */
-.hero-stats {
-  display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: 14px;
+/* Founder proof line: one clear beat at a time */
+.hero-proof {
+  position: relative;
   margin-top: 8px;
   border-top: 1px dashed rgba(74, 222, 128, 0.18);
-  padding-top: 18px;
-  max-width: 540px;
+  padding-top: 20px;
+  max-width: 560px;
+  min-height: 112px;
+  overflow: hidden;
 }
-.hero-stats > div { display: grid; gap: 2px; }
-.hero-stats span {
+.hero-proof::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 18px;
+  width: 220px;
+  height: 1px;
+  background: linear-gradient(90deg, rgba(74, 222, 128, 0.65), transparent);
+  pointer-events: none;
+}
+.hero-proof-track {
+  position: relative;
+  min-height: 92px;
+}
+.hero-proof-item {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  align-content: center;
+  gap: 3px;
+  opacity: 0;
+  transform: translateY(12px);
+  animation: proofCycle 12s ease-in-out infinite;
+}
+.hero-proof-item:nth-child(2) { animation-delay: 4s; }
+.hero-proof-item:nth-child(3) { animation-delay: 8s; }
+@keyframes proofCycle {
+  0%, 100% { opacity: 0; transform: translateY(12px); }
+  7%, 26% { opacity: 1; transform: translateY(0); }
+  34% { opacity: 0; transform: translateY(-12px); }
+}
+.hero-proof-item span {
   color: var(--green);
   font-family: var(--font-mono);
-  font-size: 0.6rem;
+  font-size: 0.62rem;
   font-weight: 700;
-  letter-spacing: 0.18em;
+  letter-spacing: 0.2em;
   text-transform: uppercase;
 }
-.hero-stats strong {
+.hero-proof-item strong {
   color: var(--white);
   font-family: var(--font-display);
-  font-size: 1.6rem;
+  font-size: clamp(1.6rem, 3vw, 2.15rem);
   font-weight: 700;
   letter-spacing: 0.02em;
-  line-height: 1;
+  line-height: 1.05;
 }
-.hero-stats small { color: var(--text-soft); font-size: 0.76rem; }
+.hero-proof-item small {
+  color: var(--text-soft);
+  font-size: 0.92rem;
+}
 
 @media (max-width: 1100px) {
   .founder-panel { min-height: 500px; }
   .founder-portrait { max-height: 560px; }
   .founder-annotation { top: 24%; right: 6px; }
-  .founder-health { right: 6px; width: 200px; }
 }
 
 @media (max-width: 720px) {
-  /* Stack the founder panel cleanly: health card on top, portrait below */
   .founder-panel {
     display: grid;
-    grid-template-rows: auto auto;
     place-items: center;
     min-height: auto;
     gap: 18px;
@@ -3576,52 +3543,48 @@ a.proof-card { color: inherit; }
     max-height: 520px;
     max-width: 320px;
     width: auto;
+    -webkit-mask-image: none;
+    mask-image: none;
   }
   .founder-annotation { display: none; }
-  .founder-health {
-    order: 1;
-    position: static;
-    right: auto;
-    top: auto;
-    transform: none;
-    width: 100%;
-    max-width: 360px;
-  }
   /* Recenter the orbit ring + glow around the portrait area only */
   .founder-glow {
-    inset: auto 4% 0 4%;
+    top: 58%;
+    width: min(520px, 118%);
     height: 520px;
   }
   .founder-orbit {
     inset: auto 2% 0 2%;
     height: 520px;
   }
-  .hero-stats { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 10px; }
-  .hero-stats strong { font-size: 1.25rem; }
-  .hero-stats small { font-size: 0.7rem; }
+  .hero-proof {
+    min-height: 104px;
+    padding-top: 18px;
+  }
+  .hero-proof-track { min-height: 82px; }
+  .hero-proof-item strong { font-size: clamp(1.35rem, 7vw, 1.85rem); }
+  .hero-proof-item small { font-size: 0.82rem; }
   .node-build { top: 2%; left: -2%; }
   .node-rise  { top: 44%; right: -4px; }
   .node-scale { bottom: 2%; left: 4%; }
 }
 
-/* ========================================================
-   FOUNDER AVATAR in the site header brand-mark
-   ======================================================== */
-.brand {
-  position: relative;
-  align-items: center;
-}
-.brand-avatar {
-  width: 38px;
-  height: 38px;
-  border-radius: 50%;
-  object-fit: cover;
-  margin-right: 10px;
-  border: 1px solid rgba(139, 92, 246, 0.55);
-  box-shadow: 0 0 12px rgba(139, 92, 246, 0.32);
-}
-.brand-mark .brand-sub {
-  color: var(--purple);
+@media (prefers-reduced-motion: reduce) {
+  .hero-proof {
+    min-height: auto;
+    overflow: visible;
+  }
+  .hero-proof-track {
+    display: grid;
+    gap: 14px;
+    min-height: auto;
+  }
+  .hero-proof-item {
+    position: static;
+    opacity: 1;
+    transform: none;
+    animation: none !important;
+  }
 }
 
 /* ========================================================
@@ -3669,6 +3632,48 @@ a.proof-card { color: inherit; }
   filter: drop-shadow(0 24px 40px rgba(0, 0, 0, 0.55))
           drop-shadow(0 0 60px rgba(139, 92, 246, 0.32));
 }
+.home-founder-note {
+  grid-template-columns: minmax(340px, 0.95fr) minmax(0, 1.05fr);
+  overflow: visible;
+  border: 0;
+  border-radius: 0;
+  background: transparent;
+  box-shadow: none;
+  backdrop-filter: none;
+  -webkit-backdrop-filter: none;
+  padding: 34px 0;
+}
+.home-founder-note .fn-glow {
+  display: none;
+}
+.home-founder-note .fn-portrait {
+  align-self: stretch;
+  place-items: center;
+  min-height: 460px;
+  overflow: visible;
+  border-radius: 0;
+  border: 0;
+  background: transparent;
+  box-shadow: none;
+}
+.home-founder-note .fn-portrait::before {
+  display: none;
+}
+.home-founder-note .fn-portrait::after {
+  display: none;
+}
+.home-founder-note .fn-portrait img {
+  position: relative;
+  z-index: 1;
+  width: auto;
+  max-width: 118%;
+  height: clamp(500px, 62vw, 680px);
+  max-height: 92%;
+  object-fit: contain;
+  filter: none;
+  -webkit-mask-image: none;
+  mask-image: none;
+}
 .founder-note .fn-body {
   position: relative;
   z-index: 1;
@@ -3696,6 +3701,45 @@ a.proof-card { color: inherit; }
   font-style: italic;
   font-weight: 600;
 }
+.founder-principle {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1px;
+  overflow: hidden;
+  border: 1px solid rgba(139, 92, 246, 0.28);
+  border-radius: var(--radius);
+  background: rgba(139, 92, 246, 0.18);
+}
+.founder-principle div {
+  display: grid;
+  gap: 6px;
+  padding: 14px;
+  background: rgba(4, 6, 11, 0.72);
+}
+.founder-principle span {
+  color: var(--purple);
+  font-family: var(--font-mono);
+  font-size: 0.64rem;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+}
+.founder-principle p {
+  margin: 0;
+  color: var(--text-soft);
+  font-size: 0.88rem;
+  line-height: 1.5;
+}
+.founder-principle strong {
+  grid-column: 1 / -1;
+  padding: 12px 14px;
+  color: var(--white);
+  background: rgba(4, 6, 11, 0.82);
+  font-family: var(--font-mono);
+  font-size: 0.68rem;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+}
 .founder-note .fn-sign {
   display: grid;
   gap: 2px;
@@ -3721,6 +3765,16 @@ a.proof-card { color: inherit; }
   .founder-note { grid-template-columns: 1fr; padding: 26px; gap: 24px; }
   .founder-note .fn-portrait { min-height: 240px; }
   .founder-note .fn-portrait img { max-width: 200px; }
+  .home-founder-note .fn-portrait {
+    min-height: 340px;
+    aspect-ratio: 4 / 5;
+  }
+  .home-founder-note .fn-portrait img {
+    width: min(88%, 310px);
+    max-width: 310px;
+    height: auto;
+  }
+  .founder-principle { grid-template-columns: 1fr; }
 }
 
 /* ========================================================
@@ -3785,24 +3839,22 @@ a.proof-card { color: inherit; }
   display: grid;
   place-items: center;
   min-height: 560px;
+  isolation: isolate;
+}
+.about-hero .ah-portrait::after {
+  display: none;
 }
 .about-hero .ah-glow {
-  position: absolute;
-  inset: 4%;
-  border-radius: 50%;
-  background:
-    radial-gradient(closest-side at 50% 55%, rgba(139, 92, 246, 0.55), rgba(139, 92, 246, 0.18) 50%, transparent 75%);
-  filter: blur(34px);
-  pointer-events: none;
-  animation: glowPulse 7s ease-in-out infinite;
+  display: none;
 }
 .about-hero .ah-portrait img {
   position: relative;
   z-index: 1;
   max-height: 620px;
   width: auto;
-  filter: drop-shadow(0 30px 60px rgba(0, 0, 0, 0.55))
-          drop-shadow(0 0 80px rgba(139, 92, 246, 0.28));
+  filter: none;
+  -webkit-mask-image: none;
+  mask-image: none;
 }
 
 /* Story */
