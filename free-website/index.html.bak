@@ -1,0 +1,960 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>JPAX Media | Local Visibility Sprint</title>
+  <meta name="description" content="Respond to a personalized JPAX Media local visibility sprint preview for your business.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@600;700&family=IBM+Plex+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@500;600&display=swap" rel="stylesheet">
+  <link rel="icon" type="image/png" href="/jpaxmedialogoOFFICIALFINALwhite.png">
+  <style>
+    :root {
+      --dark: #06080F;
+      --dark2: #0C101C;
+      --dark3: #0F172A;
+      --green: #4ADE80;
+      --green2: #10B981;
+      --border: #1E2A3D;
+      --text: #E2E8F0;
+      --soft: #94A3B8;
+      --muted: #64748B;
+      --white: #F8FAFC;
+      font-family: "IBM Plex Sans", system-ui, sans-serif;
+    }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      background:
+        radial-gradient(circle at 12% 10%, rgba(74, 222, 128, .12), transparent 28rem),
+        radial-gradient(circle at 85% 35%, rgba(16, 185, 129, .08), transparent 32rem),
+        var(--dark);
+      color: var(--text);
+      letter-spacing: 0;
+    }
+    a { color: inherit; }
+    .page {
+      min-height: 100vh;
+      padding: clamp(18px, 3vw, 42px);
+    }
+    .shell {
+      width: min(1180px, 100%);
+      margin: 0 auto;
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      overflow: hidden;
+      background: rgba(6, 8, 15, .86);
+      box-shadow: 0 30px 80px rgba(0, 0, 0, .38);
+    }
+    .hero {
+      min-height: 510px;
+      position: relative;
+      display: block;
+      padding: clamp(24px, 5vw, 62px);
+      background:
+        radial-gradient(circle at 78% 28%, rgba(74, 222, 128, .22), transparent 24rem),
+        radial-gradient(circle at 18% 12%, rgba(16, 185, 129, .14), transparent 20rem),
+        linear-gradient(135deg, #06080F 0%, #090D18 58%, #07150F 100%);
+      overflow: hidden;
+    }
+    .hero::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      z-index: 0;
+      background: url("assets/julian.jpg") no-repeat right clamp(24px, 6vw, 74px) center;
+      background-size: min(43vw, 520px) auto;
+      opacity: .72;
+      filter: saturate(1.05) contrast(1.08);
+    }
+    .hero::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      z-index: 0;
+      background:
+        linear-gradient(90deg, rgba(6, 8, 15, .98), rgba(6, 8, 15, .91) 48%, rgba(6, 8, 15, .44) 72%, rgba(6, 8, 15, .86)),
+        linear-gradient(180deg, rgba(6, 8, 15, .08), rgba(6, 8, 15, .78));
+      pointer-events: none;
+    }
+    .topbar {
+      position: absolute;
+      z-index: 2;
+      inset: clamp(22px, 4vw, 44px) clamp(24px, 5vw, 62px) auto;
+      display: flex;
+      justify-content: space-between;
+      gap: 20px;
+      align-items: center;
+    }
+    .logo {
+      display: inline-flex;
+      align-items: center;
+      min-height: 54px;
+    }
+    .logo img {
+      width: clamp(98px, 14vw, 150px);
+      height: auto;
+      display: block;
+    }
+    .pill {
+      border: 1px solid rgba(74, 222, 128, .24);
+      border-radius: 999px;
+      background: rgba(12, 16, 28, .88);
+      color: var(--white);
+      padding: 11px 18px;
+      font: 800 .82rem "IBM Plex Sans", system-ui, sans-serif;
+      text-transform: uppercase;
+      white-space: nowrap;
+    }
+    .hero-copy {
+      position: relative;
+      z-index: 2;
+      max-width: 860px;
+      padding-top: clamp(150px, 18vw, 190px);
+    }
+    .eyebrow {
+      color: var(--green);
+      text-transform: uppercase;
+      font: 700 .78rem "JetBrains Mono", monospace;
+      margin: 0 0 14px;
+    }
+    h1 {
+      color: var(--white);
+      font: 700 clamp(2.45rem, 6vw, 4.5rem)/.98 "Chakra Petch", system-ui, sans-serif;
+      margin: 0;
+      max-width: 760px;
+      overflow-wrap: break-word;
+    }
+    .hero-copy p {
+      color: var(--text);
+      font-size: clamp(1.05rem, 2vw, 1.25rem);
+      line-height: 1.65;
+      max-width: 760px;
+      margin: 24px 0 0;
+    }
+    .rule {
+      height: 7px;
+      width: min(100%, 1040px);
+      margin: 0 auto;
+      background: linear-gradient(90deg, var(--green), rgba(74, 222, 128, .08));
+    }
+    .content {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) 360px;
+      gap: clamp(24px, 4vw, 44px);
+      padding: clamp(24px, 5vw, 62px);
+    }
+    .main-stack, .side-stack {
+      display: grid;
+      gap: 22px;
+      align-content: start;
+    }
+    .section-label {
+      color: var(--green);
+      text-transform: uppercase;
+      font: 700 .78rem "JetBrains Mono", monospace;
+      margin: 0 0 10px;
+    }
+    .intro {
+      font-size: 1.16rem;
+      line-height: 1.72;
+      color: var(--text);
+      margin: 0;
+      max-width: 780px;
+    }
+    .personal-note {
+      border-left: 7px solid var(--green);
+    }
+    .note-grid {
+      display: grid;
+      gap: 18px;
+    }
+    .notice-list {
+      display: grid;
+      gap: 12px;
+      margin: 22px 0 0;
+    }
+    .notice {
+      display: grid;
+      grid-template-columns: 18px 1fr;
+      gap: 12px;
+      align-items: start;
+      color: var(--soft);
+      line-height: 1.55;
+    }
+    .notice .dot {
+      margin-top: 7px;
+    }
+    .card {
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      background: rgba(12, 16, 28, .84);
+      overflow: hidden;
+    }
+    .card-inner { padding: clamp(20px, 3vw, 30px); }
+    .offer {
+      border-top: 7px solid var(--green);
+    }
+    .offer-head {
+      display: flex;
+      align-items: start;
+      justify-content: space-between;
+      gap: 18px;
+      margin-bottom: 16px;
+    }
+    h2 {
+      color: var(--white);
+      font: 700 clamp(1.75rem, 3vw, 2.35rem)/1.05 "Chakra Petch", system-ui, sans-serif;
+      margin: 0;
+    }
+    .price {
+      background: linear-gradient(135deg, var(--green), var(--green2));
+      color: #06120A;
+      border-radius: 999px;
+      min-width: 150px;
+      text-align: center;
+      padding: 12px 18px;
+      font-weight: 900;
+      white-space: nowrap;
+    }
+    .offer p, .soft-copy {
+      color: var(--soft);
+      font-size: 1.05rem;
+      line-height: 1.64;
+      margin: 0;
+    }
+    .chips {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 22px;
+    }
+    .chip {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      border: 1px solid var(--border);
+      border-radius: 999px;
+      background: rgba(15, 23, 42, .8);
+      padding: 9px 12px;
+      color: var(--text);
+      font-weight: 800;
+      font-size: .9rem;
+    }
+    .dot {
+      width: 9px;
+      height: 9px;
+      border-radius: 50%;
+      background: var(--green);
+      box-shadow: 0 0 12px rgba(74, 222, 128, .6);
+      flex: 0 0 auto;
+    }
+    .timeline {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 12px;
+      margin-top: 20px;
+    }
+    .step {
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 16px;
+      background: rgba(6, 8, 15, .56);
+    }
+    .step strong {
+      color: var(--green);
+      display: block;
+      font: 700 1.05rem "Chakra Petch", system-ui, sans-serif;
+      margin-bottom: 7px;
+    }
+    .step span {
+      color: var(--soft);
+      line-height: 1.5;
+      font-size: .94rem;
+    }
+    .response {
+      background: rgba(7, 20, 24, .86);
+    }
+    .profile {
+      display: grid;
+      grid-template-columns: 98px minmax(0, 1fr);
+      gap: 16px;
+      align-items: center;
+    }
+    .profile img {
+      width: 98px;
+      height: 98px;
+      border-radius: 8px;
+      object-fit: cover;
+    }
+    .profile h3 {
+      margin: 0 0 5px;
+      color: var(--white);
+      font-size: 1.3rem;
+    }
+    .profile p {
+      margin: 0;
+      color: var(--soft);
+      line-height: 1.5;
+    }
+    .profile strong {
+      color: var(--green);
+      display: block;
+      margin-top: 9px;
+    }
+    .demo-card img {
+      width: 100%;
+      height: 130px;
+      object-fit: cover;
+      object-position: center 28%;
+      display: block;
+      filter: saturate(.95) contrast(1.04);
+    }
+    .demo-card h3 {
+      color: var(--green);
+      margin: 0 0 7px;
+      font-size: 1.35rem;
+    }
+    .demo-card p {
+      color: var(--soft);
+      line-height: 1.5;
+      margin: 0 0 16px;
+    }
+    .button-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+    .button {
+      display: inline-flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 48px;
+      border-radius: 8px;
+      padding: 12px 16px;
+      background: var(--green);
+      color: #06120A;
+      font-weight: 900;
+      text-decoration: none;
+      border: 0;
+      cursor: pointer;
+    }
+    .button.secondary {
+      background: transparent;
+      color: var(--white);
+      border: 1px solid var(--border);
+    }
+    .form-card {
+      border-top: 7px solid var(--green);
+    }
+    form { display: grid; gap: 14px; }
+    label {
+      display: grid;
+      gap: 7px;
+      color: var(--soft);
+      font-weight: 800;
+    }
+    .friendly-copy {
+      color: var(--soft);
+      line-height: 1.58;
+      margin: 0 0 18px;
+    }
+    fieldset {
+      border: 0;
+      padding: 0;
+      margin: 0;
+      display: grid;
+      gap: 7px;
+    }
+    legend {
+      color: var(--soft);
+      font-weight: 800;
+      padding: 0;
+    }
+    input, textarea {
+      width: 100%;
+      min-height: 48px;
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      background: #06080F;
+      color: var(--white);
+      padding: 12px 14px;
+      font: inherit;
+    }
+    textarea {
+      min-height: 96px;
+      resize: vertical;
+    }
+    input:focus, textarea:focus {
+      outline: 2px solid rgba(74, 222, 128, .35);
+      border-color: var(--green);
+    }
+    .check-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 10px;
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 12px;
+      background: rgba(6, 8, 15, .7);
+    }
+    .check-option {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      min-height: 42px;
+      padding: 9px 10px;
+      border-radius: 8px;
+      background: rgba(15, 23, 42, .72);
+      color: var(--text);
+      font-weight: 800;
+      line-height: 1.2;
+    }
+    .check-option input {
+      width: 18px;
+      min-height: 18px;
+      height: 18px;
+      flex: 0 0 18px;
+      accent-color: var(--green);
+    }
+    .hidden { display: none; }
+    .footer {
+      display: flex;
+      justify-content: space-between;
+      gap: 18px;
+      align-items: end;
+      padding: 0 clamp(24px, 5vw, 62px) clamp(24px, 5vw, 42px);
+      color: var(--soft);
+      font-size: .94rem;
+    }
+    .footer strong {
+      display: block;
+      color: var(--white);
+      font-size: 1.25rem;
+      margin-bottom: 4px;
+    }
+    .footer a {
+      color: var(--green);
+      font-weight: 900;
+    }
+    .mini-rule {
+      width: 210px;
+      height: 7px;
+      background: linear-gradient(90deg, var(--green), var(--green2));
+      margin-left: auto;
+    }
+    @media (max-width: 920px) {
+      .content { grid-template-columns: 1fr; }
+      .hero { min-height: 440px; }
+      .timeline { grid-template-columns: 1fr; }
+      .footer { display: grid; }
+      .mini-rule { margin-left: 0; }
+    }
+    @media (max-width: 620px) {
+      .page { padding: 0; }
+      .shell { border-width: 0 0 1px; border-radius: 0; }
+      .hero {
+        min-height: 0;
+        padding: 24px 0 0;
+      }
+      .hero::before {
+        background-position: right -44px top 20px;
+        background-size: 290px auto;
+        opacity: .58;
+      }
+      .hero::after {
+        background:
+          linear-gradient(90deg, rgba(6, 8, 15, .97), rgba(6, 8, 15, .84) 64%, rgba(6, 8, 15, .56)),
+          linear-gradient(180deg, rgba(6, 8, 15, .1), rgba(6, 8, 15, .82));
+      }
+      .topbar {
+        position: relative;
+        inset: auto;
+        align-items: flex-start;
+        flex-wrap: wrap;
+        width: min(342px, calc(100% - 48px));
+        margin-left: 24px;
+        margin-right: 24px;
+        margin-bottom: 86px;
+      }
+      .logo img { width: 92px; }
+      .pill {
+        max-width: 148px;
+        white-space: normal;
+        text-align: center;
+        line-height: 1.18;
+        font-size: .68rem;
+        padding: 9px 12px;
+      }
+      .hero-copy {
+        padding-top: 0;
+        width: min(342px, calc(100% - 48px));
+        max-width: none;
+        margin-left: 24px;
+        margin-right: 24px;
+        padding-bottom: 34px;
+      }
+      h1 {
+        font-size: 1.95rem;
+        line-height: 1.03;
+      }
+      .hero-copy p {
+        max-width: 100%;
+        font-size: 1rem;
+        line-height: 1.58;
+      }
+      .content {
+        padding: 28px 0;
+      }
+      .main-stack,
+      .side-stack {
+        width: min(342px, calc(100% - 48px));
+        margin-left: 24px;
+        margin-right: 24px;
+      }
+      .offer-head { display: grid; }
+      .price { width: fit-content; }
+      .profile { grid-template-columns: 82px 1fr; }
+      .profile img { width: 82px; height: 82px; }
+      .check-grid { grid-template-columns: 1fr; }
+      .footer {
+        width: min(342px, calc(100% - 48px));
+        margin-left: 24px;
+        margin-right: 24px;
+        padding-left: 0;
+        padding-right: 0;
+      }
+    }
+  </style>
+</head>
+<body>
+  <main class="page">
+    <div class="shell">
+      <section class="hero" id="hero">
+        <div class="topbar">
+          <a class="logo" href="/" aria-label="JPAX Media home">
+            <img src="assets/jpax-logo.png" alt="JPAX Media">
+          </a>
+          <div class="pill">90-day local visibility sprint</div>
+        </div>
+        <div class="hero-copy">
+          <p class="eyebrow" id="heroEyebrow">Personalized outreach from JPAX Media</p>
+          <h1 id="heroTitle">I made this for your business.</h1>
+          <p id="heroLead">I’m Julian with JPAX Media. I was looking at local service businesses in the Upstate and noticed your online presence could be easier for customers to trust and use. So I put together a site preview and a simple 90-day plan.</p>
+        </div>
+      </section>
+      <div class="rule"></div>
+
+      <section class="content">
+        <div class="main-stack">
+          <div>
+            <p class="section-label">Built for local service businesses</p>
+            <p class="intro" id="introCopy">This is not a big agency pitch. I wanted to show you something concrete first: a cleaner online front door, clearer service presentation, and a practical plan you can actually use.</p>
+          </div>
+
+          <article class="card personal-note">
+            <div class="card-inner note-grid">
+              <h2>What I noticed</h2>
+              <p class="soft-copy">Your customers already need what you do. The gap is usually making it easier for them to trust the business, understand the services, and reach out without digging around.</p>
+              <div class="notice-list" aria-label="Local visibility focus areas">
+                <div class="notice"><span class="dot"></span><span>A cleaner website can make services, photos, reviews, and contact options easier to scan from a phone.</span></div>
+                <div class="notice"><span class="dot"></span><span>Facebook should feel active enough that a first-time customer knows the business is still taking work.</span></div>
+                <div class="notice"><span class="dot"></span><span>A competitor snapshot helps show what nearby businesses are doing online and where there is room to stand out.</span></div>
+              </div>
+            </div>
+          </article>
+
+          <article class="card offer">
+            <div class="card-inner">
+              <div class="offer-head">
+                <h2>If you like the direction</h2>
+                <div class="price">$450/mo x 3</div>
+              </div>
+              <p>The 90-day Local Visibility Sprint is built to get the site launched, clean up your Facebook presence, show you how nearby competitors are showing up, and leave you with a 90-day roadmap for what to improve next.</p>
+              <div class="chips" aria-label="Sprint deliverables">
+                <span class="chip"><span class="dot"></span>Website launch</span>
+                <span class="chip"><span class="dot"></span>Facebook management</span>
+                <span class="chip"><span class="dot"></span>Competitor snapshot</span>
+                <span class="chip"><span class="dot"></span>90-day roadmap</span>
+              </div>
+            </div>
+          </article>
+
+          <article class="card">
+            <div class="card-inner">
+              <h2>How the sprint works</h2>
+              <div class="timeline">
+                <div class="step">
+                  <strong>Month 1</strong>
+                  <span>Finalize the site, sharpen the message, and launch the clean version.</span>
+                </div>
+                <div class="step">
+                  <strong>Month 2</strong>
+                  <span>Manage Facebook basics and compare how local competitors are presenting themselves.</span>
+                </div>
+                <div class="step">
+                  <strong>Month 3</strong>
+                  <span>Tighten what is working and hand over a clear next-step roadmap.</span>
+                </div>
+              </div>
+            </div>
+          </article>
+
+          <article class="card response">
+            <div class="card-inner">
+              <h2>No pressure. Look it over first.</h2>
+              <p class="soft-copy">Send your info below and I will follow up personally. If the preview feels useful, we can talk through the sprint. If not, you still get a clear look at what a cleaner online presence could look like.</p>
+            </div>
+          </article>
+        </div>
+
+        <aside class="side-stack">
+          <article class="card demo-card">
+            <img id="demoImage" src="assets/julian.jpg" alt="Julian Johnson of JPAX Media">
+            <div class="card-inner">
+              <h3>A note from Julian</h3>
+              <p id="demoCopy">Your business is selected from the QR code. Send the form and I will send the preview link personally.</p>
+              <div class="button-row">
+                <a class="button" href="#respond">Respond</a>
+                <a class="button secondary" id="demoLink" href="#respond">Ask for preview</a>
+              </div>
+            </div>
+          </article>
+
+          <article class="card">
+            <div class="card-inner profile">
+              <img src="assets/julian.jpg" alt="Julian Johnson">
+              <div>
+                <h3>Julian Johnson</h3>
+                <p>Founder, JPAX Media</p>
+                <strong>Local to the Upstate.</strong>
+                <p>(860) 494-3090</p>
+              </div>
+            </div>
+          </article>
+
+          <article class="card form-card" id="respond">
+            <div class="card-inner">
+              <h2>Want me to send it over?</h2>
+              <p class="friendly-copy">Drop the best way to reach you. I’ll send the preview link and a short note on what I would clean up first.</p>
+              <form name="free-website-demo" method="POST" data-netlify="true" netlify-honeypot="bot-field" action="/free-website/thank-you/">
+                <input type="hidden" name="form-name" value="free-website-demo">
+                <input type="hidden" name="prospect_slug" id="prospectSlug">
+                <input type="hidden" name="demo_url" id="demoUrl">
+                <p class="hidden"><label>Do not fill this out <input name="bot-field"></label></p>
+                <label>Who should I send this to? <input name="name" autocomplete="name" required></label>
+                <label>Best email <input name="email" type="email" autocomplete="email" required></label>
+                <label>Want me to text you too? <input name="phone" type="tel" autocomplete="tel"></label>
+                <label>Which business is this for? <input name="business" id="businessField" autocomplete="organization" required></label>
+                <fieldset>
+                  <legend>What would you want cleaned up first?</legend>
+                  <span class="check-grid">
+                    <label class="check-option"><input type="checkbox" name="focus[]" value="Website"><span>Website</span></label>
+                    <label class="check-option"><input type="checkbox" name="focus[]" value="Facebook"><span>Facebook</span></label>
+                    <label class="check-option"><input type="checkbox" name="focus[]" value="Google profile and reviews"><span>Google profile / reviews</span></label>
+                    <label class="check-option"><input type="checkbox" name="focus[]" value="Not sure yet"><span>Not sure yet</span></label>
+                  </span>
+                </fieldset>
+                <label>Anything you want me to know? <textarea name="message" id="messageField"></textarea></label>
+                <button class="button" type="submit">Send me the preview</button>
+              </form>
+            </div>
+          </article>
+        </aside>
+      </section>
+
+      <footer class="footer">
+        <div>
+          <strong>JPAX Media LLC</strong>
+          AI-powered websites, content systems, and operating tools.<br>
+          <a href="https://jpaxmedia.com">jpaxmedia.com</a> | julian@jpaxmedia.com | (860) 494-3090
+        </div>
+        <div>
+          <div class="mini-rule"></div>
+        </div>
+      </footer>
+    </div>
+  </main>
+
+  <script>
+    const prospects = {
+      "especially-auto-services": {
+        name: "Especially Auto Services",
+        category: "Auto Repair",
+        city: "Greenville, SC",
+        demo: "https://jpaxmedia.com/demos/especially-auto-services/",
+        image: "https://jpaxmedia.com/demos/especially-auto-services/assets/hero.jpg"
+      },
+      "ruiz-tires-auto-services": {
+        name: "Ruiz Tires & Auto Services",
+        category: "Tires and Auto Repair",
+        city: "West Greenville, SC",
+        demo: "https://jpaxmedia.com/demos/ruiz-tires-auto-services/",
+        image: "https://jpaxmedia.com/demos/ruiz-tires-auto-services/assets/hero.jpg"
+      },
+      "distinctive-details": {
+        name: "Distinctive Details",
+        category: "Auto Detailing",
+        city: "Mauldin, SC",
+        demo: "https://jpaxmedia.com/demos/distinctive-details/",
+        image: "https://jpaxmedia.com/demos/distinctive-details/assets/hero.jpg"
+      },
+      "devil-dog-fencing": {
+        name: "Devil Dog Fencing",
+        category: "Fence Contractor",
+        city: "Greenville, SC",
+        demo: "https://jpaxmedia.com/demos/devil-dog-fencing/",
+        image: "https://jpaxmedia.com/demos/devil-dog-fencing/assets/hero.jpg"
+      },
+      "ctg-landscape-design": {
+        name: "CTG Landscape Design & Construction",
+        category: "Landscaping",
+        city: "Greenville, SC",
+        demo: "https://jpaxmedia.com/demos/ctg-landscape-design/",
+        image: "https://jpaxmedia.com/demos/ctg-landscape-design/assets/hero.jpg"
+      },
+      "vanguard-professional-concrete": {
+        name: "Vanguard Professional Concrete",
+        category: "Concrete Contractor",
+        city: "Greenville, SC",
+        demo: "https://jpaxmedia.com/demos/vanguard-professional-concrete/",
+        image: "https://jpaxmedia.com/demos/vanguard-professional-concrete/assets/hero.jpg"
+      },
+      "superior-clean-power-washing": {
+        name: "Superior Clean Power Washing Services LLC",
+        category: "Pressure Washing",
+        city: "Spartanburg, SC",
+        demo: "https://jpaxmedia.com/demos/superior-clean-power-washing/",
+        image: "https://jpaxmedia.com/demos/superior-clean-power-washing/assets/hero.jpg"
+      },
+      "impact-roofing": {
+        name: "Impact Roofing LLC",
+        category: "Roofing Contractor",
+        city: "Spartanburg, SC",
+        demo: "https://jpaxmedia.com/demos/impact-roofing/",
+        image: "https://jpaxmedia.com/demos/impact-roofing/assets/hero.jpg"
+      },
+      "operation-drains-the-upstate": {
+        name: "Operation Drains - The Upstate",
+        category: "Plumbing",
+        city: "Spartanburg, SC",
+        demo: "https://jpaxmedia.com/demos/operation-drains-the-upstate/",
+        image: "https://jpaxmedia.com/demos/operation-drains-the-upstate/assets/hero.jpg"
+      },
+      "amorias-cleaning-services": {
+        name: "Amoria's Cleaning Services LLC",
+        category: "Cleaning Service",
+        city: "Spartanburg, SC",
+        demo: "https://jpaxmedia.com/demos/amorias-cleaning-services/",
+        image: "https://jpaxmedia.com/demos/amorias-cleaning-services/assets/hero.jpg"
+      },
+      "perfection-automotive": {
+        name: "Perfection Automotive",
+        category: "Auto Repair",
+        city: "Greenville, SC",
+        demo: "https://jpaxmedia.com/demos/perfection-automotive/",
+        image: "https://jpaxmedia.com/demos/perfection-automotive/assets/hero.jpg"
+      },
+      "star-automotive": {
+        name: "Star Automotive",
+        category: "Auto Repair",
+        city: "Greenville, SC",
+        demo: "https://jpaxmedia.com/demos/star-automotive/",
+        image: "https://jpaxmedia.com/demos/star-automotive/assets/hero.jpg"
+      },
+      "barrett-auto-service": {
+        name: "Barrett Auto Service",
+        category: "Auto Repair",
+        city: "Greenville, SC",
+        demo: "https://jpaxmedia.com/demos/barrett-auto-service/",
+        image: "https://jpaxmedia.com/demos/barrett-auto-service/assets/hero.jpg"
+      },
+      "faulkner-fence-co": {
+        name: "Faulkner Fence Co",
+        category: "Fence Contractor",
+        city: "Greenville, SC",
+        demo: "https://jpaxmedia.com/demos/faulkner-fence-co/",
+        image: "https://jpaxmedia.com/demos/faulkner-fence-co/assets/hero.jpg"
+      },
+      "awesome-cleaning-services": {
+        name: "Awesome Cleaning Services",
+        category: "Cleaning Service",
+        city: "Greenville, SC",
+        demo: "https://jpaxmedia.com/demos/awesome-cleaning-services/",
+        image: "https://jpaxmedia.com/demos/awesome-cleaning-services/assets/hero.jpg"
+      },
+      "em-auto-repair": {
+        name: "E.M. Auto Repair",
+        category: "Auto Repair",
+        city: "Spartanburg, SC",
+        demo: "https://jpaxmedia.com/demos/em-auto-repair/",
+        image: "https://jpaxmedia.com/demos/em-auto-repair/assets/hero.jpg"
+      },
+      "garretts-muffler-tire-automotive": {
+        name: "Garrett's Muffler, Tire & Automotive",
+        category: "Muffler, Tire & Auto Repair",
+        city: "Spartanburg, SC",
+        demo: "https://jpaxmedia.com/demos/garretts-muffler-tire-automotive/",
+        image: "https://jpaxmedia.com/demos/garretts-muffler-tire-automotive/assets/hero.jpg"
+      },
+      "ortiz-sons-automotive": {
+        name: "Ortiz & Sons Automotive LLC",
+        category: "Auto Repair",
+        city: "Spartanburg, SC",
+        demo: "https://jpaxmedia.com/demos/ortiz-sons-automotive/",
+        image: "https://jpaxmedia.com/demos/ortiz-sons-automotive/assets/hero.jpg"
+      },
+      "ricks-muffler-shop-service-center": {
+        name: "Rick's Muffler Shop & Service Center",
+        category: "Muffler & Service Center",
+        city: "Spartanburg, SC",
+        demo: "https://jpaxmedia.com/demos/ricks-muffler-shop-service-center/",
+        image: "https://jpaxmedia.com/demos/ricks-muffler-shop-service-center/assets/hero.jpg"
+      },
+      "karols-cleaning-services": {
+        name: "Karol's Cleaning Services",
+        category: "Cleaning Service",
+        city: "Spartanburg, SC",
+        demo: "https://jpaxmedia.com/demos/karols-cleaning-services/",
+        image: "https://jpaxmedia.com/demos/karols-cleaning-services/assets/hero.jpg"
+      },
+      "foreign-cars-unlimited": {
+        name: "Foreign Cars Unlimited",
+        category: "Import Auto Repair",
+        city: "Greenville, SC",
+        demo: "https://jpaxmedia.com/demos/foreign-cars-unlimited/",
+        image: "https://jpaxmedia.com/demos/foreign-cars-unlimited/assets/hero.jpg"
+      },
+      "jjp-detailing-shop": {
+        name: "J J & P's Detailing Shop",
+        category: "Auto Detailing",
+        city: "Greenville, SC",
+        demo: "https://jpaxmedia.com/demos/jjp-detailing-shop/",
+        image: "https://jpaxmedia.com/demos/jjp-detailing-shop/assets/hero.jpg"
+      },
+      "ahm-cleaning-service": {
+        name: "A.H.M Cleaning Service",
+        category: "Cleaning Service",
+        city: "Greenville, SC",
+        demo: "https://jpaxmedia.com/demos/ahm-cleaning-service/",
+        image: "https://jpaxmedia.com/demos/ahm-cleaning-service/assets/hero.jpg"
+      },
+      "new-method-laundry-cleaners": {
+        name: "New Method Laundry & Cleaners",
+        category: "Laundry and Dry Cleaning",
+        city: "Spartanburg, SC",
+        demo: "https://jpaxmedia.com/demos/new-method-laundry-cleaners/",
+        image: "https://jpaxmedia.com/demos/new-method-laundry-cleaners/assets/hero.jpg"
+      },
+      "brunette-contracting": {
+        name: "Brunette Contracting LLC",
+        category: "General Contracting",
+        city: "Spartanburg, SC",
+        demo: "https://jpaxmedia.com/demos/brunette-contracting/",
+        image: "https://jpaxmedia.com/demos/brunette-contracting/assets/hero.jpg"
+      },
+      "lawson-contracting-construction": {
+        name: "Lawson Contracting & Construction",
+        category: "Contracting and Construction",
+        city: "Spartanburg, SC",
+        demo: "https://jpaxmedia.com/demos/lawson-contracting-construction/",
+        image: "https://jpaxmedia.com/demos/lawson-contracting-construction/assets/hero.jpg"
+      },
+      "jasons-auto-service": {
+        name: "Jason's Auto Service",
+        category: "Auto Repair",
+        city: "Easley, SC",
+        demo: "https://jpaxmedia.com/demos/jasons-auto-service/",
+        image: "https://jpaxmedia.com/demos/jasons-auto-service/assets/hero.jpg"
+      },
+      "moon-tire-auto": {
+        name: "Moon Tire & Auto",
+        category: "Tires and Auto Repair",
+        city: "Greer, SC",
+        demo: "https://jpaxmedia.com/demos/moon-tire-auto/",
+        image: "https://jpaxmedia.com/demos/moon-tire-auto/assets/hero.jpg"
+      },
+      "israel-automotive": {
+        name: "Israel Automotive",
+        category: "Auto Repair",
+        city: "Boiling Springs, SC",
+        demo: "https://jpaxmedia.com/demos/israel-automotive/",
+        image: "https://jpaxmedia.com/demos/israel-automotive/assets/hero.jpg"
+      },
+      "johns-auto-service-boiling-springs": {
+        name: "John's Auto Service",
+        category: "Auto Repair",
+        city: "Boiling Springs, SC",
+        demo: "https://jpaxmedia.com/demos/johns-auto-service-boiling-springs/",
+        image: "https://jpaxmedia.com/demos/johns-auto-service-boiling-springs/assets/hero.jpg"
+      },
+      "mercks-automotive": {
+        name: "Merck's Automotive",
+        category: "Auto Repair",
+        city: "Easley, SC",
+        demo: "https://jpaxmedia.com/demos/mercks-automotive/",
+        image: "https://jpaxmedia.com/demos/mercks-automotive/assets/hero.jpg"
+      },
+      "superior-auto-care-easley": {
+        name: "Superior Auto Care",
+        category: "Auto Repair",
+        city: "Easley, SC",
+        demo: "https://jpaxmedia.com/demos/superior-auto-care-easley/",
+        image: "https://jpaxmedia.com/demos/superior-auto-care-easley/assets/hero.jpg"
+      },
+      "new-again-house-wash": {
+        name: "New Again House Wash",
+        category: "Pressure Washing",
+        city: "Inman, SC",
+        demo: "https://jpaxmedia.com/demos/new-again-house-wash/",
+        image: "https://jpaxmedia.com/demos/new-again-house-wash/assets/hero.jpg"
+      },
+      "ace-heating-and-cooling": {
+        name: "Ace Heating and Cooling",
+        category: "HVAC",
+        city: "Easley, SC",
+        demo: "https://jpaxmedia.com/demos/ace-heating-and-cooling/",
+        image: "https://jpaxmedia.com/demos/ace-heating-and-cooling/assets/hero.jpg"
+      },
+      "easley-auto-clinic": {
+        name: "Easley Auto Clinic",
+        category: "Auto Repair",
+        city: "Easley, SC",
+        demo: "https://jpaxmedia.com/demos/easley-auto-clinic/",
+        image: "https://jpaxmedia.com/demos/easley-auto-clinic/assets/hero.jpg"
+      },
+      "kens-auto-woodruff": {
+        name: "Ken's Auto",
+        category: "Auto Repair",
+        city: "Woodruff, SC",
+        demo: "https://jpaxmedia.com/demos/kens-auto-woodruff/",
+        image: "https://jpaxmedia.com/demos/kens-auto-woodruff/assets/hero.jpg"
+      }
+    };
+
+    const params = new URLSearchParams(window.location.search);
+    const slug = params.get("prospect") || "";
+    const prospect = prospects[slug];
+    const demoLink = document.getElementById("demoLink");
+
+    document.getElementById("prospectSlug").value = slug;
+
+    if (prospect) {
+      document.title = `JPAX Media | ${prospect.name} Local Visibility Sprint`;
+      document.getElementById("heroEyebrow").textContent = `${prospect.category} note for ${prospect.city}`;
+      document.getElementById("heroTitle").textContent = `Hey ${prospect.name}, I made this for you.`;
+      document.getElementById("heroLead").textContent = `I’m Julian with JPAX Media. I was looking at local service businesses in the Upstate and put together a site preview for ${prospect.name}, plus a simple 90-day plan to make the online presence easier to trust and use.`;
+      document.getElementById("introCopy").textContent = `I already selected ${prospect.name} from the QR code. If you want the preview link, send the form and I will follow up personally.`;
+      document.getElementById("businessField").value = prospect.name;
+      document.getElementById("demoUrl").value = prospect.demo;
+      document.getElementById("messageField").value = `I scanned the JPAX postcard for ${prospect.name}. Please send me the site preview and your thoughts on what you would clean up first.`;
+      document.getElementById("demoCopy").textContent = `The preview link for ${prospect.name} is ready. Send the form and I will send it over personally.`;
+      demoLink.href = "#respond";
+    } else {
+      demoLink.style.display = "none";
+    }
+  </script>
+</body>
+</html>
