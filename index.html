@@ -362,6 +362,36 @@
       </div>
     </section>
 
+    <section class="section module" id="visibility-score" aria-labelledby="vscore-heading">
+      <div class="section-head reveal">
+        <p class="section-kicker"><span class="kicker-bracket">[</span> Free Tool <span class="kicker-bracket">]</span></p>
+        <h2 id="vscore-heading">How visible is your business online?</h2>
+        <div class="section-rule"></div>
+        <p>Get your free Visibility Score in under a minute. We check Google, your website, reviews, social, and AI search — then show you exactly where customers can find you, and where you're invisible. Reviewed by a real person.</p>
+      </div>
+      <div class="reveal" style="margin-top:8px;">
+        <iframe
+          id="jpax-score-frame"
+          src="https://jpax-visibility-report.vercel.app/"
+          title="JPAX Visibility Score"
+          loading="lazy"
+          allow="clipboard-write"
+          style="width:100%;min-height:760px;border:1px solid #1e2a3d;border-radius:18px;background:#06080f;display:block;"
+        ></iframe>
+      </div>
+    </section>
+    <script>
+      (function () {
+        var f = document.getElementById("jpax-score-frame");
+        window.addEventListener("message", function (e) {
+          if (!e.data || e.data.type !== "jpax-embed-height" || !f) return;
+          if (typeof e.data.height === "number" && e.data.height > 400) {
+            f.style.height = (e.data.height + 24) + "px";
+          }
+        });
+      })();
+    </script>
+
     <section class="section compact" id="from-julian">
       <article class="founder-note home-founder-note reveal" aria-labelledby="from-julian-heading">
         <div class="fn-glow" aria-hidden="true"></div>
