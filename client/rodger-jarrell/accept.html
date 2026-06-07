@@ -167,17 +167,30 @@
       acceptedAt.value = new Date().toISOString();
     }
 
-    function setSignatureCanvasSize() {
+    function setSignatureCanvasSize({ preserve = true } = {}) {
       if (!signaturePad || !signatureContext) return;
       const rect = signaturePad.getBoundingClientRect();
       const ratio = Math.max(window.devicePixelRatio || 1, 1);
-      signaturePad.width = Math.round(rect.width * ratio);
-      signaturePad.height = Math.round(rect.height * ratio);
+      const targetWidth = Math.round(rect.width * ratio);
+      const targetHeight = Math.round(rect.height * ratio);
+      if (signaturePad.width === targetWidth && signaturePad.height === targetHeight) return;
+
+      const existingSignature = preserve && hasSignature ? signaturePad.toDataURL("image/png") : "";
+      signaturePad.width = targetWidth;
+      signaturePad.height = targetHeight;
       signatureContext.setTransform(ratio, 0, 0, ratio, 0, 0);
       signatureContext.lineCap = "round";
       signatureContext.lineJoin = "round";
       signatureContext.lineWidth = 3;
       signatureContext.strokeStyle = "#111827";
+
+      if (existingSignature) {
+        const image = new Image();
+        image.onload = () => {
+          signatureContext.drawImage(image, 0, 0, rect.width, rect.height);
+        };
+        image.src = existingSignature;
+      }
     }
 
     function pointerPosition(event) {
@@ -220,8 +233,19 @@
       if (signatureDataUrl) signatureDataUrl.value = "";
     }
 
+    function exportSignatureImage() {
+      const exportCanvas = document.createElement("canvas");
+      exportCanvas.width = signaturePad.width;
+      exportCanvas.height = signaturePad.height;
+      const exportContext = exportCanvas.getContext("2d");
+      exportContext.fillStyle = "#ffffff";
+      exportContext.fillRect(0, 0, exportCanvas.width, exportCanvas.height);
+      exportContext.drawImage(signaturePad, 0, 0);
+      return exportCanvas.toDataURL("image/jpeg", 0.94);
+    }
+
     if (signaturePad && signatureContext) {
-      setSignatureCanvasSize();
+      setSignatureCanvasSize({ preserve: false });
       window.addEventListener("resize", setSignatureCanvasSize);
       signaturePad.addEventListener("pointerdown", startDrawing);
       signaturePad.addEventListener("pointermove", draw);
@@ -242,30 +266,30 @@
           return;
         }
 
-        signatureDataUrl.value = signaturePad.toDataURL("image/png");
+        signatureDataUrl.value = exportSignatureImage();
         formStatus.textContent = "Submitting acceptance...";
         submitButton.disabled = true;
 
         const formData = new FormData(acceptanceForm);
-          const payload = Object.fromEntries(formData.entries());
-          const printableRecord = {
-            proposal_id: payload.proposal_id,
-            proposal_url: payload.proposal_url,
-            pricing_url: payload.pricing_url,
-            accepted_at: payload.accepted_at,
-            full_name: payload.full_name,
-            title: payload.title,
-            business_name: payload.business_name,
-            email: payload.email,
-            authorized_to_accept: payload.authorized_to_accept,
-            proposal_acceptance: payload.proposal_acceptance,
-            payment_acknowledgement: payload.payment_acknowledgement,
-            notes: payload.notes,
-            signature_data_url: payload.signature_data_url,
-          };
+        const payload = Object.fromEntries(formData.entries());
+        const printableRecord = {
+          proposal_id: payload.proposal_id,
+          proposal_url: payload.proposal_url,
+          pricing_url: payload.pricing_url,
+          accepted_at: payload.accepted_at,
+          full_name: payload.full_name,
+          title: payload.title,
+          business_name: payload.business_name,
+          email: payload.email,
+          authorized_to_accept: payload.authorized_to_accept,
+          proposal_acceptance: payload.proposal_acceptance,
+          payment_acknowledgement: payload.payment_acknowledgement,
+          notes: payload.notes,
+          signature_data_url: payload.signature_data_url,
+        };
 
-          try {
-            const response = await fetch("/.netlify/functions/proposal-acceptance", {
+        try {
+          const response = await fetch("/.netlify/functions/proposal-acceptance", {
             method: "POST",
             headers: {
               "Content-Type": "application/json",

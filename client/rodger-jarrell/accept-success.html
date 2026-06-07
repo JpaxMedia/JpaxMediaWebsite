@@ -202,7 +202,7 @@
 
       const signatureImage = document.getElementById("client-signature-image");
       const signatureFallback = document.getElementById("signature-fallback");
-      if (signatureImage && /^data:image\/png;base64,/.test(record.signature_data_url || "")) {
+      if (signatureImage && /^data:image\/(?:png|jpe?g);base64,/.test(record.signature_data_url || "")) {
         signatureReady = normalizeSignatureForPrint(record.signature_data_url).then((printableSignature) => {
           signatureImage.src = printableSignature;
           signatureImage.hidden = false;

@@ -25,12 +25,121 @@ function jsonResponse(statusCode, body) {
   };
 }
 
-function signatureBase64(dataUrl = "") {
-  const match = String(dataUrl).match(/^data:image\/png;base64,([A-Za-z0-9+/=]+)$/);
-  return match ? match[1] : "";
+function signatureImage(dataUrl = "") {
+  const match = String(dataUrl).match(/^data:image\/jpe?g;base64,([A-Za-z0-9+/=]+)$/);
+  if (!match) return null;
+  return {
+    base64: match[1],
+    bytes: Buffer.from(match[1], "base64"),
+  };
 }
 
-function signedReceiptHtml({
+function pdfEscape(value = "") {
+  return String(value)
+    .replace(/[^\x09\x0a\x0d\x20-\x7e]/g, " ")
+    .replaceAll("\\", "\\\\")
+    .replaceAll("(", "\\(")
+    .replaceAll(")", "\\)")
+    .replace(/\r?\n/g, "\\n");
+}
+
+function jpegDimensions(bytes) {
+  if (bytes[0] !== 0xff || bytes[1] !== 0xd8) {
+    throw new Error("Invalid JPEG signature image.");
+  }
+
+  let offset = 2;
+  while (offset < bytes.length) {
+    if (bytes[offset] !== 0xff) {
+      offset += 1;
+      continue;
+    }
+
+    const marker = bytes[offset + 1];
+    offset += 2;
+
+    if (marker === 0xd9 || marker === 0xda) break;
+    const segmentLength = bytes.readUInt16BE(offset);
+    const frameMarkers = new Set([0xc0, 0xc1, 0xc2, 0xc3, 0xc5, 0xc6, 0xc7, 0xc9, 0xca, 0xcb, 0xcd, 0xce, 0xcf]);
+
+    if (frameMarkers.has(marker)) {
+      return {
+        height: bytes.readUInt16BE(offset + 3),
+        width: bytes.readUInt16BE(offset + 5),
+      };
+    }
+
+    offset += segmentLength;
+  }
+
+  throw new Error("Could not read JPEG signature dimensions.");
+}
+
+function wrapText(value = "", maxLength = 78) {
+  const words = String(value || "").replace(/\s+/g, " ").trim().split(" ").filter(Boolean);
+  const lines = [];
+  let current = "";
+
+  words.forEach((word) => {
+    const next = current ? `${current} ${word}` : word;
+    if (next.length > maxLength && current) {
+      lines.push(current);
+      current = word;
+    } else {
+      current = next;
+    }
+  });
+
+  if (current) lines.push(current);
+  return lines.length ? lines : [""];
+}
+
+function addText(commands, text, x, y, size = 10, font = "F1") {
+  commands.push(`BT /${font} ${size} Tf ${x} ${y} Td (${pdfEscape(text)}) Tj ET`);
+}
+
+function addWrappedText(commands, text, x, y, maxLength = 78, lineHeight = 13, size = 10, font = "F1") {
+  const lines = wrapText(text, maxLength);
+  lines.forEach((line, index) => addText(commands, line, x, y - index * lineHeight, size, font));
+  return y - lines.length * lineHeight;
+}
+
+function addCard(commands, label, value, x, y, width, height) {
+  commands.push("0.80 0.84 0.88 RG 0.9 w");
+  commands.push(`${x} ${y} ${width} ${height} re S`);
+  addText(commands, label.toUpperCase(), x + 10, y + height - 17, 7, "F2");
+  addWrappedText(commands, value, x + 10, y + height - 33, 32, 11, 9, "F1");
+}
+
+function pdfObject(id, body) {
+  return { id, body };
+}
+
+function buildPdf(objects) {
+  const chunks = [Buffer.from("%PDF-1.4\n%\xe2\xe3\xcf\xd3\n", "binary")];
+  const offsets = [0];
+  let length = chunks[0].length;
+
+  objects.forEach((object) => {
+    offsets[object.id] = length;
+    const start = Buffer.from(`${object.id} 0 obj\n`, "binary");
+    const body = Buffer.isBuffer(object.body) ? object.body : Buffer.from(object.body, "binary");
+    const end = Buffer.from("\nendobj\n", "binary");
+    chunks.push(start, body, end);
+    length += start.length + body.length + end.length;
+  });
+
+  const xrefOffset = length;
+  const rows = ["xref", `0 ${objects.length + 1}`, "0000000000 65535 f "];
+  for (let id = 1; id <= objects.length; id += 1) {
+    rows.push(`${String(offsets[id]).padStart(10, "0")} 00000 n `);
+  }
+  rows.push("trailer", `<< /Size ${objects.length + 1} /Root 1 0 R >>`, "startxref", String(xrefOffset), "%%EOF");
+  chunks.push(Buffer.from(`${rows.join("\n")}\n`, "binary"));
+  return Buffer.concat(chunks);
+}
+
+function signedReceiptPdf({
   proposalId,
   acceptedAt,
   fullName,
@@ -44,80 +153,66 @@ function signedReceiptHtml({
   ipAddress,
   userAgent,
 }) {
-  return `<!doctype html>
-<html lang="en">
-<head>
-  <meta charset="utf-8">
-  <title>Signed Acceptance Receipt - ${escapeHtml(proposalId)}</title>
-  <style>
-    @page { size: letter; margin: 0.45in; }
-    * { box-sizing: border-box; print-color-adjust: exact; -webkit-print-color-adjust: exact; }
-    body { margin: 0; color: #111827; font-family: Arial, sans-serif; line-height: 1.45; }
-    .receipt { max-width: 8in; margin: 0 auto; }
-    .top { display: flex; justify-content: space-between; gap: 20px; padding-bottom: 12px; border-bottom: 3px solid #047857; }
-    .brand { color: #047857; font-size: 12px; font-weight: 800; letter-spacing: 0.1em; text-transform: uppercase; }
-    .muted { color: #475569; font-size: 12px; }
-    h1 { margin: 26px 0 10px; color: #020617; font-size: 30px; line-height: 1.05; }
-    h2 { margin: 26px 0 10px; color: #047857; font-size: 14px; letter-spacing: 0.08em; text-transform: uppercase; }
-    .grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px; }
-    .card { min-height: 76px; padding: 12px; border: 1px solid #cbd5e1; border-radius: 8px; }
-    .card span, .signature span { display: block; margin-bottom: 6px; color: #64748b; font-size: 10px; font-weight: 800; letter-spacing: 0.1em; text-transform: uppercase; }
-    .card strong { display: block; color: #020617; font-size: 14px; overflow-wrap: anywhere; }
-    ul { margin: 0; padding-left: 18px; color: #334155; }
-    .signature { margin-top: 12px; padding: 14px; border: 1px solid #cbd5e1; border-radius: 8px; }
-    .signature-box { display: grid; place-items: center; min-height: 130px; margin: 10px 0 12px; padding: 14px; border: 1px dashed #94a3b8; border-radius: 8px; background: #fff; }
-    .signature-box img { display: block; width: 100%; max-height: 118px; object-fit: contain; filter: brightness(0); }
-    .note { color: #334155; }
-    .no-print { margin-top: 18px; padding: 10px 14px; color: #fff; background: #047857; border: 0; border-radius: 999px; font-weight: 800; cursor: pointer; }
-    @media print { .no-print { display: none; } }
-  </style>
-</head>
-<body>
-  <main class="receipt">
-    <div class="top">
-      <div>
-        <div class="brand">JPAX Media LLC</div>
-        <div class="muted">Signed Acceptance Receipt</div>
-      </div>
-      <div class="muted">jpaxmedia.com | julian@jpaxmedia.com</div>
-    </div>
+  const dimensions = jpegDimensions(signature.bytes);
+  const commands = [];
 
-    <h1>Proposal Accepted</h1>
-    <p class="note">This receipt records the online acceptance submitted for the Rodger C. Jarrell Real Estate & Mortgages proposal.</p>
+  commands.push("1 1 1 rg 0 0 612 792 re f");
+  commands.push("0 0 0 rg");
+  commands.push("0.02 0.48 0.34 RG 2 w 54 734 m 558 734 l S");
+  addText(commands, "JPAX Media LLC", 54, 748, 10, "F2");
+  addText(commands, "Signed Acceptance Receipt", 54, 724, 10, "F1");
+  addText(commands, "jpaxmedia.com | julian@jpaxmedia.com", 378, 748, 8, "F1");
+  addText(commands, "Proposal Accepted", 54, 690, 24, "F2");
+  addWrappedText(commands, "This PDF records the online acceptance submitted for the Rodger C. Jarrell Real Estate & Mortgages proposal.", 54, 668, 92, 13, 10, "F1");
 
-    <h2>Acceptance Record</h2>
-    <div class="grid">
-      <div class="card"><span>Proposal ID</span><strong>${escapeHtml(proposalId)}</strong></div>
-      <div class="card"><span>Accepted At</span><strong>${escapeHtml(acceptedAt)}</strong></div>
-      <div class="card"><span>Signer</span><strong>${escapeHtml(fullName)}</strong></div>
-      <div class="card"><span>Title / Role</span><strong>${escapeHtml(title || "Authorized Representative")}</strong></div>
-      <div class="card"><span>Business</span><strong>${escapeHtml(businessName)}</strong></div>
-      <div class="card"><span>Email</span><strong>${escapeHtml(email)}</strong></div>
-    </div>
+  addText(commands, "ACCEPTANCE RECORD", 54, 632, 11, "F2");
+  addCard(commands, "Proposal ID", proposalId, 54, 574, 244, 46);
+  addCard(commands, "Accepted At", acceptedAt, 314, 574, 244, 46);
+  addCard(commands, "Signer", fullName, 54, 516, 244, 46);
+  addCard(commands, "Title / Role", title || "Authorized Representative", 314, 516, 244, 46);
+  addCard(commands, "Business", businessName, 54, 458, 244, 46);
+  addCard(commands, "Email", email, 314, 458, 244, 46);
 
-    <h2>Accepted Terms</h2>
-    <ul>
-      <li>Client confirmed authority to accept the proposal on behalf of the listed business.</li>
-      <li>Client accepted the proposal scope, payment schedule, 90-day pricing terms, exclusions, and travel fee language.</li>
-      <li>Client acknowledged the $1,650 upfront payment due before JPAX Media begins work.</li>
-    </ul>
+  addText(commands, "ACCEPTED TERMS", 54, 420, 11, "F2");
+  addWrappedText(commands, "- Client confirmed authority to accept the proposal on behalf of the listed business.", 70, 401, 92, 12, 9, "F1");
+  addWrappedText(commands, "- Client accepted the proposal scope, payment schedule, 90-day pricing terms, exclusions, and travel fee language.", 70, 377, 92, 12, 9, "F1");
+  addWrappedText(commands, "- Client acknowledged the $1,650 upfront payment due before JPAX Media begins work.", 70, 341, 92, 12, 9, "F1");
 
-    <h2>Client Signature</h2>
-    <div class="signature">
-      <span>Drawn Signature</span>
-      <div class="signature-box"><img alt="Client signature" src="data:image/png;base64,${signature}"></div>
-      <strong>${escapeHtml(fullName)}</strong>
-      <div class="muted">${escapeHtml(acceptedAt)}</div>
-    </div>
+  addText(commands, "CLIENT SIGNATURE", 54, 306, 11, "F2");
+  commands.push("0.58 0.64 0.72 RG 1 w 54 160 504 130 re S");
+  const maxSignatureWidth = 450;
+  const maxSignatureHeight = 96;
+  const scale = Math.min(maxSignatureWidth / dimensions.width, maxSignatureHeight / dimensions.height);
+  const signatureWidth = Math.round(dimensions.width * scale);
+  const signatureHeight = Math.round(dimensions.height * scale);
+  const signatureX = Math.round(54 + (504 - signatureWidth) / 2);
+  const signatureY = Math.round(178 + (96 - signatureHeight) / 2);
+  commands.push(`q ${signatureWidth} 0 0 ${signatureHeight} ${signatureX} ${signatureY} cm /Sig Do Q`);
+  addText(commands, fullName, 66, 139, 11, "F2");
+  addText(commands, acceptedAt, 66, 124, 9, "F1");
 
-    <h2>Record Links</h2>
-    <p class="note">Proposal: <a href="${escapeHtml(proposalUrl)}">${escapeHtml(proposalUrl)}</a><br>Pricing: <a href="${escapeHtml(pricingUrl)}">${escapeHtml(pricingUrl)}</a></p>
-    <p class="note">Submission IP: ${escapeHtml(ipAddress)}<br>User agent: ${escapeHtml(userAgent)}</p>
-    <p class="note"><strong>Notes:</strong> ${escapeHtml(notes || "No notes provided.")}</p>
-    <button class="no-print" onclick="window.print()">Print / Save PDF</button>
-  </main>
-</body>
-</html>`;
+  addText(commands, "RECORD LINKS", 54, 92, 10, "F2");
+  addWrappedText(commands, `Proposal: ${proposalUrl}`, 54, 76, 96, 11, 8, "F1");
+  addWrappedText(commands, `Pricing: ${pricingUrl}`, 54, 54, 96, 11, 8, "F1");
+  addWrappedText(commands, `Submission IP: ${ipAddress} | User agent: ${userAgent}`, 54, 32, 96, 10, 7, "F1");
+  if (notes) addWrappedText(commands, `Notes: ${notes}`, 54, 18, 96, 10, 7, "F1");
+
+  const content = Buffer.from(commands.join("\n"), "binary");
+  const imageObject = Buffer.concat([
+    Buffer.from(`<< /Type /XObject /Subtype /Image /Width ${dimensions.width} /Height ${dimensions.height} /ColorSpace /DeviceRGB /BitsPerComponent 8 /Filter /DCTDecode /Length ${signature.bytes.length} >>\nstream\n`, "binary"),
+    signature.bytes,
+    Buffer.from("\nendstream", "binary"),
+  ]);
+
+  return buildPdf([
+    pdfObject(1, "<< /Type /Catalog /Pages 2 0 R >>"),
+    pdfObject(2, "<< /Type /Pages /Kids [3 0 R] /Count 1 >>"),
+    pdfObject(3, "<< /Type /Page /Parent 2 0 R /MediaBox [0 0 612 792] /Resources << /Font << /F1 4 0 R /F2 5 0 R >> /XObject << /Sig 7 0 R >> >> /Contents 6 0 R >>"),
+    pdfObject(4, "<< /Type /Font /Subtype /Type1 /BaseFont /Helvetica >>"),
+    pdfObject(5, "<< /Type /Font /Subtype /Type1 /BaseFont /Helvetica-Bold >>"),
+    pdfObject(6, Buffer.concat([Buffer.from(`<< /Length ${content.length} >>\nstream\n`, "binary"), content, Buffer.from("\nendstream", "binary")])),
+    pdfObject(7, imageObject),
+  ]);
 }
 
 exports.handler = async (event) => {
@@ -151,7 +246,7 @@ exports.handler = async (event) => {
   const fullName = compact(payload.full_name, 160);
   const email = compact(payload.email, 180);
   const businessName = compact(payload.business_name, 220);
-  const signature = signatureBase64(payload.signature_data_url);
+  const signature = signatureImage(payload.signature_data_url);
 
   if (!fullName || !email || !businessName || !signature) {
     return jsonResponse(400, { ok: false, message: "Missing required acceptance fields." });
@@ -166,20 +261,25 @@ exports.handler = async (event) => {
   const forwardedFor = compact(event.headers["x-forwarded-for"] || "", 240);
   const ipAddress = compact(event.headers["x-nf-client-connection-ip"] || forwardedFor.split(",")[0] || "Not provided", 120);
   const userAgent = compact(event.headers["user-agent"] || "Not provided", 420);
-  const printableReceipt = signedReceiptHtml({
-    proposalId,
-    acceptedAt,
-    fullName,
-    title,
-    businessName,
-    email,
-    proposalUrl,
-    pricingUrl,
-    notes,
-    signature,
-    ipAddress,
-    userAgent,
-  });
+  let signedPdf;
+  try {
+    signedPdf = signedReceiptPdf({
+      proposalId,
+      acceptedAt,
+      fullName,
+      title,
+      businessName,
+      email,
+      proposalUrl,
+      pricingUrl,
+      notes,
+      signature,
+      ipAddress,
+      userAgent,
+    });
+  } catch {
+    return jsonResponse(400, { ok: false, message: "Could not prepare the signed PDF. Please clear and redraw the signature." });
+  }
 
   const text = [
     "Rodger Jarrell proposal accepted",
@@ -206,8 +306,7 @@ exports.handler = async (event) => {
     "Notes:",
     notes || "No notes provided.",
     "",
-    "Signature is attached as a PNG.",
-    "A printable signed receipt is attached as an HTML file.",
+    "A signed PDF acceptance receipt is attached.",
   ].join("\n");
 
   const html = `
@@ -240,7 +339,7 @@ exports.handler = async (event) => {
       <p style="margin:18px 0;color:#cbd5e1"><strong>Notes:</strong> ${escapeHtml(notes || "No notes provided.")}</p>
       <p style="margin:18px 0 0"><a style="color:#4ade80;font-weight:800" href="${escapeHtml(proposalUrl)}">Open proposal</a></p>
       <p style="margin:6px 0 0"><a style="color:#4ade80;font-weight:800" href="${escapeHtml(pricingUrl)}">Open pricing sheet</a></p>
-      <p style="margin:18px 0 0;color:#94a3b8">Signature is attached as a PNG. A printable signed receipt is attached as an HTML file.</p>
+      <p style="margin:18px 0 0;color:#94a3b8">A signed PDF acceptance receipt is attached.</p>
     </div>
   `;
 
@@ -260,12 +359,8 @@ exports.handler = async (event) => {
       html,
       attachments: [
         {
-          filename: `${proposalId}-signature.png`,
-          content: signature,
-        },
-        {
-          filename: `${proposalId}-signed-receipt.html`,
-          content: Buffer.from(printableReceipt).toString("base64"),
+          filename: `${proposalId}-signed-acceptance.pdf`,
+          content: signedPdf.toString("base64"),
         },
       ],
     }),
