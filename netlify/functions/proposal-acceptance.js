@@ -30,6 +30,96 @@ function signatureBase64(dataUrl = "") {
   return match ? match[1] : "";
 }
 
+function signedReceiptHtml({
+  proposalId,
+  acceptedAt,
+  fullName,
+  title,
+  businessName,
+  email,
+  proposalUrl,
+  pricingUrl,
+  notes,
+  signature,
+  ipAddress,
+  userAgent,
+}) {
+  return `<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Signed Acceptance Receipt - ${escapeHtml(proposalId)}</title>
+  <style>
+    @page { size: letter; margin: 0.45in; }
+    * { box-sizing: border-box; print-color-adjust: exact; -webkit-print-color-adjust: exact; }
+    body { margin: 0; color: #111827; font-family: Arial, sans-serif; line-height: 1.45; }
+    .receipt { max-width: 8in; margin: 0 auto; }
+    .top { display: flex; justify-content: space-between; gap: 20px; padding-bottom: 12px; border-bottom: 3px solid #047857; }
+    .brand { color: #047857; font-size: 12px; font-weight: 800; letter-spacing: 0.1em; text-transform: uppercase; }
+    .muted { color: #475569; font-size: 12px; }
+    h1 { margin: 26px 0 10px; color: #020617; font-size: 30px; line-height: 1.05; }
+    h2 { margin: 26px 0 10px; color: #047857; font-size: 14px; letter-spacing: 0.08em; text-transform: uppercase; }
+    .grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px; }
+    .card { min-height: 76px; padding: 12px; border: 1px solid #cbd5e1; border-radius: 8px; }
+    .card span, .signature span { display: block; margin-bottom: 6px; color: #64748b; font-size: 10px; font-weight: 800; letter-spacing: 0.1em; text-transform: uppercase; }
+    .card strong { display: block; color: #020617; font-size: 14px; overflow-wrap: anywhere; }
+    ul { margin: 0; padding-left: 18px; color: #334155; }
+    .signature { margin-top: 12px; padding: 14px; border: 1px solid #cbd5e1; border-radius: 8px; }
+    .signature-box { display: grid; place-items: center; min-height: 130px; margin: 10px 0 12px; padding: 14px; border: 1px dashed #94a3b8; border-radius: 8px; background: #fff; }
+    .signature-box img { display: block; width: 100%; max-height: 118px; object-fit: contain; filter: brightness(0); }
+    .note { color: #334155; }
+    .no-print { margin-top: 18px; padding: 10px 14px; color: #fff; background: #047857; border: 0; border-radius: 999px; font-weight: 800; cursor: pointer; }
+    @media print { .no-print { display: none; } }
+  </style>
+</head>
+<body>
+  <main class="receipt">
+    <div class="top">
+      <div>
+        <div class="brand">JPAX Media LLC</div>
+        <div class="muted">Signed Acceptance Receipt</div>
+      </div>
+      <div class="muted">jpaxmedia.com | julian@jpaxmedia.com</div>
+    </div>
+
+    <h1>Proposal Accepted</h1>
+    <p class="note">This receipt records the online acceptance submitted for the Rodger C. Jarrell Real Estate & Mortgages proposal.</p>
+
+    <h2>Acceptance Record</h2>
+    <div class="grid">
+      <div class="card"><span>Proposal ID</span><strong>${escapeHtml(proposalId)}</strong></div>
+      <div class="card"><span>Accepted At</span><strong>${escapeHtml(acceptedAt)}</strong></div>
+      <div class="card"><span>Signer</span><strong>${escapeHtml(fullName)}</strong></div>
+      <div class="card"><span>Title / Role</span><strong>${escapeHtml(title || "Authorized Representative")}</strong></div>
+      <div class="card"><span>Business</span><strong>${escapeHtml(businessName)}</strong></div>
+      <div class="card"><span>Email</span><strong>${escapeHtml(email)}</strong></div>
+    </div>
+
+    <h2>Accepted Terms</h2>
+    <ul>
+      <li>Client confirmed authority to accept the proposal on behalf of the listed business.</li>
+      <li>Client accepted the proposal scope, payment schedule, 90-day pricing terms, exclusions, and travel fee language.</li>
+      <li>Client acknowledged the $1,650 upfront payment due before JPAX Media begins work.</li>
+    </ul>
+
+    <h2>Client Signature</h2>
+    <div class="signature">
+      <span>Drawn Signature</span>
+      <div class="signature-box"><img alt="Client signature" src="data:image/png;base64,${signature}"></div>
+      <strong>${escapeHtml(fullName)}</strong>
+      <div class="muted">${escapeHtml(acceptedAt)}</div>
+    </div>
+
+    <h2>Record Links</h2>
+    <p class="note">Proposal: <a href="${escapeHtml(proposalUrl)}">${escapeHtml(proposalUrl)}</a><br>Pricing: <a href="${escapeHtml(pricingUrl)}">${escapeHtml(pricingUrl)}</a></p>
+    <p class="note">Submission IP: ${escapeHtml(ipAddress)}<br>User agent: ${escapeHtml(userAgent)}</p>
+    <p class="note"><strong>Notes:</strong> ${escapeHtml(notes || "No notes provided.")}</p>
+    <button class="no-print" onclick="window.print()">Print / Save PDF</button>
+  </main>
+</body>
+</html>`;
+}
+
 exports.handler = async (event) => {
   if (event.httpMethod !== "POST") {
     return jsonResponse(405, { ok: false, message: "Method not allowed." });
@@ -76,6 +166,20 @@ exports.handler = async (event) => {
   const forwardedFor = compact(event.headers["x-forwarded-for"] || "", 240);
   const ipAddress = compact(event.headers["x-nf-client-connection-ip"] || forwardedFor.split(",")[0] || "Not provided", 120);
   const userAgent = compact(event.headers["user-agent"] || "Not provided", 420);
+  const printableReceipt = signedReceiptHtml({
+    proposalId,
+    acceptedAt,
+    fullName,
+    title,
+    businessName,
+    email,
+    proposalUrl,
+    pricingUrl,
+    notes,
+    signature,
+    ipAddress,
+    userAgent,
+  });
 
   const text = [
     "Rodger Jarrell proposal accepted",
@@ -103,6 +207,7 @@ exports.handler = async (event) => {
     notes || "No notes provided.",
     "",
     "Signature is attached as a PNG.",
+    "A printable signed receipt is attached as an HTML file.",
   ].join("\n");
 
   const html = `
@@ -135,7 +240,7 @@ exports.handler = async (event) => {
       <p style="margin:18px 0;color:#cbd5e1"><strong>Notes:</strong> ${escapeHtml(notes || "No notes provided.")}</p>
       <p style="margin:18px 0 0"><a style="color:#4ade80;font-weight:800" href="${escapeHtml(proposalUrl)}">Open proposal</a></p>
       <p style="margin:6px 0 0"><a style="color:#4ade80;font-weight:800" href="${escapeHtml(pricingUrl)}">Open pricing sheet</a></p>
-      <p style="margin:18px 0 0;color:#94a3b8">Signature is attached as a PNG.</p>
+      <p style="margin:18px 0 0;color:#94a3b8">Signature is attached as a PNG. A printable signed receipt is attached as an HTML file.</p>
     </div>
   `;
 
@@ -157,6 +262,10 @@ exports.handler = async (event) => {
         {
           filename: `${proposalId}-signature.png`,
           content: signature,
+        },
+        {
+          filename: `${proposalId}-signed-receipt.html`,
+          content: Buffer.from(printableReceipt).toString("base64"),
         },
       ],
     }),

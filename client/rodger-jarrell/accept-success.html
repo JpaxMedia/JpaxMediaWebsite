@@ -8,7 +8,7 @@
   <meta name="description" content="Proposal acceptance confirmation for JPAX Media.">
   <link rel="stylesheet" href="proposal-doc.css">
 </head>
-<body>
+<body class="receipt-body">
   <main class="doc-shell">
     <section class="cover">
       <div class="brand-row">
@@ -28,7 +28,7 @@
         <p class="lead">Your proposal acceptance has been submitted. JPAX Media will follow up with the next steps, payment instructions, and kickoff details.</p>
 
         <div class="print-actions">
-          <a class="button" href="#" onclick="window.print(); return false;">Print Signed Receipt</a>
+          <a class="button" href="#" onclick="printReceipt(); return false;">Print Signed Receipt</a>
           <a class="button" href="proposal.html">Review Proposal</a>
           <a class="button secondary" href="pricing.html">View Pricing Sheet</a>
           <a class="button secondary" href="index.html">View Demo Site</a>
@@ -50,7 +50,7 @@
       <div class="section">
         <h2>01 Acceptance Record</h2>
         <div class="callout">
-          <p>This receipt records the online acceptance submitted for the JPAX Media proposal. Keep this page with the proposal, pricing sheet, payment record, and any countersigned PDF copy.</p>
+          <p>This receipt records the online acceptance submitted for the JPAX Media proposal. Keep this page with the proposal, pricing sheet, payment record, and any signed PDF copy.</p>
         </div>
 
         <div class="receipt-grid" id="receipt-details">
@@ -99,34 +99,27 @@
       </div>
 
       <div class="section">
-        <h2>03 Signatures</h2>
+        <h2>03 Signature</h2>
         <div class="receipt-signature-grid">
           <div class="receipt-signature-card">
             <span>Client Signature</span>
             <div class="signature-image-box">
-              <img id="client-signature-image" alt="Client signature">
+              <img id="client-signature-image" alt="Client signature" hidden>
               <p id="signature-fallback">Signature image is stored in the emailed copy sent to JPAX Media.</p>
             </div>
             <strong data-receipt="full_name">Client signer</strong>
             <small data-receipt="accepted_at">Accepted online</small>
-          </div>
-
-          <div class="receipt-signature-card">
-            <span>JPAX Media Countersignature</span>
-            <div class="signature-line-large"></div>
-            <strong>Julian Johnson, JPAX Media LLC</strong>
-            <small>Date: ____________________</small>
           </div>
         </div>
       </div>
 
       <div class="section">
         <h2>04 PDF / Print Note</h2>
-        <p class="summary-text">If either party sends a PDF copy, the other party can sign that PDF and return it by email. Keep the final PDF, this receipt, and the original email trail together for the project record.</p>
+        <p class="summary-text">If a PDF copy is sent, keep the final PDF, this receipt, and the original email trail together for the project record.</p>
       </div>
 
       <div class="print-actions">
-        <a class="button" href="#" onclick="window.print(); return false;">Print / Save PDF</a>
+        <a class="button" href="#" onclick="printReceipt(); return false;">Print / Save PDF</a>
         <a class="button secondary" href="proposal.html">Open Proposal</a>
         <a class="button secondary" href="pricing.html">Open Pricing</a>
       </div>
@@ -140,6 +133,7 @@
 
   <script>
     const recordKey = "rodgerJarrellAcceptanceRecord";
+    let signatureReady = Promise.resolve();
 
     function receiptValue(value, fallback = "") {
       return String(value || fallback).trim();
@@ -154,6 +148,36 @@
         day: "numeric",
         hour: "numeric",
         minute: "2-digit",
+      });
+    }
+
+    function normalizeSignatureForPrint(dataUrl) {
+      return new Promise((resolve) => {
+        const image = new Image();
+        image.onload = () => {
+          const canvas = document.createElement("canvas");
+          canvas.width = image.naturalWidth || image.width;
+          canvas.height = image.naturalHeight || image.height;
+          const context = canvas.getContext("2d", { willReadFrequently: true });
+          if (!context) {
+            resolve(dataUrl);
+            return;
+          }
+
+          context.drawImage(image, 0, 0);
+          const pixels = context.getImageData(0, 0, canvas.width, canvas.height);
+          for (let i = 0; i < pixels.data.length; i += 4) {
+            if (pixels.data[i + 3] > 8) {
+              pixels.data[i] = 17;
+              pixels.data[i + 1] = 24;
+              pixels.data[i + 2] = 39;
+            }
+          }
+          context.putImageData(pixels, 0, 0);
+          resolve(canvas.toDataURL("image/png"));
+        };
+        image.onerror = () => resolve(dataUrl);
+        image.src = dataUrl;
       });
     }
 
@@ -179,12 +203,23 @@
       const signatureImage = document.getElementById("client-signature-image");
       const signatureFallback = document.getElementById("signature-fallback");
       if (signatureImage && /^data:image\/png;base64,/.test(record.signature_data_url || "")) {
-        signatureImage.src = record.signature_data_url;
-        signatureImage.hidden = false;
-        if (signatureFallback) signatureFallback.hidden = true;
+        signatureReady = normalizeSignatureForPrint(record.signature_data_url).then((printableSignature) => {
+          signatureImage.src = printableSignature;
+          signatureImage.hidden = false;
+          if (signatureFallback) signatureFallback.hidden = true;
+        });
       } else if (signatureImage) {
         signatureImage.hidden = true;
       }
+    }
+
+    async function printReceipt() {
+      try {
+        await signatureReady;
+      } catch {
+        /* The print dialog can still open if image processing is unavailable. */
+      }
+      window.print();
     }
 
     try {

@@ -428,6 +428,10 @@ tr:last-child td {
   gap: 16px;
 }
 
+.receipt-body .receipt-signature-grid {
+  grid-template-columns: minmax(0, 1fr);
+}
+
 .receipt-signature-card {
   min-height: 210px;
   display: grid;
@@ -435,8 +439,12 @@ tr:last-child td {
   gap: 12px;
 }
 
+.receipt-body .receipt-signature-card {
+  max-width: 760px;
+}
+
 .signature-image-box {
-  min-height: 102px;
+  min-height: 132px;
   display: grid;
   place-items: center;
   padding: 14px;
@@ -448,7 +456,8 @@ tr:last-child td {
 .signature-image-box img {
   display: block;
   width: 100%;
-  max-height: 96px;
+  max-height: 124px;
+  filter: brightness(0);
   object-fit: contain;
 }
 
@@ -660,6 +669,11 @@ tr:last-child td {
     margin: 0.45in;
   }
 
+  * {
+    print-color-adjust: exact;
+    -webkit-print-color-adjust: exact;
+  }
+
   :root {
     --dark: #ffffff;
     --dark2: #ffffff;
@@ -707,6 +721,21 @@ tr:last-child td {
     page-break-after: auto;
   }
 
+  .receipt-body .cover {
+    display: none;
+  }
+
+  .receipt-body .page {
+    padding: 0;
+    border: 0;
+    break-after: auto;
+    page-break-after: auto;
+  }
+
+  .receipt-body .receipt-signature-card {
+    max-width: none;
+  }
+
   .receipt-card,
   .receipt-signature-card,
   .info-card,
@@ -718,6 +747,12 @@ tr:last-child td {
   }
 
   .signature-image-box {
+    min-height: 130px;
+    background: #ffffff;
     border-color: #94a3b8;
+  }
+
+  .signature-image-box img {
+    max-height: 118px;
   }
 }
