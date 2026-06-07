@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex, nofollow, noarchive">
+  <title>JPAX Prospect Command</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@600;700&family=IBM+Plex+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="dashboard.css">
+</head>
+<body>
+  <main class="app-shell">
+    <aside class="rail">
+      <a class="brand-lockup" href="https://jpaxmedia.com" target="_blank" rel="noopener" aria-label="JPAX Media">
+        <img src="/jpaxmedialogoOFFICIALFINALwhite.png" alt="">
+        <span>
+          <strong>JPAX</strong>
+          <small>Build. Rise. Scale.</small>
+        </span>
+      </a>
+      <nav class="rail-nav" aria-label="Dashboard sections">
+        <a class="active" href="#site-intelligence">
+          <span class="nav-icon">SC</span>
+          <span>Signal Command</span>
+        </a>
+        <a href="#priority">
+          <span class="nav-icon">PQ</span>
+          <span>Priority Queue</span>
+        </a>
+        <a href="#detail">
+          <span class="nav-icon">SD</span>
+          <span>Signal Detail</span>
+        </a>
+        <a href="#activity">
+          <span class="nav-icon">LA</span>
+          <span>Live Activity</span>
+        </a>
+        <a href="#site-intelligence">
+          <span class="nav-icon">PR</span>
+          <span>Prospects</span>
+        </a>
+      </nav>
+      <div class="rail-card">
+        <span class="rail-label">Protected Signal Room</span>
+        <strong>Online</strong>
+        <small>Secure cockpit. Your data is private and encrypted.</small>
+      </div>
+    </aside>
+
+    <section class="workspace">
+      <header class="topbar">
+        <div class="mobile-brand">
+          <img src="/jpaxmedialogoOFFICIALFINALwhite.png" alt="">
+          <span>Signal Command</span>
+        </div>
+        <div class="topbar-title">
+          <p class="eyebrow">Signal Command</p>
+          <h1>Tactical Operator View</h1>
+          <p>Real-time site intelligence. Identify intent. Take action.</p>
+        </div>
+        <div class="topbar-actions">
+          <span class="live-pill"><span></span>Live</span>
+          <input id="searchInput" type="search" placeholder="Search business, city, service">
+          <button id="refreshButton" type="button">Refresh</button>
+          <button id="logoutButton" class="ghost-button" type="button">Lock</button>
+        </div>
+      </header>
+
+      <section id="loginPanel" class="login-panel">
+        <div class="login-mark">
+          <img src="/jpaxmedialogoOFFICIALFINALwhite.png" alt="">
+        </div>
+        <form id="loginForm" class="login-form">
+          <p class="eyebrow">Protected signal room</p>
+          <h2>Sign in to Signal Command</h2>
+          <p class="login-copy">Use your JPAX dashboard credentials to open the cockpit.</p>
+          <div class="login-stack">
+            <label for="loginEmail">
+              <span>Email</span>
+              <input id="loginEmail" type="email" autocomplete="username" required>
+            </label>
+            <label for="loginPassword">
+              <span>Password</span>
+              <input id="loginPassword" type="password" autocomplete="current-password" required>
+            </label>
+            <button id="loginSubmit" type="submit">Sign in</button>
+          </div>
+          <p id="loginError" class="error-text" role="alert"></p>
+        </form>
+      </section>
+
+      <section id="dashboardPanel" class="dashboard-panel" hidden>
+        <section class="command-hero" id="site-intelligence">
+          <div class="hero-main">
+            <p class="eyebrow">Signal Status</p>
+            <h2 id="signalHeadline">Waiting for activity</h2>
+            <div class="signal-wave" aria-hidden="true">
+              <span></span>
+            </div>
+          </div>
+          <div class="hero-actions">
+            <div class="view-tabs" id="viewTabs" role="tablist" aria-label="Dashboard view">
+              <button type="button" data-view="site" class="active">Site Intelligence</button>
+              <button type="button" data-view="prospects">Prospects</button>
+            </div>
+            <span id="updatedAt" class="muted"></span>
+          </div>
+          <div class="metric-grid" id="metricGrid"></div>
+        </section>
+
+        <section class="filter-strip" aria-label="Signal filters">
+          <div class="status-tabs" id="statusTabs" role="tablist" aria-label="Signal filter">
+            <button type="button" data-status="all" class="active">All</button>
+            <button type="button" data-status="marketing">Marketing</button>
+            <button type="button" data-status="offers">Offers</button>
+            <button type="button" data-status="products">Products</button>
+            <button type="button" data-status="demos">Demos</button>
+          </div>
+          <span id="queueCount" class="soft-pill">0 visible</span>
+        </section>
+
+        <section class="dashboard-grid">
+          <section class="panel queue-panel" id="priority">
+            <div class="panel-head">
+              <div>
+                <p class="eyebrow" id="queueKicker">Page intelligence</p>
+                <h2 id="queueTitle">Pages by signal</h2>
+              </div>
+              <a class="panel-link" href="#priority">View all</a>
+            </div>
+            <div id="prospectList" class="prospect-list"></div>
+          </section>
+
+          <section class="panel detail-panel" id="detail">
+            <div class="panel-head">
+              <div>
+                <p class="eyebrow" id="detailKicker">Signal detail</p>
+                <h2 id="detailName">Select a page</h2>
+              </div>
+              <span id="detailStatus" class="status-chip cold">cold</span>
+            </div>
+            <div id="detailBody" class="detail-body"></div>
+          </section>
+
+          <section class="panel activity-panel" id="activity">
+            <div class="panel-head">
+              <div>
+                <p class="eyebrow">Live feed</p>
+                <h2 id="activityTitle">Site activity</h2>
+              </div>
+              <span id="updatedAt" class="muted"></span>
+            </div>
+            <div id="eventList" class="event-list"></div>
+          </section>
+        </section>
+
+        <nav class="mobile-nav" aria-label="Mobile dashboard navigation">
+          <a href="#site-intelligence"><span>SC</span>Command</a>
+          <a href="#priority"><span>PQ</span>Priority</a>
+          <a href="#activity"><span>LA</span>Live</a>
+          <a href="#detail"><span>SD</span>Detail</a>
+        </nav>
+      </section>
+    </section>
+  </main>
+  <div id="toast" class="toast" role="status" aria-live="polite"></div>
+  <script src="dashboard.js" defer></script>
+</body>
+</html>

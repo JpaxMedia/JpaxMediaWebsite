@@ -5,5 +5,12 @@
 /tradeos /tradeos.html 301
 /trade-os /tradeos.html 301
 
+# Prospect dashboard API (Netlify functions)
+/api/dashboard-login /.netlify/functions/dashboard-login 200
+/api/prospect-dashboard /.netlify/functions/prospect-dashboard 200
+/api/prospect-track /.netlify/functions/prospect-track 200
+/api/site-dashboard /.netlify/functions/site-dashboard 200
+/api/site-track /.netlify/functions/site-track 200
+
 # Re-enable this only when the public site should be hidden behind maintenance.
 # /*    /maintenance.html    200
