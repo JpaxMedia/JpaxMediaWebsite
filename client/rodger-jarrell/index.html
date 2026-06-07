@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Demo website for Rodger C. Jarrell Real Estate & Mortgages, Inc. in Spartanburg, SC.">
+  <title>Rodger C. Jarrell Real Estate & Mortgages, Inc.</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Libre+Baskerville:wght@400;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header class="site-header" id="top">
+    <a class="brand" href="#top" aria-label="Rodger C. Jarrell Real Estate home">
+      <span class="brand-mark">RJ</span>
+      <span>
+        <strong>Rodger C. Jarrell</strong>
+        <small>Real Estate & Mortgages, Inc.</small>
+      </span>
+    </a>
+
+    <nav class="main-nav" aria-label="Main navigation">
+      <a href="#options">Options</a>
+      <a href="#support">Property Help</a>
+      <a href="#inquiry">Send Info</a>
+    </nav>
+
+    <a class="header-call" href="tel:+18643477798">Call (864) 347-7798</a>
+  </header>
+
+  <main>
+    <section class="hero" aria-labelledby="hero-title">
+      <picture>
+        <source srcset="assets/images/home-hero.jpg" type="image/jpeg">
+        <img src="assets/images/home-hero.jpg" alt="A well kept brick home in a quiet Spartanburg neighborhood">
+      </picture>
+      <div class="hero-overlay"></div>
+
+      <div class="hero-inner">
+        <div class="hero-copy">
+          <p class="eyebrow">Spartanburg real estate and property help</p>
+          <h1 id="hero-title">Talk with the office about homes, rentals, and purchase options.</h1>
+          <p class="hero-text">Send your details once. The office can review your situation and follow up about available properties, next steps, or the right person to speak with.</p>
+
+          <div class="hero-actions">
+            <a class="button primary" href="#inquiry">Send My Info</a>
+            <a class="button secondary" href="tel:+18643477798">Call the Office</a>
+          </div>
+
+          <ul class="trust-list" aria-label="Business highlights">
+            <li>Local office in Spartanburg</li>
+            <li>Property management support</li>
+            <li>Seller-financing questions welcome</li>
+          </ul>
+        </div>
+
+        <aside class="quick-panel" aria-label="Office information">
+          <span class="panel-label">Office Details</span>
+          <strong>1266 Asheville Hwy</strong>
+          <span>Spartanburg, SC 29303</span>
+          <hr>
+          <strong>Weekday office hours</strong>
+          <span>Monday - Friday, 9:00 AM - 2:00 PM</span>
+          <a href="#inquiry">Start an inquiry</a>
+        </aside>
+      </div>
+    </section>
+
+    <section class="intro-section" id="options" aria-labelledby="options-title">
+      <div class="section-heading">
+        <p class="eyebrow">Clear next steps</p>
+        <h2 id="options-title">One place for buyer, rental, and property questions.</h2>
+      </div>
+
+      <div class="option-grid">
+        <article class="option-card">
+          <span class="option-number">01</span>
+          <h3>Looking for a home</h3>
+          <p>Share your timeline, budget range, and where you want to live so the office can point you toward realistic options.</p>
+        </article>
+        <article class="option-card">
+          <span class="option-number">02</span>
+          <h3>Seller-financing questions</h3>
+          <p>Ask about available purchase paths and what information may be needed for review. Every request is handled individually.</p>
+        </article>
+        <article class="option-card">
+          <span class="option-number">03</span>
+          <h3>Property support</h3>
+          <p>Send maintenance concerns, neighbor issues, move-in questions, or general property messages through a structured request.</p>
+        </article>
+      </div>
+    </section>
+
+    <section class="split-section" aria-labelledby="consult-title">
+      <div class="media-block">
+        <img src="assets/images/consultation.jpg" alt="A local real estate advisor reviewing property information with two clients">
+      </div>
+      <div class="content-block">
+        <p class="eyebrow">Better intake</p>
+        <h2 id="consult-title">The right details up front make follow-up easier.</h2>
+        <p>Instead of scattered calls, missed notes, and incomplete messages, visitors can send the information the office actually needs: contact details, interest type, timing, price range, and a short message.</p>
+        <div class="mini-list">
+          <span>Buyer and renter inquiries</span>
+          <span>Property availability questions</span>
+          <span>Maintenance and support requests</span>
+        </div>
+      </div>
+    </section>
+
+    <section class="inquiry-band" id="inquiry" aria-labelledby="form-title">
+      <div class="form-copy">
+        <p class="eyebrow">Send your information</p>
+        <h2 id="form-title">Tell us what you need help with.</h2>
+        <p>Complete the short form and the office can follow up by phone or email. For urgent property issues, call the office directly during business hours.</p>
+        <a class="phone-card" href="tel:+18643477798">
+          <span>Prefer to call?</span>
+          <strong>(864) 347-7798</strong>
+        </a>
+      </div>
+
+      <form class="lead-form" id="lead-form" name="property-inquiry" method="POST" data-netlify="true" data-recipient="office@example.com">
+        <input type="hidden" name="form-name" value="property-inquiry">
+        <div class="form-row">
+          <label for="name">Full name</label>
+          <input id="name" name="name" type="text" autocomplete="name" required>
+        </div>
+        <div class="form-grid">
+          <div class="form-row">
+            <label for="phone">Phone</label>
+            <input id="phone" name="phone" type="tel" autocomplete="tel" required>
+          </div>
+          <div class="form-row">
+            <label for="email">Email</label>
+            <input id="email" name="email" type="email" autocomplete="email">
+          </div>
+        </div>
+        <div class="form-grid">
+          <div class="form-row">
+            <label for="interest">I need help with</label>
+            <select id="interest" name="interest" required>
+              <option value="">Choose one</option>
+              <option>Buying a home</option>
+              <option>Seller-financing options</option>
+              <option>Rental or property availability</option>
+              <option>Maintenance or property support</option>
+              <option>General question</option>
+            </select>
+          </div>
+          <div class="form-row">
+            <label for="timeline">Timeline</label>
+            <select id="timeline" name="timeline">
+              <option value="">Choose one</option>
+              <option>As soon as possible</option>
+              <option>Within 30 days</option>
+              <option>1 to 3 months</option>
+              <option>Just gathering information</option>
+            </select>
+          </div>
+        </div>
+        <div class="form-grid">
+          <div class="form-row">
+            <label for="budget">Monthly budget or payment range</label>
+            <input id="budget" name="budget" type="text" inputmode="text" placeholder="Example: $1,200 to $1,500">
+          </div>
+          <div class="form-row">
+            <label for="location">Preferred area</label>
+            <input id="location" name="location" type="text" placeholder="Example: Spartanburg, Boiling Springs">
+          </div>
+        </div>
+        <div class="form-row">
+          <label for="message">Message</label>
+          <textarea id="message" name="message" rows="5" placeholder="Tell us what you are looking for or what issue you need help with."></textarea>
+        </div>
+        <label class="checkbox-row">
+          <input type="checkbox" name="consent" required>
+          <span>I agree to be contacted about my request by phone, text, or email.</span>
+        </label>
+        <button class="button primary form-submit" type="submit">Send My Info</button>
+        <p class="form-note">Availability, pricing, terms, and financing options are subject to office review.</p>
+        <div class="form-success" id="form-success" hidden>
+          <strong>Your inquiry is ready.</strong>
+          <span>This demo prepares the request for delivery. The live site can send directly to the office email, CRM, or text notification system.</span>
+          <a id="email-draft" href="#">Open Email Draft</a>
+        </div>
+      </form>
+    </section>
+
+    <section class="split-section support-section" id="support" aria-labelledby="support-title">
+      <div class="content-block">
+        <p class="eyebrow">Property communication</p>
+        <h2 id="support-title">A cleaner way to receive maintenance and property messages.</h2>
+        <p>For property operators, the small details matter: who submitted the issue, what property it affects, how urgent it is, and how to reach them. A structured site can keep those details organized from the first message.</p>
+        <a class="button tertiary" href="#inquiry">Send a property request</a>
+      </div>
+      <div class="media-block">
+        <img src="assets/images/property-support.jpg" alt="A maintenance professional checking a request near the front door of a home">
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer-main">
+      <div>
+        <a class="footer-brand" href="#top">
+          <span class="brand-mark">RJ</span>
+          <span>
+            <strong>Rodger C. Jarrell</strong>
+            <small>Real Estate & Mortgages, Inc.</small>
+          </span>
+        </a>
+        <p>Local real estate, property management, and seller-financing inquiries for the Spartanburg area.</p>
+      </div>
+
+      <div>
+        <h2>Contact</h2>
+        <a href="tel:+18643477798">(864) 347-7798</a>
+        <span>1266 Asheville Hwy</span>
+        <span>Spartanburg, SC 29303</span>
+      </div>
+
+      <div>
+        <h2>Office Hours</h2>
+        <span>Monday - Friday</span>
+        <span>9:00 AM - 2:00 PM</span>
+        <span>Saturday - Sunday: Closed</span>
+      </div>
+
+      <div>
+        <h2>Quick Links</h2>
+        <a href="#options">Options</a>
+        <a href="#support">Property Help</a>
+        <a href="#inquiry">Send Info</a>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <span>Copyright <span id="year">2026</span> Rodger C. Jarrell Real Estate & Mortgages, Inc. All rights reserved.</span>
+      <span>Built by JPAX. <a href="mailto:julian@jpaxmedia.com?subject=I%20want%20a%20site%20like%20this">Want a site like this?</a></span>
+    </div>
+  </footer>
+
+  <a class="mobile-cta" href="#inquiry">Send My Info</a>
+
+  <script src="script.js"></script>
+</body>
+</html>

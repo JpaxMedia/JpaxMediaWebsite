@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noindex, nofollow, noarchive">
+  <title>Proposal Accepted | JPAX Media</title>
+  <meta name="description" content="Proposal acceptance confirmation for JPAX Media.">
+  <link rel="stylesheet" href="proposal-doc.css">
+</head>
+<body>
+  <main class="doc-shell">
+    <section class="cover">
+      <div class="brand-row">
+        <div class="brand">
+          <img src="/jpaxmedialogoOFFICIALFINAL(white).svg" alt="JPAX Media">
+          <div>
+            <strong>JPAX Media LLC</strong>
+            <span>Build. Rise. Scale.</span>
+          </div>
+        </div>
+        <span class="pill">Acceptance Received</span>
+      </div>
+
+      <div>
+        <p class="eyebrow">Thank you</p>
+        <h1>Proposal <span>Accepted</span></h1>
+        <p class="lead">Your proposal acceptance has been submitted. JPAX Media will follow up with the next steps, payment instructions, and kickoff details.</p>
+
+        <div class="print-actions">
+          <a class="button" href="#" onclick="window.print(); return false;">Print Signed Receipt</a>
+          <a class="button" href="proposal.html">Review Proposal</a>
+          <a class="button secondary" href="pricing.html">View Pricing Sheet</a>
+          <a class="button secondary" href="index.html">View Demo Site</a>
+        </div>
+      </div>
+
+      <div class="doc-footer">
+        <strong>JPAX Media LLC | Build. Rise. Scale.</strong>
+        <span>jpaxmedia.com | julian@jpaxmedia.com | (860) 494-3090</span>
+      </div>
+    </section>
+
+    <section class="page receipt-page">
+      <header class="doc-header">
+        <strong>JPAX Media LLC</strong>
+        <span>Signed Acceptance Receipt</span>
+      </header>
+
+      <div class="section">
+        <h2>01 Acceptance Record</h2>
+        <div class="callout">
+          <p>This receipt records the online acceptance submitted for the JPAX Media proposal. Keep this page with the proposal, pricing sheet, payment record, and any countersigned PDF copy.</p>
+        </div>
+
+        <div class="receipt-grid" id="receipt-details">
+          <div class="receipt-card">
+            <span>Proposal ID</span>
+            <strong data-receipt="proposal_id">PROP-BUILD-001</strong>
+          </div>
+          <div class="receipt-card">
+            <span>Status</span>
+            <strong>Accepted</strong>
+          </div>
+          <div class="receipt-card">
+            <span>Accepted At</span>
+            <strong data-receipt="accepted_at">Recorded by email</strong>
+          </div>
+          <div class="receipt-card">
+            <span>Email Record ID</span>
+            <strong data-receipt="email_record_id">Emailed to JPAX</strong>
+          </div>
+          <div class="receipt-card">
+            <span>Signer</span>
+            <strong data-receipt="full_name">Client signer</strong>
+          </div>
+          <div class="receipt-card">
+            <span>Title / Role</span>
+            <strong data-receipt="title">Authorized Representative</strong>
+          </div>
+          <div class="receipt-card">
+            <span>Business</span>
+            <strong data-receipt="business_name">Rodger C. Jarrell Real Estate & Mortgages, Inc.</strong>
+          </div>
+          <div class="receipt-card">
+            <span>Email</span>
+            <strong data-receipt="email">Stored in emailed copy</strong>
+          </div>
+        </div>
+      </div>
+
+      <div class="section">
+        <h2>02 Accepted Terms</h2>
+        <ul class="doc-list">
+          <li>Client confirmed authority to accept the proposal on behalf of the listed business.</li>
+          <li>Client accepted the proposal scope, payment schedule, 90-day pricing terms, exclusions, and travel fee language.</li>
+          <li>Client acknowledged the $1,650 upfront payment due before JPAX Media begins work.</li>
+        </ul>
+      </div>
+
+      <div class="section">
+        <h2>03 Signatures</h2>
+        <div class="receipt-signature-grid">
+          <div class="receipt-signature-card">
+            <span>Client Signature</span>
+            <div class="signature-image-box">
+              <img id="client-signature-image" alt="Client signature">
+              <p id="signature-fallback">Signature image is stored in the emailed copy sent to JPAX Media.</p>
+            </div>
+            <strong data-receipt="full_name">Client signer</strong>
+            <small data-receipt="accepted_at">Accepted online</small>
+          </div>
+
+          <div class="receipt-signature-card">
+            <span>JPAX Media Countersignature</span>
+            <div class="signature-line-large"></div>
+            <strong>Julian Johnson, JPAX Media LLC</strong>
+            <small>Date: ____________________</small>
+          </div>
+        </div>
+      </div>
+
+      <div class="section">
+        <h2>04 PDF / Print Note</h2>
+        <p class="summary-text">If either party sends a PDF copy, the other party can sign that PDF and return it by email. Keep the final PDF, this receipt, and the original email trail together for the project record.</p>
+      </div>
+
+      <div class="print-actions">
+        <a class="button" href="#" onclick="window.print(); return false;">Print / Save PDF</a>
+        <a class="button secondary" href="proposal.html">Open Proposal</a>
+        <a class="button secondary" href="pricing.html">Open Pricing</a>
+      </div>
+
+      <div class="doc-footer">
+        <strong>JPAX Media LLC | Build. Rise. Scale.</strong>
+        <span>jpaxmedia.com | julian@jpaxmedia.com | 2026</span>
+      </div>
+    </section>
+  </main>
+
+  <script>
+    const recordKey = "rodgerJarrellAcceptanceRecord";
+
+    function receiptValue(value, fallback = "") {
+      return String(value || fallback).trim();
+    }
+
+    function formatReceiptDate(value) {
+      const date = new Date(value);
+      if (Number.isNaN(date.getTime())) return receiptValue(value, "Recorded by email");
+      return date.toLocaleString(undefined, {
+        year: "numeric",
+        month: "short",
+        day: "numeric",
+        hour: "numeric",
+        minute: "2-digit",
+      });
+    }
+
+    function applyReceiptRecord(record) {
+      const fallbacks = {
+        proposal_id: "PROP-BUILD-001",
+        accepted_at: "Recorded by email",
+        email_record_id: "Emailed to JPAX",
+        full_name: "Client signer",
+        title: "Authorized Representative",
+        business_name: "Rodger C. Jarrell Real Estate & Mortgages, Inc.",
+        email: "Stored in emailed copy",
+      };
+
+      document.querySelectorAll("[data-receipt]").forEach((element) => {
+        const key = element.dataset.receipt;
+        const value = key === "accepted_at"
+          ? formatReceiptDate(record[key])
+          : receiptValue(record[key], fallbacks[key]);
+        element.textContent = value;
+      });
+
+      const signatureImage = document.getElementById("client-signature-image");
+      const signatureFallback = document.getElementById("signature-fallback");
+      if (signatureImage && /^data:image\/png;base64,/.test(record.signature_data_url || "")) {
+        signatureImage.src = record.signature_data_url;
+        signatureImage.hidden = false;
+        if (signatureFallback) signatureFallback.hidden = true;
+      } else if (signatureImage) {
+        signatureImage.hidden = true;
+      }
+    }
+
+    try {
+      const record = JSON.parse(localStorage.getItem(recordKey) || "{}");
+      applyReceiptRecord(record);
+    } catch {
+      applyReceiptRecord({});
+    }
+  </script>
+</body>
+</html>
