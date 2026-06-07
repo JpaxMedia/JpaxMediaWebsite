@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>JPAX Visibility Score | JPAX Media</title>
+  <meta name="description" content="Run the free JPAX Visibility Score to see where customers can find your business online, and where you are still invisible.">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="JPAX Visibility Score | JPAX Media">
+  <meta property="og:description" content="Free visibility test from JPAX Media, reviewed by Julian when the scan cannot verify something automatically.">
+  <meta property="og:image" content="https://jpaxmedia.com/jpaxmedialogoOFFICIALFINALwhite.png">
+  <meta property="og:url" content="https://jpaxmedia.com/visibility-score/">
+  <link rel="canonical" href="https://jpaxmedia.com/visibility-score/">
+  <link rel="icon" type="image/png" href="/jpaxmedialogoOFFICIALFINALwhite.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@500;600;700&family=IBM+Plex+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/assets/css/jpax.css">
+</head>
+<body data-page="visibility-score">
+  <a class="skip-link" href="#main">Skip to content</a>
+  <canvas id="space-field" aria-hidden="true"></canvas>
+  <div class="site-backdrop" aria-hidden="true"></div>
+  <header class="site-header">
+    <div class="nav-shell">
+      <a class="brand" href="/" aria-label="JPAX Media home">
+        <img src="/jpaxmedialogoOFFICIALFINALwhite.png" alt="">
+        <span class="brand-mark"><span class="brand-name">JPAX Media</span></span>
+      </a>
+      <button class="menu-toggle" type="button" aria-label="Open navigation" aria-expanded="false" data-menu-toggle><span></span></button>
+      <nav class="site-nav" aria-label="Main navigation" data-site-nav>
+        <a href="/work.html">Work</a>
+        <a href="/blog/">Blog</a>
+        <a href="/services.html">Services</a>
+        <a href="/about.html">About</a>
+        <a href="/elara.html">Elara</a>
+        <a href="/jupiter.html">Jupiter</a>
+        <a class="nav-cta magnetic" href="/start.html" data-magnetic>Start a Project</a>
+      </nav>
+    </div>
+    <div class="scroll-progress" aria-hidden="true"><span data-scroll-bar></span></div>
+  </header>
+
+  <main id="main">
+    <section class="page-hero visibility-page-hero reveal">
+      <p class="eyebrow"><span class="dot"></span>JPAX Visibility Score</p>
+      <h1>See how visible your business is online.</h1>
+      <p class="lead">Run the free score, then see where customers can find you and where the gaps are still hiding.</p>
+    </section>
+
+    <section class="section compact visibility-score-page" aria-label="JPAX Visibility Score test">
+      <aside class="visibility-julian-note reveal" aria-label="A note from Julian">
+        <img src="/assets/images/julian-avatar.png" alt="Julian Johnson" width="46" height="46">
+        <div>
+          <p class="visibility-note-label">A note from Julian</p>
+          <p>This score is a starting point, not a black box. Anything the scan cannot verify, I review personally before you get a final recommendation.</p>
+        </div>
+      </aside>
+
+      <div class="visibility-frame-wrap reveal">
+        <iframe
+          id="jpax-score-frame"
+          src="https://jpax-visibility-report.vercel.app/"
+          title="JPAX Visibility Score"
+          loading="eager"
+          allow="clipboard-write"
+        ></iframe>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer-shell">
+      <div class="footer-brand">
+        <a class="footer-logo" href="/" aria-label="JPAX Media home">
+          <img src="/jpaxmedialogoOFFICIALFINALwhite.png" alt="">
+          <span>
+            <strong>JPAX Media LLC</strong>
+            <small>BUILD &middot; RISE &middot; SCALE</small>
+          </span>
+        </a>
+        <p>Founder-led AI systems for modern businesses and creators. Built with AI, directed by Julian, and owned by you.</p>
+        <div class="footer-signature">
+          <img src="/assets/images/julian-avatar.png" alt="Julian Johnson" width="46" height="46">
+          <div>
+            <strong>Built by Julian Johnson</strong>
+            <small>Founder &middot; Greenville, SC</small>
+          </div>
+        </div>
+      </div>
+      <nav class="footer-nav" aria-label="Footer navigation">
+        <div>
+          <strong>Build</strong>
+          <a href="/services.html#build-foundation">Web foundation</a>
+          <a href="/services.html#create-demand">Content systems</a>
+          <a href="/services.html#custom-systems">Custom tools</a>
+          <a href="/visibility-score/">Visibility Score</a>
+        </div>
+        <div>
+          <strong>Company</strong>
+          <a href="/work.html">Work</a>
+          <a href="/about.html">About</a>
+          <a href="/blog/">Blog</a>
+          <a href="/start.html">Start a Project</a>
+        </div>
+        <div>
+          <strong>Contact</strong>
+          <a href="mailto:julian@jpaxmedia.com">julian@jpaxmedia.com</a>
+          <a href="tel:+18604943090">(860) 494-3090</a>
+          <span>Greenville, SC</span>
+        </div>
+      </nav>
+    </div>
+    <div class="footer-bottom">
+      <span>&copy; 2026 JPAX Media LLC. All rights reserved.</span>
+      <span>Build. Rise. Scale.</span>
+    </div>
+  </footer>
+
+  <script>
+    (function () {
+      var f = document.getElementById("jpax-score-frame");
+      window.addEventListener("message", function (e) {
+        if (!e.data || e.data.type !== "jpax-embed-height" || !f) return;
+        if (typeof e.data.height === "number" && e.data.height > 400) {
+          f.style.height = (e.data.height + 24) + "px";
+        }
+      });
+    })();
+  </script>
+  <script src="/assets/js/main.js" defer></script>
+</body>
+</html>

@@ -1069,6 +1069,101 @@ body.cursor-target .cursor-reticle { width: 64px; height: 64px; }
 }
 .kicker-bracket { display: none; }
 
+/* ==== Visibility Score ==== */
+.visibility-teaser {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 22px;
+  padding: 22px;
+  border: 1px solid rgba(30, 42, 61, 0.9);
+  border-radius: 14px;
+  background:
+    linear-gradient(135deg, rgba(74, 222, 128, 0.1), rgba(12, 16, 28, 0.86) 42%),
+    rgba(12, 16, 28, 0.74);
+}
+
+.visibility-teaser-copy {
+  display: grid;
+  gap: 8px;
+  max-width: 680px;
+}
+
+.visibility-teaser-copy h2 {
+  margin: 0;
+  color: var(--white);
+  font-family: var(--font-display);
+  font-size: clamp(1.45rem, 2.6vw, 2rem);
+  line-height: 1.08;
+}
+
+.visibility-teaser-copy p:not(.section-kicker) {
+  margin: 0;
+  color: var(--text-soft);
+  font-size: 0.96rem;
+}
+
+.visibility-page-hero {
+  padding-bottom: 24px;
+}
+
+.visibility-score-page {
+  padding-top: 18px;
+}
+
+.visibility-julian-note {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  align-items: center;
+  gap: 14px;
+  max-width: 780px;
+  margin: -12px 0 22px;
+  padding: 14px 16px;
+  border: 1px solid rgba(30, 42, 61, 0.9);
+  border-left: 3px solid var(--green);
+  border-radius: 0 10px 10px 0;
+  background: rgba(12, 16, 28, 0.72);
+}
+
+.visibility-julian-note img {
+  width: 46px;
+  height: 46px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 1px solid rgba(74, 222, 128, 0.45);
+}
+
+.visibility-julian-note p {
+  margin: 0;
+  color: var(--text-soft);
+  font-size: 0.94rem;
+  line-height: 1.55;
+}
+
+.visibility-julian-note .visibility-note-label {
+  margin-bottom: 3px;
+  color: var(--green);
+  font-family: var(--font-mono);
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.13em;
+  line-height: 1.2;
+  text-transform: uppercase;
+}
+
+.visibility-frame-wrap {
+  margin-top: 8px;
+}
+
+.visibility-frame-wrap iframe {
+  width: 100%;
+  min-height: 760px;
+  border: 1px solid #1e2a3d;
+  border-radius: 18px;
+  background: #06080f;
+  display: block;
+}
+
 /* ==== HUD GRID (the Gap) ==== */
 .hud-grid {
   display: grid;
@@ -2177,6 +2272,14 @@ body.cursor-target .cursor-reticle { width: 64px; height: 64px; }
   .lp-cta { justify-items: start; }
   .lane-card.feature { min-height: 380px; }
   .cursor-reticle { display: none; }
+  .visibility-teaser {
+    align-items: stretch;
+    flex-direction: column;
+  }
+  .visibility-teaser .button {
+    width: 100%;
+    justify-content: center;
+  }
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -3221,6 +3324,16 @@ a.proof-card { color: inherit; }
   .button.big { font-size: 0.74rem; }
   .button { padding: 0 14px; min-height: 44px; }
   .button .btn-pre { font-size: 0.6rem; }
+  .visibility-julian-note {
+    align-items: start;
+    gap: 12px;
+    padding: 13px 14px;
+  }
+  .visibility-julian-note img {
+    width: 40px;
+    height: 40px;
+  }
+  .visibility-julian-note p { font-size: 0.88rem; }
 }
 
 /* ========================================================
