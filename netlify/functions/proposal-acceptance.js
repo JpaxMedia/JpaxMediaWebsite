@@ -152,6 +152,8 @@ function signedReceiptPdf({
   signature,
   ipAddress,
   userAgent,
+  receiptLabel = "Client Copy",
+  includeAudit = false,
 }) {
   const dimensions = jpegDimensions(signature.bytes);
   const commands = [];
@@ -160,10 +162,21 @@ function signedReceiptPdf({
   commands.push("0 0 0 rg");
   commands.push("0.02 0.48 0.34 RG 2 w 54 734 m 558 734 l S");
   addText(commands, "JPAX Media LLC", 54, 748, 10, "F2");
-  addText(commands, "Signed Acceptance Receipt", 54, 724, 10, "F1");
+  addText(commands, `Signed Acceptance Receipt - ${receiptLabel}`, 54, 724, 10, "F1");
   addText(commands, "jpaxmedia.com | julian@jpaxmedia.com", 378, 748, 8, "F1");
   addText(commands, "Proposal Accepted", 54, 690, 24, "F2");
-  addWrappedText(commands, "This PDF records the online acceptance submitted for the Rodger C. Jarrell Real Estate & Mortgages proposal.", 54, 668, 92, 13, 10, "F1");
+  addWrappedText(
+    commands,
+    includeAudit
+      ? "This internal JPAX record includes acceptance details, audit information, and the client signature."
+      : "This client-facing PDF records the online acceptance submitted for the Rodger C. Jarrell Real Estate & Mortgages proposal.",
+    54,
+    668,
+    92,
+    13,
+    10,
+    "F1",
+  );
 
   addText(commands, "ACCEPTANCE RECORD", 54, 632, 11, "F2");
   addCard(commands, "Proposal ID", proposalId, 54, 574, 244, 46);
@@ -193,9 +206,14 @@ function signedReceiptPdf({
 
   addText(commands, "RECORD LINKS", 54, 92, 10, "F2");
   addWrappedText(commands, `Proposal: ${proposalUrl}`, 54, 76, 96, 11, 8, "F1");
-  addWrappedText(commands, `Pricing: ${pricingUrl}`, 54, 54, 96, 11, 8, "F1");
-  addWrappedText(commands, `Submission IP: ${ipAddress} | User agent: ${userAgent}`, 54, 32, 96, 10, 7, "F1");
-  if (notes) addWrappedText(commands, `Notes: ${notes}`, 54, 18, 96, 10, 7, "F1");
+  addWrappedText(commands, `Pricing: ${pricingUrl}`, 54, 62, 96, 11, 8, "F1");
+
+  if (includeAudit) {
+    addText(commands, "JPAX INTERNAL AUDIT", 54, 44, 8, "F2");
+    addWrappedText(commands, `Submission IP: ${ipAddress}`, 54, 32, 96, 9, 7, "F1");
+    addWrappedText(commands, `User agent: ${compact(userAgent, 140)}`, 54, 22, 96, 9, 7, "F1");
+    if (notes) addWrappedText(commands, `Notes: ${compact(notes, 160)}`, 54, 12, 96, 9, 7, "F1");
+  }
 
   const content = Buffer.from(commands.join("\n"), "binary");
   const imageObject = Buffer.concat([
@@ -261,9 +279,10 @@ exports.handler = async (event) => {
   const forwardedFor = compact(event.headers["x-forwarded-for"] || "", 240);
   const ipAddress = compact(event.headers["x-nf-client-connection-ip"] || forwardedFor.split(",")[0] || "Not provided", 120);
   const userAgent = compact(event.headers["user-agent"] || "Not provided", 420);
-  let signedPdf;
+  let clientPdf;
+  let internalPdf;
   try {
-    signedPdf = signedReceiptPdf({
+    const receiptPayload = {
       proposalId,
       acceptedAt,
       fullName,
@@ -276,6 +295,18 @@ exports.handler = async (event) => {
       signature,
       ipAddress,
       userAgent,
+    };
+
+    clientPdf = signedReceiptPdf({
+      ...receiptPayload,
+      receiptLabel: "Client Copy",
+      includeAudit: false,
+    });
+
+    internalPdf = signedReceiptPdf({
+      ...receiptPayload,
+      receiptLabel: "JPAX Internal Record",
+      includeAudit: true,
     });
   } catch {
     return jsonResponse(400, { ok: false, message: "Could not prepare the signed PDF. Please clear and redraw the signature." });
@@ -306,7 +337,9 @@ exports.handler = async (event) => {
     "Notes:",
     notes || "No notes provided.",
     "",
-    "A signed PDF acceptance receipt is attached.",
+    "Attached PDFs:",
+    "- Client-facing signed acceptance PDF",
+    "- JPAX internal signed acceptance PDF with audit details",
   ].join("\n");
 
   const html = `
@@ -339,7 +372,7 @@ exports.handler = async (event) => {
       <p style="margin:18px 0;color:#cbd5e1"><strong>Notes:</strong> ${escapeHtml(notes || "No notes provided.")}</p>
       <p style="margin:18px 0 0"><a style="color:#4ade80;font-weight:800" href="${escapeHtml(proposalUrl)}">Open proposal</a></p>
       <p style="margin:6px 0 0"><a style="color:#4ade80;font-weight:800" href="${escapeHtml(pricingUrl)}">Open pricing sheet</a></p>
-      <p style="margin:18px 0 0;color:#94a3b8">A signed PDF acceptance receipt is attached.</p>
+      <p style="margin:18px 0 0;color:#94a3b8">Attached: client-facing signed acceptance PDF and JPAX internal signed acceptance PDF with audit details.</p>
     </div>
   `;
 
@@ -359,8 +392,12 @@ exports.handler = async (event) => {
       html,
       attachments: [
         {
-          filename: `${proposalId}-signed-acceptance.pdf`,
-          content: signedPdf.toString("base64"),
+          filename: `${proposalId}-client-signed-acceptance.pdf`,
+          content: clientPdf.toString("base64"),
+        },
+        {
+          filename: `${proposalId}-jpax-internal-signed-acceptance.pdf`,
+          content: internalPdf.toString("base64"),
         },
       ],
     }),

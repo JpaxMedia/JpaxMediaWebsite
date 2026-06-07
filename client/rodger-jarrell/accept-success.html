@@ -152,6 +152,10 @@
     }
 
     function normalizeSignatureForPrint(dataUrl) {
+      if (/^data:image\/jpe?g;base64,/.test(dataUrl || "")) {
+        return Promise.resolve(dataUrl);
+      }
+
       return new Promise((resolve) => {
         const image = new Image();
         image.onload = () => {
@@ -166,6 +170,20 @@
 
           context.drawImage(image, 0, 0);
           const pixels = context.getImageData(0, 0, canvas.width, canvas.height);
+          let transparentPixels = 0;
+          for (let i = 3; i < pixels.data.length; i += 4) {
+            if (pixels.data[i] < 8) transparentPixels += 1;
+          }
+
+          if (transparentPixels < (pixels.data.length / 4) * 0.05) {
+            resolve(dataUrl);
+            return;
+          }
+
+          context.clearRect(0, 0, canvas.width, canvas.height);
+          context.fillStyle = "#ffffff";
+          context.fillRect(0, 0, canvas.width, canvas.height);
+
           for (let i = 0; i < pixels.data.length; i += 4) {
             if (pixels.data[i + 3] > 8) {
               pixels.data[i] = 17;
