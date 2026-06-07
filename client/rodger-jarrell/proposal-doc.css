@@ -189,6 +189,72 @@ h3 {
   font-size: 18px;
 }
 
+.due-now-panel {
+  width: min(760px, 100%);
+  display: grid;
+  grid-template-columns: minmax(0, 1.15fr) minmax(220px, 0.85fr);
+  gap: 16px;
+  align-items: center;
+  margin-top: 24px;
+  padding: 18px;
+  background: rgba(74, 222, 128, 0.08);
+  border: 1px solid rgba(74, 222, 128, 0.26);
+  border-radius: 8px;
+}
+
+.due-now-panel span {
+  display: block;
+  margin-bottom: 4px;
+  color: var(--green);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.due-now-panel strong {
+  display: block;
+  color: var(--white);
+  font-family: "JetBrains Mono", monospace;
+  font-size: clamp(30px, 5vw, 44px);
+  line-height: 1;
+}
+
+.due-now-panel p {
+  max-width: 430px;
+  margin: 10px 0 0;
+  color: var(--text-soft);
+  font-size: 14px;
+}
+
+.due-now-panel ul {
+  display: grid;
+  gap: 8px;
+  padding: 0;
+  margin: 0;
+  list-style: none;
+}
+
+.due-now-panel li {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  padding-bottom: 8px;
+  color: var(--text);
+  border-bottom: 1px solid rgba(226, 232, 240, 0.12);
+  font-size: 14px;
+}
+
+.due-now-panel li:last-child {
+  padding-bottom: 0;
+  border-bottom: 0;
+}
+
+.due-now-panel li strong {
+  color: var(--green);
+  font-size: 14px;
+}
+
 .client-grid,
 .stat-grid,
 .signature-grid {
@@ -643,6 +709,7 @@ tr:last-child td {
 
   .client-grid,
   .stat-grid,
+  .due-now-panel,
   .two-col,
   .form-grid,
   .receipt-grid,

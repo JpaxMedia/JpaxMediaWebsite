@@ -189,30 +189,30 @@ function signedReceiptPdf({
   addText(commands, "ACCEPTED TERMS", 54, 420, 11, "F2");
   addWrappedText(commands, "- Client confirmed authority to accept the proposal on behalf of the listed business.", 70, 401, 92, 12, 9, "F1");
   addWrappedText(commands, "- Client accepted the proposal scope, payment schedule, 90-day pricing terms, exclusions, and travel fee language.", 70, 377, 92, 12, 9, "F1");
-  addWrappedText(commands, "- Client acknowledged the $1,650 upfront payment due before JPAX Media begins work.", 70, 341, 92, 12, 9, "F1");
+  addWrappedText(commands, "- Client acknowledged $1,650 due now to begin: $950 website deposit, $500 first-month management deposit, and $200 Facebook Business / Meta setup.", 70, 341, 92, 12, 9, "F1");
+  addWrappedText(commands, "- Remaining first-month management balance of $500 is due after the first month of service is completed.", 70, 305, 92, 12, 9, "F1");
 
-  addText(commands, "CLIENT SIGNATURE", 54, 306, 11, "F2");
-  commands.push("0.58 0.64 0.72 RG 1 w 54 160 504 130 re S");
+  addText(commands, "CLIENT SIGNATURE", 54, 270, 11, "F2");
+  commands.push("0.58 0.64 0.72 RG 1 w 54 124 504 130 re S");
   const maxSignatureWidth = 450;
   const maxSignatureHeight = 96;
   const scale = Math.min(maxSignatureWidth / dimensions.width, maxSignatureHeight / dimensions.height);
   const signatureWidth = Math.round(dimensions.width * scale);
   const signatureHeight = Math.round(dimensions.height * scale);
   const signatureX = Math.round(54 + (504 - signatureWidth) / 2);
-  const signatureY = Math.round(178 + (96 - signatureHeight) / 2);
+  const signatureY = Math.round(142 + (96 - signatureHeight) / 2);
   commands.push(`q ${signatureWidth} 0 0 ${signatureHeight} ${signatureX} ${signatureY} cm /Sig Do Q`);
-  addText(commands, fullName, 66, 139, 11, "F2");
-  addText(commands, acceptedAt, 66, 124, 9, "F1");
+  addText(commands, fullName, 66, 103, 11, "F2");
+  addText(commands, acceptedAt, 66, 88, 9, "F1");
 
-  addText(commands, "RECORD LINKS", 54, 92, 10, "F2");
-  addWrappedText(commands, `Proposal: ${proposalUrl}`, 54, 76, 96, 11, 8, "F1");
-  addWrappedText(commands, `Pricing: ${pricingUrl}`, 54, 62, 96, 11, 8, "F1");
+  addText(commands, "RECORD LINKS", 54, 64, 10, "F2");
+  addWrappedText(commands, `Proposal: ${proposalUrl}`, 54, 50, 96, 10, 7, "F1");
+  addWrappedText(commands, `Pricing: ${pricingUrl}`, 54, 38, 96, 10, 7, "F1");
 
   if (includeAudit) {
-    addText(commands, "JPAX INTERNAL AUDIT", 54, 44, 8, "F2");
-    addWrappedText(commands, `Submission IP: ${ipAddress}`, 54, 32, 96, 9, 7, "F1");
-    addWrappedText(commands, `User agent: ${compact(userAgent, 140)}`, 54, 22, 96, 9, 7, "F1");
-    if (notes) addWrappedText(commands, `Notes: ${compact(notes, 160)}`, 54, 12, 96, 9, 7, "F1");
+    addText(commands, "JPAX INTERNAL AUDIT", 54, 26, 8, "F2");
+    addWrappedText(commands, `Submission IP: ${ipAddress}`, 54, 16, 96, 8, 6, "F1");
+    addWrappedText(commands, `User agent: ${compact(userAgent, 140)}`, 54, 8, 96, 8, 6, "F1");
   }
 
   const content = Buffer.from(commands.join("\n"), "binary");
@@ -325,7 +325,8 @@ exports.handler = async (event) => {
     "Confirmations:",
     `Authorized to accept: ${payload.authorized_to_accept || "not checked"}`,
     `Proposal acceptance: ${payload.proposal_acceptance || "not checked"}`,
-    `Payment acknowledgement: ${payload.payment_acknowledgement || "not checked"}`,
+    `Payment acknowledgement: ${payload.payment_acknowledgement || "not checked"} ($1,650 due now to begin: $950 website deposit, $500 first-month management deposit, $200 Facebook Business / Meta setup)`,
+    "Remaining first-month management balance: $500 due after the first month of service is completed.",
     "",
     "Audit trail:",
     `Submission IP: ${ipAddress}`,
@@ -362,7 +363,9 @@ exports.handler = async (event) => {
         <p style="margin:0 0 8px;color:#94a3b8">Confirmations</p>
         <p style="margin:0;color:#e2e8f0">Authorized: ${escapeHtml(payload.authorized_to_accept || "not checked")}</p>
         <p style="margin:0;color:#e2e8f0">Accepted proposal: ${escapeHtml(payload.proposal_acceptance || "not checked")}</p>
-        <p style="margin:0;color:#e2e8f0">Acknowledged $1,650 due upfront: ${escapeHtml(payload.payment_acknowledgement || "not checked")}</p>
+        <p style="margin:0;color:#e2e8f0">Acknowledged $1,650 due now to begin: ${escapeHtml(payload.payment_acknowledgement || "not checked")}</p>
+        <p style="margin:0;color:#e2e8f0">$1,650 breakdown: $950 website deposit, $500 first-month management deposit, $200 Facebook Business / Meta setup.</p>
+        <p style="margin:0;color:#e2e8f0">Remaining first-month management balance: $500 due after the first month of service is completed.</p>
       </div>
       <div style="border:1px solid #1e2a3d;border-radius:8px;padding:16px;background:#0c101c;margin:18px 0">
         <p style="margin:0 0 8px;color:#94a3b8">Audit Trail</p>
