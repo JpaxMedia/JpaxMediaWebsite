@@ -12,5 +12,10 @@
 /api/site-dashboard /.netlify/functions/site-dashboard 200
 /api/site-track /.netlify/functions/site-track 200
 
+# Prospect dashboard UI moved into Jupiter (jupiter.jpaxmedia.com/signals).
+# Forced (!) because the old static dashboard files still exist at this path.
+/prospect-dashboard https://jupiter.jpaxmedia.com/signals 301!
+/prospect-dashboard/* https://jupiter.jpaxmedia.com/signals 301!
+
 # Re-enable this only when the public site should be hidden behind maintenance.
 # /*    /maintenance.html    200
