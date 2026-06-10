@@ -2,6 +2,17 @@
   if (window.JPAXProspectTrackerLoaded) return;
   window.JPAXProspectTrackerLoaded = true;
 
+  // Internal opt-out: open any page once with ?jpax_ignore=1 and this browser
+  // stops sending tracking events (?jpax_ignore=0 re-enables). Keeps JPAX's
+  // own demo visits out of prospect signal scores. Shared flag with
+  // jpax-site-intelligence.js.
+  try {
+    var ignoreParam = new URLSearchParams(window.location.search).get("jpax_ignore");
+    if (ignoreParam === "1") localStorage.setItem("jpax_tracking_optout", "1");
+    if (ignoreParam === "0") localStorage.removeItem("jpax_tracking_optout");
+    if (localStorage.getItem("jpax_tracking_optout") === "1") return;
+  } catch (e) { /* storage unavailable — track normally */ }
+
   var match = window.location.pathname.match(/^\/demos\/([^/]+)/);
   if (!match) return;
 

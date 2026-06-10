@@ -4,6 +4,15 @@
 
   if (window.location.pathname.indexOf("/prospect-dashboard") === 0) return;
 
+  // Internal opt-out — same flag as prospect-tracker.js: one visit with
+  // ?jpax_ignore=1 silences both trackers in this browser.
+  try {
+    var ignoreParam = new URLSearchParams(window.location.search).get("jpax_ignore");
+    if (ignoreParam === "1") localStorage.setItem("jpax_tracking_optout", "1");
+    if (ignoreParam === "0") localStorage.removeItem("jpax_tracking_optout");
+    if (localStorage.getItem("jpax_tracking_optout") === "1") return;
+  } catch (e) { /* storage unavailable — track normally */ }
+
   var endpoint = "/api/site-track";
   var params = new URLSearchParams(window.location.search);
   var sentScrollDepths = {};
