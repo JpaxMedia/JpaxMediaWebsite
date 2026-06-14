@@ -419,6 +419,27 @@
         basketForm = $('#basketForm'), basketSuccess = $('#basketSuccess'), basketErr = $('#basketErr'),
         leadName = $('#leadName'), leadEmail = $('#leadEmail'), leadHp = $('#leadHp'), leadSubmit = $('#leadSubmit');
 
+  // ---- Site Intelligence: feed Oracle usage into JPAX's existing /api/site-track pipeline ----
+  // (the deferred jpax-site-intelligence.js also auto-tracks page views + engagement; this adds
+  //  the two events that script can't see: a consult and a lead, sharing the same visitor IDs.)
+  function siId(store, key, prefix){
+    try { let v = store.getItem(key); if (!v){ v = prefix+'-'+Date.now().toString(36)+'-'+Math.random().toString(36).slice(2); store.setItem(key, v); } return v; }
+    catch(e){ return prefix+'-anon'; }
+  }
+  function siTrack(type, extra){
+    try {
+      if (localStorage.getItem('jpax_tracking_optout') === '1') return;
+      const payload = Object.assign({
+        type, path: location.pathname, url: location.href,
+        sessionId: siId(sessionStorage, 'jpax_si_session', 'sis'),
+        visitorId: siId(localStorage, 'jpax_si_visitor', 'siv'),
+        language: navigator.language || '',
+        timezone: (Intl.DateTimeFormat().resolvedOptions().timeZone) || ''
+      }, extra || {});
+      fetch('/api/site-track', { method:'POST', headers:{'content-type':'application/json'}, body: JSON.stringify(payload), keepalive:true }).catch(()=>{});
+    } catch(e){}
+  }
+
   // ---- project basket: accumulates the lanes a visitor asks about, persists across the visit ----
   const LANE_LABELS = {
     website:'Website', app:'Custom app', ai:'AI & automation',
@@ -483,6 +504,7 @@
         basketSuccess.appendChild(document.createTextNode(
           (nm ? ' ' + nm + ', check' : ' Check') + ' your inbox — Julian will personally reply within 24 hours.'));
         basketForm.hidden = true; basketSuccess.hidden = false;
+        siTrack('site_cta_click', { targetText: 'Oracle · lead captured', targetUrl: location.href, oracleLanes: (basket.lanes || []).join(',') });
         return;
       }
       basketErr.textContent = (data && data.error) ? data.error + ' You can email Julian directly above.' : 'Could not send — email Julian directly above.';
@@ -772,6 +794,7 @@
       ctaBtn.href = MAIL + r.cta[2];
 
       updateBasket(r.lanes);
+      siTrack('site_cta_click', { targetText: 'Oracle · consulted', targetUrl: location.href, oracleLanes: (r.lanes || []).join(',') });
 
       orb.classList.remove('thinking');
       status.classList.remove('show');
@@ -791,5 +814,7 @@
   };
 })();
 </script>
+<!-- JPAX Site Intelligence: auto-tracks page views + engagement into /api/site-track -->
+<script src="/assets/js/jpax-site-intelligence.js" defer></script>
 </body>
 </html>

@@ -304,6 +304,7 @@ function pageMeta(path, title) {
   if (String(path).startsWith("/pricing") || String(path).startsWith("/start")) return { pageName: cleanTitle || titleFromPath(path), category: "Offer Page", group: "offers" };
   if (String(path).startsWith("/elara") || String(path).startsWith("/jupiter") || String(path).startsWith("/tradeos")) return { pageName: cleanTitle || titleFromPath(path), category: "Product Page", group: "products" };
   if (String(path).startsWith("/blog")) return { pageName: cleanTitle || titleFromPath(path), category: "Content", group: "content" };
+  if (String(path).startsWith("/oracle")) return { pageName: "The Oracle", category: "Interactive Tool", group: "tools" };
   return { pageName: cleanTitle || titleFromPath(path), category: "Marketing Page", group: "marketing" };
 }
 
