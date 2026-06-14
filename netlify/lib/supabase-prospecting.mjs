@@ -254,16 +254,25 @@ export function enrichEventPayload(request, context, body) {
 
 export function enrichSitePayload(request, context, body) {
   const payload = enrichEventPayload(request, context, body);
-  const meta = pageMeta(payload.path || "/", payload.title || "");
-  const conversion = isStrictConversionPath(payload.path);
+  // Canonicalize the path so a page tracked with and without a trailing slash
+  // (e.g. "/oracle" vs "/oracle/") aggregates as one row, never two.
+  const path = canonicalSitePath(payload.path);
+  const meta = pageMeta(path, payload.title || "");
+  const conversion = isStrictConversionPath(path);
   return {
     ...payload,
+    path,
     conversion,
     conversionType: conversion ? "form_thank_you" : "",
     pageName: payload.pageName || meta.pageName,
     category: payload.category || meta.category,
     group: payload.group || meta.group
   };
+}
+
+function canonicalSitePath(value) {
+  const path = String(value || "/").split("?")[0].split("#")[0].replace(/\/+$/, "");
+  return path === "" ? "/" : path;
 }
 
 export function normalizeSiteConversions(data = {}) {
