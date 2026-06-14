@@ -293,13 +293,28 @@
   }
   .basket-chip button:hover { color:var(--green); }
   .basket-actions { display:flex; align-items:center; gap:16px; margin-top:14px; }
-  a.basket-send {
-    text-decoration:none; font-family:var(--body); font-weight:700; font-size:13.5px; color:#04130b;
-    padding:10px 18px; border-radius:9px;
+  .basket-send {
+    border:none; cursor:pointer; text-decoration:none; font-family:var(--body); font-weight:700;
+    font-size:13.5px; color:#04130b; padding:11px 18px; border-radius:9px;
     background:linear-gradient(180deg,#6ef0a3,var(--green) 55%,var(--green2));
-    box-shadow:0 6px 18px rgba(74,222,128,.3); transition:transform .12s, box-shadow .2s;
+    box-shadow:0 6px 18px rgba(74,222,128,.3); transition:transform .12s, box-shadow .2s, opacity .2s;
   }
-  a.basket-send:hover { transform:translateY(-1px); box-shadow:0 9px 24px rgba(74,222,128,.45); }
+  .basket-send:hover { transform:translateY(-1px); box-shadow:0 9px 24px rgba(74,222,128,.45); }
+  .basket-send:disabled { opacity:.55; cursor:wait; transform:none; }
+  .basket-capture { margin-top:14px; }
+  .basket-fields { display:flex; gap:8px; flex-wrap:wrap; margin-bottom:10px; }
+  .basket-fields input { flex:1; min-width:150px; background:rgba(6,8,15,.5); border:1px solid var(--border);
+    border-radius:9px; padding:11px 12px; color:var(--text); font-family:var(--body); font-size:14px; outline:none; }
+  .basket-fields input:focus { border-color:rgba(74,222,128,.55); }
+  .basket-fields input::placeholder { color:var(--text-muted); }
+  .hp { position:absolute !important; left:-9999px !important; width:1px; height:1px; opacity:0; pointer-events:none; }
+  .basket-note { margin-top:11px; font-size:12px; color:var(--text-muted); line-height:1.5; }
+  .basket-note a { color:var(--text-soft); text-decoration:underline; }
+  .basket-note a:hover { color:var(--green); }
+  .basket-err { margin-top:10px; font-size:13px; color:#fca5a5; }
+  .basket-success { margin-top:6px; padding:16px 18px; border-radius:10px;
+    background:rgba(74,222,128,.10); border:1px solid rgba(74,222,128,.35); color:var(--text); font-size:14.5px; line-height:1.55; }
+  .basket-success b { color:var(--green); }
   .basket-clear {
     border:none; background:transparent; color:var(--text-muted);
     font-family:var(--body); font-size:12px; cursor:pointer; text-decoration:underline; padding:0;
@@ -350,10 +365,22 @@
         <span class="basket-count" id="basketCount"></span>
       </div>
       <div class="basket-chips" id="basketChips"></div>
-      <div class="basket-actions">
-        <a class="basket-send" id="basketSend" href="#">Send my project to JPAX &rarr;</a>
-        <button class="basket-clear" id="basketClear" type="button">clear</button>
-      </div>
+
+      <form class="basket-capture" id="basketForm">
+        <div class="basket-fields">
+          <input id="leadName" type="text" placeholder="Your name" autocomplete="name" />
+          <input id="leadEmail" type="email" required placeholder="you@email.com" autocomplete="email" />
+        </div>
+        <input class="hp" id="leadHp" type="text" tabindex="-1" autocomplete="off" aria-hidden="true" />
+        <div class="basket-actions">
+          <button class="basket-send" id="leadSubmit" type="submit">Email me my game plan &rarr;</button>
+          <button class="basket-clear" id="basketClear" type="button">clear</button>
+        </div>
+        <div class="basket-note">Instant plan in your inbox &mdash; Julian personally replies within 24 hrs. Prefer to talk now? <a class="basket-mailto" id="basketSend" href="#">Email Julian directly</a>.</div>
+        <div class="basket-err" id="basketErr" hidden></div>
+      </form>
+
+      <div class="basket-success" id="basketSuccess" hidden></div>
     </section>
 
     <div class="status" id="status"></div>
@@ -388,7 +415,9 @@
   const answer = $('#answer'), verdict = $('#verdict'), quote = $('#quote'), reading = $('#reading');
   const ctaNote = $('#ctaNote'), ctaBtn = $('#ctaBtn'), readingHead = $('#readingHead');
   const basketEl = $('#basket'), basketChips = $('#basketChips'), basketCount = $('#basketCount'),
-        basketSend = $('#basketSend'), basketClear = $('#basketClear');
+        basketSend = $('#basketSend'), basketClear = $('#basketClear'),
+        basketForm = $('#basketForm'), basketSuccess = $('#basketSuccess'), basketErr = $('#basketErr'),
+        leadName = $('#leadName'), leadEmail = $('#leadEmail'), leadHp = $('#leadHp'), leadSubmit = $('#leadSubmit');
 
   // ---- project basket: accumulates the lanes a visitor asks about, persists across the visit ----
   const LANE_LABELS = {
@@ -404,6 +433,8 @@
   function renderBasket(){
     if (!basket.lanes.length){ basketEl.hidden = true; return; }
     basketEl.hidden = false;
+    // a fresh ask brings the capture form back (so they can send an updated plan)
+    basketForm.hidden = false; basketSuccess.hidden = true; basketErr.hidden = true;
     basketCount.textContent = basket.lanes.length + (basket.lanes.length === 1 ? ' service' : ' services');
     while (basketChips.firstChild) basketChips.removeChild(basketChips.firstChild);
     basket.lanes.forEach(k => {
@@ -429,6 +460,41 @@
     renderBasket();
   }
   basketClear.onclick = () => { basket = { lanes:[] }; saveBasket(); renderBasket(); };
+
+  // ---- lead capture: leave name+email -> instant branded email + Julian alert ----
+  basketForm.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    basketErr.hidden = true;
+    if (leadHp.value) return;                    // honeypot tripped — silently stop
+    const email = (leadEmail.value || '').trim();
+    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) { basketErr.textContent = 'Please enter a valid email.'; basketErr.hidden = false; return; }
+    leadSubmit.disabled = true; const label = leadSubmit.textContent; leadSubmit.textContent = 'Sending…';
+    try {
+      const res = await fetch('/api/oracle-lead', {
+        method: 'POST', headers: { 'content-type': 'application/json' },
+        body: JSON.stringify({ name: (leadName.value||'').trim(), email, lanes: basket.lanes, website: leadHp.value })
+      });
+      const data = await res.json().catch(() => ({}));
+      if (data && data.ok) {
+        const nm = (leadName.value||'').trim();
+        while (basketSuccess.firstChild) basketSuccess.removeChild(basketSuccess.firstChild);
+        const b = document.createElement('b'); b.textContent = '✦ Your game plan is on its way.';
+        basketSuccess.appendChild(b);
+        basketSuccess.appendChild(document.createTextNode(
+          (nm ? ' ' + nm + ', check' : ' Check') + ' your inbox — Julian will personally reply within 24 hours.'));
+        basketForm.hidden = true; basketSuccess.hidden = false;
+        return;
+      }
+      basketErr.textContent = (data && data.error) ? data.error + ' You can email Julian directly above.' : 'Could not send — email Julian directly above.';
+      basketErr.hidden = false;
+    } catch (err) {
+      basketErr.textContent = 'Network hiccup — email Julian directly above.';
+      basketErr.hidden = false;
+    } finally {
+      leadSubmit.disabled = false; leadSubmit.textContent = label;
+    }
+  });
+
   renderBasket();
 
   // ---- answer source: try the live Oracle (Claude) endpoint, fall back to the local engine ----
@@ -499,8 +565,8 @@
       verdict:'A WEBSITE IS INFRASTRUCTURE', tone:'green',
       quote:["Your website isn't a brochure.","It's the front door to a working system."],
       reading:[
-        ["Local Website Foundation — from $2,500: ","a clean, fast, professional site for a serious local business: a few pages, responsive build, contact form, analytics, launch support."],
-        ["Business & Premium sites — from $4,000: ","stronger copy, conversion strategy, service pages, and information architecture for businesses that need the site to sell."],
+        ["Local Website Foundation — from $3,500: ","a clean, fast, professional site for a serious local business: a few pages, responsive build, contact form, analytics, launch support."],
+        ["Business Website — from $5,000: ","stronger copy, conversion strategy, service pages, and information architecture for businesses that need the site to sell."],
         ["Website + Operating Layer — by proposal: ","when the site connects to a CRM, dashboards, intake flows, payments, or automations. Real pricing comes from a quick scoping call."]
       ],
       cta:["Tell the orb's human counterpart what you're building and get a real number.","Get a Website Quote","Website%20Quote"] },
@@ -539,7 +605,7 @@
       verdict:'BRAND IS PART OF THE SYSTEM', tone:'green',
       quote:["Brand, content, conversion, and UX as one.","Creative roots are part of the advantage."],
       reading:[
-        ["Brand Foundation — from $3,500 with a site: ","logo direction, colors, typography, messaging, and the assets you need to look like a real company."],
+        ["Brand + Web Foundation — from $8,000: ","logo direction, colors, typography, messaging, and the website to launch it — built as one system."],
         ["Full brand systems: ","identity, voice, visual system, and templates for businesses ready to scale their presence."],
         ["Always strategic: ","JPAX pairs brand with web and systems — it's not logo-for-its-own-sake, it's brand that drives the business."]
       ],
@@ -559,7 +625,7 @@
       verdict:'PRICED AS A REAL ASSET', tone:'green',
       quote:["JPAX builds business assets, not cheap deliverables.","Here's where things start."],
       reading:[
-        ["Starting points: ","Strategy Sessions from $250 · AI Creative from $750 · Websites from $2,500 · Workflow Sprints from $2,000 · Operating Partnerships from $500/mo."],
+        ["Starting points: ","Local Websites from $3,500 · Business Websites from $5,000 · AI Creative from $950 · Workflow Sprints from $5,000 · Managed Websites from $500/mo · Operating Partnerships from $2,500/mo."],
         ["Bigger systems, by proposal: ","custom apps, portals, dashboards, and AI systems are quoted to your exact scope — no guessing, no sticker games."],
         ["Your real number: ","comes from a short conversation about what you're building. That's what the strategy session is for."]
       ],
@@ -611,11 +677,11 @@
   // Deliverable lanes the Oracle itemizes when a prospect describes a whole project.
   const DELIVERABLE = ['website','app','ai','elara','brand','content'];
   const BUNDLE = {
-    website:{ label:'Website',               brief:'a professional site — or a site wired into your operations. From $2,500.' },
+    website:{ label:'Website',               brief:'a professional site — or a site wired into your operations. From $3,500.' },
     app:    { label:'Custom app',            brief:'a portal, dashboard, or operating tool, scoped by proposal.' },
-    ai:     { label:'AI & automation',       brief:'governed workflows dropped where the manual work is. Sprints from $2,000.' },
+    ai:     { label:'AI & automation',       brief:'governed workflows dropped where the manual work is. Sprints from $5,000.' },
     elara:  { label:'Creator system',        brief:'brand deals, revenue, and content ops in one place — that’s Elara.' },
-    brand:  { label:'Brand & identity',      brief:'logo, colors, and messaging. From $3,500 paired with a site.' },
+    brand:  { label:'Brand & identity',      brief:'logo, colors, and messaging, built with the site. From $8,000.' },
     content:{ label:'Content, social & ads', brief:'social, short-form video, and ad creative run as a system, not one-offs.' }
   };
 
