@@ -1,0 +1,729 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ask the JPAX Oracle</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@500;700&family=IBM+Plex+Sans:ital,wght@0,300;0,400;0,600;0,700;1,400&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --dark: #06080F;
+    --dark2: #0C101C;
+    --dark3: #0F172A;
+    --green: #4ADE80;
+    --green2: #10B981;
+    --purple: #8B5CF6;
+    --border: #1E2A3D;
+    --text: #E2E8F0;
+    --text-soft: #94A3B8;
+    --text-muted: #64748B;
+    --white: #F8FAFC;
+    --display: "Chakra Petch", "Arial Black", system-ui, sans-serif;
+    --body: "IBM Plex Sans", system-ui, -apple-system, sans-serif;
+    --mono: "JetBrains Mono", "Courier New", monospace;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  html, body {
+    height: 100%;
+    background:
+      radial-gradient(ellipse at 50% -8%, rgba(74,222,128,.10) 0%, transparent 42%),
+      radial-gradient(ellipse at 50% 0%, #0a1018 0%, var(--dark) 60%, #04060c 100%);
+    color: var(--text);
+    font-family: var(--body);
+    overflow-x: hidden;
+  }
+
+  .grid {
+    position: fixed; inset: 0; z-index: 0; pointer-events: none; opacity: .35;
+    background-image:
+      linear-gradient(rgba(30,42,61,.5) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(30,42,61,.5) 1px, transparent 1px);
+    background-size: 46px 46px;
+    mask-image: radial-gradient(ellipse at 50% 30%, #000 0%, transparent 75%);
+    -webkit-mask-image: radial-gradient(ellipse at 50% 30%, #000 0%, transparent 75%);
+  }
+  .sparks {
+    position: fixed; inset: 0; z-index: 0; pointer-events: none;
+    background-image:
+      radial-gradient(1px 1px at 20% 30%, rgba(74,222,128,.9), transparent),
+      radial-gradient(1px 1px at 72% 58%, rgba(16,185,129,.7), transparent),
+      radial-gradient(1px 1px at 40% 80%, rgba(74,222,128,.6), transparent),
+      radial-gradient(1.5px 1.5px at 85% 18%, rgba(139,92,246,.6), transparent),
+      radial-gradient(1px 1px at 12% 68%, rgba(74,222,128,.7), transparent),
+      radial-gradient(1px 1px at 56% 24%, rgba(226,232,240,.5), transparent);
+    background-size: 620px 620px;
+    animation: drift 140s linear infinite, twinkle 5s ease-in-out infinite alternate;
+    opacity: .6;
+  }
+  @keyframes drift { to { background-position: 620px 620px; } }
+  @keyframes twinkle { from { opacity:.35 } to { opacity:.75 } }
+
+  .wrap {
+    position: relative; z-index: 2;
+    max-width: 780px; margin: 0 auto;
+    padding: 44px 22px 80px;
+    text-align: center;
+    display: flex; flex-direction: column; align-items: center;
+  }
+
+  .kicker {
+    font-family: var(--mono);
+    letter-spacing: .34em; text-transform: uppercase;
+    font-size: 11px; color: var(--green);
+    margin-bottom: 12px;
+  }
+  .kicker .dot { color: var(--text-muted); }
+  h1 {
+    font-family: var(--display);
+    font-size: clamp(34px, 7vw, 58px);
+    font-weight: 700; line-height: 1.02; letter-spacing: -.01em;
+    color: var(--white);
+    text-shadow: 0 0 44px rgba(74,222,128,.18);
+    margin-bottom: 12px;
+  }
+  h1 .accent { color: var(--green); text-shadow: 0 0 34px rgba(74,222,128,.5); }
+  .sub { color: var(--text-soft); font-size: 15px; max-width: 480px; line-height:1.5; margin-bottom: 28px; }
+  .rule { width: 64px; height: 3px; background: var(--green); border-radius: 2px; margin: 0 0 30px;
+    box-shadow: 0 0 18px rgba(74,222,128,.6); }
+
+  .orb-stage { position: relative; width: 300px; height: 300px; margin: 2px 0 30px; }
+  .pedestal {
+    position: absolute; left: 50%; bottom: -4px; transform: translateX(-50%);
+    width: 210px; height: 44px;
+    background: radial-gradient(ellipse at 50% 30%, rgba(16,185,129,.30) 0%, rgba(6,8,15,0) 70%);
+    border-radius: 50%;
+  }
+  .pedestal::after {
+    content:""; position:absolute; left:50%; top:7px; transform:translateX(-50%);
+    width:124px; height:16px; border-radius:50%;
+    background: linear-gradient(180deg, #16324a, #0a1622);
+    border: 1px solid var(--border);
+    box-shadow: inset 0 1px 0 rgba(74,222,128,.25);
+  }
+
+  .orb {
+    position: absolute; inset: 14px;
+    border-radius: 50%;
+    background:
+      radial-gradient(circle at 36% 30%, rgba(255,255,255,.85) 0%, rgba(255,255,255,.12) 9%, transparent 24%),
+      radial-gradient(circle at 50% 52%, rgba(74,222,128,.30), transparent 58%),
+      radial-gradient(circle at 50% 50%, #0e3b2c 0%, #0a2620 46%, #05130f 100%);
+    box-shadow:
+      0 0 64px rgba(74,222,128,.45),
+      0 0 130px rgba(16,185,129,.22),
+      inset -16px -22px 50px rgba(0,0,0,.62),
+      inset 14px 16px 42px rgba(74,222,128,.28);
+    overflow: hidden;
+    animation: bob 6s ease-in-out infinite;
+    cursor: pointer;
+    transition: box-shadow .5s;
+  }
+  @keyframes bob { 0%,100%{ transform: translateY(0) } 50%{ transform: translateY(-10px) } }
+
+  .mist { position:absolute; inset:-20%; border-radius:50%; mix-blend-mode: screen; opacity:.85; }
+  .mist.a { background: radial-gradient(circle at 30% 40%, rgba(74,222,128,.55), transparent 46%); animation: swirl 15s linear infinite; }
+  .mist.b { background: radial-gradient(circle at 70% 60%, rgba(16,185,129,.55), transparent 46%); animation: swirl 21s linear infinite reverse; }
+  .mist.c { background: radial-gradient(circle at 55% 28%, rgba(139,92,246,.28), transparent 42%); animation: swirl 27s linear infinite; }
+  @keyframes swirl { to { transform: rotate(360deg) } }
+
+  .ring { position:absolute; inset: 6%; border-radius:50%; border:1px solid rgba(74,222,128,.16); }
+  .ring.two { inset: 18%; border-color: rgba(16,185,129,.12); }
+
+  .glint { position:absolute; top:17%; left:25%; width:40px; height:22px; border-radius:50%;
+    background: radial-gradient(ellipse, rgba(255,255,255,.85), transparent 70%); filter: blur(2px); }
+
+  .core {
+    position:absolute; left:50%; top:50%; width:10px; height:10px; border-radius:50%;
+    transform: translate(-50%,-50%);
+    background: var(--green); box-shadow: 0 0 22px 6px rgba(74,222,128,.7);
+    animation: beat 2.6s ease-in-out infinite;
+  }
+  @keyframes beat { 0%,100%{ opacity:.55; transform:translate(-50%,-50%) scale(1) } 50%{ opacity:1; transform:translate(-50%,-50%) scale(1.35) } }
+
+  .orb.thinking { animation: bob 6s ease-in-out infinite, pulse 1.3s ease-in-out infinite; }
+  @keyframes pulse {
+    0%,100% { box-shadow: 0 0 64px rgba(74,222,128,.45), 0 0 130px rgba(16,185,129,.22), inset -16px -22px 50px rgba(0,0,0,.62), inset 14px 16px 42px rgba(74,222,128,.28); }
+    50%     { box-shadow: 0 0 100px rgba(74,222,128,.8), 0 0 180px rgba(16,185,129,.5), inset -16px -22px 50px rgba(0,0,0,.55), inset 14px 16px 58px rgba(120,255,190,.55); }
+  }
+  .orb.thinking .mist.a { animation-duration: 4s; }
+  .orb.thinking .mist.b { animation-duration: 5s; }
+  .orb.thinking .mist.c { animation-duration: 6s; }
+  .orb.thinking .core { animation-duration: 1s; }
+
+  .ask { width: 100%; max-width: 560px; }
+  .field {
+    display: flex; gap: 10px; align-items: stretch;
+    background: var(--dark2);
+    border: 1px solid var(--border);
+    border-radius: 14px; padding: 8px;
+    box-shadow: 0 12px 40px rgba(0,0,0,.5), inset 0 1px 0 rgba(255,255,255,.04);
+  }
+  .field:focus-within { border-color: rgba(74,222,128,.55); box-shadow: 0 12px 40px rgba(0,0,0,.5), 0 0 0 3px rgba(74,222,128,.10); }
+  input {
+    flex: 1; background: transparent; border: none; outline: none;
+    color: var(--text); font-size: 16px; padding: 12px 14px;
+    font-family: var(--body);
+  }
+  input::placeholder { color: var(--text-muted); }
+  button.ask-btn {
+    border: none; cursor: pointer; white-space: nowrap;
+    padding: 0 22px; border-radius: 10px;
+    font-family: var(--body); font-weight: 700; font-size: 14px;
+    letter-spacing: .01em; color: #04130b;
+    background: linear-gradient(180deg, #6ef0a3, var(--green) 55%, var(--green2));
+    box-shadow: 0 6px 20px rgba(74,222,128,.34);
+    transition: transform .12s, box-shadow .2s, opacity .2s;
+  }
+  button.ask-btn:hover { transform: translateY(-1px); box-shadow: 0 9px 26px rgba(74,222,128,.5); }
+  button.ask-btn:active { transform: translateY(0); }
+  button.ask-btn:disabled { opacity:.5; cursor: wait; }
+
+  .chips { margin-top: 14px; display:flex; flex-wrap:wrap; gap:8px; justify-content:center; }
+  .chip {
+    font-family: var(--body); font-size: 12px;
+    color: var(--text-soft); border: 1px solid var(--border);
+    background: rgba(12,16,28,.6); padding: 7px 12px; border-radius: 999px;
+    cursor: pointer; transition: all .18s;
+  }
+  .chip:hover { color: var(--green); border-color: rgba(74,222,128,.5); background: rgba(74,222,128,.07); }
+
+  .status { min-height: 22px; margin: 24px 0 4px; color: var(--green2);
+    font-family: var(--mono); font-size: 13px; letter-spacing:.04em; opacity:0; transition: opacity .4s; }
+  .status.show { opacity: .95; }
+
+  .answer {
+    width: 100%; max-width: 620px; margin-top: 12px;
+    opacity: 0; transform: translateY(14px) scale(.98);
+    transition: opacity .7s ease, transform .7s ease;
+    pointer-events: none;
+  }
+  .answer.show { opacity: 1; transform: none; pointer-events: auto; }
+
+  .verdict-badge {
+    display:inline-block; margin: 0 auto 16px;
+    font-family: var(--display);
+    letter-spacing:.1em; text-transform: uppercase; font-size: 14px; font-weight:700;
+    padding: 9px 20px; border-radius: 8px;
+    border: 1px solid currentColor;
+    box-shadow: 0 0 26px rgba(74,222,128,.12);
+  }
+
+  .card {
+    background: var(--dark2);
+    border: 1px solid var(--border);
+    border-radius: 16px; padding: 30px 30px 28px;
+    box-shadow: 0 24px 70px rgba(0,0,0,.55);
+    position: relative;
+    text-align: left;
+  }
+  .card::before {
+    content: "THE ORACLE SPEAKS"; position:absolute; top:-10px; left:24px;
+    font-family: var(--mono); font-size: 9.5px; letter-spacing:.2em; color: var(--text-muted);
+    background: var(--dark2); padding: 0 8px;
+  }
+  .quote { font-family: var(--display); font-size: 21px; line-height: 1.4; font-weight:500; color: var(--white); }
+  .quote .echo { color: var(--green); display:block; margin-top: 4px; }
+  .divider { height:1px; margin: 22px 0 18px;
+    background: linear-gradient(90deg, var(--green2), transparent); opacity:.6; }
+
+  .reading h4 {
+    font-family: var(--body); font-size: 11px; letter-spacing:.16em;
+    text-transform: uppercase; color: var(--text-muted); margin: 0 0 12px;
+  }
+  .reading ul { list-style: none; display:flex; flex-direction: column; gap: 13px; }
+  .reading li { display:flex; gap: 12px; align-items:flex-start; font-size: 15px; line-height:1.5;
+    color: var(--text); }
+  .reading li .dot { color: var(--green); font-family: var(--mono); margin-top: 1px; flex-shrink: 0; }
+  .reading li b { color: var(--white); font-weight:600; }
+
+  .cta-row {
+    margin-top: 24px; padding-top: 22px; border-top: 1px solid var(--border);
+    display:flex; flex-wrap:wrap; gap:14px; align-items:center; justify-content:space-between;
+  }
+  .cta-note { font-size: 13px; color: var(--text-soft); max-width: 56%; line-height:1.45; }
+  a.cta-btn {
+    text-decoration:none; white-space:nowrap;
+    font-family: var(--body); font-weight:700; font-size:14px; color:#04130b;
+    padding: 12px 22px; border-radius: 10px;
+    background: linear-gradient(180deg, #6ef0a3, var(--green) 55%, var(--green2));
+    box-shadow: 0 6px 20px rgba(74,222,128,.34);
+    transition: transform .12s, box-shadow .2s;
+  }
+  a.cta-btn:hover { transform: translateY(-1px); box-shadow: 0 9px 26px rgba(74,222,128,.5); }
+
+  .again { margin-top: 22px; }
+  .again button {
+    background: transparent; border: 1px solid var(--border); color: var(--text-soft);
+    font-family: var(--body); font-size: 13px; cursor:pointer;
+    padding: 10px 20px; border-radius: 999px; transition: all .18s;
+  }
+  .again button:hover { color: var(--green); border-color: rgba(74,222,128,.5); }
+
+  footer { margin-top: 42px; display:flex; flex-direction:column; gap:5px; align-items:center; }
+  footer .brand { font-family: var(--body); font-weight:700; font-size:12px; color: var(--green); letter-spacing:.04em; }
+  footer .meta { font-family: var(--mono); color: var(--text-muted); font-size: 10.5px; letter-spacing:.04em; }
+
+  /* ---- project basket ---- */
+  .basket {
+    width:100%; max-width:560px; margin-top:16px;
+    background:linear-gradient(180deg, rgba(74,222,128,.06), rgba(12,16,28,.7));
+    border:1px solid rgba(74,222,128,.28); border-radius:14px; padding:16px 18px;
+    text-align:left; box-shadow:0 10px 30px rgba(0,0,0,.4);
+    animation: basketIn .45s ease;
+  }
+  @keyframes basketIn { from{ opacity:0; transform:translateY(8px) } to{ opacity:1; transform:none } }
+  .basket-head { display:flex; align-items:baseline; gap:10px; margin-bottom:12px; }
+  .basket-title { font-family:var(--display); font-weight:700; font-size:14px; letter-spacing:.06em;
+    text-transform:uppercase; color:var(--green); }
+  .basket-count { font-family:var(--mono); font-size:11px; color:var(--text-muted); }
+  .basket-chips { display:flex; flex-wrap:wrap; gap:8px; }
+  .basket-chip {
+    display:inline-flex; align-items:center; gap:8px;
+    font-family:var(--body); font-size:13px; color:var(--text);
+    background:rgba(74,222,128,.10); border:1px solid rgba(74,222,128,.3);
+    padding:7px 10px 7px 12px; border-radius:999px;
+  }
+  .basket-chip button {
+    border:none; background:transparent; color:var(--text-soft); cursor:pointer;
+    font-size:15px; line-height:1; padding:0; margin:0; transition:color .15s;
+  }
+  .basket-chip button:hover { color:var(--green); }
+  .basket-actions { display:flex; align-items:center; gap:16px; margin-top:14px; }
+  a.basket-send {
+    text-decoration:none; font-family:var(--body); font-weight:700; font-size:13.5px; color:#04130b;
+    padding:10px 18px; border-radius:9px;
+    background:linear-gradient(180deg,#6ef0a3,var(--green) 55%,var(--green2));
+    box-shadow:0 6px 18px rgba(74,222,128,.3); transition:transform .12s, box-shadow .2s;
+  }
+  a.basket-send:hover { transform:translateY(-1px); box-shadow:0 9px 24px rgba(74,222,128,.45); }
+  .basket-clear {
+    border:none; background:transparent; color:var(--text-muted);
+    font-family:var(--body); font-size:12px; cursor:pointer; text-decoration:underline; padding:0;
+  }
+  .basket-clear:hover { color:var(--text-soft); }
+
+  @media (max-width:480px){
+    .orb-stage{ width:240px; height:240px } .field{ flex-direction:column } button.ask-btn{ padding:14px }
+    .cta-row{ flex-direction:column; align-items:stretch } .cta-note{ max-width:100% } a.cta-btn{ text-align:center }
+  }
+</style>
+</head>
+<body>
+  <div class="grid"></div>
+  <div class="sparks"></div>
+
+  <main class="wrap">
+    <div class="kicker">JPAX MEDIA <span class="dot">&middot;</span> ASK THE ORACLE</div>
+    <h1>Ask the <span class="accent">Oracle</span></h1>
+    <p class="sub">Curious what JPAX can build for you? Ask the orb anything &mdash; what we do, what it costs, whether we can build the thing in your head.</p>
+    <div class="rule"></div>
+
+    <div class="orb-stage">
+      <div class="pedestal"></div>
+      <div class="orb" id="orb" title="Tap the orb">
+        <div class="mist a"></div>
+        <div class="mist b"></div>
+        <div class="mist c"></div>
+        <div class="ring"></div>
+        <div class="ring two"></div>
+        <div class="glint"></div>
+        <div class="core"></div>
+      </div>
+    </div>
+
+    <div class="ask">
+      <div class="field">
+        <input id="q" type="text" autocomplete="off" spellcheck="false"
+          placeholder="How much does a website cost?" />
+        <button class="ask-btn" id="go">Consult</button>
+      </div>
+      <div class="chips" id="chips"></div>
+    </div>
+
+    <section class="basket" id="basket" hidden>
+      <div class="basket-head">
+        <span class="basket-title">Your project</span>
+        <span class="basket-count" id="basketCount"></span>
+      </div>
+      <div class="basket-chips" id="basketChips"></div>
+      <div class="basket-actions">
+        <a class="basket-send" id="basketSend" href="#">Send my project to JPAX &rarr;</a>
+        <button class="basket-clear" id="basketClear" type="button">clear</button>
+      </div>
+    </section>
+
+    <div class="status" id="status"></div>
+
+    <section class="answer" id="answer">
+      <div style="text-align:center"><span class="verdict-badge" id="verdict">&mdash;</span></div>
+      <div class="card">
+        <div class="quote" id="quote"></div>
+        <div class="divider"></div>
+        <div class="reading">
+          <h4 id="readingHead">What that means</h4>
+          <ul id="reading"></ul>
+        </div>
+        <div class="cta-row">
+          <div class="cta-note" id="ctaNote">Want a real answer for your project? Start with a strategy session.</div>
+          <a class="cta-btn" id="ctaBtn" href="mailto:julian@jpaxmedia.com?subject=JPAX%20Strategy%20Session">Book a Strategy Session</a>
+        </div>
+      </div>
+      <div class="again"><button id="again">Ask the orb something else</button></div>
+    </section>
+
+    <footer>
+      <div class="brand">JPAX Media LLC &middot; Build. Rise. Scale.</div>
+      <div class="meta">AI-powered websites, content systems &amp; operating tools &middot; Greenville, SC</div>
+    </footer>
+  </main>
+
+<script>
+(function(){
+  const $ = s => document.querySelector(s);
+  const orb = $('#orb'), q = $('#q'), go = $('#go'), status = $('#status');
+  const answer = $('#answer'), verdict = $('#verdict'), quote = $('#quote'), reading = $('#reading');
+  const ctaNote = $('#ctaNote'), ctaBtn = $('#ctaBtn'), readingHead = $('#readingHead');
+  const basketEl = $('#basket'), basketChips = $('#basketChips'), basketCount = $('#basketCount'),
+        basketSend = $('#basketSend'), basketClear = $('#basketClear');
+
+  // ---- project basket: accumulates the lanes a visitor asks about, persists across the visit ----
+  const LANE_LABELS = {
+    website:'Website', app:'Custom app', ai:'AI & automation',
+    elara:'Creator system (Elara)', brand:'Brand & identity', content:'Content, social & ads'
+  };
+  let basket = (function load(){
+    try { const b = JSON.parse(localStorage.getItem('jpaxOracleBasket') || ''); if (b && Array.isArray(b.lanes)) return b; } catch(e){}
+    return { lanes:[] };
+  })();
+  function saveBasket(){ try { localStorage.setItem('jpaxOracleBasket', JSON.stringify(basket)); } catch(e){} }
+
+  function renderBasket(){
+    if (!basket.lanes.length){ basketEl.hidden = true; return; }
+    basketEl.hidden = false;
+    basketCount.textContent = basket.lanes.length + (basket.lanes.length === 1 ? ' service' : ' services');
+    while (basketChips.firstChild) basketChips.removeChild(basketChips.firstChild);
+    basket.lanes.forEach(k => {
+      const chip = document.createElement('span');
+      chip.className = 'basket-chip';
+      chip.appendChild(document.createTextNode(LANE_LABELS[k] || k));
+      const x = document.createElement('button');
+      x.type = 'button'; x.textContent = '×'; x.title = 'Remove';
+      x.onclick = () => { basket.lanes = basket.lanes.filter(l => l !== k); saveBasket(); renderBasket(); };
+      chip.appendChild(x);
+      basketChips.appendChild(chip);
+    });
+    const summary = basket.lanes.map(k => '- ' + (LANE_LABELS[k] || k)).join('\n');
+    const body = 'Hi Julian,\n\nI was exploring the JPAX Oracle and I\'m interested in:\n\n' + summary +
+                 '\n\nA bit about my business:\n\nMy name:\nMy website (if any):\nWhat I\'m trying to do:\n';
+    basketSend.href = 'mailto:julian@jpaxmedia.com?subject=' +
+      encodeURIComponent('Project inquiry via the Oracle') + '&body=' + encodeURIComponent(body);
+  }
+  function updateBasket(lanes){
+    let changed = false;
+    (lanes || []).forEach(k => { if (LANE_LABELS[k] && !basket.lanes.includes(k)){ basket.lanes.push(k); changed = true; } });
+    if (changed) saveBasket();
+    renderBasket();
+  }
+  basketClear.onclick = () => { basket = { lanes:[] }; saveBasket(); renderBasket(); };
+  renderBasket();
+
+  // ---- answer source: try the live Oracle (Claude) endpoint, fall back to the local engine ----
+  async function getAnswer(text){
+    try {
+      const res = await fetch('/api/oracle', {
+        method:'POST', headers:{'content-type':'application/json'},
+        body: JSON.stringify({ message: text, project: basket.lanes })
+      });
+      if (res.ok){
+        const data = await res.json();
+        if (data && data.ok && data.answer && Array.isArray(data.answer.lines)){
+          const a = data.answer;
+          const cta = Array.isArray(a.cta)
+            ? [a.cta[0] || '', a.cta[1] || 'Book a Strategy Session', encodeURIComponent(a.cta[2] || 'JPAX Strategy Session')]
+            : ['', 'Book a Strategy Session', encodeURIComponent('JPAX Strategy Session')];
+          return {
+            verdict: a.verdict, tone: a.tone === 'purple' ? 'purple' : 'green', head: a.head || 'What that means',
+            quote: a.quote, lines: a.lines, cta, lanes: a.lanes || []
+          };
+        }
+      }
+    } catch(e){ /* offline / no endpoint — fall through to local */ }
+    return compose(text);
+  }
+
+  const SAMPLES = [
+    "What does JPAX actually do?",
+    "How much does a website cost?",
+    "Can you build me a custom app?",
+    "Do you do AI and automation?",
+    "What is Elara?",
+    "Are you a local company?",
+    "Why should I pick JPAX?"
+  ];
+  const chips = $('#chips');
+  SAMPLES.forEach(s => {
+    const c = document.createElement('div'); c.className='chip'; c.textContent=s;
+    c.onclick = () => { q.value = s; consult(); };
+    chips.appendChild(c);
+  });
+
+  const DELIBERATIONS = [
+    "The orb is listening…",
+    "Reading the systems…",
+    "Consulting Build. Rise. Scale…",
+    "Turning scattered tools into an answer…",
+    "Aligning brand, web, and workflow…",
+    "Nova whispers from the cockpit…"
+  ];
+
+  const MAIL = 'mailto:julian@jpaxmedia.com?subject=';
+
+  // Client-safe knowledge: identity, lanes, public "starting at" anchors only.
+  // No internal floors, hourly, capacity, or anti-list. Specific quotes route to a session.
+  const DOMAINS = [
+    { key:'whatwedo', rx:/\bwhat (do|does|can|could) (you|jpax|they)\b(?!.*\b(cost|costs|charge|charges|price|prices|pricing|much|rate|rates|fee|fees|expensive|budget)\b)|\bwho (are|is) (you|jpax)\b|\bwhat (is|'?s) jpax\b|\bwhat jpax\b|\btell me about (you|jpax|your)\b|\bexplain jpax\b|\byour services\b|\bwhat services\b/i,
+      verdict:'WE BUILD THE SYSTEM', tone:'green',
+      quote:["JPAX builds AI-powered websites, content systems, and operating tools.","We turn scattered tools into one working business system."],
+      reading:[
+        ["Build the System: ","websites, custom apps, client portals, dashboards, automations, and AI workflows — the infrastructure your business runs on."],
+        ["Create Demand: ","brand, social content, AI creative, photo/video ads, and landing pages that bring in attention and leads."],
+        ["Run the System: ","ongoing website care, content, reporting, and operating partnerships that keep the machine improving."]
+      ],
+      cta:["Not sure which lane you need? That's exactly what a strategy session is for.","Book a Strategy Session","JPAX%20Strategy%20Session"] },
+
+    { key:'website', rx:/\bwebsites?\b|\bweb ?sites?\b|\bweb design\b|\blanding pages?\b|\bweb ?pages?\b|\bbuild (me )?a site\b|\bnew site\b|\bre(design|build) (my|the|our) site\b/i,
+      verdict:'A WEBSITE IS INFRASTRUCTURE', tone:'green',
+      quote:["Your website isn't a brochure.","It's the front door to a working system."],
+      reading:[
+        ["Local Website Foundation — from $2,500: ","a clean, fast, professional site for a serious local business: a few pages, responsive build, contact form, analytics, launch support."],
+        ["Business & Premium sites — from $4,000: ","stronger copy, conversion strategy, service pages, and information architecture for businesses that need the site to sell."],
+        ["Website + Operating Layer — by proposal: ","when the site connects to a CRM, dashboards, intake flows, payments, or automations. Real pricing comes from a quick scoping call."]
+      ],
+      cta:["Tell the orb's human counterpart what you're building and get a real number.","Get a Website Quote","Website%20Quote"] },
+
+    { key:'app', rx:/\bapps?\b|\bapplications?\b|\bportals?\b|\bdashboards?\b|\bsoftware\b|\bplatforms?\b|\bcustom (build|app|system|software)\b|\binternal (tools?|systems?)\b|\bcrm\b|\bweb app\b/i,
+      verdict:'YES — WE BUILD CUSTOM SYSTEMS', tone:'green',
+      quote:["Apps, portals, dashboards, operating tools.","If it runs your business, we can build it."],
+      reading:[
+        ["Client portals & operating apps: ","logins, files, forms, dashboards, messages, request tracking — the kind of system that makes a business feel organized and premium."],
+        ["Dashboards with a purpose: ","decision dashboards tied to leads, jobs, clients, content, or revenue. JPAX doesn't build vanity charts."],
+        ["Quoted by proposal: ","custom apps, portals, and AI-native systems are scoped to what you actually need. Start with an AI Operating Audit or a scoping call."]
+      ],
+      cta:["Custom systems are quoted by proposal. Let's scope yours.","Start a Scoping Call","Custom%20App%20%2F%20System"] },
+
+    { key:'ai', rx:/\bai\b|\ba\.i\.?|\bautomat|\bchat ?bots?\b|\bworkflows?\b|\bmachine learning\b|\bgpt\b|\bllm\b|\bintegrat|\bai agents?\b/i,
+      verdict:'GOVERNED AI, NOT HYPE', tone:'green',
+      quote:["AI only matters when it's embedded in the work.","We build workflows, not buzzwords."],
+      reading:[
+        ["Real, embedded workflows: ","AI dropped into your website, intake, reporting, and operations — where it actually saves time and creates leverage."],
+        ["Human-in-the-loop by design: ","every governed action follows draft → confirm → execute → audit. Nothing touches your business data silently."],
+        ["Proven in-house: ","JPAX runs its own operating system, Jupiter, with a production agent named Nova. We sell from proof, not theory."]
+      ],
+      cta:["Have a manual process eating your week? An AI Operating Audit finds the wins.","Book an AI Operating Audit","AI%20Operating%20Audit"] },
+
+    { key:'elara', rx:/\belara\b|\bcreators?\b|\bsponsors?\b|\bbrand deals?\b|\binfluencers?\b|\bmedia kits?\b|\bcontent creators?\b|\bfollowers?\b|\byoutube\b|\btiktok\b|\bmonetiz/i,
+      verdict:'THAT SOUNDS LIKE ELARA', tone:'purple',
+      quote:["Run your creator platform like a business.","Elara is JPAX's operating layer for creators."],
+      reading:[
+        ["For creators running a real business: ","brand-deal tracking, revenue by platform and deal, content operations, sponsor workflows, media kit, and reporting — in one system."],
+        ["Just need a site or content help? ","JPAX handles that directly. Elara comes in when a spreadsheet can't keep up with the business anymore."],
+        ["Built by a creator: ","Julian runs 20K+ followers and 900K+ TikTok likes — Elara is built from the inside, not guessed at."]
+      ],
+      cta:["Ready to run your platform like a business? Let's talk Elara.","Explore Elara","Elara%20%E2%80%94%20Creator%20Operating%20Layer"] },
+
+    { key:'brand', rx:/\bbrand(ing|s)?\b(?!\s+deals?)|\blogos?\b|\bidentit(y|ies)\b|\brebrand\b|\bvisual (identity|system|style)\b|\bcolors?\b|\bgraphic design\b/i,
+      verdict:'BRAND IS PART OF THE SYSTEM', tone:'green',
+      quote:["Brand, content, conversion, and UX as one.","Creative roots are part of the advantage."],
+      reading:[
+        ["Brand Foundation — from $3,500 with a site: ","logo direction, colors, typography, messaging, and the assets you need to look like a real company."],
+        ["Full brand systems: ","identity, voice, visual system, and templates for businesses ready to scale their presence."],
+        ["Always strategic: ","JPAX pairs brand with web and systems — it's not logo-for-its-own-sake, it's brand that drives the business."]
+      ],
+      cta:["Want a brand that actually works with your website? Start here.","Talk Brand + Web","Brand%20%2B%20Website"] },
+
+    { key:'content', rx:/\bcontent\b(?!\s+creators?)|\bsocial( media)?\b|\bfacebook\b|\binstagram\b|\bposts?\b|\bvideos?\b|\bphotos?\b|\bads?\b|\badvertis|\bmarketing\b|\breels?\b|\bcampaigns?\b/i,
+      verdict:'CREATE THE DEMAND', tone:'green',
+      quote:["Attention, leads, and trust — on purpose.","Content systems, not random posts."],
+      reading:[
+        ["AI-assisted content systems: ","content calendars, AI creative concepts, captions, short-form edits, and a repeatable process — built around your brand voice."],
+        ["AI creative & ad packs: ","hooks, visuals, and campaign angles. Filming, heavy editing, and ad spend are scoped separately."],
+        ["Managed monthly: ","ongoing content and reporting plans keep the pipeline full. Everything is scoped by clear deliverables."]
+      ],
+      cta:["Want a content engine instead of guesswork? Let's scope it.","Plan a Content System","Content%20System"] },
+
+    { key:'pricing', rx:/\bpric(e|es|ing)\b|\bcosts?\b|\bhow much\b|\brates?\b|\bbudget\b|\bafford\w*|\bexpensive\b|\bquotes?\b|\bfees?\b|\bcharges?\b/i,
+      verdict:'PRICED AS A REAL ASSET', tone:'green',
+      quote:["JPAX builds business assets, not cheap deliverables.","Here's where things start."],
+      reading:[
+        ["Starting points: ","Strategy Sessions from $250 · AI Creative from $750 · Websites from $2,500 · Workflow Sprints from $2,000 · Operating Partnerships from $500/mo."],
+        ["Bigger systems, by proposal: ","custom apps, portals, dashboards, and AI systems are quoted to your exact scope — no guessing, no sticker games."],
+        ["Your real number: ","comes from a short conversation about what you're building. That's what the strategy session is for."]
+      ],
+      cta:["The honest answer to 'how much' is 'let's scope it.' Book 30 minutes.","Book a Strategy Session","JPAX%20Strategy%20Session"] },
+
+    { key:'local', rx:/\blocal\b|\bwhere (are|is|do you|can)\b|\bwhere'?s\b|\blocated\b|\blocation\b|\bgreenville\b|\bupstate\b|\bsouth carolina\b|\bnear me\b|\bin person\b|\bremote(ly)?\b/i,
+      verdict:'BUILT IN GREENVILLE', tone:'green',
+      quote:["Rooted in Greenville and the Upstate.","Building for ambitious businesses everywhere."],
+      reading:[
+        ["Local trust first: ","JPAX is based in Greenville, SC and works closely with Upstate businesses who want speed, clarity, and execution."],
+        ["National when it fits: ","creator work through Elara and productized systems reach beyond the Upstate. Most work happens remotely and smoothly."],
+        ["One founder, full stack: ","you work directly with Julian — designer, developer, and systems builder — not a layer of account managers."]
+      ],
+      cta:["Local or not, the first step is the same: a quick strategy session.","Book a Strategy Session","JPAX%20Strategy%20Session"] },
+
+    { key:'why', rx:/\bwhy (jpax|you|should|pick|choose|would|do)\b|\bwhat makes (you|jpax)\b|\bdifferent\b|\bbetter than\b|\bproof\b|\bcan you (really|actually)\b|\bportfolio\b|\bexperience\b/i,
+      verdict:'WE SELL FROM PROOF', tone:'green',
+      quote:["Most studios sell decks. JPAX ships systems.","We run on the same infrastructure we build for you."],
+      reading:[
+        ["Owned proof: ","JPAX runs its own operating system, Jupiter, with a production AI agent, Nova — real auth, dashboards, audit logs, client portals."],
+        ["Full-stack taste: ","brand, web, conversion, UX, and systems seen together. That range is the moat — and it's one builder, start to finish."],
+        ["Built fast, built right: ","systems-first, creative-rooted. You own everything we build for you."]
+      ],
+      cta:["Want to see it? Ask for a walkthrough on your strategy call.","Book a Strategy Session","JPAX%20Strategy%20Session"] },
+
+    { key:'contact', rx:/\bcontact\b|\bemail\b|\breach (out|you)\b|\bget started\b|\bbook\b|\bschedule\b|\bcall\b|\blet'?s talk\b|\bhire\b|\bwork with (you|jpax)\b|\bsign up\b|\bstart a project\b|\bget in touch\b/i,
+      verdict:'LET’S BUILD SOMETHING', tone:'green',
+      quote:["The orb has done its part.","Now talk to the human behind it."],
+      reading:[
+        ["Email Julian directly: ","julian@jpaxmedia.com — tell him what you're building and what's getting in the way."],
+        ["Start with a strategy session: ","a focused, paid working session to scope the right system and the right next step."],
+        ["Build. Rise. Scale: ","the website, the system, the operating layer — one step at a time, from one builder who stands behind the result."]
+      ],
+      cta:["Skip the orb. Talk to Julian.","Email JPAX","Let%27s%20build%20something"] }
+  ];
+
+  const GENERIC = {
+    verdict:'ASK ME ABOUT THE SYSTEM', tone:'green',
+    quote:["The orb sees many futures for your business.","Ask it about websites, apps, AI, brand, or pricing."],
+    reading:[
+      ["Try asking: ","'How much is a website?' · 'Can you build a custom app?' · 'Do you do AI?' · 'What is Elara?'"],
+      ["The short version: ","JPAX builds AI-powered websites, content systems, and operating tools that turn scattered tools into one working business system."],
+      ["When you're ready: ","a quick strategy session turns your idea into a scoped plan with a real number."]
+    ],
+    cta:["Have a specific project in mind? Let's scope it together.","Book a Strategy Session","JPAX%20Strategy%20Session"] };
+
+  const TONE_COLORS = { green:'#4ADE80', purple:'#8B5CF6' };
+
+  // Deliverable lanes the Oracle itemizes when a prospect describes a whole project.
+  const DELIVERABLE = ['website','app','ai','elara','brand','content'];
+  const BUNDLE = {
+    website:{ label:'Website',               brief:'a professional site — or a site wired into your operations. From $2,500.' },
+    app:    { label:'Custom app',            brief:'a portal, dashboard, or operating tool, scoped by proposal.' },
+    ai:     { label:'AI & automation',       brief:'governed workflows dropped where the manual work is. Sprints from $2,000.' },
+    elara:  { label:'Creator system',        brief:'brand deals, revenue, and content ops in one place — that’s Elara.' },
+    brand:  { label:'Brand & identity',      brief:'logo, colors, and messaging. From $3,500 paired with a site.' },
+    content:{ label:'Content, social & ads', brief:'social, short-form video, and ad creative run as a system, not one-offs.' }
+  };
+
+  function detect(text){ return DOMAINS.filter(d => d.rx.test(text)); }
+
+  // Reads the WHOLE message: one ask -> a focused answer; several asks -> a packaged project.
+  function compose(text){
+    const matches = detect(text);
+    const delivered = matches.filter(m => DELIVERABLE.includes(m.key));
+    if (delivered.length >= 2){
+      const lines = delivered.map(m => ({ lead: BUNDLE[m.key].label + ' — ', rest: BUNDLE[m.key].brief }));
+      lines.push({ lead:'Best path: ', rest:'these aren’t separate vendors. JPAX scopes them as one connected build in a single strategy session — so the site, content, and app actually work together.' });
+      return {
+        verdict:'SOUNDS LIKE A LAUNCH PACKAGE', tone:'green',
+        head:'I count a few builds in there',
+        quote:['You’re not describing one task — you’re describing a system.','That’s exactly what JPAX builds.'],
+        lines,
+        cta:['Bundled builds get scoped together in one session. Let’s map yours.','Scope My Project','Project%3A%20a%20few%20builds'],
+        lanes: delivered.map(m => m.key)
+      };
+    }
+    const d = matches[0] || GENERIC;
+    return {
+      verdict:d.verdict, tone:d.tone, head:'What that means',
+      quote:d.quote,
+      lines:d.reading.map(r => ({ lead:r[0], rest:r[1] })),
+      cta:d.cta || GENERIC.cta,
+      lanes: matches.filter(m => DELIVERABLE.includes(m.key)).map(m => m.key)
+    };
+  }
+
+  let busy = false;
+  function consult(){
+    const text = q.value.trim();
+    if (!text || busy) { if(!text){ q.focus(); } return; }
+    busy = true; go.disabled = true;
+    answer.classList.remove('show');
+    orb.classList.add('thinking');
+
+    const answerPromise = getAnswer(text);   // kick off the live call alongside the animation
+
+    const seq = [];
+    const n = 2 + (text.length % 2);
+    for (let i=0;i<n;i++){ seq.push(DELIBERATIONS[(text.length*7 + i*3) % DELIBERATIONS.length]); }
+    let i=0;
+    status.textContent = seq[0]; status.classList.add('show');
+    const tick = setInterval(()=>{
+      i++;
+      if (i < seq.length){ status.classList.remove('show');
+        setTimeout(()=>{ status.textContent = seq[i]; status.classList.add('show'); }, 220);
+      } else {
+        clearInterval(tick);
+        setTimeout(() => reveal(answerPromise), 640);
+      }
+    }, 1100);
+
+    async function reveal(p){
+      const r = await p;
+      const color = TONE_COLORS[r.tone] || TONE_COLORS.green;
+
+      verdict.textContent = r.verdict;
+      verdict.style.color = color;
+      readingHead.textContent = r.head;
+
+      while (quote.firstChild) quote.removeChild(quote.firstChild);
+      quote.appendChild(document.createTextNode('“' + r.quote[0] + '”'));
+      const echo = document.createElement('span');
+      echo.className = 'echo'; echo.style.color = color;
+      echo.textContent = '“' + r.quote[1] + '”';
+      quote.appendChild(echo);
+
+      while (reading.firstChild) reading.removeChild(reading.firstChild);
+      r.lines.forEach(item=>{
+        const li = document.createElement('li');
+        const dot = document.createElement('span');
+        dot.className = 'dot'; dot.textContent = '→';
+        const span = document.createElement('span');
+        const lead = document.createElement('b');
+        lead.textContent = item.lead;
+        span.appendChild(lead);
+        span.appendChild(document.createTextNode(item.rest));
+        li.appendChild(dot); li.appendChild(span);
+        reading.appendChild(li);
+      });
+
+      ctaNote.textContent = r.cta[0];
+      ctaBtn.textContent = r.cta[1];
+      ctaBtn.href = MAIL + r.cta[2];
+
+      updateBasket(r.lanes);
+
+      orb.classList.remove('thinking');
+      status.classList.remove('show');
+      answer.classList.add('show');
+      answer.scrollIntoView({behavior:'smooth', block:'center'});
+      busy = false; go.disabled = false;
+    }
+  }
+
+  go.onclick = consult;
+  orb.onclick = consult;
+  q.addEventListener('keydown', e => { if (e.key === 'Enter') consult(); });
+  $('#again').onclick = () => {
+    answer.classList.remove('show');
+    q.value=''; q.focus();
+    window.scrollTo({top:0, behavior:'smooth'});
+  };
+})();
+</script>
+</body>
+</html>
