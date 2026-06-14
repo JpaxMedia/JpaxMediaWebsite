@@ -144,6 +144,13 @@
   }
   @keyframes beat { 0%,100%{ opacity:.55; transform:translate(-50%,-50%) scale(1) } 50%{ opacity:1; transform:translate(-50%,-50%) scale(1.35) } }
 
+  .orb.listening {
+    box-shadow:
+      0 0 84px rgba(74,222,128,.62),
+      0 0 150px rgba(16,185,129,.34),
+      inset -16px -22px 50px rgba(0,0,0,.6),
+      inset 14px 16px 50px rgba(120,255,190,.45);
+  }
   .orb.thinking { animation: bob 6s ease-in-out infinite, pulse 1.3s ease-in-out infinite; }
   @keyframes pulse {
     0%,100% { box-shadow: 0 0 64px rgba(74,222,128,.45), 0 0 130px rgba(16,185,129,.22), inset -16px -22px 50px rgba(0,0,0,.62), inset 14px 16px 42px rgba(74,222,128,.28); }
@@ -190,6 +197,10 @@
     cursor: pointer; transition: all .18s;
   }
   .chip:hover { color: var(--green); border-color: rgba(74,222,128,.5); background: rgba(74,222,128,.07); }
+
+  .followups { width:100%; max-width:620px; margin:18px auto 0; text-align:center; animation: basketIn .4s ease; }
+  .followups-label { font-family:var(--body); font-size:13px; color:var(--text-soft); margin-bottom:11px; line-height:1.5; }
+  .followups-chips { display:flex; flex-wrap:wrap; gap:8px; justify-content:center; }
 
   .status { min-height: 22px; margin: 24px 0 4px; color: var(--green2);
     font-family: var(--mono); font-size: 13px; letter-spacing:.04em; opacity:0; transition: opacity .4s; }
@@ -334,7 +345,7 @@
   <main class="wrap">
     <div class="kicker">JPAX MEDIA <span class="dot">&middot;</span> ASK THE ORACLE</div>
     <h1>Ask the <span class="accent">Oracle</span></h1>
-    <p class="sub">Curious what JPAX can build for you? Ask the orb anything &mdash; what we do, what it costs, whether we can build the thing in your head.</p>
+    <p class="sub">Tell the orb what you're trying to do &mdash; or tap a question below. It reads your business and tells you exactly what to build.</p>
     <div class="rule"></div>
 
     <div class="orb-stage">
@@ -353,7 +364,7 @@
     <div class="ask">
       <div class="field">
         <input id="q" type="text" autocomplete="off" spellcheck="false"
-          placeholder="How much does a website cost?" />
+          placeholder="Ask anything, or tell me what you need…" />
         <button class="ask-btn" id="go">Consult</button>
       </div>
       <div class="chips" id="chips"></div>
@@ -399,6 +410,10 @@
           <a class="cta-btn" id="ctaBtn" href="mailto:julian@jpaxmedia.com?subject=JPAX%20Strategy%20Session">Book a Strategy Session</a>
         </div>
       </div>
+      <div class="followups" id="followups" hidden>
+        <div class="followups-label">Building more than one thing? Keep asking &mdash; the orb bundles it into your project.</div>
+        <div class="followups-chips" id="followupsChips"></div>
+      </div>
       <div class="again"><button id="again">Ask the orb something else</button></div>
     </section>
 
@@ -414,6 +429,29 @@
   const orb = $('#orb'), q = $('#q'), go = $('#go'), status = $('#status');
   const answer = $('#answer'), verdict = $('#verdict'), quote = $('#quote'), reading = $('#reading');
   const ctaNote = $('#ctaNote'), ctaBtn = $('#ctaBtn'), readingHead = $('#readingHead');
+  const followups = $('#followups'), followupsChips = $('#followupsChips');
+
+  // contextual next questions — keep the customer exploring and stacking a project
+  const FOLLOWUPS = {
+    website: ["Can you do my content & social?", "Can you build an app too?", "How long does it take?"],
+    app:     ["Do I need a website too?", "Can you add AI to it?", "How long does it take?"],
+    content: ["Do I need a website?", "What about paid ads?", "Can you manage it monthly?"],
+    ai:      ["Do I need a website?", "Can you do my content too?", "How long does it take?"],
+    elara:   ["Do I need a website?", "How does Elara work?", "Can you do my content?"],
+    brand:   ["Do I need a website too?", "Can you do my content?", "How long does it take?"]
+  };
+  const FOLLOWUPS_DEFAULT = ["How much does a website cost?", "Can you build me an app?", "Do you do AI?"];
+  function renderFollowups(lanes){
+    const primary = (lanes && lanes[0]) || null;
+    const set = (primary && FOLLOWUPS[primary]) || FOLLOWUPS_DEFAULT;
+    while (followupsChips.firstChild) followupsChips.removeChild(followupsChips.firstChild);
+    set.forEach(s => {
+      const c = document.createElement('div'); c.className = 'chip'; c.textContent = s;
+      c.onclick = () => { q.value = s; consult(); };
+      followupsChips.appendChild(c);
+    });
+    followups.hidden = false;
+  }
   const basketEl = $('#basket'), basketChips = $('#basketChips'), basketCount = $('#basketCount'),
         basketSend = $('#basketSend'), basketClear = $('#basketClear'),
         basketForm = $('#basketForm'), basketSuccess = $('#basketSuccess'), basketErr = $('#basketErr'),
@@ -544,13 +582,13 @@
   }
 
   const SAMPLES = [
-    "What does JPAX actually do?",
+    "What does JPAX do?",
     "How much does a website cost?",
-    "Can you build me a custom app?",
-    "Do you do AI and automation?",
-    "What is Elara?",
-    "Are you a local company?",
-    "Why should I pick JPAX?"
+    "I need a website and social media",
+    "Can you build me an app?",
+    "Do you do AI?",
+    "I want more customers online",
+    "What is Elara?"
   ];
   const chips = $('#chips');
   SAMPLES.forEach(s => {
@@ -560,12 +598,10 @@
   });
 
   const DELIBERATIONS = [
-    "The orb is listening…",
-    "Reading the systems…",
-    "Consulting Build. Rise. Scale…",
-    "Turning scattered tools into an answer…",
-    "Aligning brand, web, and workflow…",
-    "Nova whispers from the cockpit…"
+    "Reading what you need…",
+    "Looking at the build…",
+    "Mapping it to the right system…",
+    "The orb is almost ready…"
   ];
 
   const MAIL = 'mailto:julian@jpaxmedia.com?subject=';
@@ -746,7 +782,7 @@
     const answerPromise = getAnswer(text);   // kick off the live call alongside the animation
 
     const seq = [];
-    const n = 2 + (text.length % 2);
+    const n = 2;
     for (let i=0;i<n;i++){ seq.push(DELIBERATIONS[(text.length*7 + i*3) % DELIBERATIONS.length]); }
     let i=0;
     status.textContent = seq[0]; status.classList.add('show');
@@ -756,9 +792,9 @@
         setTimeout(()=>{ status.textContent = seq[i]; status.classList.add('show'); }, 220);
       } else {
         clearInterval(tick);
-        setTimeout(() => reveal(answerPromise), 640);
+        setTimeout(() => reveal(answerPromise), 300);
       }
-    }, 1100);
+    }, 650);
 
     async function reveal(p){
       const r = await p;
@@ -794,6 +830,7 @@
       ctaBtn.href = MAIL + r.cta[2];
 
       updateBasket(r.lanes);
+      renderFollowups(r.lanes);
       siTrack('site_cta_click', { targetText: 'Oracle · consulted', targetUrl: location.href, oracleLanes: (r.lanes || []).join(',') });
 
       orb.classList.remove('thinking');
@@ -807,8 +844,14 @@
   go.onclick = consult;
   orb.onclick = consult;
   q.addEventListener('keydown', e => { if (e.key === 'Enter') consult(); });
+  // orb visibly "listens" while they're typing
+  q.addEventListener('focus', () => orb.classList.add('listening'));
+  q.addEventListener('blur', () => orb.classList.remove('listening'));
+  // desktop only: drop the cursor in so they can just start typing (skip on touch so the orb shows first)
+  if (window.matchMedia && window.matchMedia('(pointer:fine)').matches) { try { q.focus(); } catch(e){} }
   $('#again').onclick = () => {
     answer.classList.remove('show');
+    followups.hidden = true;
     q.value=''; q.focus();
     window.scrollTo({top:0, behavior:'smooth'});
   };
