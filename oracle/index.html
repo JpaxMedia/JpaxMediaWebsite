@@ -7,6 +7,8 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@500;700&family=IBM+Plex+Sans:ital,wght@0,300;0,400;0,600;0,700;1,400&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+<!-- Site CSS — used only for the shared header/footer. Loaded first so the Oracle's own styles below win. -->
+<link rel="stylesheet" href="/assets/css/jpax.css">
 <style>
   :root {
     --dark: #06080F;
@@ -27,11 +29,12 @@
 
   * { margin: 0; padding: 0; box-sizing: border-box; }
 
-  html, body {
-    height: 100%;
+  html { min-height: 100%; }
+  body {
     background:
       radial-gradient(ellipse at 50% -8%, rgba(74,222,128,.10) 0%, transparent 42%),
       radial-gradient(ellipse at 50% 0%, #0a1018 0%, var(--dark) 60%, #04060c 100%);
+    background-attachment: fixed;
     color: var(--text);
     font-family: var(--body);
     overflow-x: hidden;
@@ -43,8 +46,8 @@
       linear-gradient(rgba(30,42,61,.5) 1px, transparent 1px),
       linear-gradient(90deg, rgba(30,42,61,.5) 1px, transparent 1px);
     background-size: 46px 46px;
-    mask-image: radial-gradient(ellipse at 50% 30%, #000 0%, transparent 75%);
-    -webkit-mask-image: radial-gradient(ellipse at 50% 30%, #000 0%, transparent 75%);
+    mask-image: radial-gradient(ellipse at 50% 25%, #000 0%, #000 55%, transparent 95%);
+    -webkit-mask-image: radial-gradient(ellipse at 50% 25%, #000 0%, #000 55%, transparent 95%);
   }
   .sparks {
     position: fixed; inset: 0; z-index: 0; pointer-events: none;
@@ -65,7 +68,7 @@
   .wrap {
     position: relative; z-index: 2;
     max-width: 780px; margin: 0 auto;
-    padding: 44px 22px 80px;
+    padding: 34px 22px 48px;
     text-align: center;
     display: flex; flex-direction: column; align-items: center;
   }
@@ -162,14 +165,14 @@
   .orb.thinking .core { animation-duration: 1s; }
 
   .ask { width: 100%; max-width: 560px; }
-  .field {
+  .ask-field {
     display: flex; gap: 10px; align-items: stretch;
     background: var(--dark2);
     border: 1px solid var(--border);
     border-radius: 14px; padding: 8px;
     box-shadow: 0 12px 40px rgba(0,0,0,.5), inset 0 1px 0 rgba(255,255,255,.04);
   }
-  .field:focus-within { border-color: rgba(74,222,128,.55); box-shadow: 0 12px 40px rgba(0,0,0,.5), 0 0 0 3px rgba(74,222,128,.10); }
+  .ask-field:focus-within { border-color: rgba(74,222,128,.55); box-shadow: 0 12px 40px rgba(0,0,0,.5), 0 0 0 3px rgba(74,222,128,.10); }
   input {
     flex: 1; background: transparent; border: none; outline: none;
     color: var(--text); font-size: 16px; padding: 12px 14px;
@@ -211,7 +214,9 @@
     opacity: 0; transform: translateY(14px) scale(.98);
     transition: opacity .7s ease, transform .7s ease;
     pointer-events: none;
+    height: 0; overflow: hidden;   /* don't reserve space while hidden */
   }
+  .answer.show { height: auto; overflow: visible; }
   .answer.show { opacity: 1; transform: none; pointer-events: auto; }
 
   .verdict-badge {
@@ -333,7 +338,7 @@
   .basket-clear:hover { color:var(--text-soft); }
 
   @media (max-width:480px){
-    .orb-stage{ width:240px; height:240px } .field{ flex-direction:column } button.ask-btn{ padding:14px }
+    .orb-stage{ width:240px; height:240px } .ask-field{ flex-direction:column } button.ask-btn{ padding:14px }
     .cta-row{ flex-direction:column; align-items:stretch } .cta-note{ max-width:100% } a.cta-btn{ text-align:center }
   }
 </style>
@@ -362,7 +367,7 @@
     </div>
 
     <div class="ask">
-      <div class="field">
+      <div class="ask-field">
         <input id="q" type="text" autocomplete="off" spellcheck="false"
           placeholder="Ask anything, or tell me what you need…" />
         <button class="ask-btn" id="go">Consult</button>
@@ -417,11 +422,65 @@
       <div class="again"><button id="again">Ask the orb something else</button></div>
     </section>
 
-    <footer>
-      <div class="brand">JPAX Media LLC &middot; Build. Rise. Scale.</div>
-      <div class="meta">AI-powered websites, content systems &amp; operating tools &middot; Greenville, SC</div>
-    </footer>
   </main>
+
+  <footer class="site-footer">
+    <div class="footer-shell">
+      <div class="footer-brand">
+        <a class="footer-logo" href="/" aria-label="JPAX Media home">
+          <img src="/jpaxmedialogoOFFICIALFINALwhite.png" alt="">
+          <span>
+            <strong>JPAX Media LLC</strong>
+            <small>BUILD &middot; RISE &middot; SCALE</small>
+          </span>
+        </a>
+        <p>Founder-led AI systems for modern businesses and creators. Built with AI, directed by Julian, and owned by you.</p>
+        <div class="footer-signature">
+          <img src="/assets/images/julian-avatar.png" alt="Julian Johnson" width="46" height="46">
+          <div>
+            <strong>Built by Julian Johnson</strong>
+            <small>Founder &middot; Greenville, SC</small>
+          </div>
+        </div>
+        <div class="footer-social" aria-label="JPAX social links">
+          <a href="https://www.facebook.com/jpaxmedia" target="_blank" rel="noopener noreferrer" aria-label="JPAX Media on Facebook">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path></svg>
+            <span>Facebook</span>
+          </a>
+          <a href="https://www.instagram.com/jpaxmedia/" target="_blank" rel="noopener noreferrer" aria-label="JPAX Media on Instagram">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><rect width="20" height="20" x="2" y="2" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" x2="17.51" y1="6.5" y2="6.5"></line></svg>
+            <span>Instagram</span>
+          </a>
+        </div>
+      </div>
+      <nav class="footer-nav" aria-label="Footer navigation">
+        <div>
+          <h2>Company</h2>
+          <a href="/work.html">Work</a>
+          <a href="/services.html">Services</a>
+          <a href="/pricing.html">Pricing</a>
+          <a href="/blog/">Blog</a>
+        </div>
+        <div>
+          <h2>Systems</h2>
+          <a href="/tradeos.html">TradeOS</a>
+          <a href="/elara.html">Elara</a>
+          <a href="/jupiter.html">Jupiter</a>
+          <a href="/quiz.html">Find Your System</a>
+        </div>
+        <div>
+          <h2>Contact</h2>
+          <a href="mailto:julian@jpaxmedia.com">julian@jpaxmedia.com</a>
+          <a href="tel:+18604943090">(860) 494-3090</a>
+          <a href="/start.html">Start a Project</a>
+        </div>
+      </nav>
+    </div>
+    <div class="footer-bottom">
+      <span>JPAX Media LLC &middot; Greenville, SC</span>
+      <span>2026 JPAX Media. All rights reserved.</span>
+    </div>
+  </footer>
 
 <script>
 (function(){
@@ -848,7 +907,7 @@
   q.addEventListener('focus', () => orb.classList.add('listening'));
   q.addEventListener('blur', () => orb.classList.remove('listening'));
   // desktop only: drop the cursor in so they can just start typing (skip on touch so the orb shows first)
-  if (window.matchMedia && window.matchMedia('(pointer:fine)').matches) { try { q.focus(); } catch(e){} }
+  if (window.matchMedia && window.matchMedia('(pointer:fine)').matches) { try { q.focus({ preventScroll: true }); } catch(e){ try{ q.focus(); }catch(e2){} } }
   $('#again').onclick = () => {
     answer.classList.remove('show');
     followups.hidden = true;
