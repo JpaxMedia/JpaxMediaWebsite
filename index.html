@@ -216,7 +216,6 @@
         <a href="/services.html">Services</a>
         <a href="/elara.html">Elara</a>
         <a href="/jupiter.html">Jupiter</a>
-        <a href="/oracle">Oracle</a>
         <a class="nav-cta magnetic" href="/start.html" data-magnetic>Start a Project</a>
       </nav>
     </div>
@@ -375,6 +374,43 @@
           <span class="btn-arrow">&rarr;</span>
         </a>
         <a href="/roast/" style="margin-left:12px; font-size:13px; color:#4ADE80; text-decoration:underline">Try the Roasting Machine (internal)</a>
+      </div>
+    </section>
+
+    <style>
+      #oracle-teaser .oracle-teaser{display:flex;align-items:center;gap:30px;flex-wrap:wrap;
+        border:1px solid rgba(74,222,128,.25);border-radius:18px;padding:28px 32px;
+        background:linear-gradient(180deg,rgba(74,222,128,.06),rgba(12,16,28,.5));}
+      #oracle-teaser .oracle-teaser-copy{flex:1;min-width:260px;}
+      #oracle-teaser .oracle-teaser-copy h2{margin:8px 0 10px;}
+      #oracle-teaser .oracle-teaser-copy p{margin:0 0 20px;max-width:580px;}
+      #oracle-teaser .oracle-orb{position:relative;width:104px;height:104px;border-radius:50%;flex:0 0 auto;
+        background:radial-gradient(circle at 35% 30%,rgba(255,255,255,.85) 0%,rgba(255,255,255,.12) 9%,transparent 24%),
+          radial-gradient(circle at 50% 52%,rgba(74,222,128,.30),transparent 58%),
+          radial-gradient(circle at 50% 50%,#0e3b2c 0%,#0a2620 46%,#05130f 100%);
+        box-shadow:0 0 44px rgba(74,222,128,.4),0 0 96px rgba(16,185,129,.2),
+          inset -9px -11px 26px rgba(0,0,0,.6),inset 9px 9px 24px rgba(74,222,128,.28);
+        animation:oracleBob 6s ease-in-out infinite;}
+      #oracle-teaser .oracle-orb::after{content:"";position:absolute;left:50%;top:50%;width:8px;height:8px;border-radius:50%;
+        transform:translate(-50%,-50%);background:#4ADE80;box-shadow:0 0 18px 6px rgba(74,222,128,.7);
+        animation:oracleBeat 2.6s ease-in-out infinite;}
+      @keyframes oracleBob{0%,100%{transform:translateY(0)}50%{transform:translateY(-8px)}}
+      @keyframes oracleBeat{0%,100%{opacity:.55;transform:translate(-50%,-50%) scale(1)}50%{opacity:1;transform:translate(-50%,-50%) scale(1.3)}}
+      @media (max-width:640px){#oracle-teaser .oracle-teaser{flex-direction:column;text-align:center;gap:20px;padding:26px 22px;}
+        #oracle-teaser .oracle-teaser-copy{min-width:0;} #oracle-teaser .oracle-teaser-copy p{margin-left:auto;margin-right:auto;}}
+    </style>
+    <section class="section compact" id="oracle-teaser" aria-labelledby="oracle-heading">
+      <div class="oracle-teaser reveal">
+        <div class="oracle-orb" aria-hidden="true"></div>
+        <div class="oracle-teaser-copy">
+          <p class="section-kicker"><span class="kicker-bracket">[</span> Just for Fun <span class="kicker-bracket">]</span></p>
+          <h2 id="oracle-heading">Not sure what you need? <span style="color:#4ADE80;">Ask the Oracle.</span></h2>
+          <p>A glowing crystal ball that reads your business and tells you exactly what to build &mdash; websites, apps, AI, content. Fun, fast, and a little bit magic.</p>
+          <a class="button primary magnetic" href="/oracle" data-magnetic>
+            <span class="btn-label">Consult the Oracle</span>
+            <span class="btn-arrow">&rarr;</span>
+          </a>
+        </div>
       </div>
     </section>
 
