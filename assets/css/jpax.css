@@ -4736,3 +4736,11 @@ a.proof-card { color: inherit; }
 .faq-item .faq-answer p { margin: 0; color: var(--text-soft); font-size: 0.96rem; line-height: 1.6; }
 .faq-item .faq-answer p + p { margin-top: 10px; }
 .faq-item .faq-answer a { color: var(--blue); }
+
+/* Article figure (case study screenshots) */
+.article-figure { display: grid; gap: 10px; margin: 8px 0; }
+.article-figure img { width: 100%; height: auto; display: block; border: 1px solid var(--border); border-radius: var(--radius-lg); }
+.article-figure figcaption { color: var(--text-muted); font-family: var(--font-mono); font-size: 0.85rem; letter-spacing: 0.02em; }
+.article-components { display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px; margin: 8px 0; }
+.article-components .capability { font-size: 0.96rem; }
+@media (max-width: 640px) { .article-components { grid-template-columns: 1fr; } }
