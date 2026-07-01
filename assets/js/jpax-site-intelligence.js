@@ -13,7 +13,11 @@
     if (localStorage.getItem("jpax_tracking_optout") === "1") return;
   } catch (e) { /* storage unavailable — track normally */ }
 
-  var endpoint = "/api/site-track";
+  var script = document.currentScript;
+  var endpoint = absoluteUrl(getConfig("endpoint") || "https://jpaxmedia.com/api/site-track");
+  var siteHost = normalizeHost(getConfig("site-host") || window.location.hostname || "jpaxmedia.com");
+  var siteKey = normalizeSiteKey(getConfig("site-key") || getConfig("site") || siteHost);
+  var siteOrigin = (getConfig("site-origin") || window.location.origin || ("https://" + siteHost)).replace(/\/+$/, "");
   var params = new URLSearchParams(window.location.search);
   var sentScrollDepths = {};
   var startTime = Date.now();
@@ -74,6 +78,9 @@
 
   function send(type, extra, preferBeacon) {
     var payload = Object.assign({
+      siteKey: siteKey,
+      siteHost: siteHost,
+      siteOrigin: siteOrigin,
       type: type,
       path: window.location.pathname,
       url: window.location.href,
@@ -118,7 +125,37 @@
 
   function isConversionPage() {
     var path = window.location.pathname.replace(/\/+$/, "");
-    return path === "/free-website/thank-you";
+    return /\/thank-you$/.test(path);
+  }
+
+  function getConfig(name) {
+    var globalName = "JPAX_PIXEL_" + name.toUpperCase().replace(/-/g, "_");
+    return (script && script.getAttribute("data-" + name)) || window[globalName] || "";
+  }
+
+  function absoluteUrl(value) {
+    try {
+      return new URL(value, window.location.href).href;
+    } catch (e) {
+      return "https://jpaxmedia.com/api/site-track";
+    }
+  }
+
+  function normalizeHost(value) {
+    return String(value || "")
+      .toLowerCase()
+      .replace(/^https?:\/\//, "")
+      .replace(/\/.*$/, "")
+      .replace(/:\d+$/, "")
+      .replace(/^www\./, "") || "jpaxmedia.com";
+  }
+
+  function normalizeSiteKey(value) {
+    return String(value || "")
+      .toLowerCase()
+      .replace(/^www\./, "")
+      .replace(/[^a-z0-9._:-]+/g, "-")
+      .replace(/^-|-$/g, "") || "jpaxmedia.com";
   }
 
   function getSessionId() {

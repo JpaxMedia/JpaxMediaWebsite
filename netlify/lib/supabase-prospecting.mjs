@@ -15,13 +15,14 @@ export function jsonResponse(body, status = 200, extraHeaders = {}) {
   });
 }
 
-export function optionsResponse() {
+export function optionsResponse(extraHeaders = {}) {
   return new Response(null, {
     status: 204,
     headers: {
       "access-control-allow-methods": "GET,POST,OPTIONS",
       "access-control-allow-headers": "content-type,x-dashboard-key,x-dashboard-session,authorization",
-      "access-control-max-age": "86400"
+      "access-control-max-age": "86400",
+      ...extraHeaders
     }
   });
 }
@@ -257,10 +258,16 @@ export function enrichSitePayload(request, context, body) {
   // Canonicalize the path so a page tracked with and without a trailing slash
   // (e.g. "/oracle" vs "/oracle/") aggregates as one row, never two.
   const path = canonicalSitePath(payload.path);
+  const siteHost = cleanSiteHost(payload.siteHost || hostFromUrl(payload.url) || request.headers.get("host") || "jpaxmedia.com");
+  const siteKey = cleanSiteKey(payload.siteKey || siteHost);
+  const siteOrigin = cleanOrigin(payload.siteOrigin || originFromUrl(payload.url) || `https://${siteHost}`);
   const meta = pageMeta(path, payload.title || "");
   const conversion = isStrictConversionPath(path);
   return {
     ...payload,
+    siteKey,
+    siteHost,
+    siteOrigin,
     path,
     conversion,
     conversionType: conversion ? "form_thank_you" : "",
@@ -273,6 +280,46 @@ export function enrichSitePayload(request, context, body) {
 function canonicalSitePath(value) {
   const path = String(value || "/").split("?")[0].split("#")[0].replace(/\/+$/, "");
   return path === "" ? "/" : path;
+}
+
+function cleanSiteHost(value) {
+  return String(value || "")
+    .toLowerCase()
+    .replace(/^https?:\/\//, "")
+    .replace(/\/.*$/, "")
+    .replace(/:\d+$/, "")
+    .replace(/^www\./, "")
+    .slice(0, 180) || "jpaxmedia.com";
+}
+
+function cleanSiteKey(value) {
+  return cleanSiteHost(value)
+    .replace(/[^a-z0-9._:-]+/g, "-")
+    .replace(/^-|-$/g, "")
+    .slice(0, 180) || "jpaxmedia.com";
+}
+
+function cleanOrigin(value) {
+  const origin = String(value || "").trim().replace(/\/+$/, "");
+  if (/^https?:\/\/[^/]+$/i.test(origin)) return origin.slice(0, 240);
+  const host = cleanSiteHost(origin);
+  return `https://${host}`.slice(0, 240);
+}
+
+function hostFromUrl(value) {
+  try {
+    return new URL(String(value || "")).hostname;
+  } catch {
+    return "";
+  }
+}
+
+function originFromUrl(value) {
+  try {
+    return new URL(String(value || "")).origin;
+  } catch {
+    return "";
+  }
 }
 
 export function normalizeSiteConversions(data = {}) {
@@ -361,7 +408,7 @@ function isStrictConversionEvent(event) {
 }
 
 function isStrictConversionPath(path) {
-  return String(path || "").replace(/\/+$/, "") === "/free-website/thank-you";
+  return /\/thank-you$/.test(String(path || "").replace(/\/+$/, ""));
 }
 
 function prospectDefaults(slug) {
