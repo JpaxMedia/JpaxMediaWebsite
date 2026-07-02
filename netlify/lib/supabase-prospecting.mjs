@@ -234,9 +234,26 @@ export function mergeProspectDirectory(data = {}) {
   };
 }
 
-export async function readJson(request) {
+// Cap request bodies so a hostile client can't stuff megabytes of JSON into
+// the pipeline (raw payloads used to be stored verbatim in Supabase).
+const MAX_JSON_BODY_BYTES = 10_000;
+
+export async function readJson(request, maxBytes = MAX_JSON_BODY_BYTES) {
+  let text = "";
   try {
-    return await request.json();
+    text = await request.text();
+  } catch {
+    return {};
+  }
+
+  if (text.length > maxBytes) {
+    const error = new Error("Payload too large.");
+    error.status = 413;
+    throw error;
+  }
+
+  try {
+    return text ? JSON.parse(text) : {};
   } catch {
     return {};
   }
@@ -258,13 +275,24 @@ export function enrichSitePayload(request, context, body) {
   // Canonicalize the path so a page tracked with and without a trailing slash
   // (e.g. "/oracle" vs "/oracle/") aggregates as one row, never two.
   const path = canonicalSitePath(payload.path);
-  const siteHost = cleanSiteHost(payload.siteHost || hostFromUrl(payload.url) || request.headers.get("host") || "jpaxmedia.com");
-  const siteKey = cleanSiteKey(payload.siteKey || siteHost);
-  const siteOrigin = cleanOrigin(payload.siteOrigin || originFromUrl(payload.url) || `https://${siteHost}`);
-  const meta = pageMeta(path, payload.title || "");
+
+  // SECURITY: site identity is derived from the browser's Origin header,
+  // which a page cannot forge. Payload-claimed siteKey/siteHost/siteOrigin
+  // are display hints at best. Non-browser senders (no valid Origin) are
+  // bucketed under "unknown-site" so they can never pollute or overwrite a
+  // real site's rows in Supabase.
+  const requestOrigin = normalizeRequestOrigin(request.headers.get("origin"));
+  const originHost = requestOrigin ? cleanSiteHost(requestOrigin) : "";
+
+  const siteHost = originHost || cleanSiteHost(payload.siteHost || hostFromUrl(payload.url) || "unknown-site", "unknown-site");
+  const siteKey = originHost ? cleanSiteKey(originHost) : "unknown-site";
+  const siteOrigin = requestOrigin || `https://${siteHost}`;
+
+  const meta = pageMeta(path, payload.title || "", siteKey);
   const conversion = isStrictConversionPath(path);
   return {
     ...payload,
+    requestOrigin,
     siteKey,
     siteHost,
     siteOrigin,
@@ -277,19 +305,26 @@ export function enrichSitePayload(request, context, body) {
   };
 }
 
+function normalizeRequestOrigin(value) {
+  const origin = String(value || "").trim().toLowerCase().replace(/\/+$/, "");
+  // "null" (sandboxed iframes, file://) and anything that isn't a plain
+  // https?://host origin is treated as absent.
+  return /^https?:\/\/[^/\s]+$/.test(origin) ? origin.slice(0, 240) : "";
+}
+
 function canonicalSitePath(value) {
   const path = String(value || "/").split("?")[0].split("#")[0].replace(/\/+$/, "");
   return path === "" ? "/" : path;
 }
 
-function cleanSiteHost(value) {
+function cleanSiteHost(value, fallback = "jpaxmedia.com") {
   return String(value || "")
     .toLowerCase()
     .replace(/^https?:\/\//, "")
     .replace(/\/.*$/, "")
     .replace(/:\d+$/, "")
     .replace(/^www\./, "")
-    .slice(0, 180) || "jpaxmedia.com";
+    .slice(0, 180) || fallback;
 }
 
 function cleanSiteKey(value) {
@@ -352,8 +387,14 @@ export function normalizeSiteConversions(data = {}) {
   };
 }
 
-function pageMeta(path, title) {
+function pageMeta(path, title, siteKey = "jpaxmedia.com") {
   const cleanTitle = cleanText(title, 120).replace(/\s*[|–-]\s*JPAX.*$/i, "").trim();
+  // The rules below describe jpaxmedia.com's information architecture.
+  // Client sites get neutral metadata — their /pricing is not a JPAX
+  // "Offer Page" and their /demos are not retired prospect demos.
+  if (siteKey !== "jpaxmedia.com") {
+    return { pageName: cleanTitle || titleFromPath(path), category: "Client Site Page", group: "marketing" };
+  }
   if (String(path).startsWith("/demos/")) return { pageName: cleanTitle || titleFromPath(path), category: "Prospect Demo", group: "demos" };
   if (String(path).startsWith("/free-website/thank-you")) return { pageName: "Free Website Sprint Thank You", category: "Sprint Funnel", group: "offers" };
   if (String(path).startsWith("/free-website")) return { pageName: "Free Website Sprint", category: "Sprint Offer", group: "offers" };
@@ -399,7 +440,13 @@ function isLikelyBot(userAgent) {
 
 function hashIp(ip) {
   if (!ip) return "";
-  const salt = process.env.PROSPECT_HASH_SALT || process.env.PROSPECT_DASHBOARD_KEY || "jpax";
+  // Prefer a dedicated salt; fall back to secrets that are already server-only
+  // so the hash is never brute-forceable with a public/guessable salt.
+  const salt =
+    process.env.PROSPECT_HASH_SALT ||
+    process.env.SUPABASE_SERVICE_ROLE_KEY ||
+    process.env.PROSPECT_DASHBOARD_KEY ||
+    "jpax";
   return createHash("sha256").update(`${salt}:${ip}`).digest("hex").slice(0, 24);
 }
 

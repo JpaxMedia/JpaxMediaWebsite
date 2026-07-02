@@ -4,6 +4,13 @@
 
   if (window.location.pathname.indexOf("/prospect-dashboard") === 0) return;
 
+  // Retired JPAX prospect demos: skip tracking entirely instead of sending
+  // events the collector will ignore. Client sites keep their /demos paths.
+  if (
+    String(window.location.hostname).replace(/^www\./, "") === "jpaxmedia.com" &&
+    window.location.pathname.indexOf("/demos") === 0
+  ) return;
+
   // Internal opt-out — same flag as prospect-tracker.js: one visit with
   // ?jpax_ignore=1 silences both trackers in this browser.
   try {
@@ -63,6 +70,9 @@
 
   [15, 45, 90].forEach(function (seconds) {
     window.setTimeout(function () {
+      // Only report engagement while the tab is actually visible — a
+      // backgrounded tab should not accrue engaged time.
+      if (document.visibilityState !== "visible") return;
       send("site_engaged_time", { engagedSeconds: seconds });
     }, seconds * 1000);
   });
@@ -158,21 +168,38 @@
       .replace(/^-|-$/g, "") || "jpaxmedia.com";
   }
 
+  // Storage access can throw (blocked cookies, some embedded webviews).
+  // Never let an ID lookup kill the whole pixel — fall back to a
+  // per-pageview ID instead.
+  function safeStorageGet(storage, key) {
+    try {
+      return window[storage].getItem(key);
+    } catch (e) {
+      return null;
+    }
+  }
+
+  function safeStorageSet(storage, key, value) {
+    try {
+      window[storage].setItem(key, value);
+    } catch (e) { /* storage unavailable — in-memory ID only */ }
+  }
+
   function getSessionId() {
     var key = "jpax_si_session";
-    var current = sessionStorage.getItem(key);
+    var current = safeStorageGet("sessionStorage", key);
     if (current) return current;
     current = makeId("sis");
-    sessionStorage.setItem(key, current);
+    safeStorageSet("sessionStorage", key, current);
     return current;
   }
 
   function getVisitorId() {
     var key = "jpax_si_visitor";
-    var current = localStorage.getItem(key);
+    var current = safeStorageGet("localStorage", key);
     if (current) return current;
     current = makeId("siv");
-    localStorage.setItem(key, current);
+    safeStorageSet("localStorage", key, current);
     return current;
   }
 

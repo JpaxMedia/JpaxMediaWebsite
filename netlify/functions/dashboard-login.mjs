@@ -16,7 +16,12 @@ export default async function handler(request) {
     return jsonResponse({ ok: false, error: "Dashboard sign-in is not configured." }, 503);
   }
 
-  const body = await readJson(request);
+  let body;
+  try {
+    body = await readJson(request);
+  } catch (error) {
+    return jsonResponse({ ok: false, error: "Invalid request." }, error.status || 400);
+  }
   const email = String(body.email || "").trim().toLowerCase();
   const password = String(body.password || "");
 
