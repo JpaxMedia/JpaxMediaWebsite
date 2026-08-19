@@ -3,24 +3,6 @@
   const root = document.documentElement;
   const body = document.body;
 
-  const preventZoom = (event) => {
-    if (event.cancelable) event.preventDefault();
-  };
-
-  document.addEventListener("touchmove", (event) => {
-    if (event.touches.length > 1) preventZoom(event);
-  }, { passive: false });
-
-  document.addEventListener("gesturestart", preventZoom, { passive: false });
-  document.addEventListener("gesturechange", preventZoom, { passive: false });
-
-  let lastTouchEnd = 0;
-  document.addEventListener("touchend", (event) => {
-    const now = Date.now();
-    if (now - lastTouchEnd <= 300) preventZoom(event);
-    lastTouchEnd = now;
-  }, { passive: false });
-
   /* ====================================================================
      Starfield + slow flight path + horizon glow
      ==================================================================== */
@@ -208,18 +190,27 @@
   const toggle = document.querySelector("[data-menu-toggle]");
   const nav = document.querySelector("[data-site-nav]");
   if (toggle && nav) {
+    const setMenuState = (isOpen) => {
+      toggle.setAttribute("aria-expanded", String(isOpen));
+      toggle.setAttribute("aria-label", isOpen ? "Close navigation" : "Open navigation");
+      nav.classList.toggle("open", isOpen);
+      body.classList.toggle("menu-open", isOpen);
+    };
+
     toggle.addEventListener("click", () => {
       const isOpen = toggle.getAttribute("aria-expanded") === "true";
-      toggle.setAttribute("aria-expanded", String(!isOpen));
-      nav.classList.toggle("open", !isOpen);
-      body.classList.toggle("menu-open", !isOpen);
+      setMenuState(!isOpen);
     });
+
     nav.querySelectorAll("a").forEach((link) => {
-      link.addEventListener("click", () => {
-        toggle.setAttribute("aria-expanded", "false");
-        nav.classList.remove("open");
-        body.classList.remove("menu-open");
-      });
+      link.addEventListener("click", () => setMenuState(false));
+    });
+
+    document.addEventListener("keydown", (event) => {
+      if (event.key === "Escape" && toggle.getAttribute("aria-expanded") === "true") {
+        setMenuState(false);
+        toggle.focus();
+      }
     });
   }
 
