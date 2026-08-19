@@ -20,6 +20,8 @@ class SiteParser(HTMLParser):
         self.generic_aria: list[tuple[str, str]] = []
         self.menu_buttons: list[dict[str, str | None]] = []
         self.menu_navs: list[dict[str, str | None]] = []
+        self.forms: list[dict[str, str | None]] = []
+        self.inputs: list[dict[str, str | None]] = []
 
     def handle_starttag(self, tag: str, attrs: list[tuple[str, str | None]]) -> None:
         values = dict(attrs)
@@ -35,6 +37,10 @@ class SiteParser(HTMLParser):
             self.menu_buttons.append(values)
         if "data-site-nav" in values:
             self.menu_navs.append(values)
+        if tag == "form":
+            self.forms.append(values)
+        if tag == "input":
+            self.inputs.append(values)
 
 
 def local_target_exists(source: Path, raw_value: str) -> bool:
@@ -84,6 +90,25 @@ def main() -> int:
                     errors.append(f"{relative}: menu button must control primary-navigation")
                 if nav.get("id") != "primary-navigation":
                     errors.append(f"{relative}: mobile navigation needs id primary-navigation")
+
+        if relative == Path("start.html"):
+            project_forms = [form for form in parser.forms if form.get("name") == "project-inquiry"]
+            if len(project_forms) != 1:
+                errors.append("start.html: expected one project-inquiry form")
+            else:
+                project_form = project_forms[0]
+                if "data-netlify" not in project_form:
+                    errors.append("start.html: project form must use Netlify Forms")
+                if project_form.get("action") != "/thank-you":
+                    errors.append("start.html: project form needs the branded success page")
+                if project_form.get("netlify-honeypot") != "bot-field":
+                    errors.append("start.html: project form needs the bot-field honeypot")
+            form_name_inputs = [
+                item for item in parser.inputs
+                if item.get("name") == "form-name" and item.get("value") == "project-inquiry"
+            ]
+            if len(form_name_inputs) != 1:
+                errors.append("start.html: project form-name field is missing")
 
         lowered = source.lower()
         if "user-scalable=no" in lowered or "maximum-scale=1" in lowered:
