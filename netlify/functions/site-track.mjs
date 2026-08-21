@@ -1,4 +1,4 @@
-import { enrichSitePayload, jsonResponse, optionsResponse, readJson, rpc } from "../lib/supabase-prospecting.mjs";
+import { enrichSitePayload, jsonResponse, optionsResponse, readJson, rpc } from "../lib/supabase-site-intelligence.mjs";
 
 const SITE_TRACK_CORS_HEADERS = {
   "access-control-allow-origin": "*",

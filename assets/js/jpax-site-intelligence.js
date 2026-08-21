@@ -2,17 +2,7 @@
   if (window.JPAXSiteIntelligenceLoaded) return;
   window.JPAXSiteIntelligenceLoaded = true;
 
-  if (window.location.pathname.indexOf("/prospect-dashboard") === 0) return;
-
-  // Retired JPAX prospect demos: skip tracking entirely instead of sending
-  // events the collector will ignore. Client sites keep their /demos paths.
-  if (
-    String(window.location.hostname).replace(/^www\./, "") === "jpaxmedia.com" &&
-    window.location.pathname.indexOf("/demos") === 0
-  ) return;
-
-  // Internal opt-out — same flag as prospect-tracker.js: one visit with
-  // ?jpax_ignore=1 silences both trackers in this browser.
+  // Persistent internal opt-out for privacy checks and controlled testing.
   try {
     var ignoreParam = new URLSearchParams(window.location.search).get("jpax_ignore");
     if (ignoreParam === "1") localStorage.setItem("jpax_tracking_optout", "1");
@@ -121,8 +111,7 @@
   function isImportantLink(link, href) {
     var text = (link.textContent || "").toLowerCase();
     var classes = link.className || "";
-    return href.indexOf("/free-website") !== -1 ||
-      href.indexOf("/start") !== -1 ||
+    return href.indexOf("/start") !== -1 ||
       href.indexOf("/pricing") !== -1 ||
       href.indexOf("/services") !== -1 ||
       href.indexOf("/work") !== -1 ||

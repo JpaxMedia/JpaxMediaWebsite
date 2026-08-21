@@ -118,6 +118,27 @@ def main() -> int:
     if 'isOpen ? "Close navigation" : "Open navigation"' not in shared_script:
         errors.append("assets/js/main.js: menu accessible label state is missing")
 
+    retired_roots = ("demos", "free-website", "prospect-dashboard")
+    for retired_root in retired_roots:
+        if (ROOT / retired_root).exists():
+            errors.append(f"{retired_root}: retired campaign surface must not be published")
+
+    redirects = (ROOT / "_redirects").read_text(encoding="utf-8")
+    required_retirement_redirects = (
+        "/free-website /start 301!",
+        "/free-website/* /start 301!",
+        "/demos /work 301!",
+        "/demos/* /work 301!",
+    )
+    for redirect in required_retirement_redirects:
+        if redirect not in redirects:
+            errors.append(f"_redirects: missing retired campaign redirect {redirect}")
+
+    retired_endpoints = ("/api/prospect-track", "/api/prospect-dashboard")
+    for endpoint in retired_endpoints:
+        if endpoint in redirects:
+            errors.append(f"_redirects: retired campaign endpoint remains published {endpoint}")
+
     if errors:
         print("Site validation failed:")
         for error in errors:

@@ -61,7 +61,7 @@ The pixel tells you *a visitor* is showing intent. To tie activity to a *known* 
 1. Open the client page in a normal browser tab.
 2. Go to `score.jpaxmedia.com/signals`, hit **Refresh**.
 3. The client's site should appear as its own site chip; the page you visited shows a `site_page_view`.
-4. If nothing shows after ~30s: check the browser console for CSP errors, confirm the script tag is present in the live HTML, and confirm the page isn't under a `/demos` path on jpaxmedia.com (those are intentionally ignored).
+4. If nothing shows after ~30s: check the browser console for CSP errors and confirm the script tag is present in the live HTML.
 
 ---
 
@@ -85,7 +85,7 @@ The collector lives on jpaxmedia.com's Netlify deploy. **It is a shared dependen
 - **Bots are dropped** before they hit the database.
 - **Rate limited** to 120 events/min per visitor, at both the collector and the database.
 - **Request bodies capped** at 10 KB.
-- **IPs are hashed** with a server-only salt (`PROSPECT_HASH_SALT` in Netlify).
+- **IPs are hashed** with a server-only salt (`SITE_INTELLIGENCE_HASH_SALT` in Netlify; the former `PROSPECT_HASH_SALT` remains a compatibility fallback).
 - The ingest and read RPCs are **service-role only** — never exposed to the public/anon key.
 
 ---
@@ -101,7 +101,7 @@ Because the pixel sets a persistent visitor ID, hashes IPs, and captures coarse 
 Website repo (`JpaxMediaWebsite`):
 - `assets/js/jpax-site-intelligence.js` — the pixel script
 - `netlify/functions/site-track.mjs` — the collector endpoint
-- `netlify/lib/supabase-prospecting.mjs` — enrichment, origin logic, rate limit, IP hash
+- `netlify/lib/supabase-site-intelligence.mjs` — enrichment, origin logic, rate limit, IP hash
 
 Jupiter repo (`jupiter-agent`):
 - `supabase/migrations/20260701231423_jpax_pixel_ingestion_hardening.sql` — ingest RPC + indexes

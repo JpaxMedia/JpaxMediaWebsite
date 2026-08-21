@@ -1,4 +1,4 @@
-import { getSiteDashboardData, isDashboardAuthorized, jsonResponse, optionsResponse } from "../lib/supabase-prospecting.mjs";
+import { getSiteDashboardData, isDashboardAuthorized, jsonResponse, optionsResponse } from "../lib/supabase-site-intelligence.mjs";
 
 export default async function handler(request) {
   if (request.method === "OPTIONS") return optionsResponse();

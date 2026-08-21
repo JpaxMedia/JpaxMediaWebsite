@@ -6,7 +6,7 @@ import {
   optionsResponse,
   readJson,
   verifyDashboardPassword
-} from "../lib/supabase-prospecting.mjs";
+} from "../lib/supabase-site-intelligence.mjs";
 
 export default async function handler(request) {
   if (request.method === "OPTIONS") return optionsResponse();
