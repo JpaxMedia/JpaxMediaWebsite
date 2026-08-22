@@ -272,6 +272,16 @@
   }
 
   /* ====================================================================
+     Project intake routing
+     ==================================================================== */
+  const inquiryNeed = document.querySelector("#need");
+  if (inquiryNeed) {
+    const requestedNeed = new URLSearchParams(window.location.search).get("need");
+    const validOption = requestedNeed && Array.from(inquiryNeed.options).some((option) => option.value === requestedNeed);
+    if (validOption) inquiryNeed.value = requestedNeed;
+  }
+
+  /* ====================================================================
      Quiz
      ==================================================================== */
   const quiz = document.querySelector("[data-quiz]");
@@ -283,13 +293,13 @@
     const resultLink = quiz.querySelector("[data-result-link]");
     const scores = {};
     const copy = {
-      website: { title: "Website Foundation", body: "Start with a clearer owned website, stronger local trust, and the structure to route leads into the right next step.", href: "services.html#starting-points" },
-      brandweb: { title: "Brand + Web Foundation", body: "You need the identity and the web system together: sharper positioning, stronger visuals, and a site that supports the business.", href: "services.html#starting-points" },
+      website: { title: "Website Foundation", body: "Start with a clearer owned website, stronger trust, and the structure to route leads into the right next step.", href: "start.html?need=Website%20Foundation" },
+      brandweb: { title: "Website Foundation", body: "Your website needs sharper positioning, stronger visuals, and a clearer path from attention to inquiry.", href: "start.html?need=Website%20Foundation" },
       content: { title: "Content System", body: "Your next system is a repeatable demand engine: content calendar, creative assets, campaign pages, and performance visibility.", href: "services.html#create-demand" },
-      workflow: { title: "Workflow Sprint", body: "Your pressure is operational. A focused sprint can connect intake, dashboards, automation, and internal tools.", href: "services.html#workflow" },
+      workflow: { title: "Workflow Sprint", body: "Your pressure is operational. A focused sprint can connect intake, dashboards, automation, and internal tools.", href: "start.html?need=Workflow%20Sprint" },
       tradeos: { title: "TradeOS", body: "You need the trades and home-services operating layer: lead flow, follow-up, reporting, content rhythm, and operational visibility in one system.", href: "tradeos.html" },
       creator: { title: "Creator System", body: "Elara is the right path when content, sponsor ideas, posting rhythm, and revenue visibility need one operating layer.", href: "elara.html" },
-      partner: { title: "Operating Partnership", body: "You need ongoing support: reporting, site management, content systems, and operating improvements after launch.", href: "services.html#run" },
+      partner: { title: "RISE Operating Partnership", body: "You need ongoing support for an existing or accepted system: reporting, maintenance, workflow updates, and operating improvements.", href: "start.html?need=RISE%20Operating%20Partnership" },
     };
 
     choices.forEach((choice) => {
