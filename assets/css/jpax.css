@@ -1618,11 +1618,11 @@ body.cursor-target .cursor-reticle { width: 64px; height: 64px; }
   border-color: rgba(74, 222, 128, 0.45);
   box-shadow: 0 28px 60px rgba(0, 0, 0, 0.5), 0 0 36px rgba(74, 222, 128, 0.12);
 }
-.fleet-card.elara:hover {
+.fleet-card.products:hover {
   border-color: rgba(139, 92, 246, 0.55);
   box-shadow: 0 28px 60px rgba(0, 0, 0, 0.5), 0 0 36px rgba(139, 92, 246, 0.18);
 }
-.fleet-card.jupiter:hover {
+.fleet-card.infrastructure:hover {
   border-color: rgba(56, 189, 248, 0.55);
   box-shadow: 0 28px 60px rgba(0, 0, 0, 0.5), 0 0 36px rgba(56, 189, 248, 0.16);
 }
@@ -1660,6 +1660,7 @@ body.cursor-target .cursor-reticle { width: 64px; height: 64px; }
   font-weight: 700;
 }
 .fleet-status.purple { color: var(--purple); }
+.fleet-status.blue { color: var(--blue); }
 .fleet-status i {
   width: 6px; height: 6px;
   border-radius: 50%;
@@ -1695,8 +1696,8 @@ body.cursor-target .cursor-reticle { width: 64px; height: 64px; }
   letter-spacing: 0.04em;
   box-shadow: inset 0 0 18px rgba(74, 222, 128, 0.2), 0 0 22px rgba(74, 222, 128, 0.22);
 }
-.fleet-card.jupiter .vis-core { border-color: rgba(56, 189, 248, 0.55); box-shadow: inset 0 0 18px rgba(56, 189, 248, 0.2), 0 0 22px rgba(56, 189, 248, 0.22); }
-.fleet-card.elara .vis-core { border-color: rgba(139, 92, 246, 0.55); box-shadow: inset 0 0 18px rgba(139, 92, 246, 0.2), 0 0 22px rgba(139, 92, 246, 0.22); }
+.fleet-card.infrastructure .vis-core { border-color: rgba(56, 189, 248, 0.55); box-shadow: inset 0 0 18px rgba(56, 189, 248, 0.2), 0 0 22px rgba(56, 189, 248, 0.22); }
+.fleet-card.products .vis-core { border-color: rgba(139, 92, 246, 0.55); box-shadow: inset 0 0 18px rgba(139, 92, 246, 0.2), 0 0 22px rgba(139, 92, 246, 0.22); }
 
 .tradeos-vis .vis-ring {
   position: absolute;
@@ -1801,6 +1802,8 @@ body.cursor-target .cursor-reticle { width: 64px; height: 64px; }
   letter-spacing: 0.14em;
   text-transform: uppercase;
 }
+.fleet-card.products .fleet-specs span { color: var(--purple); }
+.fleet-card.infrastructure .fleet-specs span { color: var(--blue); }
 .fleet-specs strong {
   color: var(--white);
   font-weight: 600;
@@ -1825,10 +1828,15 @@ body.cursor-target .cursor-reticle { width: 64px; height: 64px; }
   border-top: 1px solid rgba(74, 222, 128, 0.2);
   transition: color 200ms ease, padding 200ms ease;
 }
-.fleet-card.jupiter .fleet-cta { color: var(--blue); border-top-color: rgba(56, 189, 248, 0.24); }
-.fleet-card.elara .fleet-cta   { color: var(--purple); border-top-color: rgba(139, 92, 246, 0.32); }
+.fleet-card.infrastructure .fleet-cta { color: var(--blue); border-top-color: rgba(56, 189, 248, 0.24); }
+.fleet-card.products .fleet-cta   { color: var(--purple); border-top-color: rgba(139, 92, 246, 0.32); }
 .fleet-cta span { transition: transform 220ms ease; display: inline-block; }
 .fleet-cta:hover span { transform: translateX(4px); }
+.fleet-links {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 14px;
+}
 
 /* ==== Mission profiles (pricing) ==== */
 .profile-grid {
@@ -4348,9 +4356,9 @@ a.proof-card { color: inherit; }
   transition: border-color 240ms ease, transform 240ms ease;
 }
 .stack-card:hover { transform: translateY(-2px); }
-.stack-card.tradeos:hover { border-color: rgba(74, 222, 128, 0.5); }
-.stack-card.elara:hover { border-color: rgba(139, 92, 246, 0.55); }
-.stack-card.jupiter:hover { border-color: rgba(56, 189, 248, 0.5); }
+.stack-card.bespoke:hover { border-color: rgba(74, 222, 128, 0.5); }
+.stack-card.products:hover { border-color: rgba(139, 92, 246, 0.55); }
+.stack-card.infrastructure:hover { border-color: rgba(56, 189, 248, 0.5); }
 .stack-card .sc-meta {
   color: var(--green);
   font-family: var(--font-mono);
@@ -4359,8 +4367,8 @@ a.proof-card { color: inherit; }
   text-transform: uppercase;
   font-weight: 700;
 }
-.stack-card.elara .sc-meta { color: var(--purple); }
-.stack-card.jupiter .sc-meta { color: var(--blue); }
+.stack-card.products .sc-meta { color: var(--purple); }
+.stack-card.infrastructure .sc-meta { color: var(--blue); }
 .stack-card h3 {
   margin: 0;
   color: var(--white);
@@ -4380,8 +4388,15 @@ a.proof-card { color: inherit; }
   letter-spacing: 0.14em;
   text-transform: uppercase;
 }
-.stack-card.elara .stack-cta { color: var(--purple); border-top-color: rgba(139, 92, 246, 0.28); }
-.stack-card.jupiter .stack-cta { color: var(--blue); border-top-color: rgba(56, 189, 248, 0.28); }
+.stack-card.products .stack-cta { color: var(--purple); border-top-color: rgba(139, 92, 246, 0.28); }
+.stack-card.infrastructure .stack-cta { color: var(--blue); border-top-color: rgba(56, 189, 248, 0.28); }
+.stack-links {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 14px;
+  margin-top: 6px;
+}
+.stack-links .stack-cta { margin-top: 0; }
 
 /* Founder contact block */
 .founder-contact {
