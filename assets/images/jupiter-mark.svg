@@ -1,0 +1,27 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-labelledby="title desc">
+  <title id="title">Jupiter orbital mark</title>
+  <desc id="desc">A luminous green planet with a thin orbit ring and moon.</desc>
+  <defs>
+    <radialGradient id="jupiter-planet" cx="35%" cy="32%" r="75%">
+      <stop offset="0" stop-color="#D9FFE6"/>
+      <stop offset="0.4" stop-color="#6EE7A0"/>
+      <stop offset="1" stop-color="#15803D"/>
+    </radialGradient>
+    <linearGradient id="jupiter-ring" x1="0" y1="0.5" x2="1" y2="0.5">
+      <stop offset="0" stop-color="#4ADE80" stop-opacity="0"/>
+      <stop offset="0.5" stop-color="#86EFAC" stop-opacity="0.95"/>
+      <stop offset="1" stop-color="#4ADE80" stop-opacity="0"/>
+    </linearGradient>
+    <filter id="jupiter-glow" x="-60%" y="-60%" width="220%" height="220%">
+      <feDropShadow dx="0" dy="0" stdDeviation="3" flood-color="#4ADE80" flood-opacity="0.42"/>
+    </filter>
+  </defs>
+  <g filter="url(#jupiter-glow)">
+    <ellipse cx="32" cy="32" rx="28" ry="10.4" fill="none" stroke="url(#jupiter-ring)" stroke-width="2.6" transform="rotate(-18 32 32)" opacity="0.68"/>
+    <circle cx="32" cy="32" r="16.4" fill="url(#jupiter-planet)"/>
+    <path d="M16.8 28.8c4.8 2.6 25.6 2.6 30.4 0" fill="none" stroke="#06321A" stroke-width="2.2" opacity="0.55"/>
+    <path d="M16.2 35.6c5.2 2.4 26.4 2.4 31.6 0" fill="none" stroke="#06321A" stroke-width="1.8" opacity="0.4"/>
+    <path d="M6.4 40.6c6.8 5.6 44.4 5.6 51.2 0" fill="none" stroke="url(#jupiter-ring)" stroke-width="3" transform="rotate(-18 32 32)"/>
+    <circle cx="54.8" cy="23.6" r="3.2" fill="#BAF7CB"/>
+  </g>
+</svg>

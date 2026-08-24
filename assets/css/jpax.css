@@ -74,6 +74,14 @@ body::before {
     var(--dark);
 }
 
+body[data-page="jupiter"]::before {
+  background:
+    radial-gradient(960px 620px at 50% 4%, rgba(74, 222, 128, 0.18), transparent 68%),
+    radial-gradient(720px 520px at 88% 30%, rgba(248, 250, 252, 0.055), transparent 72%),
+    radial-gradient(900px 620px at 12% 88%, rgba(16, 185, 129, 0.1), transparent 70%),
+    var(--dark);
+}
+
 body.menu-open { overflow: hidden; }
 
 img, svg, video, canvas {
@@ -1623,8 +1631,8 @@ body.cursor-target .cursor-reticle { width: 64px; height: 64px; }
   box-shadow: 0 28px 60px rgba(0, 0, 0, 0.5), 0 0 36px rgba(139, 92, 246, 0.18);
 }
 .fleet-card.infrastructure:hover {
-  border-color: rgba(56, 189, 248, 0.55);
-  box-shadow: 0 28px 60px rgba(0, 0, 0, 0.5), 0 0 36px rgba(56, 189, 248, 0.16);
+  border-color: rgba(74, 222, 128, 0.58);
+  box-shadow: 0 28px 60px rgba(0, 0, 0, 0.5), 0 0 36px rgba(74, 222, 128, 0.18);
 }
 
 .fleet-card::before {
@@ -1661,6 +1669,7 @@ body.cursor-target .cursor-reticle { width: 64px; height: 64px; }
 }
 .fleet-status.purple { color: var(--purple); }
 .fleet-status.blue { color: var(--blue); }
+.fleet-status.jupiter { color: var(--green-hot); }
 .fleet-status i {
   width: 6px; height: 6px;
   border-radius: 50%;
@@ -1696,7 +1705,7 @@ body.cursor-target .cursor-reticle { width: 64px; height: 64px; }
   letter-spacing: 0.04em;
   box-shadow: inset 0 0 18px rgba(74, 222, 128, 0.2), 0 0 22px rgba(74, 222, 128, 0.22);
 }
-.fleet-card.infrastructure .vis-core { border-color: rgba(56, 189, 248, 0.55); box-shadow: inset 0 0 18px rgba(56, 189, 248, 0.2), 0 0 22px rgba(56, 189, 248, 0.22); }
+.fleet-card.infrastructure .vis-core { border-color: rgba(74, 222, 128, 0.55); box-shadow: inset 0 0 18px rgba(74, 222, 128, 0.2), 0 0 22px rgba(74, 222, 128, 0.24); }
 .fleet-card.products .vis-core { border-color: rgba(139, 92, 246, 0.55); box-shadow: inset 0 0 18px rgba(139, 92, 246, 0.2), 0 0 22px rgba(139, 92, 246, 0.22); }
 
 .tradeos-vis .vis-ring {
@@ -1718,7 +1727,7 @@ body.cursor-target .cursor-reticle { width: 64px; height: 64px; }
   position: absolute;
   left: 50%; top: 50%;
   width: 150px; height: 150px;
-  border: 1px solid rgba(56, 189, 248, 0.35);
+  border: 1px solid rgba(74, 222, 128, 0.36);
   border-radius: 50%;
   transform: translate(-50%, -50%);
   animation: ringSpinA 18s linear infinite;
@@ -1728,11 +1737,129 @@ body.cursor-target .cursor-reticle { width: 64px; height: 64px; }
   left: 50%; top: 50%;
   width: 12px; height: 12px;
   border-radius: 50%;
-  background: var(--blue);
-  box-shadow: 0 0 14px rgba(56, 189, 248, 0.9);
+  background: var(--green-hot);
+  box-shadow: 0 0 14px rgba(74, 222, 128, 0.92);
   transform: translate(-50%, -50%);
   animation: moonOrbit 12s linear infinite;
   --orbitR: 75px;
+}
+.jupiter-vis {
+  background:
+    linear-gradient(rgba(74, 222, 128, 0.035) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(74, 222, 128, 0.03) 1px, transparent 1px),
+    radial-gradient(closest-side at 50% 50%, rgba(74, 222, 128, 0.13), transparent 68%),
+    rgba(4, 6, 11, 0.78);
+  background-size: 28px 28px, 28px 28px, auto, auto;
+}
+.jupiter-mark-core {
+  width: 76px !important;
+  height: 76px !important;
+  border-radius: 18px !important;
+  background:
+    radial-gradient(circle at 50% 76%, rgba(74, 222, 128, 0.18), transparent 56%),
+    rgba(4, 6, 11, 0.88) !important;
+}
+.jupiter-mark-core img {
+  width: 62px;
+  height: 62px;
+}
+
+.jupiter-rocket-stage {
+  isolation: isolate;
+}
+.jupiter-rocket-stage::after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  bottom: 8%;
+  z-index: 1;
+  width: 54%;
+  height: 22%;
+  border-radius: 50%;
+  background: rgba(74, 222, 128, 0.22);
+  filter: blur(32px);
+  transform: translateX(-50%);
+  pointer-events: none;
+}
+.jupiter-rocket-stage .vis-orbit,
+.jupiter-rocket-stage .vis-moon {
+  z-index: 0;
+}
+.jupiter-rocket-art {
+  position: relative;
+  z-index: 2;
+  display: block;
+  width: min(74%, 214px);
+  height: auto;
+  border: 1px solid rgba(248, 250, 252, 0.13);
+  border-radius: 28%;
+  box-shadow:
+    0 0 42px rgba(74, 222, 128, 0.16),
+    0 26px 62px rgba(0, 0, 0, 0.5),
+    inset 0 1px 0 rgba(248, 250, 252, 0.1);
+}
+.fleet-card .jupiter-rocket-art {
+  width: min(64%, 152px);
+}
+
+.jupiter-lockup {
+  position: relative;
+  z-index: 2;
+  display: inline-flex;
+  width: fit-content;
+  align-items: center;
+  gap: 14px;
+}
+.jupiter-lockup > img {
+  width: 52px;
+  height: 52px;
+  flex: 0 0 auto;
+  filter: drop-shadow(0 0 18px rgba(74, 222, 128, 0.24));
+}
+.jupiter-lockup > span {
+  display: grid;
+  gap: 1px;
+}
+.jupiter-lockup strong {
+  color: var(--white);
+  font-family: var(--font-display);
+  font-size: 1.26rem;
+  line-height: 1;
+  letter-spacing: 0.18em;
+}
+.jupiter-lockup small {
+  color: var(--green);
+  font-family: var(--font-mono);
+  font-size: 0.57rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+.jupiter-lockup.compact {
+  gap: 10px;
+}
+.jupiter-lockup.compact > img {
+  width: 38px;
+  height: 38px;
+}
+.jupiter-lockup.compact strong {
+  font-size: 0.92rem;
+}
+.jupiter-lockup.compact small {
+  font-size: 0.5rem;
+}
+.hero-lockup {
+  margin-bottom: 4px;
+}
+.hero-lockup > img {
+  width: 64px;
+  height: 64px;
+}
+.hero-lockup strong {
+  font-size: clamp(1.45rem, 2.2vw, 2rem);
+}
+.hero-lockup small {
+  font-size: 0.66rem;
 }
 @keyframes moonOrbit {
   from { transform: translate(-50%, -50%) rotate(0deg) translateX(var(--orbitR)) rotate(0deg); }
@@ -1803,7 +1930,7 @@ body.cursor-target .cursor-reticle { width: 64px; height: 64px; }
   text-transform: uppercase;
 }
 .fleet-card.products .fleet-specs span { color: var(--purple); }
-.fleet-card.infrastructure .fleet-specs span { color: var(--blue); }
+.fleet-card.infrastructure .fleet-specs span { color: var(--green); }
 .fleet-specs strong {
   color: var(--white);
   font-weight: 600;
@@ -1828,7 +1955,7 @@ body.cursor-target .cursor-reticle { width: 64px; height: 64px; }
   border-top: 1px solid rgba(74, 222, 128, 0.2);
   transition: color 200ms ease, padding 200ms ease;
 }
-.fleet-card.infrastructure .fleet-cta { color: var(--blue); border-top-color: rgba(56, 189, 248, 0.24); }
+.fleet-card.infrastructure .fleet-cta { color: var(--green); border-top-color: rgba(74, 222, 128, 0.24); }
 .fleet-card.products .fleet-cta   { color: var(--purple); border-top-color: rgba(139, 92, 246, 0.32); }
 .fleet-cta span { transition: transform 220ms ease; display: inline-block; }
 .fleet-cta:hover span { transform: translateX(4px); }
@@ -2587,9 +2714,9 @@ body.cursor-target .cursor-reticle { width: 64px; height: 64px; }
 .product-hero.elara .product-vis { border-color: rgba(139, 92, 246, 0.4); background: radial-gradient(closest-side at 50% 50%, rgba(139, 92, 246, 0.14), transparent 70%), rgba(10, 14, 24, 0.55); }
 .product-hero.elara .pv-top strong { color: var(--purple); }
 .product-hero.elara .pv-foot span { color: var(--purple); }
-.product-hero.jupiter .product-vis { border-color: rgba(56, 189, 248, 0.4); background: radial-gradient(closest-side at 50% 50%, rgba(56, 189, 248, 0.14), transparent 70%), rgba(10, 14, 24, 0.55); }
-.product-hero.jupiter .pv-top strong { color: var(--blue); }
-.product-hero.jupiter .pv-foot span { color: var(--blue); }
+.product-hero.jupiter .product-vis { border-color: rgba(74, 222, 128, 0.42); background: radial-gradient(closest-side at 50% 50%, rgba(74, 222, 128, 0.15), transparent 70%), rgba(6, 8, 15, 0.72); }
+.product-hero.jupiter .pv-top strong { color: var(--green-hot); }
+.product-hero.jupiter .pv-foot span { color: var(--green); }
 
 @media (max-width: 1100px) {
   .product-hero { grid-template-columns: 1fr; }
@@ -2763,7 +2890,7 @@ body.cursor-target .cursor-reticle { width: 64px; height: 64px; }
   overflow: hidden;
   min-height: 260px;
 }
-.proof-card img {
+.proof-card > img {
   width: 100%;
   height: 168px;
   object-fit: cover;
@@ -2772,12 +2899,36 @@ body.cursor-target .cursor-reticle { width: 64px; height: 64px; }
 }
 .proof-card-body { display: grid; gap: 10px; padding: 18px; }
 
+.jupiter-proof-card {
+  border-color: rgba(74, 222, 128, 0.28);
+  background:
+    radial-gradient(520px 240px at 50% 0%, rgba(74, 222, 128, 0.1), transparent 72%),
+    rgba(6, 8, 15, 0.76);
+}
+.jupiter-proof-card:hover {
+  border-color: rgba(74, 222, 128, 0.58);
+  box-shadow: 0 22px 50px rgba(0, 0, 0, 0.5), 0 0 34px rgba(74, 222, 128, 0.16);
+}
+.jupiter-proof-card > img {
+  filter: saturate(0.78) contrast(1.12) brightness(0.76);
+}
+.jupiter-proof-card .proof-card-body {
+  border-top: 1px solid rgba(74, 222, 128, 0.18);
+}
+.jupiter-proof-card .jupiter-lockup > img {
+  width: 38px;
+  height: 38px;
+  border: 0;
+  object-fit: contain;
+  filter: drop-shadow(0 0 18px rgba(74, 222, 128, 0.24));
+}
+
 a.proof-card { color: inherit; }
 
 .labs-grid { grid-auto-flow: dense; }
-.labs-grid .proof-card img { height: 190px; }
+.labs-grid .proof-card > img { height: 190px; }
 .labs-grid .lab-feature { grid-column: span 2; }
-.labs-grid .lab-feature img { height: 250px; }
+.labs-grid .lab-feature > img { height: 250px; }
 
 .lane-system {
   display: grid;
@@ -4358,7 +4509,7 @@ a.proof-card { color: inherit; }
 .stack-card:hover { transform: translateY(-2px); }
 .stack-card.bespoke:hover { border-color: rgba(74, 222, 128, 0.5); }
 .stack-card.products:hover { border-color: rgba(139, 92, 246, 0.55); }
-.stack-card.infrastructure:hover { border-color: rgba(56, 189, 248, 0.5); }
+.stack-card.infrastructure:hover { border-color: rgba(74, 222, 128, 0.54); }
 .stack-card .sc-meta {
   color: var(--green);
   font-family: var(--font-mono);
@@ -4368,7 +4519,7 @@ a.proof-card { color: inherit; }
   font-weight: 700;
 }
 .stack-card.products .sc-meta { color: var(--purple); }
-.stack-card.infrastructure .sc-meta { color: var(--blue); }
+.stack-card.infrastructure .sc-meta { color: var(--green); }
 .stack-card h3 {
   margin: 0;
   color: var(--white);
@@ -4389,7 +4540,7 @@ a.proof-card { color: inherit; }
   text-transform: uppercase;
 }
 .stack-card.products .stack-cta { color: var(--purple); border-top-color: rgba(139, 92, 246, 0.28); }
-.stack-card.infrastructure .stack-cta { color: var(--blue); border-top-color: rgba(56, 189, 248, 0.28); }
+.stack-card.infrastructure .stack-cta { color: var(--green); border-top-color: rgba(74, 222, 128, 0.28); }
 .stack-links {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
@@ -4585,22 +4736,22 @@ a.proof-card { color: inherit; }
 }
 
 .founder-note.jupiter {
-  border-color: rgba(56, 189, 248, 0.36);
+  border-color: rgba(74, 222, 128, 0.38);
   background:
-    radial-gradient(800px 480px at 0% 0%, rgba(56, 189, 248, 0.16), transparent 70%),
-    radial-gradient(700px 420px at 100% 100%, rgba(56, 189, 248, 0.08), transparent 70%),
+    radial-gradient(800px 480px at 0% 0%, rgba(74, 222, 128, 0.16), transparent 70%),
+    radial-gradient(700px 420px at 100% 100%, rgba(16, 185, 129, 0.09), transparent 70%),
     rgba(10, 14, 24, 0.62);
 }
 .founder-note.jupiter .fn-glow {
-  background: radial-gradient(closest-side at 25% 50%, rgba(56, 189, 248, 0.32), transparent 70%);
+  background: radial-gradient(closest-side at 25% 50%, rgba(74, 222, 128, 0.32), transparent 70%);
 }
 .founder-note.jupiter .fn-portrait img {
   filter: drop-shadow(0 24px 40px rgba(0, 0, 0, 0.55))
-          drop-shadow(0 0 60px rgba(56, 189, 248, 0.3));
+          drop-shadow(0 0 60px rgba(74, 222, 128, 0.28));
 }
-.founder-note.jupiter .fn-body .section-kicker { color: var(--blue); }
-.founder-note.jupiter .fn-quote em { color: var(--blue); }
-.founder-note.jupiter .fn-role { color: var(--blue); }
+.founder-note.jupiter .fn-body .section-kicker { color: var(--green); }
+.founder-note.jupiter .fn-quote em { color: var(--green); }
+.founder-note.jupiter .fn-role { color: var(--green); }
 
 /* ========================================================
    FOOTER SIGNATURE — small founder line in the footer brand area
