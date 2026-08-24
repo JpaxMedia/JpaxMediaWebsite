@@ -1789,7 +1789,7 @@ body.cursor-target .cursor-reticle { width: 64px; height: 64px; }
   position: relative;
   z-index: 2;
   display: block;
-  width: min(74%, 214px);
+  width: min(62%, 180px);
   height: auto;
   border: 1px solid rgba(248, 250, 252, 0.13);
   border-radius: 28%;
@@ -1799,7 +1799,7 @@ body.cursor-target .cursor-reticle { width: 64px; height: 64px; }
     inset 0 1px 0 rgba(248, 250, 252, 0.1);
 }
 .fleet-card .jupiter-rocket-art {
-  width: min(64%, 152px);
+  width: min(52%, 124px);
 }
 
 .jupiter-lockup {
