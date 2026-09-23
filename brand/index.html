@@ -1,0 +1,506 @@
+<title>JPAX Brand System</title>
+<meta name="theme-color" content="#05070A">
+<link rel="icon" type="image/svg+xml" href="logos/favicon.svg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wdth,wght@12..96,75..100,300..800&family=Instrument+Serif:ital@0;1&family=DM+Sans:ital,opsz,wght@0,9..40,300..700;1,9..40,400&family=JetBrains+Mono:wght@400;500;700&family=Caveat:wght@500;700&display=swap">
+<style>
+/* Single-look page on purpose: the brand lives at night. All colors painted explicitly. */
+:root{
+  color-scheme:dark;
+  --night-950:#030406;--night-900:#05070A;--night-850:#0A0E12;--night-800:#10151B;--night-700:#1A2129;--night-600:#2A333C;--night-400:#5D6873;--night-300:#8C9E99;--bone-200:#C9CCC4;--bone-100:#ECE8DF;
+  --green-900:#0B2518;--green-800:#123C27;--green-700:#1A5C3B;--green-600:#1F9D57;--green-500:#3FCB7A;--green-400:#4ADE80;--green-300:#7BEBA6;--green-200:#B9F6D0;
+  --purple-900:#140F26;--purple-800:#231A45;--purple-700:#3B2A70;--purple-600:#6A4BD0;--purple-500:#9B6CFF;--purple-300:#C4A8FF;--purple-200:#E4DAFF;
+  --afterglow:#D47BA0;--afterglow-deep:#7A3A64;--lamplight:#F2B36F;--lamplight-deep:#B06F3A;--valley-fog:#2A4A45;
+  --bg:var(--night-900);--surface:var(--night-850);--surface-2:var(--night-800);--line:rgba(236,232,223,.12);--line-2:rgba(236,232,223,.22);
+  --text:var(--bone-100);--soft:var(--bone-200);--muted:var(--night-300);--accent:var(--green-400);--accent-2:var(--purple-500);
+  --display:"Bricolage Grotesque","Arial Narrow",Arial,sans-serif;--voice:"Instrument Serif",Georgia,serif;--body:"DM Sans",system-ui,-apple-system,"Segoe UI",sans-serif;--mono:"JetBrains Mono",ui-monospace,Menlo,Consolas,monospace;--hand:"Caveat","Segoe Print",cursive;
+  --gutter:clamp(16px,4vw,56px);--max:1240px;
+}
+*{box-sizing:border-box}
+html{background:var(--bg)}
+body{background:var(--bg);color:var(--text);font:400 1rem/1.6 var(--body);-webkit-font-smoothing:antialiased;overflow-x:hidden}
+img{max-width:100%;display:block}
+a{color:var(--accent)}
+:focus-visible{outline:2px solid var(--accent);outline-offset:3px}
+.wrap{max-width:var(--max);margin-inline:auto;padding-inline:var(--gutter)}
+.label{font:500 .72rem/1.4 var(--mono);letter-spacing:.2em;text-transform:uppercase;color:var(--muted)}
+.label b{color:var(--accent);font-weight:500}
+.display{font-family:var(--display);font-weight:800;font-stretch:75%;font-variation-settings:"opsz" 96;letter-spacing:-.015em;line-height:.9;text-transform:uppercase;margin:0;text-wrap:balance}
+.voice{font-family:var(--voice);font-style:italic;font-weight:400;text-transform:none;letter-spacing:-.01em}
+.note{font:600 1.5rem/1.1 var(--hand);color:var(--accent);transform:rotate(-3deg);display:inline-block}
+p{max-width:62ch;color:var(--soft);margin:0}
+section{padding-block:clamp(64px,10vw,128px);border-top:1px solid var(--line);position:relative}
+.sec-head{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.2fr);gap:24px 48px;align-items:end;margin-bottom:clamp(36px,5vw,64px)}
+.sec-head h2{font-size:clamp(2.4rem,6vw,4.6rem)}
+.sec-head p{font-size:1.06rem}
+@media (max-width:760px){.sec-head{grid-template-columns:1fr}}
+.copy{all:unset;cursor:pointer}
+.copy:focus-visible{outline:2px solid var(--accent);outline-offset:3px}
+
+/* HERO */
+.hero{position:relative;min-height:min(92vh,880px);display:grid;align-items:end;isolation:isolate;overflow:hidden;border:0;padding:0}
+.hero-bg{position:absolute;inset:0;z-index:-2;background:url(backgrounds/dusk-road.webp) center 60%/cover no-repeat;animation:drift 40s ease-in-out infinite alternate}
+.hero::before{content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(180deg,rgba(5,7,10,.55) 0%,rgba(5,7,10,0) 30%,rgba(5,7,10,.2) 55%,rgba(5,7,10,.94) 100%)}
+@keyframes drift{from{transform:scale(1.04) translate(0,0)}to{transform:scale(1.1) translate(-1.5%,-1%)}}
+@media (prefers-reduced-motion:reduce){.hero-bg{animation:none}}
+.hero-top{position:absolute;top:0;left:0;right:0;display:flex;justify-content:space-between;align-items:center;gap:16px;padding:28px var(--gutter)}
+.hero-top img{height:44px;width:auto}
+.hero-body{padding:0 var(--gutter) clamp(40px,7vw,88px);max-width:var(--max);margin-inline:auto;width:100%;display:grid;gap:28px}
+.hero h1{font-size:clamp(3.4rem,12vw,10rem)}
+.hero h1 .voice{color:var(--accent);display:block;font-size:1.02em;line-height:.95;margin-top:.04em}
+.hero-meta{display:flex;flex-wrap:wrap;gap:12px 40px;align-items:end;justify-content:space-between}
+.hero-meta p{font-size:1.1rem;color:var(--text)}
+.hero .note{font-size:clamp(1.4rem,2.6vw,2rem)}
+
+/* SHIFT */
+.shift{display:grid;gap:0;border:1px solid var(--line);border-radius:8px;overflow:hidden}
+.shift-row{display:grid;grid-template-columns:1fr auto 1fr;gap:16px;align-items:center;padding:18px 24px;border-top:1px solid var(--line)}
+.shift-row:first-child{border-top:0;background:var(--surface)}
+.shift-row .from{color:var(--muted);text-decoration:line-through;text-decoration-color:rgba(140,158,153,.45)}
+.shift-row .to{color:var(--text)}
+.shift-row .arrow{color:var(--accent);font-family:var(--mono)}
+.shift-row:first-child .from,.shift-row:first-child .to{text-decoration:none}
+@media (max-width:640px){.shift-row{grid-template-columns:1fr;gap:4px}.shift-row .arrow{display:none}}
+
+/* LOGO */
+.logo-hero{display:grid;grid-template-columns:minmax(0,1.25fr) minmax(0,1fr);gap:clamp(24px,4vw,56px);align-items:stretch}
+@media (max-width:860px){.logo-hero{grid-template-columns:1fr}}
+.stage{position:relative;border-radius:10px;overflow:hidden;background:var(--night-950);display:grid;place-items:center;padding:clamp(40px,8vw,96px);isolation:isolate}
+.stage.fog{background:url(backgrounds/soft-fog.webp) center/cover}
+.stage.bone{background:var(--bone-100)}
+.stage img{width:min(100%,380px)}
+.stage .tag{position:absolute;left:16px;bottom:14px}
+.story{display:grid;gap:22px;align-content:center}
+.story h3{font:800 2rem/1 var(--display);font-stretch:75%;text-transform:uppercase;margin:0}
+.story ul{margin:0;padding:0;list-style:none;display:grid;gap:14px}
+.story li{display:grid;grid-template-columns:120px 1fr;gap:14px;color:var(--soft);font-size:.98rem}
+.story li span{font:500 .7rem/1.7 var(--mono);letter-spacing:.16em;text-transform:uppercase;color:var(--accent)}
+.retired{display:flex;gap:16px;align-items:center;padding:14px 16px;border:1px dashed var(--line-2);border-radius:8px}
+.retired img{width:64px;opacity:.55}
+.retired p{font-size:.88rem;color:var(--muted)}
+.grid{display:grid;gap:14px;margin-top:14px}
+.g2{grid-template-columns:repeat(2,minmax(0,1fr))}
+.g3{grid-template-columns:repeat(3,minmax(0,1fr))}
+.g4{grid-template-columns:repeat(4,minmax(0,1fr))}
+@media (max-width:860px){.g3,.g4{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media (max-width:520px){.g2,.g3,.g4{grid-template-columns:1fr}}
+.tile{border-radius:10px;overflow:hidden;background:var(--surface);display:grid;grid-template-rows:1fr auto}
+.tile .art{display:grid;place-items:center;padding:36px 28px;min-height:220px;background:var(--night-950)}
+.tile .art.bone{background:var(--bone-100)}
+.tile .art.fog{background:url(backgrounds/soft-fog.webp) center/cover}
+.tile .art.topo{background:url(backgrounds/topo-map.webp) center/cover}
+.tile .art img{max-height:150px;width:auto;max-width:100%}
+.tile .cap{padding:14px 16px;display:grid;gap:4px;border-top:1px solid var(--line)}
+.tile .cap strong{font:600 .95rem/1.3 var(--body)}
+.tile .cap span{font-size:.85rem;color:var(--muted)}
+.chip{display:inline-block;font:500 .64rem/1 var(--mono);letter-spacing:.16em;text-transform:uppercase;padding:5px 8px;border-radius:99px;border:1px solid rgba(74,222,128,.4);color:var(--accent);justify-self:start}
+.chip.alt{border-color:var(--line-2);color:var(--muted)}
+.rules{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:1px;background:var(--line);border:1px solid var(--line);border-radius:10px;overflow:hidden;margin-top:14px}
+@media (max-width:860px){.rules{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media (max-width:520px){.rules{grid-template-columns:1fr}}
+.rules div{background:var(--bg);padding:20px;display:grid;gap:8px;align-content:start}
+.rules h4{margin:0;font:600 1rem/1.3 var(--body)}
+.rules p{font-size:.9rem;color:var(--muted)}
+.rules .no h4::before{content:"Don't · ";color:var(--afterglow);font:500 .72rem var(--mono);letter-spacing:.14em;text-transform:uppercase}
+.rules .yes h4::before{content:"Do · ";color:var(--accent);font:500 .72rem var(--mono);letter-spacing:.14em;text-transform:uppercase}
+
+/* COLOR */
+.ratio{display:flex;height:64px;border-radius:8px;overflow:hidden;margin-bottom:10px}
+.ratio div{display:flex;align-items:end;padding:8px 10px;font:500 .66rem var(--mono);letter-spacing:.1em;min-width:0;white-space:nowrap;overflow:hidden}
+.ratio-legend{display:flex;flex-wrap:wrap;gap:6px 24px;margin-bottom:56px}
+.family{display:grid;grid-template-columns:220px minmax(0,1fr);gap:24px;padding-block:28px;border-top:1px solid var(--line)}
+@media (max-width:760px){.family{grid-template-columns:1fr}}
+.family h3{margin:0 0 6px;font:800 1.7rem/1 var(--display);font-stretch:75%;text-transform:uppercase}
+.family p{font-size:.9rem;color:var(--muted)}
+.swatches{display:grid;grid-template-columns:repeat(auto-fit,minmax(112px,1fr));gap:8px}
+.sw{display:grid;grid-template-rows:84px auto;border-radius:8px;overflow:hidden;background:var(--surface);text-align:left;border:1px solid var(--line)}
+.sw i{display:block;position:relative}
+.sw.core i::after{content:"core";position:absolute;top:8px;left:8px;font:500 .6rem var(--mono);letter-spacing:.14em;text-transform:uppercase;padding:3px 6px;border-radius:99px;background:rgba(5,7,10,.7);color:var(--bone-100)}
+.sw span{padding:9px 10px 10px;display:grid;gap:2px}
+.sw b{font:600 .84rem/1.2 var(--body);color:var(--text)}
+.sw code{font:500 .72rem var(--mono);color:var(--muted);letter-spacing:.04em}
+.sw:hover code{color:var(--accent)}
+
+/* TYPE */
+.specimen{display:grid;grid-template-columns:220px minmax(0,1fr);gap:24px;padding-block:32px;border-top:1px solid var(--line);align-items:baseline}
+@media (max-width:760px){.specimen{grid-template-columns:1fr;gap:10px}}
+.specimen .meta{display:grid;gap:6px}
+.specimen .meta strong{font:600 1rem var(--body)}
+.specimen .meta span{font-size:.85rem;color:var(--muted)}
+.sp-display{font-size:clamp(2.8rem,8vw,6.2rem)}
+.sp-voice{font:italic 400 clamp(2.4rem,6vw,4.4rem)/1 var(--voice);color:var(--text)}
+.sp-body{font-size:1.15rem;color:var(--soft);max-width:60ch}
+.sp-mono{font:500 .9rem/1.8 var(--mono);letter-spacing:.2em;text-transform:uppercase;color:var(--muted)}
+.sp-hand{font:600 clamp(2rem,4vw,2.8rem)/1 var(--hand);color:var(--accent);transform:rotate(-2deg);display:inline-block}
+.combo{margin-top:40px;border-radius:12px;overflow:hidden;position:relative;padding:clamp(28px,6vw,72px);background:url(backgrounds/aurora-haze.webp) center/cover;isolation:isolate}
+.combo::before{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(5,7,10,.85),rgba(5,7,10,.35));z-index:-1}
+.combo h3{font-size:clamp(2.6rem,7vw,5.6rem)}
+.combo h3 .voice{color:var(--accent)}
+.combo .row{display:flex;flex-wrap:wrap;gap:16px 40px;align-items:end;justify-content:space-between;margin-top:24px}
+
+/* BACKGROUNDS */
+.bg-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px}
+@media (max-width:860px){.bg-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media (max-width:520px){.bg-grid{grid-template-columns:1fr}}
+.bg{border-radius:10px;overflow:hidden;background:var(--surface);border:1px solid var(--line)}
+.bg img{aspect-ratio:16/9;object-fit:cover;width:100%}
+.bg div{padding:14px 16px;display:grid;gap:4px}
+.bg strong{font:600 .98rem var(--body)}
+.bg span{font-size:.86rem;color:var(--muted)}
+.bg code{font:500 .7rem var(--mono);color:var(--night-400)}
+
+/* IN USE */
+.use{display:grid;grid-template-columns:minmax(0,.8fr) minmax(0,1.2fr);gap:14px}
+@media (max-width:860px){.use{grid-template-columns:1fr}}
+.post{aspect-ratio:4/5;border-radius:10px;overflow:hidden;position:relative;background:url(backgrounds/dusk-road-portrait.webp) center/cover;padding:26px;display:grid;grid-template-rows:auto 1fr auto;isolation:isolate}
+.post::before{content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(180deg,rgba(5,7,10,.6),rgba(5,7,10,0) 35%,rgba(5,7,10,0) 55%,rgba(5,7,10,.8))}
+.post-top{display:flex;justify-content:space-between;align-items:center}
+.post-top img{height:26px;width:auto}
+.post h3{font-size:clamp(2.2rem,5vw,3.4rem);align-self:start;margin-top:12%}
+.post h3 .voice{color:var(--accent);display:block}
+.post .note{font-size:1.3rem;justify-self:end;margin-top:14px}
+.post-foot{display:flex;justify-content:space-between;gap:10px}
+.site{border-radius:10px;overflow:hidden;border:1px solid var(--line);background:var(--bg);display:grid;grid-template-rows:auto 1fr}
+.site-bar{display:flex;gap:6px;padding:10px 12px;background:var(--surface);border-bottom:1px solid var(--line);align-items:center}
+.site-bar i{width:9px;height:9px;border-radius:50%;background:var(--night-600)}
+.site-bar span{margin-left:10px;font:500 .7rem var(--mono);color:var(--muted)}
+.site-hero{position:relative;padding:clamp(24px,4vw,44px);background:url(backgrounds/aurora-haze.webp) center/cover;display:grid;gap:18px;align-content:space-between;min-height:360px;isolation:isolate}
+.site-hero::before{content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(90deg,rgba(5,7,10,.88) 20%,rgba(5,7,10,.3))}
+.site-nav{display:flex;justify-content:space-between;align-items:center;gap:12px}
+.site-nav img{height:30px;width:auto}
+.site-nav nav{display:flex;gap:18px;font:500 .8rem var(--body);color:var(--soft)}
+@media (max-width:520px){.site-nav nav{display:none}}
+.site-hero h3{font-size:clamp(2rem,5vw,3.6rem);max-width:14ch}
+.site-hero h3 .voice{color:var(--accent)}
+.site-hero p{font-size:.98rem;max-width:44ch}
+.btns{display:flex;flex-wrap:wrap;gap:10px}
+.btn{font:600 .88rem var(--body);padding:12px 18px;border-radius:99px;text-decoration:none;border:1px solid var(--line-2);color:var(--text)}
+.btn.primary{background:var(--accent);color:var(--night-900);border-color:var(--accent)}
+.cards{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px;margin-top:14px}
+@media (max-width:860px){.cards{grid-template-columns:1fr}}
+.card{aspect-ratio:1.75/1;border-radius:10px;overflow:hidden;position:relative;padding:22px;display:grid;align-content:space-between;isolation:isolate}
+.card.back{background:var(--night-950);place-items:center;align-content:center}
+.card.back img{width:34%}
+.card.back::after{content:"";position:absolute;inset:0;background:url(backgrounds/topo-map.webp) center/cover;opacity:.55;z-index:-1}
+.card.front{background:var(--bone-100);color:var(--night-900)}
+.card.front img{height:26px;width:auto}
+.card.front strong{display:block;font:800 1.5rem/1 var(--display);font-stretch:75%;text-transform:uppercase}
+.card.front .voice{font-size:1.15rem;color:var(--green-700)}
+.card.front small{font:500 .64rem/1.7 var(--mono);letter-spacing:.14em;text-transform:uppercase;color:#4a524f}
+.card.avatar{background:url(backgrounds/orbit.webp) center/cover;display:flex;gap:18px;align-items:center;justify-content:center}
+.card.avatar img{width:30%;border-radius:50%;box-shadow:0 0 0 1px var(--line-2)}
+.card.avatar img.sq{border-radius:22%}
+
+/* PHOTO DIRECTION */
+.mood{display:grid;grid-template-columns:1.2fr 1fr 1fr 1.2fr;gap:10px}
+@media (max-width:760px){.mood{grid-template-columns:repeat(2,minmax(0,1fr))}}
+.mood figure{margin:0;border-radius:10px;overflow:hidden;position:relative;aspect-ratio:4/5}
+.mood img{width:100%;height:100%;object-fit:cover}
+.mood figcaption{position:absolute;left:10px;bottom:10px;font:500 .64rem var(--mono);letter-spacing:.14em;text-transform:uppercase;background:rgba(5,7,10,.72);padding:5px 8px;border-radius:99px}
+.recipe{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:1px;background:var(--line);border:1px solid var(--line);border-radius:10px;overflow:hidden;margin-block:14px 48px}
+@media (max-width:760px){.recipe{grid-template-columns:1fr}}
+.recipe div{background:var(--bg);padding:20px;display:grid;gap:8px;align-content:start}
+.recipe h4{margin:0;font:600 1rem var(--body)}
+.recipe p{font-size:.92rem;color:var(--muted)}
+.prompts{display:grid;gap:12px}
+.prompt{border:1px solid var(--line);border-radius:10px;background:var(--surface);padding:18px 20px;display:grid;grid-template-columns:minmax(0,1fr) auto;gap:10px 18px;align-items:start}
+.prompt h4{margin:0;font:600 1rem var(--body)}
+.prompt p{grid-column:1/-1;font:400 .9rem/1.65 var(--mono);color:var(--soft);max-width:none}
+.prompt button{font:500 .7rem var(--mono);letter-spacing:.12em;text-transform:uppercase;background:transparent;color:var(--accent);border:1px solid rgba(74,222,128,.4);padding:7px 12px;border-radius:99px;cursor:pointer}
+.prompt button:hover{background:rgba(74,222,128,.1)}
+
+/* VOICE */
+.lines{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:1px;background:var(--line);border:1px solid var(--line);border-radius:10px;overflow:hidden}
+@media (max-width:640px){.lines{grid-template-columns:1fr}}
+.lines div{background:var(--bg);padding:24px;display:grid;gap:8px}
+.lines q{quotes:none;font:italic 400 1.9rem/1.1 var(--voice);color:var(--text)}
+.lines span{font-size:.88rem;color:var(--muted)}
+
+/* DECIDE */
+.decide{background:url(backgrounds/light-trails.webp) center/cover;border:0;isolation:isolate}
+.decide::before{content:"";position:absolute;inset:0;background:rgba(5,7,10,.7);z-index:-1}
+.options{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px}
+@media (max-width:860px){.options{grid-template-columns:1fr}}
+.opt{border:1px solid var(--line-2);border-radius:10px;padding:22px;background:rgba(10,14,18,.78);display:grid;gap:12px;align-content:start}
+.opt.rec{border-color:rgba(74,222,128,.55)}
+.opt img{height:64px;width:auto}
+.opt h4{margin:0;font:800 1.5rem/1 var(--display);font-stretch:75%;text-transform:uppercase}
+.opt p{font-size:.92rem}
+footer{padding:40px var(--gutter);display:flex;justify-content:space-between;flex-wrap:wrap;gap:16px;align-items:center;border-top:1px solid var(--line);max-width:var(--max);margin-inline:auto}
+footer img{height:34px;width:auto}
+.toast{position:fixed;left:50%;bottom:calc(24px + env(safe-area-inset-bottom,0px));transform:translateX(-50%) translateY(20px);opacity:0;transition:.25s;background:var(--bone-100);color:var(--night-900);font:600 .85rem var(--body);padding:10px 16px;border-radius:99px;pointer-events:none}
+.toast.on{opacity:1;transform:translateX(-50%)}
+</style>
+
+<header class="hero">
+  <div class="hero-bg" role="img" aria-label="A green light trail winds down a dark mountain road toward a glowing valley city at dusk"></div>
+  <div class="hero-top">
+    <img src="logos/lockup-horizontal-dark.svg" alt="JPAX Media">
+    <span class="label">Brand system · v2 · Sept 2026</span>
+  </div>
+  <div class="hero-body">
+    <span class="label"><b>●</b>&nbsp; Grounded futurism</span>
+    <h1 class="display">There’s a <span class="voice">better way.</span></h1>
+    <div class="hero-meta">
+      <p>Same night. Same signal green. A more human JPAX: real places, real light, and systems that connect people to where they’re going.</p>
+      <span class="note">Built around the real problem.</span>
+    </div>
+  </div>
+</header>
+
+<main>
+<section id="shift">
+  <div class="wrap">
+    <div class="sec-head">
+      <div><span class="label">The shift</span><h2 class="display">Less dashboard. <span class="voice" style="color:var(--accent)">More world.</span></h2></div>
+      <p>The colors and the dark stay. What changes is where the light comes from. It used to come from screens and HUD glow. Now it comes from real scenes: dusk, a road, a lamp on a desk. The technology is still there; it just stops being the subject.</p>
+    </div>
+    <div class="shift" role="table" aria-label="Before and after">
+      <div class="shift-row" role="row"><span class="label from" role="columnheader">Leaving behind</span><span class="arrow" aria-hidden="true"></span><span class="label to" role="columnheader" style="color:var(--accent)">Moving toward</span></div>
+      <div class="shift-row" role="row"><span class="from">Glowing UI panels, grids, HUD overlays</span><span class="arrow">→</span><span class="to">Light inside real places: dusk, roads, desks, city lights</span></div>
+      <div class="shift-row" role="row"><span class="from">A sharp, esports-style JP shield</span><span class="arrow">→</span><span class="to">The Route: J and P drawn as one road</span></div>
+      <div class="shift-row" role="row"><span class="from">Chakra Petch: techno, squared-off</span><span class="arrow">→</span><span class="to">Condensed grotesk plus a serif voice with a human tone</span></div>
+      <div class="shift-row" role="row"><span class="from">Cold white #F8FAFC · blue and amber UI accents</span><span class="arrow">→</span><span class="to">Warm Bone text · dusk and lamplight only as scene light</span></div>
+      <div class="shift-row" role="row"><span class="from">“The digital system behind your business”</span><span class="arrow">→</span><span class="to">“There’s a better way.”</span></div>
+    </div>
+  </div>
+</section>
+
+<section id="logo">
+  <div class="wrap">
+    <div class="sec-head">
+      <div><span class="label">The new mark</span><h2 class="display">The <span class="voice" style="color:var(--accent)">Route.</span></h2></div>
+      <p>One continuous road writes both letters. The J comes in from the left, climbs, and the P loops back to where it started. It’s a journey that connects to itself, a system that works. The dashed center line keeps it from reading as a font. It’s a road, and roads are human.</p>
+    </div>
+    <div class="logo-hero">
+      <div class="stage fog">
+        <img src="logos/route-mark-bone.svg" alt="The Route mark: the letters J and P formed by one continuous road with a dashed center line">
+        <span class="tag label">Primary mark · Bone on Night</span>
+      </div>
+      <div class="story">
+        <h3>What it carries</h3>
+        <ul>
+          <li><span>The road</span>From your reference: the light trail through the valley. There’s a way through.</li>
+          <li><span>One line</span>J and P share a single stem. Systems that connect, nothing bolted on.</li>
+          <li><span>The loop</span>The P closes back on itself. The work comes back around and keeps paying off.</li>
+          <li><span>Center line</span>Human-scale and familiar. Anyone can read it, no tech literacy needed.</li>
+        </ul>
+        <div class="retired">
+          <img src="reference/old-logo-white.svg" alt="Previous JPAX logo, a sharp angular JP monogram">
+          <p><strong style="color:var(--soft)">Retiring:</strong> the 2025 JP monogram. It did its job, but it reads as gaming or apparel, not as a guide you’d trust with your business.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="grid g2" style="margin-top:14px">
+      <div class="tile"><div class="art"><img src="logos/lockup-horizontal-dark.svg" alt="Horizontal lockup on dark"></div><div class="cap"><strong>Horizontal lockup</strong><span>Default for site headers, decks, email signatures.</span></div></div>
+      <div class="tile"><div class="art bone"><img src="logos/lockup-horizontal-light.svg" alt="Horizontal lockup on bone"></div><div class="cap"><strong>Horizontal lockup · on Bone</strong><span>Print, invoices, anything on paper. The sun turns Forest green.</span></div></div>
+    </div>
+
+    <div class="grid g4">
+      <div class="tile"><div class="art"><img src="logos/wordmark-dark.svg" alt="JPAX wordmark with a peak-shaped A and a green sun"></div><div class="cap"><span class="chip">Wordmark</span><strong>The Peak A</strong><span>The A is a mountain with the sun coming up inside it. Works on its own.</span></div></div>
+      <div class="tile"><div class="art"><img src="logos/horizon-emblem-dark.svg" alt="Horizon emblem: a road leading to a rising sun inside a ring"></div><div class="cap"><span class="chip">Emblem</span><strong>Horizon</strong><span>A road to the sunrise. For avatars, stickers, merch, video end cards.</span></div></div>
+      <div class="tile"><div class="art topo"><img src="logos/seal-dark.svg" alt="Circular seal reading There's a better way, JPAX Media, Greenville SC"></div><div class="cap"><span class="chip">Seal</span><strong>The Seal</strong><span>Local and made by hand. Packaging, proposals, “made by JPAX” stamps.</span></div></div>
+      <div class="tile"><div class="art"><img src="logos/app-icon.svg" alt="App icon: green Route mark on a night rounded square" style="max-height:120px"></div><div class="cap"><span class="chip">Icon</span><strong>App + favicon</strong><span>Green road on Night. Holds up down to 16px.</span></div></div>
+    </div>
+
+    <div class="grid g4">
+      <div class="tile"><div class="art"><img src="logos/lockup-stacked-dark.svg" alt="Stacked lockup"></div><div class="cap"><strong>Stacked lockup</strong><span>Square spaces, social covers.</span></div></div>
+      <div class="tile"><div class="art"><img src="logos/route-mark-green.svg" alt="Route mark in signal green"></div><div class="cap"><strong>Signal green mark</strong><span>When the mark is the hero on its own.</span></div></div>
+      <div class="tile"><div class="art"><img src="logos/route-mark-purple.svg" alt="Route mark in dusk purple"></div><div class="cap"><strong>Dusk mark</strong><span>AI / product layer (TradeOS, Jupiter).</span></div></div>
+      <div class="tile"><div class="art"><img src="logos/roadj-mark-dark.svg" alt="Alternative mark: the letter J as a road with a green dot"></div><div class="cap"><span class="chip alt">Alternate</span><strong>Road J</strong><span>A simpler, single-letter option if you’d rather lead with just the J.</span></div></div>
+    </div>
+
+    <div class="rules">
+      <div class="yes"><h4>Give it a road’s width</h4><p>Clear space on every side = the width of the road. Minimum: 20px for the mark, 120px for the lockup.</p></div>
+      <div class="yes"><h4>Flat, one color</h4><p>Bone, Night, Signal or Dusk. The mark is solid; the world around it does the glowing.</p></div>
+      <div class="no"><h4>Glow or gradients</h4><p>No neon outer glow and no green-to-purple fill. That’s the old dashboard look coming back.</p></div>
+      <div class="no"><h4>Redraw the line</h4><p>Don’t stretch, rotate, outline or drop the center line. The dashes are what make it a road.</p></div>
+    </div>
+  </div>
+</section>
+
+<section id="color">
+  <div class="wrap">
+    <div class="sec-head">
+      <div><span class="label">Color</span><h2 class="display">Your colors, <span class="voice" style="color:var(--accent)">with depth.</span></h2></div>
+      <p>Same Signal green, same Night. Each now has a full range of shades so you can build depth and fog instead of flat neon. Two atmosphere colors, pulled straight from your reference images, bring the warmth: dusk rose and lamplight amber. Tap any swatch to copy its hex.</p>
+    </div>
+    <div class="ratio" aria-label="Color proportion">
+      <div style="flex:66;background:var(--night-900);border:1px solid var(--line);color:var(--muted)">NIGHT 66%</div>
+      <div style="flex:18;background:var(--bone-100);color:var(--night-900)">BONE 18%</div>
+      <div style="flex:9;background:var(--green-400);color:var(--night-900)">SIGNAL 9%</div>
+      <div style="flex:5;background:var(--purple-500);color:var(--night-900)">DUSK 5%</div>
+      <div style="flex:2;background:linear-gradient(90deg,var(--afterglow),var(--lamplight))"></div>
+    </div>
+    <div class="ratio-legend"><span class="label">Rough share of any layout</span><span class="label"><b>Green moves</b> · CTAs, the key word, the path</span><span class="label" style="color:var(--purple-300)">Purple deepens · AI, product, the layer behind</span><span class="label" style="color:var(--afterglow)">Atmosphere · scene light only, &lt;2%</span></div>
+    <div id="families"></div>
+  </div>
+</section>
+
+<section id="type">
+  <div class="wrap">
+    <div class="sec-head">
+      <div><span class="label">Typography</span><h2 class="display">Structure <span class="voice" style="color:var(--accent)">and a voice.</span></h2></div>
+      <p>Five fonts, each with a single job. The signature move: a condensed, uppercase statement that breaks into a serif italic, as if a person leaned in to finish the sentence. All are free on Google Fonts and already load on the web.</p>
+    </div>
+    <div class="specimen"><div class="meta"><span class="label"><b>Display</b></span><strong>Bricolage Grotesque</strong><span>ExtraBold 800 · width 75 · caps · −1.5% tracking. Headlines only.</span></div><div class="display sp-display">Less busywork. More momentum.</div></div>
+    <div class="specimen"><div class="meta"><span class="label"><b>Voice</b></span><strong>Instrument Serif Italic</strong><span>Regular. The human word in a headline, pull quotes, sign-offs. Never more than a few words.</span></div><div class="sp-voice">good ideas travel further.</div></div>
+    <div class="specimen"><div class="meta"><span class="label"><b>Body</b></span><strong>DM Sans</strong><span>400 / 500 / 600. Paragraphs, UI, buttons. Warm and clear at any size.</span></div><p class="sp-body">We build the websites, automations and content systems that take busywork off your plate, so a small team can move like a bigger one. You talk to the person building it, every time.</p></div>
+    <div class="specimen"><div class="meta"><span class="label"><b>Detail</b></span><strong>JetBrains Mono</strong><span>500 · caps · +20% tracking. Labels, metadata, coordinates. The quiet systems layer.</span></div><div class="sp-mono">Greenville, SC · 34.85° N · Ideas · Systems · Results</div></div>
+    <div class="specimen"><div class="meta"><span class="label"><b>Note</b></span><strong>Caveat</strong><span>600 · rotated −2° to −4°. One handwritten note per layout, max.</span></div><div><span class="sp-hand">Start with the real problem.</span></div></div>
+
+    <div class="combo">
+      <span class="label">All five together</span>
+      <h3 class="display" style="margin-top:14px">Systems that <span class="voice">connect.</span></h3>
+      <div class="row"><p style="color:var(--text)">Your website, your follow-ups and your content, working as one road instead of ten detours.</p><span class="note">This part matters.</span></div>
+    </div>
+  </div>
+</section>
+
+<section id="backgrounds">
+  <div class="wrap">
+    <div class="sec-head">
+      <div><span class="label">Backgrounds</span><h2 class="display">Atmosphere, <span class="voice" style="color:var(--accent)">not interface.</span></h2></div>
+      <p>Ten backgrounds, built from your references in the brand colors, each 26–63 KB so they load fast. The four main scenes come in 16:9 for the web and 4:5 for social. They live in <code style="font-family:var(--mono);color:var(--soft)">brand/backgrounds/</code>, along with a tileable film-grain overlay.</p>
+    </div>
+    <div class="bg-grid">
+      <figure class="bg" style="margin:0"><img src="backgrounds/dusk-road.webp" alt="Dusk mountain road with a green light trail into a lit valley" loading="lazy"><div><strong>Dusk Road</strong><span>The flagship. Home hero, “there’s a better way.”</span><code>dusk-road · dusk-road-portrait</code></div></figure>
+      <figure class="bg" style="margin:0"><img src="backgrounds/aurora-haze.webp" alt="Green and violet haze with drifting light particles" loading="lazy"><div><strong>Aurora Haze</strong><span>Ideas and creative. Service pages, quote cards.</span><code>aurora-haze · aurora-haze-portrait</code></div></figure>
+      <figure class="bg" style="margin:0"><img src="backgrounds/light-trails.webp" alt="Long-exposure green light trails curving across darkness" loading="lazy"><div><strong>Light Trails</strong><span>Momentum and automation. Process sections, reels.</span><code>light-trails · light-trails-portrait</code></div></figure>
+      <figure class="bg" style="margin:0"><img src="backgrounds/orbit.webp" alt="Planet edge with a green-to-violet rim light and orbit lines" loading="lazy"><div><strong>Orbit</strong><span>Products and AI (TradeOS, Jupiter). Purple leads here.</span><code>orbit · orbit-portrait</code></div></figure>
+      <figure class="bg" style="margin:0"><img src="backgrounds/topo-map.webp" alt="Faint contour lines like a topographic map" loading="lazy"><div><strong>Topo Map</strong><span>Grounded texture behind case studies, the “local” story.</span><code>topo-map</code></div></figure>
+      <figure class="bg" style="margin:0"><img src="backgrounds/soft-fog.webp" alt="Soft dark fog with faint green and violet light" loading="lazy"><div><strong>Soft Fog</strong><span>Quiet ground for long text, pricing, forms.</span><code>soft-fog · grain-tile.png</code></div></figure>
+    </div>
+  </div>
+</section>
+
+<section id="use">
+  <div class="wrap">
+    <div class="sec-head">
+      <div><span class="label">In use</span><h2 class="display">How it <span class="voice" style="color:var(--accent)">shows up.</span></h2></div>
+      <p>Mockups built from the real assets: a social post, the home page hero, business cards and profile avatars. One idea per surface, one green moment, and one handwritten note at most.</p>
+    </div>
+    <div class="use">
+      <div class="post">
+        <div class="post-top"><img src="logos/lockup-horizontal-dark.svg" alt="JPAX Media"><span class="label">01 / 03</span></div>
+        <div><h3 class="display">Good ideas <span class="voice">travel further.</span></h3><span class="note">Give it somewhere to go.</span></div>
+        <div class="post-foot"><span class="label">Strategy · Creative · Systems</span></div>
+      </div>
+      <div class="site">
+        <div class="site-bar"><i></i><i></i><i></i><span>jpaxmedia.com</span></div>
+        <div class="site-hero">
+          <div class="site-nav"><img src="logos/lockup-horizontal-dark.svg" alt="JPAX Media"><nav><span>Work</span><span>Services</span><span>About</span></nav></div>
+          <div style="display:grid;gap:16px">
+            <span class="label"><b>●</b>&nbsp; Founder-led · Greenville, SC</span>
+            <h3 class="display">There’s a <span class="voice">better way</span> to run your business.</h3>
+            <p>Websites, automations and content, built by one person who actually picks up the phone.</p>
+            <div class="btns"><a class="btn primary" href="#use">Start a project</a><a class="btn" href="#use">See the work</a></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="cards">
+      <div class="card back"><img src="logos/route-mark-green.svg" alt="Business card back with green Route mark"></div>
+      <div class="card front">
+        <img src="logos/lockup-horizontal-light.svg" alt="JPAX Media">
+        <div><strong>Julian Johnson</strong><span class="voice">founder, builder, guide.</span></div>
+        <small>jpaxmedia.com · Greenville, SC</small>
+      </div>
+      <div class="card avatar"><img src="logos/horizon-emblem-dark.svg" alt="Horizon emblem avatar" style="background:var(--night-900);padding:6%"><img class="sq" src="logos/app-icon.svg" alt="App icon avatar"></div>
+    </div>
+  </div>
+</section>
+
+<section id="photo">
+  <div class="wrap">
+    <div class="sec-head">
+      <div><span class="label">Photo direction</span><h2 class="display">Real places, <span class="voice" style="color:var(--accent)">lit like film.</span></h2></div>
+      <p>Your references already show the direction. The rule that ties them together: green and purple are always light in the scene (a lamp, a trail, the sky), never an overlay stuck on top. And a person or a place is in most frames. You at the desk is the most on-brand image you have.</p>
+    </div>
+    <div class="mood">
+      <figure><img src="reference/mood-founder.webp" alt="Founder working at a laptop at night beside a green desk lamp, purple dusk city outside"><figcaption>The person</figcaption></figure>
+      <figure><img src="reference/mood-road.webp" alt="Green light trails on a mountain road at dusk"><figcaption>The path</figcaption></figure>
+      <figure><img src="reference/mood-orbit.webp" alt="Planet edge with orbit lines"><figcaption>The scale</figcaption></figure>
+      <figure><img src="reference/mood-haze.webp" alt="Green and violet smoke with bokeh"><figcaption>The atmosphere</figcaption></figure>
+    </div>
+    <div class="recipe">
+      <div><span class="label"><b>Light</b></span><h4>Blue hour and practical lamps</h4><p>Dusk or night. Green comes from a real object: a lamp, taillights, a screen. Purple comes from the sky. Warm amber city lights add the human warmth.</p></div>
+      <div><span class="label"><b>Texture</b></span><h4>Grain, fog, real surfaces</h4><p>35mm film grain, haze, wood desks, paper notebooks, moss, wet asphalt. Hand-sketched diagrams beat any UI screenshot.</p></div>
+      <div><span class="label"><b>Frame</b></span><h4>Leave room to breathe</h4><p>Wide establishing shots with plenty of sky, or close, candid hands at work. Negative space goes top-left for headlines.</p></div>
+    </div>
+    <span class="label">Prompt pack · works in Midjourney, Flux, Imagen, Veo, Seedance</span>
+    <div class="prompts" style="margin-top:14px" id="prompts"></div>
+  </div>
+</section>
+
+<section id="voice">
+  <div class="wrap">
+    <div class="sec-head">
+      <div><span class="label">Voice</span><h2 class="display">Say it <span class="voice" style="color:var(--accent)">like a person.</span></h2></div>
+      <p>Short, plain and a little warm. Talk about what the client gets back (time, calm, momentum), not the tech. Speak as “we” on the site and “I” anywhere personal.</p>
+    </div>
+    <div class="lines">
+      <div><q>There’s a better way.</q><span>Master line. Once per page, given room.</span></div>
+      <div><q>Built around the real problem.</q><span>Discovery, proposals, the “how we work” story.</span></div>
+      <div><q>Less busywork. More momentum.</q><span>Automation and systems offers.</span></div>
+      <div><q>Good ideas travel further.</q><span>Content, video and brand work.</span></div>
+      <div><q>Systems that connect.</q><span>When the whole stack is the point.</span></div>
+      <div><q>Human direction matters.</q><span>Where AI comes up: you’re still the one steering.</span></div>
+    </div>
+  </div>
+</section>
+
+<section id="decide" class="decide">
+  <div class="wrap">
+    <div class="sec-head">
+      <div><span class="label">Your call</span><h2 class="display">Pick the <span class="voice" style="color:var(--accent)">lead mark.</span></h2></div>
+      <p>The whole system works with any of these as the primary. Everything else on this page stays the same.</p>
+    </div>
+    <div class="options">
+      <div class="opt rec"><img src="logos/route-mark-bone.svg" alt=""><span class="chip">Recommended</span><h4>The Route</h4><p>Most ownable and the most meaning per stroke. Reads as JP and as a road. Pair it with the Peak A wordmark.</p></div>
+      <div class="opt"><img src="logos/horizon-emblem-dark.svg" alt=""><span class="chip alt">Option</span><h4>Horizon-led</h4><p>The most cinematic and the calmest. It doesn’t spell JPAX, so the wordmark does more of the work.</p></div>
+      <div class="opt"><img src="logos/wordmark-dark.svg" alt="" style="height:44px;margin-block:10px"><span class="chip alt">Option</span><h4>Wordmark only</h4><p>No symbol, just the Peak A. Confident and minimal; the Seal handles the badge moments.</p></div>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer>
+  <img src="logos/lockup-horizontal-dark.svg" alt="JPAX Media">
+  <span class="label">Ideas · Systems · Results</span>
+  <span class="note" style="font-size:1.4rem">Let’s build it better.</span>
+</footer>
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+<script>
+const FAMILIES=[
+ {name:"Night",note:"The ground. Neutrals leaning faintly green-blue so they sit with the signal.",sw:[["Void","#030406"],["Night","#05070A",1],["Ink","#0A0E12"],["Slate","#10151B"],["Stone","#1A2129"],["Ridge","#2A333C"],["Fog","#5D6873"],["Mist","#8C9E99"],["Ash","#C9CCC4"],["Bone","#ECE8DF",1]]},
+ {name:"Signal",note:"Action, progress, the path forward. On Bone, use Forest for shapes and Pine for text.",sw:[["Moss","#0B2518"],["Deep pine","#123C27"],["Pine","#1A5C3B"],["Forest","#1F9D57"],["Trail","#3FCB7A"],["Signal","#4ADE80",1],["Glow","#7BEBA6"],["Mint mist","#B9F6D0"]]},
+ {name:"Dusk",note:"Intelligence, depth, the AI layer. Deep tones make night skies; light tones make haze.",sw:[["Deep dusk","#140F26"],["Night sky","#231A45"],["Twilight","#3B2A70"],["Violet","#6A4BD0"],["Dusk","#9B6CFF",1],["Lilac","#C4A8FF"],["Haze","#E4DAFF"]]},
+ {name:"Atmosphere",note:"Pulled from your references. Scene light only: horizon glow, city lights, valley fog.",sw:[["Afterglow","#D47BA0"],["Afterglow deep","#7A3A64"],["Lamplight","#F2B36F"],["Lamplight deep","#B06F3A"],["Valley fog","#2A4A45"]]}
+];
+const fam=document.getElementById('families');
+fam.innerHTML=FAMILIES.map(f=>`<div class="family"><div><h3>${f.name}</h3><p>${f.note}</p></div><div class="swatches">${f.sw.map(([n,h,c])=>`<button class="copy sw${c?' core':''}" data-copy="${h}" aria-label="Copy ${n} ${h}"><i style="background:${h}"></i><span><b>${n}</b><code>${h}</code></span></button>`).join('')}</div></div>`).join('');
+
+const LOOK="shot on 35mm film, blue hour, soft volumetric haze, subtle film grain, deep blacks, restrained color, green light only from real sources, purple from the dusk sky, warm amber city lights, cinematic, photoreal, no text, no UI overlays";
+const PROMPTS=[
+ ["Founder at work","A focused founder with curly hair tied back, black button-up shirt, working on a laptop at a dark wooden desk at night; a green desk lamp is the key light, an open notebook with hand-drawn system diagrams and a latte beside the laptop; tall window behind showing a purple dusk skyline with scattered city lights; three-quarter angle, shallow depth of field, "+LOOK+", 4:5"],
+ ["The road home","Aerial view of a winding mountain road through a misty pine forest at dusk, long-exposure green taillight trails tracing the curves, valley town lights glowing amber in the distance under a purple and rose sky, "+LOOK+", 16:9"],
+ ["Hands and plans","Close-up of hands sketching a simple flowchart in a paper notebook on a dark desk at night, a phone and a coffee mug at the edge of frame, green lamp spill across the page, "+LOOK+", 4:5"],
+ ["On the job site","A local tradesman in work clothes checking a phone beside a work truck at dusk in a quiet Southern neighborhood, porch lights warm, soft green glow from the phone screen across the face, candid documentary moment, "+LOOK+", 4:5"],
+ ["Threshold","A lone person standing at a mountain overlook at blue hour looking toward a glowing valley city, a road winding below with faint green light trails, huge purple sky, human scale, "+LOOK+", 16:9"]
+];
+document.getElementById('prompts').innerHTML=PROMPTS.map(([t,p],i)=>`<div class="prompt"><h4>${t}</h4><button type="button" data-copy-idx="${i}">Copy prompt</button><p>${p}</p></div>`).join('');
+
+const toast=document.getElementById('toast');let tt;
+function say(m){toast.textContent=m;toast.classList.add('on');clearTimeout(tt);tt=setTimeout(()=>toast.classList.remove('on'),1600)}
+function copy(text,label){
+  if(navigator.clipboard&&navigator.clipboard.writeText){navigator.clipboard.writeText(text).then(()=>say(label),()=>say('Copy blocked. Select the text instead'))}else say('Copy blocked. Select the text instead');
+}
+document.addEventListener('click',e=>{
+  const s=e.target.closest('[data-copy]');if(s){copy(s.dataset.copy,'Copied '+s.dataset.copy);return}
+  const p=e.target.closest('[data-copy-idx]');if(p){copy(PROMPTS[+p.dataset.copyIdx][1],'Prompt copied')}
+});
+</script>

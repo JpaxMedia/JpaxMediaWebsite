@@ -1,0 +1,82 @@
+/* JPAX brand tokens — "Grounded futurism"
+   Night is the ground. Bone is the voice. Green moves. Purple deepens.
+   Atmosphere colors (afterglow, lamplight, fog) are light in a scene, never UI chrome. */
+
+@import url("https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wdth,wght@12..96,75..100,300..800&family=Instrument+Serif:ital@0;1&family=DM+Sans:ital,opsz,wght@0,9..40,300..700;1,9..40,400&family=JetBrains+Mono:wght@400;500;700&family=Caveat:wght@500;700&display=swap");
+
+:root {
+  /* Night — neutrals with a faint green-blue bias */
+  --night-950: #030406; /* Void */
+  --night-900: #05070A; /* Night · base ground */
+  --night-850: #0A0E12; /* Ink */
+  --night-800: #10151B; /* Slate */
+  --night-700: #1A2129; /* Stone */
+  --night-600: #2A333C; /* Ridge */
+  --night-400: #5D6873; /* Fog */
+  --night-300: #8C9E99; /* Mist */
+  --bone-200:  #C9CCC4; /* Ash */
+  --bone-100:  #ECE8DF; /* Bone · primary text + light ground */
+
+  /* Signal green — action, progress, the path forward */
+  --green-900: #0B2518; /* Moss */
+  --green-800: #123C27; /* Deep pine */
+  --green-700: #1A5C3B; /* Pine · green text on Bone */
+  --green-600: #1F9D57; /* Forest · green shapes on Bone */
+  --green-500: #3FCB7A; /* Trail */
+  --green-400: #4ADE80; /* Signal · core */
+  --green-300: #7BEBA6; /* Glow */
+  --green-200: #B9F6D0; /* Mint mist */
+
+  /* Dusk purple — intelligence, depth, the layer behind the work */
+  --purple-900: #140F26; /* Deep dusk */
+  --purple-800: #231A45; /* Night sky */
+  --purple-700: #3B2A70; /* Twilight */
+  --purple-600: #6A4BD0; /* Violet */
+  --purple-500: #9B6CFF; /* Dusk · core */
+  --purple-300: #C4A8FF; /* Lilac */
+  --purple-200: #E4DAFF; /* Haze */
+
+  /* Atmosphere — sparing, scene light only */
+  --afterglow: #D47BA0;  /* dusk sky at the horizon */
+  --afterglow-deep: #7A3A64;
+  --lamplight: #F2B36F;  /* city lights, desk lamp, warmth */
+  --lamplight-deep: #B06F3A;
+  --valley-fog: #2A4A45;
+
+  /* Roles */
+  --bg: var(--night-900);
+  --surface: var(--night-850);
+  --surface-2: var(--night-800);
+  --line: rgba(236, 232, 223, .12);
+  --text: var(--bone-100);
+  --text-soft: var(--bone-200);
+  --text-muted: var(--night-300);
+  --accent: var(--green-400);
+  --accent-2: var(--purple-500);
+
+  /* Type */
+  --font-display: "Bricolage Grotesque", "Arial Narrow", Arial, sans-serif;
+  --font-voice: "Instrument Serif", Georgia, "Times New Roman", serif;
+  --font-body: "DM Sans", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  --font-hand: "Caveat", "Segoe Print", cursive;
+
+  /* Type scale (1.25 minor third on body, display jumps) */
+  --step--1: .8rem;
+  --step-0: 1rem;
+  --step-1: 1.25rem;
+  --step-2: 1.563rem;
+  --step-3: 2.441rem;
+  --step-4: clamp(2.6rem, 6vw, 4.8rem);
+  --step-5: clamp(3.2rem, 9vw, 7.5rem);
+
+  --radius: 6px;
+  --grain: url("backgrounds/grain-tile.png");
+}
+
+/* Display headline: condensed, heavy, tight. Voice words sit inside in Instrument Serif italic. */
+.jp-display { font-family: var(--font-display); font-weight: 800; font-stretch: 75%; font-variation-settings: "opsz" 96; letter-spacing: -.02em; line-height: .92; text-transform: uppercase; }
+.jp-voice { font-family: var(--font-voice); font-style: italic; font-weight: 400; text-transform: none; letter-spacing: -.01em; }
+.jp-label { font-family: var(--font-mono); font-size: .72rem; font-weight: 500; letter-spacing: .2em; text-transform: uppercase; }
+.jp-note { font-family: var(--font-hand); font-weight: 600; transform: rotate(-3deg); }
+.jp-grain::after { content: ""; position: absolute; inset: 0; background: var(--grain); pointer-events: none; mix-blend-mode: overlay; }

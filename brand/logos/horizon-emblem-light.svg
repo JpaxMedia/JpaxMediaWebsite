@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="4 4 112 112"><defs><clipPath id="hlightc"><circle cx="60" cy="60" r="44"/></clipPath>
+<mask id="hlightm" maskUnits="userSpaceOnUse" x="0" y="0" width="120" height="120"><rect width="120" height="120" fill="#fff"/>
+<path d="M36 120 L57.5 70 H62.5 L84 120 Z" fill="#000"/></mask></defs>
+<circle cx="60" cy="60" r="52" fill="none" stroke="#05070A" stroke-width="6"/>
+<g clip-path="url(#hlightc)">
+<path d="M42 70 A18 18 0 0 1 78 70 Z" fill="#1F9D57"/>
+<rect x="0" y="70" width="120" height="60" fill="#05070A" mask="url(#hlightm)"/>
+<path d="M60 76 V120" stroke="#1F9D57" stroke-width="2.4" stroke-dasharray="5 6"/>
+</g></svg>
