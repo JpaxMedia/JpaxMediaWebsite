@@ -671,6 +671,9 @@
   .jupiter-home .two { align-items: center; }
   .jupiter-home .head { margin-bottom: 0; }
   .nova .report-total strong { white-space: nowrap; }
+  .jupiter-hero { min-height: min(100svh, 980px); display: flex; align-items: center; }
+  .jupiter-hero .bg img { object-position: 100% 78%; }
+  @media (max-width: 760px) { .jupiter-hero .bg img { object-position: 70% 100%; } }
   .demo-note { margin-top: 0; }
   .prose { max-width: 720px; display: grid; gap: 18px; color: var(--stone); font-size: 16px; line-height: 1.7; }
   .prose h2 { font-size: clamp(28px, 2.6vw, 38px); color: var(--paper); margin-top: 26px; }
