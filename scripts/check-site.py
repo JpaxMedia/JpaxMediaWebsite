@@ -43,6 +43,23 @@ class SiteParser(HTMLParser):
             self.inputs.append(values)
 
 
+def redirect_sources() -> tuple[set[str], list[str]]:
+    exact: set[str] = set()
+    prefixes: list[str] = []
+    for line in (ROOT / "_redirects").read_text(encoding="utf-8").splitlines():
+        parts = line.split()
+        if not parts or parts[0].startswith("#"):
+            continue
+        if parts[0].endswith("/*"):
+            prefixes.append(parts[0][:-1])
+        else:
+            exact.add(parts[0].rstrip("/") or "/")
+    return exact, prefixes
+
+
+REDIRECT_EXACT, REDIRECT_PREFIXES = redirect_sources()
+
+
 def local_target_exists(source: Path, raw_value: str) -> bool:
     parsed = urlsplit(raw_value)
     if parsed.scheme in SKIPPED_SCHEMES or parsed.netloc:
@@ -51,6 +68,11 @@ def local_target_exists(source: Path, raw_value: str) -> bool:
         return True
 
     relative = unquote(parsed.path)
+    if relative.startswith("/") and (
+        (relative.rstrip("/") or "/") in REDIRECT_EXACT
+        or any(relative.startswith(prefix) for prefix in REDIRECT_PREFIXES)
+    ):
+        return True
     target = ROOT / relative.lstrip("/") if relative.startswith("/") else source.parent / relative
     candidates = [target]
     if relative.endswith("/"):
@@ -91,24 +113,30 @@ def main() -> int:
                 if nav.get("id") != "primary-navigation":
                     errors.append(f"{relative}: mobile navigation needs id primary-navigation")
 
-        if relative == Path("start.html"):
+        if relative == Path("ops-audit.html"):
             project_forms = [form for form in parser.forms if form.get("name") == "project-inquiry"]
             if len(project_forms) != 1:
-                errors.append("start.html: expected one project-inquiry form")
+                errors.append("ops-audit.html: expected one project-inquiry form")
             else:
                 project_form = project_forms[0]
                 if "data-netlify" not in project_form:
-                    errors.append("start.html: project form must use Netlify Forms")
+                    errors.append("ops-audit.html: project form must use Netlify Forms")
                 if project_form.get("action") != "/thank-you":
-                    errors.append("start.html: project form needs the branded success page")
+                    errors.append("ops-audit.html: project form needs the branded success page")
                 if project_form.get("netlify-honeypot") != "bot-field":
-                    errors.append("start.html: project form needs the bot-field honeypot")
+                    errors.append("ops-audit.html: project form needs the bot-field honeypot")
             form_name_inputs = [
                 item for item in parser.inputs
                 if item.get("name") == "form-name" and item.get("value") == "project-inquiry"
             ]
             if len(form_name_inputs) != 1:
-                errors.append("start.html: project form-name field is missing")
+                errors.append("ops-audit.html: project form-name field is missing")
+            if "Site preview" in source:
+                errors.append("ops-audit.html: preview-only form note must be removed")
+
+        if not relative.parts[0] in ("client", "visibility-score") and relative.suffix == ".html":
+            if "/assets/js/jpax-site-intelligence.js" not in source:
+                errors.append(f"{relative}: JPAX Pixel script is missing")
 
         lowered = source.lower()
         if "user-scalable=no" in lowered or "maximum-scale=1" in lowered:
@@ -118,20 +146,26 @@ def main() -> int:
     if 'isOpen ? "Close navigation" : "Open navigation"' not in shared_script:
         errors.append("assets/js/main.js: menu accessible label state is missing")
 
-    retired_roots = ("demos", "free-website", "prospect-dashboard")
+    retired_roots = ("demos", "free-website", "prospect-dashboard", "blog", "roast", "oracle", "anchor")
     for retired_root in retired_roots:
         if (ROOT / retired_root).exists():
             errors.append(f"{retired_root}: retired campaign surface must not be published")
 
     redirects = (ROOT / "_redirects").read_text(encoding="utf-8")
+    redirect_rules = {tuple(line.split()) for line in redirects.splitlines() if line.strip() and not line.startswith("#")}
     required_retirement_redirects = (
-        "/free-website /start 301!",
-        "/free-website/* /start 301!",
-        "/demos /work 301!",
-        "/demos/* /work 301!",
+        ("/free-website", "/", "301!"),
+        ("/free-website/*", "/", "301!"),
+        ("/demos", "/", "301!"),
+        ("/demos/*", "/", "301!"),
+        ("/blog/freelancer-to-founder", "/about", "301!"),
+        ("/blog/southern-pavers-case-study", "/work/southern-pavers", "301!"),
+        ("/blog/*", "/", "301!"),
+        ("/start", "/ops-audit", "301!"),
+        ("/pricing", "/ops-audit", "301!"),
     )
     for redirect in required_retirement_redirects:
-        if redirect not in redirects:
+        if redirect not in redirect_rules:
             errors.append(f"_redirects: missing retired campaign redirect {redirect}")
 
     retired_endpoints = ("/api/prospect-track", "/api/prospect-dashboard")

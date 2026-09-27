@@ -1,5 +1,6 @@
 User-agent: *
 Allow: /
-Disallow: /anchor/
+Disallow: /client/
+Disallow: /thank-you
 
 Sitemap: https://jpaxmedia.com/sitemap.xml
