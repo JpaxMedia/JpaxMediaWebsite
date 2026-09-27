@@ -1,26 +1,63 @@
-/portfolio /work.html 301
-/portfolio.html /work.html 301
-/labs /work.html 301
-/labs.html /work.html 301
-/tradeos /tradeos.html 301
-/trade-os /tradeos.html 301
+# ---------------------------------------------------------------------------
+# September 2026 relaunch: the old blog, service pages, and tools are retired.
+# Every old URL lands on the closest new page (301). Keep these for good:
+# old links live in emails, proposals, search results, and social posts.
+# ---------------------------------------------------------------------------
 
-# Retired free-website and personalized prospect-demo campaigns.
-# Preserve old outbound links without keeping the campaign pages online.
-/free-website /start 301!
-/free-website/* /start 301!
-/demos /work 301!
-/demos/* /work 301!
+# Old blog posts
+/blog/freelancer-to-founder            /about                  301!
+/blog/freelancer-to-founder.html       /about                  301!
+/blog/southern-pavers-case-study       /work/southern-pavers   301!
+/blog/southern-pavers-case-study.html  /work/southern-pavers   301!
+/blog                                  /                       301!
+/blog/*                                /                       301!
 
-# JPAX Site Intelligence (Netlify functions)
+# Booking and pricing pages go to the Ops Audit
+/start                                 /ops-audit              301!
+/start.html                            /ops-audit              301!
+/pricing                               /ops-audit              301!
+/pricing.html                          /ops-audit              301!
+
+# Old portfolio pages go to the case study
+/work                                  /work/southern-pavers   301!
+/work.html                             /work/southern-pavers   301!
+/portfolio                             /work/southern-pavers   301!
+/portfolio.html                        /work/southern-pavers   301!
+/labs                                  /work/southern-pavers   301!
+/labs.html                             /work/southern-pavers   301!
+
+# Retired pages, products, and tools
+/services                              /   301!
+/services.html                         /   301!
+/quiz                                  /   301!
+/quiz.html                             /   301!
+/tradeos                               /   301!
+/tradeos.html                          /   301!
+/trade-os                              /   301!
+/elara                                 /   301!
+/elara.html                            /   301!
+/greenville-ai-website-design          /   301!
+/greenville-ai-website-design.html     /   301!
+/greenville-business-automation        /   301!
+/greenville-business-automation.html   /   301!
+/web-design-for-service-businesses-greenville       /   301!
+/web-design-for-service-businesses-greenville.html  /   301!
+/custom-dashboards-greenville          /   301!
+/custom-dashboards-greenville.html     /   301!
+/maintenance                           /   301!
+/maintenance.html                      /   301!
+/roast                                 /   301!
+/roast/*                               /   301!
+/oracle                                /   301!
+/oracle/*                              /   301!
+/anchor                                /   301!
+/anchor/*                              /   301!
+/free-website                          /   301!
+/free-website/*                        /   301!
+/demos                                 /   301!
+/demos/*                               /   301!
+
+# JPAX Site Intelligence (Netlify functions). The JPAX Pixel posts to /api/site-track.
 /api/dashboard-login /.netlify/functions/dashboard-login 200
 /api/site-dashboard /.netlify/functions/site-dashboard 200
 /api/site-track /.netlify/functions/site-track 200
-
-# JPAX Roasting Machine (attached, internal for now)
-/roast /roast/index.html 200
-/roast/ /roast/index.html 200
-/roast/* /roast/index.html 200
-
-# Re-enable this only when the public site should be hidden behind maintenance.
-# /*    /maintenance.html    200
