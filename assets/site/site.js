@@ -97,34 +97,105 @@
   var form = document.getElementById('audit-form');
   if (form) (function () {
     var interest = document.getElementById('f-interest');
+    var laneInputs = form.querySelectorAll('input[name="lane"]');
     var submitBtn = form.querySelector('button[type="submit"]');
     var submitFine = form.querySelector('.actions .fine');
     var errorBox = document.getElementById('form-error');
+    var bookTitle = document.getElementById('book-title');
+    var bookIntro = document.getElementById('book-intro');
+    var bookSteps = document.querySelectorAll('#book-steps li');
+    var notes = document.getElementById('f-notes');
     var copy = {
       'Ops Audit': ['Request my audit', '$2,000 flat, credited to the install.'],
+      'System Install': ['Ask about an install', 'From $12,000. Every install starts with the audit.'],
+      'Operating Partner': ['Ask about a partnership', 'From $1,500 a month.'],
+      'Website creation': ['Ask about a website', 'Websites from $3,500.'],
+      'Web management': ['Ask about web management', 'From $400 a month.'],
+      'Custom app build': ['Tell me about the app', 'Custom apps from $8,000.'],
+      'Content creation': ['Ask about content', 'From $1,200 a month.'],
       'Ad campaigns': ['Ask about ads', '$1,500 a month plus ad spend.'],
+      'Ad management': ['Ask about ad management', 'From $1,500 a month plus ad spend.'],
       'Not sure yet': ['Send it over', "I'll tell you where I'd start."]
     };
-    var fromLink = { ads: 'Ad campaigns', audit: 'Ops Audit', unsure: 'Not sure yet' };
+    // What the booking column says for each lane. The first interest is the default when a lane is picked.
+    var laneCopy = {
+      'Systems': {
+        first: 'Ops Audit', title: 'Book your <em>Ops Audit.</em>', intro: 'Tell me about the shop. I read every request myself.',
+        steps: ['I reply within one business day.', 'We book a 30-minute kickoff call.', 'Two weeks later, you have the number.'],
+        notes: "What's bugging you most: missed calls, estimates, reviews..."
+      },
+      'Studio': {
+        first: 'Website creation', title: 'Start a <em>Studio project.</em>', intro: 'Tell me about the business and what you want people to see. I read every request myself.',
+        steps: ['I reply within one business day.', 'We get on a call and talk through the work.', 'You see the scope and the price before anything starts.'],
+        notes: 'What you have now, what you want, and any sites or brands you admire...'
+      },
+      'Not sure': {
+        first: 'Not sure yet', title: 'Tell me <em>where it hurts.</em>', intro: "Tell me what's going on. I read every request myself.",
+        steps: ['I reply within one business day.', 'We talk it through for 30 minutes.', "I tell you which lane I'd start with, and why."],
+        notes: "What's frustrating you most right now..."
+      }
+    };
+    var fromLink = {
+      audit: 'Ops Audit', install: 'System Install', partner: 'Operating Partner',
+      website: 'Website creation', webcare: 'Web management', app: 'Custom app build',
+      content: 'Content creation', ads: 'Ad campaigns', admanagement: 'Ad management', unsure: 'Not sure yet'
+    };
+    var laneLink = { systems: 'Systems', studio: 'Studio', unsure: 'Not sure' };
+
+    // The static HTML lists every option so Netlify sees them all; the menu only shows the picked lane's.
+    var groups = {};
+    interest.querySelectorAll('optgroup').forEach(function (g) { groups[g.getAttribute('data-lane')] = g; });
+    var unsureOpt = interest.querySelector('option[value="Not sure yet"]');
+    function laneOf(value) {
+      for (var k in groups) if (groups[k].querySelector('option[value="' + value + '"]')) return k;
+      return null;
+    }
+    function currentLane() {
+      var c = form.querySelector('input[name="lane"]:checked');
+      return c ? c.value : 'Systems';
+    }
     function syncInterest() {
       var c = copy[interest.value] || copy['Ops Audit'];
       submitBtn.firstChild.nodeValue = c[0] + ' ';
       submitFine.textContent = c[1];
     }
+    function setLane(lane, want) {
+      var l = laneCopy[lane] || laneCopy['Systems'];
+      laneInputs.forEach(function (r) { r.checked = r.value === lane; });
+      // A requested interest (link or button) wins if it belongs here; a plain lane switch keeps the pick only if it fits.
+      var fits = want !== undefined
+        ? (!groups[lane] || want === 'Not sure yet' || laneOf(want) === lane)
+        : laneOf(interest.value) === lane;
+      var pick = want !== undefined ? want : interest.value;
+      interest.textContent = '';
+      (groups[lane] ? [groups[lane]] : [groups.Systems, groups.Studio]).forEach(function (g) { interest.appendChild(g); });
+      interest.appendChild(unsureOpt);
+      interest.value = fits ? pick : l.first;
+      bookTitle.innerHTML = l.title;
+      bookIntro.textContent = l.intro;
+      bookSteps.forEach(function (li, i) { li.textContent = l.steps[i]; });
+      notes.placeholder = l.notes;
+      syncInterest();
+    }
+    laneInputs.forEach(function (r) { r.addEventListener('change', function () { setLane(r.value); }); });
     interest.addEventListener('change', syncInterest);
     document.querySelectorAll('[data-interest]').forEach(function (el) {
-      el.addEventListener('click', function () { interest.value = el.getAttribute('data-interest'); syncInterest(); });
+      el.addEventListener('click', function () {
+        var v = el.getAttribute('data-interest');
+        setLane(laneOf(v) || currentLane(), v);
+      });
     });
-    var asked = new URLSearchParams(location.search).get('interest');
-    if (asked && fromLink[asked]) interest.value = fromLink[asked];
-    syncInterest();
+    var params = new URLSearchParams(location.search);
+    var askedInterest = fromLink[params.get('interest')];
+    var askedLane = laneLink[params.get('lane')] || laneOf(askedInterest) || 'Systems';
+    setLane(askedLane, askedInterest || laneCopy[askedLane].first);
 
     form.addEventListener('submit', function (e) {
       e.preventDefault();
       if (!form.reportValidity()) return;
       var data = new FormData(form);
       var first = String(data.get('name') || '').trim().split(' ')[0];
-      data.set('subject', data.get('interest') + ' request: ' + String(data.get('business') || '').trim());
+      data.set('subject', '[' + data.get('lane') + '] ' + data.get('interest') + ' request: ' + String(data.get('business') || '').trim());
       submitBtn.disabled = true; errorBox.hidden = true;
       fetch('/', { method: 'POST', headers: { 'Content-Type': 'application/x-www-form-urlencoded' }, body: new URLSearchParams(data).toString() })
         .then(function (res) {
@@ -134,6 +205,48 @@
         })
         .catch(function () { submitBtn.disabled = false; errorBox.hidden = false; });
     });
+  })();
+
+  /* ---- Studio route: one stop open at a time, the road lights up behind you ---- */
+  var route = document.getElementById('route-list');
+  if (route) (function () {
+    var stops = Array.prototype.slice.call(route.querySelectorAll('.stop'));
+    // scroll: 'always' (chooser, next stop), 'if-moved' (heading click), or 'never' (page load)
+    function open(id, scroll) {
+      var at = -1;
+      stops.forEach(function (stop, i) {
+        var on = stop.id === id && !stop.classList.contains('open');
+        if (stop.id === id) at = on ? i : -1;
+        stop.classList.toggle('open', on);
+        stop.querySelector('.stop-head').setAttribute('aria-expanded', on ? 'true' : 'false');
+        stop.querySelector('.stop-body').hidden = !on;
+      });
+      stops.forEach(function (stop, i) { stop.classList.toggle('passed', at > -1 && i < at); });
+      var target = at > -1 && stops[at];
+      if (!target || scroll === 'never') return;
+      var top = target.getBoundingClientRect().top;
+      // Closing a stop above shifts the page; bring the new chapter's heading into view if it slid away.
+      if (scroll === 'always' || top < 0 || top > innerHeight * .6) target.scrollIntoView({ block: 'start', behavior: reduce ? 'auto' : 'smooth' });
+    }
+    function show(id) {
+      var stop = document.getElementById(id);
+      if (stop && !stop.classList.contains('open')) open(id, 'always');
+      else if (stop) stop.scrollIntoView({ block: 'start', behavior: reduce ? 'auto' : 'smooth' });
+    }
+    stops.forEach(function (stop) {
+      stop.querySelector('.stop-head').addEventListener('click', function () { open(stop.id, 'if-moved'); });
+    });
+    document.querySelectorAll('[data-open]').forEach(function (el) {
+      el.addEventListener('click', function (e) {
+        e.preventDefault();
+        show(el.getAttribute('data-open'));
+        history.replaceState(null, '', '#' + el.getAttribute('data-open'));
+      });
+    });
+    // Everything is open without JavaScript. With it, start on the stop in the link, or the first one.
+    var hashed = location.hash && document.getElementById(location.hash.slice(1));
+    route.classList.add('guided');
+    open(hashed && hashed.classList.contains('stop') ? hashed.id : stops[0].id, 'never');
   })();
 
   /* ---- Thank-you page: greet by first name ---- */
