@@ -921,3 +921,7 @@
   .vs-from { display: flex; align-items: baseline; gap: 10px; margin: 6px 0 0; padding-top: 16px; border-top: 1px solid var(--rule); }
   .vs-from strong { font: 300 clamp(26px, 2.4vw, 36px)/1 var(--serif); letter-spacing: -.04em; color: var(--green); }
   .vs-from span { color: var(--dim); font-size: 12px; }
+
+  /* Video Studio: the sample brand film sits beside its copy, film first */
+  .vs-sample { display: grid; grid-template-columns: minmax(0, 1.35fr) minmax(0, 1fr); gap: clamp(32px, 5vw, 80px); align-items: center; }
+  @media (max-width: 900px) { .vs-sample { grid-template-columns: minmax(0, 1fr); } }
