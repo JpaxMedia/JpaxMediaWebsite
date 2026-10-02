@@ -918,3 +918,6 @@
   .vs-home .lite-stats li:nth-child(2) b { color: inherit; }
   .vs-home .lite-stats b { font-size: clamp(26px, 2.4vw, 38px); }
   @media (max-width: 1000px) { .vs-home { grid-template-columns: minmax(0, 1fr); } }
+  .vs-from { display: flex; align-items: baseline; gap: 10px; margin: 6px 0 0; padding-top: 16px; border-top: 1px solid var(--rule); }
+  .vs-from strong { font: 300 clamp(26px, 2.4vw, 36px)/1 var(--serif); letter-spacing: -.04em; color: var(--green); }
+  .vs-from span { color: var(--dim); font-size: 12px; }
