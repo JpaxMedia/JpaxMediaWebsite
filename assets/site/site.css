@@ -927,3 +927,17 @@
   @media (max-width: 900px) { .vs-sample { grid-template-columns: minmax(0, 1fr); } }
   /* Video Studio: the edited sample puts its film on the right so the three samples alternate */
   @media (min-width: 761px) { .proof-lite.vs-flip { grid-template-columns: minmax(0, 1fr) minmax(220px, 300px); } .proof-lite.vs-flip .ad-film { order: 2; } }
+  /* Home: a client review leads the page, set large like a pull quote */
+  .review-home { padding-top: clamp(72px, 8vw, 130px); padding-bottom: clamp(72px, 8vw, 130px); }
+  .review-in { max-width: 1120px; display: grid; gap: 26px; }
+  .review-home .stars { margin: 0; color: var(--amber); font-size: 22px; letter-spacing: .22em; line-height: 1; }
+  .review-home blockquote { margin: 0; }
+  .review-home blockquote p { margin: 0; font-family: var(--serif); font-weight: 300; font-size: clamp(27px, 3.1vw, 48px); line-height: 1.22; letter-spacing: -.02em; color: var(--paper); text-wrap: pretty; }
+  .review-home blockquote em { color: var(--amber); }
+  .review-home .who { margin: 6px 0 0; display: flex; align-items: baseline; gap: 14px; font-size: 14px; }
+  .review-home .who b { font-weight: 600; }
+  .review-home .who span { color: var(--stone); font-size: 12px; letter-spacing: .14em; text-transform: uppercase; }
+  .sr-only { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+  /* Video Studio: the edited samples sit as a pair beside their copy */
+  .vs-edit { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 560px); gap: clamp(32px, 6vw, 96px); align-items: center; }
+  @media (max-width: 900px) { .vs-edit { grid-template-columns: minmax(0, 1fr); } }
