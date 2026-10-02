@@ -121,7 +121,7 @@
     // What the booking column says for each lane. The first interest is the default when a lane is picked.
     var laneCopy = {
       'Systems': {
-        first: 'Ops Audit', title: 'Book your <em>Ops Audit.</em>', intro: 'Tell me about the shop. I read every request myself.',
+        first: 'Ops Audit', title: 'Book your <em>Ops Audit.</em>', intro: 'Tell me about the business. I read every request myself.',
         steps: ['I reply within one business day.', 'We book a 30-minute kickoff call.', 'Two weeks later, you have the number.'],
         notes: "What's bugging you most: missed calls, estimates, reviews..."
       },

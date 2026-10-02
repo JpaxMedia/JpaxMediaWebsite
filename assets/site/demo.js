@@ -110,7 +110,7 @@
     function view(v) {
       root.querySelectorAll('.d-side button').forEach(function (b) { b.setAttribute('aria-pressed', b.getAttribute('data-v') === v ? 'true' : 'false'); });
       root.querySelectorAll('.d-view').forEach(function (el) { el.hidden = el.getAttribute('data-view') !== v; });
-      $('d-title').textContent = { overview: 'Here’s the shop right now.', calls: 'Every call, answered or saved.', estimates: 'No estimate goes cold.', reviews: 'Finished jobs become proof.' }[v];
+      $('d-title').textContent = { overview: 'Here’s the business right now.', calls: 'Every call, answered or saved.', estimates: 'No estimate goes cold.', reviews: 'Finished jobs become proof.' }[v];
     }
 
     root.addEventListener('click', function (e) {
