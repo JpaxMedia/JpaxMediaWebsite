@@ -925,3 +925,5 @@
   /* Video Studio: the sample brand film sits beside its copy, film first */
   .vs-sample { display: grid; grid-template-columns: minmax(0, 1.35fr) minmax(0, 1fr); gap: clamp(32px, 5vw, 80px); align-items: center; }
   @media (max-width: 900px) { .vs-sample { grid-template-columns: minmax(0, 1fr); } }
+  /* Video Studio: the edited sample puts its film on the right so the three samples alternate */
+  @media (min-width: 761px) { .proof-lite.vs-flip { grid-template-columns: minmax(0, 1fr) minmax(220px, 300px); } .proof-lite.vs-flip .ad-film { order: 2; } }
