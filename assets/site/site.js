@@ -112,10 +112,9 @@
       'Website creation': ['Ask about a website', 'Websites from $3,500.'],
       'Web management': ['Ask about web management', 'From $400 a month.'],
       'Custom app build': ['Tell me about the app', 'Custom apps from $8,000.'],
-      'Content creation': ['Ask about content', 'From $1,200 a month.'],
-      'Video Studio': ['Ask about a video', 'From $750 a video, or from $1,500 a month.'],
-      'Ad campaigns': ['Ask about ads', '$1,500 a month plus ad spend.'],
-      'Ad management': ['Ask about ad management', 'From $1,500 a month plus ad spend.'],
+      'Content branding': ['Ask about content', 'From $1,200 a month.'],
+      'Video Studio': ['Ask about a video', 'From $1,200 a video, or from $2,500 a month.'],
+      'Ad campaigns': ['Ask about a campaign', 'From $1,500 a month plus ad spend.'],
       'Not sure yet': ['Send it over', "I'll tell you where I'd start."]
     };
     // What the booking column says for each lane. The first interest is the default when a lane is picked.
@@ -139,7 +138,7 @@
     var fromLink = {
       audit: 'Ops Audit', install: 'System Install', partner: 'Operating Partner',
       website: 'Website creation', webcare: 'Web management', app: 'Custom app build',
-      content: 'Content creation', video: 'Video Studio', ads: 'Ad campaigns', admanagement: 'Ad management', unsure: 'Not sure yet'
+      content: 'Content branding', video: 'Video Studio', ads: 'Ad campaigns', admanagement: 'Ad campaigns', unsure: 'Not sure yet'
     };
     var laneLink = { systems: 'Systems', studio: 'Studio', unsure: 'Not sure' };
 
