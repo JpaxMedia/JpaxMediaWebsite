@@ -918,6 +918,12 @@
   .vs-home .lite-stats li:nth-child(2) b { color: inherit; }
   .vs-home .lite-stats b { font-size: clamp(26px, 2.4vw, 38px); }
   @media (max-width: 1000px) { .vs-home { grid-template-columns: minmax(0, 1fr); } }
+  .film-home { position: relative; isolation: isolate; display: grid; justify-items: center; }
+  .film-home::before { content: ""; position: absolute; inset: 0; z-index: -1; pointer-events: none; background: radial-gradient(46% 50% at 50% 62%, rgba(var(--violet), .16), transparent 70%); }
+  .film-home .head { justify-items: center; text-align: center; margin-bottom: clamp(28px, 4vw, 48px); }
+  .film-home .head h2 em { color: var(--green); }
+  .film-home .ad-film.vs-film { width: min(100%, 1120px); }
+  @media (max-width: 600px) { .film-home .ad-film.vs-film .play { right: 8px; bottom: 8px; padding: 7px 12px; font-size: 11px; gap: 7px; } }
   .vs-from { display: flex; align-items: baseline; gap: 10px; margin: 6px 0 0; padding-top: 16px; border-top: 1px solid var(--rule); }
   .vs-from strong { font: 300 clamp(26px, 2.4vw, 36px)/1 var(--serif); letter-spacing: -.04em; color: var(--green); }
   .vs-from span { color: var(--dim); font-size: 12px; }
