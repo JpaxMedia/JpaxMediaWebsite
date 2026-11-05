@@ -41,6 +41,11 @@
     <priority>0.7</priority>
   </url>
   <url>
+    <loc>https://jpaxmedia.com/verse</loc>
+    <lastmod>2026-11-05</lastmod>
+    <priority>0.6</priority>
+  </url>
+  <url>
     <loc>https://jpaxmedia.com/privacy</loc>
     <lastmod>2026-09-27</lastmod>
     <priority>0.2</priority>
